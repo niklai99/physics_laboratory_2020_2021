@@ -12,7 +12,7 @@
 * Multimetro digitale Metrix e Agilent
 * Scheda Arduino Due
 
-  **NB: USARE LE SONDE**
+  **NB: USARE LE SONDE** &rarr; impostare sonda 10x nell'oscilloscopio!
 
 ### Alimentazione dell'Operazionale
 
@@ -71,7 +71,8 @@ Collego due capacità da C = 0.1 &mu;F tra le alimentazioni degli operazionali e
 
 * Inietto un'**onda sinusoidale** &rarr; ricavo sperimentalmente la **frequenza di taglio** modificando la frequenza del generatore fino a raggiungere
   l'amplificazione attessa per la frequenza di taglio
-  * Cioè  
+  * Cioè so che l'amplificazione alla frequenza di taglio è  A<sub>t</sub> = [1 / _sqrt(2)_] * R<sub>f</sub> / R<sub>1</sub> quindi trovo la giusta frequenza da
+    impostare sul generatore per avere l'amplificazione A<sub>t</sub> giusta!
 
 * Misuro la risposta in frequenza (solo ampiezze, no fase) con una decina di punti tra **100 Hz** e **1 MHz**
 
