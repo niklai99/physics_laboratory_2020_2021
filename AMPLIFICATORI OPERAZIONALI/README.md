@@ -37,7 +37,7 @@ Collego due capacità da C = 0.1 &mu;F tra le alimentazioni degli operazionali e
 
 * L'amplificazione attesa _ideale_ è R<sub>f</sub> / R<sub>1</sub> = 10 
 
-* Sul generatore imposto l'impedenza di 50 $\Omega$ in modo da leggere sul display un valore compatibile con quello misurato dall'oscilloscopio
+* Sul generatore imposto l'impedenza di 50 &Omega; in modo da leggere sul display un valore compatibile con quello misurato dall'oscilloscopio
 
 * Applico una **tensione sinusoidale** di **frequenza 1 kHz** e un'**ampiezza di 0.2 V<sub>pp</sub>** 
 
