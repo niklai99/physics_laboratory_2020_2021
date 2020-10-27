@@ -26,8 +26,28 @@ Collego due capacità da C = 0.1 $\mu$F tra le alimentazioni degli operazionali 
 ### 1) Funzione di Trasferimento per un amplificatore INVERTENTE
 
 * Misuro con il multimetro le resistenze in dotazione, usando R<sub>f</sub> > R<sub>1</sub>!
+  
 * Assemblo il seguente circuito
 
-![Circuito](Simulations/OpAmp/circuit_image.png)
+![Circuit](Simulations/OpAmp/circuit_image.png)
 
+* La risposta che mi aspetto è 
 
+![Simulation](Simulations/OpAmp/simulation_image.png)
+
+* L'amplificazione attesa _ideale_ è $R_f / R_1 = 10$
+
+* Sul generatore imposto l'impedenza di 50 $\Omega$ in modo da leggere sul display un valore compatibile con quello misurato dall'oscilloscopio
+
+* Applico una **tensione sinusoidale** di **frequenza 1 kHz** e un'**ampiezza di 0.2 V<sub>pp</sub>** 
+
+* Misuro la tensione in ingresso **V<sub>in</sub>** e in uscita **V<sub>out</sub>** come in figura utilizzando i due canali dell'oscilloscopio
+
+* **Aumento progressivamente l'ampiezza del segnale in ingresso e misuro l'ampiezza in uscita fino a prendere un paio di punti in saturazione!**
+
+* Registro separatamente massimi e minimi sia per V<sub>in</sub> sia per V<sub>out</sub> **usando i cursori**
+
+* Mostro in grafico V<sub>out</sub> vs V<sub>in</sub> (sia per i massimi che per i minimi)
+  * Mi aspetto una retta passante per l'origine (in assenza di errori sistematici) con coefficiente angolare pari all'amplificazione (~10)
+
+### 2) Circuito Derivatore
