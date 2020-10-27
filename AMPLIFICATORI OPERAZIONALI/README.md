@@ -21,7 +21,7 @@ Collego l'operazionale alle alimentazioni
 * V<sub>cc</sub> = +15 V
 * V<sub>ee</sub> = -15 V
 
-Collego due capacità da C = 0.1 $\mu$F tra le alimentazioni degli operazionali e la massa (però vicine all'operazionale!).
+Collego due capacità da C = 0.1 &mu;F tra le alimentazioni degli operazionali e la massa (però vicine all'operazionale!).
 
 ### 1) Funzione di Trasferimento per un amplificatore INVERTENTE
 
@@ -35,7 +35,7 @@ Collego due capacità da C = 0.1 $\mu$F tra le alimentazioni degli operazionali 
 
 ![Simulation](Simulations/OpAmp/simulation_image.png)
 
-* L'amplificazione attesa _ideale_ è $R_f / R_1 = 10$
+* L'amplificazione attesa _ideale_ è R<sub>f</sub> / R<sub>1</sub> = 10 
 
 * Sul generatore imposto l'impedenza di 50 $\Omega$ in modo da leggere sul display un valore compatibile con quello misurato dall'oscilloscopio
 
@@ -63,10 +63,11 @@ Collego due capacità da C = 0.1 $\mu$F tra le alimentazioni degli operazionali 
 * Inietto un'**onda triangolare** di **ampiezza 1 V** e **frequenza 1 kHz** per verificare che stia derivando il segnale: faccio una foto!
   + Mi aspetto un'**onda quadra** in uscita!
 
-* Frequenza di taglio attesa: f<sub>t</sub> = &omega;<sub>f</sub>/2&pi; dove $\omega_f è quel valore tale che l'amplificazione massima è ridotta di un fattore $\sqrt{2}$
-  * E' lo stesso valore della frequenza caratteristica $\omega_f=\omega_0 = \frac{1}{R_1 C_1}$
+* Frequenza di taglio attesa: f<sub>t</sub> = &omega;<sub>t</sub>/2&pi; dove &omega;<sub>t</sub> è quel valore tale che l'amplificazione massima è ridotta di un fattore _sqrt(2)_
+  * E' lo stesso valore della frequenza caratteristica &omega;<sub>t</sub>=&omega;<sub>0</sub> = 1/(R<sub>1</sub> C<sub>1</sub>)
   
-* Massimo guardagno atteso: Rf / R1 = 10 (?)
+* Massimo guardagno atteso: R<sub>f</sub> / R<sub>1</sub> = 10 
+  * Perchè al limite j&rarr;infinito il modulo della funzione di trasferimento tende a R<sub>f</sub> / R<sub>1</sub>
 
 * Inietto un'**onda sinusoidale** &rarr; ricavo sperimentalmente la **frequenza di taglio** modificando la frequenza del generatore fino a raggiungere
   l'amplificazione attessa per la frequenza di taglio (?)
