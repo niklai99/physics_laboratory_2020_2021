@@ -63,7 +63,7 @@ Collego due capacità da C = 0.1 $\mu$F tra le alimentazioni degli operazionali 
 * Inietto un'**onda triangolare** di **ampiezza 1 V** e **frequenza 1 kHz** per verificare che stia derivando il segnale: faccio una foto!
   + Mi aspetto un'**onda quadra** in uscita!
 
-* Frequenza di taglio attesa: $f_t$ = $\omega_f/2\pi$ dove $\omega_f$ è quel valore tale che l'amplificazione massima è ridotta di un fattore $\sqrt{2}$
+* Frequenza di taglio attesa: f<sub>t</sub> = &omega;<sub>f</sub>/2&pi; dove $\omega_f è quel valore tale che l'amplificazione massima è ridotta di un fattore $\sqrt{2}$
   * E' lo stesso valore della frequenza caratteristica $\omega_f=\omega_0 = \frac{1}{R_1 C_1}$
   
 * Massimo guardagno atteso: Rf / R1 = 10 (?)
