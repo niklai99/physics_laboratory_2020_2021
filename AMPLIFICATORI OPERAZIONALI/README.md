@@ -28,6 +28,6 @@ Collego due capacità da C = 0.1 $\mu$F tra le alimentazioni degli operazionali 
 * Misuro con il multimetro le resistenze in dotazione, usando R<sub>f</sub> > R<sub>1</sub>!
 * Assemblo il seguente circuito
 
-<img src="D:\GitHub\physics_laboratory_2020_2021\AMPLIFICATORI OPERAZIONALI\LTSpice Simulation\OpAmp\circuit_image.png" alt="Circuito" width="300"/>
+<img src="LTSpice_Simulation/OpAmp/circuit_image.png" alt="Circuito" width="300"/>
 
 
