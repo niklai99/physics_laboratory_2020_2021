@@ -62,9 +62,9 @@ Collego due capacità da C = 0.1 $\mu$F tra le alimentazioni degli operazionali 
 
 * Inietto un'**onda triangolare** di **ampiezza 1 V** e **frequenza 1 kHz** per verificare che stia derivando il segnale: faccio una foto!
 
-* Frequenza di taglio attesa: 
+* Frequenza di taglio attesa: $f_t$ = $\omega_f/2\pi$ dove $\omega_f$ è quel valore tale che l'amplificazione massima è ridotta di un fattore $\sqrt{2}$
   
-* Massimo guardagno atteso:
+* Massimo guardagno atteso: Rf / R1 = 10 (?)
 
 * Inietto un'**onda sinusoidale** &rarr; ricavo sperimentalmente la **frequenza di taglio** modificando la frequenza del generatore fino a raggiungere
   l'amplificazione attessa per la frequenza di taglio (?)
