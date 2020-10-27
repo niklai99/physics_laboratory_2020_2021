@@ -61,6 +61,7 @@ Collego due capacità da C = 0.1 $\mu$F tra le alimentazioni degli operazionali 
 ![Circuit](Simulations/Differentiator/circuit_image.png)
 
 * Inietto un'**onda triangolare** di **ampiezza 1 V** e **frequenza 1 kHz** per verificare che stia derivando il segnale: faccio una foto!
+  + Mi aspetto un'**onda quadra** in uscita!
 
 * Frequenza di taglio attesa: $f_t$ = $\omega_f/2\pi$ dove $\omega_f$ è quel valore tale che l'amplificazione massima è ridotta di un fattore $\sqrt{2}$
   
