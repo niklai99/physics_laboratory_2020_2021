@@ -64,13 +64,14 @@ Collego due capacità da C = 0.1 &mu;F tra le alimentazioni degli operazionali e
   + Mi aspetto un'**onda quadra** in uscita!
 
 * Frequenza di taglio attesa: f<sub>t</sub> = &omega;<sub>t</sub>/2&pi; dove &omega;<sub>t</sub> è quel valore tale che l'amplificazione massima è ridotta di un fattore _sqrt(2)_
-  * E' lo stesso valore della frequenza caratteristica &omega;<sub>t</sub>=&omega;<sub>0</sub> = 1/(R<sub>1</sub> C<sub>1</sub>)
+  * E' lo stesso valore della frequenza caratteristica &omega;<sub>t</sub> = &omega;<sub>0</sub> = 1/(R<sub>1</sub> C<sub>1</sub>)
   
 * Massimo guardagno atteso: R<sub>f</sub> / R<sub>1</sub> = 10 
   * Perchè al limite j&rarr;infinito il modulo della funzione di trasferimento tende a R<sub>f</sub> / R<sub>1</sub>
 
 * Inietto un'**onda sinusoidale** &rarr; ricavo sperimentalmente la **frequenza di taglio** modificando la frequenza del generatore fino a raggiungere
-  l'amplificazione attessa per la frequenza di taglio (?)
+  l'amplificazione attessa per la frequenza di taglio
+  * Cioè  
 
 * Misuro la risposta in frequenza (solo ampiezze, no fase) con una decina di punti tra **100 Hz** e **1 MHz**
 
