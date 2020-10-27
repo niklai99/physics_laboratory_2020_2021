@@ -1,21 +1,21 @@
-Circuit: * D:\GitHub\physics_laboratory_2020_2021\AMPLIFICATORI OPERAZIONALI\LTSpice Simulation\OpAmp\OpAmp_simulation.asc
+Circuit: * D:\GitHub\physics_laboratory_2020_2021\AMPLIFICATORI OPERAZIONALI\Simulations\OpAmp\OpAmp_simulation.asc
 
 Direct Newton iteration for .op point succeeded.
 
-Date: Tue Oct 27 15:41:48 2020
-Total elapsed time: 0.044 seconds.
+Date: Tue Oct 27 16:23:56 2020
+Total elapsed time: 0.195 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 1634
-traniter = 1630
-tranpoints = 816
-accept = 498
-rejected = 318
-matrix size = 10
-fillins = 1
+totiter = 10471
+traniter = 10468
+tranpoints = 3030
+accept = 2073
+rejected = 957
+matrix size = 12
+fillins = 2
 solver = Normal
-Matrix Compiler1: 454 bytes object code size  0.1/0.1/[0.1]
-Matrix Compiler2: 790 bytes object code size  0.1/0.1/[0.1]
+Matrix Compiler1: 868 bytes object code size  0.2/0.1/[0.1]
+Matrix Compiler2: 974 bytes object code size  0.1/0.1/[0.1]
 

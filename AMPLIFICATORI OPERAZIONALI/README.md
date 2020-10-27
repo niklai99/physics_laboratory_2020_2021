@@ -48,6 +48,28 @@ Collego due capacità da C = 0.1 $\mu$F tra le alimentazioni degli operazionali 
 * Registro separatamente massimi e minimi sia per V<sub>in</sub> sia per V<sub>out</sub> **usando i cursori**
 
 * Mostro in grafico V<sub>out</sub> vs V<sub>in</sub> (sia per i massimi che per i minimi)
-  * Mi aspetto una retta passante per l'origine (in assenza di errori sistematici) con coefficiente angolare pari all'amplificazione (~10)
+  * Mi aspetto una retta passante per l'origine (in assenza di errori sistematici) con coefficiente angolare pari all'amplificazione (~10 in modulo)
 
 ### 2) Circuito Derivatore
+
+* Modifico il circuito precedente aggiungendo una capacità
+
+* Misuro la capacità con il multimetro
+
+* Assemblo il seguente circuito
+
+![Circuit](Simulations/Differentiator/circuit_image.png)
+
+* Inietto un'**onda triangolare** di **ampiezza 1 V** e **frequenza 1 kHz** per verificare che stia derivando il segnale: faccio una foto!
+
+* Frequenza di taglio attesa: 
+  
+* Massimo guardagno atteso:
+
+* Inietto un'**onda sinusoidale** &rarr; ricavo sperimentalmente la **frequenza di taglio** modificando la frequenza del generatore fino a raggiungere
+  l'amplificazione attessa per la frequenza di taglio (?)
+
+* Misuro la risposta in frequenza (solo ampiezze, no fase) con una decina di punti tra **100 Hz** e **1 MHz**
+
+* Riporto in grafico l'andamento dell'amplificazione usando _scale logaritmiche_ 
+
