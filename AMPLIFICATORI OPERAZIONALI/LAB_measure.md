@@ -109,5 +109,15 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
   |1 k&Omega;      | 0.10% + 8  | 0.01 &Omega;|
   |10 k&Omega;     | 0.07% + 8  | 0.1 &Omega; |
   |100 k&Omega;    | 0.07% + 8  | 1 &Omega;   |
+  
+  Per stimare l'errore sulla misura diretta delle resistenze utilizzo la seguente formula:
 
-  ![Direct measure propagation](LaTeX_equation/direct_measure_error.png)  
+  ![Direct measure propagation](LaTeX_equation/resistance_propagation.png)  
+
+  E ottengo dunque
+
+  | Resistenza |      Valore     |      Errore    |
+  |:------------:|:-----------------:|:---------------:|
+  |     R<sub>f</sub>     | 82.46 k&Omega; |  0.03  k&Omega;|
+  |     R<sub>1</sub>     | 8.089 k&Omega; |  0.003 k&Omega;|
+  |     R<sub>3</sub>     |  46.54 &Omega;  |  0.03  &Omega;|
