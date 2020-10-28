@@ -233,3 +233,20 @@ I dati inseriti nelle seguenti tabelle sono esattamente quelli restituiti da ROO
 
 Purtroppo non posso dire che l'offset sia compatibile con zero: rimuovere la dipendeza da tale parametro porterebbe ad un risultato non corretto. Ora
 però sorge la domanda: perchè l'offset non è compatibile con zero? 
+
+In ogni caso, la presenza di un offset costante su tutte le misure non altera il risultato della nostra stima. Ora sorge un'altra domanda: l'offset è
+costate su tutte le misure?
+
+Se così fosse, il coefficiente angolare della retta degli ultimi fit dovrebbe restituire una buona stima dell'amplificazione del circuito! _Ricordo
+che il modulo del guadagno atteso è **G = 10.194 +/- 0.006**!_
+
+### Compatibilità
+
+|         | Massimi | Minimi | Atteso |
+|:---------:|:---------:|:--------:|:--------:|
+| **Massimi** |       1 |    4.7 |    1.8 |
+| **Minimi** |     4.7 |      1 |    4.9 |
+| **Atteso** |     1.8 |    4.9 |      1 |
+
+Si nota che le stime trovate sono tra loro incompatibili, ad eccezione della stima ottenuta dall'analisi dei massimi che risulta essere più o meno
+compatibile con il valore atteso.
