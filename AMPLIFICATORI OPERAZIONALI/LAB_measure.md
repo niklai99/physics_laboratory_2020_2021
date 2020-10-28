@@ -72,7 +72,7 @@ Seguono i plot delle misure dei massimi e delle misure dei minimi, con i rispett
 
 **Analisi PROVVISORIA senza tenere conto delle incertezze sulle misure**
 
-I dati inseriti nelle seguenti tabelle sono esattamente quelli restituiti da ROOT.
+I dati inseriti nelle seguenti tabelle sono esattamente quelli restituiti da ROOT, non sono state fatte approssimazioni di alcun tipo fino ad ora.
 
 * #### Massimi
   
@@ -88,4 +88,15 @@ I dati inseriti nelle seguenti tabelle sono esattamente quelli restituiti da ROO
 
 ### Commenti
 
-Il coefficiente angolare delle rette è leggermente più piccolo dell'amplificazione che mi aspettavo: forse rimuovendo il punto in saturazione viene meglio!
+Il coefficiente angolare delle rette è leggermente più piccolo dell'amplificazione che mi aspettavo: forse rimuovendo il punto in saturazione viene
+meglio! 
+
+Dai residui si vede palesemente che il punto in saturazione non rispetta l'andamento lineare degli altri punti.
+
+L'offset della retta è """"compatibile con lo zero"""" quindi si può pensare di effettuare un fit con un solo parametro del tipo *y = mx* per ottenere
+maggiori informazioni sul coefficiente angolare.
+
+I chi2 non sono significativi in quanto non sono stati presi in considerazioni gli errori sulle misure.
+
+### Propagazione degli Errori
+
