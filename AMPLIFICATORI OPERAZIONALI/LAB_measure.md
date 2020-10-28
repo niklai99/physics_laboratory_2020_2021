@@ -120,4 +120,12 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
   |:------------:|:-----------------:|:---------------:|
   |     R<sub>f</sub>     | 82.46 k&Omega; |  0.03  k&Omega;|
   |     R<sub>1</sub>     | 8.089 k&Omega; |  0.003 k&Omega;|
-  |     R<sub>3</sub>     |  46.54 &Omega;  |  0.03  &Omega;|
+  |     R<sub>3</sub>     |  46.54 &Omega;  |  0.05  &Omega;|
+
+* #### Stima dell'Amplificazione attesa
+
+  Usando ora le incertezze sulle misure delle resistenze posso stimare l'errore della stima dell'amplificazione attesa. La formula di propagazione è quindi
+  
+  ![Amplification propagation](LaTeX_equation/amplification_propagation.png) 
+
+  Si trova allora che l'amplificazione attesa è G = 10.194 +/- 0.006.
