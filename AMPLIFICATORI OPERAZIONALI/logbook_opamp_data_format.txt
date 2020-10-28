@@ -1,0 +1,100 @@
+# FORMAT PER REGISTRAZIONE DATI RACCOLTI DA POSTARE IN MOODLE (come FILE DI TESTO, NO WORD, PDF o altre varianti di formato)
+# - inserire i dati seguendo il formato indicato
+# - si possono utilizzare i modificatori tipo LTspice: k (kilo), Meg(mega), m(milli), u(micro), n(nano), p(pico)
+# - per eventuali commenti mettete un cancelletto a inizio riga
+
+# --------------------------------------
+
+# ESPERIENZA OPAMPS
+
+# --------------------------------------
+# 1) CURVA VTC
+
+# misura componenti: label, dato letto, scala (es. R1, 123.6k, 600k)
+# un componente per riga
+
+R1, 8.0894k, 10k
+Rf, 82.462k, 100k
+R3, 46.54, 1000
+
+
+# dati VTC : vin, scala, vout, scala (es. 104m, 20m, 760m, 200m)
+# un punto per riga
+
+# Massimi
+106m, 50m,  997m, 324m 
+252m, 100m, 2.48, 1.00 
+400m, 200m, 4.00, 2.00 
+496m, 200m, 4.96, 2.00 
+744m, 200m, 7.44, 2.00 
+907m, 324m, 8.98, 3.40 
+1.01, 324m, 9.93, 3.40 
+1.16, 376m, 11.4, 3.80 
+1.29, 436m, 13.0, 4.52 
+1.50, 480m, 14.4, 4.52 
+
+# Minimi
+-102m, 50m,  -972m, 324m 
+-252m, 100m, -2.48, 1.00  
+-400m, 200m, -3.92, 2.00  
+-496m, 200m, -4.96, 2.00  
+-736m, 200m, -7.36, 2.00  
+-881m, 324m, -8.98, 3.40  
+-984m, 324m, -10.0, 3.40  
+-1.13, 376m, -11.5, 3.80   
+-1.29, 436m, -13.0, 4.52   
+-1.48, 480m, -14.1, 4.52   
+
+
+# --------------------------------------
+# 2) DERIVATORE
+
+# misura componenti: label, dato letto, scala (es. R1, 123.6k, 600k)
+# un componente per riga
+
+# misura diretta frequenza di taglio: f, vin, scala, vout, scala (es. 12.45k, 1.00, 200m, 704m, 200m)
+
+# dati risposta in frequenza : f, vin, scala, vout, scala (es. 12.45k, 1.00, 200m, 704m, 200m)
+# un punto per riga
+
+
+# --------------------------------------
+# 3) SOMMATORE INVERTENTE
+
+# misura componenti: label, dato letto, scala (es. R1, 123.6k, 600k)
+# un componente per riga
+
+# misure significative onda somma: label, vin1, scala, vin2, scala, vout, scala (es. P1, 400m, 100m, 400m, 100m, 800m, 200m) 
+# le label andranno descritte nella relazione (es. P1 = massimo1 + massimo2...)
+# una misura per riga
+
+# misure significative onde in battimento: label, vin1, scala, vin2, scala, vout, scala (es. P1, 400m, 100m, 400m, 100m, 800m, 200m) 
+# le label andranno descritte nella relazione (es. P1 = massimo1 + massimo2...)
+# una misura per riga
+
+# --------------------------------------
+# 4) DAQ CON ARDUINO
+
+# numero arduino (es. 11)
+
+# stima approssimata sampling rate in Samples/s
+
+# valori impostati e misurati delle tensioni: Anom, VL, scala, VH, scala (es. 500m, 0.00, 100m, 504m, 100m)
+# una tensione per riga
+
+
+# --------------------------------------
+# 5) RADDRIZZATORE DI PRECISIONE
+
+# misura componenti: label, dato letto, scala (es. R1, 123.6k, 600k)
+# un componente per riga
+
+# tensioni misurate coorispondenti al massimo di Vin (V1, scala, V2, scala, Vo0', scala, Vo, scala)
+
+# tensioni misurate coorispondenti al minimo di Vin (V1, scala, V2, scala, Vo0', scala, Vo, scala)
+
+
+
+# --------------------------------------
+# eventuali commenti
+#
