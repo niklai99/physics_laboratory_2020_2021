@@ -196,3 +196,9 @@ I dati inseriti nelle seguenti tabelle sono esattamente quelli restituiti da ROO
 | Chi2 | NDf | offset | slope |
 |:----:|:----:|:----:|:----:|
 |33.9391| 8 |  0.373951   +/-   0.0202559 |  10.4948   +/-   0.0852744  |
+
+### Commenti
+
+Aggiungendo le incertezze alle misure la situazione si chiarifica ancor di più: osservando i minimi si nota come l'ultimo punto sia un _outlier_ e va
+rimosso per poter ottenere una buona stima dell'amplificazione mediante il fit. La stessa situazione si ritrova anche analizzando i massimi, tuttavia
+risulta essere meno accentuata. 
