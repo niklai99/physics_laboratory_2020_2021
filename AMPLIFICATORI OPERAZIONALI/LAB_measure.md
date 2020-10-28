@@ -170,4 +170,29 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
 
 ### Plot con Incertezze
 
-Noto che gli errori di V<sub>in</sub> sono di un ordine di grandezza inferiore rispetto alle incertezze su V<sub>out</sub>: assumo allora i primi come trascurabili rispetto alle seconde.
+Noto che gli errori di V<sub>in</sub> sono di un ordine di grandezza inferiore rispetto alle incertezze su V<sub>out</sub>: assumo allora i primi come
+trascurabili rispetto alle seconde.
+
+![Plot Max](Plots/opamp_max_plot_err.png)
+
+![Res Max](Plots/opamp_max_res_err.png)
+
+![Plot Min](Plots/opamp_min_plot_err.png)
+
+![Res Min](Plots/opamp_min_res_err.png)
+
+### Fit Results
+
+I dati inseriti nelle seguenti tabelle sono esattamente quelli restituiti da ROOT &rarr; no approssimazioni.
+
+* #### Massimi
+  
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+|5.45772| 8 | -0.0508998   +/-   0.0235478 |  9.95416   +/-   0.0861044 |
+ 
+* #### Minimi
+
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+|33.9391| 8 |  0.373951   +/-   0.0202559 |  10.4948   +/-   0.0852744  |

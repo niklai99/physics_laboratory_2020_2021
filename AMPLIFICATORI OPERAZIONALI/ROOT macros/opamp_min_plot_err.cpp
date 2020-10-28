@@ -158,7 +158,7 @@ TFitResultPtr NSP::fit_fun(TGraphErrors* graph) {
 
     //faccio il fit
     TFitResultPtr fit_result = graph->Fit("myfit", "S");
-
+    fit_result->Print("V");
     //disegno il grafico
     graph->Draw("AP");
 
@@ -177,7 +177,7 @@ TFitResultPtr NSP::fit_fun(TGraph* graph) {
 
     //faccio il fit
     TFitResultPtr fit_result = graph->Fit("myfit", "S");
-
+    fit_result->Print("V");
     //disegno il grafico
     graph->Draw("AP");
 
