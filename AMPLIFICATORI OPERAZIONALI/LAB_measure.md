@@ -235,7 +235,7 @@ Purtroppo non posso dire che l'offset sia compatibile con zero: rimuovere la dip
 però sorge la domanda: perchè l'offset non è compatibile con zero? 
 
 In ogni caso, la presenza di un offset costante su tutte le misure non altera il risultato della nostra stima. Ora sorge un'altra domanda: l'offset è
-costate su tutte le misure?
+costante su tutte le misure?
 
 Se così fosse, il coefficiente angolare della retta degli ultimi fit dovrebbe restituire una buona stima dell'amplificazione del circuito! _Ricordo
 che il modulo del guadagno atteso è **G = 10.194 +/- 0.006**!_
