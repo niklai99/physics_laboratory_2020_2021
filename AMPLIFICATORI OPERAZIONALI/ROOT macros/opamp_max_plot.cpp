@@ -127,6 +127,9 @@ void opamp_max_plot(){
 
     //personalizzo in modo globale i grafici
     NSP::settings_global();
+    
+    NSP::c1->SaveAs("../Plots/opamp_max_plot.png");
+    NSP::c2->SaveAs("../Plots/opamp_max_res.png");
 }
 
 /*---FUNZIONI---*/ 
@@ -146,7 +149,7 @@ double NSP::myfit(double* x, double* par){
 //fit
 TFitResultPtr NSP::fit_fun(TGraphErrors* graph) {
     //il fit viene disegnato nel primo canvas
-    NSP::c1 = new TCanvas("canvas1", "Fit", 700, 500);
+    NSP::c1 = new TCanvas("canvas1", "Fit", 1080, 720);
 
     //creo la funzione di root
     TF1* f1 = new TF1("myfit", myfit, NSP::XMIN, NSP::XMAX, NSP::NPAR);
@@ -165,7 +168,7 @@ TFitResultPtr NSP::fit_fun(TGraphErrors* graph) {
 //fit
 TFitResultPtr NSP::fit_fun(TGraph* graph) {
     //il fit viene disegnato nel primo canvas
-    NSP::c1 = new TCanvas("canvas1", "Fit", 700, 500);
+    NSP::c1 = new TCanvas("canvas1", "Fit", 1080, 720);
 
     //creo la funzione di root
     TF1* f1 = new TF1("myfit", myfit, NSP::XMIN, NSP::XMAX, NSP::NPAR);
@@ -184,7 +187,7 @@ TFitResultPtr NSP::fit_fun(TGraph* graph) {
 //residui
 TGraphErrors* NSP::res(TGraphErrors* graph) {
     //i residui vengono disegnati nel secondo canvas
-    NSP::c2 = new TCanvas("canvas2", "Residui", 700, 500);
+    NSP::c2 = new TCanvas("canvas2", "Residui", 1080, 720);
 
     //creo vector per i residui
     vector<double> res;
@@ -206,7 +209,7 @@ TGraphErrors* NSP::res(TGraphErrors* graph) {
 //residui
 TGraph* NSP::res(TGraph* graph) {
     //i residui vengono disegnati nel secondo canvas
-    NSP::c2 = new TCanvas("canvas2", "Residui", 700, 500);
+    NSP::c2 = new TCanvas("canvas2", "Residui", 1080, 720);
 
     //creo vector per i residui
     vector<double> res;
@@ -349,6 +352,7 @@ void NSP::settings_global() {
     TGaxis::SetMaxDigits(3);
     //le tick labels hanno lo stesso numero di cifre significative
     gStyle->SetStripDecimals(kFALSE);
+    gStyle->SetImageScaling(3.);
 }
 
 //funzione per leggere i dati senza errori da un file
