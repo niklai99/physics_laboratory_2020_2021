@@ -100,3 +100,12 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
 
 ### Propagazione degli Errori
 
+* #### Misure dirette delle Resistenze
+  
+  Precisione e risoluzione del multimetro Metrix3292 per i fondo-scala utilizzati nell'esperienza
+
+  |        F.S.    | Precisione | Risoluzione |
+  |:--------------:|:----------:|:-----------:|
+  |1 k&Omega;      | 0.10% + 8  | 0.01 &Omega;|
+  |10 k&Omega;     | 0.07% + 8  | 0.1 &Omega; |
+  |100 k&Omega;    | 0.07% + 8  | 1 &Omega;   |
