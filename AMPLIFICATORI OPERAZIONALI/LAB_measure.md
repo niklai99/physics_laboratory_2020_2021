@@ -170,3 +170,4 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
 
 ### Plot con Incertezze
 
+Noto che gli errori di V<sub>in</sub> sono di un ordine di grandezza inferiore rispetto alle incertezze su V<sub>out</sub>: assumo allora i primi come trascurabili rispetto alle seconde.
