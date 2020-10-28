@@ -110,6 +110,4 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
   |10 k&Omega;     | 0.07% + 8  | 0.1 &Omega; |
   |100 k&Omega;    | 0.07% + 8  | 1 &Omega;   |
 
-  <script src="//yihui.org/js/math-code.js"></script>
-
-  $$ asd $$
+  ![Direct measure propagation](LaTeX_equation/direct_measure_error.png)  
