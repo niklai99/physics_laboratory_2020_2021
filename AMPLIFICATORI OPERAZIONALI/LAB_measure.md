@@ -250,3 +250,33 @@ che il modulo del guadagno atteso è **G = 10.194 +/- 0.006**!_
 
 Si nota che le stime trovate sono tra loro incompatibili, ad eccezione della stima ottenuta dall'analisi dei massimi che risulta essere più o meno
 compatibile con il valore atteso.
+
+### Analisi Picco-Picco
+
+A partire dalle misure acquisite calcolo le tensioni picco picco e l'errore corrispondente:
+
+| Vpp<sub>in</sub> (V) | &sigma;<sub>Vpp<sub>in</sub></sub> (V)| Vpp<sub>out</sub>  (V)| &sigma;<sub>Vpp<sub>out</sub></sub> (V)|
+|:-------:|:---------:|:-------:|:----------:|
+| 0.208 |   0.004 |  1.67 |     0.03 |
+| 0.504 |   0.008 |  4.96 |     0.08 |
+| 0.800 |   0.014 |  7.92 |     0.14 |
+| 0.992 |   0.015 |  9.92 |     0.15 |
+| 1.480 |   0.019 | 14.80 |     0.19 |
+| 1.788 |   0.026 | 17.96 |     0.27 |
+| 1.994 |   0.028 | 19.93 |     0.29 |
+| 2.290 |   0.032 | 22.90 |     0.32 |
+| 2.580 |   0.037 | 26.00 |     0.38 |
+| 2.980 |   0.042 | 28.50 |     0.40 |
+
+![Plot Piccopicco](Plots/opamp_peak_plot.png)
+
+![Res Piccopicco](Plots/opamp_peak_res.png)
+
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+|11.0494| 7 |  -0.453955   +/-   0.0320165 |  10.3346   +/-   0.0662883  |
+
+L'offset continua a non essere compatibile con zero. Il coefficiente angolare risulta essere leggermente compatibile con il valore atteso: si ha
+infatti **&lambda; = 2.1**. Il Chi2 invece risulta essere ottimo!
+
+I residui, tuttavia, presentano un marcato andamento sinusoidale: perchè?
