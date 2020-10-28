@@ -109,3 +109,7 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
   |1 k&Omega;      | 0.10% + 8  | 0.01 &Omega;|
   |10 k&Omega;     | 0.07% + 8  | 0.1 &Omega; |
   |100 k&Omega;    | 0.07% + 8  | 1 &Omega;   |
+
+  <script src="//yihui.org/js/math-code.js"></script>
+
+  $$ asd $$
