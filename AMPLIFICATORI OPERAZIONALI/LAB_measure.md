@@ -56,7 +56,7 @@ NOTA: Impostando una tensione sul generatore pari a 3 Vpp inizia a vedersi la sa
 
 ### Plots
 
-Seguono i plot delle misure dei massimi e delle misure dei minimi. con i rispettivi grafici dei residui.
+Seguono i plot delle misure dei massimi e delle misure dei minimi, con i rispettivi grafici dei residui.
 
 **NB gli errori devono ancora essere stimati: i plot servono per capire se l'andamento è quello che mi aspetto**
 
@@ -135,9 +135,11 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
   Alle misure _di tensione_ acquisite con i cursori dell'oscilloscopio si associa la seguente incertezza:
 
   ![Cursors propagation](LaTeX_equation/cursors_propagation.png)
+  
+  Seguono allora le misure dei massimi e dei minimi con associata l'opportuna incertezza
 
   * ##### Massimi
-
+    
     | V<sub>in</sub>  (V)  | &sigma;<sub>V<sub>in</sub></sub> (V)| V<sub>out</sub>  (V) | &sigma;<sub>V<sub>out</sub></sub> (V)|
     |:--------:|:--------:|:---------:|:----------:|
     | 0.106 | 0.003 |  1.00 |   0.02 |
@@ -150,7 +152,6 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
     | 1.16 | 0.02 | 11.4 |   0.2 |
     | 1.29 | 0.03 | 13.0 |   0.3 |
     | 1.50 | 0.03 | 14.4 |   0.3 |
-
 
   * ##### Minimi
   
@@ -166,3 +167,6 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
     | -1.13 |  0.02 | -11.5 |   0.2 |
     | -1.29 |  0.03 | -13.0 |   0.3 |
     | -1.48 |  0.03 | -14.1 |   0.3 |
+
+### Plot con Incertezze
+
