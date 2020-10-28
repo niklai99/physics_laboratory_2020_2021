@@ -53,3 +53,39 @@ segnali V<sub>in</sub> e V<sub>out</sub>
 | -1.48 V    | - 14.1 V    | 480 mV | 4.52 V     |  3.00 Vpp     |
 
 NOTA: Impostando una tensione sul generatore pari a 3 Vpp inizia a vedersi la saturazione del segnale in uscita!
+
+### Plots
+
+Seguono i plot delle misure dei massimi e delle misure dei minimi, con i rispettivi grafici dei residui.
+
+**NB gli errori devono ancora essere stimati: i plot servono per capire se l'andamento è quello che mi aspetto**
+
+![Plot Max](Plots/opamp_max_plot.png)
+
+![Res Max](Plots/opamp_max_res.png)
+
+![Plot Min](Plots/opamp_min_plot.png)
+
+![Res Min](Plots/opamp_min_res.png)
+
+### Fit Results
+
+**Analisi PROVVISORIA senza tenere conto delle incertezze sulle misure**
+
+I dati inseriti nelle seguenti tabelle sono esattamente quelli restituiti da ROOT.
+
+* #### Massimi
+  
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+|0.241668| 8 | 0.0698892   +/-   0.112246 |  9.77598   +/-   0.124436 |
+ 
+* #### Minimi
+
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+|0.569592| 8 |  -0.0731234   +/-   0.172501 |  9.87495   +/-   0.19411  |
+
+### Commenti
+
+Il coefficiente angolare delle rette è leggermente più piccolo dell'amplificazione che mi aspettavo: forse rimuovendo il punto in saturazione viene meglio!
