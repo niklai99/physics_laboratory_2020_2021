@@ -128,4 +128,8 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
   
   ![Amplification propagation](LaTeX_equation/amplification_propagation.png) 
 
-  Si trova allora che l'amplificazione attesa è G = 10.194 +/- 0.006.
+  Si trova allora che l'amplificazione attesa è _in modulo_ **G = 10.194 +/- 0.006**.
+
+* #### Misure con i Cursori
+
+  
