@@ -170,8 +170,8 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
 
 ### Plot con Incertezze
 
-Noto che gli errori di V<sub>in</sub> sono di un ordine di grandezza inferiore rispetto alle incertezze su V<sub>out</sub>: assumo allora i primi come
-trascurabili rispetto alle seconde.
+Noto che gli errori di V<sub>in</sub> sono di un ordine di grandezza inferiore rispetto alle incertezze su V<sub>out</sub>: assumo allora i primi
+come trascurabili rispetto alle seconde.
 
 ![Plot Max](Plots/opamp_max_plot_err.png)
 
@@ -202,3 +202,34 @@ I dati inseriti nelle seguenti tabelle sono esattamente quelli restituiti da ROO
 Aggiungendo le incertezze alle misure la situazione si chiarifica ancor di più: osservando i minimi si nota come l'ultimo punto sia un _outlier_ e va
 rimosso per poter ottenere una buona stima dell'amplificazione mediante il fit. La stessa situazione si ritrova anche analizzando i massimi, tuttavia
 risulta essere meno accentuata. 
+
+### Plot senza Outliers
+
+![Plot Max](Plots/opamp_max_plot_err_nooutliers.png)
+
+![Res Max](Plots/opamp_max_res_err_nooutliers.png)
+
+![Plot Min](Plots/opamp_min_plot_err_nooutliers.png)
+
+![Res Min](Plots/opamp_min_res_err_nooutliers.png)
+
+### Fit Results
+
+I dati inseriti nelle seguenti tabelle sono esattamente quelli restituiti da ROOT &rarr; no approssimazioni.
+
+* #### Massimi
+  
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+|1.96966| 7 | -0.0615312   +/-   0.0242261 |  10.0251   +/-   0.0941201 |
+ 
+* #### Minimi
+
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+|16.5686| 7 |  0.395117   +/-   0.0208828 |  10.6526   +/-   0.0933006  |
+
+### Commenti
+
+Purtroppo non posso dire che l'offset sia compatibile con zero: rimuovere la dipendeza da tale parametro porterebbe ad un risultato non corretto. Ora
+però sorge la domanda: perchè l'offset non è compatibile con zero? 

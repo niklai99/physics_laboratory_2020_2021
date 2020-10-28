@@ -6,18 +6,18 @@ namespace NSP {
 /*---COSTANTI---*/ 
 
     //nome file 
-    string FILE_NAME = "../Data/data_opamp_max_err.txt";  
+    string FILE_NAME = "../Data/data_opamp_max_err_nooutliers.txt";  
 
     //plot range del fit
     double XMIN = 0;
-    double XMAX = 1.6;
+    double XMAX = 1.4;
     double YMIN = 0;
-    double YMAX = 15;
+    double YMAX = 14;
 
     //plot range dei residui
     double RESXMIN = XMIN;
     double RESXMAX = XMAX;
-    double RESYMIN = -0.8;
+    double RESYMIN = -0.5;
     double RESYMAX = 0.5;
 
 /*---OGGETTINI CARINI---*/ 
@@ -128,8 +128,8 @@ void opamp_max_plot_err(){
     //personalizzo in modo globale i grafici
     NSP::settings_global();
     
-    NSP::c1->SaveAs("../Plots/opamp_max_plot_err.png");
-    NSP::c2->SaveAs("../Plots/opamp_max_res_err.png");
+    NSP::c1->SaveAs("../Plots/opamp_max_plot_err_nooutliers.png");
+    NSP::c2->SaveAs("../Plots/opamp_max_res_err_nooutliers.png");
 }
 
 /*---FUNZIONI---*/ 
