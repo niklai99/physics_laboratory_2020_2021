@@ -56,7 +56,7 @@ NOTA: Impostando una tensione sul generatore pari a 3 Vpp inizia a vedersi la sa
 
 ### Plots
 
-Seguono i plot delle misure dei massimi e delle misure dei minimi, con i rispettivi grafici dei residui.
+Seguono i plot delle misure dei massimi e delle misure dei minimi. con i rispettivi grafici dei residui.
 
 **NB gli errori devono ancora essere stimati: i plot servono per capire se l'andamento è quello che mi aspetto**
 
@@ -72,7 +72,7 @@ Seguono i plot delle misure dei massimi e delle misure dei minimi, con i rispett
 
 **Analisi PROVVISORIA senza tenere conto delle incertezze sulle misure**
 
-I dati inseriti nelle seguenti tabelle sono esattamente quelli restituiti da ROOT, non sono state fatte approssimazioni di alcun tipo fino ad ora.
+I dati inseriti nelle seguenti tabelle sono esattamente quelli restituiti da ROOT. non sono state fatte approssimazioni di alcun tipo fino ad ora.
 
 * #### Massimi
   
@@ -139,30 +139,30 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
   * ##### Massimi
 
     | V<sub>in</sub>  (V)  | &sigma;<sub>V<sub>in</sub></sub> (V)| V<sub>out</sub>  (V) | &sigma;<sub>V<sub>out</sub></sub> (V)|
-    |--------|--------|---------|----------|
-    | 0,1060 | 0,0026 |  0,9970 |   0,0198 |
-    | 0,2520 | 0,0055 |  2,4800 |   0,0546 |
-    | 0,4000 | 0,0100 |  4,0000 |   0,1000 |
-    | 0,4960 | 0,0109 |  4,9600 |   0,1092 |
-    | 0,7440 | 0,0137 |  7,4400 |   0,1373 |
-    | 0,9070 | 0,0188 |  8,9800 |   0,1914 |
-    | 1,0100 | 0,0199 |  9,9300 |   0,2017 |
-    | 1,1600 | 0,0230 | 11,4000 |   0,2288 |
-    | 1,2900 | 0,0260 | 13,0000 |   0,2659 |
-    | 1,5000 | 0,0296 | 14,4000 |   0,2817 |
+    |:--------:|:--------:|:---------:|:----------:|
+    | 0.106 | 0.003 |  1.00 |   0.02 |
+    | 0.252 | 0.006 |  2.48 |   0.05 |
+    | 0.400 | 0.010 |  4.00 |   0.10 |
+    | 0.496 | 0.011 |  4.96 |   0.11 |
+    | 0.744 | 0.014 |  7.44 |   0.14 |
+    | 0.907 | 0.019 |  8.98 |   0.19 |
+    | 1.01 | 0.02 |  9.9 |   0.2 |
+    | 1.16 | 0.02 | 11.4 |   0.2 |
+    | 1.29 | 0.03 | 13.0 |   0.3 |
+    | 1.50 | 0.03 | 14.4 |   0.3 |
 
 
   * ##### Minimi
   
     | V<sub>in</sub>  (V)   | &sigma;<sub>V<sub>in</sub></sub> (V)| V<sub>out</sub>  (V)   | &sigma;<sub>V<sub>out</sub></sub> (V)|
-    |---------|---------|----------|----------|
-    | -0,1020 |  0,0025 |  -0,6750 |   0,0164 |
-    | -0,2520 |  0,0055 |  -2,4800 |   0,0546 |
-    | -0,4000 |  0,0100 |  -3,9200 |   0,0993 |
-    | -0,4960 |  0,0109 |  -4,9600 |   0,1092 |
-    | -0,7360 |  0,0136 |  -7,3600 |   0,1363 |
-    | -0,8810 |  0,0185 |  -8,9800 |   0,1914 |
-    | -0,9840 |  0,0196 | -10,0000 |   0,2025 |
-    | -1,1300 |  0,0227 | -11,5000 |   0,2299 |
-    | -1,2900 |  0,0260 | -13,0000 |   0,2659 |
-    | -1,4800 |  0,0294 | -14,1000 |   0,2782 |
+    |:--------:|:--------:|:---------:|:----------:|
+    | -0.102 |  0.003 |  -0.675 |   0.016 |
+    | -0.252 |  0.006 |  -2.48 |   0.05 |
+    | -0.400 |  0.010 |  -3.92 |   0.10 |
+    | -0.496 |  0.011 |  -4.96 |   0.11 |
+    | -0.736 |  0.014 |  -7.36 |   0.14 |
+    | -0.881 |  0.019 |  -8.98 |   0.19 |
+    | -0.98 |  0.02 | -10.0 |   0.2 |
+    | -1.13 |  0.02 | -11.5 |   0.2 |
+    | -1.29 |  0.03 | -13.0 |   0.3 |
+    | -1.48 |  0.03 | -14.1 |   0.3 |
