@@ -1,4 +1,4 @@
 # physics_laboratory_2020_2021
-In this repository are store all the files I made during my third year undergrad lab class.
+In this repository are stored all the files I made during my third year undergrad lab class.
 
-Collab. [Simone Cigagna](https://github.com/simonecig)
+This README is still incomplete: check out the subfolders for more detailed informations!
