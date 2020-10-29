@@ -349,3 +349,14 @@ Calcolo ora la frequenza di taglio attesa come f<sub>t</sub> = &omega;<sub>t</su
 **&omega;<sub>t</sub> = 126 +/- 2 kHz**
 
 **f<sub>t</sub> = 20.1 +/- 0.3 kHz**
+
+### Circuito come Derivatore
+
+Per dimostrare che il circuito si comporta come un derivatore ho impostato dal generatore un'onda triangolare di frequenza 1 kHz e ampiezza 1 V: mi
+aspetto dunque in uscita un'onda quadra! 
+
+![Plot All](LogBook/differentiator_osc_picture.jpg)
+
+L'onda quadra non è proprio perfetta perchè la frequenza del segnale in ingresso è abbastanza alta: un derivatore lavora come filtro passa alto
+(essendo reale in realtà è un passa banda) e
+quindi deriva bene a basse frequenze!
