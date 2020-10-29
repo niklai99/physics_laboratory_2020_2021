@@ -27,7 +27,7 @@ namespace NSP {
     vector<double> x1, y1, errX1, errY1;
 
     //i due canvas
-    TCanvas *c1, *c2;
+    TCanvas *c1, *c2, *c3;
 
     //il grafico del fit
     TGraph *plot;
@@ -114,6 +114,7 @@ void opamp_all_plot_err(){
     }
     f.close();
     
+    NSP::c3->cd(1);
     TGraphErrors* gr1 = new TGraphErrors(NSP::x1.size(), &NSP::x1[0], &NSP::y1[0], &NSP::errX1[0], &NSP::errY1[0]);
     NSP::settings_fit(gr1);
     gr1->SetMarkerColor(kBlue);
@@ -122,8 +123,10 @@ void opamp_all_plot_err(){
     NSP::plot_err->Draw("same p");
 
     
-    NSP::c1->SaveAs("../Plots/opamp_all_plot_err.png");
-    NSP::c2->SaveAs("../Plots/opamp_all_res_err.png");
+    //NSP::c1->SaveAs("../Plots/opamp_all_plot_err.png");
+    //NSP::c2->SaveAs("../Plots/opamp_all_res_err.png");
+
+    //NSP::c3->SaveAs("../Plots/opamp_all_plot_res.png");
 
 
 }
@@ -145,7 +148,10 @@ double NSP::myfit(double* x, double* par){
 //fit
 TFitResultPtr NSP::fit_fun(TGraphErrors* graph) {
     //il fit viene disegnato nel primo canvas
-    NSP::c1 = new TCanvas("canvas1", "Fit", 1080, 720);
+    //NSP::c1 = new TCanvas("canvas1", "Fit", 1080, 720);
+    NSP::c3 = new TCanvas("canvas1", "Fit", 1080, 720);
+    NSP::c3->Divide(2, 0);
+    NSP::c3->cd(1);
 
     //creo la funzione di root
     TF1* f1 = new TF1("myfit", myfit, NSP::XMIN, NSP::XMAX, NSP::NPAR);
@@ -165,7 +171,8 @@ TFitResultPtr NSP::fit_fun(TGraphErrors* graph) {
 //residui
 TGraphErrors* NSP::res(TGraphErrors* graph) {
     //i residui vengono disegnati nel secondo canvas
-    NSP::c2 = new TCanvas("canvas2", "Residui", 1080, 720);
+    //NSP::c2 = new TCanvas("canvas2", "Residui", 1080, 720);
+    NSP::c3->cd(2);
 
     //creo vector per i residui
     vector<double> res;
@@ -187,7 +194,8 @@ TGraphErrors* NSP::res(TGraphErrors* graph) {
 //personalizzazione grafico fit
 void NSP::settings_fit(TGraphErrors* graph) {
     //entro nel primo canvas
-    NSP::c1->cd();
+    //NSP::c1->cd();
+    NSP::c3->cd(1);
 
     //titolo e assi
     graph-> SetTitle("OpAmp Massimi & Minimi; V_{in} (V); V_{out} (V)");
@@ -214,7 +222,8 @@ void NSP::settings_fit(TGraphErrors* graph) {
 //personalizzazione grafico residui 
 void NSP::settings_res(TGraphErrors* graph) {
     //entro nel primo canvas
-    NSP::c2->cd();
+    //NSP::c2->cd();
+    NSP::c3->cd(2);
 
     //titolo e assi 
     graph-> SetTitle("Residui; V_{in} (V); V_{out} - fit (V)");
@@ -239,7 +248,8 @@ void NSP::settings_res(TGraphErrors* graph) {
 
 //linea di zero nel grafico dei residui
 void NSP::linee_res() {    
-    NSP::c2->cd(); 
+    //NSP::c2->cd(); 
+    NSP::c3->cd(2);
 
     //creo la linea
     TLine *line = new TLine (NSP::RESXMIN, 0, NSP::RESXMAX, 0); //linea orizzontale sullo zero 
