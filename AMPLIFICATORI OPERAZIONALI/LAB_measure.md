@@ -168,7 +168,7 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
     | -1.29 |  0.03 | -13.0 |   0.3 |
     | -1.48 |  0.03 | -14.1 |   0.3 |
 
-### Plot con Incertezze
+### Plot con Incertezze (*DA FARE: aggiungere i dati in saturazione presi la seconda giornata*)
 
 Noto che gli errori di V<sub>in</sub> sono di un ordine di grandezza inferiore rispetto alle incertezze su V<sub>out</sub>: assumo allora i primi
 come trascurabili rispetto alle seconde.
@@ -279,4 +279,11 @@ A partire dalle misure acquisite calcolo le tensioni picco picco e l'errore corr
 L'offset continua a non essere compatibile con zero. Il coefficiente angolare risulta essere leggermente compatibile con il valore atteso: si ha
 infatti **&lambda; = 2.1**. Il Chi2 invece risulta essere ottimo!
 
-I residui, tuttavia, presentano un marcato andamento sinusoidale: perchè?
+I residui, tuttavia, presentano un andamento verso il basso: il primo punto con un errore molto piccolo pesa molto sul fit, e risulta essere un po'
+fuori trend! Posso provare a ripetere il fit escludendo il primo punto!
+
+### DA FARE: Fit Globale Massimi + Minimi
+
+# Analysis 2nd Lab Session
+
+## 29/10/20

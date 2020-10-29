@@ -31,7 +31,7 @@ void plot_osc()
   gStyle->SetTitleOffset(1.3,"x");
 }
 
-void plot_spectrum(const string file_name="data_0_root.dat")
+void plot_spectrum(const string file_name="calib_time_ROOT.dat")
 {
    TGraph *g = nullptr;
    TH2F * frame_1 = nullptr;
