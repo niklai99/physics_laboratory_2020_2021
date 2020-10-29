@@ -279,11 +279,73 @@ A partire dalle misure acquisite calcolo le tensioni picco picco e l'errore corr
 L'offset continua a non essere compatibile con zero. Il coefficiente angolare risulta essere leggermente compatibile con il valore atteso: si ha
 infatti **&lambda; = 2.1**. Il Chi2 invece risulta essere ottimo!
 
-I residui, tuttavia, presentano un andamento verso il basso: il primo punto con un errore molto piccolo pesa molto sul fit, e risulta essere un po'
-fuori trend! Posso provare a ripetere il fit escludendo il primo punto!
+I residui, tuttavia, presentano un andamento verso il basso: _**il primo punto con un errore molto piccolo pesa molto sul fit, e risulta essere un po'
+fuori trend! Posso provare a ripetere il fit escludendo il primo punto!**_
 
-### DA FARE: Fit Globale Massimi + Minimi
+### Fit Globale Massimi + Minimi
+
+Nel fare il fit non sono stati presi in considerazione i punti in blu in quanto ritengo siano degli outlier!
+
+![Plot All](Plots/opamp_all_plot_err.png)
+
+![Res All](Plots/opamp_all_res_err.png)
+
+
+### Fit Results
+
+I dati inseriti nelle seguenti tabelle sono esattamente quelli restituiti da ROOT &rarr; no approssimazioni.
+  
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+|2.85112| 14 |  -0.0115109   +/-   0.0389987 |   9.98815   +/-   0.0738234 |
+
 
 # Analysis 2nd Lab Session
 
 ## 29/10/20
+
+### Misure Dirette dei Componenti
+
+Ho usato il multimetro _Metrix_ con le pinze 
+
+| Resistenza |      Valore     |      F.S.     |
+|:------------:|:-----------------:|:---------------:|
+|     R<sub>f</sub>     | 82.462 k&Omega; |  100 k&Omega; |
+|     R<sub>1</sub>     | 8.0894 k&Omega; |   10 k&Omega; |
+|     R<sub>3</sub>     |  46.54 &Omega;  |    1 k&Omega; |
+
+| Capacità |      Valore     |      F.S.     |
+|:------------:|:-----------------:|:---------------:|
+|     C<sub>1</sub>     | 977 pF |  1000 pF |
+
+### Calcolo le Incertezze sulle Misure Dirette
+
+Precisione e risoluzione del multimetro Metrix3292 per i fondo-scala utilizzati nell'esperienza
+
+  |        F.S.    | Precisione | Risoluzione |
+  |:--------------:|:----------:|:-----------:|
+  |1 k&Omega;      | 0.10% + 8  | 0.01 &Omega;|
+  |10 k&Omega;     | 0.07% + 8  | 0.1 &Omega; |
+  |100 k&Omega;    | 0.07% + 8  | 1 &Omega;   |
+  |1000 pF         | 2.5% + 15  | 1 pF   |
+
+Ottengo dunque
+
+  | Resistenza |      Valore     |      Errore    |
+  |:------------:|:-----------------:|:---------------:|
+  |     R<sub>f</sub>     | 82.46 k&Omega; |  0.03  k&Omega;|
+  |     R<sub>1</sub>     | 8.089 k&Omega; |  0.003 k&Omega;|
+  |     R<sub>3</sub>     |  46.54 &Omega;  |  0.05  &Omega;|
+
+  | Capacità |      Valore     |      Errore    |
+  |:------------:|:-----------------:|:---------------:|
+  |     C<sub>1</sub>     |  977 pF  | 17 pF|
+
+### Calcolo l'Incertezza sulla Freq. di Taglio attesa
+
+Calcolo ora la frequenza di taglio attesa come f<sub>t</sub> = &omega;<sub>t</sub>/2&pi; dove &omega;<sub>t</sub> = &omega;<sub>0</sub> =
+1/(R<sub>1</sub> C<sub>1</sub>):
+
+**&omega;<sub>t</sub> = 126 +/- 2 kHz**
+
+**f<sub>t</sub> = 20.1 +/- 0.3 kHz**

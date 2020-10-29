@@ -323,7 +323,8 @@ void NSP::settings_fit(TGraph* graph) {
     NSP::c1->cd();
 
     //titolo e assi
-    graph-> SetTitle("Differentiator - Bode; log_{10}[f (Hz)]; log_{10}[V_{out} / V_{in}]");
+    //graph-> SetTitle("Differentiator - Bode; log_{10}[f (Hz)]; log_{10}[V_{out} / V_{in}]");
+    graph-> SetTitle("Differentiator - Bode; log_{10}[f (Hz)]; A (dB)");
 
     //stile e colore
     graph-> SetLineColor(kBlack);
