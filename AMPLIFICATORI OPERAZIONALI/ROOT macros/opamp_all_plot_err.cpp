@@ -97,6 +97,7 @@ void opamp_all_plot_err(){
     //personalizzo in modo globale i grafici
     NSP::settings_global();
 
+/*-------FACCIO IL GRAFICO CON TUTTI I DATI COMPRESI OUTLIERS-------*/
     ifstream f;
     f.open("../Data/data_opamp_all.txt");
     double i = 0;
@@ -112,7 +113,7 @@ void opamp_all_plot_err(){
 
     }
     f.close();
-
+    
     TGraphErrors* gr1 = new TGraphErrors(NSP::x1.size(), &NSP::x1[0], &NSP::y1[0], &NSP::errX1[0], &NSP::errY1[0]);
     NSP::settings_fit(gr1);
     gr1->SetMarkerColor(kBlue);
@@ -189,7 +190,7 @@ void NSP::settings_fit(TGraphErrors* graph) {
     NSP::c1->cd();
 
     //titolo e assi
-    graph-> SetTitle("OpAmp Massimi; V_{in} (V); V_{out} (V)");
+    graph-> SetTitle("OpAmp Massimi & Minimi; V_{in} (V); V_{out} (V)");
 
     //stile e colore
     graph-> SetLineColor(kBlack);
