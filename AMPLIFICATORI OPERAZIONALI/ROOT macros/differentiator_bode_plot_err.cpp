@@ -17,8 +17,8 @@ namespace NSP {
     //plot range dei residui
     double RESXMIN = XMIN;
     double RESXMAX = XMAX;
-    double RESYMIN = -0.5;
-    double RESYMAX = 0.5;
+    double RESYMIN = -0.7;
+    double RESYMAX = 0.7;
 
 /*---OGGETTINI CARINI---*/ 
 
@@ -81,8 +81,16 @@ void differentiator_bode_plot_err(){
    
     //faccio il fit
     TFitResultPtr fit = NSP::fit_fun(NSP::plot_err);
+    fit->Print("V");
 
-    TF1* f2 = new TF1("myfit1", NSP::myfit1, 4.3, 5.7, NSP::NPAR+1);
+    //calcolo i residui
+	NSP::residuals_err = NSP::res(NSP::plot_err);
+
+    //personalizzo il grafico residui
+    NSP::linee_res();
+    NSP::settings_res(NSP::residuals_err); 
+
+    TF1* f2 = new TF1("myfit1", NSP::myfit1, 4.2, 5.4, NSP::NPAR+1);
     f2->SetParNames("a", "b", "c");
     f2->SetLineColor(kGreen);
 
@@ -142,43 +150,6 @@ void differentiator_bode_plot_err(){
     line_ytaglio->Draw();
 
 
-
-
-
-
-
-    //calcolo i residui
-	//NSP::residuals = NSP::res(NSP::plot);
-    
-    //personalizzo il grafico fit
-    //NSP::settings_fit(NSP::plot);
-
-    //personalizzo il grafico residui
-    //NSP::linee_res();
-    //NSP::settings_res(NSP::residuals); 
-
-/*---caso dati con errori---*/
-/*
-    //leggo i dati con errori dal file
-    NSP::read_data(NSP::x, NSP::y, NSP::errX, NSP::errY);
-
-    //creo il grafico del fit con errori
-    NSP::plot_err = NSP::plot_fit(NSP::x, NSP::y, NSP::errX, NSP::errY); 
-   
-    //faccio il fit
-    TFitResultPtr fit = NSP::fit_fun(NSP::plot_err);
-
-    //calcolo i residui
-	NSP::residuals_err = NSP::res(NSP::plot);
-    
-    //personalizzo il grafico fit
-    NSP::settings_fit(NSP::plot_err);
-
-    //personalizzo il grafico residui
-    NSP::linee_res();
-    NSP::settings_res(NSP::residuals_err); 
-*/
-
     //personalizzo in modo globale i grafici
     NSP::settings_global();
     
@@ -217,22 +188,13 @@ TFitResultPtr NSP::fit_fun(TGraphErrors* graph) {
     //il fit viene disegnato nel primo canvas
     NSP::c1 = new TCanvas("canvas1", "Fit", 1080, 720);
 
-
-
     //creo la funzione di root
-    TF1* f1 = new TF1("myfit", myfit, 0, 4.3, NSP::NPAR);
+    TF1* f1 = new TF1("myfit", myfit, 0, 4.2, NSP::NPAR);
     f1->SetParNames("a", "b");
     f1->SetLineColor(kRed);
 
- /* 
-    TF1* f2 = new TF1("myfit1", myfit1, 4.3, 5.4, NSP::NPAR+1);
-    f2->SetParNames("a", "b", "c");
-    f2->SetLineColor(kGreen);
- */
-
     //faccio il fit
     TFitResultPtr fit_result = graph->Fit("myfit", "SR");
-    //TFitResultPtr fit_result1 = graph->Fit("myfit1", "SR");
 
     //disegno il grafico
     graph->Draw("ap");
@@ -249,7 +211,7 @@ void NSP::settings_fit(TGraphErrors* graph) {
     NSP::c1->cd();
 
     //titolo e assi
-    graph-> SetTitle("OpAmp Massimi; V_{in} (V); V_{out} (V)");
+    graph-> SetTitle("Differentiator - Bode; log_{10}[f (Hz)]; A (dB)");
 
     //stile e colore
     graph-> SetLineColor(kBlack);
@@ -309,4 +271,63 @@ TGraphErrors *NSP::plot_fit(vector<double>& x, vector<double>& y, vector<double>
     TGraphErrors* graph = new TGraphErrors(NSP::x.size(), &NSP::x[0], &NSP::y[0], &NSP::errX[0], &NSP::errY[0]);
 
     return graph;
+}
+
+TGraphErrors* NSP::res(TGraphErrors* graph) {
+    //i residui vengono disegnati nel secondo canvas
+    NSP::c2 = new TCanvas("canvas2", "Residui", 1080, 720);
+
+    //creo vector per i residui
+    vector<double> res;
+
+    //calcolo i residui
+    for (int i = 0; i < NSP::x.size(); i++) {
+		res.push_back(NSP::y[i] - graph->GetFunction("myfit")->Eval(NSP::x[i]));
+    }
+
+    //creo il grafico dei residui
+    TGraphErrors* res_plot = new TGraphErrors(NSP::x.size(), &NSP::x[0], &res[0], &NSP::errX[0], &NSP::errY[0]);
+
+    //plot grafico residui
+    res_plot->Draw("AP"); 
+
+    return res_plot;
+}
+
+void NSP::settings_res(TGraphErrors* graph) {
+    //entro nel primo canvas
+    NSP::c2->cd();
+
+    //titolo e assi 
+    graph-> SetTitle("Residui; log_{10}[f (Hz)]; A - fit (dB)");
+
+    //colori e cose 
+    graph-> SetLineColor(kBlack);
+    graph-> SetMarkerStyle(20);
+    graph-> SetMarkerColor(kBlack);
+    graph-> SetMarkerSize(1);
+
+    gPad->Modified();
+    
+    //plot range
+    graph->GetXaxis()->SetLimits(NSP::RESXMIN, NSP::RESXMAX);
+    graph->SetMinimum(NSP::RESYMIN);
+    graph->SetMaximum(NSP::RESYMAX);
+
+    //tick più guardabili
+    graph->GetXaxis()->SetTickLength(0.02);
+    graph->GetYaxis()->SetTickLength(0.02);
+}
+
+void NSP::linee_res() {    
+    NSP::c2->cd(); 
+
+    //creo la linea
+    TLine *line = new TLine (NSP::RESXMIN, 0, NSP::RESXMAX, 0); //linea orizzontale sullo zero 
+
+    //personalizzazione
+    line->SetLineStyle(2);
+    line->SetLineColor(kBlack);
+
+    line->Draw();
 }
