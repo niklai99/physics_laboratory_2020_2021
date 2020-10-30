@@ -481,4 +481,8 @@ Viene allora stimata approssimativamente la frequenza di taglio nel seguente mod
 
 * Interseco la retta _A<sub>max</sub> - 3 dB_ **con la parabola verde** (è la miglior approssimazione attorno alla frequenza di taglio per il momento!)
 
-Ottengo allora una frequenza di taglio pari a **f<sub>t</sub> = 19.95 kHz**, molto simile alla frequenza di taglio attesa!
+Ottengo allora una frequenza di taglio pari a **f<sub>t</sub> = 19.95 kHz**, molto simile alla frequenza di taglio attesa! 
+
+Si nota che l'andamento riscontrato in laboratorio è consistente con la simulazione effettuata tramite LTSpice
+
+![Simulation](Simulations/Differentiator/simulation_bode_image.png)
