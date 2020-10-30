@@ -494,3 +494,36 @@ Si nota che l'andamento riscontrato in laboratorio è consistente con la simulaz
 dovrei togliere la resistenza R<sub>3</sub>** 
 
 Posso calcolare la frequenza di taglio dalla simulazione??
+
+
+
+
+
+# Relazione
+
+* Strumenti
+* Metodologia di misura
+* Rappresentazione dei dati
+  * tabelle
+  * grafici
+  * altre cose belle
+* Calcolo di grandezze derivate
+  * amplificazione come rapporto di resistenze
+  * funzione di trasferimento
+  * fit
+  * stime
+  * formule magiche
+* Valutazione delle incertezze 
+  * incertezze di misure dirette
+  * incertezze di misure derivate
+  * concetto di deviazione standard
+  * propagazioni varie infernali come al solito
+* Verifica della qualità dei risultati
+  * test statistici :heart:
+    * chi2
+    * tstudent
+    * residui
+    * altre meraviglie dell'universo
+* Confronto con simulazioni LTspice
+
+
