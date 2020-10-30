@@ -495,7 +495,84 @@ dovrei togliere la resistenza R<sub>3</sub>**
 
 Posso calcolare la frequenza di taglio dalla simulazione??
 
+### Propagazione Errori
 
+Stimo ora le incertezze sulle misure della funzione di trasferimento utlizzando la formula
+
+![T Propagation](/LaTeX_equation/trasferimento_propagation.png)
+
+dove &sigma;<sub>V<sub>r</sub></sub> è l'errore di lettura delle tensioni (cioè 0.04 * scala) e &sigma;<sub>k</sub> è invece l'errore di guadagno,
+pari a 1.5%. Si assume inoltre che mediamente k = 1.
+
+| Frequenza (Hz) | A      | &sigma;<sub>A</sub> |
+|---------|--------|--------|
+|     100 | 0.0533 | 0.0015 |
+|    1000 |  0.500 |  0.012 |
+|   10000 |   4.27 |   0.11 |
+|   15000 |   5.84 |   0.16 |
+|   17000 |   6.35 |   0.17 |
+|   18000 |   6.53 |   0.17 |
+|   19000 |   6.81 |   0.17 |
+|   20000 |   7.02 |   0.18 |
+|   21000 |   7.12 |   0.18 |
+|   22000 |   7.36 |   0.19 |
+|   23000 |   7.46 |   0.19 |
+|   24000 |   7.62 |   0.19 |
+|   25000 |   7.74 |   0.19 |
+|   27000 |    8.0 |    0.2 |
+|   30000 |    8.4 |    0.2 |
+|   55000 |    9.6 |    0.2 |
+|   60000 |    9.8 |    0.2 |
+|   65000 |    9.8 |    0.2 |
+|   70000 |    9.8 |    0.2 |
+|   75000 |    9.8 |    0.2 |
+|   80000 |    9.8 |    0.2 |
+|   85000 |    9.6 |    0.2 |
+|   90000 |    9.6 |    0.2 |
+|   95000 |    9.6 |    0.2 |
+|  100000 |    9.6 |    0.2 |
+|  105000 |    9.4 |    0.2 |
+|  110000 |    9.3 |    0.2 |
+|  200000 |   7.67 |   0.19 |
+|  500000 |   3.97 |   0.10 |
+| 1000000 |   1.86 |   0.05 |
+
+Procedo ora a propagare l'incertezza sulla funzione di trasferimento in decibel:
+
+| log10(f) (Hz) | A (dB) | &sigma;<sub>A</sub> (dB)|
+|----------|------------|----------------|
+|     2.00 |      -25.5 |   0.2 |
+|     3.00 |       -6.0 |   0.2 |
+|     4.00 |       12.6 |   0.2 |
+|     4.18 |       15.3 |   0.2 |
+|     4.23 |       16.1 |   0.2 |
+|     4.26 |       16.3 |   0.2 |
+|     4.28 |       16.7 |   0.2 |
+|     4.30 |       16.9 |   0.2 |
+|     4.32 |       17.1 |   0.2 |
+|     4.34 |       17.3 |   0.2 |
+|     4.36 |       17.5 |   0.2 |
+|     4.38 |       17.6 |   0.2 |
+|     4.40 |       17.8 |   0.2 |
+|     4.43 |       18.0 |   0.2 |
+|     4.48 |       18.5 |   0.2 |
+|     4.74 |       19.6 |   0.2 |
+|     4.78 |       19.8 |   0.2 |
+|     4.81 |       19.8 |   0.2 |
+|     4.85 |       19.8 |   0.2 |
+|     4.88 |       19.8 |   0.2 |
+|     4.90 |       19.8 |   0.2 |
+|     4.93 |       19.6 |   0.2 |
+|     4.95 |       19.6 |   0.2 |
+|     4.98 |       19.6 |   0.2 |
+|     5.00 |       19.6 |   0.2 |
+|     5.02 |       19.5 |   0.2 |
+|     5.04 |       19.4 |   0.2 |
+|     5.30 |       17.7 |   0.2 |
+|     5.70 |       12.0 |   0.2 |
+|     6.00 |        5.4 |   0.2 |
+
+Chiaramente assumiamo che le frequenze impostate direttamente dal generatore siano prive di errore.
 
 
 
