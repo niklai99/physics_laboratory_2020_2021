@@ -489,3 +489,8 @@ Ottengo allora una frequenza di taglio pari a **f<sub>t</sub> = 19.95 kHz**, mol
 Si nota che l'andamento riscontrato in laboratorio è consistente con la simulazione effettuata tramite LTSpice
 
 ![Simulation](Simulations/Differentiator/simulation_bode_image.png)
+
+**NB I dati in ordinata nella simulazione non sono corretti perchè il generatore non è settato bene (in lab avevo l'impostazione 50 &Omega; quindi
+dovrei togliere la resistenza R<sub>3</sub>** 
+
+Posso calcolare la frequenza di taglio dalla simulazione??
