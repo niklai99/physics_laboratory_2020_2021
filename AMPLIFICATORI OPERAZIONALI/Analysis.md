@@ -574,6 +574,30 @@ Procedo ora a propagare l'incertezza sulla funzione di trasferimento in decibel:
 
 Chiaramente assumiamo che le frequenze impostate direttamente dal generatore siano prive di errore.
 
+![Plot Bode](Plots/differentiator_bode_plot_err_db.png)
+
+Purtroppo le barre d'errore non sono visibili nel grafico in quanto sono piccoline rispetto alla scala dell'asse y.
+
+Rispetto al grafico precedente senza errori ho cambiato il numero di punti presi in considerazione nei fit: ne ho presi un po' meno per la retta rossa
+e ho preso più punti a sinistra per la parabola, togliendo un punto a destra che non risulta più essere nell'intorno del massimo.
+
+La frequenza di taglio così stimata risulta essere leggermente inferiore a quella precedente: **f<sub>t</sub> = 19.69 kHz**. Tuttavia, associando ad
+essa una corretta incertezza, è possibile che sia comunque una stima compatibile con la frequenza di taglio attesa.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Relazione
