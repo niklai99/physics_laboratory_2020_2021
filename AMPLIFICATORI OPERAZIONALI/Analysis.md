@@ -168,7 +168,7 @@ I chi2 non sono significativi in quanto non sono stati presi in considerazioni g
     | -1.29 |  0.03 | -13.0 |   0.3 |
     | -1.48 |  0.03 | -14.1 |   0.3 |
 
-### Plot con Incertezze (*DA FARE: aggiungere i dati in saturazione presi la seconda giornata*)
+### Plot con Incertezze 
 
 Noto che gli errori di V<sub>in</sub> sono di un ordine di grandezza inferiore rispetto alle incertezze su V<sub>out</sub>: assumo allora i primi
 come trascurabili rispetto alle seconde.
@@ -284,7 +284,8 @@ fuori trend! Posso provare a ripetere il fit escludendo il primo punto!**_
 
 ### Fit Globale Massimi + Minimi
 
-Nel fare il fit non sono stati presi in considerazione i punti in blu in quanto ritengo siano degli outlier!
+Nel fare il fit non sono stati presi in considerazione i punti in blu in quanto ritengo siano degli outlier! Inoltre, sono state aggiunde delle misure
+acquisite il giorno successivo!
 
 ![Plot All](Plots/opamp_all_plot_err.png)
 
@@ -361,7 +362,7 @@ L'onda quadra non è proprio perfetta perchè la frequenza del segnale in ingres
 (essendo reale in realtà è un passa banda) e
 quindi deriva bene a basse frequenze!
 
-### Analisi in Frequenza (no errrori)
+### Analisi in Frequenza
 
 Inietto un'**onda sinusoidale** di ampiezza **1 Vpp**: al variare della frequenza misuro le ampiezze picco-picco del segnale in ingresso e del
 segnale in uscita.
