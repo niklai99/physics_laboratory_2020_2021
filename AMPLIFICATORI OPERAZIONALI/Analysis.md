@@ -548,5 +548,8 @@ Sono _strumenti digitali_ &rarr; campionano con un ADC
 * contributo di scala &Delta;<sub>%</sub> (gain)
 * contributo di lettura &Delta;<sub>rdg</sub> (reading)
 
+Le considero entrambe _in somma quadratica_!
+
+Quando uso l'oscilloscopio invece conta molto di più il contributo di scala se imposto 3/4 dello schermo!
 
 
