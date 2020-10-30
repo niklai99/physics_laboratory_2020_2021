@@ -94,9 +94,9 @@ void differentiator_bode_plot_err(){
     f2->SetParNames("a", "b", "c");
     f2->SetLineColor(kGreen);
 
-    NSP::plot_err->Fit("myfit1", "SR");
+    //NSP::plot_err->Fit("myfit1", "SR");
 
-    f2->Draw("same");
+    //f2->Draw("same");
 
     double y_max;
     y_max = f2->GetMaximum(4.3, 5.7);
@@ -136,7 +136,7 @@ void differentiator_bode_plot_err(){
     line_ymax->SetLineColor(kBlack);
     line_ymax->Draw();
 */
-
+/*
     TLine *line_xtaglio = new TLine (x_taglio, NSP::YMIN, x_taglio, NSP::YMAX);
 
     line_xtaglio->SetLineStyle(2);
@@ -148,7 +148,7 @@ void differentiator_bode_plot_err(){
     line_ytaglio->SetLineStyle(2);
     line_ytaglio->SetLineColor(kBlack);
     line_ytaglio->Draw();
-
+*/
 
     //personalizzo in modo globale i grafici
     NSP::settings_global();
