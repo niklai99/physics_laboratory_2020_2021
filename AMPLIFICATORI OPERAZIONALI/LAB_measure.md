@@ -434,3 +434,51 @@ Calcolo ora la funzione di trasferimento A = V<sub>out</sub>pp / V<sub>in</sub>p
 |  500000 Hz| 3.967 |
 | 1000000 Hz| 1.860 |
 
+Per fare il **grafico di Bode** converto la funzione di trasferimento in _decibel_ e faccio il logaritmo in base 10 delle frequenze:
+
+| log10(f) (Hz)| A (dB) |
+|:----------:|:------------:|
+|     2.00 |     -25.47 |
+|     3.00 |      -6.02 |
+|     4.00 |      12.62 |
+|     4.18 |      15.32 |
+|     4.23 |      16.06 |
+|     4.26 |      16.30 |
+|     4.28 |      16.66 |
+|     4.30 |      16.93 |
+|     4.32 |      17.05 |
+|     4.34 |      17.33 |
+|     4.36 |      17.45 |
+|     4.38 |      17.64 |
+|     4.40 |      17.78 |
+|     4.43 |      18.03 |
+|     4.48 |      18.47 |
+|     4.74 |      19.63 |
+|     4.78 |      19.78 |
+|     4.81 |      19.78 |
+|     4.85 |      19.78 |
+|     4.88 |      19.78 |
+|     4.90 |      19.78 |
+|     4.93 |      19.63 |
+|     4.95 |      19.63 |
+|     4.98 |      19.63 |
+|     5.00 |      19.63 |
+|     5.02 |      19.48 |
+|     5.04 |      19.41 |
+|     5.30 |      17.69 |
+|     5.70 |      11.97 |
+|     6.00 |       5.39 |
+
+![Plot Bode](LogBook/differentiator_bode_plot_noerr_db.png)
+
+Nel grafico si vede chiaramente l'andamento lineare a basse frequenze (retta in rosso) e viene rimarcata la posizione del massimo (parabola in verde).
+
+Viene allora stimata approssimativamente la frequenza di taglio nel seguente modo:
+
+* Fit parabolico attorno al massimo &rarr; ricavo il massimo guadagno del circuito
+
+* L'amplificazione alla frequenza di taglio è il guadagno massimo _meno 3 dB_
+
+* Interseco la retta _A<sub>max</sub> - 3 dB_ **con la parabola verde** (è la miglior approssimazione attorno alla frequenza di taglio per il momento!)
+
+Ottengo allora una frequenza di taglio pari a **f<sub>t</sub> = 19.95 kHz**, molto simile alla frequenza di taglio attesa!
