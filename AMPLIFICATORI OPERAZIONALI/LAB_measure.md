@@ -360,3 +360,77 @@ aspetto dunque in uscita un'onda quadra!
 L'onda quadra non è proprio perfetta perchè la frequenza del segnale in ingresso è abbastanza alta: un derivatore lavora come filtro passa alto
 (essendo reale in realtà è un passa banda) e
 quindi deriva bene a basse frequenze!
+
+### Analisi in Frequenza (no errrori)
+
+Inietto un'**onda sinusoidale** di ampiezza **1 Vpp**: al variare della frequenza misuro le ampiezze picco-picco del segnale in ingresso e del
+segnale in uscita.
+
+| Frequenza  | V<sub>in</sub>pp | V<sub>out</sub>pp | Scala V<sub>in</sub>pp | Scala V<sub>out</sub>pp |
+|:------------:|:--------:|:---------:|:--------:|:---------:|
+|     100 Hz | 976 mV | 52 mV   | 200 mV | 20 mV   |
+|    1000 Hz | 984 mV | 492 mV  | 200 mV | 100 mV  |
+|   10000 HZ | 992 mV | 4.24 V  | 200 mV | 1 V     |
+|   15000 Hz | 992 mV | 5.79 V  | 200 mV | 2 V     |
+|   17000 Hz | 984 mV | 6.25 V  | 200 mV | 2 V     |
+|   18000 Hz | 984 mV | 6.43 V  | 200 mV | 2 V     |
+|   19000 Hz | 984 mV | 6.70 V  | 200 mV | 2 V     |
+|   20000 Hz | 984 mV | 6.91 V  | 200 mV | 2 V     |
+|   21000 Hz | 984 mV | 7.01 V  | 200 mV | 2 V     |
+|   22000 Hz | 984 mV | 7.24 V  | 200 mV | 2 V     |
+|   23000 Hz | 984 mV | 7.34 V  | 200 mV | 2 V     |
+|   24000 Hz | 984 mV | 7.50 V  | 200 mV | 2 V     |
+|   25000 Hz | 984 mV | 7.62 V  | 200 mV | 2 V     |
+|   27000 Hz | 984 mV | 7.84 V  | 200 mV | 2 V     |
+|   30000 Hz | 984 mV | 8.25 V  | 200 mV | 2 V     |
+|   55000 Hz | 968 mV | 9.28 V  | 200 mV | 2 V     |
+|   60000 Hz | 968 mV | 9.44 V  | 200 mV | 2 V     |
+|   65000 Hz | 968 mV | 9.44 V  | 200 mV | 2 V     |
+|   70000 Hz | 968 mV | 9.44 V  | 200 mV | 2 V     |
+|   75000 Hz | 968 mV | 9.44 V  | 200 mV | 2 V     |
+|   80000 Hz | 968 mV | 9.44 V  | 200 mV | 2 V     |
+|   85000 Hz | 968 mV | 9.28 V  | 200 mV | 2 V     |
+|   90000 Hz | 968 mV | 9.28 V  | 200 mV | 2 V     |
+|   95000 HZ | 968 mV | 9.28 V  | 200 mV | 2 V     |
+|  100000 Hz | 968 mV | 9.28 V  | 200 mV | 2 V     |
+|  105000 Hz | 968 mV | 9.12 V  | 200 mV | 2 V     |
+|  110000 Hz | 968 mV | 9.04 V  | 200 mV | 2 V     |
+|  200000 Hz | 960 mV | 7.36 V  | 200 mV | 2 V     |
+|  500000 Hz | 968 mV | 3.84 V  | 200 mV | 1 V     |
+| 1000000 Hz | 968 mV | 1.80 V  | 200 mV | 500 mV  |
+
+Calcolo ora la funzione di trasferimento A = V<sub>out</sub>pp / V<sub>in</sub>pp
+
+| Frequenza |   A   |
+|:---------:|-------|
+|     100 Hz| 0.053 |
+|    1000 Hz| 0.500 |
+|   10000 Hz| 4.274 |
+|   15000 Hz| 5.837 |
+|   17000 Hz| 6.352 |
+|   18000 Hz| 6.535 |
+|   19000 Hz| 6.809 |
+|   20000 Hz| 7.022 |
+|   21000 Hz| 7.124 |
+|   22000 Hz| 7.358 |
+|   23000 Hz| 7.459 |
+|   24000 Hz| 7.622 |
+|   25000 Hz| 7.744 |
+|   27000 Hz| 7.967 |
+|   30000 Hz| 8.384 |
+|   55000 Hz| 9.587 |
+|   60000 Hz| 9.752 |
+|   65000 Hz| 9.752 |
+|   70000 Hz| 9.752 |
+|   75000 Hz| 9.752 |
+|   80000 Hz| 9.752 |
+|   85000 Hz| 9.587 |
+|   90000 Hz| 9.587 |
+|   95000 Hz| 9.587 |
+|  100000 Hz| 9.587 |
+|  105000 Hz| 9.421 |
+|  110000 Hz| 9.339 |
+|  200000 Hz| 7.667 |
+|  500000 Hz| 3.967 |
+| 1000000 Hz| 1.860 |
+
