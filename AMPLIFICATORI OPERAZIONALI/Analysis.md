@@ -471,6 +471,9 @@ Per fare il **grafico di Bode** converto la funzione di trasferimento in _decibe
 
 ![Plot Bode](LogBook/differentiator_bode_plot_noerr_db.png)
 
+**NB: per il grafico non ho utilizzato _tutti_ i dati perchè attorno alla frequenza di taglio e attorno al massimo sono troppo addensati e non si vede
+più niente**
+
 Nel grafico si vede chiaramente l'andamento lineare a basse frequenze (retta in rosso) e viene rimarcata la posizione del massimo (parabola in verde).
 
 Viene allora stimata approssimativamente la frequenza di taglio nel seguente modo:
