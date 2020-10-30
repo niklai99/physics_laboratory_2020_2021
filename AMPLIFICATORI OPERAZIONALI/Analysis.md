@@ -526,4 +526,27 @@ Posso calcolare la frequenza di taglio dalla simulazione??
     * altre meraviglie dell'universo
 * Confronto con simulazioni LTspice
 
+#### **Warning _Incertezze Sistematiche_**
+
+Quando valuto le incertezze devo capire bene fino a che punto val la pena spingersi nei conti e quali sono i contributi veramente importanti nella
+misura!!
+
+Anche con le simulazioni devo stare attento: in lab uso strumenti _REALI_ quindi ci sono sicuramente differenze rispetto al caso _ideale_.
+
+Non devo essere troppo puntiglioso sui risultati del chi2 (per esempio) ma valutare se il comportamento ritrovato rispecchia le aspettative! Poi
+chiaro che va quantificato ma sempre usando la testa!
+
+## Misure Dirette
+
+Le misure dirette sono effettuate tramite
+
+* multimetri
+* oscilloscopio
+
+Sono _strumenti digitali_ &rarr; campionano con un ADC 
+
+* contributo di scala &Delta;<sub>%</sub> (gain)
+* contributo di lettura &Delta;<sub>rdg</sub> (reading)
+
+
 
