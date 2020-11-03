@@ -1,0 +1,117 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+
+%packages
+\usepackage[table]{xcolor}
+\usepackage{lipsum}	
+\usepackage{gensymb}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{hhline}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset { 
+	language=C++,
+	backgroundcolor=\color{white!5}, % set backgroundcolor
+	basicstyle=\footnotesize,% basic font setting
+}
+
+\newcommand{\Mypm}{\mathbin{\tikz [x=1.4ex,y=1.4ex,line width=.1ex] \draw (0.0,0) -- (1.0,0) (0.5,0.08) -- (0.5,0.92) (0.0,0.5) -- (1.0,0.5);}}
+
+%margini
+\usepackage[margin=0.8in,includefoot]{geometry}
+\usepackage{fancyhdr}
+\usepackage{rotating}
+%link dell'indice ecc
+\usepackage[hidelinks]{hyperref}
+
+\usepackage[none]{hyphenat}%non spezza le parole nelle tabelle
+\usepackage{array}
+%\newcolumntype{£}{>{\global\let\currentrowstyle\relax}}
+%\newcolumntype{§}{>{\currentrowstyle}}
+%\newcolumntype{\rowstyle}[1]{\gdef\currentrowstyle{#1} #1 \ignorespaces}
+
+%graphics
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+%pagestyle
+\pagestyle {fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+%math
+\usepackage{xfrac}
+\usepackage{amssymb}
+	\newcommand{\restr}[2]{{% we make the whole thing an ordinary symbol
+		\left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+		#1 % the function
+		
+		\right|_{#2} % this is the delimiter
+}}
+\usepackage{multicol}
+\newcommand{\tnhl}{\tabularnewline\hline}
+\newcommand{\tn}{\tabularnewline}
+\newcolumntype{x}[1]{%
+	>{\centering\hspace{0pt}}p{#1}}%
+
+\usepackage[toc,page]{appendix}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{multirow}
+
+
+\begin{document}
+	\def\subsectionautorefname{Sezione}	
+	\def\subsubsectionautorefname{Sezione}
+	%pagina del titolo
+	\begin{titlepage}
+		\begin{center}
+			\Huge{\bfseries Laboratorio di Fisica}\\
+				
+			\LARGE Docenti: Prof. A. Garfagnini - Prof. M. Lunardon \\
+			\Large Corso di Laurea in Fisica\\
+			\Large Canale 1 A-L\\
+			\Large Anno Accademico 2020/2021\\
+			[1cm]
+			\line(1,0){400}\\
+			[2cm]
+				
+			\textsc{\huge{\bfseries  Esperienza di Laboratorio $\text N^o$ 1}}\\
+			\huge{Amplificatori Operazionali}\\
+			[2mm]
+			\line(1,0){300}\\
+			[12cm]
+					
+		\end{center}
+		
+			
+			\textsc{\Large Turno T2}\\
+			[0.5cm]
+			\textsc{\large {\bfseries Lai Nicolò}} \\ 
+			\indent\large 1193976 \\ 
+			\indent\large nicolo.lai@studenti.unipd.it\\
+			
+				
+				
+		\begin{flushright}
+				\textsc{\Large Data di consegna:}\\
+				\textsc{\large ?/11/2020}					
+		\end{flushright}
+				
+	\end{titlepage}
+\cleardoublepage
+
+
+	
+\end{document}
