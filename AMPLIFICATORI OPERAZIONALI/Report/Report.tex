@@ -86,14 +86,23 @@
 			[1cm] \line(1,0){400}\\
 			[2cm]
 				
-			\textsc{\huge{\bfseries  Esperienza di Laboratorio $\text N^o$ 1}}\\
+			\textsc{\huge{\bfseries  Esperienza di Laboratorio}}\\
 			\huge{Amplificatori Operazionali}\\
 			[2mm] \line(1,0){300}\\
-			[10.5cm]
-					
-		\end{center}
-		
+			[3mm]
+
+			\textsc{\Large{\bfseries  Obiettivo dell'Esperienza}}\\
+			\large{Misurare l'amplificazione di un circuito con amplificatore operazionale.\\
+			Misurare la frequenza di taglio di un circuito
+			derivatore con amplificatore operazionale.}\\
+			[8.5cm]
 			
+			
+
+
+
+		\end{center}
+				
 			\textsc{\Large Turno T2}\\
 			[0.5cm] \textsc{\large {\bfseries Lai Nicolò}} \\ 
 			\indent\large 1193976 \\ 
@@ -110,24 +119,24 @@
 \cleardoublepage
 	%-----------------------------------fine pagina titolo
 
-\section{Obiettivo}
-Misura dell'amplificazione \textit{A} di un circuito con amplificatore operazionale. Misura della frequenza di taglio di un circuito derivatore con
-amplificatore operazionale.
-
 \section{Apparato Sperimentale}
 \begin{itemize}
 	\item \textbf{Oscilloscopio} (Tektronix TBS1102B): Lo strumento presenta un'accuratezza sul guadagno verticale pari al 3\% del valore letto
 	(errore massimo) ed è \textit{generalmente} il contributo più significativo. L'incertezza di guadagno sui tempi si assume trascurabile.
 	L'accuratezza che tiene conto degli effetti di risoluzione e imprecisione della traccia è di 1/10 di divisione su tutta la scala di lettura
 	(errore massimo), uguale sia per le tensioni sia per i tempi.
+
 	\item \textbf{Generatore di funzioni} (Tektronix AFG1022)
+
+	\item  \textbf{Alimentatore di tensione continua}: Lo strumento presenta due uscite con erogazione di tensione tra 0 e 20 \si{\volt} e un'uscita
+	con erogazione fissata a 5 \si{\volt}
+	
 	\item \textbf{Multimetro digitale} (Metrix MTX3292): Si riporta l'accuratezza dello strumento, per misure di resistenza e di capacità, relativa
 	unicamente ai fondoscala utilizzati nell'esperienza.
 
 	\begin{table}[H]
 		\centering
-		\begin{tabular}{x{2cm} x{3cm} x{3cm} }
-			\toprule[0.5px]\toprule[0.1px]
+		\begin{tabular}{x{2cm} x{3cm} x{3cm} } \toprule[0.5px]\toprule[0.1px]
 			
 			\multicolumn{3}{c}{Accuratezza Metrix MTX3292}\tn
 			\midrule[0.1px]
@@ -136,9 +145,8 @@ amplificatore operazionale.
 			
 			\addlinespace
 			
-			1   \si{k\ohm} & 0.10\% + 8  & 0.01 \si{\ohm}  \tn
-			10  \si{k\ohm} & 0.07\% + 8  & 0.1  \si{\ohm}  \tn
-			100 \si{k\ohm} & 0.07\% + 8  & 1    \si{\ohm}  \tn
+			1   \si{k\ohm} & 0.10\% + 8  & 0.01 \si{\ohm}  \tn 10  \si{k\ohm} & 0.07\% + 8  & 0.1  \si{\ohm}  \tn 100 \si{k\ohm} & 0.07\% + 8  & 1
+			\si{\ohm}  \tn
 
 			
 			\addlinespace
@@ -149,17 +157,63 @@ amplificatore operazionale.
 			
 			
 		\end{tabular}
-		\caption{Per i fondoscala indicati (prima colonna) viene mostrata la precisione (contributo di scala in percentuale e contributo di lettura
-		sul digit meno significativo) e la risoluzione dello strumento (seconda e terza colonna)}
+		\caption{Per i fondoscala indicati si riportano la precisione (contributo di scala in percentuale e contributo di lettura sul digit meno
+		significativo) e la risoluzione dello strumento.}
 		\label{t:metrix}
 	\end{table}	 
 
-	\item \textbf{Alimentatore di tensione continua}
-	\item \textbf{Circuito integrato TL082C}
+	\item \textbf{Componenti circuitali} (Resistori e Condensatori): Si riportano i valori delle resistenze e capacità utilizzate per l'assemblamento
+	dei circuiti utilizzati nel corso dell'esperienza, misurate direttamente con il multimetro digitale Metrix. 
+
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{x{2cm} x{3cm} x{3cm} } \toprule[0.5px]\toprule[0.1px]
+			
+			\multicolumn{3}{c}{Resistori e Condensatori}\tn
+			\midrule[0.1px]
+			
+			Resistenza & Valore & F.S. \tn
+			
+			\addlinespace
+			
+			$R_f$ & $(82.46 \pm 0.03)\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn
+
+			$R_1$ & $(8.089 \pm 0.003)\,\si{k\ohm}$ & $10\,\si{k\ohm}$ \tn
+
+			$R_3$ & $(46.54 \pm 0.05)\,\si{\ohm}$ & $1\,\si{k\ohm}$ \tn
+		
+			\addlinespace
+
+			\midrule[0.1px]
+			
+			Capacità & Valore & F.S. \tn
+			
+			\addlinespace
+
+			$C_1$  & $(977 \pm 17)\,\si{p\farad}$  & $1000\,\si{p\farad}$   \tn
+			
+			\bottomrule[0.5px]
+			
+		\end{tabular}
+		\caption{In tabella si indicano le componenti circuitali (resistori e capacità) utilizzando delle label specifiche per ciascuna di esse:
+		questa notazione è costante nel corso dell'esperienza.}
+		\label{t:direct_measures}
+	\end{table}	
+
+	\item \textbf{Circuito integrato TL082C} (Due Amplificatori Operazionali)
+	
 	\item \textbf{Scheda Arduino Due}
 \end{itemize}
 
-	
+\cleardoublepage
+
+\section{Amplificatore Operazionale Invertente}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=14cm]{../Simulations/OpAmp/circuit_image.png}
+	\caption{}
+	\label{i:opamp_circuit}
+\end{figure}
 
  
 
