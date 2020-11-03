@@ -36,7 +36,7 @@ void opamp_mc_simulation()
     c1->cd(1);
 
     //grafico log lineare
-    TGraphErrors *gr1 = new TGraphErrors (x.size(), &x[0], &y[0], &errX[0], &errY[0]);
+    TGraphErrors *gr1 = new TGraphErrors ("../Data/data_opamp_all_nooutliers.txt");
     gr1-> SetTitle("OpAmp Mc Simulation; V_in (V); V_out (V)");
 
     gr1-> SetLineColor(kBlack);
@@ -98,9 +98,6 @@ void opamp_mc_simulation()
     Double_t ipsilon[16] = {};
     Double_t ics[16] = {};
 
-    TH1D *hist = new TH1D("slope distr", "Distribuzione di slope; slope; counts", 50, 9.984, 9.992);
-    TH1D *hist1 = new TH1D("#sigma_{slope}/slope distr", "Distribuzione di #sigma_{slope}/slope; #sigma_{slope}/slope; counts", 50, 0.0072, 0.0076);
-
     
     for (int l = 0; l < 2000; l++)
     {
@@ -113,50 +110,51 @@ void opamp_mc_simulation()
 
         TGraphErrors *graph = new TGraphErrors(16, ics, ipsilon, mcVin_err, mcVout_err);
         TF1 *fit = new TF1("fit", "[0]+[1]*x",-10,300);  
-        //fit->SetParNames("offset", "slope");
+        fit->SetParNames("offset","slope");
   
-        //TFitResultPtr res = graph-> Fit("fit", "SQ");
-        graph-> Fit("fit", "Q");
+        TFitResultPtr res = graph-> Fit("fit", "SQ");
 
         offset[l]=fit->GetParameter(0);
         slope[l]=fit->GetParameter(1);
         errslope[l]=fit->GetParError(1);
         relslope[l] = errslope[l]/abs(slope[l]);
         //cout << relslope[l] << endl;
-
-        hist->Fill(slope[l]);
-        hist1->Fill(relslope[l]);
-
     }
 
-    hist->Fit("gaus");
-    hist1->Fit("gaus");
 
+    TH1D *hist = new TH1D("slope distr", "Distribuzione di slope; slope; counts", 50, 9.984, 9.992);
 
+    for(int filling=0; filling<2000; filling++){
+        hist->Fill(slope[filling]);
+    }
     hist->Draw();
 
-    
+    hist->Fit("gaus");
 
     gPad->Modified();
     hist->GetXaxis()->SetTickLength(0.02);
     hist->GetYaxis()->SetTickLength(0.02);
     
-
+    gStyle->SetStripDecimals(kFALSE);
 
     c1->cd(2);
 
+    TH1D *hist1 = new TH1D("#sigma_{slope}/slope distr", "Distribuzione di #sigma_{slope}/slope; #sigma_{slope}/slope; counts", 50, 0.0072, 0.0076);
+
+    for(int filling1=0; filling1<2000; filling1++){
+        hist1->Fill(relslope[filling1]);
+    }
     hist1->Draw();
 
-    
+    hist1->Fit("gaus");
 
     gPad->Modified();
     hist1->GetXaxis()->SetTickLength(0.02);
     hist1->GetYaxis()->SetTickLength(0.02);
 
-    hist1->GetXaxis()->SetMaxDigits(3);
+    hist1->GetXaxis()->SetMaxDigits(6);
     
-    //c1->SaveAs("../Plots/opamp_mc.png");
-    gStyle->SetStripDecimals(kFALSE);
+
 
 }
 
