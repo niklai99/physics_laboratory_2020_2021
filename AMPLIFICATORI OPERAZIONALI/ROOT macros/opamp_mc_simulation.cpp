@@ -36,7 +36,7 @@ void opamp_mc_simulation()
     c1->cd(1);
 
     //grafico log lineare
-    TGraphErrors *gr1 = new TGraphErrors ("../Data/data_opamp_all_nooutliers.txt");
+    TGraphErrors *gr1 = new TGraphErrors (x.size(), &x[0], &y[0], &errX[0], &errY[0]);
     gr1-> SetTitle("OpAmp Mc Simulation; V_in (V); V_out (V)");
 
     gr1-> SetLineColor(kBlack);
@@ -153,9 +153,10 @@ void opamp_mc_simulation()
     hist1->GetXaxis()->SetTickLength(0.02);
     hist1->GetYaxis()->SetTickLength(0.02);
 
-    hist1->GetXaxis()->SetNdivisions(509, kTRUE);
+    hist1->GetXaxis()->SetMaxDigits(3);
     
-    c1->SaveAs("../Plots/opamp_mc.png");
+    //c1->SaveAs("../Plots/opamp_mc.png");
+    gStyle->SetStripDecimals(kFALSE);
 
 }
 
