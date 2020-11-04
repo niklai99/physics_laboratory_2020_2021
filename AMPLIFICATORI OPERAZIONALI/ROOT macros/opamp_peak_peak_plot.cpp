@@ -13,7 +13,7 @@ namespace NSP {
 /*---COSTANTI---*/ 
 
     //nome file 
-    string FILE_NAME = "../Data/data_opamp_peak_peak_nooutliers.txt";  
+    string FILE_NAME = "../Data/data_opamp_peak_peak_projected.txt";  
 
     //plot range del fit
     double XMIN = 0;
@@ -135,8 +135,8 @@ void opamp_peak_peak_plot(){
     //personalizzo in modo globale i grafici
     NSP::settings_global();
     
-    NSP::c1->SaveAs("../Plots/opamp_peak_plot_nooutliers.png");
-    NSP::c2->SaveAs("../Plots/opamp_peak_res_nooutliers.png");
+    //NSP::c1->SaveAs("../Plots/opamp_peak_plot_nooutliers.png");
+    //NSP::c2->SaveAs("../Plots/opamp_peak_res_nooutliers.png");
 }
 
 /*---FUNZIONI---*/ 
