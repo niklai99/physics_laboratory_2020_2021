@@ -37,7 +37,7 @@ void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> 
 void opamp_mc_simulation(){
 
     //numero simulazioni di montecarlo
-    const int numMonti = 2000;
+    const int numMonti = 5000;
 
     //plot range
     const double XMIN = -2;
