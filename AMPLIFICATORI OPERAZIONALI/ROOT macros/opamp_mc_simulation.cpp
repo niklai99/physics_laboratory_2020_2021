@@ -72,11 +72,11 @@ void readData(const string FILE_NAME, vector<double> &x, vector<double> &y, vect
     f.open(FILE_NAME);
     double i = 0;
     while(f >> i) {
-        x.push_back(i);    //prima colonna
+        x.push_back(i);    
         f >> i;
-        y.push_back(i);    //seconda colonna
+        y.push_back(i);    
         f >> i;
-        errX.push_back(i);     //push_back(0) se non ho errori sull'asse x
+        errX.push_back(i);     
         f >> i;
         errY.push_back(i);
     }
