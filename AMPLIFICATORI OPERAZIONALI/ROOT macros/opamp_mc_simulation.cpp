@@ -27,7 +27,7 @@ using namespace std;
 void readData(const string FILE_NAME, vector<double> &x, vector<double> &y, vector<double> &errX, vector<double> &errY);
 TFitResultPtr linearFit(vector<double> &x, vector<double> &y, vector<double> &errX, vector<double> &errY,
                         const double XMIN, const  double XMAX);
-void monteBianco(const int n, TFitResultPtr r, vector<double> &x, vector<double> &errX,
+void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> &errX,
                  vector<double> &errY, const double XMIN, const double XMAX,  TCanvas *c1 );
 
 
@@ -36,6 +36,7 @@ void opamp_mc_simulation(){
 
     //numero simulazioni di montecarlo
     const int numMonti = 2000;
+
     //plot range
     const double XMIN = -2;
     const double XMAX = 2;
@@ -43,7 +44,7 @@ void opamp_mc_simulation(){
     const double YMAX = 18;
 
     //nome file
-    const string FILE_NAME = "data_opamp_all_nooutliers.txt";
+    const string FILE_NAME = "../Data/data_opamp_all_nooutliers.txt";
 
     //vectors dove mettere i dati
     vector<double> x, y, errX, errY;
@@ -52,7 +53,7 @@ void opamp_mc_simulation(){
     readData(FILE_NAME, x, y, errX, errY);
 
     //creo canvas
-    TCanvas *c1 = new TCanvas ("canvas1", "canvas1", 1080, 720);
+    TCanvas *c1 = new TCanvas ("c1", "MC Simulation", 1080, 720);
     c1->Divide(2,0);
     c1->cd(1);
 
@@ -60,9 +61,9 @@ void opamp_mc_simulation(){
     TFitResultPtr r = linearFit(x, y , errX, errY, XMIN, XMAX);
 
     //montecarlo
-    monteBianco(numMonti, r, x, errX, errY, XMIN, XMAX, c1);
+    monteCarlo(numMonti, r, x, errX, errY, XMIN, XMAX, c1);
 
-    std::cout << "Programma terminato con successo"<< std::endl;
+    //std::cout << "Programma terminato con successo"<< std::endl;
 }
 
 
@@ -94,7 +95,7 @@ TFitResultPtr linearFit(vector<double> &x, vector<double> &y, vector<double> &er
 }
 
 //montecarlo
-void monteBianco(const int n, TFitResultPtr r, vector<double> &x, vector<double> &errX, vector<double> &errY,
+void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> &errX, vector<double> &errY,
                  const double XMIN, const double XMAX,  TCanvas *c1 ){
     const double q = r->Parameter(0);
     const double m = r->Parameter(1);
@@ -138,7 +139,7 @@ void monteBianco(const int n, TFitResultPtr r, vector<double> &x, vector<double>
     for(double i: pend)
         hist->Fill(i);
     hist->Draw();
-    hist->Fit("gaus","Q");
+    hist->Fit("gaus");
     gPad->Modified();
     hist->GetXaxis()->SetTickLength(0.02);
     hist->GetYaxis()->SetTickLength(0.02);
@@ -150,7 +151,7 @@ void monteBianco(const int n, TFitResultPtr r, vector<double> &x, vector<double>
     for(double i: relPend)
         hist1->Fill(i);
     hist1->Draw();
-    hist1->Fit("gaus", "Q");
+    hist1->Fit("gaus");
     gPad->Modified();
     hist1->GetXaxis()->SetTickLength(0.02);
     hist1->GetYaxis()->SetTickLength(0.02);
