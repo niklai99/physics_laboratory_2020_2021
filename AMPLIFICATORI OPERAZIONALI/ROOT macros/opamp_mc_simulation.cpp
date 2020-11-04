@@ -25,9 +25,11 @@ using namespace std;
 
 
 void readData(const string FILE_NAME, vector<double> &x, vector<double> &y, vector<double> &errX, vector<double> &errY);
+
 TFitResultPtr linearFit(vector<double> &x, vector<double> &y, vector<double> &errX, vector<double> &errY,
                         const double XMIN, const  double XMAX);
-void monteBianco(const int n, TFitResultPtr r, vector<double> &x, vector<double> &errX,
+
+void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> &errX,
                  vector<double> &errY, const double XMIN, const double XMAX,  TCanvas *c1 );
 
 
@@ -35,7 +37,8 @@ void monteBianco(const int n, TFitResultPtr r, vector<double> &x, vector<double>
 void opamp_mc_simulation(){
 
     //numero simulazioni di montecarlo
-    const int numMonti = 2000;
+    const int numMonti = 5000;
+
     //plot range
     const double XMIN = -2;
     const double XMAX = 2;
@@ -43,7 +46,7 @@ void opamp_mc_simulation(){
     const double YMAX = 18;
 
     //nome file
-    const string FILE_NAME = "data_opamp_all_nooutliers.txt";
+    const string FILE_NAME = "../Data/data_opamp_all_nooutliers.txt";
 
     //vectors dove mettere i dati
     vector<double> x, y, errX, errY;
@@ -52,7 +55,7 @@ void opamp_mc_simulation(){
     readData(FILE_NAME, x, y, errX, errY);
 
     //creo canvas
-    TCanvas *c1 = new TCanvas ("canvas1", "canvas1", 1080, 720);
+    TCanvas *c1 = new TCanvas ("c1", "MC Simulation", 1080, 720);
     c1->Divide(2,0);
     c1->cd(1);
 
@@ -60,23 +63,23 @@ void opamp_mc_simulation(){
     TFitResultPtr r = linearFit(x, y , errX, errY, XMIN, XMAX);
 
     //montecarlo
-    monteBianco(numMonti, r, x, errX, errY, XMIN, XMAX, c1);
+    monteCarlo(numMonti, r, x, errX, errY, XMIN, XMAX, c1);
 
-    std::cout << "Programma terminato con successo"<< std::endl;
+    //std::cout << "Programma terminato con successo"<< std::endl;
 }
 
 
-//leggo i dati
+//leggo i dati da file
 void readData(const string FILE_NAME, vector<double> &x, vector<double> &y, vector<double> &errX, vector<double> &errY){
     ifstream f;
     f.open(FILE_NAME);
     double i = 0;
     while(f >> i) {
-        x.push_back(i);    //prima colonna
+        x.push_back(i);    
         f >> i;
-        y.push_back(i);    //seconda colonna
+        y.push_back(i);    
         f >> i;
-        errX.push_back(i);     //push_back(0) se non ho errori sull'asse x
+        errX.push_back(i);     
         f >> i;
         errY.push_back(i);
     }
@@ -86,6 +89,7 @@ void readData(const string FILE_NAME, vector<double> &x, vector<double> &y, vect
 //faccio fit lineare preliminare
 TFitResultPtr linearFit(vector<double> &x, vector<double> &y, vector<double> &errX, vector<double> &errY,
                         const double XMIN, const double XMAX){
+
     TGraphErrors *gr1 = new TGraphErrors (x.size(), &x[0], &y[0], &errX[0], &errY[0]);
     TF1 *f1 = new TF1("f1", "[0] + [1]*x", XMIN, XMAX);
     f1->SetParNames("offset","slope");
@@ -94,25 +98,30 @@ TFitResultPtr linearFit(vector<double> &x, vector<double> &y, vector<double> &er
 }
 
 //montecarlo
-void monteBianco(const int n, TFitResultPtr r, vector<double> &x, vector<double> &errX, vector<double> &errY,
+void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> &errX, vector<double> &errY,
                  const double XMIN, const double XMAX,  TCanvas *c1 ){
+
+    //prendo i parametri del fit preliminare                     
     const double q = r->Parameter(0);
     const double m = r->Parameter(1);
 
+    //ricostruisco tale funzione
     TF1 *func = new TF1("func", "[0]+ [1]*x", XMIN, XMAX);
     func->SetParameter(0, q);
     func->SetParameter(1, m);
 
-    // valori y teorici
+    // valori y teorici basati sulla funzione di fit
     vector<double> vOut;
     for(double i: x)
         vOut.push_back(func->Eval(i));
 
-    // valori x,y con rumore gaussiano
+    // valori (x, y) con rumore gaussiano
     TRandom *g1 = new TRandom();
     TRandom *g2 = new TRandom();
+
     vector<vector<double>> toyVout(n);
     vector<vector<double>> toyVin(n);
+
     for(unsigned int j = 0; j < x.size(); j++){
         for(int i = 0; i < n; i++){
             double randNumb1 = g1->Gaus(vOut[j], errY[j]);
@@ -124,8 +133,12 @@ void monteBianco(const int n, TFitResultPtr r, vector<double> &x, vector<double>
 
     // calcolo gli n fit
     vector<double> pend, inter, errPend, errInter, relPend;
+
+    //faccio i fit e salvo i parametri
     for(int i = 0; i < n; i++){
+
         TFitResultPtr rFit = linearFit(toyVin[i], toyVout[i], errX, errY, XMIN, XMAX);
+
         pend.push_back(rFit->Parameter(1));
         inter.push_back(rFit->Parameter(0));
         errPend.push_back(rFit->ParError(1));
@@ -135,10 +148,15 @@ void monteBianco(const int n, TFitResultPtr r, vector<double> &x, vector<double>
 
     //istogramma pendenze
     TH1D *hist = new TH1D("slope distr", "Distribuzione di slope; slope; counts", 50, 9.984, 9.992);
+
+    //filling
     for(double i: pend)
         hist->Fill(i);
+
     hist->Draw();
-    hist->Fit("gaus","Q");
+    hist->Fit("gaus");
+
+    //modifiche
     gPad->Modified();
     hist->GetXaxis()->SetTickLength(0.02);
     hist->GetYaxis()->SetTickLength(0.02);
@@ -147,10 +165,15 @@ void monteBianco(const int n, TFitResultPtr r, vector<double> &x, vector<double>
 
     //istogramma errori relativi pendenze
     TH1D *hist1 = new TH1D("#sigma_{slope}/slope distr", "Distribuzione di #sigma_{slope}/slope; #sigma_{slope}/slope; counts", 50, 0.0072, 0.0076);
+
+    //filling
     for(double i: relPend)
         hist1->Fill(i);
+
     hist1->Draw();
-    hist1->Fit("gaus", "Q");
+    hist1->Fit("gaus");
+
+    //modifiche
     gPad->Modified();
     hist1->GetXaxis()->SetTickLength(0.02);
     hist1->GetYaxis()->SetTickLength(0.02);
