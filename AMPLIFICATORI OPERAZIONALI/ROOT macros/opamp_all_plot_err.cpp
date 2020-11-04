@@ -97,7 +97,9 @@ void opamp_all_plot_err(){
     //personalizzo in modo globale i grafici
     NSP::settings_global();
 
+
 /*-------FACCIO IL GRAFICO CON TUTTI I DATI COMPRESI OUTLIERS-------*/
+/*
     ifstream f;
     f.open("../Data/data_opamp_all.txt");
     double i = 0;
@@ -127,7 +129,7 @@ void opamp_all_plot_err(){
     //NSP::c2->SaveAs("../Plots/opamp_all_res_err.png");
 
     //NSP::c3->SaveAs("../Plots/opamp_all_plot_res.png");
-
+*/
 
 }
 
@@ -283,7 +285,7 @@ void NSP::read_data(vector<double>& x, vector<double>& y, vector<double>& errX, 
         f >> i;
         NSP::y.push_back(i);    //seconda colonna
         f >> i;
-        NSP::errX.push_back(i);     //push_back(0) se non ho errori sull'asse x
+        NSP::errX.push_back(0);     //push_back(0) se non ho errori sull'asse x
         f >> i;
         NSP::errY.push_back(i);
 

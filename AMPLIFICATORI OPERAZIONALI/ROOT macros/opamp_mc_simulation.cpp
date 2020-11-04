@@ -24,12 +24,12 @@
 using namespace std;
 
 
-void readData(const string FILE_NAME, vector<double> &x, vector<double> &y, vector<double> &errX, vector<double> &errY);
+void readData(const string FILE_NAME, vector<double> &x, vector<double> &y, vector<double> &errX, vector<double> &err0, vector<double> &errY);
 
 TFitResultPtr linearFit(vector<double> &x, vector<double> &y, vector<double> &errX, vector<double> &errY,
                         const double XMIN, const  double XMAX);
 
-void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> &errX,
+void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> &errX, vector<double> &err0,
                  vector<double> &errY, const double XMIN, const double XMAX,  TCanvas *c1 );
 
 
@@ -50,9 +50,10 @@ void opamp_mc_simulation(){
 
     //vectors dove mettere i dati
     vector<double> x, y, errX, errY;
+    vector<double> err0; //vector da riempire con tutti zeri per non avere errori su x
 
     //riempio vectors
-    readData(FILE_NAME, x, y, errX, errY);
+    readData(FILE_NAME, x, y, errX, err0, errY);
 
     //creo canvas
     TCanvas *c1 = new TCanvas ("c1", "MC Simulation", 1080, 720);
@@ -60,17 +61,17 @@ void opamp_mc_simulation(){
     c1->cd(1);
 
     //faccio il fit
-    TFitResultPtr r = linearFit(x, y , errX, errY, XMIN, XMAX);
+    TFitResultPtr r = linearFit(x, y , err0, errY, XMIN, XMAX);
 
     //montecarlo
-    monteCarlo(numMonti, r, x, errX, errY, XMIN, XMAX, c1);
+    monteCarlo(numMonti, r, x, errX, err0, errY, XMIN, XMAX, c1);
 
     //std::cout << "Programma terminato con successo"<< std::endl;
 }
 
 
 //leggo i dati da file
-void readData(const string FILE_NAME, vector<double> &x, vector<double> &y, vector<double> &errX, vector<double> &errY){
+void readData(const string FILE_NAME, vector<double> &x, vector<double> &y, vector<double> &errX, vector<double> &err0, vector<double> &errY){
     ifstream f;
     f.open(FILE_NAME);
     double i = 0;
@@ -79,7 +80,8 @@ void readData(const string FILE_NAME, vector<double> &x, vector<double> &y, vect
         f >> i;
         y.push_back(i);    
         f >> i;
-        errX.push_back(i);     
+        errX.push_back(i);
+        err0.push_back(0);     
         f >> i;
         errY.push_back(i);
     }
@@ -98,7 +100,7 @@ TFitResultPtr linearFit(vector<double> &x, vector<double> &y, vector<double> &er
 }
 
 //montecarlo
-void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> &errX, vector<double> &errY,
+void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> &errX, vector<double> &err0, vector<double> &errY,
                  const double XMIN, const double XMAX,  TCanvas *c1 ){
 
     //prendo i parametri del fit preliminare                     
@@ -137,7 +139,7 @@ void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> 
     //faccio i fit e salvo i parametri
     for(int i = 0; i < n; i++){
 
-        TFitResultPtr rFit = linearFit(toyVin[i], toyVout[i], errX, errY, XMIN, XMAX);
+        TFitResultPtr rFit = linearFit(toyVin[i], toyVout[i], err0, errY, XMIN, XMAX);
 
         pend.push_back(rFit->Parameter(1));
         inter.push_back(rFit->Parameter(0));
@@ -147,7 +149,7 @@ void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> 
     }
 
     //istogramma pendenze
-    TH1D *hist = new TH1D("slope distr", "Distribuzione di slope; slope; counts", 50, 9.984, 9.992);
+    TH1D *hist = new TH1D("slope distr", "Distribuzione di slope; slope; counts", 50, 9.9825, 9.990);
 
     //filling
     for(double i: pend)
@@ -164,7 +166,7 @@ void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> 
     c1->cd(2);
 
     //istogramma errori relativi pendenze
-    TH1D *hist1 = new TH1D("#sigma_{slope}/slope distr", "Distribuzione di #sigma_{slope}/slope; #sigma_{slope}/slope; counts", 50, 0.0072, 0.0076);
+    TH1D *hist1 = new TH1D("#sigma_{slope}/slope distr", "Distribuzione di #sigma_{slope}/slope; #sigma_{slope}/slope; counts", 50, 0.0051, 0.0054);
 
     //filling
     for(double i: relPend)

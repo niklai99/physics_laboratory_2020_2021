@@ -128,8 +128,8 @@ void opamp_max_plot_err(){
     //personalizzo in modo globale i grafici
     NSP::settings_global();
     
-    NSP::c1->SaveAs("../Plots/opamp_max_plot_err_nooutliers.png");
-    NSP::c2->SaveAs("../Plots/opamp_max_res_err_nooutliers.png");
+    //NSP::c1->SaveAs("../Plots/opamp_max_plot_err_nooutliers.png");
+    //NSP::c2->SaveAs("../Plots/opamp_max_res_err_nooutliers.png");
 }
 
 /*---FUNZIONI---*/ 
