@@ -6,7 +6,7 @@ namespace NSP {
 /*---COSTANTI---*/ 
 
     //nome file 
-    string FILE_NAME = "../Data/data_opamp_all_nooutliers.txt";  
+    string FILE_NAME = "../Data/data_opamp_all_projected.txt";  
 
     //plot range del fit
     double XMIN = -2;
@@ -125,11 +125,14 @@ void opamp_all_plot_err(){
     NSP::plot_err->Draw("same p");
 
     
-    //NSP::c1->SaveAs("../Plots/opamp_all_plot_err.png");
-    //NSP::c2->SaveAs("../Plots/opamp_all_res_err.png");
+    //
+    //
 
     //NSP::c3->SaveAs("../Plots/opamp_all_plot_res.png");
 */
+
+    //NSP::c1->SaveAs("../Plots/opamp_all_plot_projected.png");
+    NSP::c3->SaveAs("../Plots/opamp_all_projected.png");
 
 }
 

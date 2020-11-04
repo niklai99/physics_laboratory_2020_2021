@@ -135,8 +135,8 @@ void opamp_peak_peak_plot(){
     //personalizzo in modo globale i grafici
     NSP::settings_global();
     
-    //NSP::c1->SaveAs("../Plots/opamp_peak_plot_nooutliers.png");
-    //NSP::c2->SaveAs("../Plots/opamp_peak_res_nooutliers.png");
+    NSP::c1->SaveAs("../Plots/opamp_peak_plot_projected.png");
+    NSP::c2->SaveAs("../Plots/opamp_peak_res_projected.png");
 }
 
 /*---FUNZIONI---*/ 

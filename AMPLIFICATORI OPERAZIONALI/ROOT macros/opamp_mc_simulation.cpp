@@ -46,7 +46,7 @@ void opamp_mc_simulation(){
     const double YMAX = 18;
 
     //nome file
-    const string FILE_NAME = "../Data/data_opamp_all_nooutliers.txt";
+    const string FILE_NAME = "../Data/data_opamp_all_projected_errx.txt";
 
     //vectors dove mettere i dati
     vector<double> x, y, errX, errY;
@@ -149,7 +149,7 @@ void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> 
     }
 
     //istogramma pendenze
-    TH1D *hist = new TH1D("slope distr", "Distribuzione di slope; slope; counts", 50, 9.9825, 9.990);
+    TH1D *hist = new TH1D("slope distr", "Distribuzione di slope; slope; counts", 50, 9.9, 10.08);
 
     //filling
     for(double i: pend)
@@ -166,7 +166,7 @@ void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> 
     c1->cd(2);
 
     //istogramma errori relativi pendenze
-    TH1D *hist1 = new TH1D("#sigma_{slope}/slope distr", "Distribuzione di #sigma_{slope}/slope; #sigma_{slope}/slope; counts", 50, 0.0051, 0.0054);
+    TH1D *hist1 = new TH1D("#sigma_{slope}/slope distr", "Distribuzione di #sigma_{slope}/slope; #sigma_{slope}/slope; counts", 50, 0.00715, 0.0077);
 
     //filling
     for(double i: relPend)

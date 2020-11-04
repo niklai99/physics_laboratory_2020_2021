@@ -6,7 +6,7 @@ namespace NSP {
 /*---COSTANTI---*/ 
 
     //nome file 
-    string FILE_NAME = "../Data/data_opamp_min_err_nooutliers.txt";  
+    string FILE_NAME = "../Data/data_opamp_min_projected.txt";  
 
     //plot range del fit
     double XMIN = -1.4;
@@ -128,8 +128,8 @@ void opamp_min_plot_err(){
     //personalizzo in modo globale i grafici
     NSP::settings_global();
     
-    NSP::c1->SaveAs("../Plots/opamp_min_plot_err_nooutliers.png");
-    NSP::c2->SaveAs("../Plots/opamp_min_res_err_nooutliers.png");
+    NSP::c1->SaveAs("../Plots/opamp_min_plot_projected.png");
+    NSP::c2->SaveAs("../Plots/opamp_min_res_projected.png");
 }
 
 /*---FUNZIONI---*/ 
