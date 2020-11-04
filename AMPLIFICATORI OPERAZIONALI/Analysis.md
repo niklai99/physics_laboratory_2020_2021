@@ -282,6 +282,17 @@ infatti **&lambda; = 2.1**. Il Chi2 invece risulta essere ottimo!
 I residui, tuttavia, presentano un andamento verso il basso: _**il primo punto con un errore molto piccolo pesa molto sul fit, e risulta essere un po'
 fuori trend! Posso provare a ripetere il fit escludendo il primo punto!**_
 
+![Plot Piccopicco](Plots/opamp_peak_plot_nooutliers.png)
+
+![Res Piccopicco](Plots/opamp_peak_res_nooutliers.png)
+
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+|0.292007| 6 |  -0.125188   +/-   0.105227 |  10.0887   +/-   0.100076  |
+
+L'offset è ora compatibile con lo zero! Il valore dell'amplificazione, inoltre, è ottimo. Il chi2 tuttavia è **troppo** piccolo &rarr; ha una
+bassissima probabilità....
+
 ### Fit Globale Massimi + Minimi
 
 Nel fare il fit non sono stati presi in considerazione i punti in blu in quanto ritengo siano degli outlier! Inoltre, sono state aggiunde delle misure

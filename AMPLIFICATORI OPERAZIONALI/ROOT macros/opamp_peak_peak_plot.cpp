@@ -1,6 +1,13 @@
 #include <fstream>
 #include <vector>
 #include <cmath>
+#include <string>
+#include <TGraphErrors.h>
+#include <TCanvas.h>
+#include <TF1.h>
+#include <TFitResult.h>
+#include <TRandom.h>
+#include <TStyle.h>
 
 namespace NSP {
 /*---COSTANTI---*/ 
@@ -128,8 +135,8 @@ void opamp_peak_peak_plot(){
     //personalizzo in modo globale i grafici
     NSP::settings_global();
     
-    NSP::c1->SaveAs("../Plots/opamp_peak_plot.png");
-    NSP::c2->SaveAs("../Plots/opamp_peak_res.png");
+    NSP::c1->SaveAs("../Plots/opamp_peak_plot_nooutliers.png");
+    NSP::c2->SaveAs("../Plots/opamp_peak_res_nooutliers.png");
 }
 
 /*---FUNZIONI---*/ 
