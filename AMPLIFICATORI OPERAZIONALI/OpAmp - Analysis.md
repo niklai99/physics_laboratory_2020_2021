@@ -153,3 +153,7 @@ verranno considerati nell'analisi successiva.
 | Chi2 | NDf | offset | slope |
 |:----:|:----:|:----:|:----:|
 | 1.35854 | 7 |0.0675817   +/-   0.0238213|   10.157   +/-   0.0948987 |
+
+### Proiezione Errori
+
+Ora che ho effettuato i fit preliminari, utilizzo il coefficiente angolare della retta interpolante per proiettare gli errori di V<sub>in</sub> su V<sub>out</sub>.
