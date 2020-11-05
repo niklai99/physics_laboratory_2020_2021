@@ -106,6 +106,8 @@ void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> 
     //prendo i parametri del fit preliminare                     
     const double q = r->Parameter(0);
     const double m = r->Parameter(1);
+    const double errq = r->ParError(0);
+    const double errm = r->ParError(1);
 
     //ricostruisco tale funzione
     TF1 *func = new TF1("func", "[0]+ [1]*x", XMIN, XMAX);
@@ -149,7 +151,7 @@ void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> 
     }
 
     //istogramma pendenze
-    TH1D *hist = new TH1D("slope distr", "Distribuzione di slope; slope; counts", 50, 9.9, 10.08);
+    TH1D *hist = new TH1D("slope distr", "Distribuzione di slope; slope; counts", 70, m-2*errm, m+2*errm);
 
     //filling
     for(double i: pend)
@@ -166,7 +168,7 @@ void monteCarlo(const int n, TFitResultPtr r, vector<double> &x, vector<double> 
     c1->cd(2);
 
     //istogramma errori relativi pendenze
-    TH1D *hist1 = new TH1D("#sigma_{slope}/slope distr", "Distribuzione di #sigma_{slope}/slope; #sigma_{slope}/slope; counts", 50, 0.00715, 0.0077);
+    TH1D *hist1 = new TH1D("#sigma_{slope}/slope distr", "Distribuzione di #sigma_{slope}/slope; #sigma_{slope}/slope; counts", 70, errm/m-0.0003, errm/m+0.0003);
 
     //filling
     for(double i: relPend)

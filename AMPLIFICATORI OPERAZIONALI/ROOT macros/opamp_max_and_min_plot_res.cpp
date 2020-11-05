@@ -1,3 +1,5 @@
+/*--------------------------------Code by Nicolò Lai--------------------------------*/
+
 #include <fstream>
 #include <cmath>
 #include <vector>
@@ -13,6 +15,7 @@
 using namespace std;
 
 
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 const double NPAR = 2;
 
@@ -61,6 +64,10 @@ TGraphErrors *plot_min;
 TGraphErrors *residuals_max;
 TGraphErrors *residuals_min;
 
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*-------- FUNCTIONS -------*/
+
 void readData(vector<double>&, vector<double>&, vector<double>&, vector<double>&, const string);
 
 double myfit(double*, double*);
@@ -84,8 +91,9 @@ double err_posteriori(TFitResultPtr, vector<double>&, vector<double>&);
 void latex_max(TLatex*);
 void latex_min(TLatex*);
 
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-
+/*---------- MAIN ----------*/
 void opamp_max_and_min_plot_res() {
 
     c1 = new TCanvas("canvas1", "Fit", 1080, 720);
@@ -146,6 +154,9 @@ void opamp_max_and_min_plot_res() {
     return;
 }
 
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*-------- FUNCTIONS -------*/
 void readData(vector<double>& x, vector<double>& y, vector<double>& errX, vector<double>& errY, const string FILE_NAME) {
 
     ifstream f;
@@ -165,7 +176,6 @@ void readData(vector<double>& x, vector<double>& y, vector<double>& errX, vector
     f.close();
 }
 
-//creo il grafico con errori
 TGraphErrors* plot_fit(vector<double>& x, vector<double>& y, vector<double>& errX, vector<double>& errY) {
     
     TGraphErrors* graph = new TGraphErrors(x.size(), &x[0], &y[0], &errX[0], &errY[0]);
@@ -364,3 +374,5 @@ void latex_min(TLatex* text) {
     text->Draw();
   
 }
+
+/*-----------------------------------------------------------------------------EOF------------------------------------------------------------------------*/

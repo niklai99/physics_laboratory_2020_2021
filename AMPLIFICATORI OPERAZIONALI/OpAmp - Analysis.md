@@ -35,7 +35,8 @@ Precisione e risoluzione del multimetro Metrix3292 per i fondo-scala utilizzati 
   |     R<sub>1</sub>     | 8.089 k&Omega; |  0.003 k&Omega;|
   |     R<sub>3</sub>     |  46.54 &Omega;  |  0.05  &Omega;|
 
-  Usando ora le incertezze sulle misure delle resistenze posso stimare l'errore della stima dell'amplificazione attesa. La formula di propagazione è quindi
+  Usando ora le incertezze sulle misure delle resistenze posso stimare l'errore della stima dell'amplificazione attesa. La formula di propagazione è
+  quindi
   
   ![Amplification propagation](LaTeX_equation/amplification_propagation.png) 
 
@@ -43,8 +44,8 @@ Precisione e risoluzione del multimetro Metrix3292 per i fondo-scala utilizzati 
 
 ## Misure con Oscilloscopio
 
-Applico  una tensione sinusoidale di frequenza f = 1 kHz: faccio variare l'ampiezza del segnale e registro i massimi e i minimi per entrambi i
-segnali V<sub>in</sub> e V<sub>out</sub>
+Applico  una tensione sinusoidale di frequenza f = 1 kHz: faccio variare l'ampiezza del segnale e registro i massimi e i minimi per entrambi i segnali
+V<sub>in</sub> e V<sub>out</sub>
 
 ### Misure dei Massimi
 
@@ -205,7 +206,8 @@ V<sub>out</sub>.
 
 ![Min Projected](Plots/Report_Plots/opamp_plot_projected.png)
 
-Siccome la compatibilità tra i due coefficienti angolari è _ottima_, **&lambda; = 0.7**, procedo con un fit del dataset unificato con sia massimi che minimi.
+Siccome la compatibilità tra i due coefficienti angolari è _ottima_, **&lambda; = 0.7**, procedo con un fit del dataset unificato con sia massimi che
+minimi.
 
 ## Fit Dataset Unificato
 
@@ -274,3 +276,28 @@ Si nota come ora i residui siano ben distribuiti, nonostante le barre d'errore s
 
 ## Simulazioni MonteCarlo
 
+### What
+
+Cerco di estrarre delle informazioni sulla correttezza stima degli errori studiando gli errori dei parametri resistuiti dai fit. Per fare ciò,
+utilizzo le _simulazioni Monte Carlo_.
+
+### How
+
+Effettuo inizialmente un fit come quelli fatti in precedenza, al fine di ricavare i parametri della retta interpolante. Successivamente, calcolo le
+coppie di punti (x, y) "teoriche" proiettando i punti x sulla retta del fit. Attorno a queste coppie (x, y) genero 5000 punti distribuiti
+gaussianamente centrati in (x, y) e con deviazione standard l'errore del punto sperimentale lungo x e lungo y.  
+
+Vengono poi effettuati 5000 fit, prendendo uno tra i 5000 punti simulati per ogni coppia (x, y): in questo modo simulo 5000 rette e posso studiare la
+distribuzione dei parametri dell'interpolazione. 
+
+Questi vengono quindi visualizzati in un istogramma e fittati con una curva gaussiana.
+
+### Why
+
+Nel caso il fit sia corretto, mi aspetto che il rapporto devstd / mean della gaussiana fittante la distribuzione di coefficienti angolari sia
+comparabile con la distribuzione degli errori relativi sigma_m / m!
+
+Inoltre, mi aspetto che le gaussiane siano centrate in un intorno dei valori veri, cioè i valori restituiti dal fit iniziale. Se si discostano troppo
+c'è una sistematica che crea problemi. 
+
+### 
