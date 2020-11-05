@@ -300,4 +300,38 @@ comparabile con la distribuzione degli errori relativi sigma_m / m!
 Inoltre, mi aspetto che le gaussiane siano centrate in un intorno dei valori veri, cioè i valori restituiti dal fit iniziale. Se si discostano troppo
 c'è una sistematica che crea problemi. 
 
-### 
+### Massimi 
+
+#### Fit preliminare &rarr; errori non proiettati
+
+![MC Max Pre](Plots/Report_Plots/opamp_mc_max_preliminary.png)
+
+#### Fit finale &rarr; errori proiettati
+
+![MC Max Proj](Plots/Report_Plots/opamp_mc_max_projected.png)
+
+### Minimi
+
+#### Fit preliminare &rarr; errori non proiettati
+
+![MC Min Pre](Plots/Report_Plots/opamp_mc_min_preliminary.png)
+
+#### Fit finale &rarr; errori proiettati
+
+![MC Min Proj](Plots/Report_Plots/opamp_mc_min_projected.png)
+
+### Dataset Unificato
+
+#### Fit finale &rarr; errori proiettati
+
+![MC All Proj](Plots/Report_Plots/opamp_mc_all_projected.png)
+
+### Grandezze Picco Picco
+
+#### Fit preliminare &rarr; errori non proiettati
+
+![MC Min Pre](Plots/Report_Plots/opamp_mc_pp_preliminary.png)
+
+#### Fit finale &rarr; errori proiettati
+
+![MC Min Proj](Plots/Report_Plots/opamp_mc_pp_projected.png)
