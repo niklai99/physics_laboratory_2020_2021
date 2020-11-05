@@ -109,7 +109,7 @@ Seguono allora le misure dei massimi e dei minimi con associata l'opportuna ince
   
 | V<sub>in</sub>  (V)   | &sigma;<sub>V<sub>in</sub></sub> (V)| V<sub>out</sub>  (V)   | &sigma;<sub>V<sub>out</sub></sub> (V)|
 |:--------:|:--------:|:---------:|:----------:|
-| -0.102 |  0.003 |  -0.675 |   0.016 |
+| -0.102 |  0.003 |  -0.972 |   0.02 |
 | -0.252 |  0.006 |  -2.48 |   0.05 |
 | -0.400 |  0.010 |  -3.92 |   0.10 |
 | -0.496 |  0.011 |  -4.96 |   0.11 |
@@ -154,6 +154,36 @@ verranno considerati nell'analisi successiva.
 |:----:|:----:|:----:|:----:|
 | 1.35854 | 7 |0.0675817   +/-   0.0238213|   10.157   +/-   0.0948987 |
 
+![All Preliminary](Plots/Report_Plots/opamp_plot_preliminary.png)
+
 ### Proiezione Errori
 
 Ora che ho effettuato i fit preliminari, utilizzo il coefficiente angolare della retta interpolante per proiettare gli errori di V<sub>in</sub> su V<sub>out</sub>.
+
+#### Massimi 
+
+| V<sub>in</sub> (V)| &sigma;<sub>V<sub>in</sub></sub> (V)|  V<sub>out</sub>   (V)| &sigma;<sub>V<sub>out, projected</sub></sub> (V)|
+|:-------:|:-------:|:-------:|:-------:|
+| 0.106 | 0.003 |  1.00 |   0.03 |
+| 0.252 | 0.005 |  2.48 |   0.08 |
+| 0.400 | 0.010 |  4.00 |   0.14 |
+| 0.496 | 0.011 |  4.96 |   0.15 |
+| 0.744 | 0.014 |  7.44 |   0.19 |
+| 0.907 | 0.019 |  9.0 |   0.3 |
+| 1.01 | 0.02 |  10.0 |   0.3 |
+| 1.16 | 0.02 | 11.4 |   0.3 |
+| 1.29 | 0.03 | 13.0 |   0.4 |
+
+#### Minimi 
+
+| V<sub>in</sub> (V)| &sigma;<sub>V<sub>in</sub></sub> (V)|  V<sub>out</sub>   (V)| &sigma;<sub>V<sub>out, projected</sub></sub> (V)|
+|:-------:|:-------:|:-------:|:-------:|
+| -0.102 |   0.003 | -0.97 |   0.03 |
+| -0.252 |   0.006 | -2.48 |   0.08 |
+| -0.400 |   0.010 | -3.92 |   0.14 |
+| -0.496 |   0.011 | -4.96 |   0.16 |
+| -0.736 |   0.014 | -7.36 |   0.19 |
+| -0.881 |   0.019 |  -9.0 |    0.3 |
+|  -0.98 |    0.02 | -10.0 |    0.3 |
+|  -1.13 |    0.02 | -11.5 |    0.3 |
+|  -1.29 |    0.03 | -13.0 |    0.4 |
