@@ -205,11 +205,72 @@ V<sub>out</sub>.
 
 ![Min Projected](Plots/Report_Plots/opamp_plot_projected.png)
 
-Siccome la compatibilità tra i due coefficienti angolari è _ottima_, **&lambda; = 0.7**, procedo con un fit del dataset unificato con sia massimi che
-minimi.
+Siccome la compatibilità tra i due coefficienti angolari è _ottima_, **&lambda; = 0.7**, procedo con un fit del dataset unificato con sia massimi che minimi.
 
 ## Fit Dataset Unificato
 
 Ometto il dataset unificato perchè basta andarsi a guardare quelli sopra (con errori proiettati).
 
 ![All Projected](Plots/Report_Plots/opamp_plot_all_projected.png)
+
+L'andamento dei residui non mi piace molto, sembra avere una specie di andamento parabolico. Eppure il coefficiente angolare del fit dei massimi e
+quello dei minimi erano molto compatibili! Si nota anche che il nuovo coefficiente angolare è visibilmente diverso dai due coefficienti angolari
+separati: probabilmente c'è qualche sistematica sotto!
+
+_Ipotizzo che il problema stia nell'intercetta, e che quindi le due rette siano sfasate (abbiano un leggero offset). Per eliminare questo errore di
+offset, che assumo costante su tutte le misure, provo ad effettuare un'analisi delle misure picco picco facilmente computabili come
+V<sub>out</sub><sup>max</sup> - V<sub>out</sub><sup>min</sup> e V<sub>in</sub><sup>max</sup> - V<sub>in</sub><sup>min</sup>_.
+
+## Dataset Picco-Picco
+
+Partendo dalle misure effettuate in laboratorio ed all'errore ad esse associato, assembo il dataset di grandezze picco-picco. Successivamente effettuo
+un fit preliminare per ricavare il coefficiente angolare e proiettare l'errore in modo analogo ai dataset precedenti.
+
+### Data
+
+| Vpp<sub>in</sub> (V)   | &sigma;<sub>Vpp<sub>in</sub></sub> (V) | Vpp<sub>out</sub> (V)   | &sigma;<sub>Vpp<sub>out</sub></sub> (V) |
+|:-------:|:-------:|:-------:|:-------:|
+| 0.208 |   0.004 |  1.97 |    0.03 |
+| 0.504 |   0.008 |  4.96 |    0.08 |
+| 0.800 |   0.014 |  7.92 |    0.14 |
+| 0.992 |   0.015 |  9.92 |    0.16 |
+| 1.480 |   0.019 | 14.8 |    0.2 |
+| 1.79 |   0.03 | 18.0 |    0.3 |
+| 1.99 |   0.03 | 19.9 |    0.3 |
+| 2.29 |   0.03 | 22.9 |    0.3 |
+| 2.58 |   0.04 | 26.0 |    0.4 |
+
+### Fit Preliminare
+
+![Piccopicco Preliminary](Plots/Report_Plots/opamp_plot_pp_preliminary.png)
+
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+| 0.294132 | 7 |-0.129779   +/-   0.0339771|   10.0921   +/-   0.0668321 |
+
+### Proiezione Errori
+
+| Vpp<sub>in</sub> (V)   | &sigma;<sub>Vpp<sub>in</sub></sub> (V) | Vpp<sub>out</sub> (V)   | &sigma;<sub>Vpp<sub>out, projected</sub></sub> (V) |
+|:-------:|:-------:|:-------:|:-------:|
+| 0.208 |   0.004 |  1.97 |    0.05 |
+| 0.504 |   0.008 |  4.96 |    0.11 |
+| 0.800 |   0.014 |  7.9 |    0.2 |
+| 0.992 |   0.015 |  9.9 |    0.2 |
+| 1.480 |   0.019 | 14.8 |    0.3 |
+| 1.79 |   0.03 | 18.0 |    0.4 |
+| 1.99 |   0.03 | 19.9 |    0.4 |
+| 2.29 |   0.03 | 22.9 |    0.5 |
+| 2.58 |   0.04 | 26.0 |    0.5 |
+
+### Fit
+
+![Piccopicco Projected](Plots/Report_Plots/opamp_plot_pp_projected.png)
+
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+| 0.147273 | 7 |-0.129672   +/-   0.0539787|   10.0921   +/-   0.0961865 |
+
+Si nota come ora i residui siano ben distribuiti, nonostante le barre d'errore siano veramente enormi...
+
+## Simulazioni MonteCarlo
+

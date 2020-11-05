@@ -16,7 +16,7 @@ using namespace std;
 
 const double NPAR = 2;
 
-const string FILE_NAME_max = "../Data/data_opamp_all_projected_errx.txt";
+const string FILE_NAME_max = "../Data/data_opamp_peak_peak_projected.txt";
 const string FILE_NAME_min = "../Data/data_opamp_min_projected.txt";
 
 TCanvas* c1;
@@ -26,10 +26,10 @@ double err_post_max;
 double err_post_min;
 
 //plot range del fit
-const double XMIN_max = -1.5;
-const double XMAX_max = 1.5;
-const double YMIN_max = -14;
-const double YMAX_max = 14;
+const double XMIN_max = 0;
+const double XMAX_max = 2.8;
+const double YMIN_max = 0;
+const double YMAX_max = 30;
 
 //plot range dei residui
 const double RESXMIN_max = XMIN_max;
@@ -97,7 +97,7 @@ void opamp_max_and_min_plot_res() {
 
  
     plot_max = plot_fit(x_max, y_max, errX_max, errY_max);
-    plot_max->SetTitle("OpAmp Massimi e Minimi; V_{in} (V); V_{out} (V)");
+    plot_max->SetTitle("OpAmp Grandezze Picco Picco; Vpp_{in} (V); Vpp_{out} (V)");
     //plot_min = plot_fit(x_min, y_min, errX_min, errY_min);
     //plot_min->SetTitle("OpAmp Minimi; V_{in} (V); V_{out} (V)");
 
@@ -108,7 +108,7 @@ void opamp_max_and_min_plot_res() {
 
     c1->cd(2);
 	residuals_max = res(plot_max, x_max, y_max, errX_max, errY_max);
-    residuals_max->SetTitle("Residui Massimi e Minimi; V_{in} (V); V_{out} - fit (V)");
+    residuals_max->SetTitle("Residui Grandezze Picco Picco; Vpp_{in} (V); Vpp_{out} - fit (V)");
     //c1->cd(4);
     //residuals_min = res(plot_min, x_min, y_min, errX_min, errY_min);
     //residuals_min->SetTitle("Residui Minimi; V_{in} (V); V_{out} - fit (V)");
@@ -302,31 +302,31 @@ double err_posteriori(TFitResultPtr fit, vector<double>& x, vector<double>& y) {
 void latex_max(TLatex* text) {
     c1->cd(1);
 
-    text = new TLatex(-1.2, 10.5, "Fit Function");
+    text = new TLatex(.4, 26, "Fit Function");
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(-1, 8.5, "y = a + bx");
+    text = new TLatex(.6, 24.5, "y = a + bx");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(.2, -1, "Fit Parameters");
+    text = new TLatex(1.4, 11.5, "Fit Parameters");
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(.2, -4, "a = -0.01 #pm 0.02 V");
+    text = new TLatex(1.5, 9, "a = -0.13 #pm 0.05 V");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(.2, -6, "b = 9.93 #pm 0.07");
+    text = new TLatex(1.5, 7, "b = 10.1 #pm 0.1");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(.2, -8, "#chi^{2} = 7.9   NDF = 16");
+    text = new TLatex(1.5, 5, "#chi^{2} = 0.15   NDF = 7");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(.2, -10, "#sigma_{post} = 0.13");
+    text = new TLatex(1.5, 3, "#sigma_{post} = 0.06 V");
     text->SetTextSize(0.04);
     text->Draw();
     
