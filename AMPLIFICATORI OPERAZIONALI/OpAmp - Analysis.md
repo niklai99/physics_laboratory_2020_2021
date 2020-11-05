@@ -124,11 +124,32 @@ Seguono allora le misure dei massimi e dei minimi con associata l'opportuna ince
 
 ### Fit Preliminari
 
-- Mostrare quali sono gli outliers!!!!
-
 Ora faccio due fit separati per massimi e minimi considerando solo gli errori su V<sub>out</sub> al fine di stimare il coefficiente angolare _m_
 (_slope_). Questo lo userò poi per proiettare gli errori di V<sub>in</sub> lungo l'asse y: in tal modo potrò sommare quadraticamente i contributi
 d'errore di V<sub>out</sub> e V<sub>in</sub>.
 
-**NB: I fit vengono effettuati senza gli outliers, ovvero il primo dato (errore troppo piccolo e probabilmente ho preso male la misura) e gli ultimi
-tre dati presi in saturazione!**
+**NB: I fit vengono effettuati senza gli outliers, ovvero gli ultimi tre dati presi in saturazione!**
+
+Mostriamo prima di tutto la presenza degli outliers: faccio un plot espolaritvo con tutti i dati, sia massimi sia minimi, con il loro errore sia lungo
+x sia lungo y, ed effettuo un fit per osservare l'andamento dei residui.
+
+![All Data EDA](Plots/Report_Plots/opamp_plot_alldata_eda.png)
+
+Si nota chiaramente come gli ultimi tre punti nelle code non rispettino il trend lineare: sono proprio i punti presi in saturazione, che quindi non
+verranno considerati nell'analisi successiva.
+
+#### Fit Massimi
+
+![Max Preliminary](Plots/Report_Plots/opamp_plot_max_preliminary.png)
+
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+| 1.96966 | 7 |-0.0615312   +/-   0.0242261|   10.0251   +/-   0.0941201 |
+
+#### Fit Minimi
+
+![Min Preliminary](Plots/Report_Plots/opamp_plot_min_preliminary.png)
+
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+| 1.35854 | 7 |0.0675817   +/-   0.0238213|   10.157   +/-   0.0948987 |

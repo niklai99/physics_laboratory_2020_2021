@@ -6,19 +6,19 @@ namespace NSP {
 /*---COSTANTI---*/ 
 
     //nome file 
-    string FILE_NAME = "../Data/data_opamp_max_allpoints.txt";  
+    string FILE_NAME = "../Data/data_opamp_min_err_nooutliers.txt";  
 
     //plot range del fit
-    double XMIN = 0;
-    double XMAX = 1.9;
-    double YMIN = 0;
-    double YMAX = 15.5;
+    double XMIN = -1.5;
+    double XMAX = 0;
+    double YMIN = -14;
+    double YMAX = 0;
 
     //plot range dei residui
     double RESXMIN = XMIN;
     double RESXMAX = XMAX;
-    double RESYMIN = -3;
-    double RESYMAX = 0.55;
+    double RESYMIN = -.55;
+    double RESYMAX = .55;
 
 /*---OGGETTINI CARINI---*/ 
 
@@ -82,7 +82,7 @@ namespace NSP {
 
 /*---MAIN---*/
 
-void opamp_max_plot_err(){
+void opamp_all_eda(){
 
     //leggo i dati con errori dal file
     NSP::read_data(NSP::x, NSP::y, NSP::errX, NSP::errY);
@@ -178,7 +178,7 @@ void NSP::settings_fit(TGraphErrors* graph) {
     NSP::c1->cd(1);
 
     //titolo e assi
-    graph-> SetTitle("OpAmp Massimi; V_{in} (V); V_{out} (V)");
+    graph-> SetTitle("OpAmp Minimi; V_{in} (V); V_{out} (V)");
 
     //stile e colore
     graph-> SetLineColor(kBlack);
@@ -206,7 +206,7 @@ void NSP::settings_res(TGraphErrors* graph) {
     NSP::c1->cd(2);
 
     //titolo e assi 
-    graph-> SetTitle("Residui; V_{in} (V); fit - V_{out} (V)");
+    graph-> SetTitle("Residui; V_{in} (V); V_{out} - fit (V)");
 
     //colori e cose 
     graph-> SetLineColor(kBlack);
@@ -249,23 +249,6 @@ void NSP::settings_global() {
     gStyle->SetImageScaling(3.);
 }
 
-//funzione per leggere i dati senza errori da un file
-void NSP::read_data(vector<double>& x, vector<double>& y) {
-    //leggo il file e carico i dati nei vector
-    /*---NB: sarebbe meglio usare dei vector ausiliari così si possono fare operazioni e/o propagazioni di errori prima di inserirli nei vector ufficiali---*/
-    ifstream f;
-    f.open(NSP::FILE_NAME);
-    double i = 0;
-    while(f >> i) {
-
-        NSP::x.push_back(i);    //prima colonna
-        f >> i;
-        NSP::y.push_back(i);    //seconda colonna
-
-    }
-    f.close();
-}
-
 //funzione per leggere i dati con errori da un file
 void NSP::read_data(vector<double>& x, vector<double>& y, vector<double>& errX, vector<double>& errY) {
     //leggo il file e carico i dati nei vector
@@ -279,20 +262,12 @@ void NSP::read_data(vector<double>& x, vector<double>& y, vector<double>& errX, 
         f >> i;
         NSP::y.push_back(i);    //seconda colonna
         f >> i;
-        NSP::errX.push_back(i);     //push_back(0) se non ho errori sull'asse x
+        NSP::errX.push_back(0);     //push_back(0) se non ho errori sull'asse x
         f >> i;
         NSP::errY.push_back(i);
 
     }
     f.close();
-}
-
-//creo il grafico senza errori
-TGraph *NSP::plot_fit(vector<double>& x, vector<double>& y) {
-
-    TGraph* graph = new TGraph(NSP::x.size(), &NSP::x[0], &NSP::y[0]);
-
-    return graph;
 }
 
 //creo il grafico con errori
