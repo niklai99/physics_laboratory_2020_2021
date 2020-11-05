@@ -20,6 +20,10 @@ const string FILE_NAME_max = "../Data/data_opamp_max_nooutliers.txt";
 const string FILE_NAME_min = "../Data/data_opamp_min_err_nooutliers.txt";
 
 TCanvas* c1;
+TLatex* text;
+
+double err_post_max;
+double err_post_min;
 
 //plot range del fit
 const double XMIN_max = -0;
@@ -75,9 +79,15 @@ void linee_res(const double, const double);
 
 void settings_global();
 
+double err_posteriori(TFitResultPtr, vector<double>&, vector<double>&);
+
+void latex_max(TLatex*);
+void latex_min(TLatex*);
+
 
 
 void opamp_max_and_min_plot_res() {
+
     c1 = new TCanvas("canvas1", "Fit", 1080, 720);
     c1->Divide(2, 2);
 
@@ -86,7 +96,9 @@ void opamp_max_and_min_plot_res() {
 
  
     plot_max = plot_fit(x_max, y_max, errX_max, errY_max);
+    plot_max->SetTitle("OpAmp Massimi; V_{in} (V); V_{out} (V)");
     plot_min = plot_fit(x_min, y_min, errX_min, errY_min);
+    plot_min->SetTitle("OpAmp Minimi; V_{in} (V); V_{out} (V)");
 
     c1->cd(1);
     TFitResultPtr fit_max = fit_fun(plot_max, XMIN_max, XMAX_max);
@@ -95,8 +107,10 @@ void opamp_max_and_min_plot_res() {
 
     c1->cd(2);
 	residuals_max = res(plot_max, x_max, y_max, errX_max, errY_max);
+    residuals_max->SetTitle("Residui Massimi; V_{in} (V); V_{out} - fit (V)");
     c1->cd(4);
     residuals_min = res(plot_min, x_min, y_min, errX_min, errY_min);
+    residuals_min->SetTitle("Residui Minimi; V_{in} (V); V_{out} - fit (V)");
 
     c1->cd(1);
     settings_fit(plot_max, XMIN_max, XMAX_max, YMIN_max, YMAX_max);
@@ -115,6 +129,17 @@ void opamp_max_and_min_plot_res() {
     //personalizzo in modo globale i grafici
     settings_global();
 
+    err_post_max = err_posteriori(fit_max, x_max, y_max);
+    err_post_min = err_posteriori(fit_min, x_min, y_min);
+
+    cout << "\n\n" <<
+    "sigma post massimi:\n\n" <<
+    err_post_max << "\n\n" <<
+    "sigma post minimi:\n\n" <<
+    err_post_min << "\n\n";
+
+    latex_max(text);
+    latex_min(text);
 
     return;
 }
@@ -192,21 +217,17 @@ TGraphErrors* res(TGraphErrors* graph, vector<double>& x, vector<double>& y, vec
     return res_plot;
 }
 
-//personalizzazione globale dei grafici
 void settings_global() {
-    //imposto massimo tre cifre prima di usare la notazione scientifica
+
     TGaxis::SetMaxDigits(3);
-    //le tick labels hanno lo stesso numero di cifre significative
     gStyle->SetStripDecimals(kFALSE);
     gStyle->SetImageScaling(3.);
 }
 
 void linee_res(const double RESXMIN, const double RESXMAX) {    
 
-    //creo la linea
-    TLine *line = new TLine (RESXMIN, 0, RESXMAX, 0); //linea orizzontale sullo zero 
+    TLine *line = new TLine (RESXMIN, 0, RESXMAX, 0); 
 
-    //personalizzazione
     line->SetLineStyle(2);
     line->SetLineColor(kBlack);
 
@@ -216,7 +237,7 @@ void linee_res(const double RESXMIN, const double RESXMAX) {
 void settings_res(TGraphErrors* graph, const double RESXMIN, const double RESXMAX, const double RESYMIN, const double RESYMAX) {
 
     //titolo e assi 
-    graph-> SetTitle("Residui; V_{in} (V); V_{out} - fit (V)");
+    //graph-> SetTitle("Residui; V_{in} (V); V_{out} - fit (V)");
 
     //colori e cose 
     graph-> SetLineColor(kBlack);
@@ -241,7 +262,7 @@ void settings_fit(TGraphErrors* graph, const double XMIN, const double XMAX, con
     c1->cd(1);
 
     //titolo e assi
-    graph-> SetTitle("OpAmp; V_{in} (V); V_{out} (V)");
+    //graph-> SetTitle("OpAmp; V_{in} (V); V_{out} (V)");
 
     //stile e colore
     graph-> SetLineColor(kBlack);
@@ -259,4 +280,85 @@ void settings_fit(TGraphErrors* graph, const double XMIN, const double XMAX, con
     //tick più guardabili
     graph->GetXaxis()->SetTickLength(0.02);
     graph->GetYaxis()->SetTickLength(0.02);
+    
+}
+
+double err_posteriori(TFitResultPtr fit, vector<double>& x, vector<double>& y) {
+
+    double err_post_squared = 0;
+    const double m = fit->Parameter(0);
+    const double q = fit->Parameter(1);
+
+    
+    for(unsigned int j = 0; j < x.size(); j++) {
+        err_post_squared += pow( q + ( m * x[j] ) - y[j] , 2 ) / ( x.size() - 2 );
+    }
+
+    return sqrt(err_post_squared);
+}
+
+void latex_max(TLatex* text) {
+    c1->cd(1);
+
+    text = new TLatex(0.1, 12, "Fit Function");
+    text->SetTextSize(0.06);
+    text->Draw();
+
+    text = new TLatex(0.15, 10.5, "y = a + bx");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(.9, 6, "Fit Parameters");
+    text->SetTextSize(0.06);
+    text->Draw();
+
+    text = new TLatex(.9, 5, "a = -0.06 #pm 0.02 V");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(.9, 4, "b = 10.02 #pm 0.09");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(.9, 3, "#chi^{2} = 1.97   NDF = 7");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(.9, 2, "#sigma_{post} = 0.10");
+    text->SetTextSize(0.05);
+    text->Draw();
+    
+}
+
+void latex_min(TLatex* text) {
+    c1->cd(3);
+
+    text = new TLatex(-1.4, -2, "Fit Function");
+    text->SetTextSize(0.06);
+    text->Draw();
+
+    text = new TLatex(-1.35, -3.5, "y = c + dx");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(-0.6, -8, "Fit Parameters");
+    text->SetTextSize(0.06);
+    text->Draw();
+
+    text = new TLatex(-0.6, -9, "c = 0.07 #pm 0.02 V");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(-0.6, -10, "d = 10.16 #pm 0.09");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(-0.6, -11, "#chi^{2} = 1.36   NDF = 7");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(-0.6, -12, "#sigma_{post} = 0.07");
+    text->SetTextSize(0.05);
+    text->Draw();
+  
 }
