@@ -122,7 +122,7 @@ Seguono allora le misure dei massimi e dei minimi con associata l'opportuna ince
 | -1.59 | 0.03 | -14.8 | 0.3 |
 | -1.72 | 0.04 | -14.8 | 0.3 |
 
-### Fit Preliminari
+## Fit Preliminari
 
 Ora faccio due fit separati per massimi e minimi considerando solo gli errori su V<sub>out</sub> al fine di stimare il coefficiente angolare _m_
 (_slope_). Questo lo userò poi per proiettare gli errori di V<sub>in</sub> lungo l'asse y: in tal modo potrò sommare quadraticamente i contributi
@@ -138,7 +138,7 @@ x sia lungo y, ed effettuo un fit per osservare l'andamento dei residui.
 Si nota chiaramente come gli ultimi tre punti nelle code non rispettino il trend lineare: sono proprio i punti presi in saturazione, che quindi non
 verranno considerati nell'analisi successiva.
 
-#### Fit Massimi
+### Fit Massimi
 
 ![Max Preliminary](Plots/Report_Plots/opamp_plot_max_preliminary.png)
 
@@ -146,7 +146,7 @@ verranno considerati nell'analisi successiva.
 |:----:|:----:|:----:|:----:|
 | 1.96966 | 7 |-0.0615312   +/-   0.0242261|   10.0251   +/-   0.0941201 |
 
-#### Fit Minimi
+### Fit Minimi
 
 ![Min Preliminary](Plots/Report_Plots/opamp_plot_min_preliminary.png)
 
@@ -156,11 +156,14 @@ verranno considerati nell'analisi successiva.
 
 ![All Preliminary](Plots/Report_Plots/opamp_plot_preliminary.png)
 
-### Proiezione Errori
+## Proiezione Errori
 
-Ora che ho effettuato i fit preliminari, utilizzo il coefficiente angolare della retta interpolante per proiettare gli errori di V<sub>in</sub> su V<sub>out</sub>.
+Ora che ho effettuato i fit preliminari, utilizzo il coefficiente angolare della retta interpolante per proiettare gli errori di V<sub>in</sub> su
+V<sub>out</sub>.
 
-#### Massimi 
+![Error projection](LaTeX_equation/error_projection.png)
+
+### Massimi 
 
 | V<sub>in</sub> (V)| &sigma;<sub>V<sub>in</sub></sub> (V)|  V<sub>out</sub>   (V)| &sigma;<sub>V<sub>out, projected</sub></sub> (V)|
 |:-------:|:-------:|:-------:|:-------:|
@@ -174,7 +177,13 @@ Ora che ho effettuato i fit preliminari, utilizzo il coefficiente angolare della
 | 1.16 | 0.02 | 11.4 |   0.3 |
 | 1.29 | 0.03 | 13.0 |   0.4 |
 
-#### Minimi 
+![Max Projected](Plots/Report_Plots/opamp_plot_max_projected.png)
+
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+| 0.979322 | 7 |-0.0601178   +/-   0.0383327|   10.0231   +/-   0.135237 |
+
+### Minimi 
 
 | V<sub>in</sub> (V)| &sigma;<sub>V<sub>in</sub></sub> (V)|  V<sub>out</sub>   (V)| &sigma;<sub>V<sub>out, projected</sub></sub> (V)|
 |:-------:|:-------:|:-------:|:-------:|
@@ -187,3 +196,20 @@ Ora che ho effettuato i fit preliminari, utilizzo il coefficiente angolare della
 |  -0.98 |    0.02 | -10.0 |    0.3 |
 |  -1.13 |    0.02 | -11.5 |    0.3 |
 |  -1.29 |    0.03 | -13.0 |    0.4 |
+
+![Min Projected](Plots/Report_Plots/opamp_plot_min_projected.png)
+
+| Chi2 | NDf | offset | slope |
+|:----:|:----:|:----:|:----:|
+| 0.6687 | 7 |0.0689833   +/-   0.0379935|   10.1601   +/-   0.136798 |
+
+![Min Projected](Plots/Report_Plots/opamp_plot_projected.png)
+
+Siccome la compatibilità tra i due coefficienti angolari è _ottima_, **&lambda; = 0.7**, procedo con un fit del dataset unificato con sia massimi che
+minimi.
+
+## Fit Dataset Unificato
+
+Ometto il dataset unificato perchè basta andarsi a guardare quelli sopra (con errori proiettati).
+
+![All Projected](Plots/Report_Plots/opamp_plot_all_projected.png)

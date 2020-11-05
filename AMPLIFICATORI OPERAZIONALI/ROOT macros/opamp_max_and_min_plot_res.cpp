@@ -16,8 +16,8 @@ using namespace std;
 
 const double NPAR = 2;
 
-const string FILE_NAME_max = "../Data/data_opamp_max_nooutliers.txt";
-const string FILE_NAME_min = "../Data/data_opamp_min_err_nooutliers.txt";
+const string FILE_NAME_max = "../Data/data_opamp_all_projected_errx.txt";
+const string FILE_NAME_min = "../Data/data_opamp_min_projected.txt";
 
 TCanvas* c1;
 TLatex* text;
@@ -26,16 +26,16 @@ double err_post_max;
 double err_post_min;
 
 //plot range del fit
-const double XMIN_max = -0;
+const double XMIN_max = -1.5;
 const double XMAX_max = 1.5;
-const double YMIN_max = 0;
+const double YMIN_max = -14;
 const double YMAX_max = 14;
 
 //plot range dei residui
 const double RESXMIN_max = XMIN_max;
 const double RESXMAX_max = XMAX_max;
-const double RESYMIN_max = -.55;
-const double RESYMAX_max = .55;
+const double RESYMIN_max = -.65;
+const double RESYMAX_max = .65;
 
 //plot range del fit
 const double XMIN_min = -1.5;
@@ -89,57 +89,59 @@ void latex_min(TLatex*);
 void opamp_max_and_min_plot_res() {
 
     c1 = new TCanvas("canvas1", "Fit", 1080, 720);
-    c1->Divide(2, 2);
+    //c1->Divide(2, 2);
+    c1->Divide(2, 0);
 
     readData(x_max, y_max, errX_max, errY_max, FILE_NAME_max);
-    readData(x_min, y_min, errX_min, errY_min, FILE_NAME_min);
+    //readData(x_min, y_min, errX_min, errY_min, FILE_NAME_min);
 
  
     plot_max = plot_fit(x_max, y_max, errX_max, errY_max);
-    plot_max->SetTitle("OpAmp Massimi; V_{in} (V); V_{out} (V)");
-    plot_min = plot_fit(x_min, y_min, errX_min, errY_min);
-    plot_min->SetTitle("OpAmp Minimi; V_{in} (V); V_{out} (V)");
+    plot_max->SetTitle("OpAmp Massimi e Minimi; V_{in} (V); V_{out} (V)");
+    //plot_min = plot_fit(x_min, y_min, errX_min, errY_min);
+    //plot_min->SetTitle("OpAmp Minimi; V_{in} (V); V_{out} (V)");
 
     c1->cd(1);
     TFitResultPtr fit_max = fit_fun(plot_max, XMIN_max, XMAX_max);
-    c1->cd(3);
-    TFitResultPtr fit_min = fit_fun(plot_min, XMIN_min, XMAX_min);
+    //c1->cd(3);
+    //TFitResultPtr fit_min = fit_fun(plot_min, XMIN_min, XMAX_min);
 
     c1->cd(2);
 	residuals_max = res(plot_max, x_max, y_max, errX_max, errY_max);
-    residuals_max->SetTitle("Residui Massimi; V_{in} (V); V_{out} - fit (V)");
-    c1->cd(4);
-    residuals_min = res(plot_min, x_min, y_min, errX_min, errY_min);
-    residuals_min->SetTitle("Residui Minimi; V_{in} (V); V_{out} - fit (V)");
+    residuals_max->SetTitle("Residui Massimi e Minimi; V_{in} (V); V_{out} - fit (V)");
+    //c1->cd(4);
+    //residuals_min = res(plot_min, x_min, y_min, errX_min, errY_min);
+    //residuals_min->SetTitle("Residui Minimi; V_{in} (V); V_{out} - fit (V)");
 
     c1->cd(1);
     settings_fit(plot_max, XMIN_max, XMAX_max, YMIN_max, YMAX_max);
-    c1->cd(3);
-    settings_fit(plot_min, XMIN_min, XMAX_min, YMIN_min, YMAX_min);
+    //c1->cd(3);
+    //settings_fit(plot_min, XMIN_min, XMAX_min, YMIN_min, YMAX_min);
 
     //personalizzo il grafico residui
     c1->cd(2);
     linee_res(RESXMIN_max, RESXMAX_max);    
     settings_res(residuals_max, RESXMIN_max, RESXMAX_max, RESYMIN_max, RESYMAX_max);
 
-    c1->cd(4);
-    settings_res(residuals_min, RESXMIN_min, RESXMAX_min, RESYMIN_min, RESYMAX_min);
-    linee_res(RESXMIN_min, RESXMAX_min);
+    //c1->cd(4);
+    //settings_res(residuals_min, RESXMIN_min, RESXMAX_min, RESYMIN_min, RESYMAX_min);
+    //linee_res(RESXMIN_min, RESXMAX_min);
 
     //personalizzo in modo globale i grafici
     settings_global();
 
     err_post_max = err_posteriori(fit_max, x_max, y_max);
-    err_post_min = err_posteriori(fit_min, x_min, y_min);
-
+    cout << err_post_max << endl;
+    //err_post_min = err_posteriori(fit_min, x_min, y_min);
+/*
     cout << "\n\n" <<
     "sigma post massimi:\n\n" <<
     err_post_max << "\n\n" <<
     "sigma post minimi:\n\n" <<
     err_post_min << "\n\n";
-
+*/
     latex_max(text);
-    latex_min(text);
+    //latex_min(text);
 
     return;
 }
@@ -300,32 +302,32 @@ double err_posteriori(TFitResultPtr fit, vector<double>& x, vector<double>& y) {
 void latex_max(TLatex* text) {
     c1->cd(1);
 
-    text = new TLatex(0.1, 12, "Fit Function");
-    text->SetTextSize(0.06);
-    text->Draw();
-
-    text = new TLatex(0.15, 10.5, "y = a + bx");
+    text = new TLatex(-1.2, 10.5, "Fit Function");
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(.9, 6, "Fit Parameters");
-    text->SetTextSize(0.06);
+    text = new TLatex(-1, 8.5, "y = a + bx");
+    text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(.9, 5, "a = -0.06 #pm 0.02 V");
+    text = new TLatex(.2, -1, "Fit Parameters");
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(.9, 4, "b = 10.02 #pm 0.09");
-    text->SetTextSize(0.05);
+    text = new TLatex(.2, -4, "a = -0.01 #pm 0.02 V");
+    text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(.9, 3, "#chi^{2} = 1.97   NDF = 7");
-    text->SetTextSize(0.05);
+    text = new TLatex(.2, -6, "b = 9.93 #pm 0.07");
+    text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(.9, 2, "#sigma_{post} = 0.10");
-    text->SetTextSize(0.05);
+    text = new TLatex(.2, -8, "#chi^{2} = 7.9   NDF = 16");
+    text->SetTextSize(0.04);
+    text->Draw();
+
+    text = new TLatex(.2, -10, "#sigma_{post} = 0.13");
+    text->SetTextSize(0.04);
     text->Draw();
     
 }
@@ -345,15 +347,15 @@ void latex_min(TLatex* text) {
     text->SetTextSize(0.06);
     text->Draw();
 
-    text = new TLatex(-0.6, -9, "c = 0.07 #pm 0.02 V");
+    text = new TLatex(-0.6, -9, "c = 0.07 #pm 0.04 V");
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(-0.6, -10, "d = 10.16 #pm 0.09");
+    text = new TLatex(-0.6, -10, "d = 10.16 #pm 0.14");
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(-0.6, -11, "#chi^{2} = 1.36   NDF = 7");
+    text = new TLatex(-0.6, -11, "#chi^{2} = 0.67   NDF = 7");
     text->SetTextSize(0.05);
     text->Draw();
 
