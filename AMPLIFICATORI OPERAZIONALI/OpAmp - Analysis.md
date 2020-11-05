@@ -124,6 +124,8 @@ Seguono allora le misure dei massimi e dei minimi con associata l'opportuna ince
 
 ### Fit Preliminari
 
+- Mostrare quali sono gli outliers!!!!
+
 Ora faccio due fit separati per massimi e minimi considerando solo gli errori su V<sub>out</sub> al fine di stimare il coefficiente angolare _m_
 (_slope_). Questo lo userò poi per proiettare gli errori di V<sub>in</sub> lungo l'asse y: in tal modo potrò sommare quadraticamente i contributi
 d'errore di V<sub>out</sub> e V<sub>in</sub>.
