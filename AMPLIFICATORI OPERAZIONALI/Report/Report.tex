@@ -255,18 +255,24 @@ dico come quando e quante misure ho preso, tabelle misure e propagazioni
 \subsection{Simulazioni Spice}
 Prima di procedere con l'analisi dati, si decide di simulare la risposta del circuito utilizzando il programma LTSpice.
 Il circuito in questione è riportato in Figura \ref{i:opamp_circuit}, tenendo conto però che il generatore è impostato
-in modalità "50 Ohm". Si sceglie di effettuare la simulazione solamente con un segnale in ingresso di ampiezza picco picco
-$Vpp_{\text{gen}}=2\,\si{\volt }$.
+in modalità "50 Ohm". Si sceglie di effettuare la simulazione considerando due ampiezze in ingresso significative: per
+la prima si imposta dal generatore un'ampiezza $V_{\text{gen}}=1\,\si{\volt}$ mentre per la seconda
+$V_{\text{gen}}=4\,\si{\volt}$. Questa scelta è dettata dal fatto che l'amplificatore operazionale, essendo una
+componente attiva del circuito, non può dare in output una tensiore maggiore di quanta non ne riceve in alimentazione
+per conservazione dell'energia. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_spice_1V.png}
+	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_spice_1V_4V.png}
 	\caption{Simulazione Spice della risposta del circuito ad una tensione sinusoidale di frequenza
-	$f_{\text{gen}}=1\,\si{k\hertz}$ e ampiezza picco picco $Vpp_{\text{gen}}=2\,\si{\volt }$}
+	$f_{\text{gen}}=1\,\si{k\hertz}$ e ampiezza $V_{\text{gen}}=1\,\si{\volt}$ oppure $V_{\text{gen}}=4\,\si{\volt}$}
 	\label{i:opamp_simulation}
 \end{figure}
 
-Commento cosa vedo.
+Dal grafico si evince chiaramente come erogando $V_{\text{gen}}=1\,\si{\volt}$ il segnale viene amplificato
+correttamente di circa un fattore 10 mantenendo la forma sinusoidale, mentre erogando $V_{\text{gen}}=4\,\si{\volt}$ il
+segnale in uscita presenta i picchi tagliati esattamente a livello delle tensioni di alimentazione fornite
+all'operazionale.
 
 
 
