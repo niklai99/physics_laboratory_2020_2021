@@ -92,10 +92,11 @@
 			[3mm]
 
 			\textsc{\Large{\bfseries  Obiettivo dell'Esperienza}}\\
-			\large{Misurare l'amplificazione di un circuito con amplificatore operazionale.\\
+			\large{Verificare la linearità di un amplificatore operazionale.\\
+			Misurare l'amplificazione di un circuito con amplificatore operazionale.\\
 			Misurare la frequenza di taglio di un circuito
 			derivatore con amplificatore operazionale.}\\
-			[8.5cm]
+			[8.cm]
 			
 			
 
@@ -119,7 +120,9 @@
 \cleardoublepage
 	%-----------------------------------fine pagina titolo
 
-\section{Apparato Sperimentale}
+
+%---------------------------------------------Apparato Sperimentale
+\section{Strumentazione e Componenti}
 \begin{itemize}
 	\item \textbf{Oscilloscopio} (Tektronix TBS1102B): Lo strumento presenta un'accuratezza sul guadagno verticale pari al 3\% del valore letto
 	(errore massimo) ed è \textit{generalmente} il contributo più significativo. L'incertezza di guadagno sui tempi si assume trascurabile.
@@ -207,10 +210,18 @@
 
 \cleardoublepage
 
+
+
+
+%------------------------------------------------------OPAMP
 \section{Amplificatore Operazionale Invertente}
+
+Si inizia assemblando il seguente circuito, utilizzando le resistenze $R_f$, $R_1$, $R_3$ e l'amplificatore operazionale che, essendo un componente
+circuitale attivo, viene alimentato da sfruttando il generatore di tensione continua con $V_{cc}=+15\,\si{\volt}$ e $V_{ee}=-15\,\si{\volt}$.
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=14cm]{../Simulations/OpAmp/circuit_image.png}
+	\includegraphics[width=\linewidth]{../Simulations/OpAmp/circuit_image_nosim.png}
 	\caption{}
 	\label{i:opamp_circuit}
 \end{figure}

@@ -1,11 +1,11 @@
 # Fdb version 3
-["pdflatex"] 1604414208 "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" "Report" 1604414210
-  "../Simulations/OpAmp/circuit_image.png" 1603894856 27841 f9a0035ffe144f529c324fe11d566daa ""
-  "Report.aux" 1604414210 2197 2f6685d41082196bc531dfec5a52357f ""
-  "Report.out" 1604414210 128 6374fb1e79c9d7b8b046682a16354382 ""
-  "Report.tex" 1604414205 6551 16a576ab28172b8d32848e63817fdd3c ""
-  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux" 1604414210 2197 2f6685d41082196bc531dfec5a52357f ""
-  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" 1604414205 6551 16a576ab28172b8d32848e63817fdd3c ""
+["pdflatex"] 1604659201 "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" "Report" 1604659204
+  "../Simulations/OpAmp/circuit_image_nosim.png" 1604658762 23552 1b166b4c8a3ce6e700ecbcce9a7a056a ""
+  "Report.aux" 1604659203 2203 c57b36014a0ba35e2815f4b99e009b36 ""
+  "Report.out" 1604659203 134 48b8bfd02f89d592ba44cb38a4f94ed9 ""
+  "Report.tex" 1604659200 7068 69c609891396c9f4fb7a44c9853557ab ""
+  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux" 1604659203 2203 c57b36014a0ba35e2815f4b99e009b36 ""
+  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" 1604659200 7068 69c609891396c9f4fb7a44c9853557ab ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1543003531 2971 def0b6c1f0b107b3b936def894055589 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1543003531 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1543004023 3332 103109f5612ad95229751940c61aada0 ""
@@ -241,9 +241,9 @@
   "d:/Programmi/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1543006103 4221249 5a7acd7c4f43ef9d3542dd9f41e78574 ""
   "d:/Programmi/texlive/2018/texmf.cnf" 1543005960 673 4ae7b2f49cee444c5343a45b5d0f169c ""
   (generated)
-  "Report.pdf"
-  "Report.log"
-  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.log"
   "Report.out"
   "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf"
   "Report.aux"
+  "Report.pdf"
+  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.log"
+  "Report.log"

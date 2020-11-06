@@ -215,6 +215,11 @@ Ometto il dataset unificato perchè basta andarsi a guardare quelli sopra (con e
 
 ![All Projected](Plots/Report_Plots/opamp_plot_all_projected.png)
 
+L'errore associato ai punto è molto grande: 
+
+1) ho usato 0.04 V/div invece di 0.013 V/div &rarr; sovrastima dell'errore
+2) i contributi di scala sono tra loro correlati (questo comporta una sottostima dell'errore dei parametri del fit!)
+
 L'andamento dei residui non mi piace molto, sembra avere una specie di andamento parabolico. Eppure il coefficiente angolare del fit dei massimi e
 quello dei minimi erano molto compatibili! Si nota anche che il nuovo coefficiente angolare è visibilmente diverso dai due coefficienti angolari
 separati: probabilmente c'è qualche sistematica sotto!
