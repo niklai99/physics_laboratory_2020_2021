@@ -224,7 +224,7 @@
 \section{Amplificatore Operazionale Invertente}
 Breve introduzione
 
-\subsection{Configurazione Circuitale}
+\subsection{Configurazione Sperimentale}
 
 Si inizia assemblando il seguente circuito, utilizzando le resistenze $R_f$, $R_1$, $R_3$ e l'amplificatore
 operazionale. La resistenza $R_g$ rappresenta la resistenza interna del generatore, non nulla in quanto ci si trova in
@@ -238,14 +238,17 @@ condizioni di non idealità.
 \end{figure}
 
 \noindent Il segnale viene prelevato nei punti \textit{IN} e \textit{OUT} evidenziati nello schema in Figura
-\ref{i:opamp_circuit} (e verrà successivamente richiamato come $V_{\text{in}}$ e $V_{\text{out}}$ rispettivamente)
-utilizzando due sonde con fattore di attenuazione 10X.\\
-\noindent Nel canale CH1 dell'oscilloscopio viene visualizzato il segnale in ingresso $V_{\text{in}}$, mentre il segnale
-in uscita $V_{\text{out}}$ è prelevato dalla sonda collegata al canale CH2. Per entrambi i canali viene impostata
-l'attenuazione sonda 10X, in modo da visualizzare nel display il segnale non attenuato. \\
-\noindent Il generatore di funzioni viene poi configurato in modalità "50 Ohm", in modo che l'impedenza d'uscita del
+\ref{i:opamp_circuit} (e verrà in seguito richiamato rispettivamente come $V_{\text{in}}$ e $V_{\text{out}}$)
+utilizzando due sonde con fattore di attenuazione 10X. Nel canale CH1 dell'oscilloscopio viene visualizzato il segnale
+in ingresso $V_{\text{in}}$, mentre il segnale in uscita $V_{\text{out}}$ è prelevato dalla sonda collegata al canale
+CH2. Per entrambi i canali viene impostata l'attenuazione sonda 10X, in modo da visualizzare nel display il segnale non
+attenuato. Il generatore di funzioni viene poi configurato in modalità "50 Ohm", in modo che l'impedenza d'uscita del
 generatore corrisponda con $R_3\approx 50\si{\ohm}$. Così facendo, ci si aspetta di trovare una tensione in ingresso
-$V_{\text{in}}$ in accordo con la tensione nominale erogata dal generatore. 
+$V_{\text{in}}$ in accordo con la tensione nominale erogata dal generatore. Si imposta infine il generatore di funzioni
+in modo da erogare un segnale di tipo sinusoidale con frequenza $f_{\text{gen}}=1\,\si{k\hertz}$ e di ampiezza
+variabile.
+
+\subsection{Acquisizione Misure}
 
 
 
