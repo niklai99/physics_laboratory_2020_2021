@@ -94,8 +94,7 @@
 			\textsc{\Large{\bfseries  Obiettivo dell'Esperienza}}\\
 			\large{Verificare la linearità di un amplificatore operazionale.\\
 			Misurare l'amplificazione di un circuito con amplificatore operazionale.\\
-			Misurare la frequenza di taglio di un circuito
-			derivatore con amplificatore operazionale.}\\
+			Misurare la frequenza di taglio di un circuito derivatore con amplificatore operazionale.}\\
 			[8.cm]
 			
 			
@@ -203,7 +202,11 @@
 		\label{t:direct_measures}
 	\end{table}	
 
-	\item \textbf{Circuito integrato TL082C} (Due Amplificatori Operazionali)
+	\item \textbf{Circuito integrato TL082C} (Due Amplificatori Operazionali): essendo gli amplificatori operazionali delle componenti circuitali
+	attive, esse devono essere alimentate. Si utilizza dunque il generatore di tensione continua con $V_{+} = V_{\text{cc}} = +15\,\si{\volt}$ e
+	$V_{-} = V_{\text{ee}}=-15\,\si{\volt}$ per l'alimentazione dell'amplificatore operazionale utilizzato nell'esperienza. Nel corso di quest'ultima,
+	si assume un comportamento \textit{ideale} dell'amplificatore operazionale, ovvero che il polo invertente ed il polo non invertente si trovino
+	allo stesso potenziale.
 	
 	\item \textbf{Scheda Arduino Due}
 \end{itemize}
@@ -215,18 +218,22 @@
 
 %------------------------------------------------------OPAMP
 \section{Amplificatore Operazionale Invertente}
+Breve introduzione
 
-Si inizia assemblando il seguente circuito, utilizzando le resistenze $R_f$, $R_1$, $R_3$ e l'amplificatore operazionale che, essendo un componente
-circuitale attivo, viene alimentato da sfruttando il generatore di tensione continua con $V_{cc}=+15\,\si{\volt}$ e $V_{ee}=-15\,\si{\volt}$.
+\subsection{Configurazione Circuitale}
+
+Si inizia assemblando il seguente circuito, utilizzando le resistenze $R_f$, $R_1$, $R_3$ e l'amplificatore operazionale. La resistenza $R_g$
+rappresenta la resistenza interna del generatore, non nulla in quanto ci si trova in condizioni di non idealità. 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Simulations/OpAmp/circuit_image_nosim.png}
-	\caption{}
+	\caption{In figura è rappresentato lo schema del circuito assemblato in laboratorio.}
 	\label{i:opamp_circuit}
 \end{figure}
 
- 
+\noindent Il segnale viene prelevato nei punti \textit{IN} e \textit{OUT} evidenziati nello schema in \ref{i:opamp_circuit} (e verrà successivamente
+richiamato come $V_{\text{in}}$ e $V_{\text{out}}$ rispettivamente) utilizzando due sonde con fattore di attenuazione 10X.
 
 
 

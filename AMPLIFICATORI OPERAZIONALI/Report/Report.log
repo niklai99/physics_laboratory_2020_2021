@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  6 NOV 2020 11:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  6 NOV 2020 11:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1259,57 +1259,67 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 71.
  (d:/Programmi/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 107--111
+Underfull \hbox (badness 10000) in paragraph at lines 106--110
 
  []
 
 [1
 
 {d:/Programmi/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (13.26189pt too wide) in paragraph at lines 127--131
+Overfull \hbox (13.26189pt too wide) in paragraph at lines 126--130
 []\T1/cmr/bx/n/10.95 Oscilloscopio \T1/cmr/m/n/10.95 (Tek-tro-nix TBS1102B): Lo stru-men-to pre-sen-ta un'ac-cu-ra-tez-za sul gua-da-gno ver-ti-ca-le
+ []
+
+
+Overfull \hbox (23.8565pt too wide) in paragraph at lines 205--210
+[]\T1/cmr/bx/n/10.95 Circuito in-te-gra-to TL082C \T1/cmr/m/n/10.95 (Due Am-pli-fi-ca-to-ri Ope-ra-zio-na-li): es-sen-do gli am-pli-fi-ca-to-ri ope-ra-zio-na-li
+ []
+
+
+Overfull \hbox (16.79237pt too wide) in paragraph at lines 205--210
+\T1/cmr/m/n/10.95 di ten-sio-ne con-ti-nua con $\OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 = +15 []$ \T1/cmr/m/n/10.95 e $\OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 15 []$ \T1/cmr/m/n/10.95 per l'a-li-men-ta-zio-ne del-l'am-pli-fi-ca-to-re
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.211 \cleardoublepage
+l.214 \cleardoublepage
                        [1
 
 ]
-Overfull \hbox (13.09756pt too wide) in paragraph at lines 219--221
-\T1/cmr/m/n/10.95 Si ini-zia as-sem-blan-do il se-guen-te cir-cui-to, uti-liz-zan-do le re-si-sten-ze $\OML/cmm/m/it/10.95 R[]$\T1/cmr/m/n/10.95 , $\OML/cmm/m/it/10.95 R[]$\T1/cmr/m/n/10.95 , $\OML/cmm/m/it/10.95 R[]$ \T1/cmr/m/n/10.95 e l'am-pli-fi-ca-to-re ope-ra-zio-na-le
+Overfull \hbox (16.12366pt too wide) in paragraph at lines 225--227
+\T1/cmr/m/n/10.95 Si ini-zia as-sem-blan-do il se-guen-te cir-cui-to, uti-liz-zan-do le re-si-sten-ze $\OML/cmm/m/it/10.95 R[]$\T1/cmr/m/n/10.95 , $\OML/cmm/m/it/10.95 R[]$\T1/cmr/m/n/10.95 , $\OML/cmm/m/it/10.95 R[]$ \T1/cmr/m/n/10.95 e l'am-pli-fi-ca-to-re ope-ra-zio-na-le.
  []
 
-<../Simulations/OpAmp/circuit_image_nosim.png, id=45, 1153.911pt x 549.85425pt>
+<../Simulations/OpAmp/circuit_image_nosim.png, id=51, 1153.911pt x 549.85425pt>
 File: ../Simulations/OpAmp/circuit_image_nosim.png Graphic file (type png)
 <use ../Simulations/OpAmp/circuit_image_nosim.png>
-Package pdftex.def Info: ../Simulations/OpAmp/circuit_image_nosim.png  used on input line 224.
+Package pdftex.def Info: ../Simulations/OpAmp/circuit_image_nosim.png  used on input line 230.
 (pdftex.def)             Requested size: 483.69687pt x 230.48413pt.
 [2
 
  <../Simulations/OpAmp/circuit_image_nosim.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 252.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 252.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 259.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 259.
  (d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 252.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 252.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 259.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 259.
 Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: 48B8BFD02F89D592BA44CB38A4F94ED9;134.
+(rerunfilecheck)             Checksum: 84165497677DEB0E3F87D2079C069472;208.
  ) 
 Here is how much of TeX's memory you used:
- 32102 strings out of 492649
- 625541 string characters out of 6128653
- 778545 words of memory out of 5000000
- 35505 multiletter control sequences out of 15000+600000
- 557190 words of font info for 87 fonts, out of 8000000 for 9000
+ 32106 strings out of 492649
+ 625593 string characters out of 6128653
+ 779545 words of memory out of 5000000
+ 35507 multiletter control sequences out of 15000+600000
+ 557966 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,23n,58p,10452b,1102s stack positions out of 5000i,500n,10000p,200000b,80000s
-{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb>
-Output written on "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" (3 pages, 253579 bytes).
+{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb>
+Output written on "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" (3 pages, 295616 bytes).
 PDF statistics:
- 118 PDF objects out of 1000 (max. 8388607)
- 92 compressed objects within 1 object stream
- 8 named destinations out of 1000 (max. 500000)
- 34 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 136 PDF objects out of 1000 (max. 8388607)
+ 106 compressed objects within 2 object streams
+ 9 named destinations out of 1000 (max. 500000)
+ 42 words of extra memory for PDF output out of 10000 (max. 10000000)
 
