@@ -253,7 +253,12 @@ variabile.
 
 
 \subsection{Acquisizione Misure}
-dico come quando e quante misure ho preso, tabelle misure e propagazioni
+Al fine di verificare la linearità dell'amplificatore operazionale e stimare l'amplificazione del
+circuito, si decide di far variare la tensione in ingresso impostando valori crescenti di ampiezza del segnale erogato
+dal generatore di funzioni. Per ciascuno di questi valori di tensione si acquisisce la misura di un massimo e di un
+minimo sia del segnale $V_{\text{in}}$ sia del segnale $V_{\text{out}}$ sfruttando i cursori orizzontali
+dell'oscilloscopio. In questo modo, si ottiene un campione di coppie ($V_{\text{in}}$, $V_{\text{out}}$) che ci si
+aspetta segua un andamento lineare.
 
 \subsection{Simulazioni Spice}
 Prima di procedere con l'analisi dati, si decide di simulare la risposta del circuito utilizzando il programma LTSpice.

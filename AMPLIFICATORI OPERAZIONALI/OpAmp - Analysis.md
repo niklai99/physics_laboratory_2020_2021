@@ -340,3 +340,8 @@ c'è una sistematica che crea problemi.
 #### Fit finale &rarr; errori proiettati
 
 ![MC Min Proj](Plots/Report_Plots/opamp_mc_pp_projected.png)
+
+## Idea
+
+Provo a calcolare Vout/Vin per ogni coppia e faccio un fit lineare &rarr; dovrebbe venire una retta del tipo y=10 e
+sarebbe tipo una media pesata!
