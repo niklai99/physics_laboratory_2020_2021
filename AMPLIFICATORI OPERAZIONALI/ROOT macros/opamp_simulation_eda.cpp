@@ -29,6 +29,8 @@ const double XMAX = 0.015;
 const double YMIN = -12;
 const double YMAX = 12;
 
+const int NPAR = 3;
+
 //vector dei dati + errori
 vector<double> t, Vin, Vout;
 
@@ -55,6 +57,8 @@ void settings_global();
 
 void linee(const double, const double);
 
+void legend();
+
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -70,16 +74,18 @@ void opamp_simulation_eda() {
     mg = make_mg(plot_Vin, plot_Vout);
 
     plot_Vin-> SetLineColor(kBlue);
+    plot_Vin-> SetLineWidth(2);
     plot_Vin-> SetMarkerStyle(8);
     plot_Vin-> SetMarkerColor(kBlue);
     //plot_Vin-> SetMarkerSize(1);
 
     plot_Vout-> SetLineColor(kRed);
+    plot_Vout-> SetLineWidth(2);
     plot_Vout-> SetMarkerStyle(20);
     plot_Vout-> SetMarkerColor(kRed);
     plot_Vout-> SetMarkerSize(1);
 
-    mg->Draw("AP");
+    mg->Draw("APL");
 
     mg->SetTitle("LTSpice Simulation; t (s); Voltage (V)");
 
@@ -90,6 +96,7 @@ void opamp_simulation_eda() {
     settings_global();
 
     linee(XMIN, XMAX);
+    legend();
 
     return;
 }
@@ -174,8 +181,25 @@ void linee(const double RESXMIN, const double RESXMAX) {
     line->Draw();
 }
 
+double myfit(double* x, double* par){   
+    double A = par[0];
+    double w = par[1];
+    double p = par[2];
 
+    double fit_function = 0;
 
+    fit_function = A * sin(w * x[0] + p);
+
+    return fit_function;
+}
+
+void legend() {
+    TLegend *leg = new TLegend(0.7, 0.15, 0.85, 0.3);
+    leg->AddEntry(plot_Vin, "Simulazione V_{in}  ", "pl");
+    leg->AddEntry(plot_Vout, "Simulazione V_{out}  ", "pl");
+    //leg->SetMargin(0.2);
+    leg->Draw();
+}
 
 
 
