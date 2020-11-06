@@ -222,7 +222,10 @@
 
 %------------------------------------------------------OPAMP
 \section{Amplificatore Operazionale Invertente}
-Breve introduzione
+In questa sezione ci si propone di studiare il comportamento di un circuito puramente resistivo comprendente un
+amplificatore operazionale in configurazione invertente (polo positivo a massa, polo negativo collegato al segnale in
+ingresso). Si vuole in particolare verificare la sua linearità e stimare l'amplificazione del circuito come grandezza derivata
+partendo da misure dirette oppure come parametro di un'interpolazione lineare. 
 
 \subsection{Configurazione Sperimentale}
 
@@ -258,18 +261,18 @@ Il circuito in questione è riportato in Figura \ref{i:opamp_circuit}, tenendo c
 in modalità "50 Ohm". Si sceglie di effettuare la simulazione considerando due ampiezze in ingresso significative: per
 la prima si imposta dal generatore un'ampiezza $V_{\text{gen}}=1\,\si{\volt}$ mentre per la seconda
 $V_{\text{gen}}=4\,\si{\volt}$. Questa scelta è dettata dal fatto che l'amplificatore operazionale, essendo una
-componente attiva del circuito, non può dare in output una tensiore maggiore di quanta non ne riceve in alimentazione
+componente attiva del circuito, non può dare in output una tensiore maggiore di quanta ne riceve in alimentazione
 per conservazione dell'energia. 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_spice_1V_4V.png}
-	\caption{Simulazione Spice della risposta del circuito ad una tensione sinusoidale di frequenza
+	\caption{Simulazione Spice della risposta del circuito ad una tensione sinusoidale in ingresso di frequenza
 	$f_{\text{gen}}=1\,\si{k\hertz}$ e ampiezza $V_{\text{gen}}=1\,\si{\volt}$ oppure $V_{\text{gen}}=4\,\si{\volt}$}
 	\label{i:opamp_simulation}
 \end{figure}
 
-Dal grafico si evince chiaramente come erogando $V_{\text{gen}}=1\,\si{\volt}$ il segnale viene amplificato
+\noindent Dal grafico si evince chiaramente come erogando $V_{\text{gen}}=1\,\si{\volt}$ il segnale viene amplificato
 correttamente di circa un fattore 10 mantenendo la forma sinusoidale, mentre erogando $V_{\text{gen}}=4\,\si{\volt}$ il
 segnale in uscita presenta i picchi tagliati esattamente a livello delle tensioni di alimentazione fornite
 all'operazionale.
