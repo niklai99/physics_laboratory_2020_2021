@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  6 NOV 2020 11:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  6 NOV 2020 12:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1134,28 +1134,28 @@ Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 ) (d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux)
 \openout1 = `Report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 71.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 71.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 72.
  (d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Info: Redefining \it@ocap on input line 71.
-LaTeX Info: Redefining \it@ccap on input line 71.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Info: Redefining \it@ocap on input line 72.
+LaTeX Info: Redefining \it@ccap on input line 72.
  (d:/Programmi/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count344
@@ -1183,14 +1183,14 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 \symgns@font=\mathgroup9
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
-(Font)                  TS1/cmr/m/n --> TS1/cmr/bx/n on input line 71.
-Package gensymb Info: Math companion symbols declared on input line 71.
-LaTeX Info: Redefining \degree on input line 71.
-LaTeX Info: Redefining \celsius on input line 71.
-Package gensymb Info: Using text companion symbols for \degree, \celsius and \perthousand on input line 71.
-LaTeX Info: Redefining \ohm on input line 71.
-Package gensymb Info: Using \textohm for \ohm on input line 71.
-Package gensymb Info: Using \textmu for \micro on input line 71.
+(Font)                  TS1/cmr/m/n --> TS1/cmr/bx/n on input line 72.
+Package gensymb Info: Math companion symbols declared on input line 72.
+LaTeX Info: Redefining \degree on input line 72.
+LaTeX Info: Redefining \celsius on input line 72.
+Package gensymb Info: Using text companion symbols for \degree, \celsius and \perthousand on input line 72.
+LaTeX Info: Redefining \ohm on input line 72.
+Package gensymb Info: Using \textohm for \ohm on input line 72.
+Package gensymb Info: Using \textmu for \micro on input line 72.
  ABD: EveryShipout initializing macros
 \c@lstlisting=\count350
 
@@ -1229,7 +1229,7 @@ Package gensymb Info: Using \textmu for \micro on input line 71.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box98
-Package hyperref Info: Link coloring OFF on input line 71.
+Package hyperref Info: Link coloring OFF on input line 72.
 (d:/Programmi/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
  (d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -1237,9 +1237,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count351
 )
-LaTeX Info: Redefining \ref on input line 71.
-LaTeX Info: Redefining \pageref on input line 71.
-LaTeX Info: Redefining \nameref on input line 71.
+LaTeX Info: Redefining \ref on input line 72.
+LaTeX Info: Redefining \pageref on input line 72.
+LaTeX Info: Redefining \nameref on input line 72.
  (d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.out) (d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.out)
 \@outlinefile=\write4
 \openout4 = `Report.out'.
@@ -1251,59 +1251,64 @@ Dictionary: translator-basic-dictionary, Language: English
 ) (d:/Programmi/texlive/2018/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
 File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 71.
+LaTeX Font Info:    Try loading font information for U+msa on input line 72.
  (d:/Programmi/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 71.
+LaTeX Font Info:    Try loading font information for U+msb on input line 72.
  (d:/Programmi/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 106--110
+Underfull \hbox (badness 10000) in paragraph at lines 107--111
 
  []
 
 [1
 
 {d:/Programmi/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (13.26189pt too wide) in paragraph at lines 126--130
+Overfull \hbox (13.26189pt too wide) in paragraph at lines 127--132
 []\T1/cmr/bx/n/10.95 Oscilloscopio \T1/cmr/m/n/10.95 (Tek-tro-nix TBS1102B): Lo stru-men-to pre-sen-ta un'ac-cu-ra-tez-za sul gua-da-gno ver-ti-ca-le
  []
 
 
-Overfull \hbox (23.8565pt too wide) in paragraph at lines 205--210
+Overfull \hbox (23.8565pt too wide) in paragraph at lines 208--214
 []\T1/cmr/bx/n/10.95 Circuito in-te-gra-to TL082C \T1/cmr/m/n/10.95 (Due Am-pli-fi-ca-to-ri Ope-ra-zio-na-li): es-sen-do gli am-pli-fi-ca-to-ri ope-ra-zio-na-li
  []
 
 
-Overfull \hbox (16.79237pt too wide) in paragraph at lines 205--210
+Overfull \hbox (16.79237pt too wide) in paragraph at lines 208--214
 \T1/cmr/m/n/10.95 di ten-sio-ne con-ti-nua con $\OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 = +15 []$ \T1/cmr/m/n/10.95 e $\OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 = \OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 15 []$ \T1/cmr/m/n/10.95 per l'a-li-men-ta-zio-ne del-l'am-pli-fi-ca-to-re
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.214 \cleardoublepage
+l.218 \cleardoublepage
                        [1
 
 ]
-Overfull \hbox (16.12366pt too wide) in paragraph at lines 225--227
+Overfull \hbox (16.12366pt too wide) in paragraph at lines 229--232
 \T1/cmr/m/n/10.95 Si ini-zia as-sem-blan-do il se-guen-te cir-cui-to, uti-liz-zan-do le re-si-sten-ze $\OML/cmm/m/it/10.95 R[]$\T1/cmr/m/n/10.95 , $\OML/cmm/m/it/10.95 R[]$\T1/cmr/m/n/10.95 , $\OML/cmm/m/it/10.95 R[]$ \T1/cmr/m/n/10.95 e l'am-pli-fi-ca-to-re ope-ra-zio-na-le.
  []
 
 <../Simulations/OpAmp/circuit_image_nosim.png, id=51, 1153.911pt x 549.85425pt>
 File: ../Simulations/OpAmp/circuit_image_nosim.png Graphic file (type png)
 <use ../Simulations/OpAmp/circuit_image_nosim.png>
-Package pdftex.def Info: ../Simulations/OpAmp/circuit_image_nosim.png  used on input line 230.
+Package pdftex.def Info: ../Simulations/OpAmp/circuit_image_nosim.png  used on input line 235.
 (pdftex.def)             Requested size: 483.69687pt x 230.48413pt.
+
+Overfull \hbox (12.2149pt too wide) in paragraph at lines 240--245
+\T1/cmr/m/n/10.95 Il se-gna-le vie-ne pre-le-va-to nei pun-ti \T1/cmr/m/it/10.95 IN \T1/cmr/m/n/10.95 e \T1/cmr/m/it/10.95 OUT \T1/cmr/m/n/10.95 evi-den-zia-ti nel-lo sche-ma in Fi-gu-ra []1[] (e ver-rà suc-ces-si-va-men-te
+ []
+
 [2
 
  <../Simulations/OpAmp/circuit_image_nosim.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 259.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 259.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 267.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 267.
  (d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 259.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 259.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 267.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 267.
 Package rerunfilecheck Info: File `Report.out' has not changed.
 (rerunfilecheck)             Checksum: 84165497677DEB0E3F87D2079C069472;208.
  ) 
@@ -1316,7 +1321,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  55i,23n,58p,10452b,1102s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb>
-Output written on "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" (3 pages, 295616 bytes).
+Output written on "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" (3 pages, 296279 bytes).
 PDF statistics:
  136 PDF objects out of 1000 (max. 8388607)
  106 compressed objects within 2 object streams

@@ -18,7 +18,8 @@
 	basicstyle=\footnotesize,% basic font setting
 }
 
-\newcommand{\Mypm}{\mathbin{\tikz [x=1.4ex,y=1.4ex,line width=.1ex] \draw (0.0,0) -- (1.0,0) (0.5,0.08) -- (0.5,0.92) (0.0,0.5) -- (1.0,0.5);}}
+\newcommand{\Mypm}{\mathbin{\tikz [x=1.4ex,y=1.4ex,line width=.1ex] \draw (0.0,0) -- (1.0,0) (0.5,0.08) -- (0.5,0.92)
+(0.0,0.5) -- (1.0,0.5);}}
 
 %margini
 \usepackage[margin=2cm,includefoot]{geometry}
@@ -29,8 +30,8 @@
 
 \usepackage[none]{hyphenat}%non spezza le parole nelle tabelle
 \usepackage{array}
-%\newcolumntype{£}{>{\global\let\currentrowstyle\relax}} \newcolumntype{§}{>{\currentrowstyle}} \newcolumntype{\rowstyle}[1]{\gdef\currentrowstyle{#1}
-%#1 \ignorespaces}
+%\newcolumntype{£}{>{\global\let\currentrowstyle\relax}} \newcolumntype{§}{>{\currentrowstyle}}
+%\newcolumntype{\rowstyle}[1]{\gdef\currentrowstyle{#1} #1 \ignorespaces}
 
 %graphics
 \usepackage{graphicx}
@@ -123,18 +124,19 @@
 %---------------------------------------------Apparato Sperimentale
 \section{Strumentazione e Componenti}
 \begin{itemize}
-	\item \textbf{Oscilloscopio} (Tektronix TBS1102B): Lo strumento presenta un'accuratezza sul guadagno verticale pari al 3\% del valore letto
-	(errore massimo) ed è \textit{generalmente} il contributo più significativo. L'incertezza di guadagno sui tempi si assume trascurabile.
-	L'accuratezza che tiene conto degli effetti di risoluzione e imprecisione della traccia è di 1/10 di divisione su tutta la scala di lettura
-	(errore massimo), uguale sia per le tensioni sia per i tempi.
+	\item \textbf{Oscilloscopio} (Tektronix TBS1102B): Lo strumento presenta un'accuratezza sul guadagno verticale pari
+	al 3\% del valore letto (errore massimo) ed è \textit{generalmente} il contributo più significativo. L'incertezza di
+	guadagno sui tempi si assume trascurabile. L'accuratezza che tiene conto degli effetti di risoluzione e imprecisione
+	della traccia è di 1/10 di divisione su tutta la scala di lettura (errore massimo), uguale sia per le tensioni sia
+	per i tempi.
 
 	\item \textbf{Generatore di funzioni} (Tektronix AFG1022)
 
-	\item  \textbf{Alimentatore di tensione continua}: Lo strumento presenta due uscite con erogazione di tensione tra 0 e 20 \si{\volt} e un'uscita
-	con erogazione fissata a 5 \si{\volt}
+	\item  \textbf{Alimentatore di tensione continua}: Lo strumento presenta due uscite con erogazione di tensione tra 0
+	e 20 \si{\volt} e un'uscita con erogazione fissata a 5 \si{\volt}
 	
-	\item \textbf{Multimetro digitale} (Metrix MTX3292): Si riporta l'accuratezza dello strumento, per misure di resistenza e di capacità, relativa
-	unicamente ai fondoscala utilizzati nell'esperienza.
+	\item \textbf{Multimetro digitale} (Metrix MTX3292): Si riporta l'accuratezza dello strumento, per misure di
+	resistenza e di capacità, relativa unicamente ai fondoscala utilizzati nell'esperienza.
 
 	\begin{table}[H]
 		\centering
@@ -147,8 +149,8 @@
 			
 			\addlinespace
 			
-			1   \si{k\ohm} & 0.10\% + 8  & 0.01 \si{\ohm}  \tn 10  \si{k\ohm} & 0.07\% + 8  & 0.1  \si{\ohm}  \tn 100 \si{k\ohm} & 0.07\% + 8  & 1
-			\si{\ohm}  \tn
+			1   \si{k\ohm} & 0.10\% + 8  & 0.01 \si{\ohm}  \tn 10  \si{k\ohm} & 0.07\% + 8  & 0.1  \si{\ohm}  \tn 100
+			\si{k\ohm} & 0.07\% + 8  & 1 \si{\ohm}  \tn
 
 			
 			\addlinespace
@@ -159,13 +161,14 @@
 			
 			
 		\end{tabular}
-		\caption{Per i fondoscala indicati si riportano la precisione (contributo di scala in percentuale e contributo di lettura sul digit meno
-		significativo) e la risoluzione dello strumento.}
+		\caption{Per i fondoscala indicati si riportano la precisione (contributo di scala in percentuale e contributo
+		di lettura sul digit meno significativo) e la risoluzione dello strumento.}
 		\label{t:metrix}
 	\end{table}	 
 
-	\item \textbf{Componenti circuitali} (Resistori e Condensatori): Si riportano i valori delle resistenze e capacità utilizzate per l'assemblamento
-	dei circuiti utilizzati nel corso dell'esperienza, misurate direttamente con il multimetro digitale Metrix. 
+	\item \textbf{Componenti circuitali} (Resistori e Condensatori): Si riportano i valori delle resistenze e capacità
+	utilizzate per l'assemblamento dei circuiti utilizzati nel corso dell'esperienza, misurate direttamente con il
+	multimetro digitale Metrix. 
 
 	\begin{table}[H]
 		\centering
@@ -197,15 +200,16 @@
 			\bottomrule[0.5px]
 			
 		\end{tabular}
-		\caption{In tabella si indicano le componenti circuitali (resistori e capacità) utilizzando delle label specifiche per ciascuna di esse:
-		questa notazione è costante nel corso dell'esperienza.}
+		\caption{In tabella si indicano le componenti circuitali (resistori e capacità) utilizzando delle label
+		specifiche per ciascuna di esse: questa notazione è costante nel corso dell'esperienza.}
 		\label{t:direct_measures}
 	\end{table}	
 
-	\item \textbf{Circuito integrato TL082C} (Due Amplificatori Operazionali): essendo gli amplificatori operazionali delle componenti circuitali
-	attive, esse devono essere alimentate. Si utilizza dunque il generatore di tensione continua con $V_{+} = V_{\text{cc}} = +15\,\si{\volt}$ e
-	$V_{-} = V_{\text{ee}}=-15\,\si{\volt}$ per l'alimentazione dell'amplificatore operazionale utilizzato nell'esperienza. Nel corso di quest'ultima,
-	si assume un comportamento \textit{ideale} dell'amplificatore operazionale, ovvero che il polo invertente ed il polo non invertente si trovino
+	\item \textbf{Circuito integrato TL082C} (Due Amplificatori Operazionali): essendo gli amplificatori operazionali
+	delle componenti circuitali attive, esse devono essere alimentate. Si utilizza dunque il generatore di tensione
+	continua con $V_{+} = V_{\text{cc}} = +15\,\si{\volt}$ e $V_{-} = V_{\text{ee}}=-15\,\si{\volt}$ per l'alimentazione
+	dell'amplificatore operazionale utilizzato nell'esperienza. Nel corso di quest'ultima, si assume un comportamento
+	\textit{ideale} dell'amplificatore operazionale, ovvero che il polo invertente ed il polo non invertente si trovino
 	allo stesso potenziale.
 	
 	\item \textbf{Scheda Arduino Due}
@@ -222,8 +226,9 @@ Breve introduzione
 
 \subsection{Configurazione Circuitale}
 
-Si inizia assemblando il seguente circuito, utilizzando le resistenze $R_f$, $R_1$, $R_3$ e l'amplificatore operazionale. La resistenza $R_g$
-rappresenta la resistenza interna del generatore, non nulla in quanto ci si trova in condizioni di non idealità. 
+Si inizia assemblando il seguente circuito, utilizzando le resistenze $R_f$, $R_1$, $R_3$ e l'amplificatore
+operazionale. La resistenza $R_g$ rappresenta la resistenza interna del generatore, non nulla in quanto ci si trova in
+condizioni di non idealità. 
 
 \begin{figure}[H]
 	\centering
@@ -232,8 +237,11 @@ rappresenta la resistenza interna del generatore, non nulla in quanto ci si trov
 	\label{i:opamp_circuit}
 \end{figure}
 
-\noindent Il segnale viene prelevato nei punti \textit{IN} e \textit{OUT} evidenziati nello schema in \ref{i:opamp_circuit} (e verrà successivamente
-richiamato come $V_{\text{in}}$ e $V_{\text{out}}$ rispettivamente) utilizzando due sonde con fattore di attenuazione 10X.
+\noindent Il segnale viene prelevato nei punti \textit{IN} e \textit{OUT} evidenziati nello schema in Figura
+\ref{i:opamp_circuit} (e verrà successivamente richiamato come $V_{\text{in}}$ e $V_{\text{out}}$ rispettivamente)
+utilizzando due sonde con fattore di attenuazione 10X.\\
+\noindent Si imposta il generatore di funzioni in modalità "50 Ohm", in modo che l'impedenza d'uscita del generatore
+corrisponda con $R_3\approx 50\si{\ohm}$.
 
 
 
