@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  6 NOV 2020 15:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  6 NOV 2020 17:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1291,35 +1291,40 @@ Overfull \hbox (16.12366pt too wide) in paragraph at lines 229--232
 \T1/cmr/m/n/10.95 Si ini-zia as-sem-blan-do il se-guen-te cir-cui-to, uti-liz-zan-do le re-si-sten-ze $\OML/cmm/m/it/10.95 R[]$\T1/cmr/m/n/10.95 , $\OML/cmm/m/it/10.95 R[]$\T1/cmr/m/n/10.95 , $\OML/cmm/m/it/10.95 R[]$ \T1/cmr/m/n/10.95 e l'am-pli-fi-ca-to-re ope-ra-zio-na-le.
  []
 
-<../Simulations/OpAmp/circuit_image_nosim.png, id=55, 1153.911pt x 549.85425pt>
+<../Simulations/OpAmp/circuit_image_nosim.png, id=59, 1153.911pt x 549.85425pt>
 File: ../Simulations/OpAmp/circuit_image_nosim.png Graphic file (type png)
 <use ../Simulations/OpAmp/circuit_image_nosim.png>
 Package pdftex.def Info: ../Simulations/OpAmp/circuit_image_nosim.png  used on input line 235.
 (pdftex.def)             Requested size: 483.69687pt x 230.48413pt.
+<../Plots/Report_Plots/opamp_spice_1V.png, id=62, 1539.7525pt x 777.90625pt>
+File: ../Plots/Report_Plots/opamp_spice_1V.png Graphic file (type png)
+<use ../Plots/Report_Plots/opamp_spice_1V.png>
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_spice_1V.png  used on input line 263.
+(pdftex.def)             Requested size: 483.69687pt x 244.36517pt.
 [2
 
- <../Simulations/OpAmp/circuit_image_nosim.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 274.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 274.
+ <../Simulations/OpAmp/circuit_image_nosim.png>] [3 <../Plots/Report_Plots/opamp_spice_1V.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 290.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 290.
  (d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 274.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 274.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 290.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 290.
 Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: 8DB5E0D8A6580B2C7511F6267F612E24;278.
+(rerunfilecheck)             Checksum: 22FF3DA55EF1546D24E3D8908D61A22D;344.
  ) 
 Here is how much of TeX's memory you used:
- 32108 strings out of 492649
- 625623 string characters out of 6128653
+ 32119 strings out of 492649
+ 625914 string characters out of 6128653
  779545 words of memory out of 5000000
- 35508 multiletter control sequences out of 15000+600000
+ 35514 multiletter control sequences out of 15000+600000
  557966 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,23n,58p,10452b,1102s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb>
-Output written on "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" (3 pages, 300494 bytes).
+Output written on "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" (4 pages, 326064 bytes).
 PDF statistics:
- 140 PDF objects out of 1000 (max. 8388607)
- 110 compressed objects within 2 object streams
- 10 named destinations out of 1000 (max. 500000)
- 50 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 152 PDF objects out of 1000 (max. 8388607)
+ 120 compressed objects within 2 object streams
+ 13 named destinations out of 1000 (max. 500000)
+ 63 words of extra memory for PDF output out of 10000 (max. 10000000)
 

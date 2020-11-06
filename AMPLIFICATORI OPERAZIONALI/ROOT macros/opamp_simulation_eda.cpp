@@ -77,7 +77,7 @@ void opamp_simulation_eda() {
     plot_Vin-> SetLineWidth(2);
     plot_Vin-> SetMarkerStyle(8);
     plot_Vin-> SetMarkerColor(kBlue);
-    //plot_Vin-> SetMarkerSize(1);
+    plot_Vin-> SetMarkerSize(1);
 
     plot_Vout-> SetLineColor(kRed);
     plot_Vout-> SetLineWidth(2);

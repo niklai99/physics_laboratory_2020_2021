@@ -233,7 +233,7 @@ condizioni di non idealità.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Simulations/OpAmp/circuit_image_nosim.png}
-	\caption{In figura è rappresentato lo schema del circuito assemblato in laboratorio.}
+	\caption{Rappresentazione a variabili concentrate del circuito assemblato in laboratorio.}
 	\label{i:opamp_circuit}
 \end{figure}
 
@@ -248,9 +248,25 @@ $V_{\text{in}}$ in accordo con la tensione nominale erogata dal generatore. Si i
 in modo da erogare un segnale di tipo sinusoidale con frequenza $f_{\text{gen}}=1\,\si{k\hertz}$ e di ampiezza
 variabile.
 
+
 \subsection{Acquisizione Misure}
+dico come quando e quante misure ho preso, tabelle misure e propagazioni
 
+\subsection{Simulazioni Spice}
+Prima di procedere con l'analisi dati, si decide di simulare la risposta del circuito utilizzando il programma LTSpice.
+Il circuito in questione è riportato in Figura \ref{i:opamp_circuit}, tenendo conto però che il generatore è impostato
+in modalità "50 Ohm". Si sceglie di effettuare la simulazione solamente con un segnale in ingresso di ampiezza picco picco
+$Vpp_{\text{gen}}=2\,\si{\volt }$.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_spice_1V.png}
+	\caption{Simulazione Spice della risposta del circuito ad una tensione sinusoidale di frequenza
+	$f_{\text{gen}}=1\,\si{k\hertz}$ e ampiezza picco picco $Vpp_{\text{gen}}=2\,\si{\volt }$}
+	\label{i:opamp_simulation}
+\end{figure}
+
+Commento cosa vedo.
 
 
 
