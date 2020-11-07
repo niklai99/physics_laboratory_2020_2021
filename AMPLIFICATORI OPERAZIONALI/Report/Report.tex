@@ -225,22 +225,25 @@ variabile.
 
 
 \subsection{Acquisizione Misure}
-Al fine di verificare la linearità dell'amplificatore operazionale e stimare l'amplificazione del
-circuito, si decide di far variare la tensione in ingresso impostando valori crescenti di ampiezza del segnale erogato
-dal generatore di funzioni. Per ciascuno di questi valori di tensione si acquisisce la misura di un massimo e di un
-minimo sia del segnale $V_{\text{in}}$ sia del segnale $V_{\text{out}}$ sfruttando i cursori orizzontali
-dell'oscilloscopio. In questo modo, si ottiene un campione di coppie ($V_{\text{in}}$, $V_{\text{out}}$) che ci si
-aspetta segua un andamento lineare. I valori di tensione $V_{\text{gen}}$, $V_{\text{in}}$, $V_{\text{out}}$ e le
-relative scale di misura sono riportate in Tabella \ref{t:osc_measures}.
+Al fine di verificare la linearità dell'amplificatore operazionale e stimare l'amplificazione del circuito, si decide di
+far variare la tensione in ingresso impostando valori crescenti di ampiezza del segnale erogato dal generatore di
+funzioni. Per ciascuno di questi valori di tensione si acquisisce la misura di un massimo e di un minimo sia del segnale
+$V_{\text{in}}$ sia del segnale $V_{\text{out}}$ sfruttando i cursori orizzontali dell'oscilloscopio. In questo modo, si
+ottiene un campione di coppie ($V_{\text{in}}$, $V_{\text{out}}$) che ci si aspetta segua un andamento lineare assumendo
+la linearità dell'amplificatore operazionale. I valori di tensione $V_{\text{gen}}$, $V_{\text{in}}$, $V_{\text{out}}$ e
+le relative scale di misura sono riportate in Tabella \ref{t:osc_measures}. Si associa inoltre un'incertezza alle misure
+di $V_{\text{in}}$ e $V_{\text{out}}$ data da Equazione \ref{e:osc}.\\
 
-\subsection{Simulazioni Spice}
+
+
+\subsection{Simulazione Spice Preliminare}
 Prima di procedere con l'analisi dati, si decide di simulare la risposta del circuito utilizzando il programma LTSpice.
 Il circuito in questione è riportato in Figura \ref{i:opamp_circuit}, tenendo conto però che il generatore è impostato
 in modalità "50 Ohm". Si sceglie di effettuare la simulazione considerando due ampiezze in ingresso significative: per
 la prima si imposta dal generatore un'ampiezza $V_{\text{gen}}=1\,\si{\volt}$ mentre per la seconda
 $V_{\text{gen}}=4\,\si{\volt}$. Questa scelta è dettata dal fatto che l'amplificatore operazionale, essendo una
 componente attiva del circuito, non può dare in output una tensiore maggiore di quanta ne riceve in alimentazione
-per conservazione dell'energia. 
+per conservazione dell'energia: ci si aspetta allora di trovare una situazione di saturazione del segnale in uscita. 
 
 \begin{figure}[H]
 	\centering
@@ -258,7 +261,7 @@ all'operazionale.
 \subsection{Dati e Analisi}
 Si riportano in Tabella \ref{t:osc_measures} le misure acquisite con l'oscilloscopio, alle quali è stata associata un'incertezza
 
-\begin{equation}
+\begin{equation}\label{e:osc}
 	\sigma_{V} = \sqrt{ (\sigma_{l}\times\text{V/div})^2 + (\sigma_{g}\times\text{measure})^2 }
 \end{equation}
 
@@ -269,7 +272,7 @@ di acquisizione della misura mentre "measure" rappresenta la misura sperimentale
 \begin{table}[H]
 	\centering
 
-	\begin{tabular}{x{3cm} x{3cm} x{3.2cm} x{3cm} x{3.2cm}} 
+	\begin{tabular}{x{2cm} x{3cm} x{3.2cm} x{3cm} x{3.2cm}} 
 
 		\toprule[0.5px]
 		\toprule[0.1px]
@@ -277,7 +280,7 @@ di acquisizione della misura mentre "measure" rappresenta la misura sperimentale
 		\multicolumn{5}{c}{Misure Acquisite con l'Oscilloscopio}\tn
 		\midrule[0.1px]
 
-		\multicolumn{5}{c}{Massimi}\tn
+		\multicolumn{5}{c}{Misure dei Massimi}\tn
 
 		\addlinespace
 		
@@ -286,25 +289,25 @@ di acquisizione della misura mentre "measure" rappresenta la misura sperimentale
 		
 		\addlinespace
 		
-		$	0.2		$&$	0.106 \pm	0.003	$&$	0.050	$&$	1.00 \pm	0.02	$&$	0.324	$\tn
-		$	0.5		$&$	0.252 \pm	0.006	$&$	0.100	$&$	2.48 \pm	0.05	$&$	1.000	$\tn
-		$	0.8		$&$	0.400 \pm	0.010	$&$	0.200	$&$	4.00 \pm	0.10	$&$	2.000	$\tn
-		$	1.0		$&$	0.496 \pm	0.011	$&$	0.200	$&$	4.96 \pm	0.11	$&$	2.000	$\tn
-		$	1.5		$&$	0.744 \pm	0.014	$&$	0.200	$&$	7.44 \pm	0.14	$&$	2.000	$\tn
-		$	1.8		$&$	0.907 \pm	0.019	$&$	0.324	$&$	8.98 \pm	0.19	$&$	3.400	$\tn
-		$	2.0		$&$	1.01 \pm	0.02	$&$	0.324	$&$	9.9  \pm	0.2		$&$	3.400	$\tn
-		$	2.3		$&$	1.16 \pm	0.02	$&$	0.376	$&$	11.4 \pm	0.2		$&$	3.800	$\tn
-		$	2.6		$&$	1.29 \pm	0.03	$&$	0.436	$&$	13.0 \pm	0.3		$&$	4.520	$\tn
-		$	3.0		$&$	1.50 \pm	0.03	$&$	0.480	$&$	14.4 \pm	0.3		$&$	4.520	$\tn
-		$	3.2		$&$	1.61 \pm	0.03	$&$	0.630	$&$	14.7 \pm	0.3		$&$	5.600	$\tn	
-		$	3.5		$&$	1.77 \pm	0.04	$&$	0.660	$&$	14.7 \pm	0.3		$&$	5.600	$\tn
+		$	0.20		$&$	0.106 \pm	0.003	$&$	0.050	$&$	1.00 \pm	0.02	$&$	0.324	$\tn
+		$	0.50		$&$	0.252 \pm	0.006	$&$	0.100	$&$	2.48 \pm	0.05	$&$	1.000	$\tn
+		$	0.80		$&$	0.400 \pm	0.010	$&$	0.200	$&$	4.00 \pm	0.10	$&$	2.000	$\tn
+		$	1.00		$&$	0.496 \pm	0.011	$&$	0.200	$&$	4.96 \pm	0.11	$&$	2.000	$\tn
+		$	1.50		$&$	0.744 \pm	0.014	$&$	0.200	$&$	7.44 \pm	0.14	$&$	2.000	$\tn
+		$	1.80		$&$	0.907 \pm	0.019	$&$	0.324	$&$	8.98 \pm	0.19	$&$	3.400	$\tn
+		$	2.00		$&$	1.01 \pm	0.02	$&$	0.324	$&$	9.9  \pm	0.2		$&$	3.400	$\tn
+		$	2.30		$&$	1.16 \pm	0.02	$&$	0.376	$&$	11.4 \pm	0.2		$&$	3.800	$\tn
+		$	2.60		$&$	1.29 \pm	0.03	$&$	0.436	$&$	13.0 \pm	0.3		$&$	4.520	$\tn
+		$	3.00		$&$	1.50 \pm	0.03	$&$	0.480	$&$	14.4 \pm	0.3		$&$	4.520	$\tn
+		$	3.20		$&$	1.61 \pm	0.03	$&$	0.630	$&$	14.7 \pm	0.3		$&$	5.600	$\tn	
+		$	3.50		$&$	1.77 \pm	0.04	$&$	0.660	$&$	14.7 \pm	0.3		$&$	5.600	$\tn
 		
 	
 		\addlinespace
 
 		\midrule[0.1px]
 		
-		\multicolumn{5}{c}{Minimi}\tn
+		\multicolumn{5}{c}{Misure dei Minimi}\tn
 
 		\addlinespace
 		
@@ -313,18 +316,18 @@ di acquisizione della misura mentre "measure" rappresenta la misura sperimentale
 
 		\addlinespace
 
-		$	0.2		$&$	-0.102 \pm	0.003	$&$	0.050	$&$	-0.97 \pm	0.02	$&$	0.324	$\tn
-		$	0.5		$&$	-0.252 \pm	0.006	$&$	0.100	$&$	-2.48 \pm	0.05	$&$	1.000	$\tn
-		$	0.8		$&$	-0.400 \pm	0.010	$&$	0.200	$&$	-3.92 \pm	0.10	$&$	2.000	$\tn
-		$	1.0		$&$	-0.496 \pm	0.011	$&$	0.200	$&$	-4.96 \pm	0.11	$&$	2.000	$\tn
-		$	1.5		$&$	-0.736 \pm	0.014	$&$	0.200	$&$	-7.36 \pm	0.14	$&$	2.000	$\tn
-		$	1.8		$&$	-0.881 \pm	0.019	$&$	0.324	$&$	-8.98 \pm	0.19	$&$	3.400	$\tn
-		$	2.0		$&$	-0.98  \pm	0.02	$&$	0.324	$&$	-10.0 \pm	0.2		$&$	3.400	$\tn
-		$	2.3		$&$	-1.13  \pm	0.02	$&$	0.376	$&$	-11.5 \pm	0.2		$&$	3.800	$\tn
-		$	2.6		$&$	-1.29  \pm	0.03	$&$	0.436	$&$	-13.0 \pm	0.3		$&$	4.520	$\tn
-		$	3.0		$&$	-1.48  \pm	0.03	$&$	0.480	$&$	-14.1 \pm	0.3		$&$	4.520	$\tn
-		$	3.2		$&$	-1.59  \pm	0.03	$&$	0.630	$&$	-14.8 \pm	0.3		$&$	5.600	$\tn	
-		$	3.5		$&$	-1.72  \pm	0.04	$&$	0.660	$&$	-14.8 \pm	0.3		$&$	5.600	$\tn
+		$	0.20		$&$	-0.102 \pm	0.003	$&$	0.050	$&$	-0.97 \pm	0.02	$&$	0.324	$\tn
+		$	0.50		$&$	-0.252 \pm	0.006	$&$	0.100	$&$	-2.48 \pm	0.05	$&$	1.000	$\tn
+		$	0.80		$&$	-0.400 \pm	0.010	$&$	0.200	$&$	-3.92 \pm	0.10	$&$	2.000	$\tn
+		$	1.00		$&$	-0.496 \pm	0.011	$&$	0.200	$&$	-4.96 \pm	0.11	$&$	2.000	$\tn
+		$	1.50		$&$	-0.736 \pm	0.014	$&$	0.200	$&$	-7.36 \pm	0.14	$&$	2.000	$\tn
+		$	1.80		$&$	-0.881 \pm	0.019	$&$	0.324	$&$	-8.98 \pm	0.19	$&$	3.400	$\tn
+		$	2.00		$&$	-0.98  \pm	0.02	$&$	0.324	$&$	-10.0 \pm	0.2		$&$	3.400	$\tn
+		$	2.30		$&$	-1.13  \pm	0.02	$&$	0.376	$&$	-11.5 \pm	0.2		$&$	3.800	$\tn
+		$	2.60		$&$	-1.29  \pm	0.03	$&$	0.436	$&$	-13.0 \pm	0.3		$&$	4.520	$\tn
+		$	3.00		$&$	-1.48  \pm	0.03	$&$	0.480	$&$	-14.1 \pm	0.3		$&$	4.520	$\tn
+		$	3.20		$&$	-1.59  \pm	0.03	$&$	0.630	$&$	-14.8 \pm	0.3		$&$	5.600	$\tn	
+		$	3.50		$&$	-1.72  \pm	0.04	$&$	0.660	$&$	-14.8 \pm	0.3		$&$	5.600	$\tn
 		
 		
 		\bottomrule[0.5px]

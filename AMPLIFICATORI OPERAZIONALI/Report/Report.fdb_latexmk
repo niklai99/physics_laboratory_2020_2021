@@ -1,12 +1,12 @@
 # Fdb version 3
-["pdflatex"] 1604769939 "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" "Report" 1604769943
+["pdflatex"] 1604774162 "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" "Report" 1604782804
   "../Plots/Report_Plots/opamp_spice_1V_4V.png" 1604682639 30634 424c8142c16ea6cfcfca1c323a207b4c ""
   "../Simulations/OpAmp/circuit_image_nosim.png" 1604684846 21670 05d2e9cbcf04f9b52fdb6b8cac032ddf ""
-  "Report.aux" 1604769941 3984 6a5c15f277c7df19d2a4f8acb7f9e72c ""
-  "Report.out" 1604769941 407 1f60b9d3bec81242b038a9d0c422a4c7 ""
-  "Report.tex" 1604769938 14933 917c7717bfcc72482ec7e931459e0c70 ""
-  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux" 1604769941 3984 6a5c15f277c7df19d2a4f8acb7f9e72c ""
-  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" 1604769938 14933 917c7717bfcc72482ec7e931459e0c70 ""
+  "Report.aux" 1604774164 4053 e6a5016b9e389029b01d5bd75bec084d ""
+  "Report.out" 1604774164 419 56e63258ccb3d15545d26fcbf6600cab ""
+  "Report.tex" 1604774158 15266 6b6313676e942314acaab425817d26bb ""
+  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux" 1604774164 4053 e6a5016b9e389029b01d5bd75bec084d ""
+  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" 1604774158 15266 6b6313676e942314acaab425817d26bb ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1543003531 2971 def0b6c1f0b107b3b936def894055589 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1543003531 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1543004023 3332 103109f5612ad95229751940c61aada0 ""
@@ -249,8 +249,8 @@
   "structure.tex" 1604751755 1937 e7c72667d583c6ec18c63771323af4ad ""
   (generated)
   "Report.out"
-  "Report.aux"
-  "Report.pdf"
   "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf"
+  "Report.pdf"
+  "Report.aux"
   "Report.log"
   "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.log"
