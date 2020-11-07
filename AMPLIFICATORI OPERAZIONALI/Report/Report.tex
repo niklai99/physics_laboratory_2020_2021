@@ -1,128 +1,99 @@
-\documentclass[a4paper,11pt]{article}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[italian]{babel}
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
 
-%packages
-\usepackage[table]{xcolor}
-\usepackage{lipsum}	
-\usepackage{gensymb}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{bm}
-\usepackage{tikz}
-\usepackage{hhline}
-\usepackage{listings}
-\usepackage{xcolor}
-\lstset {language=C++, backgroundcolor=\color{white!5}, % set backgroundcolor
-	basicstyle=\footnotesize,% basic font setting
-}
+\documentclass[a4paper,11pt]{article} % Font and paper size
 
-\newcommand{\Mypm}{\mathbin{\tikz [x=1.4ex,y=1.4ex,line width=.1ex] \draw (0.0,0) -- (1.0,0) (0.5,0.08) -- (0.5,0.92)
-(0.0,0.5) -- (1.0,0.5);}}
-
-%margini
-\usepackage[margin=2cm,includefoot]{geometry}
-\usepackage{fancyhdr}
-\usepackage{rotating}
-%link dell'indice ecc
-\usepackage[hidelinks]{hyperref}
-
-\usepackage[none]{hyphenat}%non spezza le parole nelle tabelle
-\usepackage{array}
-%\newcolumntype{£}{>{\global\let\currentrowstyle\relax}} \newcolumntype{§}{>{\currentrowstyle}}
-%\newcolumntype{\rowstyle}[1]{\gdef\currentrowstyle{#1} #1 \ignorespaces}
-
-%graphics
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{wrapfig}
-\usepackage{caption}
-\usepackage{subcaption}
+\input{structure.tex} % Include the file specifying document layout and packages
 
 
-%pagestyle
-\pagestyle{fancy}
-\fancyhead{}
-\fancyfoot{}
-\fancyfoot[R]{\thepage}
-\renewcommand{\headrulewidth}{0pt}
+%----------------------------------------------------------------------------------------
+%	GENERAL INFORMATION 
+%----------------------------------------------------------------------------------------
 
-%math
-\usepackage{xfrac}
-\usepackage{amssymb}
-	\newcommand{\restr}[2]{{% we make the whole thing an ordinary symbol
-		\left.\kern-\nulldelimiterspace % automatically resize the bar with \right
-		#1 % the function
-		
-		\right|_{#2} % this is the delimiter
-}}
-\usepackage{multicol}
-\newcommand{\tnhl}{\tabularnewline\hline}
-\newcommand{\tn}{\tabularnewline}
-\newcolumntype{x}[1]{%
-	>{\centering\hspace{0pt}}p{#1}}%
+\newcommand{\labcourse}{Laboratorio di Fisica}
+\newcommand{\teacher}{Docenti: Prof. A. Garfagnini - Prof. M. Lunardon}
+\newcommand{\laurea}{Corso di Laurea in Fisica}
+\newcommand{\channel}{Canale 1 A-L}
+\newcommand{\academicyear}{Anno Accademico 2020/2021}
+\newcommand{\labexp}{Esperienza di Laboratorio}
+\newcommand{\exptitle}{Amplificatori Operazionali \& Calibrazione Arduino}
+\newcommand{\expobj}{Obiettivo dell'Esperienza}
+\newcommand{\objectives}{Verificare la linearità di un amplificatore operazionale.}
+\newcommand{\objectivess}{Misurare l'amplificazione di un circuito con amplificatore operazionale.}
+\newcommand{\objectivesss}{Misurare la frequenza di taglio di un circuito derivatore con amplificatore operazionale.}
+\newcommand{\objectivessss}{Calibrare una scheda Arduino Due}
+\newcommand{\turno}{Turno T2}
+\newcommand{\name}{Nicolò Lai}
+\newcommand{\matricola}{1193976}
+\newcommand{\mail}{nicolo.lai@studenti.unipd.it}
+\newcommand{\consegna}{Data di consegna}
+\newcommand{\data}{?/11/2020}
 
-\usepackage[toc,page]{appendix}
-\usepackage{booktabs}
-\usepackage{siunitx}
-\usepackage{multirow}
 
+%----------------------------------------------------------------------------------------
+%	DOCUMENT 
+%----------------------------------------------------------------------------------------
 
 \begin{document}
-	\def\subsectionautorefname{Sezione} \def\subsubsectionautorefname{Sezione}
+	
 
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
 
-
-
-	%----------------------------------------------pagina del titolo
 	\begin{titlepage}
+
 		\begin{center}
-			\Huge{\bfseries Laboratorio di Fisica}\\
+			\Huge{\bfseries \labcourse}\\
 				
-			\LARGE Docenti: Prof. A. Garfagnini - Prof. M. Lunardon \\
-			\Large Corso di Laurea in Fisica\\
-			\Large Canale 1 A-L\\
-			\Large Anno Accademico 2020/2021\\
-			[1cm] \line(1,0){400}\\
+			\LARGE \teacher \\
+			\Large \laurea\\
+			\Large \channel\\
+			\Large \academicyear\\
+			[1cm] 
+			\line(1,0){400}\\
 			[2cm]
 				
-			\textsc{\huge{\bfseries  Esperienza di Laboratorio}}\\
-			\huge{Amplificatori Operazionali}\\
+			\textsc{\huge{\bfseries \labexp}}\\
+			\huge{\exptitle}\\
 			[2mm] \line(1,0){300}\\
 			[3mm]
 
-			\textsc{\Large{\bfseries  Obiettivo dell'Esperienza}}\\
-			\large{Verificare la linearità di un amplificatore operazionale.\\
-			Misurare l'amplificazione di un circuito con amplificatore operazionale.\\
-			Misurare la frequenza di taglio di un circuito derivatore con amplificatore operazionale.}\\
-			[8.cm]
-			
-			
-
-
-
+			\textsc{\Large{\bfseries \expobj}}\\
+			\large{
+				\objectives\\
+				\objectivess\\
+				\objectivesss\\
+				\objectivessss
+			}\\
+			[7.5cm]
 		\end{center}
-				
-			\textsc{\Large Turno T2}\\
-			[0.5cm] \textsc{\large {\bfseries Lai Nicolò}} \\ 
-			\indent\large 1193976 \\ 
-			\indent\large nicolo.lai@studenti.unipd.it\\
+		
+		
+		\begin{flushleft}
+			\textsc{\Large \turno}\\
+			[0.5cm] \textsc{\large {\bfseries \name}} \\ 
+			\indent\large \matricola \\ 
+			\indent\large \mail \\
+		\end{flushleft}
 			
-				
-				
+						
 		\begin{flushright}
-				\textsc{\Large Data di consegna:}\\
-				\textsc{\large ?/11/2020}					
+				\textsc{\Large\consegna}\\
+				\textsc{\large \data}					
 		\end{flushright}
 				
 	\end{titlepage}
 \cleardoublepage
-	%-----------------------------------fine pagina titolo
 
 
-%---------------------------------------------Apparato Sperimentale
+%----------------------------------------------------------------------------------------
+%	APPARATO SPERIMENTALE
+%----------------------------------------------------------------------------------------
+
 \section{Strumentazione e Componenti}
+
 \begin{itemize}
 	\item \textbf{Oscilloscopio} (Tektronix TBS1102B): Lo strumento presenta un'accuratezza sul guadagno verticale pari
 	al 3\% del valore letto (errore massimo) ed è \textit{generalmente} il contributo più significativo. L'incertezza di
@@ -218,9 +189,10 @@
 \cleardoublepage
 
 
+%----------------------------------------------------------------------------------------
+%	AMPLIFICATORE OPERAZIONALE INVERTENTE
+%----------------------------------------------------------------------------------------
 
-
-%------------------------------------------------------OPAMP
 \section{Amplificatore Operazionale Invertente}
 In questa sezione ci si propone di studiare il comportamento di un circuito puramente resistivo comprendente un
 amplificatore operazionale in configurazione invertente (polo positivo a massa, polo negativo collegato al segnale in
@@ -280,8 +252,7 @@ per conservazione dell'energia.
 \noindent Dal grafico si evince chiaramente come erogando $V_{\text{gen}}=1\,\si{\volt}$ il segnale viene amplificato
 correttamente di circa un fattore 10 mantenendo la forma sinusoidale, mentre erogando $V_{\text{gen}}=4\,\si{\volt}$ il
 segnale in uscita presenta i picchi tagliati esattamente a livello delle tensioni di alimentazione fornite
-all'operazionale.
-
+all'operazionale. adasd
 
 
 
