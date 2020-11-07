@@ -95,10 +95,10 @@
 \section{Strumentazione e Componenti}
 
 \begin{itemize}
-	\item \textbf{Oscilloscopio} (Tektronix TBS1102B): Lo strumento presenta un'accuratezza sul guadagno verticale pari
+	\item \textbf{Oscilloscopio} (Tektronix TBS1102B): Lo strumento presenta un'accuratezza sul guadagno verticale $\Delta_{g}$ pari
 	al 3\% del valore letto (errore massimo) ed è \textit{generalmente} il contributo più significativo. L'incertezza di
 	guadagno sui tempi si assume trascurabile. L'accuratezza che tiene conto degli effetti di risoluzione e imprecisione
-	della traccia è di 1/10 di divisione su tutta la scala di lettura (errore massimo), uguale sia per le tensioni sia
+	della traccia $\Delta_{l}$ è di 1/10 di divisione su tutta la scala di lettura (errore massimo), uguale sia per le tensioni sia
 	per i tempi.
 
 	\item \textbf{Generatore di funzioni} (Tektronix AFG1022)
@@ -201,7 +201,7 @@ partendo da misure dirette oppure come parametro di un'interpolazione lineare.
 
 \subsection{Configurazione Sperimentale}
 
-Si inizia assemblando il seguente circuito, utilizzando le resistenze $R_f$, $R_1$, $R_3$ e l'amplificatore
+Si inizia assemblando il circuito rappresentato in Figura \ref{i:opamp_circuit}, utilizzando le resistenze $R_f$, $R_1$, $R_3$ e l'amplificatore
 operazionale. La resistenza $R_g$ rappresenta la resistenza interna del generatore, non nulla in quanto ci si trova in
 condizioni di non idealità. 
 
@@ -218,7 +218,7 @@ utilizzando due sonde con fattore di attenuazione 10X. Nel canale CH1 dell'oscil
 in ingresso $V_{\text{in}}$, mentre il segnale in uscita $V_{\text{out}}$ è prelevato dalla sonda collegata al canale
 CH2. Per entrambi i canali viene impostata l'attenuazione sonda 10X, in modo da visualizzare nel display il segnale non
 attenuato. Il generatore di funzioni viene poi configurato in modalità "50 Ohm", in modo che l'impedenza d'uscita del
-generatore corrisponda con $R_3\approx 50\si{\ohm}$. Così facendo, ci si aspetta di trovare una tensione in ingresso
+generatore sia comparabile con $R_3\approx 50\si{\ohm}$. Così facendo, ci si aspetta di trovare una tensione in ingresso
 $V_{\text{in}}$ in accordo con la tensione nominale erogata dal generatore. Si imposta infine il generatore di funzioni
 in modo da erogare un segnale di tipo sinusoidale con frequenza $f_{\text{gen}}=1\,\si{k\hertz}$ e di ampiezza
 variabile.
@@ -230,7 +230,8 @@ circuito, si decide di far variare la tensione in ingresso impostando valori cre
 dal generatore di funzioni. Per ciascuno di questi valori di tensione si acquisisce la misura di un massimo e di un
 minimo sia del segnale $V_{\text{in}}$ sia del segnale $V_{\text{out}}$ sfruttando i cursori orizzontali
 dell'oscilloscopio. In questo modo, si ottiene un campione di coppie ($V_{\text{in}}$, $V_{\text{out}}$) che ci si
-aspetta segua un andamento lineare.
+aspetta segua un andamento lineare. I valori di tensione $V_{\text{gen}}$, $V_{\text{in}}$, $V_{\text{out}}$ e le
+relative scale di misura sono riportate in Tabella \ref{}.
 
 \subsection{Simulazioni Spice}
 Prima di procedere con l'analisi dati, si decide di simulare la risposta del circuito utilizzando il programma LTSpice.
@@ -252,10 +253,18 @@ per conservazione dell'energia.
 \noindent Dal grafico si evince chiaramente come erogando $V_{\text{gen}}=1\,\si{\volt}$ il segnale viene amplificato
 correttamente di circa un fattore 10 mantenendo la forma sinusoidale, mentre erogando $V_{\text{gen}}=4\,\si{\volt}$ il
 segnale in uscita presenta i picchi tagliati esattamente a livello delle tensioni di alimentazione fornite
-all'operazionale. adasd
+all'operazionale. 
 
+\subsection{Dati e Analisi}
+Si riportano in Tabella \ref{} le misure acquisite con l'oscilloscopio, alle quali è stata associata un'incertezza
 
+\begin{equation}
+	\sigma_{V} = \sqrt{ (\sigma_{l}\times\text{V/div})^2 + (\sigma_{g}\times\text{measure})^2 }
+\end{equation}
 
+\noindent dove $\sigma_{l}=\Delta_{l}/\sqrt{6}$ e $\sigma_{g}=\Delta_{g}/\sqrt{6}$ (assumendo una distribuzione
+triangolare) rappresentano l'incertezza di lettura e di guadagno associati all'oscilloscopio, V/div rappresenta la scala
+di acquisizione della misura mentre "measure" rappresenta la misura sperimentale stessa.
 
 
 

@@ -314,7 +314,7 @@ double err_posteriori(TFitResultPtr fit, vector<double>& x, vector<double>& y) {
 */
 
     const double cost = fit->Parameter(0);
-    
+
 /*    
     for(unsigned int j = 0; j < x.size(); j++) {
         err_post_squared += pow( q + ( m * x[j] ) - y[j] , 2 ) / ( x.size() - 2 );
