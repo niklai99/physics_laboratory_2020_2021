@@ -231,7 +231,7 @@ dal generatore di funzioni. Per ciascuno di questi valori di tensione si acquisi
 minimo sia del segnale $V_{\text{in}}$ sia del segnale $V_{\text{out}}$ sfruttando i cursori orizzontali
 dell'oscilloscopio. In questo modo, si ottiene un campione di coppie ($V_{\text{in}}$, $V_{\text{out}}$) che ci si
 aspetta segua un andamento lineare. I valori di tensione $V_{\text{gen}}$, $V_{\text{in}}$, $V_{\text{out}}$ e le
-relative scale di misura sono riportate in Tabella \ref{}.
+relative scale di misura sono riportate in Tabella \ref{t:osc_measures}.
 
 \subsection{Simulazioni Spice}
 Prima di procedere con l'analisi dati, si decide di simulare la risposta del circuito utilizzando il programma LTSpice.
@@ -256,7 +256,7 @@ segnale in uscita presenta i picchi tagliati esattamente a livello delle tension
 all'operazionale. 
 
 \subsection{Dati e Analisi}
-Si riportano in Tabella \ref{} le misure acquisite con l'oscilloscopio, alle quali è stata associata un'incertezza
+Si riportano in Tabella \ref{t:osc_measures} le misure acquisite con l'oscilloscopio, alle quali è stata associata un'incertezza
 
 \begin{equation}
 	\sigma_{V} = \sqrt{ (\sigma_{l}\times\text{V/div})^2 + (\sigma_{g}\times\text{measure})^2 }
@@ -265,6 +265,75 @@ Si riportano in Tabella \ref{} le misure acquisite con l'oscilloscopio, alle qua
 \noindent dove $\sigma_{l}=\Delta_{l}/\sqrt{6}$ e $\sigma_{g}=\Delta_{g}/\sqrt{6}$ (assumendo una distribuzione
 triangolare) rappresentano l'incertezza di lettura e di guadagno associati all'oscilloscopio, V/div rappresenta la scala
 di acquisizione della misura mentre "measure" rappresenta la misura sperimentale stessa.
+
+\begin{table}[H]
+	\centering
+
+	\begin{tabular}{x{3cm} x{3cm} x{3.2cm} x{3cm} x{3.2cm}} 
+
+		\toprule[0.5px]
+		\toprule[0.1px]
+		
+		\multicolumn{5}{c}{Misure Acquisite con l'Oscilloscopio}\tn
+		\midrule[0.1px]
+
+		\multicolumn{5}{c}{Massimi}\tn
+
+		\addlinespace
+		
+		$V\text{\small{pp}}_{\text{gen}}$ (V)& $V_{\text{in}}$ (V)& Scala $V_{\text{in}}$ (V/div)& $V_{\text{out}}$ (V)& Scala
+		$V_{\text{out}}$ (V/div)\tn
+		
+		\addlinespace
+		
+		$	0.2		$&$	0.106 \pm	0.003	$&$	0.050	$&$	1.00 \pm	0.02	$&$	0.324	$\tn
+		$	0.5		$&$	0.252 \pm	0.006	$&$	0.100	$&$	2.48 \pm	0.05	$&$	1.000	$\tn
+		$	0.8		$&$	0.400 \pm	0.010	$&$	0.200	$&$	4.00 \pm	0.10	$&$	2.000	$\tn
+		$	1.0		$&$	0.496 \pm	0.011	$&$	0.200	$&$	4.96 \pm	0.11	$&$	2.000	$\tn
+		$	1.5		$&$	0.744 \pm	0.014	$&$	0.200	$&$	7.44 \pm	0.14	$&$	2.000	$\tn
+		$	1.8		$&$	0.907 \pm	0.019	$&$	0.324	$&$	8.98 \pm	0.19	$&$	3.400	$\tn
+		$	2.0		$&$	1.01 \pm	0.02	$&$	0.324	$&$	9.9  \pm	0.2		$&$	3.400	$\tn
+		$	2.3		$&$	1.16 \pm	0.02	$&$	0.376	$&$	11.4 \pm	0.2		$&$	3.800	$\tn
+		$	2.6		$&$	1.29 \pm	0.03	$&$	0.436	$&$	13.0 \pm	0.3		$&$	4.520	$\tn
+		$	3.0		$&$	1.50 \pm	0.03	$&$	0.480	$&$	14.4 \pm	0.3		$&$	4.520	$\tn
+		$	3.2		$&$	1.61 \pm	0.03	$&$	0.630	$&$	14.7 \pm	0.3		$&$	5.600	$\tn	
+		$	3.5		$&$	1.77 \pm	0.04	$&$	0.660	$&$	14.7 \pm	0.3		$&$	5.600	$\tn
+		
+	
+		\addlinespace
+
+		\midrule[0.1px]
+		
+		\multicolumn{5}{c}{Minimi}\tn
+
+		\addlinespace
+		
+		$V\text{\small{pp}}_{\text{gen}}$ (V)& $V_{\text{in}}$ (V)& Scala $V_{\text{in}}$ (V/div)& $V_{\text{out}}$ (V)& Scala
+		$V_{\text{out}}$ (V/div)\tn
+
+		\addlinespace
+
+		$	0.2		$&$	-0.102 \pm	0.003	$&$	0.050	$&$	-0.97 \pm	0.02	$&$	0.324	$\tn
+		$	0.5		$&$	-0.252 \pm	0.006	$&$	0.100	$&$	-2.48 \pm	0.05	$&$	1.000	$\tn
+		$	0.8		$&$	-0.400 \pm	0.010	$&$	0.200	$&$	-3.92 \pm	0.10	$&$	2.000	$\tn
+		$	1.0		$&$	-0.496 \pm	0.011	$&$	0.200	$&$	-4.96 \pm	0.11	$&$	2.000	$\tn
+		$	1.5		$&$	-0.736 \pm	0.014	$&$	0.200	$&$	-7.36 \pm	0.14	$&$	2.000	$\tn
+		$	1.8		$&$	-0.881 \pm	0.019	$&$	0.324	$&$	-8.98 \pm	0.19	$&$	3.400	$\tn
+		$	2.0		$&$	-0.98  \pm	0.02	$&$	0.324	$&$	-10.0 \pm	0.2		$&$	3.400	$\tn
+		$	2.3		$&$	-1.13  \pm	0.02	$&$	0.376	$&$	-11.5 \pm	0.2		$&$	3.800	$\tn
+		$	2.6		$&$	-1.29  \pm	0.03	$&$	0.436	$&$	-13.0 \pm	0.3		$&$	4.520	$\tn
+		$	3.0		$&$	-1.48  \pm	0.03	$&$	0.480	$&$	-14.1 \pm	0.3		$&$	4.520	$\tn
+		$	3.2		$&$	-1.59  \pm	0.03	$&$	0.630	$&$	-14.8 \pm	0.3		$&$	5.600	$\tn	
+		$	3.5		$&$	-1.72  \pm	0.04	$&$	0.660	$&$	-14.8 \pm	0.3		$&$	5.600	$\tn
+		
+		
+		\bottomrule[0.5px]
+		
+	\end{tabular}
+	\caption{Vengono rappresentate in tabella le misure sperimentali acquisite con i cursori dell'oscilloscopio 
+				con l'incertezza ad esse associata e la scala di acquisizione della misura.}
+	\label{t:osc_measures}
+\end{table}	
 
 
 
