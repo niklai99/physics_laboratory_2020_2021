@@ -92,7 +92,7 @@
 %	APPARATO SPERIMENTALE
 %----------------------------------------------------------------------------------------
 
-\section{Strumentazione e Componenti}
+\section{Strumentazione e Componenti}\label{s:strumenti}
 
 \begin{itemize}
 	\item \textbf{Oscilloscopio} (Tektronix TBS1102B): Lo strumento presenta un'accuratezza sul guadagno verticale $\Delta_{g}$ pari
@@ -299,6 +299,13 @@ versa.\\
 %----------------------------------------------------------------------------------------
 
 \subsection{Dati e Analisi}
+In questa sezione si vuole inizialmente rappresentare le misure acquisite in laboratorio, sia riportandole in tabella
+sia utilizzando un grafico esplorativo di $V_{\text{out}}$ contro $V_{\text{in}}$, per cercare di estrarre informazioni
+di carattere generale sui dati a disposizione. Successivamente, si vuole invece caratterizzare la linearità
+dell'amplificatore operazionale ed il guadagno del circuito in termini statistici, focalizzandosi sullo studio di interpolazioni
+lineari.
+
+\subsection{Dataset}
 Si riportano in Tabella \ref{t:osc_measures} le misure acquisite con l'oscilloscopio, alle quali è stata associata un'incertezza
 
 \begin{equation}\label{e:osc}
@@ -306,12 +313,16 @@ Si riportano in Tabella \ref{t:osc_measures} le misure acquisite con l'oscillosc
 \end{equation}
 
 \noindent dove $\sigma_{l}=\Delta_{l}/\sqrt{6}$ e $\sigma_{g}=\Delta_{g}/\sqrt{6}$ (assumendo una distribuzione
-triangolare) rappresentano l'incertezza di lettura e di guadagno associati all'oscilloscopio, V/div rappresenta la scala
-di acquisizione della misura mentre "measure" rappresenta la misura sperimentale stessa.
+triangolare) rappresentano l'incertezza di lettura e di guadagno associati all'oscilloscopio (si rimanda a Sezione
+\ref{s:strumenti} per i valori di $\Delta_{l}$ e $\Delta_{g}$), V/div rappresenta la scala
+di acquisizione della misura mentre "measure" rappresenta la misura sperimentale stessa. Osservando la colonna relativa
+alla tensione in ingresso $V_{\text{in}}$, si nota come sia conforme alla tensione nominale erogata dal generatore di
+funzioni: questo è sicuramente indice di una corretta acquisizione del segnale in ingresso e di una corretta
+configurazione del generatore (\textit{modalità "50 Ohm"}) e dell'oscilloscopio (\textit{attenuazione sonda 10X}).
 
 \begin{table}[H]
 	\centering
-
+	\footnotesize
 	\begin{tabular}{x{2cm} x{3cm} x{3.2cm} x{3cm} x{3.2cm}} 
 
 		\toprule[0.5px]
@@ -324,7 +335,7 @@ di acquisizione della misura mentre "measure" rappresenta la misura sperimentale
 
 		\addlinespace
 		
-		$V\text{\small{pp}}_{\text{gen}}$ (V)& $V_{\text{in}}$ (V)& Scala $V_{\text{in}}$ (V/div)& $V_{\text{out}}$ (V)& Scala
+		$V\text{{pp}}_{\text{gen}}$ (V)& $V_{\text{in}}$ (V)& Scala $V_{\text{in}}$ (V/div)& $V_{\text{out}}$ (V)& Scala
 		$V_{\text{out}}$ (V/div)\tn
 		
 		\addlinespace
@@ -351,7 +362,7 @@ di acquisizione della misura mentre "measure" rappresenta la misura sperimentale
 
 		\addlinespace
 		
-		$V\text{\small{pp}}_{\text{gen}}$ (V)& $V_{\text{in}}$ (V)& Scala $V_{\text{in}}$ (V/div)& $V_{\text{out}}$ (V)& Scala
+		$V\text{{pp}}_{\text{gen}}$ (V)& $V_{\text{in}}$ (V)& Scala $V_{\text{in}}$ (V/div)& $V_{\text{out}}$ (V)& Scala
 		$V_{\text{out}}$ (V/div)\tn
 
 		\addlinespace
