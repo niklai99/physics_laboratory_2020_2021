@@ -1,4 +1,4 @@
-# TO DO
+# La relazione si trova nella cartella "Report" &rarr; Report.pdf
 
 ## Cari amici fisici :heart:
 
