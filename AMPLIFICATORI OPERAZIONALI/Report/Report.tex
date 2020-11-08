@@ -269,14 +269,17 @@ di $V_{\text{in}}$ e $V_{\text{out}}$ data da Equazione \ref{e:osc}.\\
 %	SIMULAZIONE SPICE PRELIMINARE
 %----------------------------------------------------------------------------------------
 
-\subsection{Simulazione Spice Preliminare}
+\subsection{Simulazione Spice Preliminare}\label{s:spice}
 Prima di procedere con l'analisi dati, si decide di simulare la risposta del circuito utilizzando il programma LTSpice.
 Il circuito in questione è riportato in Figura \ref{i:opamp_circuit}, tenendo conto però che il generatore è impostato
 in modalità "50 Ohm". Si sceglie di effettuare la simulazione considerando due ampiezze in ingresso significative: per
 la prima si imposta dal generatore un'ampiezza $V_{\text{gen}}=1\,\si{\volt}$ mentre per la seconda
 $V_{\text{gen}}=4\,\si{\volt}$. Questa scelta è dettata dal fatto che l'amplificatore operazionale, essendo una
-componente attiva del circuito, non può dare in output una tensiore maggiore di quanta ne riceve in alimentazione
-per conservazione dell'energia: ci si aspetta allora di trovare una situazione di saturazione del segnale in uscita. 
+componente attiva del circuito, non può dare in output una tensiore maggiore di quanta ne riceve in alimentazione per
+conservazione dell'energia: ci si aspetta allora di trovare una situazione di saturazione del segnale in uscita e che
+questa inizi a manifestarsi attorno ad un valore nominale di tensione $V\text{pp}_{\text{gen}}=3\,\si{\volt}$ in quanto,
+avendo un guadagno di circa un fattore 10, il segnale in uscita non può superare i $30\,\si{\volt}$
+picco picco.
 
 \begin{figure}[H]
 	\centering
@@ -288,8 +291,8 @@ per conservazione dell'energia: ci si aspetta allora di trovare una situazione d
 
 \noindent Dal grafico si evince chiaramente come erogando $V_{\text{gen}}=1\,\si{\volt}$ il segnale viene amplificato
 correttamente di circa un fattore 10 mantenendo la forma sinusoidale, mentre erogando $V_{\text{gen}}=4\,\si{\volt}$ il
-segnale in uscita presenta i picchi tagliati esattamente a livello delle tensioni di alimentazione fornite
-all'operazionale. Inoltre, come anticipato in Sezione \ref{s:guadagno}, si può osservare il comportamento invertente
+segnale in uscita presenta i picchi tagliati esattamente a livello $V_{\text{sat}}=\pm 15\,\si{\volt}$, ovvero le
+tensioni di alimentazione fornite all'operazionale. Inoltre, come anticipato in Sezione \ref{s:guadagno}, si può osservare il comportamento invertente
 dell'amplificatore operazionale: ad un massimo di $V_{\text{in}}$ corrisponde un minimo di $V_{\text{out}}$ e vice
 versa.\\
 
@@ -389,9 +392,21 @@ configurazione del generatore (\textit{modalità "50 Ohm"}) e dell'oscilloscopio
 	\label{t:osc_measures}
 \end{table}	
 
+\noindent Osservando invece la colonna relativa a $V_{\text{out}}$ si nota un'amplificazione conforme alle aspettative (circa un
+fattore 10). Inoltre, si osserva come le ultime misure per entrambi i campioni, cioè quelle con tensione nominale
+$V\text{pp}_{\text{gen}}$ maggiore, tendano a stabilizzarsi attorno a circa $V_{\text{sat}}=\pm15\,\si{\volt}$, ovvero
+la tensione massima che l'amplificatore operazionale può fornire in output. Come da aspettative, riportate in Sezione \ref{s:spice},
+questo fenomeno di stabilizzazione attorno a $V_{\text{sat}}$ inizia a manifestarsi attorno ad una tensione erogata dal
+generatore di circa $V\text{pp}_{\text{gen}}=3\,\si{\volt}$.\\
+Per meglio chiarificare l'andamento delle misure ed il fenomeno di saturazione, si riportano nel grafico in Figura
+\ref{i:opamp_eda} 
 
-
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_alldata_eda.png}
+	\caption{}
+	\label{i:opamp_eda}
+\end{figure}
 
 
 

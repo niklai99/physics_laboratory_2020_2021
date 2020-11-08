@@ -6,19 +6,19 @@ namespace NSP {
 /*---COSTANTI---*/ 
 
     //nome file 
-    string FILE_NAME = "../Data/data_opamp_min_err_nooutliers.txt";  
+    string FILE_NAME = "../Data/data_opamp_all.txt";  
 
     //plot range del fit
-    double XMIN = -1.5;
-    double XMAX = 0;
-    double YMIN = -14;
-    double YMAX = 0;
+    double XMIN = -2;
+    double XMAX = 2;
+    double YMIN = -18;
+    double YMAX = 18;
 
     //plot range dei residui
     double RESXMIN = XMIN;
     double RESXMAX = XMAX;
-    double RESYMIN = -.55;
-    double RESYMAX = .55;
+    double RESYMIN = -2;
+    double RESYMAX = 2;
 
 /*---OGGETTINI CARINI---*/ 
 
@@ -136,9 +136,12 @@ TFitResultPtr NSP::fit_fun(TGraphErrors* graph) {
     TF1* f1 = new TF1("myfit", myfit, NSP::XMIN, NSP::XMAX, NSP::NPAR);
     f1->SetParNames("a", "b");
     f1->SetLineColor(kRed);
+    f1->SetLineStyle(2);
+    f1->SetLineWidth(2);
 
     //faccio il fit
-    TFitResultPtr fit_result = graph->Fit("myfit", "S");
+    TFitResultPtr fit_result = graph->Fit("myfit", "SR");
+    TFitResultPtr fit_result2 = graph->Fit("myfit2", "SR");
     fit_result->Print("V");
     //disegno il grafico
     graph->Draw("AP");
@@ -178,7 +181,7 @@ void NSP::settings_fit(TGraphErrors* graph) {
     NSP::c1->cd(1);
 
     //titolo e assi
-    graph-> SetTitle("OpAmp Minimi; V_{in} (V); V_{out} (V)");
+    graph-> SetTitle("OpAmp Grafico Esplorativo; V_{in} (V); V_{out} (V)");
 
     //stile e colore
     graph-> SetLineColor(kBlack);
@@ -262,7 +265,7 @@ void NSP::read_data(vector<double>& x, vector<double>& y, vector<double>& errX, 
         f >> i;
         NSP::y.push_back(i);    //seconda colonna
         f >> i;
-        NSP::errX.push_back(0);     //push_back(0) se non ho errori sull'asse x
+        NSP::errX.push_back(i);     //push_back(0) se non ho errori sull'asse x
         f >> i;
         NSP::errY.push_back(i);
 
