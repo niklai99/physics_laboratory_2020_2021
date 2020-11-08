@@ -440,25 +440,26 @@ $m$. Questo viene poi utilizzato per proiettare gli errori di $V_{\text{in}}$ lu
 	\sigma_{y} = \sqrt{	\sigma_{V_{\text{out}}}^2	+	m^2	\sigma_{V_{\text{in}}}^2	}
 \end{equation}
 
-\noindent In Figura \ref{i:opamp_pre} sono rappresentati dunque i grafici con il fit preliminare per i due campioni di
-massimi e minimi separati con i rispettivi grafici dei residui.
+%\noindent In Figura \ref{i:opamp_pre} sono rappresentati dunque i grafici con il fit preliminare per i due campioni di
+%massimi e minimi separati con i rispettivi grafici dei residui.
+%
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_preliminary.png}
+%	\caption{In alto a sinistra: fit del campione di massimi. In basso a sinistra: fit del campione di minimi. 
+%	A destra si trovano invece i rispettivi grafici dei residui.}
+%	\label{i:opamp_pre}
+%\end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_preliminary.png}
-	\caption{In alto a sinistra: fit del campione di massimi. In basso a sinistra: fit del campione di minimi. 
-	A destra si trovano invece i rispettivi grafici dei residui.}
-	\label{i:opamp_pre}
-\end{figure}
+%\noindent I risultati di questi fit non si ritengono significativi per gli scopi dell'esperienza in quanto alle misure
+%non sono stati assegnati i corretti errori statistici. Tuttavia, è possibile notare che i residui non presentano un
+%andamento marcatamente patologico e la distanza tra i punti e la retta interpolante è ben compresa entro le barre
+%d'errore. I coefficienti angolari di interesse per l'analisi sono invece i seguenti.
 
-\noindent I risultati di questi fit non si ritengono significativi per gli scopi dell'esperienza in quanto alle misure
-non sono stati assegnati i corretti errori statistici. Tuttavia, è possibile notare che i residui non presentano un
-andamento marcatamente patologico e la distanza tra i punti e la retta interpolante è ben compresa entro le barre
-d'errore. I coefficienti angolari di interesse per l'analisi sono invece i seguenti.
+\noindent I coefficienti angolari di interesse sono dunque riportati in Tabella \ref{t:pre_slopes}.
 
 \begin{table}[H]
 	\centering
-	\footnotesize
 	\begin{tabular}{x{4cm} x{4cm}} 
 
 		\toprule[0.5px]
@@ -483,8 +484,58 @@ d'errore. I coefficienti angolari di interesse per l'analisi sono invece i segue
 \noindent Questi due coefficienti angolari vengono adesso utilizzati per proiettare il contributo d'errore relativo a
 $V_{\text{in}}$ lungo l'asse y secondo la formula in Equazione \ref{e:proj}.
 
-\subsubsection{}
+\subsubsection{Linearità e Amplificazione}
+Alla luce di quanto trovato nella sezione precedente, si ripetono le interpolazioni lineari associando ai punti un
+errore dato da Equazione \ref{e:proj}. I parametri restituiti dai fit sono riportati in Tabella \ref{t:opamp_fitres_max_min}.
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{x{3cm} x{3cm} x{3cm} x{3cm}} 
+
+		\toprule[0.5px]
+		\toprule[0.1px]
+		
+		\multicolumn{4}{c}{Fit Parameters}\tn
+		\midrule[0.1px]
+
+		\multicolumn{4}{c}{Campione di Massimi}\tn
+
+		\addlinespace
+		
+		Offset (V) & Slope & $\chi^2$/ndf & $\sigma_{\text{posteriori}}$ (V)\tn
+
+		\addlinespace
+
+		$-0.06\pm0.04$ & $10.02\pm0.14$ & $0.98/7$ & $0.10$ \tn
+
+		\midrule[0.1px]
+		
+		\multicolumn{4}{c}{Campione di Minimi}\tn
+
+		\addlinespace
+		
+		Offset (V) & Slope & $\chi^2$/ndf & $\sigma_{\text{posteriori}}$ (V) \tn
+
+		$0.07\pm0.04$ & $10.16\pm0.14$ & $0.67/7$ & $0.07$ \tn
+
+
+
+		\bottomrule[0.5px]
+		
+	\end{tabular}
+	\caption{Valori dei coefficienti angolari restituiti dalle interpolazioni preliminari.}
+	\label{t:opamp_fitres_max_min}
+\end{table}	
+
+
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_projected.png}
+%	\caption{In alto a sinistra: fit del campione di massimi. In basso a sinistra: fit del campione di minimi. 
+%	A destra si trovano invece i rispettivi grafici dei residui.}
+%	\label{i:opamp_proj}
+%\end{figure}
 
 
 
