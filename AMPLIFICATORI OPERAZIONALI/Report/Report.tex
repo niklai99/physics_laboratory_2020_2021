@@ -308,6 +308,10 @@ di carattere generale sui dati a disposizione. Successivamente, si vuole invece 
 dell'amplificatore operazionale ed il guadagno del circuito in termini statistici, focalizzandosi sullo studio di interpolazioni
 lineari.
 
+%----------------------------------------------------------------------------------------
+%	DATISET
+%----------------------------------------------------------------------------------------
+
 \subsubsection{Dataset}
 Si riportano in Tabella \ref{t:osc_measures} le misure acquisite con l'oscilloscopio, alle quali è stata associata un'incertezza
 
@@ -419,10 +423,67 @@ considerarsi degli outiers rispettivamente al trend lineare delle misure rimanen
 linearità dell'amplificatore operazionale e di calcolare l'amplificazione del circuito, dunque, gli outliers non
 verranno considerati.
 
+%----------------------------------------------------------------------------------------
+%	PRELIMIARY FIT
+%----------------------------------------------------------------------------------------
+
 \subsubsection{Interpolazioni Preliminari}
+Si procede ora considerando il campione di misure dei massimi ed il campione di misure dei minimi separatamente, in
+quanto a priori non si ha la certezza che questi appartengano alla stessa popolazione. \\
+Osservando le misure in Tabella \ref{t:osc_measures} si nota come le incertezze su $V_{\text{in}}$ siano generalmente un
+ordine di grandezza inferiori rispetto a quelle su $V_{\text{out}}$: le prime non sono quindi trascurabili rispetto alle
+seconde. Per tenere conto quindi dell'incertezza su $V_{\text{in}}$, ci si propone di effettuare un fit
+preliminare, nel quale si considerano unicamente gli errori su $V_{\text{out}}$, per stimare un coefficiente angolare
+$m$. Questo viene poi utilizzato per proiettare gli errori di $V_{\text{in}}$ lungo l'asse delle ordinate secondo 
 
+\begin{equation}\label{e:proj}
+	\sigma_{y} = \sqrt{	\sigma_{V_{\text{out}}}^2	+	m^2	\sigma_{V_{\text{in}}}^2	}
+\end{equation}
 
+\noindent In Figura \ref{i:opamp_pre} sono rappresentati dunque i grafici con il fit preliminare per i due campioni di
+massimi e minimi separati con i rispettivi grafici dei residui.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_preliminary.png}
+	\caption{In alto a sinistra: fit del campione di massimi. In basso a sinistra: fit del campione di minimi. 
+	A destra si trovano invece i rispettivi grafici dei residui.}
+	\label{i:opamp_pre}
+\end{figure}
+
+\noindent I risultati di questi fit non si ritengono significativi per gli scopi dell'esperienza in quanto alle misure
+non sono stati assegnati i corretti errori statistici. Tuttavia, è possibile notare che i residui non presentano un
+andamento marcatamente patologico e la distanza tra i punti e la retta interpolante è ben compresa entro le barre
+d'errore. I coefficienti angolari di interesse per l'analisi sono invece i seguenti.
+
+\begin{table}[H]
+	\centering
+	\footnotesize
+	\begin{tabular}{x{4cm} x{4cm}} 
+
+		\toprule[0.5px]
+		\toprule[0.1px]
+		
+		\multicolumn{2}{c}{Coefficienti Angolari Preliminari}\tn
+		\midrule[0.1px]
+
+		Campione di Massimi & Campione di Minimi \tn
+
+		\addlinespace
+		
+		$m=10.02\pm0.09$ & $m=10.16\pm0.09$ \tn
+		
+		\bottomrule[0.5px]
+		
+	\end{tabular}
+	\caption{Valori dei coefficienti angolari restituiti dalle interpolazioni preliminari.}
+	\label{t:pre_slopes}
+\end{table}	
+
+\noindent Questi due coefficienti angolari vengono adesso utilizzati per proiettare il contributo d'errore relativo a
+$V_{\text{in}}$ lungo l'asse y secondo la formula in Equazione \ref{e:proj}.
+
+\subsubsection{}
 
 
 
