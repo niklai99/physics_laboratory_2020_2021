@@ -180,7 +180,7 @@
 	delle componenti circuitali attive, esse devono essere alimentate. Si utilizza dunque il generatore di tensione
 	continua con $V_{+} = V_{\text{cc}} = +15\,\si{\volt}$ e $V_{-} = V_{\text{ee}}=-15\,\si{\volt}$ per l'alimentazione
 	dell'amplificatore operazionale utilizzato nell'esperienza. Nel corso di quest'ultima, si assume un comportamento
-	\textit{ideale} dell'amplificatore operazionale, ovvero che il polo invertente ed il polo non invertente si trovino
+	\textit{ideale} dell'amplificatore operazionale, ovvero che il polo positivo ed il polo negativo si trovino
 	allo stesso potenziale.
 	
 	\item \textbf{Scheda Arduino Due}
@@ -198,6 +198,11 @@ In questa sezione ci si propone di studiare il comportamento di un circuito pura
 amplificatore operazionale in configurazione invertente (polo positivo a massa, polo negativo collegato al segnale in
 ingresso). Si vuole in particolare verificare la sua linearità e stimare l'amplificazione del circuito come grandezza derivata
 partendo da misure dirette oppure come parametro di un'interpolazione lineare. 
+
+
+%----------------------------------------------------------------------------------------
+%	CONFIGURAZIONE SPERIMENTALE
+%----------------------------------------------------------------------------------------
 
 \subsection{Configurazione Sperimentale}
 
@@ -218,23 +223,51 @@ utilizzando due sonde con fattore di attenuazione 10X. Nel canale CH1 dell'oscil
 in ingresso $V_{\text{in}}$, mentre il segnale in uscita $V_{\text{out}}$ è prelevato dalla sonda collegata al canale
 CH2. Per entrambi i canali viene impostata l'attenuazione sonda 10X, in modo da visualizzare nel display il segnale non
 attenuato. Il generatore di funzioni viene poi configurato in modalità "50 Ohm", in modo che l'impedenza d'uscita del
-generatore sia comparabile con $R_3\approx 50\si{\ohm}$. Così facendo, ci si aspetta di trovare una tensione in ingresso
+generatore sia comparabile con $R_3\approx 50\,\si{\ohm}$. Così facendo, ci si aspetta di trovare una tensione in ingresso
 $V_{\text{in}}$ in accordo con la tensione nominale erogata dal generatore. Si imposta infine il generatore di funzioni
 in modo da erogare un segnale di tipo sinusoidale con frequenza $f_{\text{gen}}=1\,\si{k\hertz}$ e di ampiezza
 variabile.
 
+%----------------------------------------------------------------------------------------
+%	AMPLIFICAZIONE ATTESA
+%----------------------------------------------------------------------------------------
+
+\subsection{Amplificazione Attesa}\label{s:guadagno}
+Facendo riferimento ai valori delle resistenze  $R_f$ ed $R_1$ riportate in Tabella \ref{t:direct_measures}, si vuole
+calcolare il guadagno $G$ atteso
+
+\begin{align}\label{e:guadagno}
+	G&=\left|-\frac{R_{f}}{R_{1}}\right| 
+	&
+	\sigma_{G}&=\sqrt{	\left(	\frac{	1	}{	R_{1}	}	\right)^2	\sigma_{R_{f}}^2	
+	+	\left(	\frac{	R_{f}	}{	R_{1}^2	}	\right)\sigma_{R_{1}}^2	}	
+\end{align}
+
+\noindent dove il segno meno è dovuto all'operazionale posto in configurazione invertente: questo comporta allora un
+segnale  $V_{\text{out}}$ "invertito", cioè ci si aspetta che i massimi del segnale in ingresso corrispondano a minimi
+del segnale in uscita e vice versa, e amplificato di un fattore 
+
+\begin{equation}
+	G = 10.194 \pm 0.006.
+\end{equation}
+
+%----------------------------------------------------------------------------------------
+%	ACQUISIZIONE MISURE
+%----------------------------------------------------------------------------------------
 
 \subsection{Acquisizione Misure}
 Al fine di verificare la linearità dell'amplificatore operazionale e stimare l'amplificazione del circuito, si decide di
 far variare la tensione in ingresso impostando valori crescenti di ampiezza del segnale erogato dal generatore di
 funzioni. Per ciascuno di questi valori di tensione si acquisisce la misura di un massimo e di un minimo sia del segnale
 $V_{\text{in}}$ sia del segnale $V_{\text{out}}$ sfruttando i cursori orizzontali dell'oscilloscopio. In questo modo, si
-ottiene un campione di coppie ($V_{\text{in}}$, $V_{\text{out}}$) che ci si aspetta segua un andamento lineare assumendo
-la linearità dell'amplificatore operazionale. I valori di tensione $V_{\text{gen}}$, $V_{\text{in}}$, $V_{\text{out}}$ e
+ottiene un campione di coppie ($V_{\text{in}}$, $V_{\text{out}}$) che ci si aspetta segua un andamento lineare (assumendo
+la linearità dell'amplificatore operazionale). I valori di tensione $V_{\text{gen}}$, $V_{\text{in}}$, $V_{\text{out}}$ e
 le relative scale di misura sono riportate in Tabella \ref{t:osc_measures}. Si associa inoltre un'incertezza alle misure
 di $V_{\text{in}}$ e $V_{\text{out}}$ data da Equazione \ref{e:osc}.\\
 
-
+%----------------------------------------------------------------------------------------
+%	SIMULAZIONE SPICE PRELIMINARE
+%----------------------------------------------------------------------------------------
 
 \subsection{Simulazione Spice Preliminare}
 Prima di procedere con l'analisi dati, si decide di simulare la risposta del circuito utilizzando il programma LTSpice.
@@ -256,7 +289,14 @@ per conservazione dell'energia: ci si aspetta allora di trovare una situazione d
 \noindent Dal grafico si evince chiaramente come erogando $V_{\text{gen}}=1\,\si{\volt}$ il segnale viene amplificato
 correttamente di circa un fattore 10 mantenendo la forma sinusoidale, mentre erogando $V_{\text{gen}}=4\,\si{\volt}$ il
 segnale in uscita presenta i picchi tagliati esattamente a livello delle tensioni di alimentazione fornite
-all'operazionale. 
+all'operazionale. Inoltre, come anticipato in Sezione \ref{s:guadagno}, si può osservare il comportamento invertente
+dell'amplificatore operazionale: ad un massimo di $V_{\text{in}}$ corrisponde un minimo di $V_{\text{out}}$ e vice
+versa.\\
+
+
+%----------------------------------------------------------------------------------------
+%	DATI E ANALISI
+%----------------------------------------------------------------------------------------
 
 \subsection{Dati e Analisi}
 Si riportano in Tabella \ref{t:osc_measures} le misure acquisite con l'oscilloscopio, alle quali è stata associata un'incertezza
