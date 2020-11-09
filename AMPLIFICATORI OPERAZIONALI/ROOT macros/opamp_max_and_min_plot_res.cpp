@@ -213,6 +213,8 @@ TFitResultPtr fit_fun(TGraphErrors* graph, const double XMIN, const double XMAX)
     //faccio il fit
     TFitResultPtr fit_result = graph->Fit("myfit", "S");
     fit_result->Print("V");
+
+    std::cout << f1->GetProb() << std::endl;
     //disegno il grafico
     graph->Draw("AP");
 

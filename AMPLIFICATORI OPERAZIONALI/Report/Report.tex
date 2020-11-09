@@ -561,9 +561,45 @@ in Figura \ref{i:opamp_all_proj}.
 	\label{i:opamp_all_proj}
 \end{figure}
 
+\noindent I parametri restituiti dall'interpolazione sono i seguenti 
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{x{3cm} x{3cm} x{3cm} x{3cm}} 
+
+		\toprule[0.5px]
+		\toprule[0.1px]
+		
+		\multicolumn{4}{c}{Fit Parameters}\tn
+		\midrule[0.1px]
+
+		\addlinespace
+		
+		Offset (V) & Slope & $\chi^2$/ndf & $\sigma_{\text{posteriori}}$ (V)\tn
+
+		\addlinespace
+
+		$-0.01\pm0.02$ & $9.93\pm0.07$ & $7.9/16$ & $0.13$ \tn
+
+		\bottomrule[0.5px]
+		
+	\end{tabular}
+	\caption{In tabella sono riportati i parametri della retta interpolante, il valore del $\chi^2$ associato al fit 
+	e l'errore a posteriori relativo alla ditribuzione dei dati.}
+	\label{t:opamp_fitres_all}
+\end{table}	
+
+\noindent Si osserva inizialmente che l'intercetta della retta interpolante è ora ben compatibile con zero, mentre il
+coefficiente angolare presenta un errore relativo $\sigma_{b}/b=0.7\%$, che si può continuare ad assumere sottostimato:
+la correlazione tra gli errori di scala, infatti, si può notare chiaramente osservando l'andamento "a farfalla" delle
+barre d'errore presentate nel grafico dei residui. Il valore del $\chi^2$ migliora leggermente rispetto alle
+interpolazioni dei dataset separati: la compatibilità con il valore di aspettazione risulta essere $Z=1.4$
 
 
 
+
+%\noindent Osservando il grafico dei residui in Figura \ref{i:opamp_all_proj} si nota un andamento leggermente anomalo,
+%quasi parabolico con concavità rivolta verso il basso
 
 
 \end{document}

@@ -6,7 +6,7 @@ namespace NSP {
 /*---COSTANTI---*/ 
 
     //nome file 
-    string FILE_NAME = "../Data/data_opamp_all_projected.txt";  
+    string FILE_NAME = "../Data/data_opamp_all_projected_errx.txt";  
 
     //plot range del fit
     double XMIN = -2;
@@ -132,7 +132,7 @@ void opamp_all_plot_err(){
 */
 
     //NSP::c1->SaveAs("../Plots/opamp_all_plot_projected.png");
-    NSP::c3->SaveAs("../Plots/opamp_all_projected.png");
+    //NSP::c3->SaveAs("../Plots/opamp_all_projected.png");
 
 }
 
@@ -166,6 +166,7 @@ TFitResultPtr NSP::fit_fun(TGraphErrors* graph) {
     //faccio il fit
     TFitResultPtr fit_result = graph->Fit("myfit", "S");
     fit_result->Print("V");
+    std::cout << f1->GetProb() << std::endl;
     //disegno il grafico
     graph->Draw("AP");
 
