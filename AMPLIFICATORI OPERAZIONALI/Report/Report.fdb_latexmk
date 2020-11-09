@@ -1,14 +1,14 @@
 # Fdb version 3
-["pdflatex"] 1604932048 "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" "Report" 1604932051
+["pdflatex"] 1604932764 "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" "Report" 1604932767
   "../Plots/Report_Plots/opamp_plot_all_projected.png" 1604603999 45389 3cf857185ed6fa952950a177415cd850 ""
   "../Plots/Report_Plots/opamp_plot_alldata_eda.png" 1604843704 29068 a21b0f43934853638f54786f5d0b59b1 ""
   "../Plots/Report_Plots/opamp_spice_1V_4V.png" 1604682639 30634 424c8142c16ea6cfcfca1c323a207b4c ""
   "../Simulations/OpAmp/circuit_image_nosim.png" 1604684846 21670 05d2e9cbcf04f9b52fdb6b8cac032ddf ""
-  "Report.aux" 1604932051 6319 0d2971ed99c5c564a5b8ad10224d058f ""
-  "Report.out" 1604932051 729 9a5cd58382ed913f18629956a13f3e24 ""
-  "Report.tex" 1604932044 27521 aaacbbfaa6259dde9bb961a0ea19c90b ""
-  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux" 1604932051 6319 0d2971ed99c5c564a5b8ad10224d058f ""
-  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" 1604932044 27521 aaacbbfaa6259dde9bb961a0ea19c90b ""
+  "Report.aux" 1604932766 6319 0d2971ed99c5c564a5b8ad10224d058f ""
+  "Report.out" 1604932766 729 9a5cd58382ed913f18629956a13f3e24 ""
+  "Report.tex" 1604932762 28041 079b9006adcdb6c3b548d454d52898e9 ""
+  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux" 1604932766 6319 0d2971ed99c5c564a5b8ad10224d058f ""
+  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" 1604932762 28041 079b9006adcdb6c3b548d454d52898e9 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1543003531 2971 def0b6c1f0b107b3b936def894055589 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1543003531 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1543004023 3332 103109f5612ad95229751940c61aada0 ""
@@ -267,8 +267,8 @@
   "structure.tex" 1604751755 1937 e7c72667d583c6ec18c63771323af4ad ""
   (generated)
   "Report.log"
-  "Report.aux"
-  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.log"
   "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf"
   "Report.pdf"
   "Report.out"
+  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.log"
+  "Report.aux"

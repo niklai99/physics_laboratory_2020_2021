@@ -433,7 +433,9 @@ verranno considerati.
 
 \subsubsection{Interpolazioni Preliminari}
 Si procede ora considerando il campione di misure dei massimi ed il campione di misure dei minimi separatamente, in
-quanto a priori non si ha la certezza che questi appartengano alla stessa popolazione. \\
+quanto a priori non si ha la certezza che queste risentano della stessa amplificazione e che non sia presente una
+sistematica di offset/shift verticale tra i due dataset. Si cercherà in seguito di caratterizzare l'accordo tra i due dataset
+studiando la compatibilità tra i coefficienti angolari e tra le intercette della retta interpolante.\\
 Osservando le misure in Tabella \ref{t:osc_measures} si nota come le incertezze su $V_{\text{in}}$ siano generalmente un
 ordine di grandezza inferiori rispetto a quelle su $V_{\text{out}}$: le prime non sono quindi trascurabili rispetto alle
 seconde. Per tenere conto quindi dell'incertezza su $V_{\text{in}}$, ci si propone di effettuare un fit
@@ -545,10 +547,11 @@ guadagno verticale dell'oscilloscopio sono almeno parzialmente correlate: questo
 sulle misure che sono tra loro correlati ed un'interpolazione di tali dati restituisce parametri i quali errori
 risultano essere sottostimati. Si può dunque assumere che i parametri \textit{slope} e \textit{offset} riportati in
 Tabella \ref{t:opamp_fitres_max_min} siano in realtà più compatibili tra dataset di massimi e dataset di minimi rispetto
-a quanto riportato poco sopra, proprio a causa di una possibile sottostima dell'errore sui parametri: segue allora un
-tentativo di "unificazione" del campione di dati ed un'interpolazione lineare unica che tenga conto sia dei massimi che
-dei minimi.
-
+a quanto riportato poco sopra, proprio a causa di una possibile sottostima dell'errore sui parametri. Siccome allora si
+può assumere che i due campioni risentano della stessa amplificazione e che non siano tra loro sfasati verticalmente,
+segue un tentativo di "unificazione" del campione di dati ed un'interpolazione lineare unica che tenga conto sia dei
+massimi che dei minimi. Il grafico rappresentante i due dataset unificati con relativa interpolazione lineare è mostrato
+in Figura \ref{i:opamp_all_proj}. 
 
 \begin{figure}[H]
 	\centering
