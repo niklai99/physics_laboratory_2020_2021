@@ -30,15 +30,15 @@ double err_post_min;
 
 //plot range del fit
 const double XMIN_max = 0;
-const double XMAX_max = 3;
+const double XMAX_max = 2.788;
 const double YMIN_max = 0;
-const double YMAX_max = 30;
+const double YMAX_max = 27.969;
 
 //plot range dei residui
 const double RESXMIN_max = XMIN_max;
 const double RESXMAX_max = XMAX_max;
-const double RESYMIN_max = -.8;
-const double RESYMAX_max = .8;
+const double RESYMIN_max = -.75;
+const double RESYMAX_max = .75;
 
 /*
 //plot range del fit
@@ -150,7 +150,7 @@ void opamp_max_and_min_plot_res() {
     //"sigma post minimi:\n\n" <<
     //err_post_min << "\n\n";
 
-    //latex_max(text);
+    latex_max(text);
     //latex_min(text);
 
     return;
@@ -176,10 +176,10 @@ void readData(vector<double>& x, vector<double>& y, vector<double>& errX, vector
 
     }
 
-    x.erase(x.begin());
-    y.erase(y.begin());
-    errX.erase(errX.begin());
-    errY.erase(errY.begin());
+    //x.erase(x.begin());
+    //y.erase(y.begin());
+    //errX.erase(errX.begin());
+    //errY.erase(errY.begin());
 
 
 
@@ -280,6 +280,7 @@ void settings_res(TGraphErrors* graph, const double RESXMIN, const double RESXMA
     //tick più guardabili
     graph->GetXaxis()->SetTickLength(0.02);
     graph->GetYaxis()->SetTickLength(0.02);
+    graph->GetYaxis()->SetTitleOffset(1.35);
 }
 
 void settings_fit(TGraphErrors* graph, const double XMIN, const double XMAX, const double YMIN, const double YMAX) {
@@ -335,27 +336,27 @@ double err_posteriori(TFitResultPtr fit, vector<double>& x, vector<double>& y) {
 void latex_max(TLatex* text) {
     c1->cd(1);
 
-    text = new TLatex(.4, 26, "Fit Function");
+    text = new TLatex(.4, 25, "Fit Function");
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(.6, 24.5, "y = a + bx");
+    text = new TLatex(.6, 23.5, "y = a + bx");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(1.4, 11.5, "Fit Parameters");
+    text = new TLatex(1.45, 11.5, "Fit Parameters");
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(1.5, 9, "a = -0.13 #pm 0.05 V");
+    text = new TLatex(1.5, 9, "a = -0.13 #pm 0.06 V");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(1.5, 7, "b = 10.1 #pm 0.1");
+    text = new TLatex(1.5, 7, "b = 10.09 #pm 0.11");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(1.5, 5, "#chi^{2} = 0.15   NDF = 7");
+    text = new TLatex(1.5, 5, "#chi^{2} = 0.12   NDF = 7");
     text->SetTextSize(0.04);
     text->Draw();
 

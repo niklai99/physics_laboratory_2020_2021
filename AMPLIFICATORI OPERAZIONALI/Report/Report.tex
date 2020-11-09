@@ -431,7 +431,7 @@ verranno considerati.
 %	PRELIMIARY FIT
 %----------------------------------------------------------------------------------------
 
-\subsubsection{Interpolazioni Preliminari}
+\subsubsection{Interpolazioni Preliminari}\label{s:pre}
 Si procede ora considerando il campione di misure dei massimi ed il campione di misure dei minimi separatamente, in
 quanto a priori non si ha la certezza che queste risentano della stessa amplificazione e che non sia presente una
 sistematica di offset/shift verticale tra i due dataset. Si cercherà in seguito di caratterizzare l'accordo tra i due dataset
@@ -591,9 +591,22 @@ trascurabile necessiti di essere rivisitata. \\
 Per approfondire maggiormenta la questione, si decide di computare le grandezze "picco picco" delle tensioni in ingresso
 $V_{\text{in}}$ e in uscita $V_{\text{out}}$ secondo $V_{\text{pp}}=V^{\text{max}}-V^{\text{min}}$. Per quanto riguarda
 l'errore da associare alle grandezze picco picco, si ricorda che l'oscilloscopio misura la differenza $\Delta$ tra i due
-cursori con una precisione ancora maggiore rispetto alla singola misura. Si sceglie dunque di non aggiungere il fattore
+cursori con una precisione ancora maggiore rispetto alla singola misura. Si decide dunque di non aggiungere il fattore
 moltiplicativo $\sqrt{2}$ alla propagazione presentata in Equazione \ref{e:osc}, al fine di evitare di sovrastimare
-eccessivamente l'errore.
+eccessivamente l'errore. Si procede ora esattamente come mostrato in Sezione \ref{s:pre}, effettuato inizialmente un fit
+lineare preliminare considerando solo gli errori su $Vpp_{\text{out}}$ e, utilizzando il coefficiente angolare
+restituito da tale interpolazione, si prosegue proiettando gli errori secondo Equazione \ref{e:proj}. Si ripete quindi
+il fit, che viene rappresentato in Figura \ref{i:opamp_pp}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_pp_projected.png}
+	\caption{A sinistra: grafico rappresentante il dataset delle grandezze picco picco, 
+	con relativa retta interpolante e parametri del fit. A destra: grafico dei residui $V\text{pp}_{\text{out}}-\text{fit}$.}
+	\label{i:opamp_pp}
+\end{figure}
+
+
 
 
 \end{document}
