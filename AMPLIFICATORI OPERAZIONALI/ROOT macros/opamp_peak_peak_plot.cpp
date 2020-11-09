@@ -135,8 +135,8 @@ void opamp_peak_peak_plot(){
     //personalizzo in modo globale i grafici
     NSP::settings_global();
     
-    NSP::c1->SaveAs("../Plots/opamp_peak_plot_projected.png");
-    NSP::c2->SaveAs("../Plots/opamp_peak_res_projected.png");
+    //NSP::c1->SaveAs("../Plots/opamp_peak_plot_projected.png");
+    //NSP::c2->SaveAs("../Plots/opamp_peak_res_projected.png");
 }
 
 /*---FUNZIONI---*/ 
@@ -392,7 +392,7 @@ void NSP::read_data(vector<double>& x, vector<double>& y, vector<double>& errX, 
         f >> i;
         NSP::y.push_back(i);    //seconda colonna
         f >> i;
-        NSP::errX.push_back(i);     //push_back(0) se non ho errori sull'asse x
+        NSP::errX.push_back(0);     //push_back(0) se non ho errori sull'asse x
         f >> i;
         NSP::errY.push_back(i);
 

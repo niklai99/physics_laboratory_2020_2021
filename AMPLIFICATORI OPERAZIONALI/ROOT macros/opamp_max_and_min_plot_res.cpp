@@ -17,10 +17,10 @@ using namespace std;
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-const double NPAR = 1;
+const double NPAR = 2;
 
-const string FILE_NAME_max = "../Data/data_opamp_T_max.txt";
-const string FILE_NAME_min = "../Data/data_opamp_T_min.txt";
+const string FILE_NAME_max = "../Data/data_opamp_peak_peak_projected.txt";
+//const string FILE_NAME_min = "../Data/data_opamp_T_min.txt";
 
 TCanvas* c1;
 TLatex* text;
@@ -30,9 +30,9 @@ double err_post_min;
 
 //plot range del fit
 const double XMIN_max = 0;
-const double XMAX_max = 2.8;
-const double YMIN_max = 9;
-const double YMAX_max = 11;
+const double XMAX_max = 3;
+const double YMIN_max = 0;
+const double YMAX_max = 30;
 
 //plot range dei residui
 const double RESXMIN_max = XMIN_max;
@@ -40,6 +40,7 @@ const double RESXMAX_max = XMAX_max;
 const double RESYMIN_max = -.8;
 const double RESYMAX_max = .8;
 
+/*
 //plot range del fit
 const double XMIN_min = 0;
 const double XMAX_min = 2.8;
@@ -51,6 +52,7 @@ const double RESXMIN_min = XMIN_min;
 const double RESXMAX_min = XMAX_min;
 const double RESYMIN_min = -.8;
 const double RESYMAX_min = .8;
+*/
 
 //vector dei dati + errori
 vector<double> x_max, y_max, errX_max, errY_max;
@@ -97,56 +99,56 @@ void latex_min(TLatex*);
 void opamp_max_and_min_plot_res() {
 
     c1 = new TCanvas("canvas1", "Fit", 1080, 720);
-    c1->Divide(2, 2);
-    //c1->Divide(2, 0);
+    //c1->Divide(2, 2);
+    c1->Divide(2, 0);
 
     readData(x_max, y_max, errX_max, errY_max, FILE_NAME_max);
-    readData(x_min, y_min, errX_min, errY_min, FILE_NAME_min);
+    //readData(x_min, y_min, errX_min, errY_min, FILE_NAME_min);
 
  
     plot_max = plot_fit(x_max, y_max, errX_max, errY_max);
-    plot_max->SetTitle("OpAmp Massimi; Vpp_{in} (V); Vpp_{out} (V)");
-    plot_min = plot_fit(x_min, y_min, errX_min, errY_min);
-    plot_min->SetTitle("OpAmp Minimi; V_{in} (V); V_{out} (V)");
+    plot_max->SetTitle("OpAmp Grandezze Picco Picco; Vpp_{in} (V); Vpp_{out} (V)");
+    //plot_min = plot_fit(x_min, y_min, errX_min, errY_min);
+    //plot_min->SetTitle("OpAmp Minimi; V_{in} (V); V_{out} (V)");
 
     c1->cd(1);
     TFitResultPtr fit_max = fit_fun(plot_max, XMIN_max, XMAX_max);
-    c1->cd(3);
-    TFitResultPtr fit_min = fit_fun(plot_min, XMIN_min, XMAX_min);
+    //c1->cd(3);
+    //TFitResultPtr fit_min = fit_fun(plot_min, XMIN_min, XMAX_min);
 
     c1->cd(2);
 	residuals_max = res(plot_max, x_max, y_max, errX_max, errY_max);
-    residuals_max->SetTitle("Residui Massimi; Vpp_{in} (V); Vpp_{out} - fit (V)");
-    c1->cd(4);
-    residuals_min = res(plot_min, x_min, y_min, errX_min, errY_min);
-    residuals_min->SetTitle("Residui Minimi; V_{in} (V); V_{out} - fit (V)");
+    residuals_max->SetTitle("Residui Grandezze Picco Picco; Vpp_{in} (V); Vpp_{out} - fit (V)");
+    //c1->cd(4);
+    //residuals_min = res(plot_min, x_min, y_min, errX_min, errY_min);
+    //residuals_min->SetTitle("Residui Minimi; V_{in} (V); V_{out} - fit (V)");
 
     c1->cd(1);
     settings_fit(plot_max, XMIN_max, XMAX_max, YMIN_max, YMAX_max);
-    c1->cd(3);
-    settings_fit(plot_min, XMIN_min, XMAX_min, YMIN_min, YMAX_min);
+    //c1->cd(3);
+    //settings_fit(plot_min, XMIN_min, XMAX_min, YMIN_min, YMAX_min);
 
     //personalizzo il grafico residui
     c1->cd(2);
     linee_res(RESXMIN_max, RESXMAX_max);    
     settings_res(residuals_max, RESXMIN_max, RESXMAX_max, RESYMIN_max, RESYMAX_max);
 
-    c1->cd(4);
-    settings_res(residuals_min, RESXMIN_min, RESXMAX_min, RESYMIN_min, RESYMAX_min);
-    linee_res(RESXMIN_min, RESXMAX_min);
+    //c1->cd(4);
+    //settings_res(residuals_min, RESXMIN_min, RESXMAX_min, RESYMIN_min, RESYMAX_min);
+    //linee_res(RESXMIN_min, RESXMAX_min);
 
     //personalizzo in modo globale i grafici
     settings_global();
 
     err_post_max = err_posteriori(fit_max, x_max, y_max);
-    //cout << err_post_max << endl;
-    err_post_min = err_posteriori(fit_min, x_min, y_min);
+    cout << err_post_max << endl;
+    //err_post_min = err_posteriori(fit_min, x_min, y_min);
 
-    cout << "\n\n" <<
-    "sigma post massimi:\n\n" <<
-    err_post_max << "\n\n" <<
-    "sigma post minimi:\n\n" <<
-    err_post_min << "\n\n";
+    //cout << "\n\n" <<
+    //"sigma post massimi:\n\n" <<
+    //err_post_max << "\n\n" <<
+    //"sigma post minimi:\n\n" <<
+    //err_post_min << "\n\n";
 
     //latex_max(text);
     //latex_min(text);
@@ -193,12 +195,12 @@ TGraphErrors* plot_fit(vector<double>& x, vector<double>& y, vector<double>& err
 
 double myfit(double* x, double* par){   
     double a = par[0];
-    //double b = par[1];
+    double b = par[1];
 
     double fit_function = 0;
 
-    //fit_function = (a * x[0] + b);
-    fit_function = a;
+    fit_function = (a * x[0] + b);
+    //fit_function = a;
 
     return fit_function;
 }
@@ -207,7 +209,7 @@ TFitResultPtr fit_fun(TGraphErrors* graph, const double XMIN, const double XMAX)
 
     //creo la funzione di root
     TF1* f1 = new TF1("myfit", myfit, XMIN, XMAX, NPAR);
-    //f1->SetParNames("a", "b");
+    f1->SetParNames("a", "b");
     f1->SetLineColor(kRed);
 
     //faccio il fit
@@ -310,23 +312,23 @@ double err_posteriori(TFitResultPtr fit, vector<double>& x, vector<double>& y) {
 
     double err_post_squared = 0;
 
-/*    
+   
     const double m = fit->Parameter(0);
     const double q = fit->Parameter(1);
-*/
 
-    const double cost = fit->Parameter(0);
 
-/*    
+    //const double cost = fit->Parameter(0);
+
+    
     for(unsigned int j = 0; j < x.size(); j++) {
         err_post_squared += pow( q + ( m * x[j] ) - y[j] , 2 ) / ( x.size() - 2 );
     }
-*/
 
+/*
     for(unsigned int j = 0; j < x.size(); j++) {
         err_post_squared += pow( cost - y[j] , 2 ) / ( x.size() - 2 );
     }
-
+*/
     return sqrt(err_post_squared);
 }
 
