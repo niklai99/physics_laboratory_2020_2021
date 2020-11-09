@@ -581,10 +581,19 @@ interpolazioni dei dataset separati: la compatibilità con il valore di aspettaz
 posteriori, inoltre, si trova in una zona intermedia rispetto alla gamma di errori associati alle misure: non potendo
 eliminare la correlazione tra le incertezze si può affermare dunque che l'errore è in media ben stimato e
 l'oscilloscopio lavora entro le specifiche. I residui, infatti, si posizionano tutti entro il loro errore, alcuni anche
-abbondantemente. Focalizzandosi ora sulla stima del coefficiente angolare, si nota che questo, $m=9.93\pm0.07$, pur
-essendo ben compatibile con i risultati esposti in Tabella \ref{t:opamp_fitres_max_min}, si trova essere sensibilmente
-minore di entrambi: ci si sarebbe aspettato, invece, di trovare un valore intermedio unificando i due campioni di
-misure.
+abbondantemente. Focalizzandosi ora sulla stima del coefficiente angolare si nota che questo, $m=9.93\pm 0.07$, pur
+essendo ben compatibile con i risultati esposti in Tabella \ref{t:opamp_fitres_max_min} relativi ai fit dei due campioni
+di misure considerati separatamente, si trova essere sensibilmente minore di entrambi: ci si sarebbe aspettato, invece,
+di trovare un valore intermedio unificando i due campioni di misure. Osservando poi il grafico dei residui, si può
+notare un andamento leggermente anomalo, quasi parabolico avente concavità rivolta verso il basso. Si ipotizza dunque
+che l'assunzione fatta in precedenza riguardo la presenza di una sistematica di offset/shift verticale tra i due dataset
+trascurabile necessiti di essere rivisitata. \\
+Per approfondire maggiormenta la questione, si decide di computare le grandezze "picco picco" delle tensioni in ingresso
+$V_{\text{in}}$ e in uscita $V_{\text{out}}$ secondo $V_{\text{pp}}=V^{\text{max}}-V^{\text{min}}$. Per quanto riguarda
+l'errore da associare alle grandezze picco picco, si ricorda che l'oscilloscopio misura la differenza $\Delta$ tra i due
+cursori con una precisione ancora maggiore rispetto alla singola misura. Si sceglie dunque di non aggiungere il fattore
+moltiplicativo $\sqrt{2}$ alla propagazione presentata in \ref{e:osc}, al fine di evitare di sovrastimare eccessivamente
+l'errore.
 
 
 \end{document}
