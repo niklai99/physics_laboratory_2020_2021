@@ -446,22 +446,6 @@ $m$. Questo viene poi utilizzato per proiettare gli errori di $V_{\text{in}}$ lu
 	\sigma_{y} = \sqrt{	\sigma_{V_{\text{out}}}^2	+	m^2	\sigma_{V_{\text{in}}}^2	}
 \end{equation}
 
-%\noindent In Figura \ref{i:opamp_pre} sono rappresentati dunque i grafici con il fit preliminare per i due campioni di
-%massimi e minimi separati con i rispettivi grafici dei residui.
-%
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_preliminary.png}
-%	\caption{In alto a sinistra: fit del campione di massimi. In basso a sinistra: fit del campione di minimi. 
-%	A destra si trovano invece i rispettivi grafici dei residui.}
-%	\label{i:opamp_pre}
-%\end{figure}
-
-%\noindent I risultati di questi fit non si ritengono significativi per gli scopi dell'esperienza in quanto alle misure
-%non sono stati assegnati i corretti errori statistici. Tuttavia, è possibile notare che i residui non presentano un
-%andamento marcatamente patologico e la distanza tra i punti e la retta interpolante è ben compresa entro le barre
-%d'errore. I coefficienti angolari di interesse per l'analisi sono invece i seguenti.
-
 \noindent I coefficienti angolari di interesse sono dunque riportati in Tabella \ref{t:pre_slopes}.
 
 \begin{table}[H]
@@ -593,13 +577,14 @@ in Figura \ref{i:opamp_all_proj}.
 coefficiente angolare presenta un errore relativo $\sigma_{b}/b=0.7\%$, che si può continuare ad assumere sottostimato:
 la correlazione tra gli errori di scala, infatti, si può notare chiaramente osservando l'andamento "a farfalla" delle
 barre d'errore presentate nel grafico dei residui. Il valore del $\chi^2$ migliora leggermente rispetto alle
-interpolazioni dei dataset separati: la compatibilità con il valore di aspettazione risulta essere $Z=1.4$
-
-
-
-
-%\noindent Osservando il grafico dei residui in Figura \ref{i:opamp_all_proj} si nota un andamento leggermente anomalo,
-%quasi parabolico con concavità rivolta verso il basso
+interpolazioni dei dataset separati: la compatibilità con il valore di aspettazione risulta essere $Z=1.4$. L'errore a
+posteriori, inoltre, si trova in una zona intermedia rispetto alla gamma di errori associati alle misure: non potendo
+eliminare la correlazione tra le incertezze si può affermare dunque che l'errore è in media ben stimato e
+l'oscilloscopio lavora entro le specifiche. I residui, infatti, si posizionano tutti entro il loro errore, alcuni anche
+abbondantemente. Focalizzandosi ora sulla stima del coefficiente angolare, si nota che questo, $m=9.93\pm0.07$, pur
+essendo ben compatibile con i risultati esposti in Tabella \ref{t:opamp_fitres_max_min}, si trova essere sensibilmente
+minore di entrambi: ci si sarebbe aspettato, invece, di trovare un valore intermedio unificando i due campioni di
+misure.
 
 
 \end{document}
