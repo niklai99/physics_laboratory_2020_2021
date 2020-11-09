@@ -197,7 +197,8 @@
 In questa sezione ci si propone di studiare il comportamento di un circuito puramente resistivo comprendente un
 amplificatore operazionale in configurazione invertente (polo positivo a massa, polo negativo collegato al segnale in
 ingresso). Si vuole in particolare verificare la sua linearità e stimare l'amplificazione del circuito come grandezza derivata
-partendo da misure dirette oppure come parametro di un'interpolazione lineare. 
+partendo dalle misure dirette delle resistenze oppure come parametro di un'interpolazione lineare di misure acquisite
+con l'oscilloscopio. 
 
 
 %----------------------------------------------------------------------------------------
@@ -422,7 +423,7 @@ $V_{\text{sat}}=\pm15\,\si{\volt}$: i tre punti finali di massimo e minimo tendo
 il trend lineare, fedelmente rispettato dai restati punti del grafico. Dal grafico dei residui si può osservare lo
 stesso fenomeno: la zona centrale risulta essere distribuita ragionevolmente attorno allo zero, mentre le code tendono a
 distanziarsi anche notevolmente. Da questo si deduce dunque che i tre punti finali di massimo e di minimo sono da
-considerarsi degli outiers rispettivamente al trend lineare delle misure rimanenti: al fine di caratterizzare la
+considerarsi degli outiers rispetto al trend lineare delle misure rimanenti: al fine di caratterizzare la
 linearità dell'amplificatore operazionale e di calcolare l'amplificazione del circuito, dunque, gli outliers non
 verranno considerati.
 
@@ -536,15 +537,25 @@ riguardo ai due campioni di dati. Iniziallmente, si vuole far notare come i due 
 compatibilità tra loro: $\lambda=0.7$. Da questo si può assumere che i due dataset risentano della stessa amplificazione
 $G$, come da aspettative. Successivamente, si può notare invece che le due intercette delle rette interpolanti sono in
 leggera compatibilità con lo zero, mentre tra loro presentano una compatibilità $\lambda=2.4$, che fa sorgere l'idea di
-una possibile sistematica di shift verticale tra i due dataset.
+una possibile sistematica di shift verticale tra i due dataset. Osservando poi il valore del $\chi^2$, si ritrova in per
+entrambi i campioni $\chi^2/\nu<1$ (con $\nu=\text{ndf}$ il numero di gradi di libertà, che coincide con il valore di
+aspettazione $E(\chi^2)$). Questo fa emergere l'ipotesi di una possibile sovrastima dell'errore associato alle misure ed
+ad una conseguente sovrastima degli errori sui parametri restituiti dal fit. Tuttavia, si ricorda che le incertezze sul
+guadagno verticale dell'oscilloscopio sono almeno parzialmente correlate: questo porta dunque ad avere degli errori
+sulle misure che sono tra loro correlati ed un'interpolazione di tali dati restituisce parametri i quali errori
+risultano essere sottostimati. Si può dunque assumere che i parametri \textit{slope} e \textit{offset} riportati in
+Tabella \ref{t:opamp_fitres_max_min} siano in realtà più compatibili tra dataset di massimi e dataset di minimi rispetto
+a quanto riportato poco sopra, proprio a causa di una possibile sottostima dell'errore sui parametri: segue allora un
+tentativo di "unificazione" del campione di dati ed un'interpolazione lineare unica che tenga conto sia dei massimi che
+dei minimi.
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_projected.png}
-%	\caption{In alto a sinistra: fit del campione di massimi. In basso a sinistra: fit del campione di minimi. 
-%	A destra si trovano invece i rispettivi grafici dei residui.}
-%	\label{i:opamp_proj}
-%\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_all_projected.png}
+	\caption{}
+	\label{i:opamp_all_proj}
+\end{figure}
 
 
 
