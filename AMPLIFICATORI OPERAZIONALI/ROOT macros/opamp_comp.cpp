@@ -136,6 +136,7 @@ void opamp_comp() {
 
 
     mg = make_mg(plot1, plot2, plot3, plot4, plot5);
+    mg->SetTitle("OpAmp Stime Amplificazione G; ; Amplificazione G");
 
     mg->Draw("AP");
 
@@ -236,7 +237,6 @@ void settings_global() {
     gStyle->SetImageScaling(3.);
 }
 
-
 void settings_fit(TMultiGraph* graph, const double XMIN, const double XMAX, const double YMIN, const double YMAX) {
     //entro nel primo canvas
 
@@ -246,13 +246,17 @@ void settings_fit(TMultiGraph* graph, const double XMIN, const double XMAX, cons
     graph->GetXaxis()->SetLimits(XMIN, XMAX);
     graph->SetMinimum(YMIN);
     graph->SetMaximum(YMAX);
+    graph->GetYaxis()->CenterTitle(kTRUE);
 
     //tick più guardabili
     graph->GetXaxis()->SetTickLength(0.02);
     graph->GetYaxis()->SetTickLength(0.02);
+
+    graph->GetXaxis()->SetLabelOffset(999);
+    graph->GetXaxis()->SetLabelSize(0);
+    graph->GetXaxis()->SetTickSize(0);
     
 }
-
 
 void latex(TLatex* text) {
 
