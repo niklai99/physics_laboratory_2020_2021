@@ -90,7 +90,9 @@ void opamp_comp() {
 
     readData(x, y, errX, errY, FILE_NAME);
 
-    plot = make_graph(x, y, errX, errY);
+    vector<double> v(x.size(), 0);
+
+    plot = make_graph(x, y, v, v);
 
     f = make_fit(plot, XMIN, XMAX, NPAR);
 
@@ -99,38 +101,38 @@ void opamp_comp() {
  
     plot1 = make_graph(x1, G1, errx1, errG1);
     //stile e colore
-    plot1-> SetLineColor(kBlack);
+    plot1-> SetLineColor(kMagenta+1);
     plot1-> SetMarkerStyle(20);
-    plot1-> SetMarkerColor(kBlack);
+    plot1-> SetMarkerColor(kMagenta+1);
     plot1-> SetMarkerSize(1);
 
     plot2 = make_graph(x2, G2, errx2, errG2);
     //stile e colore
-    plot2-> SetLineColor(kBlack);
+    plot2-> SetLineColor(kRed);
     plot2-> SetMarkerStyle(22);
-    plot2-> SetMarkerColor(kBlack);
+    plot2-> SetMarkerColor(kRed);
     plot2-> SetMarkerSize(1);
 
     plot3 = make_graph(x3, G3, errx3, errG3);
     //stile e colore
-    plot3-> SetLineColor(kBlack);
+    plot3-> SetLineColor(kBlue);
     plot3-> SetMarkerStyle(23);
-    plot3-> SetMarkerColor(kBlack);
+    plot3-> SetMarkerColor(kBlue);
     plot3-> SetMarkerSize(1);
 
     plot4 = make_graph(x4, G4, errx4, errG4);
     //stile e colore
-    plot4-> SetLineColor(kBlack);
+    plot4-> SetLineColor(kGreen+2);
     plot4-> SetMarkerStyle(21);
-    plot4-> SetMarkerColor(kBlack);
+    plot4-> SetMarkerColor(kGreen+2);
     plot4-> SetMarkerSize(1);
 
     plot5 = make_graph(x5, G5, errx5, errG5);
     //stile e colore
-    plot5-> SetLineColor(kBlack);
+    plot5-> SetLineColor(kOrange+10);
     plot5-> SetMarkerStyle(29);
-    plot5-> SetMarkerColor(kBlack);
-    plot5-> SetMarkerSize(1);
+    plot5-> SetMarkerColor(kOrange+10);
+    plot5-> SetMarkerSize(1.5);
 
 
     mg = make_mg(plot1, plot2, plot3, plot4, plot5);
@@ -141,8 +143,9 @@ void opamp_comp() {
 
     settings_fit(mg, XMIN, XMAX, YMIN, YMAX);
 
-
     settings_global();
+
+    latex(text);
 
     return;
 }
@@ -252,36 +255,47 @@ void settings_fit(TMultiGraph* graph, const double XMIN, const double XMAX, cons
 
 
 void latex(TLatex* text) {
-    c1->cd(1);
 
-    text = new TLatex(.4, 25, "Fit Function");
-    text->SetTextSize(0.05);
+    text = new TLatex(0.75, 10.14, "#color[617]{G #equiv R_{f}/R_{1}}");
+    text->SetTextSize(0.03);
     text->Draw();
 
-    text = new TLatex(.6, 23.5, "y = a + bx");
-    text->SetTextSize(0.04);
+    text = new TLatex(0.55, 10.115, "#color[617]{10.194 #pm 0.006}");
+    text->SetTextSize(0.03);
     text->Draw();
 
-    text = new TLatex(1.45, 11.5, "Fit Parameters");
-    text->SetTextSize(0.05);
+    text = new TLatex(1.7, 10.22, "#color[632]{G #equiv slope^{MAX}}");
+    text->SetTextSize(0.03);
     text->Draw();
 
-    text = new TLatex(1.5, 9, "a = -0.13 #pm 0.06 V");
-    text->SetTextSize(0.04);
+    text = new TLatex(1.65, 10.195, "#color[632]{10.02 #pm 0.14}");
+    text->SetTextSize(0.03);
     text->Draw();
 
-    text = new TLatex(1.5, 7, "b = 10.09 #pm 0.11");
-    text->SetTextSize(0.04);
+    text = new TLatex(2.7, 9.97, "#color[600]{G #equiv slope^{MIN}}");
+    text->SetTextSize(0.03);
     text->Draw();
 
-    text = new TLatex(1.5, 5, "#chi^{2} = 0.12   NDF = 7");
-    text->SetTextSize(0.04);
+    text = new TLatex(2.65, 9.945, "#color[600]{10.16 #pm 0.14}");
+    text->SetTextSize(0.03);
     text->Draw();
 
-    text = new TLatex(1.5, 3, "#sigma_{post} = 0.06 V");
-    text->SetTextSize(0.04);
+    text = new TLatex(3.7, 10.06, "#color[418]{G #equiv slope^{ALL}}");
+    text->SetTextSize(0.03);
     text->Draw();
-    
+
+    text = new TLatex(3.7, 10.035, "#color[418]{9.93 #pm 0.07}");
+    text->SetTextSize(0.03);
+    text->Draw();
+
+    text = new TLatex(4.7, 9.93, "#color[810]{G #equiv slope^{PP}}");
+    text->SetTextSize(0.03);
+    text->Draw();
+
+    text = new TLatex(4.7, 9.905, "#color[810]{10.09 #pm 0.11}");
+    text->SetTextSize(0.03);
+    text->Draw();
+  
 }
 
 double myfit(double* x, double* par){ 
@@ -308,4 +322,7 @@ TF1* make_fit(TGraphErrors* graph, const double XMIN, const double XMAX, const u
 
     return f1;
 }
+
+
+
 /*-----------------------------------------------------------------------------EOF------------------------------------------------------------------------*/
