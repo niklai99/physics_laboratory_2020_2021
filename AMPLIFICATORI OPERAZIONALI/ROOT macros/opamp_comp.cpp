@@ -1,0 +1,311 @@
+/*--------------------------------Code by Nicolò Lai--------------------------------*/
+
+#include <fstream>
+#include <cmath>
+#include <vector>
+#include <string>
+#include <TGraphErrors.h>
+#include <TCanvas.h>
+#include <TF1.h>
+#include <TH1D.h>
+#include <TFitResult.h>
+#include <TRandom.h>
+#include <TStyle.h>
+
+using namespace std;
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+const unsigned int NPAR = 1;
+
+const string FILE_NAME = "../Data/data_opamp_comp.txt";
+
+TCanvas* c1;
+TLatex* text;
+
+//plot range del fit
+const double XMIN = 0;
+const double XMAX = 6;
+const double YMIN = 9.8;
+const double YMAX = 10.35;
+
+
+//vector dei dati + errori
+vector<double> x, y, errX, errY;
+
+vector<double> G1, G2, G3, G4, G5;
+vector<double> errG1, errG2, errG3, errG4, errG5;
+
+vector<double> x1, x2, x3, x4, x5;
+vector<double> errx1, errx2, errx3, errx4, errx5;
+
+//il grafico del fit
+TGraphErrors *plot;
+TGraphErrors *plot1;
+TGraphErrors *plot2;
+TGraphErrors *plot3;
+TGraphErrors *plot4;
+TGraphErrors *plot5;
+TMultiGraph *mg;
+TF1 *f;
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*-------- FUNCTIONS -------*/
+
+void readData(vector<double>&, vector<double>&, vector<double>&, vector<double>&, const string);
+
+void arrange_data(vector<double>&, vector<double>&, vector<double>&, vector<double>&,
+                    vector<double>&, vector<double>&, vector<double>&, vector<double>&,
+                    vector<double>&, vector<double>&, vector<double>&, vector<double>&,
+                    vector<double>&, vector<double>&, vector<double>&, vector<double>&,
+                    vector<double>&, vector<double>&, vector<double>&, vector<double>&,
+                    vector<double>&, vector<double>&, vector<double>&, vector<double>&);
+
+double myfit(double*, double*);
+
+TGraphErrors *make_graph(vector<double>&, vector<double>&, vector<double>&, vector<double>&);
+
+TMultiGraph* make_mg(TGraphErrors*, TGraphErrors*, TGraphErrors*, TGraphErrors*, TGraphErrors*);
+
+void settings_fit(TMultiGraph*, const double, const double, const double, const double);
+
+void settings_global();
+
+void latex(TLatex*);
+
+double myfit(double*, double*);
+
+TF1* make_fit(TGraphErrors*, const double, const double, const unsigned int);
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*---------- MAIN ----------*/
+void opamp_comp() {
+
+    c1 = new TCanvas("canvas1", "Comp", 1080, 720);
+
+    readData(x, y, errX, errY, FILE_NAME);
+
+    plot = make_graph(x, y, errX, errY);
+
+    f = make_fit(plot, XMIN, XMAX, NPAR);
+
+    arrange_data(x, y, errX, errY, x1, G1, errx1, errG1, x2, G2, errx2, errG2, 
+                x3, G3, errx3, errG3, x4, G4, errx4, errG4, x5, G5, errx5, errG5);
+ 
+    plot1 = make_graph(x1, G1, errx1, errG1);
+    //stile e colore
+    plot1-> SetLineColor(kBlack);
+    plot1-> SetMarkerStyle(20);
+    plot1-> SetMarkerColor(kBlack);
+    plot1-> SetMarkerSize(1);
+
+    plot2 = make_graph(x2, G2, errx2, errG2);
+    //stile e colore
+    plot2-> SetLineColor(kBlack);
+    plot2-> SetMarkerStyle(22);
+    plot2-> SetMarkerColor(kBlack);
+    plot2-> SetMarkerSize(1);
+
+    plot3 = make_graph(x3, G3, errx3, errG3);
+    //stile e colore
+    plot3-> SetLineColor(kBlack);
+    plot3-> SetMarkerStyle(23);
+    plot3-> SetMarkerColor(kBlack);
+    plot3-> SetMarkerSize(1);
+
+    plot4 = make_graph(x4, G4, errx4, errG4);
+    //stile e colore
+    plot4-> SetLineColor(kBlack);
+    plot4-> SetMarkerStyle(21);
+    plot4-> SetMarkerColor(kBlack);
+    plot4-> SetMarkerSize(1);
+
+    plot5 = make_graph(x5, G5, errx5, errG5);
+    //stile e colore
+    plot5-> SetLineColor(kBlack);
+    plot5-> SetMarkerStyle(29);
+    plot5-> SetMarkerColor(kBlack);
+    plot5-> SetMarkerSize(1);
+
+
+    mg = make_mg(plot1, plot2, plot3, plot4, plot5);
+
+    mg->Draw("AP");
+
+    f->Draw("SAME");
+
+    settings_fit(mg, XMIN, XMAX, YMIN, YMAX);
+
+
+    settings_global();
+
+    return;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*-------- FUNCTIONS -------*/
+void readData(vector<double>& x, vector<double>& y, vector<double>& errX, vector<double>& errY, const string FILE_NAME) {
+
+    ifstream f;
+    f.open(FILE_NAME);
+    double i = 0;
+    while(f >> i) {
+
+        x.push_back(i);   
+        f >> i;
+        y.push_back(i);    
+        f >> i;
+        errX.push_back(0);     
+        f >> i;
+        errY.push_back(i);
+
+    }
+
+    f.close();
+
+    return;
+}
+
+void arrange_data(vector<double>& x, vector<double>& y, vector<double>& errX, vector<double>& errY,
+                    vector<double>& x1, vector<double>& G1, vector<double>& errx1, vector<double>& errG1,
+                    vector<double>& x2, vector<double>& G2, vector<double>& errx2, vector<double>& errG2,
+                    vector<double>& x3, vector<double>& G3, vector<double>& errx3, vector<double>& errG3,
+                    vector<double>& x4, vector<double>& G4, vector<double>& errx4, vector<double>& errG4,
+                    vector<double>& x5, vector<double>& G5, vector<double>& errx5, vector<double>& errG5){
+
+    x1.push_back(x[0]);
+    x2.push_back(x[1]);
+    x3.push_back(x[2]);
+    x4.push_back(x[3]);
+    x5.push_back(x[4]);
+
+    errx1.push_back(0);
+    errx2.push_back(0);
+    errx3.push_back(0);
+    errx4.push_back(0);
+    errx5.push_back(0);
+
+    G1.push_back(y[0]);
+    G2.push_back(y[1]);
+    G3.push_back(y[2]);
+    G4.push_back(y[3]);
+    G5.push_back(y[4]);
+
+    errG1.push_back(errY[0]);
+    errG2.push_back(errY[1]);
+    errG3.push_back(errY[2]);
+    errG4.push_back(errY[3]);
+    errG5.push_back(errY[4]);
+
+    return;
+}
+
+TGraphErrors* make_graph(vector<double>& x, vector<double>& y, vector<double>& errX, vector<double>& errY) {
+    
+    TGraphErrors* graph = new TGraphErrors(x.size(), &x[0], &y[0], &errX[0], &errY[0]);
+    
+    return graph;
+}
+
+TMultiGraph* make_mg(TGraphErrors* plot1, TGraphErrors* plot2, TGraphErrors* plot3, TGraphErrors* plot4, TGraphErrors* plot5) {
+    
+    TMultiGraph* multi = new TMultiGraph();
+
+    multi->Add(plot1);
+    multi->Add(plot2);
+    multi->Add(plot3);
+    multi->Add(plot4);
+    multi->Add(plot5);
+    
+    return multi;
+}
+
+void settings_global() {
+
+    TGaxis::SetMaxDigits(3);
+    gStyle->SetStripDecimals(kFALSE);
+    gStyle->SetImageScaling(3.);
+}
+
+
+void settings_fit(TMultiGraph* graph, const double XMIN, const double XMAX, const double YMIN, const double YMAX) {
+    //entro nel primo canvas
+
+    gPad->Modified();
+    
+    //plot range
+    graph->GetXaxis()->SetLimits(XMIN, XMAX);
+    graph->SetMinimum(YMIN);
+    graph->SetMaximum(YMAX);
+
+    //tick più guardabili
+    graph->GetXaxis()->SetTickLength(0.02);
+    graph->GetYaxis()->SetTickLength(0.02);
+    
+}
+
+
+void latex(TLatex* text) {
+    c1->cd(1);
+
+    text = new TLatex(.4, 25, "Fit Function");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(.6, 23.5, "y = a + bx");
+    text->SetTextSize(0.04);
+    text->Draw();
+
+    text = new TLatex(1.45, 11.5, "Fit Parameters");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(1.5, 9, "a = -0.13 #pm 0.06 V");
+    text->SetTextSize(0.04);
+    text->Draw();
+
+    text = new TLatex(1.5, 7, "b = 10.09 #pm 0.11");
+    text->SetTextSize(0.04);
+    text->Draw();
+
+    text = new TLatex(1.5, 5, "#chi^{2} = 0.12   NDF = 7");
+    text->SetTextSize(0.04);
+    text->Draw();
+
+    text = new TLatex(1.5, 3, "#sigma_{post} = 0.06 V");
+    text->SetTextSize(0.04);
+    text->Draw();
+    
+}
+
+double myfit(double* x, double* par){ 
+
+    double a = par[0];
+
+    double fit_function = 0;
+
+    fit_function = a;
+  
+    return fit_function;
+}
+
+TF1* make_fit(TGraphErrors* graph, const double XMIN, const double XMAX, const unsigned int NPAR) {
+
+    TF1* f1 = new TF1("myfit", myfit, XMIN, XMAX, NPAR);
+    f1->SetParName(0, "Media Pesata");
+    f1->SetLineColor(kBlack);
+    f1->SetLineStyle(2);
+    f1->SetLineWidth(1);
+
+    TFitResultPtr fit_result = graph->Fit("myfit", "S");
+    fit_result->Print("V");
+
+    return f1;
+}
+/*-----------------------------------------------------------------------------EOF------------------------------------------------------------------------*/
