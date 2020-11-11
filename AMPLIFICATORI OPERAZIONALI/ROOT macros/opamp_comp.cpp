@@ -26,19 +26,19 @@ TLatex* text;
 
 //plot range del fit
 const double XMIN = 0;
-const double XMAX = 6;
-const double YMIN = 9.8;
+const double XMAX = 7;
+const double YMIN = 9.85;
 const double YMAX = 10.35;
 
 
 //vector dei dati + errori
 vector<double> x, y, errX, errY;
 
-vector<double> G1, G2, G3, G4, G5;
-vector<double> errG1, errG2, errG3, errG4, errG5;
+vector<double> G1, G2, G3, G4, G5, G6;
+vector<double> errG1, errG2, errG3, errG4, errG5, errG6;
 
-vector<double> x1, x2, x3, x4, x5;
-vector<double> errx1, errx2, errx3, errx4, errx5;
+vector<double> x1, x2, x3, x4, x5, x6;
+vector<double> errx1, errx2, errx3, errx4, errx5, errx6;
 
 //il grafico del fit
 TGraphErrors *plot;
@@ -47,6 +47,7 @@ TGraphErrors *plot2;
 TGraphErrors *plot3;
 TGraphErrors *plot4;
 TGraphErrors *plot5;
+TGraphErrors *plot6;
 TMultiGraph *mg;
 TF1 *f;
 
@@ -62,13 +63,14 @@ void arrange_data(vector<double>&, vector<double>&, vector<double>&, vector<doub
                     vector<double>&, vector<double>&, vector<double>&, vector<double>&,
                     vector<double>&, vector<double>&, vector<double>&, vector<double>&,
                     vector<double>&, vector<double>&, vector<double>&, vector<double>&,
+                    vector<double>&, vector<double>&, vector<double>&, vector<double>&,
                     vector<double>&, vector<double>&, vector<double>&, vector<double>&);
 
 double myfit(double*, double*);
 
 TGraphErrors *make_graph(vector<double>&, vector<double>&, vector<double>&, vector<double>&);
 
-TMultiGraph* make_mg(TGraphErrors*, TGraphErrors*, TGraphErrors*, TGraphErrors*, TGraphErrors*);
+TMultiGraph* make_mg(TGraphErrors*, TGraphErrors*, TGraphErrors*, TGraphErrors*, TGraphErrors*, TGraphErrors*);
 
 void settings_fit(TMultiGraph*, const double, const double, const double, const double);
 
@@ -97,7 +99,7 @@ void opamp_comp() {
     f = make_fit(plot, XMIN, XMAX, NPAR);
 
     arrange_data(x, y, errX, errY, x1, G1, errx1, errG1, x2, G2, errx2, errG2, 
-                x3, G3, errx3, errG3, x4, G4, errx4, errG4, x5, G5, errx5, errG5);
+                x3, G3, errx3, errG3, x4, G4, errx4, errG4, x5, G5, errx5, errG5, x6, G6, errx6, errG6);
  
     plot1 = make_graph(x1, G1, errx1, errG1);
     //stile e colore
@@ -111,31 +113,38 @@ void opamp_comp() {
     plot2-> SetLineColor(kRed);
     plot2-> SetMarkerStyle(22);
     plot2-> SetMarkerColor(kRed);
-    plot2-> SetMarkerSize(1);
+    plot2-> SetMarkerSize(1.5);
 
     plot3 = make_graph(x3, G3, errx3, errG3);
     //stile e colore
     plot3-> SetLineColor(kBlue);
     plot3-> SetMarkerStyle(23);
     plot3-> SetMarkerColor(kBlue);
-    plot3-> SetMarkerSize(1);
+    plot3-> SetMarkerSize(1.5);
 
     plot4 = make_graph(x4, G4, errx4, errG4);
     //stile e colore
     plot4-> SetLineColor(kGreen+2);
     plot4-> SetMarkerStyle(21);
     plot4-> SetMarkerColor(kGreen+2);
-    plot4-> SetMarkerSize(1);
+    plot4-> SetMarkerSize(1.5);
 
     plot5 = make_graph(x5, G5, errx5, errG5);
     //stile e colore
     plot5-> SetLineColor(kOrange+10);
     plot5-> SetMarkerStyle(29);
     plot5-> SetMarkerColor(kOrange+10);
-    plot5-> SetMarkerSize(1.5);
+    plot5-> SetMarkerSize(2);
+
+    plot6 = make_graph(x6, G6, errx6, errG6);
+    //stile e colore
+    plot6-> SetLineColor(kAzure+7);
+    plot6-> SetMarkerStyle(47);
+    plot6-> SetMarkerColor(kAzure+7);
+    plot6-> SetMarkerSize(2);
 
 
-    mg = make_mg(plot1, plot2, plot3, plot4, plot5);
+    mg = make_mg(plot1, plot2, plot3, plot4, plot5, plot6);
     mg->SetTitle("OpAmp Stime Amplificazione G; ; Amplificazione G");
 
     mg->Draw("AP");
@@ -181,31 +190,36 @@ void arrange_data(vector<double>& x, vector<double>& y, vector<double>& errX, ve
                     vector<double>& x2, vector<double>& G2, vector<double>& errx2, vector<double>& errG2,
                     vector<double>& x3, vector<double>& G3, vector<double>& errx3, vector<double>& errG3,
                     vector<double>& x4, vector<double>& G4, vector<double>& errx4, vector<double>& errG4,
-                    vector<double>& x5, vector<double>& G5, vector<double>& errx5, vector<double>& errG5){
+                    vector<double>& x5, vector<double>& G5, vector<double>& errx5, vector<double>& errG5,
+                    vector<double>& x6, vector<double>& G6, vector<double>& errx6, vector<double>& errG6){
 
     x1.push_back(x[0]);
     x2.push_back(x[1]);
     x3.push_back(x[2]);
     x4.push_back(x[3]);
     x5.push_back(x[4]);
+    x6.push_back(x[5]);
 
     errx1.push_back(0);
     errx2.push_back(0);
     errx3.push_back(0);
     errx4.push_back(0);
     errx5.push_back(0);
+    errx6.push_back(0);
 
     G1.push_back(y[0]);
     G2.push_back(y[1]);
     G3.push_back(y[2]);
     G4.push_back(y[3]);
     G5.push_back(y[4]);
+    G6.push_back(y[5]);
 
     errG1.push_back(errY[0]);
     errG2.push_back(errY[1]);
     errG3.push_back(errY[2]);
     errG4.push_back(errY[3]);
     errG5.push_back(errY[4]);
+    errG6.push_back(errY[5]);
 
     return;
 }
@@ -217,7 +231,7 @@ TGraphErrors* make_graph(vector<double>& x, vector<double>& y, vector<double>& e
     return graph;
 }
 
-TMultiGraph* make_mg(TGraphErrors* plot1, TGraphErrors* plot2, TGraphErrors* plot3, TGraphErrors* plot4, TGraphErrors* plot5) {
+TMultiGraph* make_mg(TGraphErrors* plot1, TGraphErrors* plot2, TGraphErrors* plot3, TGraphErrors* plot4, TGraphErrors* plot5, TGraphErrors* plot6) {
     
     TMultiGraph* multi = new TMultiGraph();
 
@@ -226,6 +240,7 @@ TMultiGraph* make_mg(TGraphErrors* plot1, TGraphErrors* plot2, TGraphErrors* plo
     multi->Add(plot3);
     multi->Add(plot4);
     multi->Add(plot5);
+    multi->Add(plot6);
     
     return multi;
 }
@@ -292,11 +307,19 @@ void latex(TLatex* text) {
     text->SetTextSize(0.03);
     text->Draw();
 
-    text = new TLatex(4.7, 9.93, "#color[810]{G #equiv slope^{PP}}");
+    text = new TLatex(4.5, 10.245, "#color[810]{G #equiv <slope>^{MAX, MIN}}");
     text->SetTextSize(0.03);
     text->Draw();
 
-    text = new TLatex(4.7, 9.905, "#color[810]{10.09 #pm 0.11}");
+    text = new TLatex(4.5, 10.22, "#color[810]{10.09 #pm 0.10}");
+    text->SetTextSize(0.03);
+    text->Draw();
+
+    text = new TLatex(5.7, 9.93, "#color[867]{G #equiv slope^{PP}}");
+    text->SetTextSize(0.03);
+    text->Draw();
+
+    text = new TLatex(5.7, 9.905, "#color[867]{10.09 #pm 0.11}");
     text->SetTextSize(0.03);
     text->Draw();
   
