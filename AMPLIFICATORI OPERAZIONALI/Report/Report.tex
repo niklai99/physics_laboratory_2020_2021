@@ -36,7 +36,8 @@
 %----------------------------------------------------------------------------------------
 
 \begin{document}
-	
+\def\subsectionautorefname{Sezione} 
+\def\subsubsectionautorefname{Sezione}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -238,10 +239,10 @@ Facendo riferimento ai valori delle resistenze  $R_f$ ed $R_1$ riportate in  \au
 calcolare il guadagno $G$ atteso
 
 \begin{align}\label{e:guadagno}
-	G&=\left|-\frac{R_{f}}{R_{1}}\right| 
+	G&=\left|-\frac{R_{\text{f}}}{R_{1}}\right| 
 	&
-	\sigma_{G}&=\sqrt{	\left(	\frac{	1	}{	R_{1}	}	\right)^2	\sigma_{R_{f}}^2	
-	+	\left(	\frac{	R_{f}	}{	R_{1}^2	}	\right)\sigma_{R_{1}}^2	}	
+	\sigma_{G}&=\sqrt{	\left(	\frac{	1	}{	R_{1}	}	\right)^2	\sigma_{R_{\text{f}}}^2	
+	+	\left(	\frac{	R_{\text{f}}	}{	R_{1}^2	}	\right)\sigma_{R_{1}}^2	}	
 \end{align}
 
 \noindent dove il segno meno è dovuto all'operazionale posto in configurazione invertente: questo comporta allora un
@@ -293,7 +294,7 @@ picco picco.
 \noindent Dal grafico si evince chiaramente come erogando $V_{\text{gen}}=1\,\si{\volt}$ il segnale viene amplificato
 correttamente di circa un fattore 10 mantenendo la forma sinusoidale, mentre erogando $V_{\text{gen}}=4\,\si{\volt}$ il
 segnale in uscita presenta i picchi tagliati esattamente a livello $V_{\text{sat}}=\pm 15\,\si{\volt}$, ovvero le
-tensioni di alimentazione fornite all'operazionale. Inoltre, come anticipato in  \autoref{s:guadagno}, si può osservare il comportamento invertente
+tensioni di alimentazione fornite all'operazionale. Inoltre, come anticipato in \autoref{s:guadagno}, si può osservare il comportamento invertente
 dell'amplificatore operazionale: ad un massimo di $V_{\text{in}}$ corrisponde un minimo di $V_{\text{out}}$ e vice
 versa.\\
 
@@ -652,18 +653,26 @@ residui attorno allo zero) che si ritiene invece, in questa occasione, determina
 ( \autoref{i:opamp_pp}) suggerisce una soddisfacente distribuzione lineare dei dati. 
 
 \subsubsection{Confronto tra Stime di G}
-Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, rappresentando in  \autoref{i:opamp_comp} 
+Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, rappresentando i valori del guadagno
+\textit{G} in \autoref{i:opamp_comp}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_comp.png}
-	\caption{Da sinistra: 1) stima di G partendo dalle misure dirette delle resistenze del circuito;
+	\caption{Da sinistra: 1) stima di \textit{G} partendo dalle misure dirette delle resistenze del circuito;
 	2) stima di G come coefficiente angolare del dataset di massimi; 3) stima di G come coefficiente 
 	angolare del dataset di minimi; 4) stima di G come coefficiente angolare del dataset unificato; 
 	5) stima di G come media pesata di 2 e 3; 6) stima di G come coefficiente angolare del dataset delle 
 	grandezze picco picco.}
 	\label{i:opamp_comp}
 \end{figure}
+
+\noindent Partendo dal primo punto a sinistra, cioè la stima di \textit{G} tramite le misure dirette delle resistenze
+$R_{\text{f}}$ e $R_{1}$ (riportate in \autoref{t:direct_measures}), si nota come questo presenti un errore nettamente
+inferiore a confronto con le rimanenti stime. Queste risultano essere quantità compatibili con $G=R_{\text{f}}/R_{1}$,
+ad eccezione di quella ottenuta considerando assieme sia i massimi sia i minimi ($\lambda = 3.7$). In particolare, si
+può osservare come la media pesata tra le stime dell'amplificazione ottenute considerando i campioni separati e la stima
+ottenuta con le grandezze picco picco si trovino in eccellente accordo. 
 
 
 
