@@ -93,7 +93,7 @@ void arduino_plot()
 
     settings_plot(der, XMIN, XMAX, DER_YMIN, DER_YMAX);
 
-    /*--- SEEKING DERIVATIVE PEEKS ---*/
+    /*--- SEEK DERIVATIVE PEEKS ---*/
     seek_values(x_deriv, y_deriv, x_results, y_results, THRESHOLD);
 
     /*--- PRINT RELEVANT PEEKS ---*/
