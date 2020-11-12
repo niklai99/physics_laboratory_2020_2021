@@ -447,12 +447,12 @@ considerati.
 il campione di misure dei minimi separatamente, in quanto a priori non si ha la certezza che queste risentano della
 stessa amplificazione e che non sia presente una sistematica di offset/shift verticale tra i due dataset. Si cercherà in
 seguito di caratterizzare l'accordo tra i due dataset studiando la compatibilità tra i coefficienti angolari e tra le
-intercette della retta interpolante. Osservando le misure in  \autoref{t:osc_measures} si nota come le incertezze su
-$V_{\text{in}}$ siano generalmente un ordine di grandezza inferiori rispetto a quelle su $V_{\text{out}}$: le prime non
-sono quindi trascurabili rispetto alle seconde. Per tenere conto dell'incertezza su $V_{\text{in}}$, ci si propone
-allora di effettuare un fit preliminare, nel quale si considerano unicamente gli errori su $V_{\text{out}}$, per stimare
-un coefficiente angolare $m$. Questo viene poi utilizzato per proiettare gli errori di $V_{\text{in}}$ lungo l'asse
-delle ordinate secondo 
+intercette della retta interpolante. Osservando le misure in  \autoref{t:osc_measures} (analogamente il grafico dei residui
+in \autoref{i:opamp_eda}) si nota come le incertezze su $V_{\text{in}}$ siano generalmente un ordine di grandezza
+inferiori rispetto a quelle su $V_{\text{out}}$: le prime non sono quindi trascurabili rispetto alle seconde. Per tenere
+conto dell'incertezza su $V_{\text{in}}$, ci si propone allora di effettuare un fit preliminare, nel quale si
+considerano unicamente gli errori su $V_{\text{out}}$, per stimare un coefficiente angolare $m$. Questo viene poi
+utilizzato per proiettare gli errori di $V_{\text{in}}$ lungo l'asse delle ordinate secondo 
 
 \begin{equation}\label{e:proj}
 	\sigma_{y} = \sqrt{	\sigma_{V_{\text{out}}}^2	+	m^2	\sigma_{V_{\text{in}}}^2	}
