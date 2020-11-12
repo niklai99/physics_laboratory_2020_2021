@@ -85,16 +85,16 @@ void opamp_simulation_eda() {
     plot_Vin-> SetMarkerColor(kBlue);
     plot_Vin-> SetMarkerSize(1);
 
-    plot_Vout-> SetLineColor(kAzure+9);
+    plot_Vout-> SetLineColor(kGreen+2);
     plot_Vout-> SetLineWidth(2);
     plot_Vout-> SetMarkerStyle(20);
-    plot_Vout-> SetMarkerColor(kAzure+9);
+    plot_Vout-> SetMarkerColor(kGreen+2);
     plot_Vout-> SetMarkerSize(1);
 
-    plot_Vin_sat-> SetLineColor(kRed);
+    plot_Vin_sat-> SetLineColor(kOrange+10);
     plot_Vin_sat-> SetLineWidth(2);
     plot_Vin_sat-> SetMarkerStyle(20);
-    plot_Vin_sat-> SetMarkerColor(kRed);
+    plot_Vin_sat-> SetMarkerColor(kOrange+10);
     plot_Vin_sat-> SetMarkerSize(1);
 
     plot_Vout_sat-> SetLineColor(kMagenta);
@@ -105,7 +105,7 @@ void opamp_simulation_eda() {
 
     mg->Draw("AL");
 
-    mg->SetTitle("LTSpice Simulation; t (s); Voltage (V)");
+    mg->SetTitle("Spice Simulation; t (s); Voltage (V)");
 
     settings_plot(plot_Vin, XMIN, XMAX, YMIN, YMAX);
     settings_plot(plot_Vout, XMIN, XMAX, YMIN, YMAX);
