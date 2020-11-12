@@ -21,8 +21,8 @@
 \newcommand{\expobj}{Obiettivo dell'Esperienza}
 \newcommand{\objectives}{Verificare la linearità di un amplificatore operazionale.}
 \newcommand{\objectivess}{Misurare l'amplificazione di un circuito con amplificatore operazionale.}
-\newcommand{\objectivesss}{Misurare la frequenza di taglio di un circuito derivatore con amplificatore operazionale.}
-\newcommand{\objectivessss}{Calibrare una scheda Arduino Due}
+\newcommand{\objectivesss}{Misurare la frequenza di taglio di un filtro attivo.}
+\newcommand{\objectivessss}{Calibrare una scheda Arduino Due.}
 \newcommand{\turno}{Turno T2}
 \newcommand{\name}{Nicolò Lai}
 \newcommand{\matricola}{1193976}
@@ -534,20 +534,20 @@ riguardo ai due campioni di dati. Inizialmente, si vuole far notare come i due c
 compatibilità tra loro: $\lambda=0.7$. Da questo si può assumere che i due dataset risentano della stessa amplificazione
 $G$, come da aspettative. Successivamente, si può notare invece che le due intercette delle rette interpolanti sono in
 leggera compatibilità con lo zero ($\lambda \approx 1.5$), mentre tra loro presentano una compatibilità $\lambda=2.4$,
-che fa sorgere l'idea di una possibile sistematica di shift verticale tra i due dataset. Osservando poi il valore del
-$\chi^2$, si ritrova in per entrambi i campioni $\chi^2/\nu<1$ (con $\nu\equiv\text{ndf}$ il numero di gradi di libertà, che
-coincide con il valore di aspettazione $E(\chi^2)$). Questo fa emergere l'ipotesi di una possibile sovrastima
-dell'errore associato alle misure ed ad una conseguente sovrastima degli errori sui parametri restituiti dal fit.
-Tuttavia, si ricorda che le incertezze sul guadagno verticale dell'oscilloscopio sono almeno parzialmente correlate:
-questo porta dunque ad avere degli errori sulle misure che sono tra loro correlati ed un'interpolazione di tali dati
-restituisce parametri con errori sottostimati (il fit non tiene conto della correlazione tra incertezze delle misure).
-Si può dunque assumere che i parametri \textit{slope} e \textit{offset} riportati in \autoref{t:opamp_fitres_max_min}
-siano in realtà più compatibili tra dataset di massimi e dataset di minimi rispetto a quanto riportato poco sopra,
-proprio a causa di una possibile sottostima dell'errore sui parametri. Siccome allora si può assumere che i due campioni
-risentano della stessa amplificazione e che non siano tra loro sfalsati verticalmente, segue un tentativo di
-"unificazione" del campione di dati ed un'interpolazione lineare unica che tenga conto sia dei massimi che dei minimi.
-Il grafico rappresentante i due dataset unificati con relativa interpolazione lineare è mostrato in
-\autoref{i:opamp_all_proj}. 
+che fa sorgere l'idea di una possibile sistematica di shift verticale tra i due dataset (computando la differenza tra le
+due intercette si trova uno sfalsamento $d=0.13 \pm 0.05 \,\si{\volt}$). Osservando poi il valore del $\chi^2$, si
+ritrova in per entrambi i campioni $\chi^2/\nu<1$ (con $\nu\equiv\text{ndf}$ il numero di gradi di libertà, che coincide
+con il valore di aspettazione $E(\chi^2)$). Questo fa emergere l'ipotesi di una possibile sovrastima dell'errore
+associato alle misure ed ad una conseguente sovrastima degli errori sui parametri restituiti dal fit. Tuttavia, si
+ricorda che le incertezze sul guadagno verticale dell'oscilloscopio sono almeno parzialmente correlate: questo porta
+dunque ad avere degli errori sulle misure che sono tra loro correlati ed un'interpolazione di tali dati restituisce
+parametri con errori sottostimati (il fit non tiene conto della correlazione tra incertezze delle misure). Si può dunque
+assumere che i parametri \textit{slope} e \textit{offset} riportati in \autoref{t:opamp_fitres_max_min} siano in realtà
+più compatibili tra dataset di massimi e dataset di minimi rispetto a quanto riportato poco sopra, proprio a causa di
+una possibile sottostima dell'errore sui parametri. Siccome allora si può assumere che i due campioni risentano della
+stessa amplificazione e che non siano tra loro sfalsati verticalmente, segue un tentativo di "unificazione" del campione
+di dati ed un'interpolazione lineare unica che tenga conto sia dei massimi che dei minimi. Il grafico rappresentante i
+due dataset unificati con relativa interpolazione lineare è mostrato in \autoref{i:opamp_all_proj}. 
 
 \begin{figure}[H]
 	\centering
