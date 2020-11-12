@@ -63,6 +63,9 @@ void arduino_plot()
     vector<double> x_results, y_results;
     vector<double> n_points, sampling_rates;
 
+    /*--- ARDUINO SAMPLING RATE ---*/
+    double arduino_sampling;
+
     /*--- CANVAS ---*/
     c1 = new TCanvas("canvas1", "ARDUINO PLOT", 1080, 720);
     c1->Divide(0, 2);
@@ -96,7 +99,7 @@ void arduino_plot()
     print_results(x_results, y_results);
 
     /*--- COMPUTE SAMPLING RATE ---*/
-    double arduino_sampling = sampling_rate(x_results, n_points, sampling_rates, PERIODO);
+    arduino_sampling = sampling_rate(x_results, n_points, sampling_rates, PERIODO);
 
     cout << '\n' << "AVERAGE SAMPLING RATE:\t" << arduino_sampling << endl;
 
