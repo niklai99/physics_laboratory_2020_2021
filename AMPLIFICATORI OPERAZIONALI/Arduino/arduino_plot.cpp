@@ -33,7 +33,7 @@ void seek_values(vector<double>&, vector<double>&, vector<double>&, vector<doubl
 
 void print_results(vector<double>&, vector<double>&);
 
-void sampling_rate(vector<double>&, vector<double>&, vector<double>&, const double);
+double sampling_rate(vector<double>&, vector<double>&, vector<double>&, const double);
 
 
 /*-------- MAIN -------*/
@@ -96,7 +96,9 @@ void arduino_plot()
     print_results(x_results, y_results);
 
     /*--- COMPUTE SAMPLING RATE ---*/
-    sampling_rate(x_results, n_points, sampling_rates, PERIODO);
+    double arduino_sampling = sampling_rate(x_results, n_points, sampling_rates, PERIODO);
+
+    cout << '\n' << "AVERAGE SAMPLING RATE:\t" << arduino_sampling << endl;
 
     /*--- GLOBAL PLOT SETTINGS ---*/
     settings_global();
@@ -202,17 +204,22 @@ void print_results(vector<double>& x_results, vector<double>& y_results) {
     return;
 }
 
-void sampling_rate(vector<double>& x_results, vector<double>& n_points, vector<double>& sampling_rates, const double PERIODO) {
+double sampling_rate(vector<double>& x_results, vector<double>& n_points, vector<double>& sampling_rates, const double PERIODO) {
 
     double temp = 0;
+    double mean = 0;
 
     for (unsigned int i = 0; i < x_results.size()-1; i++)
     {
+
         temp = x_results[i+1] - x_results[i];
         n_points.push_back(temp);
         sampling_rates.push_back(n_points[i] / PERIODO);
         cout << '\n' << "Sampling Rate:\t" << sampling_rates[i] << '\n';
+        mean += sampling_rates[i];
     }
-    
-    return;
+
+    mean = mean/sampling_rates.size();
+
+    return mean;
 }
