@@ -27,6 +27,14 @@ void settings_plot(TGraph*, const double, const double, const double, const doub
 
 void settings_global();
 
+void compute_derivative(vector<double>&, vector<double>&, vector<double>&, vector<double>&);
+
+void seek_values(vector<double>&, vector<double>&, vector<double>&, vector<double>&, const double);
+
+void print_results(vector<double>&, vector<double>&);
+
+double sampling_rate(vector<double>&, vector<double>&, const double);
+
 
 /*-------- MAIN -------*/
 
@@ -35,9 +43,12 @@ void arduino_plot()
     /*--- COSTANTI ---*/
     const string FILE_NAME = "./Data/calib_time_ROOT.dat";
     const double XMIN = 0;
-    const double XMAX = 500;
+    const double XMAX = 2050;
     const double YMIN = 700;
     const double YMAX = 2100;
+    const double FREQ = 5000; //Hertz
+    const double PERIODO = pow(FREQ, -1); //Secondi
+    const double THRESHOLD = 500;
 
     /* --- ROOT OBJECTS ---*/
     TCanvas* c1 = nullptr;
@@ -45,6 +56,8 @@ void arduino_plot()
 
     /*--- DATA VECTORS ---*/
     vector<double> x, y;
+    vector<double> x_deriv, y_deriv;
+    vector<double> x_result, y_result;
 
     c1 = new TCanvas("canvas1", "ARDUINO PLOT", 1080, 720);
 
@@ -56,6 +69,14 @@ void arduino_plot()
     settings_plot(plot, XMIN, XMAX, YMIN, YMAX);
 
     settings_global();
+
+    compute_derivative(x, y, x_deriv, y_deriv);
+
+    seek_values(x_deriv, y_deriv, x_result, y_result, THRESHOLD);
+
+    print_results(x_result, y_result);
+
+    //cout << "\nSampling Rate:\t" << sampling_rate(x, y, FREQ) << endl;
 
    return;
 }
@@ -100,7 +121,7 @@ void settings_global() {
 
 void settings_plot(TGraph* graph, const double XMIN, const double XMAX, const double YMIN, const double YMAX) {
 
-    graph-> SetTitle("Arduino Waveform Plot; ADC (a.u.); Signal (a.u.)");
+    graph-> SetTitle("Arduino Waveform Plot; time (a.u.); ADC (a.u.)");
 
     graph-> SetLineColor(kBlue+2);
     graph-> SetMarkerStyle(20);
@@ -118,3 +139,57 @@ void settings_plot(TGraph* graph, const double XMIN, const double XMAX, const do
 
     return;
 }
+
+void compute_derivative(vector<double>& x, vector<double>& y, vector<double>& x_deriv, vector<double>& y_deriv) {
+
+    double temp = 0;
+
+    for (unsigned int i = 1; i < x.size()-1; i++)
+    {
+        temp = ( y[i+1] - y[i-1] ) / 2.;
+        x_deriv.push_back(i);
+        y_deriv.push_back(temp);
+    }
+    
+    return;
+}
+
+void seek_values(vector<double>& x_deriv, vector<double>& y_deriv, vector<double>& x_result, vector<double>& y_result, const double THRESHOLD) {
+
+    for (unsigned int i = 0; i < y_deriv.size(); i++)
+    {
+        if (y_deriv[i] > THRESHOLD)
+        {
+            x_result.push_back(x_deriv[i]);
+            y_result.push_back(y_deriv[i]);
+        }
+        
+    }
+    
+    return;
+}
+
+void print_results(vector<double>& x_results, vector<double>& y_results) {
+
+    for (unsigned int i = 0; i < x_results.size(); i++)
+    {
+        cout << '\n' <<
+        "Time:\t" << x_results[i] << '\n' <<
+        "ADC:\t" << y_results[i] << '\n';
+    }
+
+    return;
+}
+
+/*
+double sampling_rate(vector<double>& x, vector<double>& y, const double FREQ) {
+
+    double sampling = 0;
+
+    double counter = 0;
+
+
+
+    return sampling;
+}
+*/
