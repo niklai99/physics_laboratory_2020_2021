@@ -265,10 +265,17 @@ Al fine di verificare la linearità dell'amplificatore operazionale e stimare l'
 far variare la tensione in ingresso impostando valori crescenti di ampiezza del segnale erogato dal generatore di
 funzioni. Per ciascuno di questi valori di tensione si acquisisce la misura di un massimo e di un minimo sia del segnale
 $V_{\text{in}}$ sia del segnale $V_{\text{out}}$ sfruttando i cursori orizzontali dell'oscilloscopio. In questo modo, si
-ottiene un campione di coppie ($V_{\text{in}}$, $V_{\text{out}}$) che ci si aspetta segua un andamento lineare (assumendo
-la linearità dell'amplificatore operazionale). I valori di tensione $V_{\text{gen}}$, $V_{\text{in}}$, $V_{\text{out}}$ e
-le relative scale di misura sono riportate in  \autoref{t:osc_measures}. Si associa inoltre un'incertezza alle misure
-di $V_{\text{in}}$ e $V_{\text{out}}$ data da  \autoref{e:osc}.\\
+ottiene un campione di coppie ($V_{\text{in}}$, $V_{\text{out}}$) che ci si aspetta segua un andamento lineare
+(assumendo la linearità dell'amplificatore operazionale), in quanto vige la relazione 
+
+\begin{equation}
+	V_{\text{out}}=-\frac{R_{\text{f}}}{R_{1}}V_{\text{in}}
+\end{equation}
+
+\noindent dove il segno meno, si ricorda, è dovuto all'operazionale posto in configurazione invertente. I valori di
+tensione $V_{\text{gen}}$, $V_{\text{in}}$, $V_{\text{out}}$ e le relative scale di misura sono riportate in
+\autoref{t:osc_measures}. Si associa inoltre un'incertezza alle misure di $V_{\text{in}}$ e $V_{\text{out}}$ data da
+\autoref{e:osc}.\\
 
 %----------------------------------------------------------------------------------------
 %	SIMULAZIONE SPICE PRELIMINARE
@@ -308,27 +315,28 @@ $V_{\text{out}}$ e viceversa.\\
 In questa sezione si vuole inizialmente rappresentare le misure acquisite in laboratorio, sia riportandole in tabella
 sia utilizzando un grafico esplorativo di $V_{\text{out}}$ contro $V_{\text{in}}$, per cercare di estrarre informazioni
 di carattere generale sui dati a disposizione. Successivamente, si vuole invece caratterizzare la linearità
-dell'amplificatore operazionale ed il guadagno del circuito in termini statistici, focalizzandosi sullo studio di interpolazioni
-lineari. Rappresentando in un grafico $V_{\text{out}}$ contro $V_{\text{in}}$, infatti, è possibile ricavare
-l'amplificazione come il coefficiente angolare di una retta che interpola i dati: dalla bontà del fit si riesce inoltre a
-studiare le proprietà di linearità del sistema in questione.
+dell'amplificatore operazionale ed il guadagno del circuito in termini statistici, focalizzandosi sullo studio di
+interpolazioni lineari. Rappresentando in un grafico $V_{\text{out}}$ contro $V_{\text{in}}$, infatti, è possibile
+ricavare l'amplificazione come il coefficiente angolare di una retta che interpola i dati: dalla bontà del fit si riesce
+inoltre a studiare le proprietà di linearità del sistema in questione.
 
 %----------------------------------------------------------------------------------------
 %	DATISET
 %----------------------------------------------------------------------------------------
 
 \subsubsection{Dataset}
-Si riportano in  \autoref{t:osc_measures} le misure acquisite con l'oscilloscopio, alle quali è stata associata un'incertezza
+Si riportano in  \autoref{t:osc_measures} le misure acquisite con l'oscilloscopio, alle quali è stata associata
+un'incertezza
 
 \begin{equation}\label{e:osc}
 	\sigma_{V} = \sqrt{ (\sigma_{l}\times\text{V/div})^2 + (\sigma_{g}\times\text{measure})^2 }
 \end{equation}
 
 \noindent dove $\sigma_{l}=\Delta_{l}/\sqrt{6}$ e $\sigma_{g}=\Delta_{g}/\sqrt{6}$ (assumendo una distribuzione
-triangolare) rappresentano l'incertezza di lettura e di guadagno associati all'oscilloscopio (si rimanda a 
-\autoref{s:strumenti} per i valori di $\Delta_{l}$ e $\Delta_{g}$), V/div rappresenta la scala di acquisizione della misura,
-ovvero quanti Volt sono rappresentati in una divisione dello schermo dell'oscilloscopio, mentre "measure" rappresenta la
-misura stessa.
+triangolare) rappresentano l'incertezza di lettura e di guadagno associati all'oscilloscopio (si rimanda a
+\autoref{s:strumenti} per i valori di $\Delta_{l}$ e $\Delta_{g}$), V/div rappresenta la scala di acquisizione della
+misura, ovvero quanti Volt sono rappresentati in una divisione dello schermo dell'oscilloscopio, mentre "measure"
+rappresenta la misura stessa.
 
 \begin{table}[H]
 	\centering
@@ -427,9 +435,9 @@ $V_{\text{sat}}=\pm15\,\si{\volt}$: i tre punti finali di massimo e minimo tendo
 il trend lineare, fedelmente rispettato dai restanti punti del grafico. Dal grafico dei residui si può osservare lo
 stesso fenomeno: la zona centrale risulta essere distribuita ragionevolmente attorno allo zero, mentre le code tendono a
 distanziarsi anche notevolmente. Da questo si deduce dunque che i tre punti finali di massimo e di minimo sono da
-considerarsi degli outliers rispetto al trend lineare delle misure rimanenti: al fine di caratterizzare la
-linearità dell'amplificatore operazionale e di calcolare l'amplificazione del circuito, dunque, gli outliers non
-verranno considerati.
+considerarsi degli outliers rispetto al trend lineare delle misure rimanenti: al fine di caratterizzare la linearità
+dell'amplificatore operazionale e di calcolare l'amplificazione del circuito, dunque, gli outliers non verranno
+considerati.
 
 %----------------------------------------------------------------------------------------
 %	PRELIMIARY FIT
