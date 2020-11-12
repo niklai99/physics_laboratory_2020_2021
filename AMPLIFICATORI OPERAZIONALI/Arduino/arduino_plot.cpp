@@ -33,7 +33,7 @@ void seek_values(vector<double>&, vector<double>&, vector<double>&, vector<doubl
 
 void print_results(vector<double>&, vector<double>&);
 
-double sampling_rate(vector<double>&, vector<double>&, const double);
+void sampling_rate(vector<double>&, vector<double>&, vector<double>&, const double);
 
 
 /*-------- MAIN -------*/
@@ -43,9 +43,11 @@ void arduino_plot()
     /*--- COSTANTI ---*/
     const string FILE_NAME = "./Data/calib_time_ROOT.dat";
     const double XMIN = 0;
-    const double XMAX = 2050;
+    const double XMAX = 2000;
     const double YMIN = 700;
     const double YMAX = 2100;
+    const double DER_YMIN = -600;
+    const double DER_YMAX = 600;
     const double FREQ = 5000; //Hertz
     const double PERIODO = pow(FREQ, -1); //Secondi
     const double THRESHOLD = 450;
@@ -58,34 +60,46 @@ void arduino_plot()
     /*--- DATA VECTORS ---*/
     vector<double> x, y;
     vector<double> x_deriv, y_deriv;
-    vector<double> x_result, y_result;
+    vector<double> x_results, y_results;
+    vector<double> n_points, sampling_rates;
 
+    /*--- CANVAS ---*/
     c1 = new TCanvas("canvas1", "ARDUINO PLOT", 1080, 720);
-    c1->Divide(2, 0);
+    c1->Divide(0, 2);
 
+    /*--- READING DATA FROM FILE ---*/
     read_data(x, y, FILE_NAME);
 
+    /*--- UPPER PLOT - WAVEFORM ---*/
     plot = make_plot(x, y);
+    plot-> SetTitle("Arduino Waveform Plot; time (a.u.); ADC (a.u.)");
     c1->cd(1);
     plot->Draw("AP");
 
     settings_plot(plot, XMIN, XMAX, YMIN, YMAX);
 
+    /*--- NUMERIC DERIVATIVE OF THE WAVEFORM ---*/
     compute_derivative(x, y, x_deriv, y_deriv);
 
+    /*--- LOWER PLOT - DERIVATIVE ---*/
     der = make_plot(x_deriv, y_deriv);
+    der-> SetTitle("Arduino Derivative Plot; time (a.u.); Derivative (a.u.)");
     c1->cd(2);
     der->Draw("AP");
 
-    settings_plot(der, XMIN, XMAX, 0, 600);
+    settings_plot(der, XMIN, XMAX, DER_YMIN, DER_YMAX);
 
-    seek_values(x_deriv, y_deriv, x_result, y_result, THRESHOLD);
+    /*--- SEEKING DERIVATIVE PEEKS ---*/
+    seek_values(x_deriv, y_deriv, x_results, y_results, THRESHOLD);
 
-    print_results(x_result, y_result);
+    /*--- PRINT RELEVANT PEEKS ---*/
+    print_results(x_results, y_results);
 
+    /*--- COMPUTE SAMPLING RATE ---*/
+    sampling_rate(x_results, n_points, sampling_rates, PERIODO);
+
+    /*--- GLOBAL PLOT SETTINGS ---*/
     settings_global();
-
-    //cout << "\nSampling Rate:\t" << sampling_rate(x, y, FREQ) << endl;
 
    return;
 }
@@ -130,8 +144,6 @@ void settings_global() {
 
 void settings_plot(TGraph* graph, const double XMIN, const double XMAX, const double YMIN, const double YMAX) {
 
-    graph-> SetTitle("Arduino Waveform Plot; time (a.u.); ADC (a.u.)");
-
     graph-> SetLineColor(kBlue+2);
     graph-> SetMarkerStyle(20);
     graph-> SetMarkerColor(kBlue+2);
@@ -163,14 +175,14 @@ void compute_derivative(vector<double>& x, vector<double>& y, vector<double>& x_
     return;
 }
 
-void seek_values(vector<double>& x_deriv, vector<double>& y_deriv, vector<double>& x_result, vector<double>& y_result, const double THRESHOLD) {
+void seek_values(vector<double>& x_deriv, vector<double>& y_deriv, vector<double>& x_results, vector<double>& y_results, const double THRESHOLD) {
 
     for (unsigned int i = 0; i < y_deriv.size(); i++)
     {
         if ( y_deriv[i] > THRESHOLD )
         {
-            x_result.push_back(x_deriv[i]);
-            y_result.push_back(y_deriv[i]);
+            x_results.push_back(x_deriv[i]);
+            y_results.push_back(y_deriv[i]);
         }
         
     }
@@ -190,15 +202,17 @@ void print_results(vector<double>& x_results, vector<double>& y_results) {
     return;
 }
 
-/*
-double sampling_rate(vector<double>& x, vector<double>& y, const double FREQ) {
+void sampling_rate(vector<double>& x_results, vector<double>& n_points, vector<double>& sampling_rates, const double PERIODO) {
 
-    double sampling = 0;
+    double temp = 0;
 
-    double counter = 0;
-
-
-
-    return sampling;
+    for (unsigned int i = 0; i < x_results.size()-1; i++)
+    {
+        temp = x_results[i+1] - x_results[i];
+        n_points.push_back(temp);
+        sampling_rates.push_back(n_points[i] / PERIODO);
+        cout << '\n' << "Sampling Rate:\t" << sampling_rates[i] << '\n';
+    }
+    
+    return;
 }
-*/
