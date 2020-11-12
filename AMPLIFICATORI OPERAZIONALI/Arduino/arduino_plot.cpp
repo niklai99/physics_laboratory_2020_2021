@@ -48,11 +48,12 @@ void arduino_plot()
     const double YMAX = 2100;
     const double FREQ = 5000; //Hertz
     const double PERIODO = pow(FREQ, -1); //Secondi
-    const double THRESHOLD = 500;
+    const double THRESHOLD = 450;
 
     /* --- ROOT OBJECTS ---*/
     TCanvas* c1 = nullptr;
     TGraph *plot = nullptr;
+    TGraph *der = nullptr;
 
     /*--- DATA VECTORS ---*/
     vector<double> x, y;
@@ -60,21 +61,29 @@ void arduino_plot()
     vector<double> x_result, y_result;
 
     c1 = new TCanvas("canvas1", "ARDUINO PLOT", 1080, 720);
+    c1->Divide(2, 0);
 
     read_data(x, y, FILE_NAME);
 
     plot = make_plot(x, y);
+    c1->cd(1);
     plot->Draw("AP");
 
     settings_plot(plot, XMIN, XMAX, YMIN, YMAX);
 
-    settings_global();
-
     compute_derivative(x, y, x_deriv, y_deriv);
+
+    der = make_plot(x_deriv, y_deriv);
+    c1->cd(2);
+    der->Draw("AP");
+
+    settings_plot(der, XMIN, XMAX, 0, 600);
 
     seek_values(x_deriv, y_deriv, x_result, y_result, THRESHOLD);
 
     print_results(x_result, y_result);
+
+    settings_global();
 
     //cout << "\nSampling Rate:\t" << sampling_rate(x, y, FREQ) << endl;
 
@@ -147,7 +156,7 @@ void compute_derivative(vector<double>& x, vector<double>& y, vector<double>& x_
     for (unsigned int i = 1; i < x.size()-1; i++)
     {
         temp = ( y[i+1] - y[i-1] ) / 2.;
-        x_deriv.push_back(i);
+        x_deriv.push_back(x[i-1]);
         y_deriv.push_back(temp);
     }
     
@@ -158,7 +167,7 @@ void seek_values(vector<double>& x_deriv, vector<double>& y_deriv, vector<double
 
     for (unsigned int i = 0; i < y_deriv.size(); i++)
     {
-        if (y_deriv[i] > THRESHOLD)
+        if ( y_deriv[i] > THRESHOLD )
         {
             x_result.push_back(x_deriv[i]);
             y_result.push_back(y_deriv[i]);
@@ -175,7 +184,7 @@ void print_results(vector<double>& x_results, vector<double>& y_results) {
     {
         cout << '\n' <<
         "Time:\t" << x_results[i] << '\n' <<
-        "ADC:\t" << y_results[i] << '\n';
+        "Deriv:\t" << y_results[i] << '\n';
     }
 
     return;
