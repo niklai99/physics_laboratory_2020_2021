@@ -149,7 +149,7 @@ double myfit(double* x, double* par){
 TFitResultPtr fit_fun(TGraphErrors* graph, const double XMIN, const double XMAX) {
 
     //creo la funzione di root
-    TF1* f1 = new TF1("myfit", myfit, XMIN, 4.2, NPAR);
+    TF1* f1 = new TF1("myfit", myfit, XMIN, 4, NPAR);
     f1->SetParNames("a", "b");
     f1->SetLineColor(kRed);
 
