@@ -264,13 +264,13 @@ void settings_fit(TMultiGraph* graph, const double XMIN, const double XMAX, cons
     graph->GetYaxis()->CenterTitle(kTRUE);
 
     //tick più guardabili
-    graph->GetXaxis()->SetTickLength(0.02);
+    graph->GetXaxis()->SetTickLength(0.01);
     graph->GetYaxis()->SetTickLength(0.02);
 
-    graph->GetXaxis()->SetLabelOffset(999);
-    graph->GetXaxis()->SetLabelSize(0);
-    graph->GetXaxis()->SetTickSize(0);
-    
+    graph->GetXaxis()->SetNdivisions(10 , 1, 0);
+    TAxis* a = graph->GetXaxis();
+    a->ChangeLabel(1, -1, 0, -1, -1, -1, "");
+    a->ChangeLabel(8, -1, 0, -1, -1, -1, "");
 }
 
 void latex(TLatex* text) {

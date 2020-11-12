@@ -112,6 +112,7 @@
 	resistenza e di capacità, relativa unicamente ai fondoscala utilizzati nell'esperienza.
 
 	\begin{table}[H]
+		\small
 		\centering
 		\begin{tabular}{x{2cm} x{3cm} x{3cm} } \toprule[0.5px]\toprule[0.1px]
 			
@@ -144,6 +145,7 @@
 	multimetro digitale Metrix. 
 
 	\begin{table}[H]
+		\small
 		\centering
 		\begin{tabular}{x{2cm} x{3cm} x{3cm} } \toprule[0.5px]\toprule[0.1px]
 			
@@ -451,6 +453,7 @@ delle ordinate secondo
 \noindent I coefficienti angolari di interesse sono dunque riportati in  \autoref{t:pre_slopes}.
 
 \begin{table}[H]
+	\small
 	\centering
 	\begin{tabular}{x{4cm} x{4cm}} 
 
@@ -487,6 +490,7 @@ errore dato da  \autoref{e:proj} ed i parametri restituiti dai fit sono riportat
 
 \begin{table}[H]
 	\centering
+	\small
 	\begin{tabular}{x{3cm} x{3cm} x{3cm} x{3cm}} 
 
 		\toprule[0.5px]
@@ -556,6 +560,7 @@ Il grafico rappresentante i due dataset unificati con relativa interpolazione li
 \noindent I parametri restituiti dall'interpolazione sono i seguenti 
 
 \begin{table}[H]
+	\small
 	\centering
 	\begin{tabular}{x{3cm} x{3cm} x{3cm} x{3cm}} 
 
@@ -595,16 +600,15 @@ separatamente, si trova essere sensibilmente minore di entrambi: ci si sarebbe a
 intermedio unificando i due campioni di misure. Osservando poi il grafico dei residui, si può notare un andamento
 leggermente anomalo, quasi parabolico, avente concavità rivolta verso il basso. Si ipotizza dunque che l'assunzione
 fatta in precedenza riguardo la presenza di una sistematica di offset/shift verticale tra i due dataset trascurabile
-necessiti di essere rivisitata. \\
-Per approfondire maggiormenta la questione, si decide di computare le grandezze "picco picco" delle tensioni in ingresso
-$V_{\text{in}}$ e in uscita $V_{\text{out}}$ secondo $V_{\text{pp}}=V^{\text{max}}-V^{\text{min}}$. Per quanto riguarda
-l'errore da associare alle grandezze picco picco, si ricorda che l'oscilloscopio misura la differenza $\Delta$ tra i due
-cursori con una precisione ancora maggiore rispetto alla singola misura. Si decide dunque di non aggiungere il fattore
-moltiplicativo $\sqrt{2}$ alla propagazione presentata in  \autoref{e:osc}, al fine di evitare di sovrastimare
-eccessivamente l'errore. Si procede ora esattamente come mostrato in  \autoref{s:pre}, effettuato inizialmente un fit
-lineare preliminare considerando solo gli errori su $Vpp_{\text{out}}$ e, utilizzando il coefficiente angolare
-restituito da tale interpolazione, si prosegue proiettando gli errori secondo  \autoref{e:proj}. Si ripete quindi il
-fit, che viene rappresentato in \autoref{i:opamp_pp}.
+necessiti di essere rivisitata. Per approfondire maggiormenta la questione, si decide di computare le grandezze "picco
+picco" delle tensioni in ingresso $V_{\text{in}}$ e in uscita $V_{\text{out}}$ secondo
+$V_{\text{pp}}=V^{\text{max}}-V^{\text{min}}$. Per quanto riguarda l'errore da associare alle grandezze picco picco, si
+ricorda che l'oscilloscopio misura la differenza $\Delta$ tra i due cursori con una precisione ancora maggiore rispetto
+alla singola misura. Si decide dunque di non aggiungere il fattore moltiplicativo $\sqrt{2}$ alla propagazione
+presentata in  \autoref{e:osc}, al fine di evitare di sovrastimare eccessivamente l'errore. Si procede ora esattamente
+come mostrato in  \autoref{s:pre}, effettuato inizialmente un fit lineare preliminare considerando solo gli errori su
+$Vpp_{\text{out}}$ e, utilizzando il coefficiente angolare restituito da tale interpolazione, si prosegue proiettando
+gli errori secondo  \autoref{e:proj}. Si ripete quindi il fit, che viene rappresentato in \autoref{i:opamp_pp}.
 
 \begin{figure}[H]
 	\centering
@@ -615,6 +619,7 @@ fit, che viene rappresentato in \autoref{i:opamp_pp}.
 \end{figure}
 
 \begin{table}[H]
+	\small
 	\centering
 	\begin{tabular}{x{3cm} x{3cm} x{3cm} x{3cm}} 
 
@@ -676,15 +681,15 @@ Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, ra
 
 \noindent Partendo dal primo punto a sinistra, cioè la stima di \textit{G} tramite le misure dirette delle resistenze
 $R_{\text{f}}$ e $R_{1}$ (riportate in \autoref{t:direct_measures}), si nota come questo presenti un errore nettamente
-inferiore a confronto con le rimanenti stime. Queste risultano essere quantità compatibili con $G=R_{\text{f}}/R_{1}$,
-ad eccezione di quella ottenuta considerando assieme sia i massimi sia i minimi ($\lambda = 3.7$). In particolare, si
-può osservare come la media pesata tra le stime dell'amplificazione ottenute considerando i campioni separati e la stima
-ottenuta con le grandezze picco picco si trovino in eccellente accordo: si può concludere dunque che, eliminando la
-sistematica di offset/shift verticale tra i due dataset (sia attraverso grandezze picco picco, sia considerando la media
-pesata dei risultati ottenuti dai campioni separati), la stima dell'amplificazione del circuito risulta essere
-compatibile con le aspettative preliminari. Si assume in ogni caso che l'errore su \textit{G} sia sottostimato a causa
-della correlazione tra errori di scala dell'oscilloscopio: si preferisce dunque la stima ritrovata considerando le
-tensioni picco picco, in quanto presenta un errore relativo leggermente maggiore.
+inferiore a confronto con le rimanenti stime. Quest'ultime risultano essere quantità compatibili con 1)
+$G=R_{\text{f}}/R_{1}$, ad eccezione di 4) quella ottenuta considerando assieme sia i massimi sia i minimi ($\lambda =
+3.7$). In particolare, si può osservare come la media pesata 5) tra le stime dell'amplificazione ottenute considerando i
+campioni separati e la stima ottenuta con le grandezze picco picco 6) si trovino in eccellente accordo: si può concludere
+dunque che, eliminando la sistematica di offset/shift verticale tra i due dataset (sia attraverso grandezze picco picco,
+sia considerando la media pesata dei risultati ottenuti dai campioni separati), la stima dell'amplificazione del
+circuito risulta essere compatibile con le aspettative preliminari. Si assume in ogni caso che l'errore su \textit{G}
+sia sottostimato a causa della correlazione tra errori di scala dell'oscilloscopio: si preferisce dunque la stima
+ritrovata considerando le tensioni picco picco 6), in quanto presenta un errore relativo leggermente maggiore.
 
 
 
