@@ -27,7 +27,7 @@ TGraph *make_plot(vector<double>&, vector<double>&);
 TMultiGraph *make_mg(TGraph*, TGraph*, TGraph*, TGraph*, TGraph*, TGraph*, TGraph*,
                     TGraph*, TGraph*, TGraph*, TGraph*);
 
-void settings_plot(TMultiGraph*, const double, const double, const double, const double);
+void settings_plot(TGraph*, const double, const double, const double, const double);
 
 void settings_global();
 
@@ -63,13 +63,23 @@ void arduino_vertical_calib()
     const string FILE_NAME11 = "./Data/2_5V_ROOT.dat";
     const double XMIN = 0;
     const double XMAX = 2000;
-    const double YMIN = 500;
-    const double YMAX = 4500;
-    const double THRESHOLD_MAX = 450;
+    const double YMIN = 0;
+    const double YMAX = 1500;
+    const double THRESHOLD_MAX = 750;
     const double THRESHOLD_MIN = -450;
 
     /* --- ROOT OBJECTS ---*/
     TCanvas* c1 = nullptr;
+    TCanvas* c2 = nullptr;
+    TCanvas* c3 = nullptr;
+    TCanvas* c4 = nullptr;
+    TCanvas* c5 = nullptr;
+    TCanvas* c6 = nullptr;
+    TCanvas* c7 = nullptr;
+    TCanvas* c8 = nullptr;
+    TCanvas* c9 = nullptr;
+    TCanvas* c10 = nullptr;
+    TCanvas* c11 = nullptr;
     TGraph *plot1 = nullptr;
     TGraph *plot2 = nullptr;
     TGraph *plot3 = nullptr;
@@ -145,6 +155,16 @@ void arduino_vertical_calib()
 
     /*--- CANVAS ---*/
     c1 = new TCanvas("canvas1", "ARDUINO PLOT", 1080, 720);
+    c2 = new TCanvas("canvas2", "ARDUINO PLOT", 1080, 720);
+    c3 = new TCanvas("canvas3", "ARDUINO PLOT", 1080, 720);
+    c4 = new TCanvas("canvas4", "ARDUINO PLOT", 1080, 720);
+    c5 = new TCanvas("canvas5", "ARDUINO PLOT", 1080, 720);
+    c6 = new TCanvas("canvas6", "ARDUINO PLOT", 1080, 720);
+    c7 = new TCanvas("canvas7", "ARDUINO PLOT", 1080, 720);
+    c8 = new TCanvas("canvas8", "ARDUINO PLOT", 1080, 720);
+    c9 = new TCanvas("canvas9", "ARDUINO PLOT", 1080, 720);
+    c10 = new TCanvas("canvas10", "ARDUINO PLOT", 1080, 720);
+    c11 = new TCanvas("canvas11", "ARDUINO PLOT", 1080, 720);
 
     /*--- READING DATA FROM FILE ---*/
     read_data(x1, y1, FILE_NAME1);
@@ -184,29 +204,152 @@ void arduino_vertical_calib()
     seek_values(derx9, dery9, x_results_max9, y_results_max9, x_results_min9, y_results_min9, THRESHOLD_MAX, THRESHOLD_MIN);
     seek_values(derx10, dery10, x_results_max10, y_results_max10, x_results_min10, y_results_min10, THRESHOLD_MAX, THRESHOLD_MIN);
     seek_values(derx11, dery11, x_results_max11, y_results_max11, x_results_min11, y_results_min11, THRESHOLD_MAX, THRESHOLD_MIN);
+    
+    plot1 = make_plot(derx1, dery1);
+    
+    plot1-> SetLineColor(kBlue+2);
+    plot1-> SetMarkerStyle(20);
+    plot1-> SetMarkerColor(kBlue+2);
+    plot1-> SetMarkerSize(0.75);
 
+    c1->cd();
+    plot1->Draw("AP");
+    settings_plot(plot1, XMIN, XMAX, YMIN, YMAX);
+
+    plot2 = make_plot(derx2, dery2);
+
+    plot2-> SetLineColor(kOrange+10);
+    plot2-> SetMarkerStyle(20);
+    plot2-> SetMarkerColor(kOrange+10);
+    plot2-> SetMarkerSize(0.75);
+
+    c2->cd();
+    plot2->Draw("AP");
+    settings_plot(plot2, XMIN, XMAX, YMIN, YMAX);
+
+    plot3 = make_plot(derx3, dery3);
+
+    plot3-> SetLineColor(kGreen);
+    plot3-> SetMarkerStyle(20);
+    plot3-> SetMarkerColor(kGreen);
+    plot3-> SetMarkerSize(0.75);
+
+    c3->cd();
+    plot3->Draw("AP");
+    settings_plot(plot3, XMIN, XMAX, YMIN, YMAX);
+
+    plot4 = make_plot(derx4, dery4);
+
+    plot4-> SetLineColor(kMagenta);
+    plot4-> SetMarkerStyle(20);
+    plot4-> SetMarkerColor(kMagenta);
+    plot4-> SetMarkerSize(0.75);
+
+    c4->cd();
+    plot4->Draw("AP");
+    settings_plot(plot4, XMIN, XMAX, YMIN, YMAX);
+
+    plot5 = make_plot(derx5, dery5);
+
+    plot5-> SetLineColor(kTeal);
+    plot5-> SetMarkerStyle(20);
+    plot5-> SetMarkerColor(kTeal);
+    plot5-> SetMarkerSize(0.75);
+
+    c5->cd();
+    plot5->Draw("AP");
+    settings_plot(plot5, XMIN, XMAX, YMIN, YMAX);
+
+    plot6 = make_plot(derx6, dery6);
+
+    plot6-> SetLineColor(kViolet+7);
+    plot6-> SetMarkerStyle(20);
+    plot6-> SetMarkerColor(kViolet+7);
+    plot6-> SetMarkerSize(0.75);
+
+    c6->cd();
+    plot6->Draw("AP");
+    settings_plot(plot6, XMIN, XMAX, YMIN, YMAX);
+
+    plot7 = make_plot(derx7, dery7);
+
+    plot7-> SetLineColor(kAzure+7);
+    plot7-> SetMarkerStyle(20);
+    plot7-> SetMarkerColor(kAzure+7);
+    plot7-> SetMarkerSize(0.75);
+
+    c7->cd();
+    plot7->Draw("AP");
+    settings_plot(plot7, XMIN, XMAX, YMIN, YMAX);
+
+    plot8 = make_plot(derx8, dery8);
+
+    plot8-> SetLineColor(kPink+5);
+    plot8-> SetMarkerStyle(20);
+    plot8-> SetMarkerColor(kPink+5);
+    plot8-> SetMarkerSize(0.75);
+
+    c8->cd();
+    plot8->Draw("AP");
+    settings_plot(plot8, XMIN, XMAX, YMIN, YMAX);
+
+    plot9 = make_plot(derx9, dery9);
+
+    plot9-> SetLineColor(kGreen+3);
+    plot9-> SetMarkerStyle(20);
+    plot9-> SetMarkerColor(kGreen+3);
+    plot9-> SetMarkerSize(0.75);
+
+    c9->cd();
+    plot9->Draw("AP");
+    settings_plot(plot9, XMIN, XMAX, YMIN, YMAX);
+
+    plot10 = make_plot(derx10, dery10);
+
+    plot10-> SetLineColor(kOrange);
+    plot10-> SetMarkerStyle(20);
+    plot10-> SetMarkerColor(kOrange);
+    plot10-> SetMarkerSize(0.75);
+
+    c10->cd();
+    plot10->Draw("AP");
+    settings_plot(plot10, XMIN, XMAX, YMIN, YMAX);
+
+    plot11 = make_plot(derx11, dery11);
+
+    plot11-> SetLineColor(kPink);
+    plot11-> SetMarkerStyle(20);
+    plot11-> SetMarkerColor(kPink);
+    plot11-> SetMarkerSize(0.75);
+
+    c11->cd();
+    plot11->Draw("AP");
+    settings_plot(plot11, XMIN, XMAX, YMIN, YMAX);
+
+/*
     int k = 0;
     double media = 0;
     for (unsigned int i = 0; i < x5.size(); i++) {
-        if (k < x_results_max5[2] || k > x_results_min5[2]) k++;
+        if (k < x_results_max5[1] || k > x_results_min5[1]) k++;
     }
-    while (k >= x_results_max5[2] && k <= x_results_min5[3])
+    while (k >= x_results_max5[1] && k <= x_results_min5[1])
     {
         media += y5[k];
         //cout << media << endl;
         k++;
     }
     
-    media = 1.0 * media / fabs(x_results_max5[2] - x_results_min5[2]);
+    media = 1.0 * media / fabs(x_results_max5[1] - x_results_min5[1]);
 
     cout << media << endl;
+    cout << x_results_max5[1] << '\t' << x_results_min5[1] << endl;
+*/
 
 
 
 
 
-
-
+/*
     max1 = max_value(y1);
     max2 = max_value(y2);
     max3 = max_value(y3);
@@ -235,7 +378,7 @@ void arduino_vertical_calib()
     {
         //cout << "\nDataset:\t" << i+1 << '\n' << "Massimo:\t" << max_vec[i] << endl;
     }
-    
+ */   
     
 
     /*--- MAKING PLOTS ---*/
@@ -388,7 +531,7 @@ void settings_global() {
     return;
 }
 
-void settings_plot(TMultiGraph* graph, const double XMIN, const double XMAX, const double YMIN, const double YMAX) {
+void settings_plot(TGraph* graph, const double XMIN, const double XMAX, const double YMIN, const double YMAX) {
 
     gPad->Modified();
     
