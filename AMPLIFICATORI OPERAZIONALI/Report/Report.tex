@@ -701,10 +701,47 @@ ritrovata considerando le tensioni picco picco 6), in quanto presenta un errore 
 
 
 %----------------------------------------------------------------------------------------
-%	LINEARITA E AMPLIFICAZIONE
+%	ARDUINO
+%----------------------------------------------------------------------------------------
+\cleardoublepage
+\section{Arduino}
+In questa sezione si vuole effettuare una calibrazione della scheda Arduino Due. In particolare, si vuole quantificare
+il sampling rate dell'ADC della scheda e determinare la funzione di calibrazione in tensione, ovvero la funzione $V = a
++ b \cdot \text{ADC}$ dove $V$ è il valore in Volt del segnale, $\text{ADC}$ è la tensione in ADC counts acquisita da
+Arduino, mentre $a$ e $b$ sono i parametri di calibrazione. 
+
+
+%----------------------------------------------------------------------------------------
+%	CONFIGURAZIONE SPERIMENTALE 
 %----------------------------------------------------------------------------------------
 
-\section{Arduino}
+\subsection{Configurazione Sperimentale}
+Per quanto riguarda la stima del sampling rate, si comincia configurando il segnale di trigger. Si imposta quindi nel
+canale CH2 del generatore un impulso quadrato di durata $10\,\si{\us}$ e frequenza $1\,\si{k\hertz}$, di altezza
+$2\,\si{\volt}$ a partire dallo zero. Sul canale CH1 del generatore, invece, si imposta un'onda quadra di ampiezza
+$1\,\si{\volt}$ partendo da zero con frequenza $5\,\si{k\hertz}$.
+Per quanto riguarda la calibrazione verticale della scheda, si acquisiscono le forme d'onda facendo variare la tensione
+del generatore, avendo cura di misurare il massimo ed il minimo dell'onda quadra utilizzando l'oscilloscopio.
+
+%----------------------------------------------------------------------------------------
+%	SAMPLING RATE 
+%----------------------------------------------------------------------------------------
+
+\subsection{Sampling Rate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
