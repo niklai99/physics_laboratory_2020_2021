@@ -44,12 +44,18 @@ double max_value(vector<double>&);
 
 void arrange_data(vector<double>&, double);
 
+double myfit(double*, double*);
+
+TFitResultPtr fit_fun(TGraph*, const double, const double);
+
 
 /*-------- MAIN -------*/
 
 void arduino_vertical_calib()
 {   
     /*--- COSTANTI ---*/
+    const double NPAR = 2;
+    const string FILE_NAME  = "./Data/arduino_linear_fit.txt";
     const string FILE_NAME1  = "./Data/0_2V_ROOT.dat";
     const string FILE_NAME2  = "./Data/0_5V_ROOT.dat";
     const string FILE_NAME3  = "./Data/1_0V_ROOT.dat";
@@ -65,28 +71,28 @@ void arduino_vertical_calib()
     const double XMAX = 2000;
     const double YMIN = 500;
     const double YMAX = 4300;
-    const double THRESHOLD_MAX1 = 750;
-    const double THRESHOLD_MIN1 = -450;
-    const double THRESHOLD_MAX2 = 750;
-    const double THRESHOLD_MIN2 = -450;
-    const double THRESHOLD_MAX3 = 750;
-    const double THRESHOLD_MIN3 = -450;
-    const double THRESHOLD_MAX4 = 750;
-    const double THRESHOLD_MIN4 = -450;
-    const double THRESHOLD_MAX5 = 750;
-    const double THRESHOLD_MIN5 = -450;
-    const double THRESHOLD_MAX6 = 750;
-    const double THRESHOLD_MIN6 = -450;
-    const double THRESHOLD_MAX7 = 750;
-    const double THRESHOLD_MIN7 = -450;
-    const double THRESHOLD_MAX8 = 750;
-    const double THRESHOLD_MIN8 = -450;
-    const double THRESHOLD_MAX9 = 750;
-    const double THRESHOLD_MIN9 = -450;
-    const double THRESHOLD_MAX10 = 750;
-    const double THRESHOLD_MIN10 = -450;
-    const double THRESHOLD_MAX11 = 750;
-    const double THRESHOLD_MIN11 = -450;
+    const double THRESHOLD_MAX1 = 90;
+    const double THRESHOLD_MIN1 = -90;
+    const double THRESHOLD_MAX2 = 200;
+    const double THRESHOLD_MIN2 = -200;
+    const double THRESHOLD_MAX3 = 400;
+    const double THRESHOLD_MIN3 = -400;
+    const double THRESHOLD_MAX4 = 700;
+    const double THRESHOLD_MIN4 = -700;
+    const double THRESHOLD_MAX5 = 800;
+    const double THRESHOLD_MIN5 = -800;
+    const double THRESHOLD_MAX6 = 900;
+    const double THRESHOLD_MIN6 = -900;
+    const double THRESHOLD_MAX7 = 900;
+    const double THRESHOLD_MIN7 = -900;
+    const double THRESHOLD_MAX8 = 1000;
+    const double THRESHOLD_MIN8 = -1000;
+    const double THRESHOLD_MAX9 = 1000;
+    const double THRESHOLD_MIN9 = -1000;
+    const double THRESHOLD_MAX10 = 1100;
+    const double THRESHOLD_MIN10 = -1100;
+    const double THRESHOLD_MAX11 = 1200;
+    const double THRESHOLD_MIN11 = -1200;
 
     /* --- ROOT CANVASES ---*/
     TCanvas* c1 = nullptr;
@@ -161,7 +167,7 @@ void arduino_vertical_calib()
     vector<double> x_results_max11, y_results_max11;
     vector<double> x_results_min11, y_results_min11;
 
-/*
+
     double max1;
     double max2;
     double max3;
@@ -175,11 +181,11 @@ void arduino_vertical_calib()
     double max11;
 
     vector<double> max_vec;
-*/
+
 
     /*--- CANVAS ---*/
-    c1 = new TCanvas("canvas1", "ARDUINO PLOT", 1080, 720);
-    c1->Divide(3, 4);
+    //c1 = new TCanvas("canvas1", "ARDUINO PLOT", 1080, 720);
+    //c1->Divide(3, 4);
 /*
     c2 = new TCanvas("canvas2", "ARDUINO PLOT", 1080, 720);
     c3 = new TCanvas("canvas3", "ARDUINO PLOT", 1080, 720);
@@ -233,7 +239,9 @@ void arduino_vertical_calib()
     seek_values(derx11, dery11, x_results_max11, y_results_max11, x_results_min11, y_results_min11, THRESHOLD_MAX11, THRESHOLD_MIN11);
     
 
+
     /*--- MAKING PLOTS ---*/  
+/*
     plot1 = make_plot(x1, y1);
     
     plot1-> SetLineColor(kBlue+2);
@@ -387,7 +395,7 @@ void arduino_vertical_calib()
     c1->cd(11);
     plot11->Draw("AL");
     settings_plot(plot11, XMIN, XMAX, YMIN, YMAX);
-
+*/
     /*--- SAVING PLOTS ---*/
 /*
     c1->SaveAs("./Plots/0_2V.png");
@@ -402,28 +410,6 @@ void arduino_vertical_calib()
     c10->SaveAs("./Plots/2_4V.png");
     c11->SaveAs("./Plots/2_5V.png");
 */
-
-/*
-    int k = 0;
-    double media = 0;
-    for (unsigned int i = 0; i < x5.size(); i++) {
-        if (k < x_results_max5[1] || k > x_results_min5[1]) k++;
-    }
-    while (k >= x_results_max5[1] && k <= x_results_min5[1])
-    {
-        media += y5[k];
-        //cout << media << endl;
-        k++;
-    }
-    
-    media = 1.0 * media / fabs(x_results_max5[1] - x_results_min5[1]);
-
-    cout << media << endl;
-    cout << x_results_max5[1] << '\t' << x_results_min5[1] << endl;
-*/
-
-
-
 
 
 /*
@@ -453,9 +439,9 @@ void arduino_vertical_calib()
 
     for (unsigned int i = 0; i < max_vec.size(); i++)
     {
-        //cout << "\nDataset:\t" << i+1 << '\n' << "Massimo:\t" << max_vec[i] << endl;
+        cout << "\nDataset:\t" << i+1 << '\n' << "Massimo:\t" << max_vec[i] << endl;
     }
- */   
+ */
     
 
     /*--- MAKING PLOTS ---*/
@@ -543,6 +529,19 @@ void arduino_vertical_calib()
 
     settings_plot(mg, XMIN, XMAX, YMIN, YMAX);
 */
+
+    vector<double> x, y;
+    read_data(x, y, FILE_NAME);
+
+    TGraph *plot = make_plot(x, y);
+    plot->SetTitle("Arduino Calibration Fit; ADC (a.u.); V (V)");
+    plot-> SetLineColor(kBlack);
+    plot-> SetMarkerStyle(20);
+    plot-> SetMarkerColor(kBlack);
+    plot-> SetMarkerSize(1);
+    TFitResultPtr fit = fit_fun(plot, 1000, 4050);
+
+    settings_plot(plot, 1000, 4050, 0, 3);
 
     /*--- GLOBAL PLOT SETTINGS ---*/
     settings_global();
@@ -706,4 +705,33 @@ void arrange_data(vector<double>& max_vec, double maxx) {
     max_vec.push_back(maxx);
 
     return;
+}
+
+double myfit(double* x, double* par){   
+    double a = par[0];
+    double b = par[1];
+
+    double fit_function = 0;
+
+    fit_function = (a * x[0] + b);
+
+    return fit_function;
+}
+
+TFitResultPtr fit_fun(TGraph* graph, const double XMIN, const double XMAX) {
+
+    //creo la funzione di root
+    TF1* f1 = new TF1("myfit", myfit, XMIN, XMAX, 2);
+    f1->SetParNames("a", "b");
+    f1->SetLineColor(kRed);
+
+    //faccio il fit
+    TFitResultPtr fit_result = graph->Fit("myfit", "S");
+    //fit_result->Print("V");
+
+    std::cout << f1->GetProb() << std::endl;
+    //disegno il grafico
+    graph->Draw("AP");
+
+    return fit_result;
 }
