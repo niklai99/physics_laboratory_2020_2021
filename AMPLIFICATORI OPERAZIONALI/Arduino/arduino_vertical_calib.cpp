@@ -212,7 +212,8 @@ void arduino_vertical_calib()
     read_data(x10, y10, FILE_NAME10);
     read_data(x11, y11, FILE_NAME11);
 
-    /*--- NUMERIC DERIVATIVE OF THE WAVEFORM ---*/
+/*
+
     compute_derivative(x1, y1, derx1, dery1);
     compute_derivative(x2, y2, derx2, dery2);
     compute_derivative(x3, y3, derx3, dery3);
@@ -225,7 +226,6 @@ void arduino_vertical_calib()
     compute_derivative(x10, y10, derx10, dery10);
     compute_derivative(x11, y11, derx11, dery11);
 
-    /*--- SEEK DERIVATIVE PEEKS ---*/
     seek_values(derx1, dery1, x_results_max1, y_results_max1, x_results_min1, y_results_min1, THRESHOLD_MAX1, THRESHOLD_MIN1);
     seek_values(derx2, dery2, x_results_max2, y_results_max2, x_results_min2, y_results_min2, THRESHOLD_MAX2, THRESHOLD_MIN2);
     seek_values(derx3, dery3, x_results_max3, y_results_max3, x_results_min3, y_results_min3, THRESHOLD_MAX3, THRESHOLD_MIN3);
@@ -238,6 +238,8 @@ void arduino_vertical_calib()
     seek_values(derx10, dery10, x_results_max10, y_results_max10, x_results_min10, y_results_min10, THRESHOLD_MAX10, THRESHOLD_MIN10);
     seek_values(derx11, dery11, x_results_max11, y_results_max11, x_results_min11, y_results_min11, THRESHOLD_MAX11, THRESHOLD_MIN11);
     
+    
+*/  
 
 
     /*--- MAKING PLOTS ---*/  
@@ -541,7 +543,7 @@ void arduino_vertical_calib()
     plot-> SetMarkerSize(1);
     TFitResultPtr fit = fit_fun(plot, 1000, 4050);
 
-    settings_plot(plot, 1000, 4050, 0, 3);
+    settings_plot(plot, 700, 4300, 0, 2.7);
 
     /*--- GLOBAL PLOT SETTINGS ---*/
     settings_global();
