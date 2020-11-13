@@ -179,6 +179,8 @@ void arduino_vertical_calib()
 
     /*--- CANVAS ---*/
     c1 = new TCanvas("canvas1", "ARDUINO PLOT", 1080, 720);
+    c1->Divide(3, 4);
+/*
     c2 = new TCanvas("canvas2", "ARDUINO PLOT", 1080, 720);
     c3 = new TCanvas("canvas3", "ARDUINO PLOT", 1080, 720);
     c4 = new TCanvas("canvas4", "ARDUINO PLOT", 1080, 720);
@@ -189,6 +191,7 @@ void arduino_vertical_calib()
     c9 = new TCanvas("canvas9", "ARDUINO PLOT", 1080, 720);
     c10 = new TCanvas("canvas10", "ARDUINO PLOT", 1080, 720);
     c11 = new TCanvas("canvas11", "ARDUINO PLOT", 1080, 720);
+*/
 
     /*--- READING DATA FROM FILE ---*/
     read_data(x1, y1, FILE_NAME1);
@@ -237,9 +240,12 @@ void arduino_vertical_calib()
     plot1-> SetMarkerStyle(20);
     plot1-> SetMarkerColor(kBlue+2);
     plot1-> SetMarkerSize(0.75);
+    plot1-> SetLineWidth(2);
+    plot1-> SetTitle("Vgen 0.2 V; time (a.u.); ADC (a.u.)");
 
-    c1->cd();
-    plot1->Draw("AP");
+    //c1->cd();
+    c1->cd(1);
+    plot1->Draw("AL");
     settings_plot(plot1, XMIN, XMAX, YMIN, YMAX);
 
     plot2 = make_plot(x2, y2);
@@ -248,9 +254,12 @@ void arduino_vertical_calib()
     plot2-> SetMarkerStyle(20);
     plot2-> SetMarkerColor(kOrange+10);
     plot2-> SetMarkerSize(0.75);
+    plot2-> SetLineWidth(2);
+    plot2-> SetTitle("Vgen 0.5 V; time (a.u.); ADC (a.u.)");
 
-    c2->cd();
-    plot2->Draw("AP");
+    //c2->cd();
+    c1->cd(2);
+    plot2->Draw("AL");
     settings_plot(plot2, XMIN, XMAX, YMIN, YMAX);
 
     plot3 = make_plot(x3, y3);
@@ -259,9 +268,12 @@ void arduino_vertical_calib()
     plot3-> SetMarkerStyle(20);
     plot3-> SetMarkerColor(kGreen);
     plot3-> SetMarkerSize(0.75);
+    plot3-> SetLineWidth(2);
+    plot3-> SetTitle("Vgen 1.0 V; time (a.u.); ADC (a.u.)");
 
-    c3->cd();
-    plot3->Draw("AP");
+    //c3->cd();
+    c1->cd(3);
+    plot3->Draw("AL");
     settings_plot(plot3, XMIN, XMAX, YMIN, YMAX);
 
     plot4 = make_plot(x4, y4);
@@ -270,9 +282,12 @@ void arduino_vertical_calib()
     plot4-> SetMarkerStyle(20);
     plot4-> SetMarkerColor(kMagenta);
     plot4-> SetMarkerSize(0.75);
+    plot4-> SetLineWidth(2);
+    plot4-> SetTitle("Vgen 1.5 V; time (a.u.); ADC (a.u.)");
 
-    c4->cd();
-    plot4->Draw("AP");
+    //c4->cd();
+    c1->cd(4);
+    plot4->Draw("AL");
     settings_plot(plot4, XMIN, XMAX, YMIN, YMAX);
 
     plot5 = make_plot(x5, y5);
@@ -281,9 +296,12 @@ void arduino_vertical_calib()
     plot5-> SetMarkerStyle(20);
     plot5-> SetMarkerColor(kTeal);
     plot5-> SetMarkerSize(0.75);
+    plot5-> SetLineWidth(2);
+    plot5-> SetTitle("Vgen 1.8 V; time (a.u.); ADC (a.u.)");
 
-    c5->cd();
-    plot5->Draw("AP");
+    //c5->cd();
+    c1->cd(5);
+    plot5->Draw("AL");
     settings_plot(plot5, XMIN, XMAX, YMIN, YMAX);
 
     plot6 = make_plot(x6, y6);
@@ -292,9 +310,12 @@ void arduino_vertical_calib()
     plot6-> SetMarkerStyle(20);
     plot6-> SetMarkerColor(kViolet+7);
     plot6-> SetMarkerSize(0.75);
+    plot6-> SetLineWidth(2);
+    plot6-> SetTitle("Vgen 2.0 V; time (a.u.); ADC (a.u.)");
 
-    c6->cd();
-    plot6->Draw("AP");
+    //c6->cd();
+    c1->cd(6);
+    plot6->Draw("AL");
     settings_plot(plot6, XMIN, XMAX, YMIN, YMAX);
 
     plot7 = make_plot(x7, y7);
@@ -303,9 +324,12 @@ void arduino_vertical_calib()
     plot7-> SetMarkerStyle(20);
     plot7-> SetMarkerColor(kAzure+7);
     plot7-> SetMarkerSize(0.75);
+    plot7-> SetLineWidth(2);
+    plot7-> SetTitle("Vgen 2.1 V; time (a.u.); ADC (a.u.)");
 
-    c7->cd();
-    plot7->Draw("AP");
+    //c7->cd();
+    c1->cd(7);
+    plot7->Draw("AL");
     settings_plot(plot7, XMIN, XMAX, YMIN, YMAX);
 
     plot8 = make_plot(x8, y8);
@@ -314,9 +338,12 @@ void arduino_vertical_calib()
     plot8-> SetMarkerStyle(20);
     plot8-> SetMarkerColor(kPink+5);
     plot8-> SetMarkerSize(0.75);
+    plot8-> SetLineWidth(2);
+    plot8-> SetTitle("Vgen 2.2 V; time (a.u.); ADC (a.u.)");
 
-    c8->cd();
-    plot8->Draw("AP");
+    //c8->cd();
+    c1->cd(8);
+    plot8->Draw("AL");
     settings_plot(plot8, XMIN, XMAX, YMIN, YMAX);
 
     plot9 = make_plot(x9, y9);
@@ -325,9 +352,12 @@ void arduino_vertical_calib()
     plot9-> SetMarkerStyle(20);
     plot9-> SetMarkerColor(kGreen+3);
     plot9-> SetMarkerSize(0.75);
+    plot9-> SetLineWidth(2);
+    plot9-> SetTitle("Vgen 2.3 V; time (a.u.); ADC (a.u.)");
 
-    c9->cd();
-    plot9->Draw("AP");
+    //c9->cd();
+    c1->cd(9);
+    plot9->Draw("AL");
     settings_plot(plot9, XMIN, XMAX, YMIN, YMAX);
 
     plot10 = make_plot(x10, y10);
@@ -336,9 +366,12 @@ void arduino_vertical_calib()
     plot10-> SetMarkerStyle(20);
     plot10-> SetMarkerColor(kOrange);
     plot10-> SetMarkerSize(0.75);
+    plot10-> SetLineWidth(2);
+    plot10-> SetTitle("Vgen 2.4 V; time (a.u.); ADC (a.u.)");
 
-    c10->cd();
-    plot10->Draw("AP");
+    //c10->cd();
+    c1->cd(10);
+    plot10->Draw("AL");
     settings_plot(plot10, XMIN, XMAX, YMIN, YMAX);
 
     plot11 = make_plot(x11, y11);
@@ -347,11 +380,16 @@ void arduino_vertical_calib()
     plot11-> SetMarkerStyle(20);
     plot11-> SetMarkerColor(kPink);
     plot11-> SetMarkerSize(0.75);
+    plot11-> SetLineWidth(2);
+    plot11-> SetTitle("Vgen 2.5 V; time (a.u.); ADC (a.u.)");
 
-    c11->cd();
-    plot11->Draw("AP");
+    //c11->cd();
+    c1->cd(11);
+    plot11->Draw("AL");
     settings_plot(plot11, XMIN, XMAX, YMIN, YMAX);
 
+    /*--- SAVING PLOTS ---*/
+/*
     c1->SaveAs("./Plots/0_2V.png");
     c2->SaveAs("./Plots/0_5V.png");
     c3->SaveAs("./Plots/1_0V.png");
@@ -363,6 +401,7 @@ void arduino_vertical_calib()
     c9->SaveAs("./Plots/2_3V.png");
     c10->SaveAs("./Plots/2_4V.png");
     c11->SaveAs("./Plots/2_5V.png");
+*/
 
 /*
     int k = 0;
