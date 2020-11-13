@@ -728,13 +728,30 @@ del generatore, avendo cura di misurare il massimo ed il minimo dell'onda quadra
 %----------------------------------------------------------------------------------------
 
 \subsection{Sampling Rate}
+Conoscendo il periodo dell'onda quadra in ingresso ($T=1/f$), il sampling rate viene computato come $S = N / T = N \, f$
+con $T$ il periodo dell'onda e $N$ il numero di misure acquisite in un periodo. Per calcolare allora il numero di
+acquisizioni in un periodo viene computata la derivata numerica della forma d'onda: questa presenterà dei picchi
+positivi quando la funzione passa da zero a $1\,\si{\volt}$ e picchi negativi quando scende da $1\,\si{\volt}$ a zero.
+Il numero di acquisizioni in un periodo sarà allora il numeri di punti compresi tra due picchi positivi della funzione
+derivata. Si trova allora un sampling rate $S = 955000 s^{-1}$, ovvero 955000 acquisizioni al secondo.
 
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=15cm]{../Arduino/Plots/calib_time_derivative.png}
+%	\caption{}
+%	\label{i:ar_sampling}
+%\end{figure}
 
+%----------------------------------------------------------------------------------------
+%	Calibrazione in Tensione
+%----------------------------------------------------------------------------------------
 
-
-
-
-
+\subsection{Calibrazione in Tensione}
+Si vuole ora verificare la linearità dell'ADC e stimare i parametri $a$, $b$ della funzione di calibrazione: questo
+perchè si è interessati a convertire il segnale acquisito da ADC counts in Volt. Si rappresentano in grafico allora i
+valori di tensione $V$ misurati con l'oscilloscopio contro la media dei punti appartenenti ai picchi della relativa
+forma d'onda. Così facendo, si riesce ad effettuare un'interpolazione lineare ricavando l'offset (cioè quanti Volt
+corrispondono allo zero dell'ADC) ed il coefficiente angolare (cioè come scalano i Volt rispetto all'ADC).
 
 
 

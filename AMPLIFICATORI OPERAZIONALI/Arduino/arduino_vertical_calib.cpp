@@ -21,13 +21,14 @@ using namespace std;
 /*-------- FUNCTIONS -------*/
 
 void read_data(vector<double>&, vector<double>&, const string);
+void read_data(vector<double>&, vector<double>&, vector<double>&, vector<double>&, const string);
 
-TGraph *make_plot(vector<double>&, vector<double>&);
+TGraphErrors *make_plot(vector<double>&, vector<double>&, vector<double>&, vector<double>&);
 
 TMultiGraph *make_mg(TGraph*, TGraph*, TGraph*, TGraph*, TGraph*, TGraph*, TGraph*,
                     TGraph*, TGraph*, TGraph*, TGraph*);
 
-void settings_plot(TGraph*, const double, const double, const double, const double);
+void settings_plot(TGraphErrors*, const double, const double, const double, const double);
 
 void settings_global();
 
@@ -46,7 +47,7 @@ void arrange_data(vector<double>&, double);
 
 double myfit(double*, double*);
 
-TFitResultPtr fit_fun(TGraph*, const double, const double);
+TFitResultPtr fit_fun(TGraphErrors*, const double, const double);
 
 
 /*-------- MAIN -------*/
@@ -200,6 +201,7 @@ void arduino_vertical_calib()
 */
 
     /*--- READING DATA FROM FILE ---*/
+
     read_data(x1, y1, FILE_NAME1);
     read_data(x2, y2, FILE_NAME2);
     read_data(x3, y3, FILE_NAME3);
@@ -532,10 +534,10 @@ void arduino_vertical_calib()
     settings_plot(mg, XMIN, XMAX, YMIN, YMAX);
 */
 
-    vector<double> x, y;
-    read_data(x, y, FILE_NAME);
+    vector<double> x, y, errx, erry;
+    read_data(x, y, errx, erry, FILE_NAME);
 
-    TGraph *plot = make_plot(x, y);
+    TGraphErrors *plot = make_plot(x, y, errx, erry);
     plot->SetTitle("Arduino Calibration Fit; ADC (a.u.); V (V)");
     plot-> SetLineColor(kBlack);
     plot-> SetMarkerStyle(20);
@@ -573,9 +575,30 @@ void read_data(vector<double>& x, vector<double>& y, const string FILE_NAME) {
     return;
 }
 
-TGraph* make_plot(vector<double>& x, vector<double>& y) {
+void read_data(vector<double>& x, vector<double>& y, vector<double>& errx, vector<double>& erry, const string FILE_NAME) {
+
+    ifstream f;
+    f.open(FILE_NAME);
+    double i = 0;
+    while(f >> i) {
+
+        x.push_back(i);   
+        f >> i;
+        y.push_back(i);    
+        f >> i;
+        errx.push_back(i);   
+        f >> i;
+        erry.push_back(i); 
+    }
+
+    f.close();
+
+    return;
+}
+
+TGraphErrors* make_plot(vector<double>& x, vector<double>& y, vector<double>& errx, vector<double>& erry) {
     
-    TGraph* graph = new TGraph(x.size(), &x[0], &y[0]);
+    TGraphErrors* graph = new TGraphErrors(x.size(), &x[0], &y[0], &errx[0], &erry[0]);
 
     return graph;
 }
@@ -609,7 +632,7 @@ void settings_global() {
     return;
 }
 
-void settings_plot(TGraph* graph, const double XMIN, const double XMAX, const double YMIN, const double YMAX) {
+void settings_plot(TGraphErrors* graph, const double XMIN, const double XMAX, const double YMIN, const double YMAX) {
 
     gPad->Modified();
     
@@ -720,7 +743,7 @@ double myfit(double* x, double* par){
     return fit_function;
 }
 
-TFitResultPtr fit_fun(TGraph* graph, const double XMIN, const double XMAX) {
+TFitResultPtr fit_fun(TGraphErrors* graph, const double XMIN, const double XMAX) {
 
     //creo la funzione di root
     TF1* f1 = new TF1("myfit", myfit, XMIN, XMAX, 2);
@@ -729,7 +752,7 @@ TFitResultPtr fit_fun(TGraph* graph, const double XMIN, const double XMAX) {
 
     //faccio il fit
     TFitResultPtr fit_result = graph->Fit("myfit", "S");
-    //fit_result->Print("V");
+    fit_result->Print("V");
 
     std::cout << f1->GetProb() << std::endl;
     //disegno il grafico
