@@ -63,12 +63,32 @@ void arduino_vertical_calib()
     const string FILE_NAME11 = "./Data/2_5V_ROOT.dat";
     const double XMIN = 0;
     const double XMAX = 2000;
-    const double YMIN = 0;
-    const double YMAX = 1500;
-    const double THRESHOLD_MAX = 750;
-    const double THRESHOLD_MIN = -450;
+    const double YMIN = 500;
+    const double YMAX = 4300;
+    const double THRESHOLD_MAX1 = 750;
+    const double THRESHOLD_MIN1 = -450;
+    const double THRESHOLD_MAX2 = 750;
+    const double THRESHOLD_MIN2 = -450;
+    const double THRESHOLD_MAX3 = 750;
+    const double THRESHOLD_MIN3 = -450;
+    const double THRESHOLD_MAX4 = 750;
+    const double THRESHOLD_MIN4 = -450;
+    const double THRESHOLD_MAX5 = 750;
+    const double THRESHOLD_MIN5 = -450;
+    const double THRESHOLD_MAX6 = 750;
+    const double THRESHOLD_MIN6 = -450;
+    const double THRESHOLD_MAX7 = 750;
+    const double THRESHOLD_MIN7 = -450;
+    const double THRESHOLD_MAX8 = 750;
+    const double THRESHOLD_MIN8 = -450;
+    const double THRESHOLD_MAX9 = 750;
+    const double THRESHOLD_MIN9 = -450;
+    const double THRESHOLD_MAX10 = 750;
+    const double THRESHOLD_MIN10 = -450;
+    const double THRESHOLD_MAX11 = 750;
+    const double THRESHOLD_MIN11 = -450;
 
-    /* --- ROOT OBJECTS ---*/
+    /* --- ROOT CANVASES ---*/
     TCanvas* c1 = nullptr;
     TCanvas* c2 = nullptr;
     TCanvas* c3 = nullptr;
@@ -80,6 +100,8 @@ void arduino_vertical_calib()
     TCanvas* c9 = nullptr;
     TCanvas* c10 = nullptr;
     TCanvas* c11 = nullptr;
+
+    /* --- ROOT PLOTS ---*/
     TGraph *plot1 = nullptr;
     TGraph *plot2 = nullptr;
     TGraph *plot3 = nullptr;
@@ -139,6 +161,7 @@ void arduino_vertical_calib()
     vector<double> x_results_max11, y_results_max11;
     vector<double> x_results_min11, y_results_min11;
 
+/*
     double max1;
     double max2;
     double max3;
@@ -152,6 +175,7 @@ void arduino_vertical_calib()
     double max11;
 
     vector<double> max_vec;
+*/
 
     /*--- CANVAS ---*/
     c1 = new TCanvas("canvas1", "ARDUINO PLOT", 1080, 720);
@@ -193,19 +217,21 @@ void arduino_vertical_calib()
     compute_derivative(x11, y11, derx11, dery11);
 
     /*--- SEEK DERIVATIVE PEEKS ---*/
-    seek_values(derx1, dery1, x_results_max1, y_results_max1, x_results_min1, y_results_min1, THRESHOLD_MAX, THRESHOLD_MIN);
-    seek_values(derx2, dery2, x_results_max2, y_results_max2, x_results_min2, y_results_min2, THRESHOLD_MAX, THRESHOLD_MIN);
-    seek_values(derx3, dery3, x_results_max3, y_results_max3, x_results_min3, y_results_min3, THRESHOLD_MAX, THRESHOLD_MIN);
-    seek_values(derx4, dery4, x_results_max4, y_results_max4, x_results_min4, y_results_min4, THRESHOLD_MAX, THRESHOLD_MIN);
-    seek_values(derx5, dery5, x_results_max5, y_results_max5, x_results_min5, y_results_min5, THRESHOLD_MAX, THRESHOLD_MIN);
-    seek_values(derx6, dery6, x_results_max6, y_results_max6, x_results_min6, y_results_min6, THRESHOLD_MAX, THRESHOLD_MIN);
-    seek_values(derx7, dery7, x_results_max7, y_results_max7, x_results_min7, y_results_min7, THRESHOLD_MAX, THRESHOLD_MIN);
-    seek_values(derx8, dery8, x_results_max8, y_results_max8, x_results_min8, y_results_min8, THRESHOLD_MAX, THRESHOLD_MIN);
-    seek_values(derx9, dery9, x_results_max9, y_results_max9, x_results_min9, y_results_min9, THRESHOLD_MAX, THRESHOLD_MIN);
-    seek_values(derx10, dery10, x_results_max10, y_results_max10, x_results_min10, y_results_min10, THRESHOLD_MAX, THRESHOLD_MIN);
-    seek_values(derx11, dery11, x_results_max11, y_results_max11, x_results_min11, y_results_min11, THRESHOLD_MAX, THRESHOLD_MIN);
+    seek_values(derx1, dery1, x_results_max1, y_results_max1, x_results_min1, y_results_min1, THRESHOLD_MAX1, THRESHOLD_MIN1);
+    seek_values(derx2, dery2, x_results_max2, y_results_max2, x_results_min2, y_results_min2, THRESHOLD_MAX2, THRESHOLD_MIN2);
+    seek_values(derx3, dery3, x_results_max3, y_results_max3, x_results_min3, y_results_min3, THRESHOLD_MAX3, THRESHOLD_MIN3);
+    seek_values(derx4, dery4, x_results_max4, y_results_max4, x_results_min4, y_results_min4, THRESHOLD_MAX4, THRESHOLD_MIN4);
+    seek_values(derx5, dery5, x_results_max5, y_results_max5, x_results_min5, y_results_min5, THRESHOLD_MAX5, THRESHOLD_MIN5);
+    seek_values(derx6, dery6, x_results_max6, y_results_max6, x_results_min6, y_results_min6, THRESHOLD_MAX6, THRESHOLD_MIN6);
+    seek_values(derx7, dery7, x_results_max7, y_results_max7, x_results_min7, y_results_min7, THRESHOLD_MAX7, THRESHOLD_MIN7);
+    seek_values(derx8, dery8, x_results_max8, y_results_max8, x_results_min8, y_results_min8, THRESHOLD_MAX8, THRESHOLD_MIN8);
+    seek_values(derx9, dery9, x_results_max9, y_results_max9, x_results_min9, y_results_min9, THRESHOLD_MAX9, THRESHOLD_MIN9);
+    seek_values(derx10, dery10, x_results_max10, y_results_max10, x_results_min10, y_results_min10, THRESHOLD_MAX10, THRESHOLD_MIN10);
+    seek_values(derx11, dery11, x_results_max11, y_results_max11, x_results_min11, y_results_min11, THRESHOLD_MAX11, THRESHOLD_MIN11);
     
-    plot1 = make_plot(derx1, dery1);
+
+    /*--- MAKING PLOTS ---*/  
+    plot1 = make_plot(x1, y1);
     
     plot1-> SetLineColor(kBlue+2);
     plot1-> SetMarkerStyle(20);
@@ -216,7 +242,7 @@ void arduino_vertical_calib()
     plot1->Draw("AP");
     settings_plot(plot1, XMIN, XMAX, YMIN, YMAX);
 
-    plot2 = make_plot(derx2, dery2);
+    plot2 = make_plot(x2, y2);
 
     plot2-> SetLineColor(kOrange+10);
     plot2-> SetMarkerStyle(20);
@@ -227,7 +253,7 @@ void arduino_vertical_calib()
     plot2->Draw("AP");
     settings_plot(plot2, XMIN, XMAX, YMIN, YMAX);
 
-    plot3 = make_plot(derx3, dery3);
+    plot3 = make_plot(x3, y3);
 
     plot3-> SetLineColor(kGreen);
     plot3-> SetMarkerStyle(20);
@@ -238,7 +264,7 @@ void arduino_vertical_calib()
     plot3->Draw("AP");
     settings_plot(plot3, XMIN, XMAX, YMIN, YMAX);
 
-    plot4 = make_plot(derx4, dery4);
+    plot4 = make_plot(x4, y4);
 
     plot4-> SetLineColor(kMagenta);
     plot4-> SetMarkerStyle(20);
@@ -249,7 +275,7 @@ void arduino_vertical_calib()
     plot4->Draw("AP");
     settings_plot(plot4, XMIN, XMAX, YMIN, YMAX);
 
-    plot5 = make_plot(derx5, dery5);
+    plot5 = make_plot(x5, y5);
 
     plot5-> SetLineColor(kTeal);
     plot5-> SetMarkerStyle(20);
@@ -260,7 +286,7 @@ void arduino_vertical_calib()
     plot5->Draw("AP");
     settings_plot(plot5, XMIN, XMAX, YMIN, YMAX);
 
-    plot6 = make_plot(derx6, dery6);
+    plot6 = make_plot(x6, y6);
 
     plot6-> SetLineColor(kViolet+7);
     plot6-> SetMarkerStyle(20);
@@ -271,7 +297,7 @@ void arduino_vertical_calib()
     plot6->Draw("AP");
     settings_plot(plot6, XMIN, XMAX, YMIN, YMAX);
 
-    plot7 = make_plot(derx7, dery7);
+    plot7 = make_plot(x7, y7);
 
     plot7-> SetLineColor(kAzure+7);
     plot7-> SetMarkerStyle(20);
@@ -282,7 +308,7 @@ void arduino_vertical_calib()
     plot7->Draw("AP");
     settings_plot(plot7, XMIN, XMAX, YMIN, YMAX);
 
-    plot8 = make_plot(derx8, dery8);
+    plot8 = make_plot(x8, y8);
 
     plot8-> SetLineColor(kPink+5);
     plot8-> SetMarkerStyle(20);
@@ -293,7 +319,7 @@ void arduino_vertical_calib()
     plot8->Draw("AP");
     settings_plot(plot8, XMIN, XMAX, YMIN, YMAX);
 
-    plot9 = make_plot(derx9, dery9);
+    plot9 = make_plot(x9, y9);
 
     plot9-> SetLineColor(kGreen+3);
     plot9-> SetMarkerStyle(20);
@@ -304,7 +330,7 @@ void arduino_vertical_calib()
     plot9->Draw("AP");
     settings_plot(plot9, XMIN, XMAX, YMIN, YMAX);
 
-    plot10 = make_plot(derx10, dery10);
+    plot10 = make_plot(x10, y10);
 
     plot10-> SetLineColor(kOrange);
     plot10-> SetMarkerStyle(20);
@@ -315,7 +341,7 @@ void arduino_vertical_calib()
     plot10->Draw("AP");
     settings_plot(plot10, XMIN, XMAX, YMIN, YMAX);
 
-    plot11 = make_plot(derx11, dery11);
+    plot11 = make_plot(x11, y11);
 
     plot11-> SetLineColor(kPink);
     plot11-> SetMarkerStyle(20);
@@ -325,6 +351,18 @@ void arduino_vertical_calib()
     c11->cd();
     plot11->Draw("AP");
     settings_plot(plot11, XMIN, XMAX, YMIN, YMAX);
+
+    c1->SaveAs("./Plots/0_2V.png");
+    c2->SaveAs("./Plots/0_5V.png");
+    c3->SaveAs("./Plots/1_0V.png");
+    c4->SaveAs("./Plots/1_5V.png");
+    c5->SaveAs("./Plots/1_8V.png");
+    c6->SaveAs("./Plots/2_0V.png");
+    c7->SaveAs("./Plots/2_1V.png");
+    c8->SaveAs("./Plots/2_2V.png");
+    c9->SaveAs("./Plots/2_3V.png");
+    c10->SaveAs("./Plots/2_4V.png");
+    c11->SaveAs("./Plots/2_5V.png");
 
 /*
     int k = 0;
