@@ -729,11 +729,11 @@ del generatore, avendo cura di misurare il massimo ed il minimo dell'onda quadra
 
 \subsection{Sampling Rate}
 Conoscendo il periodo dell'onda quadra in ingresso ($T=1/f$), il sampling rate viene computato come $S = N / T = N \, f$
-con $T$ il periodo dell'onda e $N$ il numero di misure acquisite in un periodo. Per calcolare allora il numero di
-acquisizioni in un periodo viene computata la derivata numerica della forma d'onda: questa presenterà dei picchi
-positivi quando la funzione passa da zero a $1\,\si{\volt}$ e picchi negativi quando scende da $1\,\si{\volt}$ a zero.
-Il numero di acquisizioni in un periodo sarà allora il numeri di punti compresi tra due picchi positivi della funzione
-derivata. Si trova allora un sampling rate $S = 955000 s^{-1}$, ovvero 955000 acquisizioni al secondo.
+con $N$ il numero di misure acquisite in un periodo. Per calcolare $N$ viene computata la derivata numerica della forma
+d'onda: questa presenterà dei picchi positivi quando la funzione passa da zero a $1\,\si{\volt}$ e picchi negativi
+quando scende da $1\,\si{\volt}$ a zero. Il numero di acquisizioni in un periodo sarà allora il numeri di punti compresi
+tra due picchi positivi della funzione derivata. Si trova allora un sampling rate $S = 955000 s^{-1}$, ovvero 955000
+acquisizioni al secondo.
 
 %\begin{figure}[H]
 %	\centering
@@ -743,7 +743,7 @@ derivata. Si trova allora un sampling rate $S = 955000 s^{-1}$, ovvero 955000 ac
 %\end{figure}
 
 %----------------------------------------------------------------------------------------
-%	Calibrazione in Tensione
+%	CALIBRAZIONE IN TENSIONE
 %----------------------------------------------------------------------------------------
 
 \subsection{Calibrazione in Tensione}
@@ -756,14 +756,26 @@ corrispondono allo zero dell'ADC) ed il coefficiente angolare (cioè come scalan
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=15cm]{../Arduino/Plots/calib_function.png}
-	\caption{}
+	\caption{Grafico di calibrazione in tensione e relativo grafico dei residui.}
 	\label{i:ar_calib}
 \end{figure}
 
+\noindent Osservando il grafico dei residui, si nota immediatamente come sia presente un andamento anomalo dei punti a
+tensioni maggiori: la scheda risponde cioè in modo leggermente diverso a seconda della tensione in ingresso ed il
+fenomeno tende ad accentuarsi per segnali oltre circa $2\,\si{\volt}$. Questo è molto probabilmente dovuto al circuito
+di protezione dei pin di ingresso (limitatore di tensione a diodi, utile per evitare di bruciare la scheda) che ne
+altera la risposta a tensioni oltre i $2\,\si{\volt}$. Si prova allora ad effettuare nuovamente l'interpolazione
+rimuovendo i punti relativi a tensioni in ingresso maggiori di $2\,\si{\volt}$: nonostante l'andamento dei residui
+migliori, anche il primo punto (tensione in ingresso pari a $200\,\si{\mV}$) si trova essere fuori trend. Si ottiene
+invece un'ottima linearità della scheda se utilizzata con tensioni in ingresso tra $500\,\si{\mV}$ e $1.8\,\si{\volt}$.
+Si consiglia dunque di utilizzare la scheda Arduino Due in tale range di tensioni, per il quale si ottiene una funzione
+di calibrazione $V = a + b\,\text{ADC}$ con $a = -0.59 \pm 0.02 \, \si{\V}$ e $b = 0.776 \pm 0.013 \,\si{\mV}$.
 
 
+%----------------------------------------------------------------------------------------
+%	CONCLUSIONI
+%----------------------------------------------------------------------------------------
 
-
-
+\section{Conclusioni}
 
 \end{document}

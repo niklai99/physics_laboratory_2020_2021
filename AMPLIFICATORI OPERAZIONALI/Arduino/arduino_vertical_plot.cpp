@@ -136,16 +136,16 @@ void read_data(vector<double>& x, vector<double>& y, vector<double>& errX, vecto
     y.erase(y.begin());
     errX.erase(errX.begin());
     errY.erase(errY.begin());
-*/
-/*
-    for (unsigned int i = 0; i < 7; i++)
+
+
+    for (unsigned int i = 0; i < 6; i++)
     {
         x.pop_back();
         y.pop_back();
         errX.pop_back();
         errY.pop_back();
     }
-*/   
+ */ 
 
     f.close();
 }
@@ -283,7 +283,7 @@ void latex(TLatex* text) {
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(2550, 0.7, "a = - 602 #pm 7 mV");
+    text = new TLatex(2550, 0.7, "a = - 0.602 #pm 0.007 V");
     text->SetTextSize(0.04);
     text->Draw();
 
