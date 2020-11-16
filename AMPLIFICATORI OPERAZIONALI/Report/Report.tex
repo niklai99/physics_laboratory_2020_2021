@@ -291,13 +291,12 @@ del segnale in uscita e che questa inizi a manifestarsi attorno ad un valore nom
 $V\text{pp}_{\text{gen}}=3\,\si{\volt}$ in quanto, avendo un guadagno di circa 10, il segnale in uscita non può superare
 i $30\,\si{\volt}$ picco picco.
 
-\begin{figure}[H]
+\begin{wrapfigure}{L}{0.5\textwidth}
 	\centering
-	\includegraphics[width=15cm]{../Plots/Report_Plots/opamp_spice_1V_4V.png}
-	\caption{Simulazione Spice della risposta del circuito ad una tensione sinusoidale in ingresso di frequenza
-	$f_{\text{gen}}=1\,\si{k\hertz}$ e ampiezza $V_{\text{gen}}=1\,\si{\volt}$ oppure $V_{\text{gen}}=4\,\si{\volt}$}
+	\includegraphics[width=0.5\textwidth]{../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png}
+	\caption{\footnotesize Simulazione Spice della risposta del circuito.}
 	\label{i:opamp_simulation}
-\end{figure}
+\end{wrapfigure}
 
 \noindent Dal grafico si evince chiaramente come erogando $V_{\text{gen}}=1\,\si{\volt}$ il segnale viene amplificato
 correttamente di circa un fattore 10 mantenendo la forma sinusoidale, mentre erogando $V_{\text{gen}}=4\,\si{\volt}$ il
@@ -672,20 +671,24 @@ Si ripone allora maggior attenzione alla distribuzione delle misure attorno alla
 residui attorno allo zero) che si ritiene invece, in questa occasione, determinante: il campione di misure picco picco
 ( \autoref{i:opamp_pp}) suggerisce una soddisfacente distribuzione lineare dei dati. 
 
+
+%----------------------------------------------------------------------------------------
+%	CONFRONTO STIME DI G
+%----------------------------------------------------------------------------------------
+
 \subsubsection{Confronto tra Stime di G}
 Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, rappresentando i valori del guadagno
 \textit{G} in \autoref{i:opamp_comp}.
 
-\begin{figure}[H]
+\begin{wrapfigure}{L}{0.5\textwidth}
 	\centering
-	\includegraphics[width=15cm]{../Plots/Report_Plots/opamp_comp.png}
-	\caption{Da sinistra: 1) stima di \textit{G} partendo dalle misure dirette delle resistenze del circuito;
-	2) stima di \textit{G} come coefficiente angolare del dataset di massimi; 3) stima di \textit{G} come coefficiente 
-	angolare del dataset di minimi; 4) stima di \textit{G} come coefficiente angolare del dataset unificato; 
-	5) stima di \textit{G} come media pesata di 2 e 3; 6) stima di \textit{G} come coefficiente angolare del dataset delle 
-	grandezze picco picco.}
+	\includegraphics[width=0.5\textwidth]{../Plots/Report_Plots/opamp_comp_BIG.png}
+	\caption{\footnotesize Stime di G. Da sinistra: 1) partendo dalle misure dirette delle resistenze; 2) come
+	coefficiente angolare del dataset di massimi; 3) come coefficiente angolare del dataset di minimi; 4) come
+	coefficiente angolare del dataset unificato; 5) come media pesata di 2 e 3; 6) come coefficiente angolare del
+	dataset delle grandezze picco picco.}
 	\label{i:opamp_comp}
-\end{figure}
+\end{wrapfigure}
 
 \noindent Partendo dal primo punto a sinistra, cioè la stima di \textit{G} tramite le misure dirette delle resistenze
 $R_{\text{f}}$ e $R_{1}$ (riportate in \autoref{t:direct_measures}), si nota come questo presenti un errore nettamente
@@ -713,52 +716,39 @@ ritrovata considerando le tensioni picco picco 6), in quanto presenta un errore 
 \cleardoublepage
 \section{Arduino}
 In questa sezione si vuole effettuare una calibrazione della scheda Arduino Due. In particolare, si vuole quantificare
-il sampling rate dell'ADC della scheda e determinare la funzione di calibrazione in tensione, ovvero la funzione $V = a
+il sampling rate dell'ADC della scheda e determinare la funzione di calibrazione in tensione, ovvero $V = a
 + b \cdot \text{ADC}$ dove $V$ è il valore in Volt del segnale, $\text{ADC}$ è la tensione in ADC counts acquisita da
 Arduino, mentre $a$ e $b$ sono i parametri di calibrazione. 
-
-
-%----------------------------------------------------------------------------------------
-%	CONFIGURAZIONE SPERIMENTALE 
-%----------------------------------------------------------------------------------------
-
-\subsection{Configurazione Sperimentale}
-Per quanto riguarda la stima del sampling rate, si comincia configurando il segnale di trigger. Si imposta quindi nel
-canale CH2 del generatore un impulso quadrato di durata $10\,\si{\us}$ e frequenza $1\,\si{k\hertz}$, di altezza
-$2\,\si{\volt}$ a partire dallo zero. Sul canale CH1 del generatore, invece, si imposta un'onda quadra di ampiezza
-$1\,\si{\volt}$ partendo da zero con frequenza $5\,\si{k\hertz}$.
-Per quanto riguarda la calibrazione verticale della scheda, si acquisiscono le forme d'onda facendo variare la tensione
-del generatore, avendo cura di misurare il massimo ed il minimo dell'onda quadra utilizzando l'oscilloscopio.
 
 %----------------------------------------------------------------------------------------
 %	SAMPLING RATE 
 %----------------------------------------------------------------------------------------
 
 \subsection{Sampling Rate}
-Conoscendo il periodo dell'onda quadra in ingresso ($T=1/f$), il sampling rate viene computato come $S = N / T = N \, f$
-con $N$ il numero di misure acquisite in un periodo. Per calcolare $N$ viene computata la derivata numerica della forma
-d'onda: questa presenterà dei picchi positivi quando la funzione passa da zero a $1\,\si{\volt}$ e picchi negativi
-quando scende da $1\,\si{\volt}$ a zero. Il numero di acquisizioni in un periodo sarà allora il numeri di punti compresi
-tra due picchi positivi della funzione derivata. Si trova allora un sampling rate $S = 955000 s^{-1}$, ovvero 955000
-acquisizioni al secondo.
+Si comincia configurando il segnale di trigger. Si imposta quindi nel canale CH2 del generatore un impulso quadrato di
+durata $10\,\si{\us}$, frequenza $1\,\si{k\hertz}$ e altezza $2\,\si{\volt}$ a partire dallo zero. Sul canale CH1 del
+generatore, invece, si imposta un'onda quadra di ampiezza $1\,\si{\volt}$ partendo da zero con frequenza
+$5\,\si{k\hertz}$. Conoscendo il periodo dell'onda quadra in ingresso ($T=1/f$), il sampling rate viene computato come
+$S = N / T = N \, f$ con $N$ il numero di misure acquisite in un periodo. Per calcolare $N$ viene computata la derivata
+numerica della forma d'onda: questa presenterà dei picchi positivi quando la funzione passa da zero a $1\,\si{\volt}$ e
+picchi negativi quando scende da $1\,\si{\volt}$ a zero. Il numero di acquisizioni in un periodo sarà allora il numeri
+di punti compresi tra due picchi positivi della funzione derivata. Si trova allora un sampling rate $S = 955000 s^{-1}$,
+ovvero 955000 acquisizioni al secondo.
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=15cm]{../Arduino/Plots/calib_time_derivative.png}
-%	\caption{}
-%	\label{i:ar_sampling}
-%\end{figure}
 
 %----------------------------------------------------------------------------------------
 %	CALIBRAZIONE IN TENSIONE
 %----------------------------------------------------------------------------------------
 
 \subsection{Calibrazione in Tensione}
-Si vuole ora verificare la linearità dell'ADC e stimare i parametri $a$, $b$ della funzione di calibrazione: questo
-perchè si è interessati a convertire il segnale acquisito da ADC counts in Volt. Si rappresentano in grafico allora i
-valori di tensione $V$ misurati con l'oscilloscopio contro la media dei punti appartenenti ai picchi della relativa
-forma d'onda. Così facendo, si riesce ad effettuare un'interpolazione lineare ricavando l'offset (cioè quanti Volt
-corrispondono allo zero dell'ADC) ed il coefficiente angolare (cioè come scalano i Volt rispetto all'ADC).
+Si vuole ora verificare la linearità dell'ADC interno alla scheda e stimare i parametri $a$, $b$ della funzione di
+calibrazione, in quanto si è interessati a convertire il segnale acquisito da ADC counts in Volt. Si acquisiscono allora
+diverse forme d'onda facendo variare la tensione del generatore, avendo cura di misurare il segnale erogato con i
+cursori dell'oscilloscopio, in quanto può non essere esattamente uguale a quello nominale indicato dal generatore. Si
+rappresentano in grafico i valori di tensione $V$ misurati sperimentalmente contro la media dei punti appartenenti ai
+picchi della relativa forma d'onda (si decide di non considerare unicamente il massimo della forma in quanto è possibile
+si tratti di una fluttuazione). Effettuando poi un'interpolazione lineare si ricavano l'offset (cioè
+quanti Volt corrispondono allo zero dell'ADC) ed il coefficiente angolare (cioè come scalano i Volt rispetto all'ADC).
 
 \begin{figure}[H]
 	\centering
@@ -767,16 +757,30 @@ corrispondono allo zero dell'ADC) ed il coefficiente angolare (cioè come scalan
 	\label{i:ar_calib}
 \end{figure}
 
-\noindent Osservando il grafico dei residui, si nota immediatamente come sia presente un andamento anomalo dei punti a
-tensioni maggiori: la scheda risponde cioè in modo leggermente diverso a seconda della tensione in ingresso ed il
-fenomeno tende ad accentuarsi per segnali oltre circa $2\,\si{\volt}$. Questo è molto probabilmente dovuto al circuito
-di protezione dei pin di ingresso (limitatore di tensione a diodi, utile per evitare di bruciare la scheda) che ne
-altera la risposta a tensioni oltre i $2\,\si{\volt}$. Si prova allora ad effettuare nuovamente l'interpolazione
-rimuovendo i punti relativi a tensioni in ingresso maggiori di $2\,\si{\volt}$: nonostante l'andamento dei residui
-migliori, anche il primo punto (tensione in ingresso pari a $200\,\si{\mV}$) si trova essere fuori trend. Si ottiene
-invece un'ottima linearità della scheda se utilizzata con tensioni in ingresso tra $500\,\si{\mV}$ e $1.8\,\si{\volt}$.
-Si consiglia dunque di utilizzare la scheda Arduino Due in tale range di tensioni, per il quale si ottiene una funzione
-di calibrazione $V = a + b\,\text{ADC}$ con $a = -0.59 \pm 0.02 \, \si{\V}$ e $b = 0.776 \pm 0.013 \,\si{\mV}$.
+%\noindent Osservando il grafico dei residui, si nota immediatamente come sia presente un andamento anomalo dei punti a
+%tensioni maggiori: la scheda risponde cioè in modo leggermente diverso a seconda della tensione in ingresso ed il
+%fenomeno tende ad accentuarsi per segnali oltre circa $2\,\si{\volt}$. Questo è molto probabilmente dovuto al circuito
+%di protezione dei pin di ingresso (limitatore di tensione a diodi, utile per evitare di bruciare la scheda) che ne
+%altera la risposta a tensioni oltre i $2\,\si{\volt}$. Si prova allora ad effettuare nuovamente l'interpolazione
+%rimuovendo i punti relativi a tensioni in ingresso maggiori di $2\,\si{\volt}$: nonostante l'andamento dei residui
+%migliori, anche il primo punto (tensione in ingresso pari a $200\,\si{\mV}$) si trova essere fuori trend. Si ottiene
+%invece un'ottima linearità della scheda se utilizzata con tensioni in ingresso tra $500\,\si{\mV}$ e $1.8\,\si{\volt}$,
+%oppure se utilizzata con tensione in ingresso tra $1.8\,\si{\volt}$ e $2.5\,\si{\volt}$
+%Si consiglia dunque di utilizzare la scheda Arduino Due in tale range di tensioni, per il quale si ottiene una funzione
+%di calibrazione $V = a + b\,\text{ADC}$ con $a = -0.59 \pm 0.02 \, \si{\V}$ e $b = 0.776 \pm 0.013
+%\,\si{\mV}/\text{a.u.}$.
+
+\noindent Osservando il grafico dei residui, si nota un marcato andamento anomalo dei punti a tensioni maggiori, oltre i
+$2\,\si{\volt}$: la scheda, cioè, risponde in modo leggermente diverso a seconda della tensione in ingresso. Questo è,
+molto probabilmente, dovuto al circuito di protezione dei pin di ingresso (limitatore di tensione a diodi, utile per
+evitare di bruciare la scheda) che ne altera la risposta avvicinandosi a tensioni pericolose. Si prova allora ad
+effettuare nuovamente l'interpolazione rimuovendo i punti relativi a tensioni in ingresso maggiori di $2\,\si{\volt}$:
+nonostante l'andamento dei residui migliori, anche il primo punto (tensione in ingresso pari a $200\,\si{\mV}$) si trova
+essere fuori trend. Si ottengono quindi due zone in cui la linearità dell'ADC risulta essere ottimale: la prima tra
+$500\,\si{\mV}$ e $1.8\,\si{\volt}$ (parametri di calibrazione: $a = -0.59 \pm 0.02 \, \si{\V}$ e $b = 0.776 \pm 0.013
+\,\si{\mV}/\text{a.u.}$) mentre la seconda tra $1.8\,\si{\volt}$ e $2.5\,\si{\volt}$ (parametri di calibrazione: $a =
+-0.44 \pm 0.15 \, \si{\V}$ e $b = 0.73 \pm 0.04 \,\si{\mV}/\text{a.u.}$).
+
 
 
 %----------------------------------------------------------------------------------------

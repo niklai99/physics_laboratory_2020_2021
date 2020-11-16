@@ -145,7 +145,14 @@ void read_data(vector<double>& x, vector<double>& y, vector<double>& errX, vecto
         errX.pop_back();
         errY.pop_back();
     }
- */ 
+ */
+    for (unsigned int i = 0; i < 4; i++)
+    {
+        x.erase(x.begin());
+        y.erase(y.begin());
+        errX.erase(errX.begin());
+        errY.erase(errY.begin());
+    }
 
     f.close();
 }
@@ -279,19 +286,19 @@ void latex(TLatex* text) {
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(2500, 0.9, "Fit Parameters");
+    text = new TLatex(2300, 0.8, "Fit Parameters");
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(2550, 0.7, "a = - 0.602 #pm 0.007 V");
+    text = new TLatex(2300, 0.6, "a = - 0.602 #pm 0.007 V");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(2550, 0.55, "b = 0.776 #pm 0.005 mV");
+    text = new TLatex(2300, 0.45, "b = 0.776 #pm 0.005 mV/a.u.");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(2550, 0.40, "#chi^{2} = 8.0   NDF = 9");
+    text = new TLatex(2300, 0.30, "#chi^{2} = 8.0   NDF = 9");
     text->SetTextSize(0.04);
     text->Draw();
    

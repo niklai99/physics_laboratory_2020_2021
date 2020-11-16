@@ -80,25 +80,25 @@ void opamp_simulation_eda() {
     mg = make_mg(plot_Vin, plot_Vout, plot_Vin_sat, plot_Vout_sat);
 
     plot_Vin-> SetLineColor(kBlue);
-    plot_Vin-> SetLineWidth(2);
+    plot_Vin-> SetLineWidth(3);
     plot_Vin-> SetMarkerStyle(20);
     plot_Vin-> SetMarkerColor(kBlue);
     plot_Vin-> SetMarkerSize(1);
 
     plot_Vout-> SetLineColor(kGreen+2);
-    plot_Vout-> SetLineWidth(2);
+    plot_Vout-> SetLineWidth(3);
     plot_Vout-> SetMarkerStyle(20);
     plot_Vout-> SetMarkerColor(kGreen+2);
     plot_Vout-> SetMarkerSize(1);
 
     plot_Vin_sat-> SetLineColor(kOrange+10);
-    plot_Vin_sat-> SetLineWidth(2);
+    plot_Vin_sat-> SetLineWidth(3);
     plot_Vin_sat-> SetMarkerStyle(20);
     plot_Vin_sat-> SetMarkerColor(kOrange+10);
     plot_Vin_sat-> SetMarkerSize(1);
 
     plot_Vout_sat-> SetLineColor(kMagenta);
-    plot_Vout_sat-> SetLineWidth(2);
+    plot_Vout_sat-> SetLineWidth(3);
     plot_Vout_sat-> SetMarkerStyle(20);
     plot_Vout_sat-> SetMarkerColor(kMagenta);
     plot_Vout_sat-> SetMarkerSize(1);
