@@ -1,16 +1,17 @@
-\BOOKMARK [1][-]{section.1}{Strumentazione e Componenti}{}% 1
-\BOOKMARK [1][-]{section.2}{Amplificatore Operazionale Invertente}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Configurazione Sperimentale}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Amplificazione Attesa}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.3}{Acquisizione Misure}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.4}{Simulazione Spice Preliminare}{section.2}% 6
-\BOOKMARK [2][-]{subsection.2.5}{Dati e Analisi}{section.2}% 7
-\BOOKMARK [3][-]{subsubsection.2.5.1}{Dataset}{subsection.2.5}% 8
-\BOOKMARK [3][-]{subsubsection.2.5.2}{Interpolazioni Preliminari}{subsection.2.5}% 9
-\BOOKMARK [3][-]{subsubsection.2.5.3}{Linearit\340 e Amplificazione}{subsection.2.5}% 10
-\BOOKMARK [3][-]{subsubsection.2.5.4}{Confronto tra Stime di G}{subsection.2.5}% 11
-\BOOKMARK [1][-]{section.3}{Circuito Derivatore}{}% 12
-\BOOKMARK [1][-]{section.4}{Arduino}{}% 13
-\BOOKMARK [2][-]{subsection.4.1}{Sampling Rate}{section.4}% 14
-\BOOKMARK [2][-]{subsection.4.2}{Calibrazione in Tensione}{section.4}% 15
-\BOOKMARK [1][-]{section.5}{Conclusioni}{}% 16
+\BOOKMARK [1][-]{section.1}{Obiettivo}{}% 1
+\BOOKMARK [1][-]{section.2}{Strumentazione e Componenti}{}% 2
+\BOOKMARK [1][-]{section.3}{Amplificatore Operazionale Invertente}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Configurazione Sperimentale}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Amplificazione Attesa}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Acquisizione Misure}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.4}{Simulazione Spice Preliminare}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.5}{Dati e Analisi}{section.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.5.1}{Dataset}{subsection.3.5}% 9
+\BOOKMARK [3][-]{subsubsection.3.5.2}{Interpolazioni Preliminari}{subsection.3.5}% 10
+\BOOKMARK [3][-]{subsubsection.3.5.3}{Linearit\340 e Amplificazione}{subsection.3.5}% 11
+\BOOKMARK [3][-]{subsubsection.3.5.4}{Confronto tra Stime di G}{subsection.3.5}% 12
+\BOOKMARK [1][-]{section.4}{Circuito Derivatore}{}% 13
+\BOOKMARK [1][-]{section.5}{Arduino}{}% 14
+\BOOKMARK [2][-]{subsection.5.1}{Sampling Rate}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.2}{Calibrazione in Tensione}{section.5}% 16
+\BOOKMARK [1][-]{section.6}{Conclusioni}{}% 17
