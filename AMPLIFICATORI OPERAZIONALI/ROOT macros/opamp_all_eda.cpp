@@ -103,6 +103,16 @@ void opamp_all_eda(){
     NSP::linee_res();
     NSP::settings_res(NSP::residuals_err); 
 
+    NSP::c1->cd(1);
+
+    TLine *line = new TLine(NSP::XMIN, 0, NSP::XMAX, 0);
+    line->SetLineStyle(2);
+    line->Draw();
+
+    line = new TLine(0, NSP::YMIN, 0, NSP::YMAX);
+    line->SetLineStyle(2);
+    line->Draw();
+
 
     //personalizzo in modo globale i grafici
     NSP::settings_global();
