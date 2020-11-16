@@ -151,7 +151,7 @@ tensione di una scheda Arduino Due.
 %			
 %			\addlinespace
 %			
-%			$R_f$ & $(82.46 \pm 0.03)\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn
+%			$R_{\text{f}}$ & $(82.46 \pm 0.03)\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn
 %
 %			$R_1$ & $(8.089 \pm 0.003)\,\si{k\ohm}$ & $10\,\si{k\ohm}$ \tn
 %
@@ -204,10 +204,10 @@ acquisite con l'oscilloscopio.
 %	CONFIGURAZIONE SPERIMENTALE
 %----------------------------------------------------------------------------------------
 
-\subsection{Configurazione Sperimentale}
+\subsection{Configurazione Sperimentale}\label{s:guadagno}
 
-Si inizia assemblando il circuito, rappresentato in \autoref{i:opamp_circuit}, utilizzando le resistenze $R_f$, $R_1$,
-$R_3$ e l'amplificatore operazionale. La resistenza $R_g$ rappresenta la resistenza interna del generatore, non nulla in
+Si inizia assemblando il circuito, rappresentato in \autoref{i:opamp_circuit}, utilizzando le resistenze $R_{\text{f}}$, $R_1$,
+$R_3$ e l'amplificatore operazionale. La resistenza $R_{\text{g}}$ rappresenta la resistenza interna del generatore, non nulla in
 quanto ci si trova in condizioni di non idealità. Le resistenze esterne, invece, vengono misurate
 
 \begin{wrapfigure}{R}{0.6\textwidth}
@@ -238,7 +238,7 @@ segnale in uscita $V_{\text{out}}$ è prelevato dalla sonda collegata al canale 
 		
 		\addlinespace
 		
-		$R_f$ & $82.46 \pm 0.03\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn
+		$R_{\text{f}}$ & $82.46 \pm 0.03\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn
 
 		$R_1$ & $8.089 \pm 0.003\,\si{k\ohm}$ & $10\,\si{k\ohm}$ \tn
 
@@ -256,34 +256,21 @@ viene poi configurato in modalità "50 Ohm", in modo che l'impedenza d'uscita de
 $R_3\approx 50\,\si{\ohm}$. Ci si aspetta così di trovare una tensione in ingresso $V_{\text{in}}$ in accordo con la
 tensione nominale erogata dal generatore. Si imposta infine il generatore di funzioni in modo da erogare un segnale di
 tipo sinusoidale con frequenza $f_{\text{gen}}=1\,\si{k\hertz}$, mantenuta costante in questa sezione, e di ampiezza
-invece variabile tra $200\,\si{\mV}$ picco picco e $3.5\,\si{\V}$ picco picco. 
+invece variabile tra $200\,\si{\mV}$ picco picco e $3.5\,\si{\V}$ picco picco. \\
 
-
-
-
-
-%----------------------------------------------------------------------------------------
-%	AMPLIFICAZIONE ATTESA
-%----------------------------------------------------------------------------------------
-
-\subsection{Amplificazione Attesa}\label{s:guadagno}
-Facendo riferimento ai valori delle resistenze  $R_f$ ed $R_1$ riportate in  \autoref{t:direct_measures}, si vuole
-calcolare il guadagno $G$ atteso
-
+\noindent Facendo riferimento ai valori delle resistenze $R_{\text{f}}$ ed $R_1$ riportate in \autoref{t:direct_measures}, si
+vuole calcolare il guadagno $G$ del circuito atteso utilizzando l'\autoref{e:guadagno}, ottenuta risolvendo il circuito.
+Si vuole far notare che, avendo posto l'amplificatore operazionale in configurazione invertente, si ritrova un segno
+meno ad indicare un segnale in uscita $V_{\text{out}}$ "invertito" (ovvero ci si aspetta che i massimi del segnale in
+ingresso corrispondano a minimi del segnale in uscita e viceversa). Tuttavia, nell'analisi che segue, verrà sempre
+considerato il valore assoluto dell'amplificazione $G$, che si definisce dunque come
 \begin{align}\label{e:guadagno}
-	G&=\left|-\frac{R_{\text{f}}}{R_{1}}\right| 
+	G&=\left|-\frac{R_{\text{f}}}{R_{1}}\right| = 10.194
 	&
 	\sigma_{G}&=\sqrt{	\left(	\frac{	1	}{	R_{1}	}	\right)^2	\sigma_{R_{\text{f}}}^2	
-	+	\left(	\frac{	R_{\text{f}}	}{	R_{1}^2	}	\right)\sigma_{R_{1}}^2	}	
+	+	\left(	\frac{	R_{\text{f}}	}{	R_{1}^2	}	\right)^2\sigma_{R_{1}}^2	}	= 0.006
 \end{align}
 
-\noindent dove il segno meno è dovuto all'operazionale posto in configurazione invertente: questo comporta allora un
-segnale  $V_{\text{out}}$ "invertito" (cioè ci si aspetta che i massimi del segnale in ingresso corrispondano a minimi
-del segnale in uscita e viceversa) e amplificato di un fattore 
-
-\begin{equation}
-	G = 10.194 \pm 0.006.
-\end{equation}
 
 %----------------------------------------------------------------------------------------
 %	ACQUISIZIONE MISURE
@@ -292,19 +279,13 @@ del segnale in uscita e viceversa) e amplificato di un fattore
 \subsection{Acquisizione Misure}
 Al fine di verificare la linearità dell'amplificatore operazionale e stimare l'amplificazione del circuito, si decide di
 far variare la tensione in ingresso impostando valori crescenti di ampiezza del segnale erogato dal generatore di
-funzioni. Per ciascuno di questi valori di tensione si acquisisce la misura di un massimo e di un minimo sia del segnale
-$V_{\text{in}}$ sia del segnale $V_{\text{out}}$ sfruttando i cursori orizzontali dell'oscilloscopio. In questo modo, si
-ottiene un campione di coppie ($V_{\text{in}}$, $V_{\text{out}}$) che ci si aspetta segua un andamento lineare, in
-quanto risolvendo il circuito si ottiene la relazione 
+funzioni, partendo da $200\,\si{\mV}$ picco picco fino a $3.5\,\si{\V}$ picco picco. Per ciascuno di questi valori di
+tensione si acquisisce la misura di un massimo e di un minimo sia del segnale $V_{\text{in}}$ sia del segnale
+$V_{\text{out}}$ sfruttando i cursori orizzontali dell'oscilloscopio. In questo modo, si ottiene un campione di coppie
+($V_{\text{in}}$, $V_{\text{out}}$) che ci si aspetta segua un andamento lineare, in quanto legate da
+$V_{\text{out}}=-\frac{R_{\text{f}}}{R_{1}}V_{\text{in}}$ dove il segno meno, si ricorda, è dovuto all'operazionale
+posto in configurazione invertente. Le misure in questione sono rappresentate in \autoref{i:opamp_eda}.
 
-\begin{equation}
-	V_{\text{out}}=-\frac{R_{\text{f}}}{R_{1}}V_{\text{in}}
-\end{equation}
-
-\noindent dove il segno meno, si ricorda, è dovuto all'operazionale posto in configurazione invertente. I valori di
-tensione $V_{\text{gen}}$, $V_{\text{in}}$, $V_{\text{out}}$ e le relative scale di misura sono riportate in
-\autoref{t:osc_measures}. Si associa inoltre un'incertezza alle misure di $V_{\text{in}}$ e $V_{\text{out}}$ data da
-\autoref{e:osc}.\\
 
 %----------------------------------------------------------------------------------------
 %	SIMULAZIONE SPICE PRELIMINARE
