@@ -537,7 +537,7 @@ riguardo ai due campioni di dati. Inizialmente, si vuole far notare come i due c
 compatibilità tra loro: $\lambda=0.7$. Da questo si può assumere che i due dataset risentano della stessa amplificazione
 $G$, come da aspettative. Successivamente, si può notare invece che le due intercette delle rette interpolanti sono in
 leggera compatibilità con lo zero ($\lambda \approx 1.5$), mentre tra loro presentano una compatibilità $\lambda=2.4$,
-che fa sorgere l'idea di una possibile sistematica di shift verticale tra i due dataset (computando la differenza tra le
+che fa sorgere l'idea di una possibile sistematica di offset/shift verticale tra i due dataset (computando la differenza tra le
 due intercette si trova uno sfalsamento $d=0.13 \pm 0.05 \,\si{\volt}$). Osservando poi il valore del $\chi^2$, si
 ritrova in per entrambi i campioni $\chi^2/\nu<1$ (con $\nu\equiv\text{ndf}$ il numero di gradi di libertà, che coincide
 con il valore di aspettazione $E(\chi^2)$). Ricordando che le incertezze sul guadagno verticale dell'oscilloscopio sono
@@ -547,10 +547,9 @@ sottostimati, in quanto il fit non tiene conto della correlazione tra incertezze
 che i parametri \textit{slope} e \textit{offset} riportati in \autoref{t:opamp_fitres_max_min} presentino in realtà una
 compatibilità maggiore, proprio a causa di una possibile sottostima dell'errore sui parametri. Si vuole allora assumere
 che i due campioni risentano della stessa amplificazione e che non siano tra loro sfalsati verticalmente in modo
-significativo, segue un tentativo di "unificazione" del campione di dati ed un'interpolazione lineare unica che tenga
-conto sia dei massimi che dei minimi.
-Il grafico rappresentante i due dataset unificati con relativa interpolazione lineare è mostrato in
-\autoref{i:opamp_all_proj}. 
+significativo: segue quindi un tentativo di "unificazione" del campione di dati ed un'interpolazione lineare unica che
+tenga conto sia dei massimi che dei minimi. Il grafico rappresentante i due dataset unificati con relativa
+interpolazione lineare è mostrato in \autoref{i:opamp_all_proj}, a pagina seguente. 
 
 \begin{figure}[H]
 	\centering
@@ -566,50 +565,52 @@ la correlazione tra gli errori di scala, infatti, si può notare chiaramente dal
 d'errore nel grafico dei residui. Il valore del $\chi^2$ migliora leggermente rispetto alle interpolazioni dei dataset
 separati: la compatibilità con il valore di aspettazione risulta essere $Z=1.4$. L'errore a posteriori, inoltre, si
 trova in una zona intermedia rispetto alla gamma di errori associati alle misure: non potendo eliminare la correlazione
-tra le incertezze si può affermare dunque che l'errore è in media ben stimato e l'oscilloscopio lavora entro le
-specifiche. I residui, infatti, si posizionano tutti entro il loro errore, alcuni anche abbondantemente. Focalizzandosi
-ora sulla stima del coefficiente angolare si nota che questo, $m=9.93\pm 0.07$, pur essendo ben compatibile con i
-risultati esposti in  \autoref{t:opamp_fitres_max_min} relativi ai fit dei due campioni di misure considerati
-separatamente, si trova essere sensibilmente minore di entrambi: ci si sarebbe aspettato, invece, di trovare un valore
-intermedio unificando i due campioni di misure. Osservando poi il grafico dei residui, si può notare un andamento
-leggermente anomalo, quasi parabolico, avente concavità rivolta verso il basso. Si ipotizza dunque che l'assunzione
-fatta in precedenza riguardo la presenza di una sistematica di offset/shift verticale tra i due dataset trascurabile
-necessiti di essere rivisitata. Per approfondire maggiormenta la questione, si decide di computare le grandezze "picco
-picco" delle tensioni in ingresso $V_{\text{in}}$ e in uscita $V_{\text{out}}$ secondo
+tra le incertezze si può affermare dunque che l'errore è in media stimato correttamente e l'oscilloscopio lavora entro
+le specifiche. I residui, infatti, si posizionano tutti entro il loro errore, alcuni anche abbondantemente.
+Focalizzandosi ora sulla stima del coefficiente angolare si nota che questo, $m=9.93\pm 0.07$, pur essendo ben
+compatibile con i risultati esposti in  \autoref{t:opamp_fitres_max_min} relativi ai fit dei due campioni di misure
+considerati separatamente, si trova essere sensibilmente minore di entrambi: ci si sarebbe aspettato, invece, di trovare
+un valore intermedio unificando i due campioni di misure. Osservando poi il grafico dei residui, si può notare un
+andamento leggermente anomalo, quasi parabolico, avente concavità rivolta verso il basso. Si ipotizza dunque che
+l'assunzione fatta in precedenza riguardo la presenza di una sistematica di offset/shift verticale tra i due dataset
+trascurabile necessiti di essere rivisitata. Per approfondire maggiormenta la questione, si decide di computare le
+grandezze "picco picco" delle tensioni in ingresso $V_{\text{in}}$ e in uscita $V_{\text{out}}$ secondo
 $V_{\text{pp}}=V^{\text{max}}-V^{\text{min}}$. Per quanto riguarda l'errore da associare alle grandezze picco picco, si
 ricorda che l'oscilloscopio misura la differenza $\Delta$ tra i due cursori con una precisione ancora maggiore rispetto
 alla singola misura. Si decide dunque di non aggiungere il fattore moltiplicativo $\sqrt{2}$ alla propagazione
 presentata in  \autoref{e:osc}, al fine di evitare di sovrastimare eccessivamente l'errore. Si procede ora esattamente
 come mostrato in  \autoref{s:pre}, effettuato inizialmente un fit lineare preliminare considerando solo gli errori su
 $Vpp_{\text{out}}$ e, utilizzando il coefficiente angolare restituito da tale interpolazione, si prosegue proiettando
-gli errori secondo  \autoref{e:proj}. Si ripete quindi il fit, che viene rappresentato in \autoref{i:opamp_pp}.
+gli errori secondo  \autoref{e:proj}. Si ripete quindi il fit, che viene rappresentato in \autoref{i:opamp_pp}, a pagina
+seguente. \\
+Si nota immediatamente, osservando il grafico dei residui, come ora l'andamento anomalo è del tutto assente ed i punti
+si distribuiscono in modo ottimale attorno allo zero. Rimane, chiaramente, il tipico andamento crescente delle barre
+d'errore, indice che le incertezze continuano a risentire della correlazione tra esse. Il valore del $\chi^2$ è
+decisamente basso rispetto al numero di gradi di libertà, come suggerito dal grafico dei residui in cui si nota
+chiaramente come la distanza punto-retta sia ampiamente compresa entro la barra d'errore del dato. L'errore a posteriori
+è appena maggiore dell'incertezza associata al primo punto, mentre diventa notevolmente inferiore rispetto ai punti
+finali. 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=15cm]{../Plots/Report_Plots/opamp_plot_pp_projected.png}
-	\caption{A sinistra: grafico rappresentante il dataset delle grandezze picco picco, 
+	\caption{\small A sinistra: grafico rappresentante il dataset delle grandezze picco picco, 
 	con relativa retta interpolante e parametri del fit. A destra: grafico dei residui $V\text{pp}_{\text{out}}-\text{fit}$.}
 	\label{i:opamp_pp}
 \end{figure}
 
-\noindent Si nota immediatamente, osservando il grafico dei residui, come ora l'andamento anomalo è del tutto assente ed
-i punti si distribuiscono in modo ottimale attorno allo zero. Rimane, chiaramente, il tipico andamento crescente delle
-barre d'errore, indice che le incertezze continuano a risentire della correlazione tra esse. Il valore del $\chi^2$ è
-decisamente basso rispetto al numero di gradi di libertà, come suggerito dal grafico dei residui in cui si nota
-chiaramente come la distanza punto-retta sia ampiamente compresa entro la barra d'errore del dato. L'errore a posteriori
-è appena maggiore dell'incertezza associata al primo punto, mentre diventa notevolmente inferiore rispetto ai punti
-finali. Il valore dell'intercetta, scarsamente compatibile con lo zero, suggerisce una conferma all'ipotesi un una
+\noindent  Il valore dell'intercetta, scarsamente compatibile con lo zero, suggerisce una conferma all'ipotesi un una
 sistematica di offset/shift verticale tra i due dataset non trascurabile. Il coefficiente angolare, invece, è
 perfettamente in linea con i parametri ottenuti considerando i due dataset separatamente: calcolando la media pesata dei
 due, infatti, si trova $\langle m\rangle_{\text{max, min}}=10.09 \pm 0.10$ e risulta avere una compatibilità
 estremamente elevata con il coefficiente angolare riguardante il dataset delle grandezze picco picco ($\lambda = 0.01$).
-Si assume dunque che questi due valori (media pesata dei coefficienti angolari $\langle m\rangle_{\text{max, min}}$ e
-coefficiente angolare del campione di grandezze picco picco $m_{\text{pp}}$) rappresentino una soddisfacente stima
-dell'amplificazione \textit{G} del circuito. Per quanto riguarda la linearità dell'amplificatore operazionale, invece, i
-valori estremamente ridotti del $\chi^2$ non permettono nè di confermare l'ipotesi di linearità nè di poterla rigettare.
-Si ripone allora maggior attenzione alla distribuzione delle misure attorno alla retta (o meglio alla distribuzione dei
-residui attorno allo zero) che si ritiene invece, in questa occasione, determinante: il campione di misure picco picco
-( \autoref{i:opamp_pp}) suggerisce una soddisfacente distribuzione lineare dei dati. 
+Si assume dunque che questi due valori ($\langle m\rangle_{\text{max, min}}$ ed il coefficiente angolare del campione di
+grandezze picco picco $m_{\text{pp}}$) rappresentino una soddisfacente stima dell'amplificazione \textit{G} del
+circuito. Per quanto riguarda la linearità dell'amplificatore operazionale, invece, i valori estremamente ridotti del
+$\chi^2$ non permettono nè di confermare l'ipotesi di linearità nè di poterla rigettare. Si ripone allora maggior
+attenzione alla distribuzione delle misure attorno alla retta (o meglio alla distribuzione dei residui attorno allo
+zero) che si ritiene invece, in questa occasione, determinante: il campione di misure picco picco suggerisce una
+soddisfacente distribuzione lineare dei dati. 
 
 
 %----------------------------------------------------------------------------------------
@@ -617,8 +618,6 @@ residui attorno allo zero) che si ritiene invece, in questa occasione, determina
 %----------------------------------------------------------------------------------------
 
 \subsubsection{Confronto tra Stime di G}
-Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, rappresentando i valori del guadagno
-\textit{G} in \autoref{i:opamp_comp}.
 
 \begin{wrapfigure}{L}{0.5\textwidth}
 	\centering
@@ -629,6 +628,11 @@ Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, ra
 	dataset delle grandezze picco picco.}
 	\label{i:opamp_comp}
 \end{wrapfigure}
+
+Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, rappresentando i valori del guadagno
+\textit{G} in \autoref{i:opamp_comp}.
+
+
 
 \noindent Partendo dal primo punto a sinistra, cioè la stima di \textit{G} tramite le misure dirette delle resistenze
 $R_{\text{f}}$ e $R_{1}$ (riportate in \autoref{t:direct_measures}), si nota come questo presenti un errore nettamente
