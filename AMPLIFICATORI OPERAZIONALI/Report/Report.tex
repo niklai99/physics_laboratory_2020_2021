@@ -81,109 +81,111 @@
 %----------------------------------------------------------------------------------------
 
 \section{Obiettivo}
-
+Verificare la linearità di un amplificatore operazionale e misurare l'amplificazione di un circuito che lo comprenda.
+Misurare la frequenza di taglio di un filtro attivo. Calcolare il sampling rate e la funzione di calibrazione in
+tensione di una scheda Arduino Due.
 
 %----------------------------------------------------------------------------------------
 %	APPARATO SPERIMENTALE
 %----------------------------------------------------------------------------------------
 
-\section{Strumentazione e Componenti}\label{s:strumenti}
-
-\begin{itemize}
-	\item \textbf{Oscilloscopio} (Tektronix TBS1102B): Lo strumento presenta un'accuratezza sul guadagno verticale $\Delta_{g}$ pari
-	al 3\% del valore letto (errore massimo) ed è \textit{generalmente} il contributo più significativo. L'incertezza di
-	guadagno sui tempi si assume trascurabile. L'accuratezza che tiene conto degli effetti di risoluzione e imprecisione
-	della traccia $\Delta_{l}$ è di 1/10 di divisione su tutta la scala di lettura (errore massimo), uguale sia per le tensioni sia
-	per i tempi.
-
-	\item \textbf{Generatore di funzioni} (Tektronix AFG1022)
-
-	\item  \textbf{Alimentatore di tensione continua}: Lo strumento presenta due uscite con erogazione di tensione tra 0
-	e 20 \si{\volt} e un'uscita con erogazione fissata a 5 \si{\volt}
-	
-	\item \textbf{Multimetro digitale} (Metrix MTX3292): Si riporta l'accuratezza dello strumento, per misure di
-	resistenza e di capacità, relativa unicamente ai fondoscala utilizzati nell'esperienza.
-
-	\begin{table}[H]
-		\small
-		\centering
-		\begin{tabular}{x{2cm} x{3cm} x{3cm} } \toprule[0.5px]\toprule[0.1px]
-			
-			\multicolumn{3}{c}{Accuratezza Metrix MTX3292}\tn
-			\midrule[0.1px]
-			
-			F.S. & Precisione & Risoluzione \tn
-			
-			\addlinespace
-			
-			1   \si{k\ohm} & 0.10\% + 8  & 0.01 \si{\ohm}  \tn 10  \si{k\ohm} & 0.07\% + 8  & 0.1  \si{\ohm}  \tn 100
-			\si{k\ohm} & 0.07\% + 8  & 1 \si{\ohm}  \tn
-
-			
-			\addlinespace
-
-			1000 \si{p\farad}         & 2.5\% + 15  & 1 \si{p\farad}   \tn
-			
-			\bottomrule[0.5px]
-			
-			
-		\end{tabular}
-		\caption{Per i fondoscala indicati si riportano la precisione (contributo di scala in percentuale e contributo
-		di lettura sul digit meno significativo) e la risoluzione dello strumento.}
-		\label{t:metrix}
-	\end{table}	 
-
-	\item \textbf{Componenti circuitali} (Resistori e Condensatori): Si riportano i valori delle resistenze e capacità
-	utilizzate per l'assemblamento dei circuiti utilizzati nel corso dell'esperienza, misurate preliminarmente con il
-	multimetro digitale Metrix. 
-
-	\begin{table}[H]
-		\small
-		\centering
-		\begin{tabular}{x{2cm} x{3cm} x{3cm} } \toprule[0.5px]\toprule[0.1px]
-			
-			\multicolumn{3}{c}{Resistori e Condensatori}\tn
-			\midrule[0.1px]
-			
-			Resistenza & Valore & F.S. \tn
-			
-			\addlinespace
-			
-			$R_f$ & $(82.46 \pm 0.03)\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn
-
-			$R_1$ & $(8.089 \pm 0.003)\,\si{k\ohm}$ & $10\,\si{k\ohm}$ \tn
-
-			$R_3$ & $(46.54 \pm 0.05)\,\si{\ohm}$ & $1\,\si{k\ohm}$ \tn
-		
-			\addlinespace
-
-			\midrule[0.1px]
-			
-			Capacità & Valore & F.S. \tn
-			
-			\addlinespace
-
-			$C_1$  & $(977 \pm 17)\,\si{p\farad}$  & $1000\,\si{p\farad}$   \tn
-			
-			\bottomrule[0.5px]
-			
-		\end{tabular}
-		\caption{In tabella si indicano le componenti circuitali (resistori e capacità) utilizzando delle label
-		specifiche per ciascuna di esse: questa notazione è costante nel corso dell'esperienza.}
-		\label{t:direct_measures}
-	\end{table}	
-
-	\item \textbf{Circuito integrato TL082C} (Due Amplificatori Operazionali): essendo gli amplificatori operazionali
-	delle componenti circuitali attive, esse devono essere alimentate. Si utilizza dunque il generatore di tensione
-	continua con $V_{\text{cc}} = +15\,\si{\volt}$ e $V_{\text{ee}}=-15\,\si{\volt}$ per l'alimentazione
-	dell'amplificatore operazionale utilizzato nell'esperienza. Nel corso di quest'ultima, si assume un comportamento
-	\textit{ideale} dell'amplificatore operazionale, ovvero che il polo positivo ed il polo negativo si trovino
-	allo stesso potenziale.
-	
-	\item \textbf{Scheda Arduino Due}
-\end{itemize}
-
-\cleardoublepage
+%\section{Strumentazione e Componenti}\label{s:strumenti}
+%
+%\begin{itemize}
+%	\item \textbf{Oscilloscopio} (Tektronix TBS1102B): Lo strumento presenta un'accuratezza sul guadagno verticale $\Delta_{g}$ pari
+%	al 3\% del valore letto (errore massimo) ed è \textit{generalmente} il contributo più significativo. L'incertezza di
+%	guadagno sui tempi si assume trascurabile. L'accuratezza che tiene conto degli effetti di risoluzione e imprecisione
+%	della traccia $\Delta_{l}$ è di 1/10 di divisione su tutta la scala di lettura (errore massimo), uguale sia per le tensioni sia
+%	per i tempi.
+%
+%	\item \textbf{Generatore di funzioni} (Tektronix AFG1022)
+%
+%	\item  \textbf{Alimentatore di tensione continua}: Lo strumento presenta due uscite con erogazione di tensione tra 0
+%	e 20 \si{\volt} e un'uscita con erogazione fissata a 5 \si{\volt}
+%	
+%	\item \textbf{Multimetro digitale} (Metrix MTX3292): Si riporta l'accuratezza dello strumento, per misure di
+%	resistenza e di capacità, relativa unicamente ai fondoscala utilizzati nell'esperienza.
+%
+%	\begin{table}[H]
+%		\small
+%		\centering
+%		\begin{tabular}{x{2cm} x{3cm} x{3cm} } \toprule[0.5px]\toprule[0.1px]
+%			
+%			\multicolumn{3}{c}{Accuratezza Metrix MTX3292}\tn
+%			\midrule[0.1px]
+%			
+%			F.S. & Precisione & Risoluzione \tn
+%			
+%			\addlinespace
+%			
+%			1   \si{k\ohm} & 0.10\% + 8  & 0.01 \si{\ohm}  \tn 10  \si{k\ohm} & 0.07\% + 8  & 0.1  \si{\ohm}  \tn 100
+%			\si{k\ohm} & 0.07\% + 8  & 1 \si{\ohm}  \tn
+%
+%			
+%			\addlinespace
+%
+%			1000 \si{p\farad}         & 2.5\% + 15  & 1 \si{p\farad}   \tn
+%			
+%			\bottomrule[0.5px]
+%			
+%			
+%		\end{tabular}
+%		\caption{Per i fondoscala indicati si riportano la precisione (contributo di scala in percentuale e contributo
+%		di lettura sul digit meno significativo) e la risoluzione dello strumento.}
+%		\label{t:metrix}
+%	\end{table}	 
+%
+%	\item \textbf{Componenti circuitali} (Resistori e Condensatori): Si riportano i valori delle resistenze e capacità
+%	utilizzate per l'assemblamento dei circuiti utilizzati nel corso dell'esperienza, misurate preliminarmente con il
+%	multimetro digitale Metrix. 
+%
+%	\begin{table}[H]
+%		\small
+%		\centering
+%		\begin{tabular}{x{2cm} x{3cm} x{3cm} } \toprule[0.5px]\toprule[0.1px]
+%			
+%			\multicolumn{3}{c}{Resistori e Condensatori}\tn
+%			\midrule[0.1px]
+%			
+%			Resistenza & Valore & F.S. \tn
+%			
+%			\addlinespace
+%			
+%			$R_f$ & $(82.46 \pm 0.03)\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn
+%
+%			$R_1$ & $(8.089 \pm 0.003)\,\si{k\ohm}$ & $10\,\si{k\ohm}$ \tn
+%
+%			$R_3$ & $(46.54 \pm 0.05)\,\si{\ohm}$ & $1\,\si{k\ohm}$ \tn
+%		
+%			\addlinespace
+%
+%			\midrule[0.1px]
+%			
+%			Capacità & Valore & F.S. \tn
+%			
+%			\addlinespace
+%
+%			$C_1$  & $(977 \pm 17)\,\si{p\farad}$  & $1000\,\si{p\farad}$   \tn
+%			
+%			\bottomrule[0.5px]
+%			
+%		\end{tabular}
+%		\caption{In tabella si indicano le componenti circuitali (resistori e capacità) utilizzando delle label
+%		specifiche per ciascuna di esse: questa notazione è costante nel corso dell'esperienza.}
+%		\label{t:direct_measures}
+%	\end{table}	
+%
+%	\item \textbf{Circuito integrato TL082C} (Due Amplificatori Operazionali): essendo gli amplificatori operazionali
+%	delle componenti circuitali attive, esse devono essere alimentate. Si utilizza dunque il generatore di tensione
+%	continua con $V_{\text{cc}} = +15\,\si{\volt}$ e $V_{\text{ee}}=-15\,\si{\volt}$ per l'alimentazione
+%	dell'amplificatore operazionale utilizzato nell'esperienza. Nel corso di quest'ultima, si assume un comportamento
+%	\textit{ideale} dell'amplificatore operazionale, ovvero che il polo positivo ed il polo negativo si trovino
+%	allo stesso potenziale.
+%	
+%	\item \textbf{Scheda Arduino Due}
+%\end{itemize}
+%
+%\cleardoublepage
 
 
 %----------------------------------------------------------------------------------------
@@ -204,27 +206,61 @@ acquisite con l'oscilloscopio.
 
 \subsection{Configurazione Sperimentale}
 
-Si inizia assemblando il circuito rappresentato in  \autoref{i:opamp_circuit}, utilizzando le resistenze $R_f$, $R_1$,
+Si inizia assemblando il circuito, rappresentato in \autoref{i:opamp_circuit}, utilizzando le resistenze $R_f$, $R_1$,
 $R_3$ e l'amplificatore operazionale. La resistenza $R_g$ rappresenta la resistenza interna del generatore, non nulla in
-quanto ci si trova in condizioni di non idealità. 
+quanto ci si trova in condizioni di non idealità. Le resistenze esterne, invece, vengono misurate
 
-\begin{figure}[H]
+\begin{wrapfigure}{R}{0.6\textwidth}
 	\centering
-	\includegraphics[width=15cm]{../Simulations/OpAmp/circuit_image_nosim.png}
-	\caption{Rappresentazione a variabili concentrate del circuito assemblato in laboratorio.}
+	\includegraphics[width=0.6\textwidth]{../Simulations/OpAmp/circuit_image_nosim.png}
+	\caption{\footnotesize Rappresentazione a variabili concentrate del circuito assemblato in laboratorio.}
 	\label{i:opamp_circuit}
-\end{figure}
+\end{wrapfigure}
 
-\noindent Il segnale viene prelevato nei punti \textit{IN} e \textit{OUT} evidenziati nello schema in
-\autoref{i:opamp_circuit} (e verrà in seguito richiamato rispettivamente come $V_{\text{in}}$ e $V_{\text{out}}$)
-utilizzando due sonde con fattore di attenuazione 10X. Nel canale CH1 dell'oscilloscopio viene visualizzato il segnale
-in ingresso $V_{\text{in}}$, mentre il segnale in uscita $V_{\text{out}}$ è prelevato dalla sonda collegata al canale
-CH2. Per entrambi i canali viene configurata l'attenuazione sonda 10X nelle impostazioni dell'oscilloscopio, in modo da
-compensare la riduzione del segnale dovuta alle sonde e visualizzare quindi nel display il segnale reale. Il generatore
-di funzioni viene poi configurato in modalità "50 Ohm", in modo che l'impedenza d'uscita del generatore sia comparabile
-con $R_3\approx 50\,\si{\ohm}$. Ci si aspetta così di trovare una tensione in ingresso $V_{\text{in}}$ in accordo con la
+\noindent direttamente utilizzando il multimetro Metrix MTX3292, ottenendo i risultati esposti in
+\autoref{t:direct_measures}. Si utilizza poi un generatore di tensione continua con $V_{\text{cc}}=+15\,\si{\volt}$ e
+$V_{\text{ee}}=-15\,\si{\volt}$ per l'alimentazione dell'amplificatore operazionale. Si assume, inoltre, che esso abbia
+un comportamento ideale, ovvero che il polo positivo ed il polo negativo si trovino allo stesso potenziale. Il segnale
+viene prelevato nei punti \textit{IN} e \textit{OUT} evidenziati nello schema in \autoref{i:opamp_circuit} (e verrà in
+seguito richiamato rispettivamente come $V_{\text{in}}$ e $V_{\text{out}}$) utilizzando due sonde con fattore di
+attenuazione 10X. Nel canale CH1 dell'oscilloscopio viene visualizzato il segnale in ingresso $V_{\text{in}}$, mentre il
+segnale in uscita $V_{\text{out}}$ è prelevato dalla sonda collegata al canale CH2. 
+
+\begin{wraptable}{L}{0.5\textwidth}
+	\small
+	\centering
+	\begin{tabular}{x{1.8cm} x{2.5cm} x{2cm} } \toprule[0.5px]\toprule[0.1px]
+		
+		\multicolumn{3}{c}{Misure Dirette delle Resistenze}\tn
+		\midrule[0.1px]
+		
+		Resistenza & Valore & F.S. \tn
+		
+		\addlinespace
+		
+		$R_f$ & $82.46 \pm 0.03\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn
+
+		$R_1$ & $8.089 \pm 0.003\,\si{k\ohm}$ & $10\,\si{k\ohm}$ \tn
+
+		$R_3$ & $46.54 \pm 0.05\,\si{\ohm}$ & $1\,\si{k\ohm}$ \tn
+		
+		\bottomrule[0.5px]		
+	\end{tabular}
+	\caption{\footnotesize Valori di resistenza, misurati direttamente con il multimetro, e relativo fondoscala.}
+	\label{t:direct_measures}
+\end{wraptable}	
+
+\noindent Per entrambi i canali viene selezionata la modalità "attenuazione sonda 10X", in modo da compensare la
+riduzione del segnale dovuta alle sonde e visualizzare quindi nel display il segnale reale. Il generatore di funzioni
+viene poi configurato in modalità "50 Ohm", in modo che l'impedenza d'uscita del generatore sia comparabile con
+$R_3\approx 50\,\si{\ohm}$. Ci si aspetta così di trovare una tensione in ingresso $V_{\text{in}}$ in accordo con la
 tensione nominale erogata dal generatore. Si imposta infine il generatore di funzioni in modo da erogare un segnale di
-tipo sinusoidale con frequenza $f_{\text{gen}}=1\,\si{k\hertz}$ e di ampiezza variabile.
+tipo sinusoidale con frequenza $f_{\text{gen}}=1\,\si{k\hertz}$, mantenuta costante in questa sezione, e di ampiezza
+invece variabile tra $200\,\si{\mV}$ picco picco e $3.5\,\si{\V}$ picco picco. 
+
+
+
+
 
 %----------------------------------------------------------------------------------------
 %	AMPLIFICAZIONE ATTESA

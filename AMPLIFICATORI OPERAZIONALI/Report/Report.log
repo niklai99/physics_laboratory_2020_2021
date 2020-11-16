@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  16 NOV 2020 15:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  16 NOV 2020 16:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1252,147 +1252,182 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {d:/Programmi/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (13.26189pt too wide) in paragraph at lines 93--98
-[]\T1/cmr/bx/n/10.95 Oscilloscopio \T1/cmr/m/n/10.95 (Tek-tro-nix TBS1102B): Lo stru-men-to pre-sen-ta un'ac-cu-ra-tez-za sul gua-da-gno ver-ti-ca-le
+<../Simulations/OpAmp/circuit_image_nosim.png, id=86, 1004.553pt x 362.5545pt>
+File: ../Simulations/OpAmp/circuit_image_nosim.png Graphic file (type png)
+<use ../Simulations/OpAmp/circuit_image_nosim.png>
+Package pdftex.def Info: ../Simulations/OpAmp/circuit_image_nosim.png  used on input line 215.
+(pdftex.def)             Requested size: 290.22107pt x 104.74533pt.
+
+Underfull \hbox (badness 1158) in paragraph at lines 216--216
+[]\T1/cmr/m/n/10.95 Figura 1: |\T1/cmr/m/n/9 Rap-pre-sen-ta-zio-ne a va-ria-bi-li con-cen-tra-te del cir-cui-to
  []
 
 
-Overfull \hbox (23.8565pt too wide) in paragraph at lines 176--182
-[]\T1/cmr/bx/n/10.95 Circuito in-te-gra-to TL082C \T1/cmr/m/n/10.95 (Due Am-pli-fi-ca-to-ri Ope-ra-zio-na-li): es-sen-do gli am-pli-fi-ca-to-ri ope-ra-zio-na-li
+Underfull \hbox (badness 1755) in paragraph at lines 220--228
+\T1/cmr/m/n/10.95 un ge-ne-ra-to-re di ten-sio-ne con-ti-nua
+ []
+
+
+Underfull \hbox (badness 1087) in paragraph at lines 220--228
+\T1/cmr/m/n/10.95 per l'a-li-men-ta-zio-ne del-l'am-pli-fi-ca-to-re
+ []
+
+
+Underfull \hbox (badness 3291) in paragraph at lines 220--228
+\T1/cmr/m/n/10.95 ov-ve-ro che il po-lo po-si-ti-vo ed il
+ []
+
+
+Underfull \hbox (badness 1005) in paragraph at lines 220--228
+\T1/cmr/m/n/10.95 po-lo ne-ga-ti-vo si tro-vi-no al-lo stes-so
+ []
+
+
+Underfull \hbox (badness 3690) in paragraph at lines 253--260
+[]\T1/cmr/m/n/10.95 Per en-tram-bi i ca-na-li vie-ne se-le-zio-na-ta la
+ []
+
+
+Underfull \hbox (badness 2564) in paragraph at lines 253--260
+\T1/cmr/m/n/10.95 poi con-fi-gu-ra-to in mo-da-li-tà "50 Ohm", in
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.186 \cleardoublepage
-                       [1
-
-]
-<../Simulations/OpAmp/circuit_image_nosim.png, id=108, 1004.553pt x 362.5545pt>
-File: ../Simulations/OpAmp/circuit_image_nosim.png Graphic file (type png)
-<use ../Simulations/OpAmp/circuit_image_nosim.png>
-Package pdftex.def Info: ../Simulations/OpAmp/circuit_image_nosim.png  used on input line 213.
-(pdftex.def)             Requested size: 426.79134pt x 154.03659pt.
- [2
+l.273 \begin{align}
+                   \label{e:guadagno} [1
 
  <../Simulations/OpAmp/circuit_image_nosim.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 268--272
+Underfull \hbox (badness 10000) in paragraph at lines 304--308
 
  []
 
-<../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png, id=127, 870.25125pt x 433.62pt>
+<../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png, id=113, 870.25125pt x 433.62pt>
 File: ../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png>
-Package pdftex.def Info: ../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png  used on input line 289.
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png  used on input line 325.
 (pdftex.def)             Requested size: 241.84843pt x 120.5063pt.
 
-Underfull \hbox (badness 5359) in paragraph at lines 294--300
-\OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 = 1 []$ \T1/cmr/m/n/10.95 il se-gna-le vie-ne am-pli-fi-ca-to
+Underfull \hbox (badness 10000) in paragraph at lines 330--336
+
+ []
+
+[2]
+Overfull \hbox (10.67761pt too wide) in paragraph at lines 343--350
+[]\T1/cmr/m/n/10.95 In que-sta se-zio-ne si vuo-le ini-zial-men-te rap-pre-sen-ta-re
  []
 
 
-Underfull \hbox (badness 4036) in paragraph at lines 294--300
-\OT1/cmr/m/n/10.95 4 []$ \T1/cmr/m/n/10.95 il se-gna-le in usci-ta pre-sen-ta i pic-chi
+Underfull \hbox (badness 2245) in paragraph at lines 343--350
+\T1/cmr/m/n/10.95 di $\OML/cmm/m/it/10.95 V[]$ \T1/cmr/m/n/10.95 con-tro $\OML/cmm/m/it/10.95 V[]$\T1/cmr/m/n/10.95 , per cer-ca-re di estrar-re
  []
 
 
-Underfull \hbox (badness 4713) in paragraph at lines 294--300
-\T1/cmr/m/n/10.95 ov-ve-ro le ten-sio-ni di ali-men-ta-zio-ne for-ni-te
+Overfull \hbox (31.01332pt too wide) in paragraph at lines 343--350
+\T1/cmr/m/n/10.95 ca-rat-te-riz-za-re la li-nea-ri-tà del-l'am-pli-fi-ca-to-re ope-ra-zio-na-le
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 294--300
+Underfull \hbox (badness 5260) in paragraph at lines 343--350
+\T1/cmr/m/n/10.95 fo-ca-liz-zan-do-si sul-lo stu-dio di in-ter-po-la-zio-ni
+ []
 
+
+LaTeX Warning: Reference `s:strumenti' on page 3 undefined on input line 365.
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 434--434
+[]\T1/cmr/m/n/10.95 Tabella 2: |Ven-go-no rap-pre-sen-ta-te in ta-bel-la le mi-su-re spe-ri-men-ta-li ac-qui-si-te con i cur-so-ri
  []
 
 [3 <../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png>]
-Underfull \hbox (badness 1521) in paragraph at lines 398--398
-[]\T1/cmr/m/n/10.95 Tabella 3: |Ven-go-no rap-pre-sen-ta-te in ta-bel-la le mi-su-re spe-ri-men-ta-li ac-qui-si-te con i cur-so-ri
- []
-
-
-Overfull \hbox (9.41895pt too wide) in paragraph at lines 402--416
+Overfull \hbox (9.41895pt too wide) in paragraph at lines 438--452
 \T1/cmr/m/n/10.95 se-gna-le in in-gres-so e di una cor-ret-ta con-fi-gu-ra-zio-ne del ge-ne-ra-to-re (\T1/cmr/m/it/10.95 mo-da-li-tà "50 Ohm"\T1/cmr/m/n/10.95 ) e del-l'o-scil-lo-sco-pio
  []
 
-<../Plots/Report_Plots/opamp_plot_alldata_eda.png, id=144, 1925.1925pt x 994.71625pt>
+<../Plots/Report_Plots/opamp_plot_alldata_eda.png, id=138, 1925.1925pt x 994.71625pt>
 File: ../Plots/Report_Plots/opamp_plot_alldata_eda.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_plot_alldata_eda.png>
-Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_alldata_eda.png  used on input line 419.
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_alldata_eda.png  used on input line 455.
 (pdftex.def)             Requested size: 426.79134pt x 220.50784pt.
 [4] [5 <../Plots/Report_Plots/opamp_plot_alldata_eda.png>]
-<../Plots/Report_Plots/opamp_plot_all_projected.png, id=168, 1155.1155pt x 596.82974pt>
+<../Plots/Report_Plots/opamp_plot_all_projected.png, id=162, 1155.1155pt x 596.82974pt>
 File: ../Plots/Report_Plots/opamp_plot_all_projected.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_plot_all_projected.png>
-Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_all_projected.png  used on input line 554.
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_all_projected.png  used on input line 590.
 (pdftex.def)             Requested size: 426.79134pt x 220.5139pt.
  [6] [7 <../Plots/Report_Plots/opamp_plot_all_projected.png>]
-<../Plots/Report_Plots/opamp_plot_pp_projected.png, id=189, 1925.1925pt x 994.71625pt>
+<../Plots/Report_Plots/opamp_plot_pp_projected.png, id=183, 1925.1925pt x 994.71625pt>
 File: ../Plots/Report_Plots/opamp_plot_pp_projected.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_plot_pp_projected.png>
-Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_pp_projected.png  used on input line 615.
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_pp_projected.png  used on input line 651.
 (pdftex.def)             Requested size: 426.79134pt x 220.50784pt.
-<../Plots/Report_Plots/opamp_comp_BIG.png, id=192, 844.95676pt x 411.939pt>
+<../Plots/Report_Plots/opamp_comp_BIG.png, id=186, 844.95676pt x 411.939pt>
 File: ../Plots/Report_Plots/opamp_comp_BIG.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_comp_BIG.png>
-Package pdftex.def Info: ../Plots/Report_Plots/opamp_comp_BIG.png  used on input line 678.
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_comp_BIG.png  used on input line 714.
 (pdftex.def)             Requested size: 241.84843pt x 117.90668pt.
  [8 <../Plots/Report_Plots/opamp_plot_pp_projected.png>]
-Underfull \hbox (badness 2189) in paragraph at lines 686--697
+Underfull \hbox (badness 2189) in paragraph at lines 722--733
 \T1/cmr/m/n/10.95 ri-sul-ta-no es-se-re quan-ti-tà com-pa-ti-bi-li con 1)
  []
 
 
-Underfull \hbox (badness 4505) in paragraph at lines 686--697
+Underfull \hbox (badness 4505) in paragraph at lines 722--733
 \OML/cmm/m/it/10.95 G \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 R[]=R[]$\T1/cmr/m/n/10.95 , ad ec-ce-zio-ne di 4) quel-la
  []
 
 
-Underfull \hbox (badness 1400) in paragraph at lines 686--697
+Underfull \hbox (badness 1400) in paragraph at lines 722--733
 \T1/cmr/m/n/10.95 ot-te-nu-ta con-si-de-ran-do as-sie-me sia i mas-si-mi
  []
 
 
-Underfull \hbox (badness 4060) in paragraph at lines 686--697
+Underfull \hbox (badness 4060) in paragraph at lines 722--733
 \T1/cmr/m/n/10.95 le gran-dez-ze pic-co pic-co 6) si tro-vi-no in
  []
 
 
-Underfull \hbox (badness 1331) in paragraph at lines 686--697
+Underfull \hbox (badness 1331) in paragraph at lines 722--733
 \T1/cmr/m/n/10.95 pic-co, sia con-si-de-ran-do la me-dia pe-sa-ta dei
  []
 
 [9 <../Plots/Report_Plots/opamp_comp_BIG.png>]
-<../Arduino/Plots/calib_function.png, id=205, 883.50075pt x 454.69875pt>
+<../Arduino/Plots/calib_function.png, id=199, 883.50075pt x 454.69875pt>
 File: ../Arduino/Plots/calib_function.png Graphic file (type png)
 <use ../Arduino/Plots/calib_function.png>
-Package pdftex.def Info: ../Arduino/Plots/calib_function.png  used on input line 748.
+Package pdftex.def Info: ../Arduino/Plots/calib_function.png  used on input line 784.
 (pdftex.def)             Requested size: 426.79134pt x 219.65442pt.
  [10
 
 
  <../Arduino/Plots/calib_function.png>] [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 785.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 785.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 821.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 821.
  (d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 785.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 785.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 821.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 821.
 Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: CD90F09A9D52D1839B0BF59DDEADE06B;1140.
+(rerunfilecheck)             Checksum: 80FA400814A0BF2912C1605E42713B07;1077.
+
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 32049 strings out of 492649
- 625584 string characters out of 6128653
- 691053 words of memory out of 5000000
- 35395 multiletter control sequences out of 15000+600000
+ 32045 strings out of 492649
+ 625546 string characters out of 6128653
+ 689699 words of memory out of 5000000
+ 35393 multiletter control sequences out of 15000+600000
  567358 words of font info for 119 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,23n,54p,10533b,1112s stack positions out of 5000i,500n,10000p,200000b,80000s
-{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb>
-Output written on "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" (12 pages, 665150 bytes).
+ 57i,22n,54p,10533b,1002s stack positions out of 5000i,500n,10000p,200000b,80000s
+{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb>
+Output written on "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" (12 pages, 652934 bytes).
 PDF statistics:
- 333 PDF objects out of 1000 (max. 8388607)
- 274 compressed objects within 3 object streams
- 48 named destinations out of 1000 (max. 500000)
- 184 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 328 PDF objects out of 1000 (max. 8388607)
+ 269 compressed objects within 3 object streams
+ 46 named destinations out of 1000 (max. 500000)
+ 176 words of extra memory for PDF output out of 10000 (max. 10000000)
 
