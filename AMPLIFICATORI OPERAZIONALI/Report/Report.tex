@@ -629,6 +629,15 @@ soddisfacente distribuzione lineare dei dati.
 %DA INSERIRE IL GRAFICO!!!! TOLTO PERCHE' CREA PROBLEMI CON IMPAGINAZIONE
 %
 %
+%\begin{wrapfigure}{L}{0.5\textwidth}
+%	\centering
+%	\includegraphics[width=0.5\textwidth]{../Plots/Report_Plots/opamp_comp_BIG.png}
+%	\caption{\footnotesize Stime di G. Da sinistra: 1) partendo dalle misure dirette delle resistenze; 2) come
+%	coefficiente angolare del dataset di massimi; 3) come coefficiente angolare del dataset di minimi; 4) come
+%	coefficiente angolare del dataset unificato; 5) come media pesata di 2 e 3; 6) come coefficiente angolare del
+%	dataset delle grandezze picco picco.}
+%	\label{i:opamp_comp}
+%\end{wrapfigure}
 
 
 Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, rappresentando i valori del guadagno
@@ -639,18 +648,9 @@ compatibili con 1) $G=R_{\text{f}}/R_{1}$, ad eccezione di 4) quella ottenuta co
 minimi ($\lambda = 3.7$). In particolare, si può osservare come la media pesata 5) tra le stime dell'amplificazione
 ottenute considerando i campioni separati e la stima ottenuta con le grandezze picco picco 6) si trovino in eccellente
 accordo: si può concludere dunque che, eliminando la sistematica di offset/shift verticale tra i due dataset (sia
-attraverso grandezze picco picco, sia considerando la media pesata dei risultati ottenuti dai campioni separati),
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{../Plots/Report_Plots/opamp_comp_BIG.png}
-	\caption{\footnotesize Stime di G. Da sinistra: 1) partendo dalle misure dirette delle resistenze; 2) come
-	coefficiente angolare del dataset di massimi; 3) come coefficiente angolare del dataset di minimi; 4) come
-	coefficiente angolare del dataset unificato; 5) come media pesata di 2 e 3; 6) come coefficiente angolare del
-	dataset delle grandezze picco picco.}
-	\label{i:opamp_comp}
-\end{figure}
-\noindent la stima dell'amplificazione del circuito risulta essere compatibile con le aspettative preliminari. Si assume in ogni
-caso che l'errore su \textit{G} sia sottostimato a causa della correlazione tra errori di scala dell'oscilloscopio: si
+attraverso grandezze picco picco, sia considerando la media pesata dei risultati ottenuti dai campioni separati), la
+stima dell'amplificazione del circuito risulta essere compatibile con le aspettative preliminari. Si assume in ogni caso
+che l'errore su \textit{G} sia sottostimato a causa della correlazione tra errori di scala dell'oscilloscopio: si
 preferisce dunque la stima ritrovata considerando le tensioni picco picco 6), in quanto presenta un errore relativo
 leggermente maggiore.
 
