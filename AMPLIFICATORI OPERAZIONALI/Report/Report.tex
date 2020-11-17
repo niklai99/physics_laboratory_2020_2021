@@ -204,7 +204,7 @@ Nel corso dell'esperienza si utilizzano i seguenti:
 %	AMPLIFICATORE OPERAZIONALE INVERTENTE
 %----------------------------------------------------------------------------------------
 
-\section{Amplificatore Operazionale Invertente}
+\section{Amplificatore Operazionale Invertente}\label{s:opamp}
 In questa sezione ci si propone di studiare il comportamento di un circuito puramente resistivo comprendente un
 amplificatore operazionale in configurazione invertente (polo positivo a massa, polo negativo collegato al segnale in
 ingresso). Si vuole in particolare verificare la sua linearità e stimare l'amplificazione del circuito come grandezza
@@ -627,16 +627,19 @@ soddisfacente distribuzione lineare dei dati.
 %----------------------------------------------------------------------------------------
 
 \subsubsection{Confronto tra Stime di G}
-
-\begin{wrapfigure}{L}{0.5\textwidth}
-	\centering
-	\includegraphics[width=0.5\textwidth]{../Plots/Report_Plots/opamp_comp_BIG.png}
-	\caption{\footnotesize Stime di G. Da sinistra: 1) partendo dalle misure dirette delle resistenze; 2) come
-	coefficiente angolare del dataset di massimi; 3) come coefficiente angolare del dataset di minimi; 4) come
-	coefficiente angolare del dataset unificato; 5) come media pesata di 2 e 3; 6) come coefficiente angolare del
-	dataset delle grandezze picco picco.}
-	\label{i:opamp_comp}
-\end{wrapfigure}
+%
+%DA INSERIRE IL GRAFICO!!!! TOLTO PERCHE' CREA PROBLEMI CON IMPAGINAZIONE
+%
+%
+%\begin{wrapfigure}{L}{0.5\textwidth}
+%	\centering
+%	\includegraphics[width=0.5\textwidth]{../Plots/Report_Plots/opamp_comp_BIG.png}
+%	\caption{\footnotesize Stime di G. Da sinistra: 1) partendo dalle misure dirette delle resistenze; 2) come
+%	coefficiente angolare del dataset di massimi; 3) come coefficiente angolare del dataset di minimi; 4) come
+%	coefficiente angolare del dataset unificato; 5) come media pesata di 2 e 3; 6) come coefficiente angolare del
+%	dataset delle grandezze picco picco.}
+%	\label{i:opamp_comp}
+%\end{wrapfigure}
 
 Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, rappresentando i valori del guadagno
 \textit{G} in \autoref{i:opamp_comp}.
@@ -661,6 +664,120 @@ ritrovata considerando le tensioni picco picco 6), in quanto presenta un errore 
 %----------------------------------------------------------------------------------------
 
 \section{Circuito Derivatore}
+In questa sezione ci si propone di studiare il comportamento \textit{in frequenza} di un circuito simile a quello
+considerato in \autoref{s:opamp}, con l'aggiunta però di un condensatore $C_{1}$ in serie alla resistenza $R_{1}$:
+questo lo rende dunque un filtro (attivo, in quanto è sempre presente l'amplificatore operazionale) passa alto,
+derivatore a basse frequenze. Si vuole in particolare verificare il comportamento derivatore del circuito e misurare la
+frequenza di taglio $f_{\text{t}}$.
+
+
+%----------------------------------------------------------------------------------------
+%	CONFIGURAZIONE SPERIMENTALE
+%----------------------------------------------------------------------------------------
+
+\subsection{Configurazione Sperimentale}
+%Utilizzando la stessa configurazione circuitale rappresentata in \autoref{i:opamp_circuit}, viene aggiunta la capaictà
+%$C_{1} = 0.977 \pm 0.017 \,\si{n\farad}$ (misurata direttamente utilizzando il multimetro digitale a fondo scala
+%$1\,\si{n\farad}$) in serie alla resistenza $R_{1}$, tra essa e l'amplificatore operazionale. Si imposta inizialmente
+%il generatore in 
+%
+%\begin{wrapfigure}{L}{0.6\textwidth}
+%	\centering
+%	\includegraphics[width=0.6\textwidth]{../Simulations/Differentiator/circuit_image_big.png}
+%	\caption{\footnotesize Rappresentazione a variabili concentrate del circuito assemblato in laboratorio.}
+%	\label{i:diff_circuit}
+%\end{wrapfigure}
+%
+%\noindent modo da erogare un'onda triangolare di ampiezza $1\,\si{V}$ e frequenza $1\,\si{k\Hz}$, al fine di verificare
+%il comportamento derivatore del circuito. Successivamente si ripristina la forma sinusoidale di ampiezza $1\,\si{\volt}$
+%picco picco (che verrà mantenuta costante) e frequenza variabile tra $100\,\si{\Hz}$ e $1\,\si{\MHz}$.\\
+%
+%\noindent Si vuole ora porre particolare attenzione al circuito in \autoref{i:diff_circuit}: nel dominio delle frequenze
+%la funzione di trasferimento $H(s)=V_{\text{out}}(s)/V_{\text{in}}(s)$ risulta essere 
+%\begin{align}
+%	H(s) &= -\frac{R_{\text{f}}}{R_{1}}\frac{s}{s+\omega_{0}} & \text{con}\,\,\,\, \omega_{0}&=\frac{1}{R_{1}C_{1}}
+%\end{align}
+%
+%\noindent Si nota dunque che il termine $-\frac{R_{\text{f}}}{R_{1}}$ è esattamente il guadagno $G$ (il segno meno è
+%sempre legato al fatto che l'operazionale è posto in configurazione invertente) del circuito studiato in
+%\autoref{s:opamp}, mentre il termine $\frac{s}{s+\omega_{0}}$ risulta essere analogo alla funzione di trasferimento di
+%un circuito passa alto passivo. A basse frequenze dunque il circuito ci si aspetta si comporti come un derivatore,
+%mentre, essendo un passa alto, ci si aspetta si ottenga il massimo guadagno per $s\rightarrow\infty$ e che questo sia
+%esattamente $G$. 
+
+Utilizzando la stessa configurazione circuitale rappresentata in \autoref{i:opamp_circuit}, viene aggiunta la capaictà
+$C_{1} = 0.977 \pm 0.017 \,\si{n\farad}$ (misurata direttamente utilizzando il multimetro digitale a fondo scala
+$1\,\si{n\farad}$) in serie alla resistenza $R_{1}$, tra essa e l'amplificatore operazionale. Ponendo ora l'attenzione
+sul circuito in \autoref{i:diff_circuit}, nel dominio delle frequenze
+la funzione di trasferimento $H(s)=V_{\text{out}}(s)/V_{\text{in}}(s)$ risulta essere 
+\begin{align}
+	H(s) &= -\frac{R_{\text{f}}}{R_{1}}\frac{s}{s+\omega_{0}} & \text{con}\,\,\,\, \omega_{0}&=\frac{1}{R_{1}C_{1}}
+\end{align}
+
+\noindent Si nota dunque che il termine $-\frac{R_{\text{f}}}{R_{1}}$ è esattamente il guadagno $G$ (il segno meno è
+sempre legato al fatto che l'operazionale è posto in configurazione invertente) del circuito studiato in
+\autoref{s:opamp}, mentre
+
+\begin{wrapfigure}{L}{0.6\textwidth}
+	\centering
+	\includegraphics[width=0.6\textwidth]{../Simulations/Differentiator/circuit_image_big.png}
+	\caption{\footnotesize Rappresentazione a variabili concentrate del circuito assemblato in laboratorio.}
+	\label{i:diff_circuit}
+\end{wrapfigure}
+
+\noindent  il termine $\frac{s}{s+\omega_{0}}$ risulta essere analogo alla funzione di trasferimento di un circuito
+passa alto passivo. Ci si aspetta dunque che a basse frequenze il circuito si comporti come un derivatore, mentre,
+essendo un passa alto, ci si aspetta si ottenga il massimo guadagno per $s\rightarrow\infty$ e che questo sia
+esattamente $G$. Si imposta allora inizialmente il generatore in modo da erogare un'onda triangolare di ampiezza
+$1\,\si{V}$ e frequenza $1\,\si{k\Hz}$, al fine di verificare il comportamento derivatore del circuito. Successivamente
+si ripristina la forma sinusoidale di ampiezza $1\,\si{\volt}$ picco picco (che verrà mantenuta costante) e frequenza
+variabile tra $100\,\si{\Hz}$ e $1\,\si{\MHz}$ per lo studio della risposta in frequenza del circuito.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \cleardoublepage
 %----------------------------------------------------------------------------------------
