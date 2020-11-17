@@ -31,6 +31,11 @@
 %----------------------------------------------------------------------------------------
 
 \begin{document}
+
+%----------------------------------------------------------------------------------------
+%	REFERNCE CUSTOMIZATION
+%----------------------------------------------------------------------------------------
+
 \def\sectionautorefname{Sezione} 
 \def\subsectionautorefname{Sezione} 
 \def\subsubsectionautorefname{Sezione}
@@ -39,45 +44,44 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-	\begin{titlepage}
-
-		\begin{center}
-			\Huge{\bfseries \labcourse}\\
-				
-			\LARGE \teacher \\
-			\Large \laurea\\
-			\Large \channel\\
-			\Large \academicyear\\
-			[1cm] 
-			\line(1,0){400}\\
-			[3.5cm]
-				
-			\textsc{\huge{\bfseries \labexp}}\\
-			\huge{\exptitle}\\
-			[2mm] \line(1,0){300}\\
-			[10cm]
-		\end{center}
-		
-		
-		\begin{flushleft}
-			\textsc{\Large \turno}\\
-			[0.5cm] \textsc{\large {\bfseries \name}} \\ 
-			\indent\large \matricola \\ 
-			\indent\large \mail \\
-		\end{flushleft}
+\begin{titlepage}
+	\begin{center}
+		\Huge{\bfseries \labcourse}\\
 			
-						
-		\begin{flushright}
-				\textsc{\Large\consegna}\\
-				\textsc{\large \data}					
-		\end{flushright}
-				
-	\end{titlepage}
+		\LARGE \teacher \\
+		\Large \laurea\\
+		\Large \channel\\
+		\Large \academicyear\\
+		[1cm] 
+		\line(1,0){400}\\
+		[3.5cm]
+			
+		\textsc{\huge{\bfseries \labexp}}\\
+		\huge{\exptitle}\\
+		[2mm] \line(1,0){300}\\
+		[10cm]
+	\end{center}
+	
+	
+	\begin{flushleft}
+		\textsc{\Large \turno}\\
+		[0.5cm] \textsc{\large {\bfseries \name}} \\ 
+		\indent\large \matricola \\ 
+		\indent\large \mail \\
+	\end{flushleft}
+		
+					
+	\begin{flushright}
+			\textsc{\Large\consegna}\\
+			\textsc{\large \data}					
+	\end{flushright}
+			
+\end{titlepage}
 \cleardoublepage
 
 
 %----------------------------------------------------------------------------------------
-%	APPARATO SPERIMENTALE
+%	OBIETTIVO
 %----------------------------------------------------------------------------------------
 
 \section{Obiettivo}
@@ -89,8 +93,18 @@ tensione di una scheda Arduino Due.
 %	APPARATO SPERIMENTALE
 %----------------------------------------------------------------------------------------
 
-%\section{Strumentazione e Componenti}\label{s:strumenti}
-%
+\section{Strumentazione e Componenti}\label{s:strumenti}
+Nel corso dell'esperienza si utilizzano i seguenti:
+\begin{itemize}
+	\item Multimetro digitale Metrix MTX3292
+	\item Generatore di funzioni Tektronix AFG1022
+	\item Oscilloscopio digitale Tektronix TBS1102B
+	\item Alimentatore di tensione continua TTi
+	\item Circuito integrato TL082C (contenente due amplificatori operazionali)
+	\item Tre resistori $R_{\text{f}}$, $R_{1}$, $R_{3}$ ed un condensatore $C_{1}$ 
+	\item Scheda Arduino Due
+\end{itemize}
+
 %\begin{itemize}
 %	\item \textbf{Oscilloscopio} (Tektronix TBS1102B): Lo strumento presenta un'accuratezza sul guadagno verticale $\Delta_{g}$ pari
 %	al 3\% del valore letto (errore massimo) ed è \textit{generalmente} il contributo più significativo. L'incertezza di
@@ -184,8 +198,6 @@ tensione di una scheda Arduino Due.
 %	
 %	\item \textbf{Scheda Arduino Due}
 %\end{itemize}
-%
-%\cleardoublepage
 
 
 %----------------------------------------------------------------------------------------
@@ -224,7 +236,9 @@ un comportamento ideale, ovvero che il polo positivo ed il polo negativo si trov
 viene prelevato nei punti \textit{IN} e \textit{OUT} evidenziati nello schema in \autoref{i:opamp_circuit} (e verrà in
 seguito richiamato rispettivamente come $V_{\text{in}}$ e $V_{\text{out}}$) utilizzando due sonde con fattore di
 attenuazione 10X. Nel canale CH1 dell'oscilloscopio viene visualizzato il segnale in ingresso $V_{\text{in}}$, mentre il
-segnale in uscita $V_{\text{out}}$ è prelevato dalla sonda collegata al canale CH2. 
+segnale in uscita $V_{\text{out}}$ è prelevato dalla sonda collegata al canale CH2. Per entrambi i canali viene
+selezionata la modalità "attenuazione sonda 10X", in modo da compensare la riduzione del segnale dovuta alle sonde e
+visualizzare quindi nel display il segnale reale. 
 
 \begin{wraptable}{L}{0.5\textwidth}
 	\small
@@ -250,9 +264,7 @@ segnale in uscita $V_{\text{out}}$ è prelevato dalla sonda collegata al canale 
 	\label{t:direct_measures}
 \end{wraptable}	
 
-\noindent Per entrambi i canali viene selezionata la modalità "attenuazione sonda 10X", in modo da compensare la
-riduzione del segnale dovuta alle sonde e visualizzare quindi nel display il segnale reale. Il generatore di funzioni
-viene poi configurato in modalità "50 Ohm", in modo che l'impedenza d'uscita del generatore sia comparabile con
+\noindent   in modo che l'impedenza d'uscita del generatore sia comparabile con
 $R_3\approx 50\,\si{\ohm}$. Ci si aspetta così di trovare una tensione in ingresso $V_{\text{in}}$ in accordo con la
 tensione nominale erogata dal generatore. Si imposta infine il generatore di funzioni in modo da erogare un segnale di
 tipo sinusoidale con frequenza $f_{\text{gen}}=1\,\si{k\hertz}$, mantenuta costante in questa sezione, e di ampiezza
@@ -292,14 +304,8 @@ posto in configurazione invertente. Le misure in questione sono rappresentate in
 %----------------------------------------------------------------------------------------
 
 \subsection{Simulazione Spice Preliminare}\label{s:spice} Prima di procedere con l'analisi dati, si decide di simulare
-la risposta del circuito utilizzando il programma LTSpice. Si sceglie di effettuare la simulazione considerando due
-ampiezze in ingresso significative: per la prima si imposta dal generatore un'ampiezza $V_{\text{gen}}=1\,\si{\volt}$
-mentre per la seconda $V_{\text{gen}}=4\,\si{\volt}$. Questa scelta è dettata dal fatto che l'amplificatore
-operazionale, essendo una componente attiva del circuito, non può dare in output una tensione maggiore di quanta ne
-riceve in alimentazione per conservazione dell'energia: ci si aspetta allora di trovare una situazione di saturazione
-del segnale in uscita e che questa inizi a manifestarsi attorno ad un valore nominale di tensione
-$V\text{pp}_{\text{gen}}=3\,\si{\volt}$ in quanto, avendo un guadagno di circa 10, il segnale in uscita non può superare
-i $30\,\si{\volt}$ picco picco.
+la risposta del circuito utilizzando il software LTSpice. Vengono simulate due ampiezze in ingresso significative:
+$V_{\text{gen}}=1\,\si{\volt}$ e $V_{\text{gen}}=4\,\si{\volt}$. 
 
 \begin{wrapfigure}{L}{0.5\textwidth}
 	\centering
@@ -308,12 +314,16 @@ i $30\,\si{\volt}$ picco picco.
 	\label{i:opamp_simulation}
 \end{wrapfigure}
 
-\noindent Dal grafico si evince chiaramente come erogando $V_{\text{gen}}=1\,\si{\volt}$ il segnale viene amplificato
-correttamente di circa un fattore 10 mantenendo la forma sinusoidale, mentre erogando $V_{\text{gen}}=4\,\si{\volt}$ il
-segnale in uscita presenta i picchi tagliati esattamente a livello $V_{\text{sat}}=\pm 15\,\si{\volt}$, ovvero le
-tensioni di alimentazione fornite all'operazionale. Inoltre, come anticipato in \autoref{s:guadagno}, si può osservare
-il comportamento invertente dell'amplificatore operazionale: ad un massimo di $V_{\text{in}}$ corrisponde un minimo di
-$V_{\text{out}}$ e viceversa.\\
+\noindent L'amplificatore operazionale, essendo esso una componente attiva del circuito, non può fornire in output una
+tensione maggiore di quanta ne riceve in alimentazione (per conservazione dell'energia): ci si aspetta allora di trovare
+una situazione di saturazione del segnale in uscita e che questa inizi a manifestarsi attorno ad un valore nominale di
+tensione $V\text{pp}_{\text{gen}}=3\,\si{\volt}$ in quanto, avendo un guadagno di circa 10, il segnale in uscita non può
+superare i $30\,\si{\volt}$ picco picco. Dal grafico si evince chiaramente come erogando $V_{\text{gen}}=1\,\si{\volt}$
+il segnale viene amplificato correttamente mantenendo la forma sinusoidale, mentre erogando
+$V_{\text{gen}}=4\,\si{\volt}$ il segnale in uscita presenta i picchi tagliati esattamente a livello $V_{\text{sat}}=\pm
+15\,\si{\volt}$, cioè le tensioni di alimentazione fornite all'operazionale. Inoltre, come anticipato in
+\autoref{s:guadagno}, si può osservare il comportamento invertente dell'amplificatore operazionale: ad un massimo di
+$V_{\text{in}}$ corrisponde un minimo di $V_{\text{out}}$ e viceversa.\\
 
 
 %----------------------------------------------------------------------------------------
