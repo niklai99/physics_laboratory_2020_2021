@@ -11,7 +11,8 @@
 \BOOKMARK [3][-]{subsubsection.3.4.4}{Confronto tra Stime di G}{subsection.3.4}% 11
 \BOOKMARK [1][-]{section.4}{Circuito Derivatore}{}% 12
 \BOOKMARK [2][-]{subsection.4.1}{Configurazione Sperimentale}{section.4}% 13
-\BOOKMARK [1][-]{section.5}{Arduino}{}% 14
-\BOOKMARK [2][-]{subsection.5.1}{Sampling Rate}{section.5}% 15
-\BOOKMARK [2][-]{subsection.5.2}{Calibrazione in Tensione}{section.5}% 16
-\BOOKMARK [1][-]{section.6}{Conclusioni}{}% 17
+\BOOKMARK [2][-]{subsection.4.2}{Acquisizione Misure}{section.4}% 14
+\BOOKMARK [1][-]{section.5}{Arduino}{}% 15
+\BOOKMARK [2][-]{subsection.5.1}{Sampling Rate}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.2}{Calibrazione in Tensione}{section.5}% 17
+\BOOKMARK [1][-]{section.6}{Conclusioni}{}% 18
