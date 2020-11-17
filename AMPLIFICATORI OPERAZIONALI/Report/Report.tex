@@ -423,7 +423,7 @@ all'oscilloscopio mentre V/div rappresenta la scala di acquisizione della misura
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=15cm]{../Plots/Report_Plots/opamp_plot_alldata_eda.png}
+	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_alldata_eda.png}
 	\caption{\small Grafico delle misure acquisite interpolate linearmente e relativo grafico dei residui.}
 	\label{i:opamp_eda}
 \end{figure}
@@ -560,7 +560,7 @@ interpolazione lineare è mostrato in \autoref{i:opamp_all_proj}.
 %----------------------------------------------------------------------------------------
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=15cm]{../Plots/Report_Plots/opamp_plot_all_projected.png}
+	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_all_projected.png}
 	\caption{\small A sinistra: grafico rappresentante il dataset dei massimi ed il dataset dei minimi uniti assieme, 
 	con relativa retta interpolante e parametri del fit. A destra: grafico dei residui $V_{\text{out}}-\text{fit}$.}
 	\label{i:opamp_all_proj}
@@ -600,7 +600,7 @@ dell'incertezza associata al primo punto, mentre diventa notevolmente inferiore 
 %----------------------------------------------------------------------------------------
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=15cm]{../Plots/Report_Plots/opamp_plot_pp_projected.png}
+	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_pp_projected.png}
 	\caption{\small A sinistra: grafico rappresentante il dataset delle grandezze picco picco, 
 	con relativa retta interpolante e parametri del fit. A destra: grafico dei residui $V\text{pp}_{\text{out}}-\text{fit}$.}
 	\label{i:opamp_pp}
@@ -629,30 +629,31 @@ soddisfacente distribuzione lineare dei dati.
 %DA INSERIRE IL GRAFICO!!!! TOLTO PERCHE' CREA PROBLEMI CON IMPAGINAZIONE
 %
 %
-%\begin{wrapfigure}{L}{0.5\textwidth}
-%	\centering
-%	\includegraphics[width=0.5\textwidth]{../Plots/Report_Plots/opamp_comp_BIG.png}
-%	\caption{\footnotesize Stime di G. Da sinistra: 1) partendo dalle misure dirette delle resistenze; 2) come
-%	coefficiente angolare del dataset di massimi; 3) come coefficiente angolare del dataset di minimi; 4) come
-%	coefficiente angolare del dataset unificato; 5) come media pesata di 2 e 3; 6) come coefficiente angolare del
-%	dataset delle grandezze picco picco.}
-%	\label{i:opamp_comp}
-%\end{wrapfigure}
 
-
-Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, rappresentando i valori del guadagno
+\noindent Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, rappresentando i valori del guadagno
 \textit{G} in \autoref{i:opamp_comp}. Partendo dal primo punto a sinistra, cioè la stima di \textit{G} tramite le misure
 dirette delle resistenze $R_{\text{f}}$ e $R_{1}$ (riportate in \autoref{t:direct_measures}), si nota come questo
-presenti un errore nettamente inferiore a confronto con le rimanenti stime. Quest'ultime risultano essere quantità
-compatibili con 1) $G=R_{\text{f}}/R_{1}$, ad eccezione di 4) quella ottenuta considerando assieme sia i massimi sia i
-minimi ($\lambda = 3.7$). In particolare, si può osservare come la media pesata 5) tra le stime dell'amplificazione
-ottenute considerando i campioni separati e la stima ottenuta con le grandezze picco picco 6) si trovino in eccellente
-accordo: si può concludere dunque che, eliminando la sistematica di offset/shift verticale tra i due dataset (sia
-attraverso grandezze picco picco, sia considerando la media pesata dei risultati ottenuti dai campioni separati), la
-stima dell'amplificazione del circuito risulta essere compatibile con le aspettative preliminari. Si assume in ogni caso
-che l'errore su \textit{G} sia sottostimato a causa della correlazione tra errori di scala dell'oscilloscopio: si
-preferisce dunque la stima ritrovata considerando le tensioni picco picco 6), in quanto presenta un errore relativo
-leggermente maggiore.
+presenti un errore 
+
+\begin{wrapfigure}{L}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.5\textwidth]{../Plots/Report_Plots/opamp_comp_BIG.png}
+	\caption{\footnotesize Stime di G. Da sinistra: 1) partendo dalle misure dirette delle resistenze; 2) come
+	coefficiente angolare del dataset di massimi; 3) come coefficiente angolare del dataset di minimi; 4) come
+	coefficiente angolare del dataset unificato; 5) come media pesata di 2 e 3; 6) come coefficiente angolare del
+	dataset delle grandezze picco picco.}
+	\label{i:opamp_comp}
+\end{wrapfigure}
+
+\noindent nettamente inferiore a confronto con le rimanenti stime. Quest'ultime risultano essere quantità compatibili
+con 1) $G=R_{\text{f}}/R_{1}$, ad eccezione di 4) quella ottenuta considerando assieme sia i massimi sia i minimi
+($\lambda = 3.7$). In particolare, si può osservare come la media pesata 5) tra le stime dell'amplificazione ottenute
+considerando i campioni separati e la stima ottenuta con le grandezze picco picco 6) si trovino in eccellente accordo:
+si può concludere dunque che, eliminando la sistematica di offset/shift verticale tra i due dataset (sia attraverso
+grandezze picco picco, sia considerando la media pesata dei risultati ottenuti dai campioni separati), la stima
+dell'amplificazione del circuito risulta essere compatibile con le aspettative preliminari. Si assume in ogni caso che
+l'errore su \textit{G} sia sottostimato a causa della correlazione delle incertezze: si preferisce dunque la stima
+ritrovata considerando le tensioni picco picco 6), in quanto presenta un errore relativo leggermente maggiore.
 
 
 %----------------------------------------------------------------------------------------
@@ -672,27 +673,17 @@ $f_{\text{t}}$.
 %----------------------------------------------------------------------------------------
 
 \subsection{Configurazione Sperimentale}
-Utilizzando la stessa configurazione circuitale rappresentata in \autoref{i:opamp_circuit}, viene aggiunta la capaictà
+Utilizzando la stessa configurazione circuitale rappresentata in \autoref{i:opamp_circuit}, viene aggiunta la capacità
 $C_{1} = 0.977 \pm 0.017 \,\si{n\farad}$ (misurata direttamente utilizzando il multimetro digitale a fondo scala
-$1\,\si{n\farad}$) in serie alla resistenza $R_{1}$, tra essa e l'amplificatore operazionale. Ponendo ora l'attenzione
-sul circuito in \autoref{i:diff_circuit}, nel dominio delle frequenze
-la funzione di trasferimento $H(s)=V_{\text{out}}(s)/V_{\text{in}}(s)$ risulta essere 
+$1\,\si{n\farad}$) in serie alla resistenza $R_{1}$, tra essa e l'amplificatore operazionale. Nel dominio delle
+frequenze la funzione di trasferimento $H(s)=V_{\text{out}}(s)/V_{\text{in}}(s)$ del circuito risulta essere 
 \begin{align}
 	H(s) &= -\frac{R_{\text{f}}}{R_{1}}\frac{s}{s+\omega_{0}} & \text{con}\,\,\,\, \omega_{0}&=\frac{1}{R_{1}C_{1}}
 \end{align}
 
 \noindent Si nota dunque che il termine $-\frac{R_{\text{f}}}{R_{1}}$ è esattamente il guadagno $G$ (il segno meno è
 sempre legato al fatto che l'operazionale è posto in configurazione invertente) del circuito studiato in
-\autoref{s:opamp}, mentre
-
-\begin{wrapfigure}{L}{0.6\textwidth}
-	\centering
-	\includegraphics[width=0.6\textwidth]{../Simulations/Differentiator/circuit_image_big.png}
-	\caption{\footnotesize Rappresentazione a variabili concentrate del circuito assemblato in laboratorio.}
-	\label{i:diff_circuit}
-\end{wrapfigure}
-
-\noindent  il termine $\frac{s}{s+\omega_{0}}$ risulta essere analogo alla funzione di trasferimento di un circuito
+\autoref{s:opamp}, mentre il termine $\frac{s}{s+\omega_{0}}$ risulta essere analogo alla funzione di trasferimento di un circuito
 passa alto passivo. Ci si aspetta dunque che a basse frequenze il circuito si comporti come un derivatore, mentre,
 essendo un passa alto, ci si aspetta si ottenga il massimo guadagno per $s\rightarrow\infty$ e che questo sia
 esattamente $G$. Si imposta allora inizialmente il generatore in modo da erogare un'onda triangolare di ampiezza
@@ -714,8 +705,22 @@ le componenti circuitali direttamente con i multimetri, la stima attesa del mass
 %----------------------------------------------------------------------------------------
 
 \subsection{Acquisizione Misure}
+Per studiare la risposta in frequenza del circuito, si fa variare la frequenza del segnale in ingresso da
+$100\,\si{\Hz}$ a $1\,\si{\MHz}$: inizialmente viene effettuata un'acquisizione preliminare con il fine di individuare
+gli intervalli di frequenze più interessanti, quali l'intorno della frequenza di taglio e l'intorno del massimo di
+amplificazione (si trova infatti che questo non viene assunto al tendere della frequenza verso valori sempre maggiori,
+ma piuttosto si ha un fenomeno di attenuamento di amplificazione oltre un certo range di frequenze). Così facendo, si
+riesce a fornire una stima approssimativa della frequenza di taglio. Infatti, infittendo le misure in tali intervalli si
+trova l'amplificazione massima sperimentale ($G_{\text{sper}}\approx 9.8$): questa viene divisa per un fattore
+$\sqrt{2}$ e, successivamente, si ricerca la frequenza che corrisponde a tale amplificazione ridotta, sempre infittendo
+le msiure nell'intorno della frequenza di taglio. Si trova quindi $f_{\text{t, sper}}\approx 19.5\,\si{k\Hz}$.
 
 
+%----------------------------------------------------------------------------------------
+%	DATI E ANALISI
+%----------------------------------------------------------------------------------------
+
+\subsection{Dati e Analisi}
 
 
 
@@ -802,7 +807,7 @@ quanti Volt corrispondono allo zero dell'ADC) ed il coefficiente angolare (cioè
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=15cm]{../Arduino/Plots/calib_function.png}
+	\includegraphics[width=\linewidth]{../Arduino/Plots/calib_function.png}
 	\caption{Grafico di calibrazione in tensione e relativo grafico dei residui.}
 	\label{i:ar_calib}
 \end{figure}
