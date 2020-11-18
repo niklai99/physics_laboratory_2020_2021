@@ -625,12 +625,7 @@ soddisfacente distribuzione lineare dei dati.
 %----------------------------------------------------------------------------------------
 
 \subsubsection{Confronto tra Stime di G}
-%
-%DA INSERIRE IL GRAFICO!!!! TOLTO PERCHE' CREA PROBLEMI CON IMPAGINAZIONE
-%
-%
-
-\noindent Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, rappresentando i valori del guadagno
+ Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, rappresentando i valori del guadagno
 \textit{G} in \autoref{i:opamp_comp}. Partendo dal primo punto a sinistra, cioè la stima di \textit{G} tramite le misure
 dirette delle resistenze $R_{\text{f}}$ e $R_{1}$ (riportate in \autoref{t:direct_measures}), si nota come questo
 presenti un errore 
@@ -811,19 +806,6 @@ quanti Volt corrispondono allo zero dell'ADC) ed il coefficiente angolare (cioè
 	\caption{Grafico di calibrazione in tensione e relativo grafico dei residui.}
 	\label{i:ar_calib}
 \end{figure}
-
-%\noindent Osservando il grafico dei residui, si nota immediatamente come sia presente un andamento anomalo dei punti a
-%tensioni maggiori: la scheda risponde cioè in modo leggermente diverso a seconda della tensione in ingresso ed il
-%fenomeno tende ad accentuarsi per segnali oltre circa $2\,\si{\volt}$. Questo è molto probabilmente dovuto al circuito
-%di protezione dei pin di ingresso (limitatore di tensione a diodi, utile per evitare di bruciare la scheda) che ne
-%altera la risposta a tensioni oltre i $2\,\si{\volt}$. Si prova allora ad effettuare nuovamente l'interpolazione
-%rimuovendo i punti relativi a tensioni in ingresso maggiori di $2\,\si{\volt}$: nonostante l'andamento dei residui
-%migliori, anche il primo punto (tensione in ingresso pari a $200\,\si{\mV}$) si trova essere fuori trend. Si ottiene
-%invece un'ottima linearità della scheda se utilizzata con tensioni in ingresso tra $500\,\si{\mV}$ e $1.8\,\si{\volt}$,
-%oppure se utilizzata con tensione in ingresso tra $1.8\,\si{\volt}$ e $2.5\,\si{\volt}$
-%Si consiglia dunque di utilizzare la scheda Arduino Due in tale range di tensioni, per il quale si ottiene una funzione
-%di calibrazione $V = a + b\,\text{ADC}$ con $a = -0.59 \pm 0.02 \, \si{\V}$ e $b = 0.776 \pm 0.013
-%\,\si{\mV}/\text{a.u.}$.
 
 \noindent Osservando il grafico dei residui, si nota un marcato andamento anomalo dei punti a tensioni maggiori, oltre i
 $2\,\si{\volt}$: la scheda, cioè, risponde in modo leggermente diverso a seconda della tensione in ingresso. Questo è,
