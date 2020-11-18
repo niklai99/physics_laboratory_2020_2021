@@ -655,13 +655,11 @@ ritrovata considerando le tensioni picco picco 6), in quanto presenta un errore 
 %	CIRCUITO DERIVATORE
 %----------------------------------------------------------------------------------------
 
-\section{Circuito Derivatore}
-In questa sezione ci si propone di studiare il comportamento \textit{in frequenza} di un circuito simile a quello
+\section{Filtro Attivo - Circuito Derivatore}
+Ci si propone di studiare il comportamento \textit{in frequenza} di un circuito simile a quello
 considerato in \autoref{s:opamp}, con l'aggiunta di un condensatore $C_{1}$ in serie alla resistenza $R_{1}$: questo lo
 rende dunque un filtro (attivo, in quanto è sempre presente l'amplificatore operazionale) passa alto, derivatore a basse
-frequenze. Si vuole in particolare verificare il comportamento derivatore del circuito e misurare la frequenza di taglio
-$f_{\text{t}}$.
-
+frequenze. 
 
 %----------------------------------------------------------------------------------------
 %	CONFIGURAZIONE SPERIMENTALE
@@ -678,15 +676,14 @@ frequenze la funzione di trasferimento $H(s)=V_{\text{out}}(s)/V_{\text{in}}(s)$
 
 \noindent Si nota dunque che il termine $-\frac{R_{\text{f}}}{R_{1}}$ è esattamente il guadagno $G$ (il segno meno è
 sempre legato al fatto che l'operazionale è posto in configurazione invertente) del circuito studiato in
-\autoref{s:opamp}, mentre il termine $\frac{s}{s+\omega_{0}}$ risulta essere analogo alla funzione di trasferimento di un circuito
-passa alto passivo. Ci si aspetta dunque che a basse frequenze il circuito si comporti come un derivatore, mentre,
-essendo un passa alto, ci si aspetta si ottenga il massimo guadagno per $s\rightarrow\infty$ e che questo sia
-esattamente $G$. Si imposta allora inizialmente il generatore in modo da erogare un'onda triangolare di ampiezza
-$1\,\si{V}$ e frequenza $1\,\si{k\Hz}$, al fine di verificare il comportamento derivatore del circuito. Successivamente
-si ripristina la forma sinusoidale di ampiezza $1\,\si{\volt}$ picco picco (che verrà mantenuta costante) e frequenza
-variabile tra $100\,\si{\Hz}$ e $1\,\si{\MHz}$ per lo studio della risposta in frequenza del circuito. Avendo misurato
-le componenti circuitali direttamente con i multimetri, la stima attesa del massimo guadagno è già stata esplicitata in
-\autoref{e:guadagno}, mentre ci si aspetta una frequenza di taglio
+\autoref{s:opamp}, mentre il termine $\frac{s}{s+\omega_{0}}$ risulta essere analogo alla funzione di trasferimento di
+un circuito passa alto passivo. Ci si aspetta dunque che a basse frequenze il circuito si comporti come un derivatore,
+mentre, essendo un passa alto, ci si aspetta si ottenga il massimo guadagno per $s\rightarrow\infty$ e che questo sia
+esattamente $G$. Si imposta allora il generatore in modo da erogare un'onda sinusoidale di ampiezza $1\,\si{\volt}$
+picco picco (che verrà mantenuta costante) e frequenza variabile tra $100\,\si{\Hz}$ e $1\,\si{\MHz}$ per lo studio
+della risposta in frequenza del circuito. Avendo misurato le componenti circuitali direttamente con i multimetri, la
+stima attesa del massimo guadagno è già stata esplicitata in \autoref{e:guadagno}, mentre ci si aspetta una frequenza di
+taglio
 
 \begin{align}
 	f_{\text{t}}&=20.1 \,\si{k\Hz} & \sigma_{f_{\text{t}}}&=\sqrt{	\left(\frac{1}{C_{1}R_{1}^2}\right)^2\sigma_{R_{1}}^2	+
@@ -701,14 +698,15 @@ le componenti circuitali direttamente con i multimetri, la stima attesa del mass
 
 \subsection{Acquisizione Misure}
 Per studiare la risposta in frequenza del circuito, si fa variare la frequenza del segnale in ingresso da
-$100\,\si{\Hz}$ a $1\,\si{\MHz}$: inizialmente viene effettuata un'acquisizione preliminare con il fine di individuare
-gli intervalli di frequenze più interessanti, quali l'intorno della frequenza di taglio e l'intorno del massimo di
-amplificazione (si trova infatti che questo non viene assunto al tendere della frequenza verso valori sempre maggiori,
-ma piuttosto si ha un fenomeno di attenuamento di amplificazione oltre un certo range di frequenze). Così facendo, si
-riesce a fornire una stima approssimativa della frequenza di taglio. Infatti, infittendo le misure in tali intervalli si
-trova l'amplificazione massima sperimentale ($G_{\text{sper}}\approx 9.8$): questa viene divisa per un fattore
-$\sqrt{2}$ e, successivamente, si ricerca la frequenza che corrisponde a tale amplificazione ridotta, sempre infittendo
-le misure nell'intorno della frequenza di taglio. Si trova quindi $f_{\text{t, sper}}\approx 19.5\,\si{k\Hz}$.
+$100\,\si{\Hz}$ a $1\,\si{\MHz}$ e vengono acquisite misure di tensione picco picco sia del segnale in ingresso sia di
+quello in uscita: inizialmente viene effettuata un'acquisizione preliminare con il fine di individuare gli intervalli di
+frequenze più interessanti, quali l'intorno della frequenza di taglio e l'intorno del massimo di amplificazione (si
+trova infatti che questo non viene assunto al tendere della frequenza verso valori sempre maggiori, ma piuttosto si ha
+un fenomeno di attenuamento di amplificazione oltre un certo range di frequenze). Così facendo, si riesce a fornire una
+stima approssimativa della frequenza di taglio. Infatti, infittendo le misure in tali intervalli si trova
+l'amplificazione massima sperimentale ($G_{\text{sper}}\approx 9.8$): questa viene divisa per un fattore $\sqrt{2}$ e,
+successivamente, si ricerca la frequenza che corrisponde a tale amplificazione ridotta, sempre infittendo le misure
+nell'intorno della frequenza di taglio. Si trova quindi $f_{\text{t, sper}}\approx 19.5\,\si{k\Hz}$.
 
 
 %----------------------------------------------------------------------------------------
@@ -716,9 +714,29 @@ le misure nell'intorno della frequenza di taglio. Si trova quindi $f_{\text{t, s
 %----------------------------------------------------------------------------------------
 
 \subsection{Dati e Analisi}
+In questa sezione si vuole studiare il grafico di Bode relativo alle misure acquisite sperimentalmente sia con il fine di estrarre
+informazioni di carattere generale sui dati, sia per fornire una stima della frequenza di taglio attraverso
+l'interpolazione delle misure.
 
 
+%----------------------------------------------------------------------------------------
+%	THEBODE
+%----------------------------------------------------------------------------------------
 
+\subsubsection{Grafico di Bode}
+Date le misure di tensione $V_{\text{in}}$ e $V_{\text{out}}$, viene calcolata la funzione di trasferimento
+\begin{align}
+	H&=\frac{V_{\text{out}}}{V_{\text{in}}} & \sigma_{H}&= H \sqrt{	
+											\left(	\frac{	\sigma_{l}\times V_{\text{in}}/\text{div}	}{	V_{\text{in}}	}	\right)^2	 + 
+											\left(	\frac{	\sigma_{l}\times V_{\text{out}}/\text{div}	}{	V_{\text{out}}	}	\right)^2 +	
+											2\left(	\frac{	\sigma_{k}	}{	k	}	\right)^2 }	
+\end{align}
+\noindent dove $\sigma_{l}=0.04$ rappresenta l'incertezza di lettura associata all'oscilloscopio, i termini
+$V_{\text{in}}/\text{div}$ e $V_{\text{out}}/\text{div}$ corrispondono al numero di volt per divisione per il canale di
+acquisizione rispettivamente del segnale in ingresso e del segnale in uscita, mentre $\sigma_{k}=1.5\%$ rappresenta
+l'incertezza di guadagno associata all'oscilloscopio: quest'ultima viene considerata in quanto le misure non sono state
+acquisite utilizzando un'unica scala e, inoltre, sono state acquisite utilizzando due diversi canali. Si assume che $k$
+sia mediamente pari all'unità. L'incertezza sulla frequenza dell'onda erogata dal generatore si assume trascurabile.
 
 
 
