@@ -43,6 +43,7 @@ TGraph *sim;
 TMultiGraph* mg;
 TMultiGraph* residuals;
 
+TLatex* text;
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*-------- FUNCTIONS -------*/
@@ -77,6 +78,9 @@ TMultiGraph *make_mg(TGraphErrors*, TGraph*);
 void settings_global();
 
 void make_legend(TF1*, TF1*);
+
+void latex(TLatex*);
+double err_posteriori(TFitResultPtr, vector<double>&, vector<double>& );
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -125,7 +129,10 @@ void differentiator_bode_comparison() {
 
     settings_res(residuals, RESXMIN, RESXMAX, RESYMIN, RESYMAX);
 
-    
+    latex(text);
+
+    double err_post = err_posteriori(fit_parabolico, x, y);
+    cout << err_post << endl;
 
     return;
 }
@@ -268,8 +275,8 @@ void make_legend(TF1* f1, TF1* f2) {
 
     leg->AddEntry(plot, "Acquired Measures   ", "pe");
     leg->AddEntry(sim, "Simulated Points   ", "p");
-    leg->AddEntry(f1, "Linear Fit   ", "l");
-    leg->AddEntry(f2, "Parabolic Fit   ", "l");
+    leg->AddEntry(f1, "Linear Fit   y = a + bx ", "l");
+    leg->AddEntry(f2, "Parabolic Fit  y = cx^{2} + dx + e ", "l");
 
     leg->Draw();
 
@@ -305,6 +312,15 @@ TGraphErrors* make_par_res(TGraphErrors* graph, vector<double>& x, vector<double
 		res.push_back(y[i] - graph->GetFunction("par_model")->Eval(x[i]));
     }
 
+    for (unsigned int k = 0; k < 3; k++)
+    {
+        res.erase(res.begin());
+        x.erase(x.begin());
+        errX.erase(errX.begin());
+        errY.erase(errY.begin());
+    }
+    
+    
 
     //creo il grafico dei residui
     TGraphErrors* res_plot = new TGraphErrors(x.size() - 2, &x[0], &res[0], &errX[0], &errY[0]);
@@ -352,7 +368,7 @@ TFitResultPtr lin_fit(TGraphErrors* graph, const double XMIN, const double XMAX)
 TFitResultPtr par_fit(TGraphErrors* graph, const double XMIN, const double XMAX) {
 
     //creo la funzione di root
-    TF1* f1 = new TF1("par_model", par_model, 3.9, 5.5, NPAR+1);
+    TF1* f1 = new TF1("par_model", par_model, 4.1, 5.5, NPAR+1);
     f1->SetParNames("a", "b", "c");
     f1->SetLineColor(kAzure + 10 );
 
@@ -365,7 +381,7 @@ TFitResultPtr par_fit(TGraphErrors* graph, const double XMIN, const double XMAX)
 
 void settings_res(TMultiGraph* graph, const double RESXMIN, const double RESXMAX, const double RESYMIN, const double RESYMAX) {
 
-    graph->SetTitle(";log_{10}[f (Hz)];");
+    graph->SetTitle(";log_{10}[f (Hz) / 1 Hz];");
 
     gPad->Modified();
     
@@ -434,5 +450,74 @@ void linee_res(const double RESXMIN, const double RESXMAX) {
     line->SetLineColor(kBlack);
 
     line->Draw();
+}
+
+void latex (TLatex* text) {
+    c1->cd(1);
+
+    text = new TLatex(4, 0, "Fit Parameters");
+    text->SetTextSize(0.07);
+    text->Draw();
+
+    text = new TLatex(3.3, -10, "#color[810]{a = -63.4 #pm 0.5 dB}");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(3.3, -14, "#color[810]{b = 19.03 #pm 0.16 dB/dec}");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(3.3, -18, "#color[810]{#chi^{2}/ndf = 2.4 / 1}");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(3.3, -22, "#color[810]{#sigma_{post} = 0.3 dB}");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(4.8, -7, "#color[870]{c = -9.93 #pm 0.02 dB/dec^{2}}");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(4.8, -11, "#color[870]{d = 96.25 #pm 0.14 dB/dec}");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(4.8, -15, "#color[870]{e = -213.3 #pm 0.4 dB}");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(4.8, -19, "#color[870]{#chi^{2}/ndf = 0.9 / 22}");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+    text = new TLatex(4.8, -23, "#color[870]{#sigma_{post} = 0.04 dB}");
+    text->SetTextSize(0.05);
+    text->Draw();
+
+
+
+    return;
+}
+
+double err_posteriori(TFitResultPtr fit, vector<double>& x, vector<double>& y) {
+
+    double err_post_squared = 0;
+
+   
+    const double a = fit->Parameter(0);
+    const double b = fit->Parameter(1);
+    const double c = fit->Parameter(2);
+ 
+    for(unsigned int j = 4; j < x.size() - 2; j++) {
+        err_post_squared += pow( (a * pow(x[j], 2) + b * x[j] + c) - y[j] , 2 ) / ( 22 );
+    }
+
+/*
+    for(unsigned int j = 0; j < x.size(); j++) {
+        err_post_squared += pow( cost - y[j] , 2 ) / ( x.size() - 2 );
+    }
+*/
+    return sqrt(err_post_squared);
 }
 /*-----------------------------------------------------------------------------EOF------------------------------------------------------------------------*/
