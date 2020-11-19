@@ -685,8 +685,8 @@ della risposta in frequenza del circuito. Avendo misurato le componenti circuita
 stima attesa del massimo guadagno è già stata esplicitata in \autoref{e:guadagno}, mentre ci si aspetta una frequenza di
 taglio
 
-\begin{align}
-	f_{\text{t}}&=20.1 \,\si{k\Hz} & \sigma_{f_{\text{t}}}&=\sqrt{	\left(\frac{1}{C_{1}R_{1}^2}\right)^2\sigma_{R_{1}}^2	+
+\begin{align}\label{e:diff_f_th}
+	f_{\text{t}}&=\frac{1}{2\pi R_{1}C_{1}}=20.1 \,\si{k\Hz} & \sigma_{f_{\text{t}}}&=\frac{1}{2\pi}\sqrt{	\left(\frac{1}{C_{1}R_{1}^2}\right)^2\sigma_{R_{1}}^2	+
 																	\left(\frac{1}{C_{1}^2R_{1}}\right)^2\sigma_{C_{1}}^2   }
 																	= 0.3 \,\si{k\Hz}	
 \end{align}
@@ -706,7 +706,8 @@ un fenomeno di attenuamento di amplificazione oltre un certo range di frequenze)
 stima approssimativa della frequenza di taglio. Infatti, infittendo le misure in tali intervalli si trova
 l'amplificazione massima sperimentale ($G_{\text{sper}}\approx 9.8$): questa viene divisa per un fattore $\sqrt{2}$ e,
 successivamente, si ricerca la frequenza che corrisponde a tale amplificazione ridotta, sempre infittendo le misure
-nell'intorno della frequenza di taglio. Si trova quindi $f_{\text{t, sper}}\approx 19.5\,\si{k\Hz}$.
+nell'intorno della frequenza di taglio. Si trova quindi $f_{\text{t, sper}}\approx 19.5\,\si{k\Hz}$, leggermente minore
+rispetto a quanto trovato in \autoref{e:diff_f_th}.
 
 
 %----------------------------------------------------------------------------------------
@@ -765,7 +766,7 @@ leggermente minore a confronto con le aspettative teoriche ($b_{\text{th}}=20\,\
 incidere sulla stima della frequenza di taglio restituendo un valore di $f_{\text{t}}$ leggermente maggiore rispetto
 alle aspettative. Spostando ora l'attenzione verso la zona destra del grafico, si vede chiaramente un effetto di
 attenuazione tipico di un filtro passa banda. Questo comportamento, infatti, si trova in disaccordo con la simulazione
-Spice del circuito, ed è, con buona probabilità, indice della presenza di una capacità (non considerata nella
+Spice del circuito ed è, con buona probabilità, indice della presenza di una capacità (non considerata nella
 simulazione) in parallelo al circuito: cavi, sonde, breadboard, oscilloscopio. 
 
 \begin{wrapfigure}{R}{0.5\textwidth}
@@ -780,7 +781,16 @@ resistenza di feedback $R_{\text{f}}$, si trova un notevole miglioramento nell'a
 sperimentali: questo conferma dunque che l'effetto di attenuazione della funzione di trasferimento del circuito è dovuto
 a dei contributi capacitivi non trascurabili posti in parallelo ad esso. In \autoref{i:diff_sim_comp} è messo in
 evidenza questo confronto tra i dati sperimentali e quelli simulati, sia trascurando la capacità $C_{2}$ (in arancione)
-sia invece tenendone conto (in azzurro).
+sia invece tenendone conto (in azzurro). Si procede ora nella ricerca della frequenza di taglio del circuito. Si calcola
+allora il massimo della funzione di trasferimento, facendo riferimento ai parametri del fit parabolico, come
+$H_{\text{max}}=-\frac{d^2-4ce}{4c}=19.79\pm 0.05\,\text{dB}$, dove nel computo dell'errore sono state tenute in
+considerazione le opportune covarianze tra i parametri. Successivamente, si calcola il punto di intersezione tra la
+retta orizzontale passante per $H_{\text{max}}$ e la retta interpolante le prime misure secondo
+$x_{\text{int}}=\frac{H_{\text{max}}-a}{b}=4.370 \pm 0.017\,\text{dec}$ (anche in questo caso nel computo dell'errore
+sono state tenute in considerazione le opportune covarianze tra i parametri $a$ e $b$ della retta). Convertendo quanto
+trovato in Hertz, la frequenza di taglio così stimata risulta essere $f_{\text{t}}=23.4 \pm 0.9\,\si{\Hz}$.\\
+Tale valore è però incompatibile sia con le aspettative teoriche, sia con quanto trovato sperimentalmente, seppur in
+modo approssimativo. 
 
 
 
