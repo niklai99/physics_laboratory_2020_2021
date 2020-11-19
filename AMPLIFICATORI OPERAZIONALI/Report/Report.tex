@@ -749,9 +749,7 @@ generale sul campione di dati rappresentato in \autoref{i:diff_bode}. Per la par
 soddisfacente accordo tra misure sperimentali e dati simulati, e lo stesso vale nell'intorno della frequenza di taglio e
 nell'intorno del massimo della funzione di trasferimento. Per questo motivo si può affermare che, siccome nell'analisi
 per la ricerca della frequenza di taglio vengono utilizzate le misure che sono in accordo con le aspettative, i
-risultati sono da considerarsi significativi. Si nota tuttavia che la retta presenta un coefficiente angolare ($b =
-19.03\pm 0.16\,\text{dB/dec}$ leggermente minore a confronto con le aspettative teoriche ($b_{\text{th}}=20\,\text{dB/dec}$)
-
+risultati sono da considerarsi significativi.  
 
 \begin{figure}[H]
 	\centering
@@ -762,8 +760,23 @@ risultati sono da considerarsi significativi. Si nota tuttavia che la retta pres
 	\label{i:diff_bode}
 \end{figure}
 
+\noindent Si nota tuttavia che la retta presenta un coefficiente angolare ($b = 19.03\pm 0.16\,\text{dB/dec}$)
+leggermente minore a confronto con le aspettative teoriche ($b_{\text{th}}=20\,\text{dB/dec}$): questo potrebbe dunque
+incidere sulla stima della frequenza di taglio restituendo un valore di $f_{\text{t}}$ leggermente maggiore rispetto
+alle aspettative. Spostando ora l'attenzione verso la zona destra del grafico, si vede chiaramente un effetto di
+attenuazione tipico di un filtro passa banda. Questo comportamento, infatti, si trova in disaccordo con la simulazione
+Spice del circuito, ed è, con buona probabilità, indice della presenza di una capacità (non considerata nella
+simulazione) in parallelo al circuito: cavi, sonde, breadboard, oscilloscopio. 
 
+\begin{wrapfigure}{R}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.5\textwidth]{../Plots/Report_Plots/diff_sim_comp.png}
+	\caption{\small}
+	\label{i:diff_sim_comp}
+\end{wrapfigure}
 
+\noindent Effettuando un'ulteriore simulazione, aggiungendo una capacità $C_{2}=7\,\si{\pF}$ in parallelo alla
+resistenza di feedback $R_{\text{f}}$, 
 
 
 
