@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1605806411 "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" "Report" 1605806416
+["pdflatex"] 1605809359 "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" "Report" 1605809364
   "../Arduino/Plots/calib_function.png" 1605533881 36996 45b9015cd68fbd8bbb1f8dbf93cc89c6 ""
   "../Plots/Report_Plots/diff_bode.png" 1605731626 52868 81bfe456978158795a27ada9d5320bb2 ""
   "../Plots/Report_Plots/diff_sim_comp.png" 1605799793 188031 23377c7b0a55c450fd1581d616d1f945 ""
@@ -9,11 +9,11 @@
   "../Plots/Report_Plots/opamp_plot_pp_projected.png" 1604952186 40421 de5026d90a7d2b07b54c22b3081fb527 ""
   "../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png" 1605532186 45825 5e7ad76f1bf3fac3d874dc94f8b475a4 ""
   "../Simulations/OpAmp/circuit_image_nosim.png" 1604684846 21670 05d2e9cbcf04f9b52fdb6b8cac032ddf ""
-  "Report.aux" 1605806415 13603 8835c38453c11d07358f1cc6ec094a15 ""
-  "Report.out" 1605806415 1370 21c01106e8f90f04caad78a36abcf259 ""
-  "Report.tex" 1605806408 51384 30bdca4f86e8c56539a2f05fdf03c7c6 ""
-  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux" 1605806415 13603 8835c38453c11d07358f1cc6ec094a15 ""
-  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" 1605806408 51384 30bdca4f86e8c56539a2f05fdf03c7c6 ""
+  "Report.aux" 1605809362 13666 7670d29b2b05c5b0c1f22e5ea98e18e5 ""
+  "Report.out" 1605809362 1370 21c01106e8f90f04caad78a36abcf259 ""
+  "Report.tex" 1605809355 52802 566c7aa22f3941aafb64fdfc34f71b8c ""
+  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux" 1605809362 13666 7670d29b2b05c5b0c1f22e5ea98e18e5 ""
+  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.tex" 1605809355 52802 566c7aa22f3941aafb64fdfc34f71b8c ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1543003531 2971 def0b6c1f0b107b3b936def894055589 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1543003531 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1543004023 3332 103109f5612ad95229751940c61aada0 ""
@@ -265,9 +265,9 @@
   "d:/Programmi/texlive/2018/texmf.cnf" 1543005960 673 4ae7b2f49cee444c5343a45b5d0f169c ""
   "structure.tex" 1605531540 1861 8c5f0bf575dc121b51e2a41ab4d8dc22 ""
   (generated)
+  "Report.log"
   "Report.aux"
+  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf"
   "Report.pdf"
   "Report.out"
   "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.log"
-  "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf"
-  "Report.log"

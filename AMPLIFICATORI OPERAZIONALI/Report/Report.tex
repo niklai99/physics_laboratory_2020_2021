@@ -726,7 +726,7 @@ l'interpolazione delle misure.
 
 \subsubsection{Grafico di Bode}
 Date le misure di tensione $V_{\text{in}}$ e $V_{\text{out}}$, viene calcolata la funzione di trasferimento
-\begin{align}
+\begin{align}\label{e:diff_err}
 	H&=\frac{V_{\text{out}}}{V_{\text{in}}} & \sigma_{H}&= H \sqrt{	
 											\left(	\frac{	\sigma_{l}\times V_{\text{in}}/\text{div}	}{	V_{\text{in}}	}	\right)^2	 + 
 											\left(	\frac{	\sigma_{l}\times V_{\text{out}}/\text{div}	}{	V_{\text{out}}	}	\right)^2 +	
@@ -790,10 +790,37 @@ $x_{\text{int}}=\frac{H_{\text{max}}-a}{b}=4.370 \pm 0.017\,\text{dec}$ (anche i
 sono state tenute in considerazione le opportune covarianze tra i parametri $a$ e $b$ della retta). Convertendo quanto
 trovato in Hertz, la frequenza di taglio così stimata risulta essere $f_{\text{t}}=23.4 \pm 0.9\,\si{\Hz}$.\\
 Tale valore è però incompatibile sia con le aspettative teoriche, sia con quanto trovato sperimentalmente, seppur in
-modo approssimativo. 
+modo approssimativo. Si vuole allora procedere stimando la frequenza di taglio utilizzando un metodo alternativo, con il
+fine di verificare se questa incompatibilità con le aspettative risulta essere ricorrente. In particolare, si vuole
+considerare sia la frequenza sia la funzione di trasferimento in scala lineare ed effettuare un fit del tipo $y = mx +
+q$ in uno stretto intorno della frequenza di taglio. Ricordando poi che la frequenza di taglio è tale da attenuare la
+funzione di trasferimento di un fattore $\sqrt{2}$, la prima può essere ricavata da
+\begin{align}
+	\frac{H_{\text{max}}}{\sqrt{2}}&=mx+q & \Longrightarrow & & f_{\text{t}}&=\frac{\frac{H_{\text{max}}}{\sqrt{2}}-q}{m}
+\end{align}
 
-
-
+\noindent Per effettuare il fit il contributo di scala presente in \autoref{e:diff_err} non viene considerato in quanto
+non altera l'andamento dei residui. Il contributo viene quindi aggiunto in secondo luogo sui parametri
+ dell’interpolazione, in particolare nel calcolo di $f_{\text{t}}$ come segue
+\begin{equation}
+	\sigma_{f_{\text{t}}}=\sqrt{
+		\left(
+			\frac{q}{m^2}-\frac{H_{\text{max}}}{m^2\sqrt{2}}
+		\right)^2\sigma_m^2+
+		\left(
+			-\frac{1}{m}
+		\right)^2\sigma_q^2+
+		2\left(
+			\frac{H_{\text{max}}}{m\sqrt{2}}
+		\right)^2\sigma_k^2+
+		2\left(
+			\frac{q}{m^2}-\frac{H_{\text{max}}}{m^2\sqrt{2}}
+		\right)
+		\left(
+			-\frac{1}{m}
+		\right)\text{cov}(m,q)
+	}
+\end{equation}
 
 
 
