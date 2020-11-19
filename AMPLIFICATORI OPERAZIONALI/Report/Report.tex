@@ -771,12 +771,16 @@ simulazione) in parallelo al circuito: cavi, sonde, breadboard, oscilloscopio.
 \begin{wrapfigure}{R}{0.5\textwidth}
 	\centering
 	\includegraphics[width=0.5\textwidth]{../Plots/Report_Plots/diff_sim_comp.png}
-	\caption{\small}
+	\caption{\small Confronto tra misure sperimentali e punti simulati con LTSpice.}
 	\label{i:diff_sim_comp}
 \end{wrapfigure}
 
 \noindent Effettuando un'ulteriore simulazione, aggiungendo una capacità $C_{2}=7\,\si{\pF}$ in parallelo alla
-resistenza di feedback $R_{\text{f}}$, 
+resistenza di feedback $R_{\text{f}}$, si trova un notevole miglioramento nell'accordo tra punti simulati e misure
+sperimentali: questo conferma dunque che l'effetto di attenuazione della funzione di trasferimento del circuito è dovuto
+a dei contributi capacitivi non trascurabili posti in parallelo ad esso. In \autoref{i:diff_sim_comp} è messo in
+evidenza questo confronto tra i dati sperimentali e quelli simulati, sia trascurando la capacità $C_{2}$ (in arancione)
+sia invece tenendone conto (in azzurro).
 
 
 
