@@ -739,8 +739,11 @@ acquisite utilizzando un'unica scala e, inoltre, sono state acquisite utilizzand
 sia mediamente pari all'unità. L'incertezza sulla frequenza dell'onda erogata dal generatore si assume trascurabile. Si
 rappresenta allora in \autoref{i:diff_bode} il grafico di Bode delle misure acquisite assieme ai punti simulati con
 LTSpice. Osservando il grafico si nota che sono state effettuate due interpolazioni: la prima lineare, per la quale sono
-state considerate le prime tre misure, la seconda parabolica, per la quale sono state considerate le misure nell'intorno
-del massimo di amplificazione.
+state considerate le prime tre misure, mentre la seconda parabolica, per la quale sono state considerate le misure
+nell'intorno del massimo di amplificazione. La strategia per stimare la frequenza di taglio è la seguente: si stima il
+massimo della funzione di trasferimento come vertice della parabola, si considera quindi la retta orizzontale
+$y=H_{\text{max}}$ e si calcola il punto di intersezione con la retta $y=a+bx$ interpolante le prime misure crescenti.
+In questo modo, la coordinata $x$ del punto di intersezione coincide con la frequenza di taglio del circuito. 
 
 \begin{figure}[H]
 	\centering
