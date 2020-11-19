@@ -736,12 +736,18 @@ $V_{\text{in}}/\text{div}$ e $V_{\text{out}}/\text{div}$ corrispondono al numero
 acquisizione rispettivamente del segnale in ingresso e del segnale in uscita, mentre $\sigma_{k}=1.5\%$ rappresenta
 l'incertezza di guadagno associata all'oscilloscopio: quest'ultima viene considerata in quanto le misure non sono state
 acquisite utilizzando un'unica scala e, inoltre, sono state acquisite utilizzando due diversi canali. Si assume che $k$
-sia mediamente pari all'unità. L'incertezza sulla frequenza dell'onda erogata dal generatore si assume trascurabile.
+sia mediamente pari all'unità. L'incertezza sulla frequenza dell'onda erogata dal generatore si assume trascurabile. Si
+rappresenta allora in \autoref{i:diff_bode} il grafico di Bode delle misure acquisite assieme ai punti simulati con
+LTSpice. Osservando il grafico si nota che sono state effettuate due interpolazioni: la prima lineare, per la quale sono
+state considerate le prime tre misure, la seconda parabolica, per la quale sono state considerate le misure nell'intorno
+del massimo di amplificazione.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Plots/Report_Plots/diff_bode.png}
-	\caption{\small THEBODE}
+	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati. Le misure sperimentali vengono
+	interpolate con una retta $y = a + bx$ e con una parabola $y = cx^2+dx+e$. Vengono mostrati anche i residui, 
+	rispettivamente per la retta e per la parabola.}
 	\label{i:diff_bode}
 \end{figure}
 
