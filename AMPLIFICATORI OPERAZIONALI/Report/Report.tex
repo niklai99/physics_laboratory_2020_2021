@@ -742,8 +742,16 @@ LTSpice. Osservando il grafico si nota che sono state effettuate due interpolazi
 state considerate le prime tre misure, mentre la seconda parabolica, per la quale sono state considerate le misure
 nell'intorno del massimo di amplificazione. La strategia per stimare la frequenza di taglio è la seguente: si stima il
 massimo della funzione di trasferimento come vertice della parabola, si considera quindi la retta orizzontale
-$y=H_{\text{max}}$ e si calcola il punto di intersezione con la retta $y=a+bx$ interpolante le prime misure crescenti.
-In questo modo, la coordinata $x$ del punto di intersezione coincide con la frequenza di taglio del circuito. 
+$y=H_{\text{max}}$ e si calcola il punto di intersezione con la retta $y=a+bx$ interpolante le prime tre misure
+crescenti. In questo modo, la coordinata $x$ del punto di intersezione coincide con la frequenza di taglio del circuito.
+Prima di discutere la frequenza di taglio del circuito, tuttavia, si vogliono fare delle considerazioni di carattere più
+generale sul campione di dati rappresentato in \autoref{i:diff_bode}. Per la parte lineare (a sinistra) si può notare un
+soddisfacente accordo tra misure sperimentali e dati simulati, e lo stesso vale nell'intorno della frequenza di taglio e
+nell'intorno del massimo della funzione di trasferimento. Per questo motivo si può affermare che, siccome nell'analisi
+per la ricerca della frequenza di taglio vengono utilizzate le misure che sono in accordo con le aspettative, i
+risultati sono da considerarsi significativi. Si nota tuttavia che la retta presenta un coefficiente angolare ($b =
+19.03\pm 0.16\,\text{dB/dec}$ leggermente minore a confronto con le aspettative teoriche ($b_{\text{th}}=20\,\text{dB/dec}$)
+
 
 \begin{figure}[H]
 	\centering
