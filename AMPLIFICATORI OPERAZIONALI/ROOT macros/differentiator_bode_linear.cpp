@@ -18,15 +18,15 @@ using namespace std;
 
 const string FILE_NAME = "../Data/data_diff_lin.txt";
 
-double XMIN = 15000;
-double XMAX = 27000;
-double YMIN = 6;
-double YMAX = 8.2;
+double XMIN = 16500;
+double XMAX = 25500;
+double YMIN = 6.20;
+double YMAX = 7.95;
 
 double RESXMIN = XMIN;
 double RESXMAX = XMAX;
-double RESYMIN = -0.4;
-double RESYMAX = 0.4;
+double RESYMIN = -0.24;
+double RESYMAX = 0.24;
 
 const double NPAR = 2;
 
@@ -102,12 +102,12 @@ void differentiator_bode_linear() {
 
     linee_res(RESXMIN, RESXMAX); 
 
-/*
+
     latex(text);
 
-    double err_post = err_posteriori(fit_parabolico, x, y);
-    cout << err_post << endl;
-*/
+    //double err_post = err_posteriori(fit_lineare, x, y);
+    //cout << err_post << endl;
+
     return;
 }
 
@@ -252,45 +252,34 @@ void linee_res(const double RESXMIN, const double RESXMAX) {
 void latex (TLatex* text) {
     c1->cd(1);
 
-    text = new TLatex(4, 0, "Fit Parameters");
-    text->SetTextSize(0.07);
-    text->Draw();
-
-    text = new TLatex(3.3, -10, "#color[810]{a = -63.4 #pm 0.5 dB}");
+    text = new TLatex(20847.3, 6.83492, "Fit Parameters");
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(3.3, -14, "#color[810]{b = 19.03 #pm 0.16 dB/dec}");
+    text = new TLatex(21081.6, 6.70, "q = 3.4 #pm 0.3");
+    text->SetTextSize(0.04);
+    text->Draw();
+
+    text = new TLatex(21081.6, 6.60, "m = 0.175 #pm 0.003 ms");
+    text->SetTextSize(0.04);
+    text->Draw();
+
+    text = new TLatex(21081.6, 6.50, "#chi^{2}/ndf = 2.6 / 7");
+    text->SetTextSize(0.04);
+    text->Draw();
+
+    text = new TLatex(21081.6, 6.40, "#sigma_{post} = 0.02");
+    text->SetTextSize(0.04);
+    text->Draw();
+
+    text = new TLatex(17755, 7.78, "Fit Function");
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(3.3, -18, "#color[810]{#chi^{2}/ndf = 2.4 / 1}");
-    text->SetTextSize(0.05);
+    text = new TLatex(18281, 7.67, "y = q + mx");
+    text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(3.3, -22, "#color[810]{#sigma_{post} = 0.3 dB}");
-    text->SetTextSize(0.05);
-    text->Draw();
-
-    text = new TLatex(4.8, -7, "#color[870]{c = -9.93 #pm 0.02 dB/dec^{2}}");
-    text->SetTextSize(0.05);
-    text->Draw();
-
-    text = new TLatex(4.8, -11, "#color[870]{d = 96.25 #pm 0.14 dB/dec}");
-    text->SetTextSize(0.05);
-    text->Draw();
-
-    text = new TLatex(4.8, -15, "#color[870]{e = -213.3 #pm 0.4 dB}");
-    text->SetTextSize(0.05);
-    text->Draw();
-
-    text = new TLatex(4.8, -19, "#color[870]{#chi^{2}/ndf = 0.9 / 22}");
-    text->SetTextSize(0.05);
-    text->Draw();
-
-    text = new TLatex(4.8, -23, "#color[870]{#sigma_{post} = 0.04 dB}");
-    text->SetTextSize(0.05);
-    text->Draw();
 
 
 
@@ -304,10 +293,9 @@ double err_posteriori(TFitResultPtr fit, vector<double>& x, vector<double>& y) {
    
     const double a = fit->Parameter(0);
     const double b = fit->Parameter(1);
-    const double c = fit->Parameter(2);
  
     for(unsigned int j = 4; j < x.size() - 2; j++) {
-        err_post_squared += pow( (a * pow(x[j], 2) + b * x[j] + c) - y[j] , 2 ) / ( 22 );
+        err_post_squared += pow( (a * x[j] + b) - y[j] , 2 ) / ( x.size() - 2 );
     }
 
 /*

@@ -799,30 +799,36 @@ funzione di trasferimento di un fattore $\sqrt{2}$, la prima può essere ricavat
 	\frac{H_{\text{max}}}{\sqrt{2}}&=mx+q & \Longrightarrow & & f_{\text{t}}&=\frac{\frac{H_{\text{max}}}{\sqrt{2}}-q}{m}
 \end{align}
 
-\noindent Per effettuare il fit il contributo di scala presente in \autoref{e:diff_err} non viene considerato in quanto
+\noindent Per effettuare il fit, il contributo di scala presente in \autoref{e:diff_err} non viene considerato in quanto
 non altera l'andamento dei residui. Il contributo viene quindi aggiunto in secondo luogo sui parametri
- dell’interpolazione, in particolare nel calcolo di $f_{\text{t}}$ come segue
+dell’interpolazione, in particolare nel calcolo di $f_{\text{t}}$ come segue
 \begin{equation}
 	\sigma_{f_{\text{t}}}=\sqrt{
 		\left(
-			\frac{q}{m^2}-\frac{H_{\text{max}}}{m^2\sqrt{2}}
+			\frac{\partial f_{\text{t}}}{\partial m}
+			%\frac{q}{m^2}-\frac{H_{\text{max}}}{m^2\sqrt{2}}
 		\right)^2\sigma_m^2+
 		\left(
-			-\frac{1}{m}
+			\frac{\partial f_{\text{t}}}{\partial q}
+			%-\frac{1}{m}
 		\right)^2\sigma_q^2+
 		2\left(
 			\frac{H_{\text{max}}}{m\sqrt{2}}
 		\right)^2\sigma_k^2+
 		2\left(
-			\frac{q}{m^2}-\frac{H_{\text{max}}}{m^2\sqrt{2}}
+			\frac{\partial f_{\text{t}}}{\partial m}
+			%\frac{q}{m^2}-\frac{H_{\text{max}}}{m^2\sqrt{2}}
 		\right)
 		\left(
-			-\frac{1}{m}
+			\frac{\partial f_{\text{t}}}{\partial q}
+			%-\frac{1}{m}
 		\right)\text{cov}(m,q)
 	}
 \end{equation}
 
-
+\noindent dove appunto $\sigma_{k}=1.5\%$ rappresenta il contributo di scala. Si sceglie allora come $H_{\text{max}} =
+9.76 \pm 0.05$ il valore trovato attraverso il fit parabolico precedente (in scala lineare) e si estrapolano i parametri
+$m$ e $q$ dal seguente fit nell'intervallo di frequenze 17 - 25 kHz.
 
 
 
