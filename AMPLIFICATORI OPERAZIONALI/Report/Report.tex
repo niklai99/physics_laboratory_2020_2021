@@ -885,13 +885,13 @@ Bode ($\lambda = 3.0$).
 
 \section{Arduino}
 In questa sezione si vuole effettuare una calibrazione della scheda Arduino Due. In particolare, si vuole quantificare
-il sampling rate dell'ADC della scheda e determinare la funzione di calibrazione in tensione, ovvero $V = a
-+ b \cdot \text{ADC}$ dove $V$ è il valore in Volt del segnale, $\text{ADC}$ è la tensione in ADC counts acquisita da
-Arduino, mentre $a$ e $b$ sono i parametri di calibrazione. Si ricorda che la scheda in questione presenta un ADC a 12
-bit, ovvero 4096 valori, e l'\textit{operating voltage} caratteristico (ovvero il valore massimo di tensione che può
-leggere in input) è $V_{\text{op}}=3.3\,\si{\volt}$. La più piccola variazione di tensione rilevabile in ADC counts
-risulta dunque essere circa $0.8\,\si{\mV}$. Ci si aspetta dunque di trovare una funzione di calibrazione in tensione
-con un coefficiente angolare attorno a tale valore. 
+il sampling rate dell'ADC della scheda e determinare la funzione di calibrazione in tensione, ovvero $V = a + b \cdot
+\text{ADC}$ dove $V$ è il valore in Volt del segnale, $\text{ADC}$ è la tensione in ADC counts acquisita da Arduino,
+mentre $a$ e $b$ sono i parametri di calibrazione. Si ricorda che la scheda in questione presenta un ADC a 12 bit,
+ovvero 4096 valori, e l'\textit{operating voltage} caratteristico (ovvero il valore massimo di tensione che può leggere
+in input) è $V_{\text{op}}=3.3\,\si{\volt}$.\footnote{\url{https://www.arduino.cc/en/pmwiki.php?n=Main/arduinoBoardDue}}
+La più piccola variazione di tensione rilevabile in ADC counts risulta dunque essere circa $0.8\,\si{\mV}$. Ci si
+aspetta dunque di trovare una funzione di calibrazione in tensione con un coefficiente angolare attorno a tale valore. 
 
 %----------------------------------------------------------------------------------------
 %	SAMPLING RATE 
@@ -952,5 +952,18 @@ $500\,\si{\mV}$ e $1.8\,\si{\volt}$ (parametri di calibrazione: $a = -0.59 \pm 0
 %----------------------------------------------------------------------------------------
 
 \section{Conclusioni}
+Ripercorrendo brevente quanto riscontrato nell'analisi effettuata, si vuole cominciare osservando che non è stato
+possibile quantificare la linearità di un amplificatore operazionale studiando il $\chi^2$ restituito dalle
+interpolazioni lineari, in quanto la correlazione tra errori di scala dell'oscilloscopio rendono i $\chi^2$ decisamente
+ridotti rispetto al valore di aspettazione. L'andamento del grafico dei residui, in particolare ci si riferisce al fit
+delle grandezze picco picco in \autoref{i:opamp_pp}, tuttavia conferma una soddisfacente linearità dell'operazionale.
+Per quanto riguarda lo studio dell'amplificazione del circuito (rappresentato in \autoref{i:opamp_circuit}), sono stati
+trovati risultati coonformi tra loro e con le aspettative teoriche considerando il campione di massimi ed il campione di
+minimi separatamente. A causa di sistematiche di offset verticale tra i due campioni di misure il dataset unificato
+(massimi e minimi) porta ad un'amplificazione, seppur leggermente compatibile, sensibilmente differente dalle
+precedenti. L'amplificazione estrapolata considerando le grandezze picco picco, invece, risulta essere conforme sia con
+le aspettative teoriche sia con le due stime ricavate considerando i campioni separati: 
+
+
 
 \end{document}
