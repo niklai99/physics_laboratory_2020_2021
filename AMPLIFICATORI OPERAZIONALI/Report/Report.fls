@@ -393,6 +393,9 @@ INPUT ../Plots/Report_Plots/diff_bode.png
 INPUT d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/../Plots/Report_Plots/diff_sim_comp.png
 INPUT ../Plots/Report_Plots/diff_sim_comp.png
 INPUT ../Plots/Report_Plots/diff_sim_comp.png
+INPUT d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/../Plots/Report_Plots/diff_linear.png
+INPUT ../Plots/Report_Plots/diff_linear.png
+INPUT ../Plots/Report_Plots/diff_linear.png
 INPUT d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/../Arduino/Plots/calib_function.png
 INPUT ../Arduino/Plots/calib_function.png
 INPUT ../Arduino/Plots/calib_function.png

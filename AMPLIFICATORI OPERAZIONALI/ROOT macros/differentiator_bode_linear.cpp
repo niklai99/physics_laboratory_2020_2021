@@ -235,7 +235,7 @@ void settings_lin_res(TGraphErrors* graph, const double RESXMIN, const double RE
     //tick più guardabili
     graph->GetXaxis()->SetTickLength(0.02);
     graph->GetYaxis()->SetTickLength(0.02);
-    graph->GetYaxis()->SetTitleOffset(1.35);
+    graph->GetYaxis()->SetTitleOffset(1.5);
 }
 
 
