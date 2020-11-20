@@ -105,8 +105,8 @@ void differentiator_bode_linear() {
 
     latex(text);
 
-    //double err_post = err_posteriori(fit_lineare, x, y);
-    //cout << err_post << endl;
+    double err_post = err_posteriori(fit_lineare, x, y);
+    cout << err_post << endl;
 
     return;
 }
@@ -256,15 +256,15 @@ void latex (TLatex* text) {
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(20081.6, 6.55, "q = 3.4 #pm 0.3");
+    text = new TLatex(20081.6, 6.55, "q = 3.3 #pm 0.3");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(20081.6, 6.47, "m = 0.175 #pm 0.003 ms");
+    text = new TLatex(20081.6, 6.47, "m = 0.182 #pm 0.002 ms");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(20081.6, 6.40, "#chi^{2}/ndf = 2.6 / 7");
+    text = new TLatex(20081.6, 6.40, "#chi^{2}/ndf = 1.9 / 6");
     text->SetTextSize(0.04);
     text->Draw();
 
