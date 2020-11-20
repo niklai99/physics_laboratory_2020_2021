@@ -887,7 +887,11 @@ Bode ($\lambda = 3.0$).
 In questa sezione si vuole effettuare una calibrazione della scheda Arduino Due. In particolare, si vuole quantificare
 il sampling rate dell'ADC della scheda e determinare la funzione di calibrazione in tensione, ovvero $V = a
 + b \cdot \text{ADC}$ dove $V$ è il valore in Volt del segnale, $\text{ADC}$ è la tensione in ADC counts acquisita da
-Arduino, mentre $a$ e $b$ sono i parametri di calibrazione. 
+Arduino, mentre $a$ e $b$ sono i parametri di calibrazione. Si ricorda che la scheda in questione presenta un ADC a 12
+bit, ovvero 4096 valori, e l'\textit{operating voltage} caratteristico (ovvero il valore massimo di tensione che può
+leggere in input) è $V_{\text{op}}=3.3\,\si{\volt}$. La più piccola variazione di tensione rilevabile in ADC counts
+risulta dunque essere circa $0.8\,\si{\mV}$. Ci si aspetta dunque di trovare una funzione di calibrazione in tensione
+con un coefficiente angolare attorno a tale valore. 
 
 %----------------------------------------------------------------------------------------
 %	SAMPLING RATE 
@@ -916,17 +920,12 @@ diverse forme d'onda facendo variare la tensione del generatore, avendo cura di 
 cursori dell'oscilloscopio, in quanto può non essere esattamente uguale a quello nominale indicato dal generatore. Si
 rappresentano in grafico i valori di tensione $V$ misurati sperimentalmente contro la media dei punti appartenenti ai
 picchi della relativa forma d'onda (si decide di non considerare unicamente il massimo della forma in quanto è possibile
-si tratti di una fluttuazione). Effettuando poi un'interpolazione lineare si ricavano l'offset (cioè
-quanti Volt corrispondono allo zero dell'ADC) ed il coefficiente angolare (cioè come scalano i Volt rispetto all'ADC).
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{../Arduino/Plots/calib_function.png}
-	\caption{Grafico di calibrazione in tensione e relativo grafico dei residui.}
-	\label{i:ar_calib}
-\end{figure}
-
-\noindent Osservando il grafico dei residui, si nota un marcato andamento anomalo dei punti a tensioni maggiori, oltre i
+si tratti di una fluttuazione). Per quanto riguarda le incertezze associate ai dati, si associa lungo y l'errore
+riportato in \autoref{e:osc} (misure acquisite utilizzando i cursori), mentre si assume che l'incertezza di acquisizione
+delle misure di Arduino sia trascurabile rispetto a quella dell'oscilloscopio e non viene quindi considerata.
+Effettuando poi un'interpolazione lineare, riportata in \autoref{i:ar_calib}, si ricavano l'offset (cioè quanti Volt
+corrispondono allo zero dell'ADC) ed il coefficiente angolare (cioè come scalano i Volt rispetto all'ADC).
+Osservando il grafico dei residui, si nota un marcato andamento anomalo dei punti a tensioni maggiori, oltre i
 $2\,\si{\volt}$: la scheda, cioè, risponde in modo leggermente diverso a seconda della tensione in ingresso. Questo è,
 molto probabilmente, dovuto al circuito di protezione dei pin di ingresso (limitatore di tensione a diodi, utile per
 evitare di bruciare la scheda) che ne altera la risposta avvicinandosi a tensioni pericolose. Si prova allora ad
@@ -936,6 +935,15 @@ essere fuori trend. Si ottengono quindi due zone in cui la linearità dell'ADC r
 $500\,\si{\mV}$ e $1.8\,\si{\volt}$ (parametri di calibrazione: $a = -0.59 \pm 0.02 \, \si{\V}$ e $b = 0.776 \pm 0.013
 \,\si{\mV}/\text{a.u.}$) mentre la seconda tra $1.8\,\si{\volt}$ e $2.5\,\si{\volt}$ (parametri di calibrazione: $a =
 -0.44 \pm 0.15 \, \si{\V}$ e $b = 0.73 \pm 0.04 \,\si{\mV}/\text{a.u.}$).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm]{../Arduino/Plots/calib_function.png}
+	\caption{Grafico di calibrazione in tensione e relativo grafico dei residui.}
+	\label{i:ar_calib}
+\end{figure}
+
+\noindent 
 
 
 
