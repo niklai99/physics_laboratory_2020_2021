@@ -802,7 +802,7 @@ funzione di trasferimento di un fattore $\sqrt{2}$, la prima può essere ricavat
 \noindent Per effettuare il fit, il contributo di scala presente in \autoref{e:diff_err} non viene considerato in quanto
 non altera l'andamento dei residui. Il contributo viene quindi aggiunto in secondo luogo sui parametri
 dell’interpolazione, in particolare nel calcolo di $f_{\text{t}}$ come segue
-\begin{equation}
+\begin{equation}\label{e:diff_prop}
 	\sigma_{f_{\text{t}}}=\sqrt{
 		\left(
 			\frac{\partial f_{\text{t}}}{\partial m}
@@ -812,6 +812,9 @@ dell’interpolazione, in particolare nel calcolo di $f_{\text{t}}$ come segue
 			\frac{\partial f_{\text{t}}}{\partial q}
 			%-\frac{1}{m}
 		\right)^2\sigma_q^2+
+		%\left(
+		%	\frac{\partial f_{\text{t}}}{\partial H}
+		%\right)^2\sigma_{H}^2+
 		2\left(
 			\frac{H_{\text{max}}}{m\sqrt{2}}
 		\right)^2\sigma_k^2+
@@ -828,7 +831,10 @@ dell’interpolazione, in particolare nel calcolo di $f_{\text{t}}$ come segue
 
 \noindent dove appunto $\sigma_{k}=1.5\%$ rappresenta il contributo di scala. Si sceglie allora come $H_{\text{max}} =
 9.76 \pm 0.05$ il valore trovato attraverso il fit parabolico precedente (in scala lineare) e si estrapolano i parametri
-$m$ e $q$ dal seguente fit nell'intervallo di frequenze 17 - 24 kHz.
+$m$ e $q$ dal seguente fit nell'intervallo di frequenze 17 - 24 kHz. Si vuole far notare che in \autoref{e:diff_prop}
+non è stato considerato il termine relativo ad $H_{\text{max}}$ per comodità, in quanto tale contributo si ritrova
+essere due ordini di grandezza inferiore rispetto agli altri termini e non modifica in quantità apprezzabile la stima
+finale dell'errore.
 
 \begin{figure}[H]
 	\centering
@@ -837,11 +843,12 @@ $m$ e $q$ dal seguente fit nell'intervallo di frequenze 17 - 24 kHz.
 	\label{i:diff_linear}
 \end{figure}
 
-\noindent Si nota immediatamente una leggera tendenza paraolica dell'andamento dei residui, tuttavia, pur avendo trascurato il
-contributo di scala nel calcolo delle incertezze, i punti si distribuiscono tutti entro il loro errore. Il $\chi^2$
-risulta in ogni caso compatibile con il suo valore di aspettazione ($\lambda = 1.2$), pur segnalando una possibile
-sovrastima dell'errore sulle misure (ipotesi assecondata anche dall'errore a posteriori, che risulta essere circa $1/5$
-rispetto alle incertezze assegnate ai dati).
+\noindent Si nota immediatamente una leggera tendenza paraolica dell'andamento dei residui, tuttavia, pur avendo
+trascurato il contributo di scala nel calcolo delle incertezze, i punti si distribuiscono tutti entro il loro errore. Il
+$\chi^2$ risulta in ogni caso compatibile con il suo valore di aspettazione ($\lambda = 1.2$), pur segnalando una
+possibile sovrastima dell'errore sulle misure (ipotesi assecondata anche dall'errore a posteriori, che risulta essere
+circa $1/5$ rispetto alle incertezze assegnate ai dati). La stima della frequenza di taglio che si ottiene è dunque
+$f_{\text{t}} = 19.8\pm 0.8\,\si{\kHz}$.
 
 
 
@@ -870,7 +877,6 @@ rispetto alle incertezze assegnate ai dati).
 
 
 
-\cleardoublepage
 %----------------------------------------------------------------------------------------
 %	ARDUINO
 %----------------------------------------------------------------------------------------
