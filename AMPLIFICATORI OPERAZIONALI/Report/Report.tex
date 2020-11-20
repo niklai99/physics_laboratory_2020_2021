@@ -833,11 +833,15 @@ $m$ e $q$ dal seguente fit nell'intervallo di frequenze 17 - 25 kHz.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Plots/Report_Plots/diff_linear.png}
-	\caption{\small }
+	\caption{\small Interpolazione lineare delle misure in un intorno della frequenza di taglio e relativo grafico dei residui.}
 	\label{i:diff_linear}
 \end{figure}
 
-
+\noindent Si nota immediatamente una leggera tendenza paraolica dell'andamento dei residui, tuttavia, pur avendo trascurato il
+contributo di scala nel calcolo delle incertezze, i punti si distribuiscono tutti entro il loro errore. Il $\chi^2$
+risulta in ogni caso compatibile con il suo valore di aspettazione ($\lambda = 1.2$), pur segnalando una possibile
+sovrastima dell'errore sulle misure (ipotesi assecondata anche dall'errore a posteriori, che risulta essere circa $1/5$
+rispetto alle incertezze assegnate ai dati).
 
 
 
@@ -870,7 +874,7 @@ $m$ e $q$ dal seguente fit nell'intervallo di frequenze 17 - 25 kHz.
 %----------------------------------------------------------------------------------------
 %	ARDUINO
 %----------------------------------------------------------------------------------------
-\cleardoublepage
+
 \section{Arduino}
 In questa sezione si vuole effettuare una calibrazione della scheda Arduino Due. In particolare, si vuole quantificare
 il sampling rate dell'ADC della scheda e determinare la funzione di calibrazione in tensione, ovvero $V = a

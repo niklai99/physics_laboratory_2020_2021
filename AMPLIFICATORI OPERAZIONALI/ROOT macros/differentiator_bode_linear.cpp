@@ -19,9 +19,9 @@ using namespace std;
 const string FILE_NAME = "../Data/data_diff_lin.txt";
 
 double XMIN = 16500;
-double XMAX = 25500;
+double XMAX = 24500;
 double YMIN = 6.20;
-double YMAX = 7.95;
+double YMAX = 7.75;
 
 double RESXMIN = XMIN;
 double RESXMAX = XMAX;
@@ -252,31 +252,31 @@ void linee_res(const double RESXMIN, const double RESXMAX) {
 void latex (TLatex* text) {
     c1->cd(1);
 
-    text = new TLatex(20847.3, 6.83492, "Fit Parameters");
+    text = new TLatex(19847.3, 6.68492, "Fit Parameters");
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(21081.6, 6.70, "q = 3.4 #pm 0.3");
+    text = new TLatex(20081.6, 6.55, "q = 3.4 #pm 0.3");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(21081.6, 6.60, "m = 0.175 #pm 0.003 ms");
+    text = new TLatex(20081.6, 6.47, "m = 0.175 #pm 0.003 ms");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(21081.6, 6.50, "#chi^{2}/ndf = 2.6 / 7");
+    text = new TLatex(20081.6, 6.40, "#chi^{2}/ndf = 2.6 / 7");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(21081.6, 6.40, "#sigma_{post} = 0.02");
+    text = new TLatex(20081.6, 6.33, "#sigma_{post} = 0.02");
     text->SetTextSize(0.04);
     text->Draw();
 
-    text = new TLatex(17755, 7.78, "Fit Function");
+    text = new TLatex(17755, 7.63, "Fit Function");
     text->SetTextSize(0.05);
     text->Draw();
 
-    text = new TLatex(18281, 7.67, "y = q + mx");
+    text = new TLatex(18281, 7.52, "y = q + mx");
     text->SetTextSize(0.04);
     text->Draw();
 
