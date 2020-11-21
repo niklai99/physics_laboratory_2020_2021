@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  21 NOV 2020 23:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  21 NOV 2020 23:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1326,44 +1326,36 @@ File: ../Plots/Report_Plots/opamp_plot_pp_projected.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_plot_pp_projected.png>
 Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_pp_projected.png  used on input line 437.
 (pdftex.def)             Requested size: 483.69687pt x 249.90788pt.
- [5 <../Plots/Report_Plots/opamp_plot_all_projected.png>]
-<../Plots/Report_Plots/opamp_comp_BIG.png, id=182, 844.95676pt x 411.939pt>
+ [5 <../Plots/Report_Plots/opamp_plot_all_projected.png>] [6 <../Plots/Report_Plots/opamp_plot_pp_projected.png>]
+<../Plots/Report_Plots/opamp_comp_BIG.png, id=189, 844.95676pt x 411.939pt>
 File: ../Plots/Report_Plots/opamp_comp_BIG.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_comp_BIG.png>
 Package pdftex.def Info: ../Plots/Report_Plots/opamp_comp_BIG.png  used on input line 469.
 (pdftex.def)             Requested size: 241.84843pt x 117.90668pt.
 
-Overfull \hbox (11.96324pt too wide) in paragraph at lines 477--486
-\T1/cmr/m/n/10.95 nettamente in-fe-rio-re a con-fron-to con le ri-ma-nen-ti sti-me. Que-st'ul-ti-me ri-sul-ta-no es-se-re quan-ti-tà com-pa-ti-bi-li
- []
-
-[6 <../Plots/Report_Plots/opamp_plot_pp_projected.png>]
-Underfull \hbox (badness 1320) in paragraph at lines 493--497
-[]\T1/cmr/m/n/10.95 Ci si pro-po-ne di stu-dia-re il com-por-ta-men-to
+Underfull \hbox (badness 4060) in paragraph at lines 477--486
+\T1/cmr/m/n/10.95 le gran-dez-ze pic-co pic-co 6) si tro-vi-no in
  []
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 493--497
-\T1/cmr/m/it/10.95 in fre-quen-za \T1/cmr/m/n/10.95 di un cir-cui-to si-mi-le a quel-lo
+Underfull \hbox (badness 2205) in paragraph at lines 477--486
+\T1/cmr/m/n/10.95 tra i due da-ta-set (sia at-tra-ver-so gran-dez-ze
  []
 
 
-Underfull \hbox (badness 6691) in paragraph at lines 503--506
-\OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 017 []$ \T1/cmr/m/n/10.95 (mi-su-ra-ta di-ret-ta-men-te uti-liz-zan-do
+Underfull \hbox (badness 1448) in paragraph at lines 477--486
+\T1/cmr/m/n/10.95 dei ri-sul-ta-ti ot-te-nu-ti dai cam-pio-ni se-pa-ra-ti),
  []
 
 
-Underfull \hbox (badness 2884) in paragraph at lines 503--506
-\T1/cmr/m/n/10.95 il mul-ti-me-tro di-gi-ta-le a fon-do sca-la $\OT1/cmr/m/n/10.95 1 []$\T1/cmr/m/n/10.95 ).
+Overfull \hbox (12.4514pt too wide) in paragraph at lines 503--506
+\T1/cmr/m/n/10.95 di-gi-ta-le a fon-do sca-la $\OT1/cmr/m/n/10.95 1 []$\T1/cmr/m/n/10.95 ). Nel do-mi-nio del-le fre-quen-ze la fun-zio-ne di tra-sfe-ri-men-to $\OML/cmm/m/it/10.95 H\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 s\OT1/cmr/m/n/10.95 ) = \OML/cmm/m/it/10.95 V[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 s\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 =V[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 s\OT1/cmr/m/n/10.95 )$
  []
 
+[7
 
-Underfull \hbox (badness 2591) in paragraph at lines 503--506
-\T1/cmr/m/n/10.95 Nel do-mi-nio del-le fre-quen-ze la fun-zio-ne di
- []
-
-[7 <../Plots/Report_Plots/opamp_comp_BIG.png>]
-<../Plots/Report_Plots/diff_bode.png, id=203, 1925.1925pt x 994.71625pt>
+ <../Plots/Report_Plots/opamp_comp_BIG.png>]
+<../Plots/Report_Plots/diff_bode.png, id=202, 1925.1925pt x 994.71625pt>
 File: ../Plots/Report_Plots/diff_bode.png Graphic file (type png)
 <use ../Plots/Report_Plots/diff_bode.png>
 Package pdftex.def Info: ../Plots/Report_Plots/diff_bode.png  used on input line 590.
@@ -1442,7 +1434,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  57i,22n,54p,10533b,1002s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb>
-Output written on "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" (13 pages, 1212897 bytes).
+Output written on "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" (13 pages, 1212795 bytes).
 PDF statistics:
  358 PDF objects out of 1000 (max. 8388607)
  296 compressed objects within 3 object streams
