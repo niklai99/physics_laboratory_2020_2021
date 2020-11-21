@@ -94,7 +94,7 @@ tensione di una scheda Arduino Due.
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Strumentazione e Componenti}\label{s:strumenti}
-Nel corso dell'esperienza si utilizzano i seguenti:
+Nel corso dell'esperienza vengono utilizzati:
 \begin{itemize}
 	\item Multimetro digitale Metrix MTX3292
 	\item Generatore di funzioni Tektronix AFG1022
@@ -114,7 +114,7 @@ Nel corso dell'esperienza si utilizzano i seguenti:
 comportamento di un circuito puramente resistivo comprendente un amplificatore operazionale in configurazione invertente
 (polo positivo a massa, polo negativo collegato al segnale in ingresso). Si vuole in particolare verificare la sua
 linearità e stimare l'amplificazione del circuito come grandezza derivata sia partendo dalle misure dirette delle
-resistenze del circuito sia come parametro di un'interpolazione lineare di misure acquisite con l'oscilloscopio. 
+resistenze del circuito, sia come parametro di un'interpolazione lineare di misure acquisite con l'oscilloscopio. 
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -179,13 +179,13 @@ invece variabile tra $200\,\si{\mV}$ picco picco e $3.5\,\si{\V}$ picco picco. \
 uscita è legato a quello in ingresso da $V_{\text{out}} = - R_{\text{f}} / R_{1} \, V_{\text{in}}$, dove il segno meno
 (dovuto alla particolare configurazione dell'operazionale) indica un segnale in output invertito\footnote{Ci si aspetta
 che i massimi del segnale in ingresso corrispondano ai minimi del segnale in uscita e viceversa.} rispetto a quello in
-ingresso, e amplificato di un fattore $G \equiv R_{\text{f}} / R_{1} \, V_{\text{in}}$. Facendo riferimento ai valori
+ingresso, e amplificato di un fattore $G \equiv R_{\text{f}} / R_{1}$. Facendo riferimento ai valori
 delle resistenze $R_{\text{f}}$ ed $R_1$ riportate in \autoref{t:direct_measures}, l'aspettativa teorica per il guadagno
 del circuito è dunque 
 \begin{align}\label{e:guadagno}
 	G&=\frac{R_{\text{f}}}{R_{1}} = 10.194 \pm 0.006
 	&
-	\text{con   }\,\,\sigma_{\text{k}}&=\sqrt{	\left(	\frac{	1	}{	R_{1}	}	\right)^2	\sigma_{R_{\text{f}}}^2	
+	\text{con   }\,\,\sigma_{G}&=\sqrt{	\left(	\frac{	1	}{	R_{1}	}	\right)^2	\sigma_{R_{\text{f}}}^2	
 	+	\left(	\frac{	R_{\text{f}}	}{	R_{1}^2	}	\right)^2\sigma_{R_{1}}^2	}
 \end{align}
 
@@ -204,15 +204,15 @@ sperimentale. In \autoref{i:opamp_simulation} sono rappresentate due
 	\label{i:opamp_simulation}
 \end{wrapfigure}
 
-\noindent simulazioni corrispondenti a due ampiezze differenti del segnale in ingresso: la prima (in tonalità di
-\textit{blu}) è la risposta a $V_{\text{gen}}=0.5\,\si{\volt}$, mentre la seconda (in tonalità di\textit{rosso}) a
+\noindent simulazioni corrispondenti a due ampiezze differenti del segnale in ingresso: la prima (in tonalità
+\textit{blu}) è la risposta a $V_{\text{gen}}=0.5\,\si{\volt}$, mentre la seconda (in tonalità \textit{rossa}) a
 $V_{\text{gen}}=3\,\si{\volt}$. Dal grafico si nota chiaramente come la risposta $V_{\text{out}}$ ad un segnale in
 ingresso $V_{\text{gen}}=0.5\,\si{\volt}$ sia perfettamente conforme alle aspettative: viene mantenuta la forma
 sinusoidale del segnale, amplificato di circa un fattore 10 ed invertito rispetto alla tensione $V_{\text{in}}$. Si nota
 inoltre come questo non si ripresenti anche nel caso della risposta a $V_{\text{gen}}=3\,\si{\volt}$: il segnale in
 uscita presenta, infatti, i picchi di massimo e minimo tagliati a livello $V_{\text{sat}}=\pm 15\,\si{\volt}$. Questo
 accade perchè, essendo l'amplificatore operazionale una componente attiva del circuito, è stato alimentato con una
-tensione continua a $\pm 15\,\si{\volt}$ (come riportato sopra). Per conservazione dell'energia, allora, l'operazionale
+tensione continua a $\pm 15\,\si{\volt}$ (come riportato sopra). Per la conservazione dell'energia, allora, l'operazionale
 non può fornire in output una tensione maggiore di quanta ne riceve esso stesso in alimentazione. Si parla quindi di
 \textit{saturazione} del segnale in uscita a $V_{\text{sat}}=\pm 15\,\si{\volt}$. Per quanto detto,  avendo $G \approx
 10$, ci si aspetta che questo fenomeno inizi a manifestarsi attorno ad un valore nominale di tensione
@@ -271,13 +271,11 @@ valori di $V_{\text{out}}$, si nota un'amplificazione conforme alle aspettative 
 inoltre, come le misure acquisite a $V_{\text{gen}}\approx 1.5\,\si{\volt}$ tendano a stabilizzarsi attorno a
 $V_{\text{out}}=V_{\text{sat}}=\pm 15\,\si{\volt}$, ovvero la tensione massima che l'amplificatore operazionale può
 fornire in output: questo effetto di saturazione del segnale in uscita è perfettamente conforme alle aspettative esposte
-in \autoref{s:spice}.
+in \autoref{s:spice}. Spostando l'attenzione verso il grafico dei residui, si può notare chiaramente l'effetto della
+saturazione del segnale: le misure acquisite in tale condizione risultano essere outliers rispetto al trend lineare dei
+dati rimanenti (zona centra), i quali residui si distribuiscono ragionevolmente attorno allo zero. Quanto spazio ho
+ancora?
 
-%Dal grafico dei residui si può osservare lo stesso fenomeno: la zona
-%centrale risulta essere distribuita ragionevolmente attorno allo zero, mentre gli estremi tendono a distanziarsi anche
-%notevolmente. Da questo si deduce dunque che i tre punti finali di massimo e di minimo sono da considerarsi degli
-%outliers rispetto al trend lineare delle misure rimanenti: al fine di caratterizzare la linearità dell'amplificatore
-%operazionale e di calcolare l'amplificazione del circuito, dunque, gli outliers non verranno considerati.
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	PRELIMIARY FIT
