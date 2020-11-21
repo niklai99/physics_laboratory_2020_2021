@@ -185,7 +185,7 @@ del circuito è dunque
 \begin{align}\label{e:guadagno}
 	G&=\frac{R_{\text{f}}}{R_{1}} = 10.194 \pm 0.006
 	&
-	\text{con   }\,\,\sigma_{G}&=\sqrt{	\left(	\frac{	1	}{	R_{1}	}	\right)^2	\sigma_{R_{\text{f}}}^2	
+	\text{con   }\,\,\sigma_{\text{k}}&=\sqrt{	\left(	\frac{	1	}{	R_{1}	}	\right)^2	\sigma_{R_{\text{f}}}^2	
 	+	\left(	\frac{	R_{\text{f}}	}{	R_{1}^2	}	\right)^2\sigma_{R_{1}}^2	}
 \end{align}
 
@@ -250,12 +250,13 @@ tramite la bontà del fit e studiando l'andamento dei residui associati all'inte
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Dataset}
-Si riportano in  \autoref{i:opamp_eda} le misure acquisite con l'oscilloscopio alle quali si associa l'errore dato da
+Si comincia riportando in \autoref{i:opamp_eda} le misure acquisite con l'oscilloscopio. A queste, cioè sia a
+$V_{\text{in}}$ che $V_{\text{out}}$, si associa l'incertezza
 \begin{equation}\label{e:osc}
-	\sigma_{V} = \sqrt{ (\sigma_{l}\times\text{V/div})^2 + (\sigma_{g}\times\text{measure})^2 }
+	\sigma_{V} = \sqrt{ (\sigma_{\text{L}}\times\text{V/div})^2 + (\sigma_{\text{k}}\times\text{measure})^2 }
 \end{equation}
-\noindent dove $\sigma_{l}=0.04$ e $\sigma_{g}=1.5\%$ rappresentano l'incertezza di lettura e di guadagno associati
-all'oscilloscopio mentre V/div rappresenta la scala di acquisizione della misura.
+\noindent dove $\sigma_{\text{L}}=0.04$ rappresenta il contributo di lettura e $\sigma_{\text{k}}=1.5\%$ il contributo di scala
+associati all'oscilloscopio mentre V/div rappresenta la scala di acquisizione della misura.
 
 \begin{figure}[H]
 	\centering
@@ -263,20 +264,20 @@ all'oscilloscopio mentre V/div rappresenta la scala di acquisizione della misura
 	\caption{\small Grafico delle misure acquisite interpolate linearmente e relativo grafico dei residui.}
 	\label{i:opamp_eda}
 \end{figure}
+\noindent Inizialmente, si vuole far notare che i valori di $V_{\text{in}}$ sono conformi a quanto erogato dal
+generatore: questo è sicuramente indice di una corretta acquisizione del segnale in ingresso, di una corretta
+configurazione del genetratore (modalità "50 Ohm") e dell'oscilloscopio (attenuazione sonda 10X). Osservando invece i
+valori di $V_{\text{out}}$, si nota un'amplificazione conforme alle aspettative (circa un fattore 10). Si osserva,
+inoltre, come le misure acquisite a $V_{\text{gen}}\approx 1.5\,\si{\volt}$ tendano a stabilizzarsi attorno a
+$V_{\text{out}}=V_{\text{sat}}=\pm 15\,\si{\volt}$, ovvero la tensione massima che l'amplificatore operazionale può
+fornire in output: questo effetto di saturazione del segnale in uscita è perfettamente conforme alle aspettative esposte
+in \autoref{s:spice}.
 
-\noindent  Si vuole inizialmente far notare che i valori di $V_{\text{in}}$ sono conformi a quanto impostato sul
-generatore: questo è sicuramente indice di una corretta acquisizione del segnale in ingresso e di una corretta
-configurazione del generatore (\textit{modalità "50 Ohm"}) e dell'oscilloscopio (\textit{attenuazione sonda 10X}).
-Osservando invece i valori di $V_{\text{out}}$ si nota un'amplificazione conforme alle aspettative (circa un fattore
-10). Inoltre si osserva come le ultime misure, cioè quelle con tensione nominale $V\text{pp}_{\text{gen}}$ maggiore,
-tendano a stabilizzarsi attorno a circa $V_{\text{sat}}=\pm15\,\si{\volt}$, ovvero la tensione massima che
-l'amplificatore operazionale può fornire in output. Come da aspettative, riportate in \autoref{s:spice}, questo fenomeno
-di stabilizzazione attorno a $V_{\text{sat}}$ inizia a manifestarsi attorno ad una tensione erogata dal generatore di
-circa $V\text{pp}_{\text{gen}}=3\,\si{\volt}$. Dal grafico dei residui si può osservare lo stesso fenomeno: la zona
-centrale risulta essere distribuita ragionevolmente attorno allo zero, mentre gli estremi tendono a distanziarsi anche
-notevolmente. Da questo si deduce dunque che i tre punti finali di massimo e di minimo sono da considerarsi degli
-outliers rispetto al trend lineare delle misure rimanenti: al fine di caratterizzare la linearità dell'amplificatore
-operazionale e di calcolare l'amplificazione del circuito, dunque, gli outliers non verranno considerati.
+%Dal grafico dei residui si può osservare lo stesso fenomeno: la zona
+%centrale risulta essere distribuita ragionevolmente attorno allo zero, mentre gli estremi tendono a distanziarsi anche
+%notevolmente. Da questo si deduce dunque che i tre punti finali di massimo e di minimo sono da considerarsi degli
+%outliers rispetto al trend lineare delle misure rimanenti: al fine di caratterizzare la linearità dell'amplificatore
+%operazionale e di calcolare l'amplificazione del circuito, dunque, gli outliers non verranno considerati.
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	PRELIMIARY FIT
@@ -564,13 +565,13 @@ l'interpolazione delle misure.
 Date le misure di tensione $V_{\text{in}}$ e $V_{\text{out}}$, viene calcolata la funzione di trasferimento
 \begin{align}\label{e:diff_err}
 	H&=\frac{V_{\text{out}}}{V_{\text{in}}} & \sigma_{H}&= H \sqrt{	
-											\left(	\frac{	\sigma_{l}\times V_{\text{in}}/\text{div}	}{	V_{\text{in}}	}	\right)^2	 + 
-											\left(	\frac{	\sigma_{l}\times V_{\text{out}}/\text{div}	}{	V_{\text{out}}	}	\right)^2 +	
-											2\left(	\frac{	\sigma_{k}	}{	k	}	\right)^2 }	
+											\left(	\frac{	\sigma_{\text{L}}\times V_{\text{in}}/\text{div}	}{	V_{\text{in}}	}	\right)^2	 + 
+											\left(	\frac{	\sigma_{\text{L}}\times V_{\text{out}}/\text{div}	}{	V_{\text{out}}	}	\right)^2 +	
+											2\left(	\frac{	\sigma_{\text{k}}	}{	k	}	\right)^2 }	
 \end{align}
-\noindent dove $\sigma_{l}=0.04$ rappresenta l'incertezza di lettura associata all'oscilloscopio, i termini
+\noindent dove $\sigma_{\text{L}}=0.04$ rappresenta l'incertezza di lettura associata all'oscilloscopio, i termini
 $V_{\text{in}}/\text{div}$ e $V_{\text{out}}/\text{div}$ corrispondono al numero di volt per divisione per il canale di
-acquisizione rispettivamente del segnale in ingresso e del segnale in uscita, mentre $\sigma_{k}=1.5\%$ rappresenta
+acquisizione rispettivamente del segnale in ingresso e del segnale in uscita, mentre $\sigma_{\text{k}}=1.5\%$ rappresenta
 l'incertezza di guadagno associata all'oscilloscopio: quest'ultima viene considerata in quanto le misure non sono state
 acquisite utilizzando un'unica scala e, inoltre, sono state acquisite utilizzando due diversi canali. Si assume che $k$
 sia mediamente pari all'unità. L'incertezza sulla frequenza dell'onda erogata dal generatore si assume trascurabile. Si
@@ -665,7 +666,7 @@ dell’interpolazione, in particolare nel calcolo di $f_{\text{t}}$ come segue
 	}
 \end{equation}
 
-\noindent dove appunto $\sigma_{k}=1.5\%$ rappresenta il contributo di scala. Si sceglie allora come $H_{\text{max}} =
+\noindent dove appunto $\sigma_{\text{k}}=1.5\%$ rappresenta il contributo di scala. Si sceglie allora come $H_{\text{max}} =
 9.76 \pm 0.05$ il valore trovato attraverso il fit parabolico precedente (in scala lineare) e si estrapolano i parametri
 $m$ e $q$ dal seguente fit nell'intervallo di frequenze 17 - 24 kHz. Si vuole far notare che in \autoref{e:diff_prop}
 non è stato considerato il termine relativo ad $H_{\text{max}}$ per comodità, in quanto tale contributo si ritrova

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  21 NOV 2020 18:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  21 NOV 2020 22:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1307,75 +1307,95 @@ Underfull \hbox (badness 7944) in paragraph at lines 207--220
 <../Plots/Report_Plots/opamp_plot_alldata_eda.png, id=144, 1111.7535pt x 582.978pt>
 File: ../Plots/Report_Plots/opamp_plot_alldata_eda.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_plot_alldata_eda.png>
-Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_alldata_eda.png  used on input line 262.
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_alldata_eda.png  used on input line 263.
 (pdftex.def)             Requested size: 483.69687pt x 253.63786pt.
  [3 <../Plots/Report_Plots/opamp_plot_alldata_eda.png>]
 <../Plots/Report_Plots/opamp_plot_all_projected.png, id=160, 1155.1155pt x 596.82974pt>
 File: ../Plots/Report_Plots/opamp_plot_all_projected.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_plot_all_projected.png>
-Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_all_projected.png  used on input line 399.
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_all_projected.png  used on input line 400.
 (pdftex.def)             Requested size: 483.69687pt x 249.92001pt.
  [4]
 <../Plots/Report_Plots/opamp_plot_pp_projected.png, id=173, 1925.1925pt x 994.71625pt>
 File: ../Plots/Report_Plots/opamp_plot_pp_projected.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_plot_pp_projected.png>
-Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_pp_projected.png  used on input line 439.
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_pp_projected.png  used on input line 440.
 (pdftex.def)             Requested size: 483.69687pt x 249.90788pt.
- [5 <../Plots/Report_Plots/opamp_plot_all_projected.png>] [6 <../Plots/Report_Plots/opamp_plot_pp_projected.png>]
-<../Plots/Report_Plots/opamp_comp_BIG.png, id=189, 844.95676pt x 411.939pt>
+ [5 <../Plots/Report_Plots/opamp_plot_all_projected.png>]
+<../Plots/Report_Plots/opamp_comp_BIG.png, id=184, 844.95676pt x 411.939pt>
 File: ../Plots/Report_Plots/opamp_comp_BIG.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_comp_BIG.png>
-Package pdftex.def Info: ../Plots/Report_Plots/opamp_comp_BIG.png  used on input line 471.
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_comp_BIG.png  used on input line 472.
 (pdftex.def)             Requested size: 241.84843pt x 117.90668pt.
 
-Underfull \hbox (badness 4060) in paragraph at lines 479--488
-\T1/cmr/m/n/10.95 le gran-dez-ze pic-co pic-co 6) si tro-vi-no in
+Overfull \hbox (11.96324pt too wide) in paragraph at lines 480--489
+\T1/cmr/m/n/10.95 nettamente in-fe-rio-re a con-fron-to con le ri-ma-nen-ti sti-me. Que-st'ul-ti-me ri-sul-ta-no es-se-re quan-ti-tà com-pa-ti-bi-li
+ []
+
+[6 <../Plots/Report_Plots/opamp_plot_pp_projected.png>]
+Underfull \hbox (badness 1320) in paragraph at lines 496--500
+[]\T1/cmr/m/n/10.95 Ci si pro-po-ne di stu-dia-re il com-por-ta-men-to
  []
 
 
-Underfull \hbox (badness 2205) in paragraph at lines 479--488
-\T1/cmr/m/n/10.95 tra i due da-ta-set (sia at-tra-ver-so gran-dez-ze
+Underfull \hbox (badness 2065) in paragraph at lines 496--500
+\T1/cmr/m/it/10.95 in fre-quen-za \T1/cmr/m/n/10.95 di un cir-cui-to si-mi-le a quel-lo
  []
 
 
-Underfull \hbox (badness 1448) in paragraph at lines 479--488
-\T1/cmr/m/n/10.95 dei ri-sul-ta-ti ot-te-nu-ti dai cam-pio-ni se-pa-ra-ti),
+Underfull \hbox (badness 1406) in paragraph at lines 496--500
+\T1/cmr/m/n/10.95 con-den-sa-to-re $\OML/cmm/m/it/10.95 C[]$ \T1/cmr/m/n/10.95 in se-rie al-la re-si-sten-za $\OML/cmm/m/it/10.95 R[]$\T1/cmr/m/n/10.95 :
+ []
+
+
+Underfull \hbox (badness 1072) in paragraph at lines 506--510
+\T1/cmr/m/n/10.95 Utilizzando la stes-sa con-fi-gu-ra-zio-ne cir-cui-ta-le
+ []
+
+
+Underfull \hbox (badness 2142) in paragraph at lines 506--510
+\T1/cmr/m/n/10.95 ca-pa-ci-tà $\OML/cmm/m/it/10.95 C[] \OT1/cmr/m/n/10.95 = 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 977 \OMS/cmsy/m/n/10.95 ^^F \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 017 []$ \T1/cmr/m/n/10.95 (mi-su-ra-ta
+ []
+
+
+Underfull \hbox (badness 2635) in paragraph at lines 506--510
+\T1/cmr/m/n/10.95 del-le fre-quen-ze la fun-zio-ne di tra-sfe-ri-men-to
  []
 
 [7 <../Plots/Report_Plots/opamp_comp_BIG.png>]
-<../Plots/Report_Plots/diff_bode.png, id=203, 1925.1925pt x 994.71625pt>
+<../Plots/Report_Plots/diff_bode.png, id=204, 1925.1925pt x 994.71625pt>
 File: ../Plots/Report_Plots/diff_bode.png Graphic file (type png)
 <use ../Plots/Report_Plots/diff_bode.png>
-Package pdftex.def Info: ../Plots/Report_Plots/diff_bode.png  used on input line 593.
+Package pdftex.def Info: ../Plots/Report_Plots/diff_bode.png  used on input line 594.
 (pdftex.def)             Requested size: 483.69687pt x 249.90788pt.
  [8]
 <../Plots/Report_Plots/diff_sim_comp.png, id=211, 1156.32pt x 578.16pt>
 File: ../Plots/Report_Plots/diff_sim_comp.png Graphic file (type png)
 <use ../Plots/Report_Plots/diff_sim_comp.png>
-Package pdftex.def Info: ../Plots/Report_Plots/diff_sim_comp.png  used on input line 610.
+Package pdftex.def Info: ../Plots/Report_Plots/diff_sim_comp.png  used on input line 611.
 (pdftex.def)             Requested size: 241.84843pt x 120.92314pt.
 
-Overfull \hbox (3.92424pt too wide) in paragraph at lines 615--634
+Overfull \hbox (3.92424pt too wide) in paragraph at lines 616--635
 []\T1/cmr/m/n/10.95 Effettuando un'ul-te-rio-re si-mu-la-zio-ne, ag-giun-gen-do
  []
 
 
-Underfull \hbox (badness 2213) in paragraph at lines 615--634
+Underfull \hbox (badness 2213) in paragraph at lines 616--635
 \T1/cmr/m/n/10.95 una ca-pa-ci-tà $\OML/cmm/m/it/10.95 C[] \OT1/cmr/m/n/10.95 = 7 []$ \T1/cmr/m/n/10.95 in pa-ral-le-lo al-la
  []
 
 
-Underfull \hbox (badness 3989) in paragraph at lines 615--634
+Underfull \hbox (badness 3989) in paragraph at lines 616--635
 \T1/cmr/m/n/10.95 che l'ef-fet-to di at-te-nua-zio-ne del-la fun-zio-ne
  []
 
 
-Underfull \hbox (badness 1062) in paragraph at lines 615--634
+Underfull \hbox (badness 1062) in paragraph at lines 616--635
 \T1/cmr/m/n/10.95 di tra-sfe-ri-men-to del cir-cui-to è do-vu-to a dei
  []
 
 
-Underfull \hbox (badness 2809) in paragraph at lines 615--634
+Underfull \hbox (badness 2809) in paragraph at lines 616--635
 \T1/cmr/m/n/10.95 Tale va-lo-re è pe-rò in-com-pa-ti-bi-le sia con le aspet-ta-ti-ve teo-ri-che, sia con quan-to tro-va-to
  []
 
@@ -1383,33 +1403,33 @@ Underfull \hbox (badness 2809) in paragraph at lines 615--634
 <../Plots/Report_Plots/diff_linear.png, id=222, 1925.1925pt x 994.71625pt>
 File: ../Plots/Report_Plots/diff_linear.png Graphic file (type png)
 <use ../Plots/Report_Plots/diff_linear.png>
-Package pdftex.def Info: ../Plots/Report_Plots/diff_linear.png  used on input line 677.
+Package pdftex.def Info: ../Plots/Report_Plots/diff_linear.png  used on input line 678.
 (pdftex.def)             Requested size: 483.69687pt x 249.90788pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 702.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 703.
  (d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ) [10 <../Plots/Report_Plots/diff_linear.png>]
 <../Arduino/Plots/calib_function.png, id=234, 883.50075pt x 454.69875pt>
 File: ../Arduino/Plots/calib_function.png Graphic file (type png)
 <use ../Arduino/Plots/calib_function.png>
-Package pdftex.def Info: ../Arduino/Plots/calib_function.png  used on input line 751.
+Package pdftex.def Info: ../Arduino/Plots/calib_function.png  used on input line 752.
 (pdftex.def)             Requested size: 426.79134pt x 219.65442pt.
  [11]
-Overfull \hbox (6.68802pt too wide) in paragraph at lines 765--791
+Overfull \hbox (6.68802pt too wide) in paragraph at lines 766--792
 \T1/cmr/m/n/10.95 con le due sti-me ri-ca-va-te con-si-de-ran-do i cam-pio-ni se-pa-ra-ti: sic-co-me l'er-ro-re sul-la sti-ma del-l'am-pli-fi-ca-zio-ne
  []
 
 
-Overfull \hbox (4.22716pt too wide) in paragraph at lines 765--791
+Overfull \hbox (4.22716pt too wide) in paragraph at lines 766--792
 \T1/cmr/m/n/10.95 ot-te-nu-ta con-si-de-ran-do le gran-dez-ze pic-co pic-co $\OML/cmm/m/it/10.95 G \OT1/cmr/m/n/10.95 = 10\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 29 \OMS/cmsy/m/n/10.95 ^^F \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 11$ \T1/cmr/m/n/10.95 in quan-to pre-sen-ta un er-ro-re leg-ger-men-te
  []
 
 [12 <../Arduino/Plots/calib_function.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 794.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 794.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 795.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 795.
  (d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 794.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 794.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 795.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 795.
 Package rerunfilecheck Info: File `Report.out' has not changed.
 (rerunfilecheck)             Checksum: F60F7724AD342A7523374C3417D0B3FA;1381.
  ) 
@@ -1422,7 +1442,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  57i,22n,54p,10533b,1002s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb>
-Output written on "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" (13 pages, 1215347 bytes).
+Output written on "d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.pdf" (13 pages, 1212423 bytes).
 PDF statistics:
  359 PDF objects out of 1000 (max. 8388607)
  297 compressed objects within 3 object streams
