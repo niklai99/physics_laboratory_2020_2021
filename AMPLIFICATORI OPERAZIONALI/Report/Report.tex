@@ -204,29 +204,19 @@ sperimentale. In \autoref{i:opamp_simulation} sono rappresentate due
 	\label{i:opamp_simulation}
 \end{wrapfigure}
 
-\noindent simulazioni corrispondenti a due ampiezze differenti del segnale in ingresso: la prima (\textit{blu} e
-\textit{verde}) è la risposta a $V_{\text{gen}}=1\,\si{\volt}$, mentre la seconda (\textit{rosso} e \textit{magenta}) a
-$V_{\text{gen}}=4\,\si{\volt}$. Dal grafico si nota chiaramente come la risposta $V_{\text{out}}$ ad un segnale in
-ingresso $V_{\text{gen}}=1\,\si{\volt}$sia perfettamente conforme alle aspettative: viene mantenuta la forma sinusoidale
-del segnale, amplificato di circa un fattore 10 ed invertito rispetto alla tensione $V_{\text{in}}$. Si nota inoltre
-come questo non si ripresenti anche nel caso della risposta a $V_{\text{gen}}=4\,\si{\volt}$: il segnale in uscita
-presenta, infatti, i picchi di massimo e minimo tagliati a livello $V_{\text{sat}}=\pm 15\,\si{\volt}$. Questo accade
-perchè, essendo l'amplificatore operazionale una componente attiva del circuito, è stato alimentato con una tensione
-continua a $\pm 15\,\si{\volt}$ (come riportato sopra). Per conservazione dell'energia, allora, l'operazionale non può
-fornire in output una tensione maggiore di quanta ne riceve esso stesso in alimentazione. Si parla quindi di
+\noindent simulazioni corrispondenti a due ampiezze differenti del segnale in ingresso: la prima (in tonalità di
+\textit{blu}) è la risposta a $V_{\text{gen}}=0.5\,\si{\volt}$, mentre la seconda (in tonalità di\textit{rosso}) a
+$V_{\text{gen}}=3\,\si{\volt}$. Dal grafico si nota chiaramente come la risposta $V_{\text{out}}$ ad un segnale in
+ingresso $V_{\text{gen}}=0.5\,\si{\volt}$ sia perfettamente conforme alle aspettative: viene mantenuta la forma
+sinusoidale del segnale, amplificato di circa un fattore 10 ed invertito rispetto alla tensione $V_{\text{in}}$. Si nota
+inoltre come questo non si ripresenti anche nel caso della risposta a $V_{\text{gen}}=3\,\si{\volt}$: il segnale in
+uscita presenta, infatti, i picchi di massimo e minimo tagliati a livello $V_{\text{sat}}=\pm 15\,\si{\volt}$. Questo
+accade perchè, essendo l'amplificatore operazionale una componente attiva del circuito, è stato alimentato con una
+tensione continua a $\pm 15\,\si{\volt}$ (come riportato sopra). Per conservazione dell'energia, allora, l'operazionale
+non può fornire in output una tensione maggiore di quanta ne riceve esso stesso in alimentazione. Si parla quindi di
 \textit{saturazione} del segnale in uscita a $V_{\text{sat}}=\pm 15\,\si{\volt}$. Per quanto detto,  avendo $G \approx
 10$, ci si aspetta che questo fenomeno inizi a manifestarsi attorno ad un valore nominale di tensione
 $V_{\text{gen}}=1.5\,\si{\volt}$.
-
-%\noindent L'amplificatore operazionale, essendo esso una componente attiva del circuito, non può fornire in output una
-%tensione maggiore di quanta ne riceve in alimentazione (per conservazione dell'energia): ci si aspetta allora di trovare
-%una situazione di saturazione del segnale in uscita e che questa inizi a manifestarsi attorno ad un valore nominale di
-%tensione $V\text{pp}_{\text{gen}}=3\,\si{\volt}$ in quanto, avendo un guadagno di circa 10, il segnale in uscita non può
-%superare i $30\,\si{\volt}$ picco picco. Dal grafico si evince chiaramente come erogando $V_{\text{gen}}=1\,\si{\volt}$
-%il segnale viene amplificato correttamente mantenendo la forma sinusoidale, mentre erogando
-%$V_{\text{gen}}=4\,\si{\volt}$ il segnale in uscita presenta i picchi tagliati esattamente a livello $V_{\text{sat}}=\pm
-%15\,\si{\volt}$, cioè le tensioni di alimentazione fornite all'operazionale. Inoltre, come anticipato in
-%\autoref{s:guadagno}, si può osservare il comportamento invertente dell'amplificatore operazionale.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -234,14 +224,10 @@ $V_{\text{gen}}=1.5\,\si{\volt}$.
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Acquisizione Misure}
-Al fine di verificare la linearità dell'amplificatore operazionale e stimare l'amplificazione del circuito, si decide di
-far variare la tensione in ingresso impostando valori crescenti di ampiezza del segnale erogato dal generatore di
-funzioni, partendo da $200\,\si{\mV}$ picco picco fino a $3.5\,\si{\V}$ picco picco. Per ciascuno di questi valori di
-tensione si acquisisce la misura di un massimo e di un minimo sia del segnale $V_{\text{in}}$ sia del segnale
-$V_{\text{out}}$ sfruttando i cursori orizzontali dell'oscilloscopio. In questo modo, si ottiene un campione di coppie
-($V_{\text{in}}$, $V_{\text{out}}$) che ci si aspetta segua un andamento lineare, in quanto legate da
-$V_{\text{out}}=-\frac{R_{\text{f}}}{R_{1}}V_{\text{in}}$ dove il segno meno, si ricorda, è dovuto all'operazionale
-posto in configurazione invertente. Le misure in questione sono rappresentate in \autoref{i:opamp_eda}.
+Al fine di verificare la linearità dell'amplificatore operazionale e stimare l'amplificazione $G$ del circuito, vengono
+acquisite separatamente le misure di un massimo ed un minimo sia del segnale in ingresso sia di quello in uscita facendo
+variare la tensione nominale erogata dal generatore partedo da $200\,\si{\mV}$ picco picco fino a $3.5\,\si{\volt}$ picco
+picco. Per l'acquisizione vengono utilizzati i cursori di tipo tensione (orizzontali) dell'oscilloscopio. 
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
