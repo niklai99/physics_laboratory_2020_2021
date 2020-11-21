@@ -962,7 +962,22 @@ trovati risultati coonformi tra loro e con le aspettative teoriche considerando 
 minimi separatamente. A causa di sistematiche di offset verticale tra i due campioni di misure il dataset unificato
 (massimi e minimi) porta ad un'amplificazione, seppur leggermente compatibile, sensibilmente differente dalle
 precedenti. L'amplificazione estrapolata considerando le grandezze picco picco, invece, risulta essere conforme sia con
-le aspettative teoriche sia con le due stime ricavate considerando i campioni separati: 
+le aspettative teoriche sia con le due stime ricavate considerando i campioni separati: siccome l'errore sulla stima
+dell'amplificazione è, con buona probabilità, sottostimato, si sceglie come miglior stima di quest'ultima proprio quella
+ottenuta considerando le grandezze picco picco $G=10.29 \pm 0.11$ in quanto presenta un errore leggermente maggiore
+rispetto alla media pesata tra i valori di amplificazione ottenuti considerando il campione di massimi ed il campione di
+minimi separatamente. Spostando ora l'attenzione verso il circuito derivatore, dall'analisi in frequenza è emerso un
+comportamento più fedele ad un filtro passa banda piuttosto che un passa alto (cioè l'aspettativa teorica) e si è
+ipotizzato che la causa fosse la presenza di una capacità parassita in parallelo al circuito. La frequenza di taglio
+estrapolata attraverso la prima strategia si è ritrovata essere scarsamente compatibile con le aspettative teoriche, e
+la causa di ciò potrebbe essere una campionatura troppo rarefatta a basse frequenze che ha portato ad una stima non
+ottimale della retta a 20 dB/dec. L'interpolazione lineare ristretta all'intorno della frequenza di taglio, nel quale la
+campionatura è sufficientemente fitta, invece restituisce una stima $f_{\text{t}}=19.8 \pm 0.8\,\si{\kHz}$ in ottimo
+accordo con le aspettative. Si prende dunque quest'utlima come miglior stima della frequenza di taglio. Per quanto
+riguarda la calibrazione della scheda Arduino Due, infine, si è stimato un sampling rate di 955000 acquisizioni al
+secondo e una funzione di calibrazione conforme alle aspettative, ovvero con un coefficiente angolare $m=0.766\pm
+0.013\,\text{mV/adc counts}$ e un offset $q=-0.59\pm0.02\,\si{\volt}$ per valori di tensione in ingresso sotto i circa
+$2\,\si{\volt}$.
 
 
 
