@@ -2,13 +2,13 @@
 \BOOKMARK [1][-]{section.2}{Strumentazione e Componenti}{}% 2
 \BOOKMARK [1][-]{section.3}{Amplificatore Operazionale Invertente}{}% 3
 \BOOKMARK [2][-]{subsection.3.1}{Configurazione Sperimentale}{section.3}% 4
-\BOOKMARK [2][-]{subsection.3.2}{Acquisizione Misure}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.3}{Simulazione Spice Preliminare}{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.4}{Dati e Analisi}{section.3}% 7
-\BOOKMARK [3][-]{subsubsection.3.4.1}{Dataset}{subsection.3.4}% 8
-\BOOKMARK [3][-]{subsubsection.3.4.2}{Interpolazioni Preliminari}{subsection.3.4}% 9
-\BOOKMARK [3][-]{subsubsection.3.4.3}{Linearit\340 e Amplificazione}{subsection.3.4}% 10
-\BOOKMARK [3][-]{subsubsection.3.4.4}{Confronto tra Stime di G}{subsection.3.4}% 11
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Simulazione Spice del Circuito}{subsection.3.1}% 5
+\BOOKMARK [2][-]{subsection.3.2}{Acquisizione Misure}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.3}{Dati e Analisi}{section.3}% 7
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Dataset}{subsection.3.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Interpolazioni Preliminari}{subsection.3.3}% 9
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Linearit\340 e Amplificazione}{subsection.3.3}% 10
+\BOOKMARK [3][-]{subsubsection.3.3.4}{Confronto tra Stime di G}{subsection.3.3}% 11
 \BOOKMARK [1][-]{section.4}{Filtro Attivo - Circuito Derivatore}{}% 12
 \BOOKMARK [2][-]{subsection.4.1}{Configurazione Sperimentale}{section.4}% 13
 \BOOKMARK [2][-]{subsection.4.2}{Acquisizione Misure}{section.4}% 14
