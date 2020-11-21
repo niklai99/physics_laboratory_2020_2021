@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  21 NOV 2020 13:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  21 NOV 2020 14:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1255,85 +1255,85 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <../Simulations/OpAmp/circuit_image_nosim.png, id=102, 1004.553pt x 362.5545pt>
 File: ../Simulations/OpAmp/circuit_image_nosim.png Graphic file (type png)
 <use ../Simulations/OpAmp/circuit_image_nosim.png>
-Package pdftex.def Info: ../Simulations/OpAmp/circuit_image_nosim.png  used on input line 226.
+Package pdftex.def Info: ../Simulations/OpAmp/circuit_image_nosim.png  used on input line 132.
 (pdftex.def)             Requested size: 290.22107pt x 104.74533pt.
 
-Underfull \hbox (badness 1158) in paragraph at lines 227--227
+Underfull \hbox (badness 1158) in paragraph at lines 133--133
 []\T1/cmr/m/n/10.95 Figura 1: |\T1/cmr/m/n/9 Rap-pre-sen-ta-zio-ne a va-ria-bi-li con-cen-tra-te del cir-cui-to
  []
 
 
-Underfull \hbox (badness 1755) in paragraph at lines 231--241
+Underfull \hbox (badness 1755) in paragraph at lines 137--147
 \T1/cmr/m/n/10.95 un ge-ne-ra-to-re di ten-sio-ne con-ti-nua
  []
 
 
-Underfull \hbox (badness 1087) in paragraph at lines 231--241
+Underfull \hbox (badness 1087) in paragraph at lines 137--147
 \T1/cmr/m/n/10.95 per l'a-li-men-ta-zio-ne del-l'am-pli-fi-ca-to-re
  []
 
 
-Underfull \hbox (badness 3291) in paragraph at lines 231--241
+Underfull \hbox (badness 3291) in paragraph at lines 137--147
 \T1/cmr/m/n/10.95 ov-ve-ro che il po-lo po-si-ti-vo ed il
  []
 
 
-Underfull \hbox (badness 1005) in paragraph at lines 231--241
+Underfull \hbox (badness 1005) in paragraph at lines 137--147
 \T1/cmr/m/n/10.95 po-lo ne-ga-ti-vo si tro-vi-no al-lo stes-so
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.266 \noindent
+l.172 \noindent
                  modalitÃ  "50 Ohm", in modo che l'impedenza d'uscita del ge... [1
 
  <../Simulations/OpAmp/circuit_image_nosim.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 266--271
+Underfull \hbox (badness 10000) in paragraph at lines 172--177
 
  []
 
 <../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png, id=126, 870.25125pt x 433.62pt>
 File: ../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png>
-Package pdftex.def Info: ../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png  used on input line 320.
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png  used on input line 218.
 (pdftex.def)             Requested size: 241.84843pt x 120.5063pt.
 [2 <../Plots/Report_Plots/opamp_spice_1V_4V_BIG.png>]
 <../Plots/Report_Plots/opamp_plot_alldata_eda.png, id=144, 1111.7535pt x 582.978pt>
 File: ../Plots/Report_Plots/opamp_plot_alldata_eda.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_plot_alldata_eda.png>
-Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_alldata_eda.png  used on input line 434.
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_alldata_eda.png  used on input line 263.
 (pdftex.def)             Requested size: 483.69687pt x 253.63786pt.
  [3 <../Plots/Report_Plots/opamp_plot_alldata_eda.png>]
 <../Plots/Report_Plots/opamp_plot_all_projected.png, id=160, 1155.1155pt x 596.82974pt>
 File: ../Plots/Report_Plots/opamp_plot_all_projected.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_plot_all_projected.png>
-Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_all_projected.png  used on input line 571.
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_all_projected.png  used on input line 400.
 (pdftex.def)             Requested size: 483.69687pt x 249.92001pt.
  [4]
 <../Plots/Report_Plots/opamp_plot_pp_projected.png, id=173, 1925.1925pt x 994.71625pt>
 File: ../Plots/Report_Plots/opamp_plot_pp_projected.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_plot_pp_projected.png>
-Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_pp_projected.png  used on input line 611.
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_plot_pp_projected.png  used on input line 440.
 (pdftex.def)             Requested size: 483.69687pt x 249.90788pt.
  [5 <../Plots/Report_Plots/opamp_plot_all_projected.png>] [6 <../Plots/Report_Plots/opamp_plot_pp_projected.png>]
 <../Plots/Report_Plots/opamp_comp_BIG.png, id=189, 844.95676pt x 411.939pt>
 File: ../Plots/Report_Plots/opamp_comp_BIG.png Graphic file (type png)
 <use ../Plots/Report_Plots/opamp_comp_BIG.png>
-Package pdftex.def Info: ../Plots/Report_Plots/opamp_comp_BIG.png  used on input line 643.
+Package pdftex.def Info: ../Plots/Report_Plots/opamp_comp_BIG.png  used on input line 472.
 (pdftex.def)             Requested size: 241.84843pt x 117.90668pt.
 
-Underfull \hbox (badness 4060) in paragraph at lines 651--660
+Underfull \hbox (badness 4060) in paragraph at lines 480--489
 \T1/cmr/m/n/10.95 le gran-dez-ze pic-co pic-co 6) si tro-vi-no in
  []
 
 
-Underfull \hbox (badness 2205) in paragraph at lines 651--660
+Underfull \hbox (badness 2205) in paragraph at lines 480--489
 \T1/cmr/m/n/10.95 tra i due da-ta-set (sia at-tra-ver-so gran-dez-ze
  []
 
 
-Underfull \hbox (badness 1448) in paragraph at lines 651--660
+Underfull \hbox (badness 1448) in paragraph at lines 480--489
 \T1/cmr/m/n/10.95 dei ri-sul-ta-ti ot-te-nu-ti dai cam-pio-ni se-pa-ra-ti),
  []
 
@@ -1341,36 +1341,36 @@ Underfull \hbox (badness 1448) in paragraph at lines 651--660
 <../Plots/Report_Plots/diff_bode.png, id=203, 1925.1925pt x 994.71625pt>
 File: ../Plots/Report_Plots/diff_bode.png Graphic file (type png)
 <use ../Plots/Report_Plots/diff_bode.png>
-Package pdftex.def Info: ../Plots/Report_Plots/diff_bode.png  used on input line 765.
+Package pdftex.def Info: ../Plots/Report_Plots/diff_bode.png  used on input line 594.
 (pdftex.def)             Requested size: 483.69687pt x 249.90788pt.
  [8]
 <../Plots/Report_Plots/diff_sim_comp.png, id=211, 2426.46526pt x 1303.87125pt>
 File: ../Plots/Report_Plots/diff_sim_comp.png Graphic file (type png)
 <use ../Plots/Report_Plots/diff_sim_comp.png>
-Package pdftex.def Info: ../Plots/Report_Plots/diff_sim_comp.png  used on input line 782.
+Package pdftex.def Info: ../Plots/Report_Plots/diff_sim_comp.png  used on input line 611.
 (pdftex.def)             Requested size: 241.84843pt x 129.95706pt.
 
-Overfull \hbox (3.92424pt too wide) in paragraph at lines 787--806
+Overfull \hbox (3.92424pt too wide) in paragraph at lines 616--635
 []\T1/cmr/m/n/10.95 Effettuando un'ul-te-rio-re si-mu-la-zio-ne, ag-giun-gen-do
  []
 
 
-Underfull \hbox (badness 2213) in paragraph at lines 787--806
+Underfull \hbox (badness 2213) in paragraph at lines 616--635
 \T1/cmr/m/n/10.95 una ca-pa-ci-tà $\OML/cmm/m/it/10.95 C[] \OT1/cmr/m/n/10.95 = 7 []$ \T1/cmr/m/n/10.95 in pa-ral-le-lo al-la
  []
 
 
-Underfull \hbox (badness 3989) in paragraph at lines 787--806
+Underfull \hbox (badness 3989) in paragraph at lines 616--635
 \T1/cmr/m/n/10.95 che l'ef-fet-to di at-te-nua-zio-ne del-la fun-zio-ne
  []
 
 
-Underfull \hbox (badness 1062) in paragraph at lines 787--806
+Underfull \hbox (badness 1062) in paragraph at lines 616--635
 \T1/cmr/m/n/10.95 di tra-sfe-ri-men-to del cir-cui-to è do-vu-to a dei
  []
 
 
-Underfull \hbox (badness 2809) in paragraph at lines 787--806
+Underfull \hbox (badness 2809) in paragraph at lines 616--635
 \T1/cmr/m/n/10.95 Tale va-lo-re è pe-rò in-com-pa-ti-bi-le sia con le aspet-ta-ti-ve teo-ri-che, sia con quan-to tro-va-to
  []
 
@@ -1378,33 +1378,33 @@ Underfull \hbox (badness 2809) in paragraph at lines 787--806
 <../Plots/Report_Plots/diff_linear.png, id=221, 1925.1925pt x 994.71625pt>
 File: ../Plots/Report_Plots/diff_linear.png Graphic file (type png)
 <use ../Plots/Report_Plots/diff_linear.png>
-Package pdftex.def Info: ../Plots/Report_Plots/diff_linear.png  used on input line 849.
+Package pdftex.def Info: ../Plots/Report_Plots/diff_linear.png  used on input line 678.
 (pdftex.def)             Requested size: 483.69687pt x 249.90788pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 900.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 703.
  (d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ) [10 <../Plots/Report_Plots/diff_linear.png>]
 <../Arduino/Plots/calib_function.png, id=233, 883.50075pt x 454.69875pt>
 File: ../Arduino/Plots/calib_function.png Graphic file (type png)
 <use ../Arduino/Plots/calib_function.png>
-Package pdftex.def Info: ../Arduino/Plots/calib_function.png  used on input line 949.
+Package pdftex.def Info: ../Arduino/Plots/calib_function.png  used on input line 752.
 (pdftex.def)             Requested size: 426.79134pt x 219.65442pt.
  [11]
-Overfull \hbox (6.68802pt too wide) in paragraph at lines 963--989
+Overfull \hbox (6.68802pt too wide) in paragraph at lines 766--792
 \T1/cmr/m/n/10.95 con le due sti-me ri-ca-va-te con-si-de-ran-do i cam-pio-ni se-pa-ra-ti: sic-co-me l'er-ro-re sul-la sti-ma del-l'am-pli-fi-ca-zio-ne
  []
 
 
-Overfull \hbox (4.22716pt too wide) in paragraph at lines 963--989
+Overfull \hbox (4.22716pt too wide) in paragraph at lines 766--792
 \T1/cmr/m/n/10.95 ot-te-nu-ta con-si-de-ran-do le gran-dez-ze pic-co pic-co $\OML/cmm/m/it/10.95 G \OT1/cmr/m/n/10.95 = 10\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 29 \OMS/cmsy/m/n/10.95 ^^F \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 11$ \T1/cmr/m/n/10.95 in quan-to pre-sen-ta un er-ro-re leg-ger-men-te
  []
 
 [12 <../Arduino/Plots/calib_function.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 992.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 992.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 795.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 795.
  (d:/GitHub/physics_laboratory_2020_2021/AMPLIFICATORI OPERAZIONALI/Report/Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 992.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 992.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 795.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 795.
 Package rerunfilecheck Info: File `Report.out' has not changed.
 (rerunfilecheck)             Checksum: 21C01106E8F90F04CAAD78A36ABCF259;1370.
  ) 

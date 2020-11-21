@@ -1,15 +1,15 @@
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \documentclass[a4paper,11pt]{article} % Font and paper size
 
 \input{structure.tex} % Include the file specifying document layout and packages
 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	GENERAL INFORMATION 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \newcommand{\labcourse}{Laboratorio di Fisica}
 \newcommand{\teacher}{Docenti: Prof. A. Garfagnini - Prof. M. Lunardon}
@@ -26,23 +26,23 @@
 \newcommand{\data}{28/10/2020 - 29/10/2020}
 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	DOCUMENT 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \begin{document}
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	REFERNCE CUSTOMIZATION
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \def\sectionautorefname{Sezione} 
 \def\subsectionautorefname{Sezione} 
 \def\subsubsectionautorefname{Sezione}
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	TITLE PAGE
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \begin{titlepage}
 	\begin{center}
@@ -80,18 +80,18 @@
 \cleardoublepage
 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	OBIETTIVO
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Obiettivo}
 Verificare la linearità di un amplificatore operazionale e misurare il guadagno di un circuito che lo comprenda.
 Misurare la frequenza di taglio di un filtro attivo. Calcolare il sampling rate e la funzione di calibrazione in
 tensione di una scheda Arduino Due.
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	APPARATO SPERIMENTALE
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Strumentazione e Componenti}\label{s:strumenti}
 Nel corso dell'esperienza si utilizzano i seguenti:
@@ -105,104 +105,10 @@ Nel corso dell'esperienza si utilizzano i seguenti:
 	\item Scheda Arduino Due
 \end{itemize}
 
-%\begin{itemize}
-%	\item \textbf{Oscilloscopio} (Tektronix TBS1102B): Lo strumento presenta un'accuratezza sul guadagno verticale $\Delta_{g}$ pari
-%	al 3\% del valore letto (errore massimo) ed è \textit{generalmente} il contributo più significativo. L'incertezza di
-%	guadagno sui tempi si assume trascurabile. L'accuratezza che tiene conto degli effetti di risoluzione e imprecisione
-%	della traccia $\Delta_{l}$ è di 1/10 di divisione su tutta la scala di lettura (errore massimo), uguale sia per le tensioni sia
-%	per i tempi.
-%
-%	\item \textbf{Generatore di funzioni} (Tektronix AFG1022)
-%
-%	\item  \textbf{Alimentatore di tensione continua}: Lo strumento presenta due uscite con erogazione di tensione tra 0
-%	e 20 \si{\volt} e un'uscita con erogazione fissata a 5 \si{\volt}
-%	
-%	\item \textbf{Multimetro digitale} (Metrix MTX3292): Si riporta l'accuratezza dello strumento, per misure di
-%	resistenza e di capacità, relativa unicamente ai fondoscala utilizzati nell'esperienza.
-%
-%	\begin{table}[H]
-%		\small
-%		\centering
-%		\begin{tabular}{x{2cm} x{3cm} x{3cm} } \toprule[0.5px]\toprule[0.1px]
-%			
-%			\multicolumn{3}{c}{Accuratezza Metrix MTX3292}\tn
-%			\midrule[0.1px]
-%			
-%			F.S. & Precisione & Risoluzione \tn
-%			
-%			\addlinespace
-%			
-%			1   \si{k\ohm} & 0.10\% + 8  & 0.01 \si{\ohm}  \tn 10  \si{k\ohm} & 0.07\% + 8  & 0.1  \si{\ohm}  \tn 100
-%			\si{k\ohm} & 0.07\% + 8  & 1 \si{\ohm}  \tn
-%
-%			
-%			\addlinespace
-%
-%			1000 \si{p\farad}         & 2.5\% + 15  & 1 \si{p\farad}   \tn
-%			
-%			\bottomrule[0.5px]
-%			
-%			
-%		\end{tabular}
-%		\caption{Per i fondoscala indicati si riportano la precisione (contributo di scala in percentuale e contributo
-%		di lettura sul digit meno significativo) e la risoluzione dello strumento.}
-%		\label{t:metrix}
-%	\end{table}	 
-%
-%	\item \textbf{Componenti circuitali} (Resistori e Condensatori): Si riportano i valori delle resistenze e capacità
-%	utilizzate per l'assemblamento dei circuiti utilizzati nel corso dell'esperienza, misurate preliminarmente con il
-%	multimetro digitale Metrix. 
-%
-%	\begin{table}[H]
-%		\small
-%		\centering
-%		\begin{tabular}{x{2cm} x{3cm} x{3cm} } \toprule[0.5px]\toprule[0.1px]
-%			
-%			\multicolumn{3}{c}{Resistori e Condensatori}\tn
-%			\midrule[0.1px]
-%			
-%			Resistenza & Valore & F.S. \tn
-%			
-%			\addlinespace
-%			
-%			$R_{\text{f}}$ & $(82.46 \pm 0.03)\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn
-%
-%			$R_1$ & $(8.089 \pm 0.003)\,\si{k\ohm}$ & $10\,\si{k\ohm}$ \tn
-%
-%			$R_3$ & $(46.54 \pm 0.05)\,\si{\ohm}$ & $1\,\si{k\ohm}$ \tn
-%		
-%			\addlinespace
-%
-%			\midrule[0.1px]
-%			
-%			Capacità & Valore & F.S. \tn
-%			
-%			\addlinespace
-%
-%			$C_1$  & $(977 \pm 17)\,\si{p\farad}$  & $1000\,\si{p\farad}$   \tn
-%			
-%			\bottomrule[0.5px]
-%			
-%		\end{tabular}
-%		\caption{In tabella si indicano le componenti circuitali (resistori e capacità) utilizzando delle label
-%		specifiche per ciascuna di esse: questa notazione è costante nel corso dell'esperienza.}
-%		\label{t:direct_measures}
-%	\end{table}	
-%
-%	\item \textbf{Circuito integrato TL082C} (Due Amplificatori Operazionali): essendo gli amplificatori operazionali
-%	delle componenti circuitali attive, esse devono essere alimentate. Si utilizza dunque il generatore di tensione
-%	continua con $V_{\text{cc}} = +15\,\si{\volt}$ e $V_{\text{ee}}=-15\,\si{\volt}$ per l'alimentazione
-%	dell'amplificatore operazionale utilizzato nell'esperienza. Nel corso di quest'ultima, si assume un comportamento
-%	\textit{ideale} dell'amplificatore operazionale, ovvero che il polo positivo ed il polo negativo si trovino
-%	allo stesso potenziale.
-%	
-%	\item \textbf{Scheda Arduino Due}
-%\end{itemize}
 
-
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	AMPLIFICATORE OPERAZIONALE INVERTENTE
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Amplificatore Operazionale Invertente}\label{s:opamp} In questa sezione ci si propone di studiare il
 comportamento di un circuito puramente resistivo comprendente un amplificatore operazionale in configurazione invertente
@@ -211,9 +117,9 @@ linearità e stimare l'amplificazione del circuito come grandezza derivata sia p
 resistenze del circuito sia come parametro di un'interpolazione lineare di misure acquisite con l'oscilloscopio. 
 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	CONFIGURAZIONE SPERIMENTALE
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Configurazione Sperimentale}\label{s:guadagno}
 
@@ -283,18 +189,10 @@ del circuito è dunque
 	+	\left(	\frac{	R_{\text{f}}	}{	R_{1}^2	}	\right)^2\sigma_{R_{1}}^2	}
 \end{align}
 
-%\noindent Facendo riferimento ai valori delle resistenze $R_{\text{f}}$ ed $R_1$ riportate in \autoref{t:direct_measures}, si
-%vuole calcolare il guadagno $G$ del circuito atteso utilizzando l'\autoref{e:guadagno}, ottenuta risolvendo il circuito.
-%Si vuole far notare che, avendo posto l'amplificatore operazionale in configurazione invertente, si ritrova un segno
-%meno ad indicare un segnale in uscita $V_{\text{out}}$ "invertito" (ovvero ci si aspetta che i massimi del segnale in
-%ingresso corrispondano a minimi del segnale in uscita e viceversa). Tuttavia, nell'analisi che segue, verrà sempre
-%considerato il valore assoluto dell'amplificazione $G$, che si definisce dunque come
 
-
-
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	ACQUISIZIONE MISURE
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Acquisizione Misure}
 Al fine di verificare la linearità dell'amplificatore operazionale e stimare l'amplificazione del circuito, si decide di
@@ -307,9 +205,9 @@ $V_{\text{out}}=-\frac{R_{\text{f}}}{R_{1}}V_{\text{in}}$ dove il segno meno, si
 posto in configurazione invertente. Le misure in questione sono rappresentate in \autoref{i:opamp_eda}.
 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	SIMULAZIONE SPICE PRELIMINARE
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Simulazione Spice Preliminare}\label{s:spice} Prima di procedere con l'analisi dati, si decide di simulare
 la risposta del circuito utilizzando il software LTSpice. Vengono simulate due ampiezze in ingresso significative:
@@ -333,9 +231,9 @@ $V_{\text{gen}}=4\,\si{\volt}$ il segnale in uscita presenta i picchi tagliati e
 \autoref{s:guadagno}, si può osservare il comportamento invertente dell'amplificatore operazionale.
 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	DATI E ANALISI
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Dati e Analisi}
 In questa sezione si vuole inizialmente rappresentare le misure acquisite in laboratorio riportandole in un grafico
@@ -348,9 +246,9 @@ dell'amplificazione come il coefficiente angolare di una retta che interpola i d
 dall'andamento dei residui si riesce inoltre a studiare le proprietà di linearità del sistema in questione. 
 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	DATISET
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Dataset}
 Si riportano in  \autoref{i:opamp_eda} le misure acquisite con l'oscilloscopio alle quali si associa l'errore dato da
@@ -359,75 +257,6 @@ Si riportano in  \autoref{i:opamp_eda} le misure acquisite con l'oscilloscopio a
 \end{equation}
 \noindent dove $\sigma_{l}=0.04$ e $\sigma_{g}=1.5\%$ rappresentano l'incertezza di lettura e di guadagno associati
 all'oscilloscopio mentre V/div rappresenta la scala di acquisizione della misura.
-
-%\begin{table}[H]
-%	\centering
-%	\footnotesize
-%	\begin{tabular}{x{2cm} x{3cm} x{3.2cm} x{3cm} x{3.2cm}} 
-%
-%		\toprule[0.5px]
-%		\toprule[0.1px]
-%		
-%		\multicolumn{5}{c}{Misure Acquisite con l'Oscilloscopio}\tn
-%		\midrule[0.1px]
-%
-%		\multicolumn{5}{c}{Misure dei Massimi}\tn
-%
-%		\addlinespace
-%		
-%		$V\text{{pp}}_{\text{gen}}$ (V)& $V_{\text{in}}$ (V)& Scala $V_{\text{in}}$ (V/div)& $V_{\text{out}}$ (V)& Scala
-%		$V_{\text{out}}$ (V/div)\tn
-%		
-%		\addlinespace
-%		
-%		$	0.20		$&$	0.106 \pm	0.003	$&$	0.050	$&$	1.00 \pm	0.02	$&$	0.324	$\tn
-%		$	0.50		$&$	0.252 \pm	0.006	$&$	0.100	$&$	2.48 \pm	0.05	$&$	1.00	$\tn
-%		$	0.80		$&$	0.400 \pm	0.010	$&$	0.200	$&$	4.00 \pm	0.10	$&$	2.00	$\tn
-%		$	1.00		$&$	0.496 \pm	0.011	$&$	0.200	$&$	4.96 \pm	0.11	$&$	2.00	$\tn
-%		$	1.50		$&$	0.744 \pm	0.014	$&$	0.200	$&$	7.44 \pm	0.14	$&$	2.00	$\tn
-%		$	1.80		$&$	0.907 \pm	0.019	$&$	0.324	$&$	8.98 \pm	0.19	$&$	3.40	$\tn
-%		$	2.00		$&$	1.01 \pm	0.02	$&$	0.324	$&$	9.9  \pm	0.2		$&$	3.40	$\tn
-%		$	2.30		$&$	1.16 \pm	0.02	$&$	0.376	$&$	11.4 \pm	0.2		$&$	3.80	$\tn
-%		$	2.60		$&$	1.29 \pm	0.03	$&$	0.436	$&$	13.0 \pm	0.3		$&$	4.52	$\tn
-%		$	3.00		$&$	1.50 \pm	0.03	$&$	0.480	$&$	14.4 \pm	0.3		$&$	4.52	$\tn
-%		$	3.20		$&$	1.61 \pm	0.03	$&$	0.630	$&$	14.7 \pm	0.3		$&$	5.60	$\tn	
-%		$	3.50		$&$	1.77 \pm	0.04	$&$	0.660	$&$	14.7 \pm	0.3		$&$	5.60	$\tn
-%		
-%	
-%		\addlinespace
-%
-%		\midrule[0.1px]
-%		
-%		\multicolumn{5}{c}{Misure dei Minimi}\tn
-%
-%		\addlinespace
-%		
-%		$V\text{{pp}}_{\text{gen}}$ (V)& $V_{\text{in}}$ (V)& Scala $V_{\text{in}}$ (V/div)& $V_{\text{out}}$ (V)& Scala
-%		$V_{\text{out}}$ (V/div)\tn
-%
-%		\addlinespace
-%
-%		$	0.20		$&$	-0.102 \pm	0.003	$&$	0.050	$&$	-0.97 \pm	0.02	$&$	0.324	$\tn
-%		$	0.50		$&$	-0.252 \pm	0.006	$&$	0.100	$&$	-2.48 \pm	0.05	$&$	1.00	$\tn
-%		$	0.80		$&$	-0.400 \pm	0.010	$&$	0.200	$&$	-3.92 \pm	0.10	$&$	2.00	$\tn
-%		$	1.00		$&$	-0.496 \pm	0.011	$&$	0.200	$&$	-4.96 \pm	0.11	$&$	2.00	$\tn
-%		$	1.50		$&$	-0.736 \pm	0.014	$&$	0.200	$&$	-7.36 \pm	0.14	$&$	2.00	$\tn
-%		$	1.80		$&$	-0.881 \pm	0.019	$&$	0.324	$&$	-8.98 \pm	0.19	$&$	3.40	$\tn
-%		$	2.00		$&$	-0.98  \pm	0.02	$&$	0.324	$&$	-10.0 \pm	0.2		$&$	3.40	$\tn
-%		$	2.30		$&$	-1.13  \pm	0.02	$&$	0.376	$&$	-11.5 \pm	0.2		$&$	3.80	$\tn
-%		$	2.60		$&$	-1.29  \pm	0.03	$&$	0.436	$&$	-13.0 \pm	0.3		$&$	4.52	$\tn
-%		$	3.00		$&$	-1.48  \pm	0.03	$&$	0.480	$&$	-14.1 \pm	0.3		$&$	4.52	$\tn
-%		$	3.20		$&$	-1.59  \pm	0.03	$&$	0.630	$&$	-14.8 \pm	0.3		$&$	5.60	$\tn	
-%		$	3.50		$&$	-1.72  \pm	0.04	$&$	0.660	$&$	-14.8 \pm	0.3		$&$	5.60	$\tn
-%		
-%		
-%		\bottomrule[0.5px]
-%		
-%	\end{tabular}
-%	\caption{Vengono rappresentate in tabella le misure sperimentali acquisite con i cursori dell'oscilloscopio 
-%				con l'incertezza ad esse associata e la scala di acquisizione della misura.}
-%	\label{t:osc_measures}
-%\end{table}
 
 \begin{figure}[H]
 	\centering
@@ -450,9 +279,9 @@ notevolmente. Da questo si deduce dunque che i tre punti finali di massimo e di 
 outliers rispetto al trend lineare delle misure rimanenti: al fine di caratterizzare la linearità dell'amplificatore
 operazionale e di calcolare l'amplificazione del circuito, dunque, gli outliers non verranno considerati.
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	PRELIMIARY FIT
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Interpolazioni Preliminari}\label{s:pre} Si procede ora considerando il campione di misure dei massimi ed
 il campione di misure dei minimi separatamente, in quanto a priori non si ha la certezza che queste risentano della
@@ -495,9 +324,9 @@ delle ordinate secondo
 	\label{t:pre_slopes}
 \end{table}	
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	LINEARITA E AMPLIFICAZIONE
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 
 \subsubsection{Linearità e Amplificazione}
@@ -563,9 +392,9 @@ che i due campioni risentano della stessa amplificazione e che non siano tra lor
 significativo: segue quindi un tentativo di "unificazione" del campione di dati ed un'interpolazione lineare unica che
 tenga conto sia dei massimi che dei minimi. Il grafico rappresentante i due dataset unificati con relativa
 interpolazione lineare è mostrato in \autoref{i:opamp_all_proj}. 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	FIT UNIFICATO
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_all_projected.png}
@@ -603,9 +432,9 @@ incertezze continuano a risentire della correlazione tra esse. Il valore del $\c
 numero di gradi di libertà, come suggerito dal grafico dei residui in cui si nota chiaramente come la distanza
 punto-retta sia ampiamente compresa entro la barra d'errore del dato. L'errore a posteriori è appena maggiore
 dell'incertezza associata al primo punto, mentre diventa notevolmente inferiore per i successivi.
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	FIT PICCO PICCO
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_pp_projected.png}
@@ -628,9 +457,9 @@ zero) che si ritiene invece, in questa occasione, determinante: il campione di m
 soddisfacente distribuzione lineare dei dati. 
 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	CONFRONTO STIME DI G
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Confronto tra Stime di G}
  Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, rappresentando i valori del guadagno
@@ -659,9 +488,9 @@ l'errore su \textit{G} sia sottostimato a causa della correlazione delle incerte
 ritrovata considerando le tensioni picco picco 6), in quanto presenta un errore relativo leggermente maggiore.
 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	CIRCUITO DERIVATORE
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Filtro Attivo - Circuito Derivatore}
 Ci si propone di studiare il comportamento \textit{in frequenza} di un circuito simile a quello
@@ -669,9 +498,9 @@ considerato in \autoref{s:opamp}, con l'aggiunta di un condensatore $C_{1}$ in s
 rende dunque un filtro (attivo, in quanto è sempre presente l'amplificatore operazionale) passa alto, derivatore a basse
 frequenze. 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	CONFIGURAZIONE SPERIMENTALE
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Configurazione Sperimentale}
 Utilizzando la stessa configurazione circuitale rappresentata in \autoref{i:opamp_circuit}, viene aggiunta la capacità
@@ -700,9 +529,9 @@ taglio
 \end{align}
 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	ACQUISIZIONE MISURE
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Acquisizione Misure}
 Per studiare la risposta in frequenza del circuito, si fa variare la frequenza del segnale in ingresso da
@@ -718,9 +547,9 @@ nell'intorno della frequenza di taglio. Si trova quindi $f_{\text{t, sper}}\appr
 rispetto a quanto trovato in \autoref{e:diff_f_th}.
 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	DATI E ANALISI
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Dati e Analisi}
 In questa sezione si vuole studiare il grafico di Bode relativo alle misure acquisite sperimentalmente sia con il fine di estrarre
@@ -728,9 +557,9 @@ informazioni di carattere generale sui dati, sia per fornire una stima della fre
 l'interpolazione delle misure.
 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	THEBODE
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Grafico di Bode}
 Date le misure di tensione $V_{\text{in}}$ e $V_{\text{out}}$, viene calcolata la funzione di trasferimento
@@ -861,35 +690,9 @@ $f_{\text{t}} = 19.8\pm 0.8\,\si{\kHz}$: questa risulta essere in ottimo accordo
 Bode ($\lambda = 3.0$).
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	ARDUINO
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Arduino}
 In questa sezione si vuole effettuare una calibrazione della scheda Arduino Due. In particolare, si vuole quantificare
@@ -901,9 +704,9 @@ in input) è $V_{\text{op}}=3.3\,\si{\volt}$.\footnote{\url{https://www.arduino.
 La più piccola variazione di tensione rilevabile in ADC counts risulta dunque essere circa $0.8\,\si{\mV}$. Ci si
 aspetta dunque di trovare una funzione di calibrazione in tensione con un coefficiente angolare attorno a tale valore. 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	SAMPLING RATE 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Sampling Rate}
 Si comincia configurando il segnale di trigger. Si imposta quindi nel canale CH2 del generatore un impulso quadrato di
@@ -917,9 +720,9 @@ di punti compresi tra due picchi positivi della funzione derivata. Si trova allo
 ovvero 955000 acquisizioni al secondo.
 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	CALIBRAZIONE IN TENSIONE
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Calibrazione in Tensione}
 Si vuole ora verificare la linearità dell'ADC interno alla scheda e stimare i parametri $a$, $b$ della funzione di
@@ -955,9 +758,9 @@ $500\,\si{\mV}$ e $1.8\,\si{\volt}$ (parametri di calibrazione: $a = -0.59 \pm 0
 
 
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 %	CONCLUSIONI
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Conclusioni}
 Ripercorrendo brevente quanto riscontrato nell'analisi effettuata, si vuole cominciare osservando che non è stato
