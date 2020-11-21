@@ -236,13 +236,13 @@ picco. Per l'acquisizione vengono utilizzati i cursori di tipo tensione (orizzon
 
 \subsection{Dati e Analisi}
 In questa sezione si vuole inizialmente rappresentare le misure acquisite in laboratorio riportandole in un grafico
-esplorativo di $V_{\text{out}}$ contro $V_{\text{in}}$, per cercare di estrarre informazioni di carattere generale sui
-dati a disposizione: per ogni misura di un massimo di $V_{\text{in}}$ si associa il corrispettivo massimo di
-$V_{\text{out}}$ (analogo per i minimi). Successivamente, si vuole invece caratterizzare la linearità dell'amplificatore
-operazionale ed il guadagno del circuito in termini statistici, focalizzandosi sullo studio di interpolazioni lineari.
-Rappresentando in un grafico $V_{\text{out}}$ contro $V_{\text{in}}$, infatti, è possibile ricavare il valore assoluto
-dell'amplificazione come il coefficiente angolare di una retta che interpola i dati: dalla bontà del fit e
-dall'andamento dei residui si riesce inoltre a studiare le proprietà di linearità del sistema in questione. 
+esplorativo di $V_{\text{out}}$ contro $V_{\text{in}}$: da questo si cerca dunque di estrarre informazioni di carattere
+generale riguardo i dati a disposizione. Le coppie $\{V_{\text{in}},\,V_{\text{out}}\}$ sono costruite associando, per
+ogni valore di tensione nominale erogata dal generatore, il massimo di $V_{\text{out}}$ al rispettivo massimo di
+$V_{\text{in}}$ (analogo per i minimi). Per quanto riportato in \autoref{s:guadagno} ci si aspetta una distribuzione
+lineare delle coppie con pendenza pari all'amplificazione del circuito $G$: attraverso un'interpolazione lineare,
+quindi, è possibile estrarre una stima di tale $G$. Inoltre è possibile caratterizzare la linearità dell'operazionale
+tramite la bontà del fit e studiando l'andamento dei residui associati all'interpolazione.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
