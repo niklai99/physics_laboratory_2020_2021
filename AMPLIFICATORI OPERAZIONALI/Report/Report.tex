@@ -85,7 +85,7 @@
 %----------------------------------------------------------------------------------------
 
 \section{Obiettivo}
-Verificare la linearità di un amplificatore operazionale e misurare l'amplificazione di un circuito che lo comprenda.
+Verificare la linearità di un amplificatore operazionale e misurare il guadagno di un circuito che lo comprenda.
 Misurare la frequenza di taglio di un filtro attivo. Calcolare il sampling rate e la funzione di calibrazione in
 tensione di una scheda Arduino Due.
 
@@ -204,12 +204,11 @@ Nel corso dell'esperienza si utilizzano i seguenti:
 %	AMPLIFICATORE OPERAZIONALE INVERTENTE
 %----------------------------------------------------------------------------------------
 
-\section{Amplificatore Operazionale Invertente}\label{s:opamp}
-In questa sezione ci si propone di studiare il comportamento di un circuito puramente resistivo comprendente un
-amplificatore operazionale in configurazione invertente (polo positivo a massa, polo negativo collegato al segnale in
-ingresso). Si vuole in particolare verificare la sua linearità e stimare l'amplificazione del circuito come grandezza
-derivata sia partendo dalle misure dirette delle resistenze sia come parametro di un'interpolazione lineare di misure
-acquisite con l'oscilloscopio. 
+\section{Amplificatore Operazionale Invertente}\label{s:opamp} In questa sezione ci si propone di studiare il
+comportamento di un circuito puramente resistivo comprendente un amplificatore operazionale in configurazione invertente
+(polo positivo a massa, polo negativo collegato al segnale in ingresso). Si vuole in particolare verificare la sua
+linearità e stimare l'amplificazione del circuito come grandezza derivata sia partendo dalle misure dirette delle
+resistenze del circuito sia come parametro di un'interpolazione lineare di misure acquisite con l'oscilloscopio. 
 
 
 %----------------------------------------------------------------------------------------
@@ -270,18 +269,27 @@ tensione nominale erogata dal generatore. Si imposta infine il generatore di fun
 tipo sinusoidale con frequenza $f_{\text{gen}}=1\,\si{k\hertz}$, mantenuta costante in questa sezione, e di ampiezza
 invece variabile tra $200\,\si{\mV}$ picco picco e $3.5\,\si{\V}$ picco picco. \\
 
-\noindent Facendo riferimento ai valori delle resistenze $R_{\text{f}}$ ed $R_1$ riportate in \autoref{t:direct_measures}, si
-vuole calcolare il guadagno $G$ del circuito atteso utilizzando l'\autoref{e:guadagno}, ottenuta risolvendo il circuito.
-Si vuole far notare che, avendo posto l'amplificatore operazionale in configurazione invertente, si ritrova un segno
-meno ad indicare un segnale in uscita $V_{\text{out}}$ "invertito" (ovvero ci si aspetta che i massimi del segnale in
-ingresso corrispondano a minimi del segnale in uscita e viceversa). Tuttavia, nell'analisi che segue, verrà sempre
-considerato il valore assoluto dell'amplificazione $G$, che si definisce dunque come
+\noindent Dall'assunzione di idealità dell'amplificatore operazionale segue che, risolvendo il circuito, il segnale in
+uscita è legato a quello in ingresso da $V_{\text{out}} = - R_{\text{f}} / R_{1} \, V_{\text{in}}$, dove il segno meno
+(dovuto alla particolare configurazione dell'operazionale) indica un segnale in output invertito\footnote{Ci si aspetta
+che i massimi del segnale in ingresso corrispondano ai minimi del segnale in uscita e viceversa.} rispetto a quello in
+ingresso, e amplificato di un fattore $G \equiv R_{\text{f}} / R_{1} \, V_{\text{in}}$. Facendo riferimento ai valori
+delle resistenze $R_{\text{f}}$ ed $R_1$ riportate in \autoref{t:direct_measures}, l'aspettativa teorica per il guadagno
+del circuito è dunque 
 \begin{align}\label{e:guadagno}
-	G&=\left|-\frac{R_{\text{f}}}{R_{1}}\right| = 10.194
+	G&=\frac{R_{\text{f}}}{R_{1}} = 10.194 \pm 0.006
 	&
-	\sigma_{G}&=\sqrt{	\left(	\frac{	1	}{	R_{1}	}	\right)^2	\sigma_{R_{\text{f}}}^2	
-	+	\left(	\frac{	R_{\text{f}}	}{	R_{1}^2	}	\right)^2\sigma_{R_{1}}^2	}	= 0.006
+	\text{con   }\,\,\sigma_{G}&=\sqrt{	\left(	\frac{	1	}{	R_{1}	}	\right)^2	\sigma_{R_{\text{f}}}^2	
+	+	\left(	\frac{	R_{\text{f}}	}{	R_{1}^2	}	\right)^2\sigma_{R_{1}}^2	}
 \end{align}
+
+%\noindent Facendo riferimento ai valori delle resistenze $R_{\text{f}}$ ed $R_1$ riportate in \autoref{t:direct_measures}, si
+%vuole calcolare il guadagno $G$ del circuito atteso utilizzando l'\autoref{e:guadagno}, ottenuta risolvendo il circuito.
+%Si vuole far notare che, avendo posto l'amplificatore operazionale in configurazione invertente, si ritrova un segno
+%meno ad indicare un segnale in uscita $V_{\text{out}}$ "invertito" (ovvero ci si aspetta che i massimi del segnale in
+%ingresso corrispondano a minimi del segnale in uscita e viceversa). Tuttavia, nell'analisi che segue, verrà sempre
+%considerato il valore assoluto dell'amplificazione $G$, che si definisce dunque come
+
 
 
 %----------------------------------------------------------------------------------------
