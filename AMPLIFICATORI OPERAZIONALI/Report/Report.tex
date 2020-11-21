@@ -270,8 +270,10 @@ un'amplificazione conforme alle aspettative (circa di un fattore 10). Si osserva
 $V_{\text{gen}}\approx 1.5\,\si{\volt}$ tendano a stabilizzarsi attorno a $V_{\text{out}}=V_{\text{sat}}=\pm
 15\,\si{\volt}$, ovvero la tensione massima che l'amplificatore operazionale può fornire in output: questo effetto di
 saturazione del segnale in uscita segue le previsioni esposte in \autoref{s:spice}. Spostando l'attenzione sul grafico
-dei residui, si può notare chiaramente che l'effetto della saturazione del segnale si traduce in outliers rispetto al
-trend lineare dei dati, i quali residui invece si distribuiscono ragionevolmente attorno allo zero.
+dei residui, si può notare chiaramente che l'effetto della saturazione del segnale si traduce qui in outliers rispetto
+al trend lineare dei dati, i quali residui si distribuiscono invece ragionevolmente attorno allo zero. Si noti infine
+come le incertezze su $V_{\text{in}}$ siano generalmente un ordine di grandezza inferiori rispetto a quelle su
+$V_{\text{out}}$: le prime non sono quindi trascurabili rispetto alle seconde. 
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -488,9 +490,9 @@ ritrovata considerando le tensioni picco picco 6), in quanto presenta un errore 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Filtro Attivo - Circuito Derivatore}
-Ci si propone di studiare il comportamento \textit{in frequenza} di un circuito simile a quello
-considerato in \autoref{s:opamp}, con l'aggiunta di un condensatore $C_{1}$ in serie alla resistenza $R_{1}$: questo lo
-rende dunque un filtro (attivo, in quanto è sempre presente l'amplificatore operazionale) passa alto, derivatore a basse
+Ci si propone di studiare il comportamento \textit{in frequenza} di un circuito simile a quello schematizzato in
+\autoref{i:opamp_circuit}, con l'aggiunta di un condensatore $C_{1}$ in serie alla resistenza $R_{1}$: questo lo rende
+dunque un filtro (attivo, in quanto è sempre presente l'amplificatore operazionale) passa alto, derivatore a basse
 frequenze. 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -498,10 +500,9 @@ frequenze.
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Configurazione Sperimentale}
-Utilizzando la stessa configurazione circuitale rappresentata in \autoref{i:opamp_circuit}, viene aggiunta la capacità
-$C_{1} = 0.977 \pm 0.017 \,\si{n\farad}$ (misurata direttamente utilizzando il multimetro digitale a fondo scala
-$1\,\si{n\farad}$) in serie alla resistenza $R_{1}$, tra essa e l'amplificatore operazionale. Nel dominio delle
-frequenze la funzione di trasferimento $H(s)=V_{\text{out}}(s)/V_{\text{in}}(s)$ del circuito risulta essere 
+La capacità aggiunta è pari a $C_{1} = 0.977 \pm 0.017 \,\si{n\farad}$ (misurata direttamente utilizzando il multimetro
+digitale a fondo scala $1\,\si{n\farad}$). Nel dominio delle frequenze la funzione di trasferimento
+$H(s)=V_{\text{out}}(s)/V_{\text{in}}(s)$ del circuito risulta essere 
 \begin{align}
 	H(s) &= -\frac{R_{\text{f}}}{R_{1}}\frac{s}{s+\omega_{0}} & \text{con}\,\,\,\, \omega_{0}&=\frac{1}{R_{1}C_{1}}
 \end{align}
