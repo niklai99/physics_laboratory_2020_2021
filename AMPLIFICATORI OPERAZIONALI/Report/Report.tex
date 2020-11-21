@@ -227,7 +227,7 @@ $V_{\text{gen}}=1.5\,\si{\volt}$.
 Al fine di verificare la linearità dell'amplificatore operazionale e stimare l'amplificazione $G$ del circuito, vengono
 acquisite separatamente le misure di un massimo ed un minimo sia del segnale in ingresso sia di quello in uscita facendo
 variare la tensione nominale erogata dal generatore partedo da $200\,\si{\mV}$ picco picco fino a $3.5\,\si{\volt}$ picco
-picco. Per l'acquisizione vengono utilizzati i cursori di tipo tensione (orizzontali) dell'oscilloscopio. 
+picco. Per l'acquisizione vengono utilizzati i cursori di tipo tensione dell'oscilloscopio (orizzontali). 
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -250,8 +250,8 @@ tramite la bontà del fit e studiando l'andamento dei residui associati all'inte
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Dataset}
-Si comincia riportando in \autoref{i:opamp_eda} le misure acquisite con l'oscilloscopio. A queste, cioè sia a
-$V_{\text{in}}$ che $V_{\text{out}}$, si associa l'incertezza
+Si comincia riportando in \autoref{i:opamp_eda} le misure acquisite con l'oscilloscopio, alle quali (sia a
+$V_{\text{in}}$ sia a $V_{\text{out}}$) si associa la seguente incertezza:
 \begin{equation}\label{e:osc}
 	\sigma_{V} = \sqrt{ (\sigma_{\text{L}}\times\text{V/div})^2 + (\sigma_{\text{k}}\times\text{measure})^2 }
 \end{equation}
@@ -264,17 +264,16 @@ associati all'oscilloscopio mentre V/div rappresenta la scala di acquisizione de
 	\caption{\small Grafico delle misure acquisite interpolate linearmente e relativo grafico dei residui.}
 	\label{i:opamp_eda}
 \end{figure}
-\noindent Inizialmente, si vuole far notare che i valori di $V_{\text{in}}$ sono conformi a quanto erogato dal
-generatore: questo è sicuramente indice di una corretta acquisizione del segnale in ingresso, di una corretta
-configurazione del genetratore (modalità "50 Ohm") e dell'oscilloscopio (attenuazione sonda 10X). Osservando invece i
-valori di $V_{\text{out}}$, si nota un'amplificazione conforme alle aspettative (circa un fattore 10). Si osserva,
-inoltre, come le misure acquisite a $V_{\text{gen}}\approx 1.5\,\si{\volt}$ tendano a stabilizzarsi attorno a
-$V_{\text{out}}=V_{\text{sat}}=\pm 15\,\si{\volt}$, ovvero la tensione massima che l'amplificatore operazionale può
-fornire in output: questo effetto di saturazione del segnale in uscita è perfettamente conforme alle aspettative esposte
-in \autoref{s:spice}. Spostando l'attenzione verso il grafico dei residui, si può notare chiaramente l'effetto della
-saturazione del segnale: le misure acquisite in tale condizione risultano essere outliers rispetto al trend lineare dei
-dati rimanenti (zona centra), i quali residui si distribuiscono ragionevolmente attorno allo zero. Quanto spazio ho
-ancora?
+\noindent Si noti inizialmente che i valori di $V_{\text{in}}$ sono conformi a quanto erogato dal generatore: questo è
+sicuramente indice di una corretta acquisizione del segnale in ingresso, di una corretta configurazione del genetratore
+(modalità "50 Ohm") e dell'oscilloscopio (attenuazione sonda 10X). Osservando poi i valori di $V_{\text{out}}$, si nota
+un'amplificazione conforme alle aspettative (circa di un fattore 10). Si osserva, inoltre, come le misure acquisite a
+$V_{\text{gen}}\approx 1.5\,\si{\volt}$ tendano a stabilizzarsi attorno a $V_{\text{out}}=V_{\text{sat}}=\pm
+15\,\si{\volt}$, ovvero la tensione massima che l'amplificatore operazionale può fornire in output: questo effetto di
+saturazione del segnale in uscita segue le previsioni esposte in \autoref{s:spice}. Spostando l'attenzione verso il
+grafico dei residui, si può notare chiaramente l'effetto della saturazione del segnale: le misure acquisite in tale
+condizione risultano essere outliers rispetto al trend lineare dei dati rimanenti (zona centra), i quali residui si
+distribuiscono ragionevolmente attorno allo zero. Quanto spazio ho ancora?
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
