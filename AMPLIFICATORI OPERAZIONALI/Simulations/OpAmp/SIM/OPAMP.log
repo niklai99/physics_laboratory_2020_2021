@@ -2,20 +2,20 @@ Circuit: * D:\GitHub\physics_laboratory_2020_2021\AMPLIFICATORI OPERAZIONALI\Sim
 
 Direct Newton iteration for .op point succeeded.
 
-Date: Fri Nov 06 17:48:42 2020
-Total elapsed time: 0.112 seconds.
+Date: Sat Nov 21 15:19:17 2020
+Total elapsed time: 0.090 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 14829
-traniter = 14825
-tranpoints = 4051
-accept = 2885
-rejected = 1166
+totiter = 15168
+traniter = 15164
+tranpoints = 4175
+accept = 2970
+rejected = 1205
 matrix size = 10
 fillins = 1
 solver = Normal
-Matrix Compiler1: 454 bytes object code size  0.1/0.1/[0.1]
-Matrix Compiler2: off  [0.1]/0.1/0.1
+Matrix Compiler1: 454 bytes object code size  0.2/0.1/[0.1]
+Matrix Compiler2: 790 bytes object code size  0.1/0.1/[0.1]
 
