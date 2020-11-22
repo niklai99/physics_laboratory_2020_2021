@@ -12,8 +12,9 @@
 \BOOKMARK [2][-]{subsection.4.1}{Configurazione Sperimentale}{section.4}% 12
 \BOOKMARK [2][-]{subsection.4.2}{Acquisizione Misure}{section.4}% 13
 \BOOKMARK [2][-]{subsection.4.3}{Dati e Analisi}{section.4}% 14
-\BOOKMARK [3][-]{subsubsection.4.3.1}{Grafico di Bode}{subsection.4.3}% 15
-\BOOKMARK [1][-]{section.5}{Arduino}{}% 16
-\BOOKMARK [2][-]{subsection.5.1}{Sampling Rate}{section.5}% 17
-\BOOKMARK [2][-]{subsection.5.2}{Calibrazione in Tensione}{section.5}% 18
-\BOOKMARK [1][-]{section.6}{Conclusioni}{}% 19
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Comportamento Derivatore}{subsection.4.3}% 15
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Grafico di Bode}{subsection.4.3}% 16
+\BOOKMARK [1][-]{section.5}{Arduino}{}% 17
+\BOOKMARK [2][-]{subsection.5.1}{Sampling Rate}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.2}{Calibrazione in Tensione}{section.5}% 19
+\BOOKMARK [1][-]{section.6}{Conclusioni}{}% 20
