@@ -233,7 +233,7 @@ $V_{\text{gen}}=1.5\,\si{\volt}$.
 
 Al fine di verificare la linearità dell'amplificatore operazionale e stimare l'amplificazione $G$ del circuito, vengono
 acquisite separatamente le misure di un massimo ed un minimo sia del segnale in ingresso sia di quello in uscita facendo
-variare la tensione nominale erogata dal generatore partedo da $200\,\si{\mV}$ picco picco fino a $3.5\,\si{\volt}$ picco
+variare la tensione nominale erogata dal generatore partendo da $200\,\si{\mV}$ picco picco fino a $3.5\,\si{\volt}$ picco
 picco. Per l'acquisizione vengono utilizzati i cursori di tipo tensione dell'oscilloscopio (orizzontali). 
 
 
@@ -273,7 +273,7 @@ associati all'oscilloscopio mentre V/div rappresenta la scala di acquisizione de
 	\label{i:opamp_eda}
 \end{figure}
 \noindent Si noti inizialmente che i valori di $V_{\text{in}}$ sono conformi a quanto erogato dal generatore: questo è
-sicuramente indice di una corretta acquisizione del segnale in ingresso, di una corretta configurazione del genetratore
+sicuramente indice di una corretta acquisizione del segnale in ingresso, di una corretta configurazione del generatore
 (modalità "50 Ohm") e dell'oscilloscopio (attenuazione sonda 10X). Osservando poi i valori di $V_{\text{out}}$, si nota
 un'amplificazione conforme alle aspettative (circa di un fattore 10). Si osserva, inoltre, come le misure acquisite a
 $V_{\text{gen}}\approx 1.5\,\si{\volt}$ tendano a stabilizzarsi attorno a $V_{\text{out}}=V_{\text{sat}}=\pm
@@ -432,16 +432,16 @@ il coefficiente angolare restituito da tale interpolazione, si proietta il contr
 	con relativa retta interpolante e parametri del fit. A destra: grafico dei residui $V_{\text{pp, out}}-\text{fit}$.}
 	\label{i:opamp_pp}
 \end{figure}
-\noindent Si noti ora come, al contrario di quanto ritrovato in \autoref{i:opamp_all_proj}, l'intercetta $a$ risulti
+\noindent Si noti ora come, al contrario di quanto trovato in \autoref{i:opamp_all_proj}, l'intercetta $a$ risulti
 essere scarsamente compatibile con zero: essa, infatti, assume proprio il valore dello sfalsamento $d$ tra i due
 campioni di misure. Il coefficiente angolare $b$, invece,è perfettamente in linea con quanto ottenuto considerando i
-dataset sepratamente e, di consegueza, conforme alle aspettative teoriche. Quanto appena riportato fornisce dunque
+dataset separatamente e, di conseguenza, conforme alle aspettative teoriche. Quanto appena riportato fornisce dunque
 un'ulteriore conferma all'ipotesi di offset/shift verticale tra i due campioni che, essendo questo costante per tutte le
-misure, si riesce ad eliminare studiando le grandezze picco picco. Nel grafico dei residui, questo si tradice
-nell'assenza dell'andamento patologico ricontrato in \autoref{i:opamp_all_proj}: come si può osservare, infatti, i punti
+misure, si riesce ad eliminare studiando le grandezze picco picco. Nel grafico dei residui, questo si traduce
+nell'assenza dell'andamento patologico riscontrato in \autoref{i:opamp_all_proj}: come si può osservare, infatti, i punti
 sono tutti ben distribuiti attorno allo zero, abbondantemente compreso entro la barra d'errore dei dati. L'errore a
 posteriori, inoltre, risulta essere appena maggiore dell'incertezza associata al primo punto, mentre diventa
-notevolmente inferiore per i dati successivi. Tale valore di $\sigma_{\text{post}}$ è indice di una buona ditribuzione
+notevolmente inferiore per i dati successivi. Tale valore di $\sigma_{\text{post}}$ è indice di una buona distribuzione
 delle misure attorno alla retta suggerendo, assieme all'andamento dei residui, una soddisfacente linearità
 dell'amplificatore operazionale. Il valore estremamente ridotto del $\chi^2$, invece, non permette nè di rigettare
 l'ipotesi di linearità, nè di poterla confermare (diverso se il $\chi^2$ fosse stato molto grande). Altri
@@ -483,7 +483,7 @@ quinto punto rappresenta poi la media pesata di (2) e (3): si vuole far notare c
 grandezze picco picco). Si deduce, allora, che eliminando la sistematica presente tra i due dataset si trovino risultati
 consistenti e conformi alle aspettative ($\lambda = 0.9$ tra media pesata o slope grandezze picco picco con le
 previsioni teoriche). Si assume, in ogni caso, che l'errore sull'amplificazione $G$ sia sottostimato a causa della
-correlazione delle incertezze. In conlcusione, si preferisce la stima (6) ottenuta dalle grandezze picco picco, in
+correlazione delle incertezze. In conclusione, si preferisce la stima (6) ottenuta dalle grandezze picco picco, in
 quanto presenta un errore relativo leggermente maggiore rispetto alla media pesata (5).
 
 
@@ -548,7 +548,7 @@ amplificazione $G_{\text{sper}}\approx 9.8$ e della frequenza di taglio $f_{\tex
 
 \subsection{Dati e Analisi}
 
-Si vuole inizialmete verificare il comportamento derivatore del circuito sfruttando l'onda triangolare in ingresso.
+Si vuole inizialmente verificare il comportamento derivatore del circuito sfruttando l'onda triangolare in ingresso.
 Successivamente invece si vogliono rappresentare le misure acquisite sperimentalmente sotto forma di grafico di Bode:
 dallo studio di questo si vogliono poi estrarre informazioni di carattere generale sui dati e fornire una stima della
 frequenza di taglio del circuito.
@@ -791,7 +791,7 @@ Ripercorrendo brevemente ciò che è emerso dall'analisi effettuata, si vuole co
 dell'amplificatore operazione è stata verificata dall'andamento dei residui in \autoref{i:opamp_pp} e dall'errore a
 posteriori del campione di grandezze picco picco. Non è stato invece possibile fare riferimento ai valori di $\chi^2$ in
 quanto la correlazione tra gli errori rende tali valori decisamente ridotti rispetto al numero di gradi di libertà.
-Dalloo studio dell'amplificazione del circuito, rappresentato in \autoref{i:opamp_circuit}, è emersa poi una sistematica
+Dallo studio dell'amplificazione del circuito, rappresentato in \autoref{i:opamp_circuit}, è emersa poi una sistematica
 di offset/shift verticale tra il campione di misure dei massimi e quello dei minimi. A causa di ciò, è stato necessario
 considerare le grandezze picco picco per ricavare una stima che tenesse conto di entrambi i dataset e che fosse conforme
 alle aspettative. La miglior stima dell'amplificazione del circuito risulta dunque essere $G=10.29 \pm 0.11$, ottenuta
@@ -802,7 +802,7 @@ parassita in parallelo al circuito. La frequenza di taglio estrapolata attravers
 essere scarsamente compatibile con le aspettative teoriche, e la causa di ciò potrebbe essere una campionatura troppo
 rarefatta a basse frequenze che ha portato ad una stima non ottimale della retta a 20 dB/dec. L'interpolazione lineare
 ristretta all'intorno della frequenza di taglio, nel quale la campionatura è sufficientemente fitta, invece restituisce
-una stima $f_{\text{t}}=19.8 \pm 0.8\,\si{\kHz}$ in ottimo accordo con le aspettative. Si prende dunque quest'utlima
+una stima $f_{\text{t}}=19.8 \pm 0.8\,\si{\kHz}$ in ottimo accordo con le aspettative. Si prende dunque quest'ultima
 come miglior stima della frequenza di taglio. Per quanto riguarda la calibrazione della scheda Arduino Due, infine, si è
 stimato un sampling rate di $955000$ acquisizioni al secondo e una funzione di calibrazione conforme alle aspettative,
 ovvero con un coefficiente angolare $m=0.766\pm 0.013\,\text{mV/adc counts}$ e un offset $q=-0.59\pm0.02\,\si{\volt}$
