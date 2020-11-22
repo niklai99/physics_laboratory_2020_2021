@@ -1,9 +1,9 @@
-# La relazione si trova nella cartella "Report" &rarr; Report.pdf
+# RELAZIONE CONCLUSA! :sparkles:
 
-## Cari amici fisici :heart:
+## La relazione si trova nella cartella "Report" &rarr; Report.pdf
 
-### Siete liberi di utilizzare qualsiasi cosa si trovi all'interno di questa repository! :tada: :confetti_ball:
+### La repository è pubblica &rarr; è possibile usufruire di tutto ciò che è contenuto al suo interno! :tada: :confetti_ball:
 
 #### Se mi citate nelle relazioni mi fate molto contento, tipo a fondo pagina :smile: (basta il link al mio profilo GitHub, nulla di articolato)
 
-##### In particolare se utilizzate del mio codice, che probabilmente è il motivo per cui siete qui :laughing:
+#### Se avete correzioni o suggerimenti contattatemi! Thanks :hear:
