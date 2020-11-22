@@ -503,27 +503,26 @@ frequenze. Si vuole, in particolare, stimare la frequenza di taglio $f_{\text{t}
 
 \subsection{Configurazione Sperimentale}
 La capacità aggiunta è pari a $C_{1} = 0.977 \pm 0.017 \,\si{n\farad}$ (misurata direttamente utilizzando il multimetro
-digitale a fondo scala $1\,\si{n\farad}$). Nel dominio delle frequenze la funzione di trasferimento
-$H(s)=V_{\text{out}}(s)/V_{\text{in}}(s)$ del circuito risulta essere 
+digitale Metrix a fondo scala $1\,\si{n\farad}$). Vengono poi utilizzate le stesse impostazioni riportate in
+\autoref{s:guadagno} per quanto riguarda generatore di funzioni ed oscilloscopio. Inizialmente si configura il
+generatore di funzioni in modo da erogare un'onda triangolare di ampiezza $1\,\si{\volt}$ e frequenza $1\,\si{\kHz}$ al
+fine di verificare il comportamento derivatore del circuito. Successivamente, per lo studio della risposta in frequenza,
+si utilizza un'onda sinusoidale di ampiezza $1\,\si{\volt}$ picco picco e frequenza variabile tra $100\,\si{\Hz}$ e
+$1\,\si{\MHz}$. Nel dominio delle frequenze, il modulo della funzione di trasferimento
+$H=\left|V_{\text{out}}/V_{\text{in}}\right|$ risulta essere
 \begin{align}
-	H(s) &= -\frac{R_{\text{f}}}{R_{1}}\frac{s}{s+\omega_{0}} & \text{con}\,\,\,\, \omega_{0}&=\frac{1}{R_{1}C_{1}}
+	H(\omega) &= \frac{R_{\text{f}}}{R_{1}}\frac{\omega}{\sqrt{\omega^2+\omega_0^2}} & \text{con}\,\,\,\, \omega_{0}&=\frac{1}{R_{1}C_{1}}
 \end{align}
-
-\noindent Si nota dunque che il termine $-\frac{R_{\text{f}}}{R_{1}}$ è esattamente il guadagno $G$ (il segno meno è
-sempre legato al fatto che l'operazionale è posto in configurazione invertente) del circuito studiato in
-\autoref{s:opamp}, mentre il termine $\frac{s}{s+\omega_{0}}$ risulta essere analogo alla funzione di trasferimento di
-un circuito passa alto passivo. Ci si aspetta dunque che a basse frequenze il circuito si comporti come un derivatore,
-mentre, essendo un passa alto, ci si aspetta si ottenga il massimo guadagno per $s\rightarrow\infty$ e che questo sia
-esattamente $G$. Si imposta allora il generatore in modo da erogare un'onda sinusoidale di ampiezza $1\,\si{\volt}$
-picco picco (che verrà mantenuta costante) e frequenza variabile tra $100\,\si{\Hz}$ e $1\,\si{\MHz}$ per lo studio
-della risposta in frequenza del circuito. Avendo misurato le componenti circuitali direttamente con i multimetri, la
-stima attesa del massimo guadagno è già stata esplicitata in \autoref{e:guadagno}, mentre ci si aspetta una frequenza di
-taglio
-
+\noindent Si noti allora che il termine $\frac{R_{\text{f}}}{R_{1}}$ è esattamente l'amplificazione $G$ del circuito
+studiato in \autoref{s:opamp}, mentre il termine $\frac{\omega}{\sqrt{\omega^2+\omega_0^2}}$ è tipico di un filtro
+passivo passa alto. Ci si aspetta allora che, considerando entrambi i termini, il circuito si comporti come derivatore a
+basse frequenze e che si ottenga il massimo guadagno, pari a $G$, al tendere di $\omega\rightarrow\infty$. Avendo quindi
+misurato le componenti circuitali direttamente con il multimetro, e ricordando che $\omega=2\pi f$, la stima teorica del
+massimo guadagno $G$ è già stata esplicitata in \autoref{e:guadagno}, mentre ci si aspetta una frequenza di taglio
 \begin{align}\label{e:diff_f_th}
-	f_{\text{t}}&=\frac{1}{2\pi R_{1}C_{1}}=20.1 \,\si{k\Hz} & \sigma_{f_{\text{t}}}&=\frac{1}{2\pi}\sqrt{	\left(\frac{1}{C_{1}R_{1}^2}\right)^2\sigma_{R_{1}}^2	+
-																	\left(\frac{1}{C_{1}^2R_{1}}\right)^2\sigma_{C_{1}}^2   }
-																	= 0.3 \,\si{k\Hz}	
+	f_{\text{t}}&=\frac{1}{2\pi R_{1}C_{1}}=20.1 \pm 0.3 \,\si{k\Hz} & 
+	\text{con\,\,\,\,}\sigma_{f_{\text{t}}}&=\frac{1}{2\pi}\sqrt{	\left(\frac{1}{C_{1}R_{1}^2}\right)^2\sigma_{R_{1}}^2	+
+																	\left(\frac{1}{C_{1}^2R_{1}}\right)^2\sigma_{C_{1}}^2   }																	
 \end{align}
 
 
@@ -532,17 +531,28 @@ taglio
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Acquisizione Misure}
-Per studiare la risposta in frequenza del circuito, si fa variare la frequenza del segnale in ingresso da
-$100\,\si{\Hz}$ a $1\,\si{\MHz}$ e vengono acquisite misure di tensione picco picco sia del segnale in ingresso sia di
-quello in uscita: inizialmente viene effettuata un'acquisizione preliminare con il fine di individuare gli intervalli di
-frequenze più interessanti, quali l'intorno della frequenza di taglio e l'intorno del massimo di amplificazione (si
-trova infatti che questo non viene assunto al tendere della frequenza verso valori sempre maggiori, ma piuttosto si ha
-un fenomeno di attenuamento di amplificazione oltre un certo range di frequenze). Così facendo, si riesce a fornire una
-stima approssimativa della frequenza di taglio. Infatti, infittendo le misure in tali intervalli si trova
-l'amplificazione massima sperimentale ($G_{\text{sper}}\approx 9.8$): questa viene divisa per un fattore $\sqrt{2}$ e,
-successivamente, si ricerca la frequenza che corrisponde a tale amplificazione ridotta, sempre infittendo le misure
-nell'intorno della frequenza di taglio. Si trova quindi $f_{\text{t, sper}}\approx 19.5\,\si{k\Hz}$, leggermente minore
-rispetto a quanto trovato in \autoref{e:diff_f_th}.
+
+Per studiare la risposta in frequenza del circuito, si acquisiscono le misure di tensione picco picco sia del segnale in
+ingresso sia del segnale in uscita facendo variare la frequenza dell'onda sinusoidale erogata dal generatore partendo da
+$100\,\si{\Hz}$ fino a $1\,\si{\MHz}$. Inizialmente, viene effettuata un'acquisizione preliminare al fine di individuare
+gli intervalli di frequenza più interessanti, quali l'intorno della frequenza di taglio e l'intorno del massimo di
+amplificazione. Si trova infatti che quest'ultimo non viene assunto al tendere della frequenza verso valori sempre
+maggiori ma, piuttosto, si ha un fenomeno di attenuazione del segnale in uscita oltre una certa frequenza "di massimo".
+Campionando poi in modo più fitto tali intervalli di frequenze si riesce a fornire una stima "sperimentale" della massima
+amplificazione $G_{\text{sper}}\approx 9.8$ e della frequenza di taglio $f_{\text{t, sper}}\approx 19.7\,\si{k\Hz}$.
+
+
+%	Per studiare la risposta in frequenza del circuito, si fa variare la frequenza del segnale in ingresso da
+%	$100\,\si{\Hz}$ a $1\,\si{\MHz}$ e vengono acquisite misure di tensione picco picco sia del segnale in ingresso sia di
+%	quello in uscita: inizialmente viene effettuata un'acquisizione preliminare con il fine di individuare gli intervalli di
+%	frequenze più interessanti, quali l'intorno della frequenza di taglio e l'intorno del massimo di amplificazione (si
+%	trova infatti che questo non viene assunto al tendere della frequenza verso valori sempre maggiori, ma piuttosto si ha
+%	un fenomeno di attenuamento di amplificazione oltre un certo range di frequenze). Così facendo, si riesce a fornire una
+%	stima approssimativa della frequenza di taglio. Infatti, infittendo le misure in tali intervalli si trova
+%	l'amplificazione massima sperimentale ($G_{\text{sper}}\approx 9.8$): questa viene divisa per un fattore $\sqrt{2}$ e,
+%	successivamente, si ricerca la frequenza che corrisponde a tale amplificazione ridotta, sempre infittendo le misure
+%	nell'intorno della frequenza di taglio. Si trova quindi $f_{\text{t, sper}}\approx 19.5\,\si{k\Hz}$, leggermente minore
+%	rispetto a quanto trovato in \autoref{e:diff_f_th}.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -550,6 +560,7 @@ rispetto a quanto trovato in \autoref{e:diff_f_th}.
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Dati e Analisi}
+
 In questa sezione si vuole studiare il grafico di Bode relativo alle misure acquisite sperimentalmente sia con il fine di estrarre
 informazioni di carattere generale sui dati, sia per fornire una stima della frequenza di taglio attraverso
 l'interpolazione delle misure.
