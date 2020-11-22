@@ -6,4 +6,4 @@
 
 #### Se mi citate nelle relazioni mi fate molto contento, tipo a fondo pagina :smile: (basta il link al mio profilo GitHub, nulla di articolato)
 
-#### Se avete correzioni o suggerimenti contattatemi! Thanks :hear:
+#### Se avete correzioni o suggerimenti contattatemi! Thanks :heart:
