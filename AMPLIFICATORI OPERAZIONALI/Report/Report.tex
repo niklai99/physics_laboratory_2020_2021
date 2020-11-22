@@ -573,7 +573,23 @@ frequenza di taglio del circuito.
 
 \subsubsection{Comportamento Derivatore}
 
+Sfruttando l'onda triangolare in ingresso, come anticipato, si vuole ora verificare il comportamento 
 
+\begin{wrapfigure}{R}{0.4\textwidth}
+	\centering
+	\includegraphics[width=0.4\textwidth]{../Plots/Report_Plots/diff_osc_pic.png}
+	\caption{\small Display dell'oscilloscopio: onda triangolare in input e onda quadra in output.}
+	\label{i:diff_pic}
+\end{wrapfigure}
+
+\noindent derivatore del circuito. Ricordando allora che il segnale derivato della salita lineare è la funzione a
+gradino, per l'onda triangolare in input ci si aspetta un'onda quadra in output. In \autoref{i:diff_pic} è riportato il
+display dell'oscilloscopio, nel quale si può osservare la traccia del segnale in ingresso (in giallo) e la traccia del
+segnale in uscita (in azzurro). Per le considerazioni appena riportate, il comportamento derivatore del circuito è
+dunque verificato. Si osserva, inoltre, che l'onda quadra non risulta essere perfetta: questo è dovuto principalmente al
+fatto che l'onda triangolare in ingresso possiede una frequenza di $1\,\si{\kHz}$. Essendo il circuito un filtro passa
+alto, il comportamento derivatore risulta essere più accentuato a basse frequenze. Ci si aspetta dunque che riducendo la
+frequenza dell'onda triangolare in ingresso la forma dell'onda quadra migliori, mentre l'ampiezza diminuisca.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
