@@ -542,19 +542,6 @@ Campionando poi in modo più fitto tali intervalli di frequenze si riesce a forn
 amplificazione $G_{\text{sper}}\approx 9.8$ e della frequenza di taglio $f_{\text{t, sper}}\approx 19.7\,\si{k\Hz}$.
 
 
-%	Per studiare la risposta in frequenza del circuito, si fa variare la frequenza del segnale in ingresso da
-%	$100\,\si{\Hz}$ a $1\,\si{\MHz}$ e vengono acquisite misure di tensione picco picco sia del segnale in ingresso sia di
-%	quello in uscita: inizialmente viene effettuata un'acquisizione preliminare con il fine di individuare gli intervalli di
-%	frequenze più interessanti, quali l'intorno della frequenza di taglio e l'intorno del massimo di amplificazione (si
-%	trova infatti che questo non viene assunto al tendere della frequenza verso valori sempre maggiori, ma piuttosto si ha
-%	un fenomeno di attenuamento di amplificazione oltre un certo range di frequenze). Così facendo, si riesce a fornire una
-%	stima approssimativa della frequenza di taglio. Infatti, infittendo le misure in tali intervalli si trova
-%	l'amplificazione massima sperimentale ($G_{\text{sper}}\approx 9.8$): questa viene divisa per un fattore $\sqrt{2}$ e,
-%	successivamente, si ricerca la frequenza che corrisponde a tale amplificazione ridotta, sempre infittendo le misure
-%	nell'intorno della frequenza di taglio. Si trova quindi $f_{\text{t, sper}}\approx 19.5\,\si{k\Hz}$, leggermente minore
-%	rispetto a quanto trovato in \autoref{e:diff_f_th}.
-
-
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	DATI E ANALISI
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -640,71 +627,39 @@ comportamento, infatti, si trova in disaccordo con
 		\label{i:diff_sim_comp}
 	\end{wrapfigure}
 	
-	\noindent la simulazione Spice del circuito ed è, con buona probabilità, indice della presenza di una capacità (non
-	considerata nella simulazione) in parallelo al circuito: breadboard, cavi, sonde, oscilloscopio. Effettuando
-	un'ulteriore simulazione, aggiungendo una capacità $C_{2}=7\,\si{\pF}$ in parallelo alla resistenza di feedback
-	$R_{\text{f}}$, si trova un notevole miglioramento nell'accordo tra punti simulati e misure sperimentali: questo
-	conferma dunque che l'effetto di attenuazione della funzione di trasferimento del circuito è dovuto a dei contributi
-	capacitivi non trascurabili posti in parallelo ad esso. In \autoref{i:diff_sim_comp} è messo in evidenza questo
-	confronto tra i dati sperimentali e quelli simulati, sia trascurando la capacità $C_{2}$ (in arancione) sia invece
-	tenendone conto (in azzurro). Si procede ora nella ricerca della frequenza di taglio $f_{\text{t}}$ del circuito: la
-	strategia per la stima di tale frequenza è la seguente. Inizialmente si stima il massimo della funzione di
-	trasferimento come vertice della parabola e si associa a tale valore una retta orizzontale
-	$y=H_{\text{max}}=19.79\pm 0.05\,\text{dB}$, dove nel computo dell'errore sono state tenute in considerazione le
-	opportune covarianze tra i parametri della parabola. Si calcola poi il punto di intersezione con la retta  $y=a+bx$
-	in arancione: la coordinata $x$ di tale punto fornisce quindi una stima della frequenza di taglio
-	$f_{\text{t}}=4.370 \pm 0.017\,\text{dec}$ (anche in questo caso nel computo dell'errore è stata considerata la
-	covarianza tra i parametri $a$ e $b$ della retta). Convertendo quanto trovato in Hertz, la frequenza di taglio così
-	stimata risulta essere $f_{\text{t}}=23.4 \pm 0.9\,\si{\Hz}$.
-%	\noindent Osservando il grafico si nota che sono state effettuate due interpolazioni: la prima lineare, per la quale
-%	sono state considerate le prime tre misure, mentre la seconda parabolica, per la quale sono state considerate le misure
-%	nell'intorno del massimo di amplificazione. La strategia per stimare la frequenza di taglio è la seguente: si stima il
-%	massimo della funzione di trasferimento come vertice della parabola, si considera quindi la retta orizzontale
-%	$y=H_{\text{max}}$ e si calcola il punto di intersezione con la retta $y=a+bx$ interpolante le prime tre misure
-%	crescenti. In questo modo, la coordinata $x$ del punto di intersezione coincide con la frequenza di taglio del circuito.
-%	Prima di discutere la frequenza di taglio del circuito, tuttavia, si vogliono fare delle considerazioni di carattere più
-%	generale sul campione di dati rappresentato in \autoref{i:diff_bode}. Per la parte lineare (a sinistra) si può notare un
-%	soddisfacente accordo tra misure sperimentali e dati simulati, e lo stesso vale nell'intorno della frequenza di taglio e
-%	nell'intorno del massimo della funzione di trasferimento. Per questo motivo si può affermare che, siccome nell'analisi
-%	per la ricerca della frequenza di taglio vengono utilizzate le misure che sono in accordo con le aspettative, i
-%	risultati sono da considerarsi significativi.  
-%	
-%	
-%	
-%	\noindent Si nota tuttavia che la retta presenta un coefficiente angolare ($b = 19.03\pm 0.16\,\text{dB/dec}$)
-%	leggermente minore a confronto con le aspettative teoriche ($b_{\text{th}}=20\,\text{dB/dec}$): questo potrebbe dunque
-%	incidere sulla stima della frequenza di taglio restituendo un valore di $f_{\text{t}}$ leggermente maggiore rispetto
-%	alle aspettative. Spostando ora l'attenzione verso la zona destra del grafico, si vede chiaramente un effetto di
-%	attenuazione tipico di un filtro passa banda. Questo comportamento, infatti, si trova in disaccordo con la simulazione
-%	Spice del circuito ed è, con buona probabilità, indice della presenza di una capacità (non considerata nella
-%	simulazione) in parallelo al circuito: cavi, sonde, breadboard, oscilloscopio. 
-%	
-%	\begin{wrapfigure}{R}{0.5\textwidth}
-%		\centering
-%		\includegraphics[width=0.5\textwidth]{../Plots/Report_Plots/diff_sim_comp.png}
-%		\caption{\small Confronto tra misure sperimentali e punti simulati con LTSpice.}
-%		\label{i:diff_sim_comp}
-%	\end{wrapfigure}
-%	
-%	\noindent Effettuando un'ulteriore simulazione, aggiungendo una capacità $C_{2}=7\,\si{\pF}$ in parallelo alla
-%	resistenza di feedback $R_{\text{f}}$, si trova un notevole miglioramento nell'accordo tra punti simulati e misure
-%	sperimentali: questo conferma dunque che l'effetto di attenuazione della funzione di trasferimento del circuito è dovuto
-%	a dei contributi capacitivi non trascurabili posti in parallelo ad esso. In \autoref{i:diff_sim_comp} è messo in
-%	evidenza questo confronto tra i dati sperimentali e quelli simulati, sia trascurando la capacità $C_{2}$ (in arancione)
-%	sia invece tenendone conto (in azzurro). Si procede ora nella ricerca della frequenza di taglio del circuito. Si calcola
-%	allora il massimo della funzione di trasferimento, facendo riferimento ai parametri del fit parabolico, come
-%	$H_{\text{max}}=-\frac{d^2-4ce}{4c}=19.79\pm 0.05\,\text{dB}$, dove nel computo dell'errore sono state tenute in
-%	considerazione le opportune covarianze tra i parametri. Successivamente, si calcola il punto di intersezione tra la
-%	retta orizzontale passante per $H_{\text{max}}$ e la retta interpolante le prime misure secondo
-%	$x_{\text{int}}=\frac{H_{\text{max}}-a}{b}=4.370 \pm 0.017\,\text{dec}$ (anche in questo caso nel computo dell'errore
-%	sono state tenute in considerazione le opportune covarianze tra i parametri $a$ e $b$ della retta). Convertendo quanto
-%	trovato in Hertz, la frequenza di taglio così stimata risulta essere $f_{\text{t}}=23.4 \pm 0.9\,\si{\Hz}$.\\
-Tale valore è però incompatibile sia con le aspettative teoriche, sia con quanto trovato sperimentalmente, seppur in
-modo approssimativo. Si vuole allora procedere stimando la frequenza di taglio utilizzando un metodo alternativo, con il
-fine di verificare se questa incompatibilità con le aspettative risulta essere ricorrente. In particolare, si vuole
-considerare sia la frequenza sia la funzione di trasferimento in scala lineare ed effettuare un fit del tipo $y = mx +
-q$ in uno stretto intorno della frequenza di taglio. Ricordando poi che la frequenza di taglio è tale da attenuare la
-funzione di trasferimento di un fattore $\sqrt{2}$, la prima può essere ricavata da
+\noindent la simulazione Spice del circuito ed è, con buona probabilità, indice della presenza di una capacità (non
+considerata nella simulazione) in parallelo al circuito: breadboard, cavi, sonde, oscilloscopio. Effettuando
+un'ulteriore simulazione, aggiungendo una capacità $C_{2}=7\,\si{\pF}$ in parallelo alla resistenza di feedback
+$R_{\text{f}}$, si trova un notevole miglioramento nell'accordo tra punti simulati e misure sperimentali: questo
+conferma dunque che l'effetto di attenuazione della funzione di trasferimento del circuito è dovuto a dei contributi
+capacitivi non trascurabili posti in parallelo ad esso. In \autoref{i:diff_sim_comp} è messo in evidenza questo
+confronto tra i dati sperimentali e quelli simulati, sia trascurando la capacità $C_{2}$ (in arancione) sia invece
+tenendone conto (in azzurro). Si procede ora nella ricerca della frequenza di taglio $f_{\text{t}}$ del circuito: la
+strategia per la stima di tale frequenza è la seguente. Inizialmente si stima il massimo della funzione di
+trasferimento come vertice della parabola e si associa a tale valore una retta orizzontale
+$y=H_{\text{max}}=19.79\pm 0.05\,\text{dB}$, dove nel computo dell'errore sono state tenute in considerazione le
+opportune covarianze tra i parametri della parabola. Si calcola poi il punto di intersezione con la retta  $y=a+bx$
+in arancione: la coordinata $x$ di tale punto fornisce quindi una stima della frequenza di taglio
+$f_{\text{t}}=4.370 \pm 0.017\,\text{dec}$ (anche in questo caso nel computo dell'errore è stata considerata la
+covarianza tra i parametri $a$ e $b$ della retta). Convertendo quanto trovato in Hertz, la frequenza di taglio così
+stimata risulta essere $f_{\text{t}}=23.4 \pm 0.9\,\si{k\Hz}$. Tale valore è però incompatibile sia con le
+aspettative teoriche sia con quanto trovato sperimentalmente, seppur in modo approssimativo. Si ipotizza dunque che
+la causa possa essere il leggero disaccordo tra il coefficiente angolare della retta arancione $b = 19.03\pm
+0.16\,\text{dB/dec}$ e l'aspettativa $b_{\text{th}}=20\,\text{dB/dec}$: sfruttando la strategia riportata sopra,
+infatti, una pendenza minore di tale retta si tradurrebbe in un aumento della frequenza di taglio. Nella sezione
+successiva allora ci si propone di stimare la frequenza di taglio $f_{\text{t}}$ utilizzando un metodo alternativo
+al fine di verificare se questa incompatibilità con le aspettative risulti essere ricorrente.
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	FIT LINEARIZZATO
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsubsection{Stima di $\mathbf{f_{\text{t}}}$ in Scala Lineare}
+
+Si considerano ora frequenza e funzione di trasferimento in scala lineare e si effettua un fit del tipo $y = mx + q$ in
+uno stretto intorno della frequenza di taglio. Ricordando che la frequenza di taglio è tale da attenuare la funzione di
+trasferimento di un fattore $1/\sqrt{2}$, la prima può essere ricavata da
 \begin{align}
 	\frac{H_{\text{max}}}{\sqrt{2}}&=mx+q & \Longrightarrow & & f_{\text{t}}&=\frac{\frac{H_{\text{max}}}{\sqrt{2}}-q}{m}
 \end{align}
@@ -738,29 +693,25 @@ dell’interpolazione, in particolare nel calcolo di $f_{\text{t}}$ come segue
 		\right)\text{cov}(m,q)
 	}
 \end{equation}
-
-\noindent dove appunto $\sigma_{\text{k}}=1.5\%$ rappresenta il contributo di scala. Si sceglie allora come $H_{\text{max}} =
-9.76 \pm 0.05$ il valore trovato attraverso il fit parabolico precedente (in scala lineare) e si estrapolano i parametri
-$m$ e $q$ dal seguente fit nell'intervallo di frequenze 17 - 24 kHz. Si vuole far notare che in \autoref{e:diff_prop}
-non è stato considerato il termine relativo ad $H_{\text{max}}$ per comodità, in quanto tale contributo si ritrova
-essere due ordini di grandezza inferiore rispetto agli altri termini e non modifica in quantità apprezzabile la stima
-finale dell'errore.
-
+\noindent dove appunto $\sigma_{\text{k}}=1.5\%$ rappresenta il contributo di scala. Si sceglie allora come
+$H_{\text{max}} = 9.76 \pm 0.05$ il valore trovato attraverso il fit parabolico precedente (convertito in scala lineare)
+e si ricavano i parametri $m$ e $q$ dal seguente fit nell'intervallo di frequenze 17 - 24 kHz. Si vuole far notare che
+in \autoref{e:diff_prop} non è stato considerato il contributo relativo ad $H_{\text{max}}$, in quanto due ordini di
+grandezza inferiore rispetto agli altri termini e non modifica in quantità apprezzabile la stima finale dell'errore.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Plots/Report_Plots/diff_linear.png}
-	\caption{\small Interpolazione lineare delle misure in un intorno della frequenza di taglio e relativo grafico dei residui.}
+	\caption{\small Fit lineare delle misure in un intorno della frequenza di taglio e relativo grafico dei residui.}
 	\label{i:diff_linear}
 \end{figure}
-
-\noindent Si nota immediatamente una leggera tendenza paraolica dell'andamento dei residui, tuttavia, pur avendo
+\noindent Si nota immediatamente una leggera tendenza parabolica dell'andamento dei residui, tuttavia, pur avendo
 trascurato il contributo di scala nel calcolo delle incertezze, i punti si distribuiscono tutti entro il loro errore. Il
 $\chi^2$ risulta in ogni caso compatibile con il suo valore di aspettazione ($\lambda = 1.2$), pur segnalando una
 possibile sovrastima dell'errore sulle misure (ipotesi assecondata anche dall'errore a posteriori, che risulta essere
-circa $1/5$ rispetto alle incertezze assegnate ai dati). La stima della frequenza di taglio che si ottiene è dunque
+circa $1/5$ rispetto alle incertezze assegnate ai dati). La stima della frequenza di taglio che si ottiene è, infine,
 $f_{\text{t}} = 19.8\pm 0.8\,\si{\kHz}$: questa risulta essere in ottimo accordo con le previsioni teoriche
-($\lambda=0.4$) e, di conseguenza, si trova essere scarsamente compatibile con quanto ricavato studiando il grafico di
-Bode ($\lambda = 3.0$).
+($\lambda=0.4$) e con quanto trovato sperimentalmente. Di conseguenza, questa si trova essere scarsamente compatibile
+con quanto ricavato studiando il grafico di Bode ($\lambda = 3.0$).
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
