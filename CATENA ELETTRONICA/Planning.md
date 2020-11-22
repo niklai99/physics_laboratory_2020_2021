@@ -27,7 +27,7 @@ positivo _acquisibile direttamente con Arduino_.
 
 * Simulazione della risposta del circuito raffigurato sopra al segnale impulso negativo:
 
-![PreAmp Simulazione](./Plots/PreAmp_preliminary_simulation.png)
+![PreAmp Simulazione](./Plots/PreAmp/PreAmp_preliminary_simulation.png)
 
 * Verifico con l'oscilloscopio l'effetto di integrazione della carica e il successivo smorzamento esponenziale. 
 * Confronto il valore massimo di tensione atteso con quello misurato.
@@ -52,4 +52,4 @@ integratore e filtro passa basso.
 
 Confronto i risultati con la simulazione Spice
 
-![PreAmp Simulazione](./Plots/PreAmp_preliminary_bode_simulation.png)
+![PreAmp Simulazione](./Plots/PreAmp/PreAmp_preliminary_bode_simulation.png)
