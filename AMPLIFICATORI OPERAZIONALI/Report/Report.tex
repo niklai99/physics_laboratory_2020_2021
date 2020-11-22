@@ -386,9 +386,6 @@ parametri, che però non si riesce a quantificare. Si vuole allora assumere che 
 amplificazione $G$ e che non siano tra loro sfalsati verticalmente in modo significativo: segue quindi un tentativo di
 "unificazione" del campione di dati ed un'interpolazione lineare unica che tenga conto sia dei massimi che dei minimi,
 rappresentato in \autoref{i:opamp_all_proj}. 
-%-------------------------------------------------------------------------------------------------------------------------------------------
-%	FIT UNIFICATO
-%-------------------------------------------------------------------------------------------------------------------------------------------
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_all_projected.png}
@@ -396,36 +393,49 @@ rappresentato in \autoref{i:opamp_all_proj}.
 	con relativa retta interpolante e parametri del fit. A destra: grafico dei residui $V_{\text{out}}-\text{fit}$.}
 	\label{i:opamp_all_proj}
 \end{figure}
+\noindent Si noti inizialmente come l'intercetta $a$ risulti ora ben compatibile con zero. Il coefficiente angolare $b$,
+invece, pur essendo compatibile con i risultati esposti precedentemente in \autoref{t:opamp_fitres_max_min}, si trova
+essere sensibilmente minore di entrambi. Questa "anomalia" è perfettamente conforme con lo sfalsamento $d$ tra i due
+campioni: avendo il dataset di minimi un offset positivo e quello dei massimi un offset negativo, il primo si trova
+essere "rialzato" rispetto al secondo e la retta interpolante il campione unificato presenta quindi un coefficiente
+angolare minore rispetto ai due coefficienti angolari separati. Osservando poi il grafico dei residui, si può notare un
+andamento leggermente patologico, quasi parabolico, avente concavità rivolta verso il basso: è evidente come questo
+andamento sia dovuto alla sistematica di sfalsamento tra i due dataset. Si può inoltre notare un andamento "a farfalla"
+delle barre d'errore, tipico della correlazione degli errori tra misure acquisite con l'oscilloscopio. L'errore a
+posteriori, tuttavia, si trova in una zona intermedia rispetto alla gamma di errori associati alle misure: non potendo
+eliminare la correlazione tra le incertezze si può affermare dunque che l'errore è in media stimato correttamente e
+l'oscilloscopio lavora entro le specifiche. I residui, infatti, si posizionano tutti entro il loro errore, alcuni anche
+abbondantemente.
 
-\noindent Si osserva inizialmente che l'intercetta della retta interpolante è ora ben compatibile con zero, mentre il
-coefficiente angolare presenta un errore relativo $\sigma_{b}/b=0.7\%$, che si può continuare ad assumere sottostimato:
-la correlazione tra gli errori di scala, infatti, si può notare chiaramente dall'andamento "a farfalla" delle barre
-d'errore nel grafico dei residui. Il valore del $\chi^2$ migliora leggermente rispetto alle interpolazioni dei dataset
-separati: la compatibilità con il valore di aspettazione risulta essere $Z=1.4$. L'errore a posteriori, inoltre, si
-trova in una zona intermedia rispetto alla gamma di errori associati alle misure: non potendo eliminare la correlazione
-tra le incertezze si può affermare dunque che l'errore è in media stimato correttamente e l'oscilloscopio lavora entro
-le specifiche. I residui, infatti, si posizionano tutti entro il loro errore, alcuni anche abbondantemente.
-Focalizzandosi ora sulla stima del coefficiente angolare si nota che questo, $m=9.93\pm 0.07$, pur essendo ben
-compatibile con i risultati esposti in  \autoref{t:opamp_fitres_max_min} relativi ai fit dei due campioni di misure
-considerati separatamente, si trova essere sensibilmente minore di entrambi: ci si sarebbe aspettato, invece, di trovare
-un valore intermedio unificando i due campioni di misure. Osservando poi il grafico dei residui, si può notare un
-andamento leggermente anomalo, quasi parabolico, avente concavità rivolta verso il basso. Si ipotizza dunque che
-l'assunzione fatta in precedenza riguardo la presenza di una sistematica di offset/shift verticale tra i due dataset
-trascurabile necessiti di essere rivisitata. Per approfondire maggiormenta la questione, si decide di computare le
-grandezze "picco picco" delle tensioni in ingresso $V_{\text{in}}$ e in uscita $V_{\text{out}}$ secondo
-$V_{\text{pp}}=V^{\text{max}}-V^{\text{min}}$. Per quanto riguarda l'errore da associare alle grandezze picco picco, si
-ricorda che l'oscilloscopio misura la differenza $\Delta$ tra i due cursori con una precisione ancora maggiore rispetto
-alla singola misura. Si decide dunque di non aggiungere il fattore moltiplicativo $\sqrt{2}$ alla propagazione
-presentata in  \autoref{e:osc}, al fine di evitare sovrastime eccessive dell'errore. Si procede ora come mostrato in
-\autoref{s:pre}, effettuando inizialmente un fit lineare preliminare considerando solo gli errori su $Vpp_{\text{out}}$
-e, utilizzando il coefficiente angolare restituito da tale interpolazione, si prosegue proiettando gli errori secondo
-\autoref{e:proj}. Si ripete quindi il fit, che viene rappresentato in \autoref{i:opamp_pp}. Osservando il grafico dei
-residui, si nota immediatamente come ora l'andamento anomalo è del tutto assente ed i punti si distribuiscono in modo
-ottimale attorno allo zero. Rimane, chiaramente, il tipico andamento crescente delle barre d'errore, indice che le
-incertezze continuano a risentire della correlazione tra esse. Il valore del $\chi^2$ è decisamente basso rispetto al
-numero di gradi di libertà, come suggerito dal grafico dei residui in cui si nota chiaramente come la distanza
-punto-retta sia ampiamente compresa entro la barra d'errore del dato. L'errore a posteriori è appena maggiore
-dell'incertezza associata al primo punto, mentre diventa notevolmente inferiore per i successivi.
+%\noindent Si osserva inizialmente che l'intercetta della retta interpolante è ora ben compatibile con zero, mentre il
+%coefficiente angolare presenta un errore relativo $\sigma_{b}/b=0.7\%$, che si può continuare ad assumere sottostimato:
+%la correlazione tra gli errori di scala, infatti, si può notare chiaramente dall'andamento "a farfalla" delle barre
+%d'errore nel grafico dei residui. Il valore del $\chi^2$ migliora leggermente rispetto alle interpolazioni dei dataset
+%separati: la compatibilità con il valore di aspettazione risulta essere $Z=1.4$. L'errore a posteriori, inoltre, si
+%trova in una zona intermedia rispetto alla gamma di errori associati alle misure: non potendo eliminare la correlazione
+%tra le incertezze si può affermare dunque che l'errore è in media stimato correttamente e l'oscilloscopio lavora entro
+%le specifiche. I residui, infatti, si posizionano tutti entro il loro errore, alcuni anche abbondantemente.
+%Focalizzandosi ora sulla stima del coefficiente angolare si nota che questo, $m=9.93\pm 0.07$, pur essendo ben
+%compatibile con i risultati esposti in  \autoref{t:opamp_fitres_max_min} relativi ai fit dei due campioni di misure
+%considerati separatamente, si trova essere sensibilmente minore di entrambi: ci si sarebbe aspettato, invece, di trovare
+%un valore intermedio unificando i due campioni di misure. Osservando poi il grafico dei residui, si può notare un
+%andamento leggermente anomalo, quasi parabolico, avente concavità rivolta verso il basso. Si ipotizza dunque che
+%l'assunzione fatta in precedenza riguardo la presenza di una sistematica di offset/shift verticale tra i due dataset
+%trascurabile necessiti di essere rivisitata. Per approfondire maggiormenta la questione, si decide di computare le
+%grandezze "picco picco" delle tensioni in ingresso $V_{\text{in}}$ e in uscita $V_{\text{out}}$ secondo
+%$V_{\text{pp}}=V^{\text{max}}-V^{\text{min}}$. Per quanto riguarda l'errore da associare alle grandezze picco picco, si
+%ricorda che l'oscilloscopio misura la differenza $\Delta$ tra i due cursori con una precisione ancora maggiore rispetto
+%alla singola misura. Si decide dunque di non aggiungere il fattore moltiplicativo $\sqrt{2}$ alla propagazione
+%presentata in  \autoref{e:osc}, al fine di evitare sovrastime eccessive dell'errore. Si procede ora come mostrato in
+%\autoref{s:pre}, effettuando inizialmente un fit lineare preliminare considerando solo gli errori su $Vpp_{\text{out}}$
+%e, utilizzando il coefficiente angolare restituito da tale interpolazione, si prosegue proiettando gli errori secondo
+%\autoref{e:proj}. Si ripete quindi il fit, che viene rappresentato in \autoref{i:opamp_pp}. Osservando il grafico dei
+%residui, si nota immediatamente come ora l'andamento anomalo è del tutto assente ed i punti si distribuiscono in modo
+%ottimale attorno allo zero. Rimane, chiaramente, il tipico andamento crescente delle barre d'errore, indice che le
+%incertezze continuano a risentire della correlazione tra esse. Il valore del $\chi^2$ è decisamente basso rispetto al
+%numero di gradi di libertà, come suggerito dal grafico dei residui in cui si nota chiaramente come la distanza
+%punto-retta sia ampiamente compresa entro la barra d'errore del dato. L'errore a posteriori è appena maggiore
+%dell'incertezza associata al primo punto, mentre diventa notevolmente inferiore per i successivi.
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	FIT PICCO PICCO
 %-------------------------------------------------------------------------------------------------------------------------------------------
