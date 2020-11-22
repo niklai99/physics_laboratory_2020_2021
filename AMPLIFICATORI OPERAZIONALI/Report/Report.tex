@@ -272,31 +272,31 @@ $V_{\text{gen}}\approx 1.5\,\si{\volt}$ tendano a stabilizzarsi attorno a $V_{\t
 saturazione del segnale in uscita segue le previsioni esposte in \autoref{s:spice}. Spostando l'attenzione sul grafico
 dei residui, si può notare chiaramente che l'effetto della saturazione del segnale si traduce qui in outliers rispetto
 al trend lineare dei dati, i quali residui si distribuiscono invece ragionevolmente attorno allo zero. Si noti infine
-come le incertezze su $V_{\text{in}}$ siano generalmente un ordine di grandezza inferiori rispetto a quelle su
-$V_{\text{out}}$: le prime non sono quindi trascurabili rispetto alle seconde. 
+come gli errori relativi $\sigma_{V_{\text{in}}}/V_{\text{in}}$ e $\sigma_{V_{\text{out}}}/V_{\text{out}}$ siano
+generalmente comparabili tra loro: le incertezze su $V_{\text{in}}$ non sono quindi trascurabili rispetto a quelle su
+$V_{\text{out}}$.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	PRELIMIARY FIT
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsubsection{Interpolazioni Preliminari}\label{s:pre} Si procede ora considerando il campione di misure dei massimi ed
-il campione di misure dei minimi separatamente, in quanto a priori non si ha la certezza che queste risentano della
-stessa amplificazione e che non sia presente una sistematica di offset/shift verticale tra i due dataset. Si cercherà in
-seguito di caratterizzare l'accordo tra i due dataset studiando la compatibilità tra i coefficienti angolari e tra le
-intercette della retta interpolante. Osservando le misure in  \autoref{i:opamp_eda} si nota come le incertezze su
-$V_{\text{in}}$ siano generalmente un ordine di grandezza inferiori rispetto a quelle su $V_{\text{out}}$: le prime non
-sono quindi trascurabili rispetto alle seconde. Per tenere conto dell'incertezza su $V_{\text{in}}$, ci si propone
-allora di effettuare un fit preliminare, nel quale si considerano unicamente gli errori su $V_{\text{out}}$, per stimare
-un coefficiente angolare $m$. Questo viene poi utilizzato per proiettare gli errori di $V_{\text{in}}$ lungo l'asse
-delle ordinate secondo 
+\subsubsection{Linearità e Amplificazione}\label{s:pre} 
 
+Si procede ora considerando il campione di coppie $\{V_{\text{in}},\,V_{\text{out}}\}_{\text{MAX}}$ corrispondente alle
+misure di massimo e $\{V_{\text{in}},\,V_{\text{out}}\}_{\text{MIN}}$ di minimo separatamente. A priori, infatti, non si
+ha la certezza che i due siano caratterizzati dalla stessa amplificazione $G$ e che non sia presente una sistematica di
+shift/offset verticale tra dataset. Si utilizzeranno quindi le informazioni sui parametri delle rispettive rette
+interpolanti per quantificare l'accordo tra i due campioni di misure. Chiaramente, nelle interpolazioni successive, non
+verranno considerati gli outliers identificati nella sezione precedente. Si è notato, inoltre, come l'errore sulle
+misure di $V_{\text{in}}$ non sia trascurabile rispetto a quello su $V_{\text{out}}$. Per tenere conto di questo, ci si
+propone allora di effettuare un fit preliminare nel quale si considera unicamente l'errore su $V_{\text{out}}$. Il
+coefficiente angolare $m$ della retta viene dunque utilizzato per proiettare il contributo di incertezza dovuto a
+$V_{\text{out}}$ lungo l'asse delle ordinate secondo
 \begin{equation}\label{e:proj}
 	\sigma_{y} = \sqrt{	\sigma_{V_{\text{out}}}^2	+	m^2	\sigma_{V_{\text{in}}}^2	}
 \end{equation}
-
 \noindent I coefficienti angolari di interesse sono dunque riportati in  \autoref{t:pre_slopes}.
-
 \begin{table}[H]
 	\small
 	\centering
@@ -325,10 +325,8 @@ delle ordinate secondo
 %	LINEARITA E AMPLIFICAZIONE
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
-
-\subsubsection{Linearità e Amplificazione}
-Alla luce di quanto trovato nella sezione precedente, si ripetono le interpolazioni lineari associando ai punti un
-errore dato da  \autoref{e:proj} ed i parametri restituiti dai fit sono riportati in  \autoref{t:opamp_fitres_max_min}.
+\noindent Si ripetono ora le interpolazioni dei due dataset con il contributo d'errore proiettato. I parametri restituiti
+da tali fit sono riportati in  \autoref{t:opamp_fitres_max_min}.
 
 \begin{table}[H]
 	\centering
@@ -371,24 +369,23 @@ errore dato da  \autoref{e:proj} ed i parametri restituiti dai fit sono riportat
 	\label{t:opamp_fitres_max_min}
 \end{table}	
 
-\noindent Dai parametri presentati in  \autoref{t:opamp_fitres_max_min} si riescono ad estrarre numerose informazioni
-riguardo ai due campioni di dati. Inizialmente, si vuole far notare come i due coefficienti angolari siano in ottima
-compatibilità tra loro: $\lambda=0.7$. Da questo si può assumere che i due dataset risentano della stessa amplificazione
-$G$, come da aspettative. Successivamente, si può notare invece che le due intercette delle rette interpolanti sono in
-leggera compatibilità con lo zero ($\lambda \approx 1.5$), mentre tra loro presentano una compatibilità $\lambda=2.4$,
-che fa sorgere l'idea di una possibile sistematica di offset/shift verticale tra i due dataset (computando la differenza tra le
-due intercette si trova uno sfalsamento $d=0.13 \pm 0.05 \,\si{\volt}$). Osservando poi il valore del $\chi^2$, si
-ritrova in per entrambi i campioni $\chi^2/\nu<1$ (con $\nu\equiv\text{ndf}$ il numero di gradi di libertà, che coincide
-con il valore di aspettazione $E(\chi^2)$). Ricordando che le incertezze sul guadagno verticale dell'oscilloscopio sono
-almeno parzialmente correlate, gli errori associati alle misure sono tra loro correlati: questo spiega i valori di
-$\chi^2$ eccessivamente ridotti. Un'interpolazione di dati con incertezze correlate restituisce parametri con errori
-sottostimati, in quanto il fit non tiene conto della correlazione tra incertezze delle misure. Si può dunque assumere
-che i parametri \textit{slope} e \textit{offset} riportati in \autoref{t:opamp_fitres_max_min} presentino in realtà una
-compatibilità maggiore, proprio a causa di una possibile sottostima dell'errore sui parametri. Si vuole allora assumere
-che i due campioni risentano della stessa amplificazione e che non siano tra loro sfalsati verticalmente in modo
-significativo: segue quindi un tentativo di "unificazione" del campione di dati ed un'interpolazione lineare unica che
-tenga conto sia dei massimi che dei minimi. Il grafico rappresentante i due dataset unificati con relativa
-interpolazione lineare è mostrato in \autoref{i:opamp_all_proj}. 
+\noindent Si noti inizialmente come i due coefficienti angolari, che si ricorda rappresentano l'amplificazione risentita
+dal segnale in uscita rispetto a quello in ingresso, siano in ottima compatibilità tra loro ($\lambda=0.7$). Da questo,
+allora, si può assumere che i due campioni risentano della stessa amplificazione $G$ e che questa è conforme a quanto
+trovato in \autoref{e:guadagno}, come da aspettative. Le due stime dell'intercetta $q$ sono invece in leggera
+compatibilità con zero ($\lambda \approx 1.5$), mentre tra loro presentano una compatibilità $\lambda=2.4$. Sorge dunque
+l'idea di una possibile sistematica di shift/offset verticale tra i due dataset: computando la differenza tra le due
+intercette si trova uno sfalsamento $d=0.13 \pm 0.05 \,\si{\volt}$. Osservando poi il valore dei $\chi^2$, si trova per
+entrambi i campioni $\chi^2/\text{ndf} \ll 1$. Ricordando che le incertezze sul guadagno verticale dell'oscilloscopio
+sono almeno parzialmente correlate, gli errori associati alle misure sono dunque tra loro correlati: questo spiega i
+valori di $\chi^2$ eccessivamente ridotti. Un'interpolazione di misure con incertezze correlate restituisce di
+conseguenza parametri con errori sottostimati, in quanto il fit non tiene conto di tale correlazione. Si vuole dunque
+assumere che i parametri \textit{slope} e \textit{offset} riportati in \autoref{t:opamp_fitres_max_min} presentino in
+realtà un accordo maggiore tra i due campioni di misure proprio a causa di una possibile sottostima dell'errore sui
+parametri, che però non si riesce a quantificare. Si vuole allora assumere che i due campioni risentano della stessa
+amplificazione $G$ e che non siano tra loro sfalsati verticalmente in modo significativo: segue quindi un tentativo di
+"unificazione" del campione di dati ed un'interpolazione lineare unica che tenga conto sia dei massimi che dei minimi,
+rappresentato in \autoref{i:opamp_all_proj}. 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	FIT UNIFICATO
 %-------------------------------------------------------------------------------------------------------------------------------------------

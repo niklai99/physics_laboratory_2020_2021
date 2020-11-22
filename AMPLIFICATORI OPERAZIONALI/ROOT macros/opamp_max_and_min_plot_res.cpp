@@ -17,54 +17,6 @@ using namespace std;
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-const double NPAR = 2;
-
-const string FILE_NAME_max = "../Data/data_opamp_peak_peak_projected.txt";
-//const string FILE_NAME_min = "../Data/data_opamp_T_min.txt";
-
-TCanvas* c1;
-TLatex* text;
-
-double err_post_max;
-double err_post_min;
-
-//plot range del fit
-const double XMIN_max = 0;
-const double XMAX_max = 2.788;
-const double YMIN_max = 0;
-const double YMAX_max = 27.969;
-
-//plot range dei residui
-const double RESXMIN_max = XMIN_max;
-const double RESXMAX_max = XMAX_max;
-const double RESYMIN_max = -.75;
-const double RESYMAX_max = .75;
-
-/*
-//plot range del fit
-const double XMIN_min = 0;
-const double XMAX_min = 2.8;
-const double YMIN_min = 9;
-const double YMAX_min = 11;
-
-//plot range dei residui
-const double RESXMIN_min = XMIN_min;
-const double RESXMAX_min = XMAX_min;
-const double RESYMIN_min = -.8;
-const double RESYMAX_min = .8;
-*/
-
-//vector dei dati + errori
-vector<double> x_max, y_max, errX_max, errY_max;
-vector<double> x_min, y_min, errX_min, errY_min;
-
-//il grafico del fit
-TGraphErrors *plot_max;
-TGraphErrors *plot_min;
-
-//il grafico dei residui
-TGraphErrors *residuals_max;
-TGraphErrors *residuals_min;
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -95,8 +47,60 @@ void latex_min(TLatex*);
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+    //il grafico del fit
+    TGraphErrors *plot_max;
+    TGraphErrors *plot_min;
+    
+    //il grafico dei residui
+    TGraphErrors *residuals_max;
+    TGraphErrors *residuals_min;
+
+    TCanvas* c1;
+
+    const double NPAR = 2;
+
+    const string FILE_NAME_max = "../Data/data_opamp_peak_peak_projected.txt";
+    //const string FILE_NAME_min = "../Data/data_opamp_T_min.txt";
+
 /*---------- MAIN ----------*/
 void opamp_max_and_min_plot_res() {
+
+    TLatex* text;
+
+    double err_post_max;
+    double err_post_min;
+
+    //plot range del fit
+    const double XMIN_max = 0;
+    const double XMAX_max = 2.788;
+    const double YMIN_max = 0;
+    const double YMAX_max = 27.969;
+
+    //plot range dei residui
+    const double RESXMIN_max = XMIN_max;
+    const double RESXMAX_max = XMAX_max;
+    const double RESYMIN_max = -.75;
+    const double RESYMAX_max = .75;
+
+    /*
+    //plot range del fit
+    const double XMIN_min = 0;
+    const double XMAX_min = 2.8;
+    const double YMIN_min = 9;
+    const double YMAX_min = 11;
+
+    //plot range dei residui
+    const double RESXMIN_min = XMIN_min;
+    const double RESXMAX_min = XMAX_min;
+    const double RESYMIN_min = -.8;
+    const double RESYMAX_min = .8;
+    */
+
+    //vector dei dati + errori
+    vector<double> x_max, y_max, errX_max, errY_max;
+    vector<double> x_min, y_min, errX_min, errY_min;
+
+
 
     c1 = new TCanvas("canvas1", "Fit", 1080, 720);
     //c1->Divide(2, 2);
