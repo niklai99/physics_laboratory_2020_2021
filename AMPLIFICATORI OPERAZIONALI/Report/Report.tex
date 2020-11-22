@@ -438,35 +438,36 @@ il coefficiente angolare restituito da tale interpolazione, si proietta il contr
 	con relativa retta interpolante e parametri del fit. A destra: grafico dei residui $V_{\text{pp, out}}-\text{fit}$.}
 	\label{i:opamp_pp}
 \end{figure}
-
-\noindent Osservando il grafico dei residui, si nota immediatamente come ora l'andamento anomalo è del tutto assente ed
-i punti si distribuiscono in modo ottimale attorno allo zero. Rimane, chiaramente, il tipico andamento crescente delle
-barre d'errore, indice che le incertezze continuano a risentire della correlazione tra esse. Il valore del $\chi^2$ è
-decisamente basso rispetto al numero di gradi di libertà, come suggerito dal grafico dei residui in cui si nota
-chiaramente come la distanza punto-retta sia ampiamente compresa entro la barra d'errore del dato. L'errore a posteriori
-è appena maggiore dell'incertezza associata al primo punto, mentre diventa notevolmente inferiore per i successivi. Il
-valore dell'intercetta, scarsamente compatibile con lo zero, suggerisce una conferma all'ipotesi un una sistematica di
-offset/shift verticale tra i due dataset non trascurabile. Il coefficiente angolare, invece, è perfettamente in linea
-con i parametri ottenuti considerando i due dataset separatamente: calcolando la media pesata dei due, infatti, si trova
-$\langle m\rangle_{\text{max, min}}=10.09 \pm 0.10$ e risulta avere una compatibilità estremamente elevata con il
-coefficiente angolare riguardante il dataset delle grandezze picco picco ($\lambda = 0.01$). Si assume dunque che questi
-due valori ($\langle m\rangle_{\text{max, min}}$ ed il coefficiente angolare del campione di grandezze picco picco
-$m_{\text{pp}}$) rappresentino una soddisfacente stima dell'amplificazione \textit{G} del circuito. Per quanto riguarda
-la linearità dell'amplificatore operazionale, invece, i valori estremamente ridotti del $\chi^2$ non permettono nè di
-confermare l'ipotesi di linearità nè di poterla rigettare. Si ripone allora maggior attenzione alla distribuzione delle
-misure attorno alla retta (o meglio alla distribuzione dei residui attorno allo zero) che si ritiene invece, in questa
-occasione, determinante: il campione di misure picco picco suggerisce una soddisfacente distribuzione lineare dei dati. 
+\noindent Si noti ora come, al contrario di quanto ritrovato in \autoref{i:opamp_all_proj}, l'intercetta $a$ risulti
+essere scarsamente compatibile con zero: essa, infatti, assume proprio il valore dello sfalsamento $d$ tra i due
+campioni di misure. Il coefficiente angolare $b$, invece,è perfettamente in linea con quanto ottenuto considerando i
+dataset sepratamente e, di consegueza, conforme alle aspettative teoriche. Quanto appena riportato fornisce dunque
+un'ulteriore conferma all'ipotesi di offset/shift verticale tra i due campioni che, essendo questo costante per tutte le
+misure, si riesce ad eliminare studiando le grandezze picco picco. Nel grafico dei residui, questo si tradice
+nell'assenza dell'andamento patologico ricontrato in \autoref{i:opamp_all_proj}: come si può osservare, infatti, i punti
+sono tutti ben distribuiti attorno allo zero, abbondantemente compreso entro la barra d'errore dei dati. L'errore a
+posteriori, inoltre, risulta essere appena maggiore dell'incertezza associata al primo punto, mentre diventa
+notevolmente inferiore per i dati successivi. Tale valore di $\sigma_{\text{post}}$ è indice di una buona ditribuzione
+delle misure attorno alla retta suggerendo, assieme all'andamento dei residui, una soddisfacente linearità
+dell'amplificatore operazionale. Il valore estremamente ridotto del $\chi^2$, invece, non permette nè di rigettare
+l'ipotesi di linearità, nè di poterla confermare (diverso sarebbe stato se il $\chi^2$ fosse stato molto grande). Altri
+possibili indicatori, come il coefficiente di correlazione e la $t$ di Student non si ritengono, in questo caso,
+significativi.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	CONFRONTO STIME DI G
 %-------------------------------------------------------------------------------------------------------------------------------------------
-\cleardoublepage
+
 \subsubsection{Confronto tra Stime di G}
- Si vuole ora esporre e confrontare le stime dell'amplificazione del circuito, rappresentando i valori del guadagno
-\textit{G} in \autoref{i:opamp_comp}. Partendo dal primo punto a sinistra, cioè la stima di \textit{G} tramite le misure
-dirette delle resistenze $R_{\text{f}}$ e $R_{1}$ (riportate in \autoref{t:direct_measures}), si nota come questo
-presenti un errore 
+
+Si vuole ora esporre e confrontare le stime dell'amplificazione $G$ del circuito, ricavate nel corso dell'analisi
+riportata nella sezione precedente, rappresentando tali stime in \autoref{i:opamp_comp}. Il primo punto a sinistra (1)
+corrisponde alla stima teorica di $G$, ottenuta in \autoref{e:guadagno} utilizzando le misure dirette della rete
+resistiva del circuito. Il secondo ed il terzo punto (2) (3) corrispondono invece alle stime ottenute interpolando
+separatamente il campione di massimi ed il campione di minimi. Queste presentano rispettivamente una compatibilità
+$\lambda_{\text{MAX}}=1.3$ e $\lambda_{\text{MIN}}=0.2$ con la stima teorica (1) e una compatibilità $\lambda=0.7$ tra
+loro. Nonostante (1) ed il valore ottenuto analizzando il campione di minimi si trovino in
 
 \begin{wrapfigure}{L}{0.5\textwidth}
 	\centering
@@ -478,15 +479,18 @@ presenti un errore
 	\label{i:opamp_comp}
 \end{wrapfigure}
 
-\noindent nettamente inferiore a confronto con le rimanenti stime. Quest'ultime risultano essere quantità compatibili
-con 1) $G=R_{\text{f}}/R_{1}$, ad eccezione di 4) quella ottenuta considerando assieme sia i massimi sia i minimi
-($\lambda = 3.7$). In particolare, si può osservare come la media pesata 5) tra le stime dell'amplificazione ottenute
-considerando i campioni separati e la stima ottenuta con le grandezze picco picco 6) si trovino in eccellente accordo:
-si può concludere dunque che, eliminando la sistematica di offset/shift verticale tra i due dataset (sia attraverso
-grandezze picco picco, sia considerando la media pesata dei risultati ottenuti dai campioni separati), la stima
-dell'amplificazione del circuito risulta essere compatibile con le aspettative preliminari. Si assume in ogni caso che
-l'errore su \textit{G} sia sottostimato a causa della correlazione delle incertezze: si preferisce dunque la stima
-ritrovata considerando le tensioni picco picco 6), in quanto presenta un errore relativo leggermente maggiore.
+\noindent eccellente accordo, non si considera (3) come miglior stima dell'amplificazione $G$. Si preferisce, infatti,
+fornire una stima che tenga conto di tutte le misure acquisite in laboratorio e non solo la metà corrispondente ai
+minimi. Il quarto punto, dunque, rappresenta quanto ottenuto interpolando il campione unificato di massimi e minimi. É
+piuttosto evidente come questa si discosti dalle rimanenti: come esposto in \autoref{s:pre} tale stima risente di una
+sistematica di offset/shift verticale tra i due campioni e si preferisce quindi non prenderla in considerazione. Il
+quinto punto rappresenta poi la media pesata di (2) e (3): si vuole far notare come questa sia in perfetto accordo con
+(6), ovvero il coefficiente angolare del campione di grandezze picco picco ($\lambda=0.01$ tra media pesata e slope
+grandezze picco picco). Si deduce, allora, che eliminando la sistematica presente tra i due dataset si trovino risultati
+consistenti e conformi alle aspettative ($\lambda = 0.9$ tra media pesata o slope grandezze picco picco con le
+previsioni teoriche). Si assume, in ogni caso, che l'errore sull'amplificazione $G$ sia sottostimato a causa della
+correlazione delle incertezze. In conlcusione, si preferisce la stima (6) ottenuta dalle grandezze picco picco, in
+quanto presenta un errore relativo leggermente maggiore rispetto alla media pesata (5).
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
