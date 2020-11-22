@@ -597,22 +597,34 @@ frequenza dell'onda triangolare in ingresso la forma dell'onda quadra migliori, 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Grafico di Bode}
-Date le misure di tensione $V_{\text{in}}$ e $V_{\text{out}}$, viene calcolata la funzione di trasferimento
+Si vogliono ora rappresentare le misure acquisite sperimentalmente sfruttando un grafico di Bode. Date le misure di
+tensione $V_{\text{in}}$ e $V_{\text{out}}$, dunque, viene calcolata la funzione di trasferimento $H$, alla quale viene
+associata un'incertezza $\sigma_{H}$ data da
 \begin{align}\label{e:diff_err}
-	H&=\frac{V_{\text{out}}}{V_{\text{in}}} & \sigma_{H}&= H \sqrt{	
-											\left(	\frac{	\sigma_{\text{L}}\times V_{\text{in}}/\text{div}	}{	V_{\text{in}}	}	\right)^2	 + 
-											\left(	\frac{	\sigma_{\text{L}}\times V_{\text{out}}/\text{div}	}{	V_{\text{out}}	}	\right)^2 +	
-											2\left(	\frac{	\sigma_{\text{k}}	}{	k	}	\right)^2 }	
+	H&=\frac{V_{\text{out}}}{V_{\text{in}}} & 
+	\sigma_{H}&= H \sqrt{	
+						\left(	\frac{	\sigma_{\text{L}}\times V_{\text{in}}/\text{div}	}{	V_{\text{in}}	}	\right)^2	 + 
+						\left(	\frac{	\sigma_{\text{L}}\times V_{\text{out}}/\text{div}	}{	V_{\text{out}}	}	\right)^2 +	
+						2\left(	\frac{	\sigma_{\text{k}}	}{	k	}	\right)^2 }	
 \end{align}
 \noindent dove $\sigma_{\text{L}}=0.04$ rappresenta l'incertezza di lettura associata all'oscilloscopio, i termini
 $V_{\text{in}}/\text{div}$ e $V_{\text{out}}/\text{div}$ corrispondono al numero di volt per divisione per il canale di
-acquisizione rispettivamente del segnale in ingresso e del segnale in uscita, mentre $\sigma_{\text{k}}=1.5\%$ rappresenta
-l'incertezza di guadagno associata all'oscilloscopio: quest'ultima viene considerata in quanto le misure non sono state
-acquisite utilizzando un'unica scala e, inoltre, sono state acquisite utilizzando due diversi canali. Si assume che $k$
-sia mediamente pari all'unità. L'incertezza sulla frequenza dell'onda erogata dal generatore si assume trascurabile. Si
-rappresenta allora in \autoref{i:diff_bode} il grafico di Bode delle misure acquisite assieme ai punti simulati con
-LTSpice. Osservando il grafico si nota che sono state effettuate due interpolazioni: la prima lineare, per la quale sono
-state considerate le prime tre misure, mentre la seconda parabolica, per la quale sono state considerate le misure
+acquisizione rispettivamente del segnale in ingresso e del segnale in uscita, mentre $\sigma_{\text{k}}=1.5\%$
+rappresenta l'incertezza di guadagno associata all'oscilloscopio: quest'ultima viene considerata in quanto le misure non
+sono state acquisite utilizzando un'unica scala e, inoltre, sono state acquisite utilizzando due diversi canali. Si
+assume poi che $k$ sia mediamente pari all'unità e che l'incertezza sulla frequenza dell'onda erogata dal generatore sia
+trascurabile. Si rappresenta allora in \autoref{i:diff_bode} il grafico di Bode delle misure acquisite assieme ai punti
+ottenuti attraverso una simulazione Spice della risposta del circuito. \newpage
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../Plots/Report_Plots/diff_bode.png}
+	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati. Le misure sperimentali vengono
+	interpolate con una retta $y = a + bx$ e con una parabola $y = cx^2+dx+e$. Vengono mostrati anche i residui, 
+	rispettivamente per la retta e per la parabola.}
+	\label{i:diff_bode}
+\end{figure}
+\noindent Osservando il grafico si nota che sono state effettuate due interpolazioni: la prima lineare, per la quale
+sono state considerate le prime tre misure, mentre la seconda parabolica, per la quale sono state considerate le misure
 nell'intorno del massimo di amplificazione. La strategia per stimare la frequenza di taglio è la seguente: si stima il
 massimo della funzione di trasferimento come vertice della parabola, si considera quindi la retta orizzontale
 $y=H_{\text{max}}$ e si calcola il punto di intersezione con la retta $y=a+bx$ interpolante le prime tre misure
@@ -624,14 +636,7 @@ nell'intorno del massimo della funzione di trasferimento. Per questo motivo si p
 per la ricerca della frequenza di taglio vengono utilizzate le misure che sono in accordo con le aspettative, i
 risultati sono da considerarsi significativi.  
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{../Plots/Report_Plots/diff_bode.png}
-	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati. Le misure sperimentali vengono
-	interpolate con una retta $y = a + bx$ e con una parabola $y = cx^2+dx+e$. Vengono mostrati anche i residui, 
-	rispettivamente per la retta e per la parabola.}
-	\label{i:diff_bode}
-\end{figure}
+
 
 \noindent Si nota tuttavia che la retta presenta un coefficiente angolare ($b = 19.03\pm 0.16\,\text{dB/dec}$)
 leggermente minore a confronto con le aspettative teoriche ($b_{\text{th}}=20\,\text{dB/dec}$): questo potrebbe dunque
