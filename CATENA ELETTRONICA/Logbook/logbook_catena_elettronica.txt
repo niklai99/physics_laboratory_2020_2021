@@ -1,0 +1,71 @@
+# FORMAT PER REGISTRAZIONE DATI RACCOLTI DA POSTARE IN MOODLE (come FILE DI TESTO, NO WORD, PDF o altre varianti di formato)
+# - inserire i dati seguendo il formato indicato
+# - si possono utilizzare i modificatori tipo LTspice: k (kilo), Meg(mega), m(milli), u(micro), n(nano), p(pico)
+# - per eventuali commenti mettete un cancelletto a inizio riga
+
+# --------------------------------------
+
+# ESPERIENZA CATENA ELETTRONICA
+
+# --------------------------------------
+# 1) PRE AMPLIFICATORE
+
+# misura componenti: label, dato letto, scala (es. R1, 123.6k, 600k)
+# un componente per riga
+
+Rin, 56.564k, 100k
+Rf_pre, 696.06k, 1000k
+Cf_pre, 222p, 1000p
+
+# misura segnale generatore 
+
+Vlow, 8m, 200m
+Vhigh, -1.01, 200m
+
+# stima teorica della carica, tempo caratteristico, Vmax e frequenza di taglio
+
+Qin, 90p
+tau, 154us
+Vmax, 405m
+ft, 1.03k
+
+# tensione massima sperimentale con scala
+
+Vmax_sper, 392m, 100m
+
+# tau sperimentale
+
+tau_sper, 158u
+
+# dati verifica linearità: T, Vmax, scala
+
+2u, 162m, 50m
+3u, 238m, 50m
+4u, 320m, 100m
+5u, 392m, 100m
+6u, 472m, 100m
+7u, 548m, 100m
+8u, 632m, 200m
+9u, 704m, 200m
+10u, 776m, 200m
+
+# dati risposta in frequenza: f, Vin, scala Vin, Vout, scala Vout
+
+10,  	 1.04, 200m, 13.00, 2.6
+50,	     1.04, 200m, 13.00, 2.6
+100,     1.04, 200m, 12.90, 2.6
+500,     1.04, 200m, 11.60, 2.6
+1000,	 1.04, 200m, 9.460, 2.6
+3000,	 1.04, 200m, 4.160, 1
+5000,	 1.04, 200m, 2.600, 520m
+6000,	 1.04, 200m, 2.160, 500m
+7000,	 1.04, 200m, 1.880, 500m
+8000,	 1.04, 200m, 1.660, 500m
+9000,	 1.04, 200m, 1.480, 300m
+10000,	 1.04, 200m, 1.360, 288m
+25000,	 1.04, 200m, 0.520, 100m
+50000,	 1.04, 200m, 0.306, 50m
+100000,	 1.04, 200m, 0.134, 50m
+500000,	 1.04, 200m, 0.032, 50m
+1000000, 1.04, 200m, 0.018, 50m
+
