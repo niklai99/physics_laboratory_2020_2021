@@ -42,8 +42,9 @@ Contruisco il grafico V<sub>pre</sub><sup>MAX</sup> vs Q<sub>in</sub> e fitto co
 #### Tempo Caratteristico
 
 Analizzo la fase di scarica del segnale: imposto T = 5&mu;s e acquisisco la forma d'onda con Arduino. Stimo
-approssimativamente il lab il tempo caratteristico per vedere che sia ragionevole &rarr; come? Tempo di dimezzamento per
-qualche tipo di logaritmo o radice di due? 
+approssimativamente il lab il tempo caratteristico per vedere che sia ragionevole &rarr; metto il cursore due a livello
+asintotico di smorzamento, misuro il massimo e faccio V<sub>pre</sub><sup>MAX</sup> / e &rarr; metto il cursore 1 a
+livello V(&tau;) e guardo dove interseca la traccia del segnale &rarr; il tempo t segnato da M Pos in alto a destra è &tau;
 
 #### Risposta in Frequenza (molto importante)
 
