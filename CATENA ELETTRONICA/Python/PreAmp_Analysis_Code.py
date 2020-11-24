@@ -208,7 +208,7 @@ def preamp_lin_fit(df):
     err_b = fit_err[1]
 
     # COMPUTE SIGMA_POST
-    sigma_post = np.sqrt(np.sum(res)**2 / (len(df['Qin (pC)']) - len(par_lin))) 
+    sigma_post = np.sqrt( np.sum( res**2 ) / (len(df['Qin (pC)']) - 2) ) 
 
     # PLOT DATA
     ax1.errorbar(df['Qin (pC)'], df['Vmax (V)'], xerr = 0, yerr = df['sigma Vmax (V)'], marker = '.', markersize = 13,
@@ -229,7 +229,7 @@ def preamp_lin_fit(df):
     q = 'a = ' + format(a, '1.3f') + ' V +/- ' + format(err_a, '1.3f') + ' V'
     m = 'b = ' + format(b * 1e3, '1.2f') + ' +/- ' + format(err_b * 1e3, '1.2f') + ' nF$^{-1}$'
     chisq = '$\chi^{2}$ / ndf = ' + format(chi2, '1.2f') + ' / ' + format(len(df['Qin (pC)']) - len(par_lin), '1.0f') 
-    sigmap = '\u03C3$_{post}$ = ' + format(sigma_post, '1.4f') + ' V'
+    sigmap = '\u03C3$_{post}$ = ' + format(sigma_post, '1.3f') + ' V'
 
     ax1.text(0.15, 0.85, 'Fit Function', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
     ax1.text(0.20, 0.80, 'y = a + bx', fontsize = 18, transform=ax1.transAxes)
@@ -339,18 +339,27 @@ def preamp_bode_plot(df, sim):
     RESYMIN = -0.3
     RESYMAX = 0.4
 
+    # ARANCIONE
     data1 = df.iloc[:3, :]
+
+    # BLU
     data2 = df.iloc[6:-2, :]
+
+    data1.to_csv('DATA1.txt', header=None, index=None, sep=' ', mode='a')
+    data2.to_csv('DATA2.txt', header=None, index=None, sep=' ', mode='a')
 
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,10))
-    ax1 =  plt.subplot2grid((10, 1), (0, 0), rowspan=8, colspan=1)
-    ax2 =  plt.subplot2grid((10, 1), (8, 0), rowspan=2, colspan=1)
+    ax1 = plt.subplot2grid((10, 1), (0, 0), rowspan=8, colspan=1)
+    ax2 = plt.subplot2grid((10, 1), (8, 0), rowspan=2, colspan=1)
 
     # PERFORM THE FITS
+
+    # ARANCIONE
     par1, cov1 = curve_fit(f = lin, xdata = data1['log10f (dec)'], ydata = data1['H (dB)'], sigma = data1['sigma Hr (dB)'], absolute_sigma = True)
     func1 = lin(df['log10f (dec)'], *par1)
 
+    # BLU
     par2, cov2 = curve_fit(f = lin, xdata = data2['log10f (dec)'], ydata = data2['H (dB)'], sigma = data2['sigma Hr (dB)'], absolute_sigma = True)
     func2 = lin(df['log10f (dec)'], *par2)
 
@@ -358,45 +367,64 @@ def preamp_bode_plot(df, sim):
     error1 = []
     error2 = []
 
+    # ARANCIONE
     for i in range(len(par1)):
         try:
             error1.append(np.absolute(cov1[i][i])**0.5)
         except:
             error1.append( 0.00 )
 
+    # BLU
     for i in range(len(par2)):
         try:
             error2.append(np.absolute(cov2[i][i])**0.5)
         except:
             error2.append( 0.00 )
 
+    # ARANCIONE
     fit_par1 = par1
     fit_err1 = np.array(error1)
 
+    # BLU
     fit_par2 = par2
     fit_err2 = np.array(error2)
 
+    # ARANCIONE
     c = fit_par1[0]
     d = fit_par1[1]
     err_c = fit_err1[0]
     err_d = fit_err1[1]
 
+    # BLU
     e = fit_par2[0]
     f = fit_par2[1]
     err_e = fit_err2[0]
     err_f = fit_err2[1]
 
     # COMPUTE RESIDUALS
-    res1 = data1['H (dB)'] - lin(data1['log10f (dec)'], *par1)
-    res2 = data2['H (dB)'] - lin(data2['log10f (dec)'], *par2)
+
+    # ARANCIONE
+    res1 = data1['H (dB)'] - lin(data1['log10f (dec)'], c, d)
+
+    # BLU
+    res2 = data2['H (dB)'] - lin(data2['log10f (dec)'], e, f)
 
     # COMPUTE CHI2
+
+    # ARANCIONE
     chi21 = np.sum((res1/data1['sigma Hr (dB)'])**2)
+
+    # BLU
     chi22 = np.sum((res2/data2['sigma Hr (dB)'])**2)
 
     # COMPUTE SIGMA_POST
-    sigma_post1 = np.sqrt(np.sum(res1)**2 / (len(data1['log10f (dec)']) - 2)) 
-    sigma_post2 = np.sqrt(np.sum(res2)**2 / (len(data2['log10f (dec)']) - 2)) 
+
+    # ARANCIONE
+    sigma_post1 = np.sqrt( np.sum( res1**2 ) / (len(data1['log10f (dec)']) - 2) )
+
+    # BLU
+    sigma_post2 = np.sqrt( np.sum( res2**2 ) / (len(data2['log10f (dec)']) - 2) )
+
 
     # COMPUTE X AND Y INTERSECTION
     x_int = (e - c) / (d - f)
@@ -417,26 +445,37 @@ def preamp_bode_plot(df, sim):
     # ax1.vlines(x = x_int, ymin = YMIN, ymax = y_int, color = '#000000', linestyle = 'dotted')
 
     # PRINT FIT RESULTS ON THE PLOT
+
+    # BLU
     q2 = 'a = ' + format(e, '1.1f') + ' +/- ' + format(err_e, '1.1f') + ' dB'
     m2 = 'b = ' + format(f, '1.2f') + ' +/- ' + format(err_f, '1.2f') + ' dB/dec'
+    chisq2 = '$\chi^{2}$ / ndf = ' + format(chi22, '1.0f') + ' / ' + format(len(data2['log10f (dec)']) - 2, '1.0f') 
+    sigmap2 = '\u03C3$_{post}$ = ' + format(sigma_post2, '1.2f') + ' dB'
+
+    # ARANCIONE
     q1 = 'c = ' + format(c, '1.1f') + ' +/- ' + format(err_c, '1.1f') + ' dB'
     m1 = 'd = ' + format(d, '1.2f') + ' +/- ' + format(err_d, '1.2f') + ' dB/dec'
-    chisq1 = '$\chi^{2}$ / ndf = ' + format(chi21, '1.2f') + ' / ' + format(len(data1['log10f (dec)']) - len(par1), '1.0f') 
-    sigmap1 = '\u03C3$_{post}$ = ' + format(sigma_post1, '1.4f') + ' dB'
-    chisq2 = '$\chi^{2}$ / ndf = ' + format(chi22, '1.0f') + ' / ' + format(len(data2['log10f (dec)']) - len(par2), '1.0f') 
-    sigmap2 = '\u03C3$_{post}$ = ' + format(sigma_post2, '1.2f') + ' dB'
+    chisq1 = '$\chi^{2}$ / ndf = ' + format(chi21, '1.2f') + ' / ' + format(len(data1['log10f (dec)']) - 2, '1.0f') 
+    sigmap1 = '\u03C3$_{post}$ = ' + format(sigma_post1, '1.2f') + ' dB'
+
 
     ax1.text(0.05, 0.75, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
 
+    # ARANCIONE
     ax1.text(0.05, 0.26, q1 + '\n' + m1 + '\n' + chisq1 + '\n' + sigmap1, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
             bbox = dict( facecolor = '#FF4B00', edgecolor = '#FF4B00', alpha = 0.1, linewidth = 2 ))
+
+    # BLU        
     ax1.text(0.05, 0.50, q2 + '\n' + m2 + '\n' + chisq2 + '\n' + sigmap2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
             bbox = dict( facecolor = '#00b4ff', edgecolor = '#00b4ff', alpha = 0.1, linewidth = 2 ))
 
     # DRAW RESIDUALS
+
+    # ARANCIONE
     ax2.errorbar(data1['log10f (dec)'], res1, xerr = 0, yerr = data1['sigma Hr (dB)'], marker = '.', markersize = 13,
                 elinewidth=1, color = '#FF4B00', linewidth=0, capsize=2, label = 'Measures')
 
+    # BLU 
     ax2.errorbar(data2['log10f (dec)'], res2, xerr = 0, yerr = data2['sigma Hr (dB)'], marker = '.', markersize = 13,
                 elinewidth=1, color = '#00b4ff', linewidth=0, capsize=2, label = 'Measures')
 
