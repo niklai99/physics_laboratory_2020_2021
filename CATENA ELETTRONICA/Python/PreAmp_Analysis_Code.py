@@ -285,5 +285,24 @@ def compatib(x, y, errx, erry):
     comp = np.abs( x - y ) / np.sqrt( errx**2 + erry**2 )
 
     return comp
-    
+
+##### PROPAGAZIONE FUNZIONE DI TRASFERIMENTO
+def propagazione_T(T, Vin, Vout, Vdivin, Vdivout):
+
+    sigmaL = 0.040
+    sigmaK = 0.015
+
+    sigma = T * np.sqrt( (sigmaL * Vdivin / Vin)**2 + (sigmaL * Vdivout / Vout)**2 + 2 * (sigmaK)**2)
+
+    return sigma
+
+##### PROPAGAZIONE FUNZIONE DI TRASFERIMENTO SENZA CONTRIBUTO DI SCALA
+def propagazione_Tr(T, Vin, Vout, Vdivin, Vdivout):
+
+    sigmaL = 0.040
+
+    sigma = T * np.sqrt( (sigmaL * Vdivin / Vin)**2 + (sigmaL * Vdivout / Vout)**2)
+
+    return sigma
+
 
