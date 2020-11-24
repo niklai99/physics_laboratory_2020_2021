@@ -343,9 +343,9 @@ def preamp_bode_plot(df, sim):
     data2 = df.iloc[6:-2, :]
 
     # FIG SETTINGS AND AXES
-    fig = plt.figure(figsize=(16,14))
-    ax1 =  plt.subplot2grid((10, 1), (0, 0), rowspan=7, colspan=1)
-    ax2 =  plt.subplot2grid((10, 1), (7, 0), rowspan=3, colspan=1)
+    fig = plt.figure(figsize=(16,10))
+    ax1 =  plt.subplot2grid((10, 1), (0, 0), rowspan=8, colspan=1)
+    ax2 =  plt.subplot2grid((10, 1), (8, 0), rowspan=2, colspan=1)
 
     # PERFORM THE FITS
     par1, cov1 = curve_fit(f = lin, xdata = data1['log10f (dec)'], ydata = data1['H (dB)'], sigma = data1['sigma Hr (dB)'], absolute_sigma = True)
@@ -395,8 +395,8 @@ def preamp_bode_plot(df, sim):
     chi22 = np.sum((res2/data2['sigma Hr (dB)'])**2)
 
     # COMPUTE SIGMA_POST
-    sigma_post1 = np.sqrt(np.sum(res1)**2 / (len(data1['log10f (dec)']) - len(par1))) 
-    sigma_post2 = np.sqrt(np.sum(res2)**2 / (len(data2['log10f (dec)']) - len(par2))) 
+    sigma_post1 = np.sqrt(np.sum(res1)**2 / (len(data1['log10f (dec)']) - 2)) 
+    sigma_post2 = np.sqrt(np.sum(res2)**2 / (len(data2['log10f (dec)']) - 2)) 
 
     # COMPUTE X AND Y INTERSECTION
     x_int = (e - c) / (d - f)
@@ -448,9 +448,9 @@ def preamp_bode_plot(df, sim):
 
     # AXIS LABELS
     # ax1.set_xlabel('log$_{10}$(freq.) (dec)', fontsize = 24, loc = 'right')
-    ax1.set_ylabel('H (dB)', fontsize = 24, loc = 'top', labelpad=0)
+    ax1.set_ylabel('H (dB)', fontsize = 24, loc = 'top', labelpad = 0)
     ax2.set_xlabel('log$_{10}$(freq.) (dec)', fontsize = 24, loc = 'right')
-    ax2.set_ylabel('H - fit (dB)', fontsize = 24, loc = 'center', labelpad=-15)
+    ax2.set_ylabel('H - fit (dB)', fontsize = 24, loc = 'center', labelpad = 0)
 
     # AXIS TICKS
     ax1.tick_params(axis = 'x', which = 'major', labelsize = 0, direction = 'in', length = 10)
