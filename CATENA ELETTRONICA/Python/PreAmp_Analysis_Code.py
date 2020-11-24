@@ -131,3 +131,94 @@ def get_data(file_name):
     df.index = np.arange(1, len(df)+1)
     return df
 
+####### LINEAR FUCTION
+def lin(x, a, b):
+    return a + b * x
+
+####### PRE-AMP LINEAR FIT
+def preamp_lin_fit(df):
+    # FIG SETTINGS AND AXES
+    fig = plt.figure(figsize=(16,8))
+    ax1 = fig.add_subplot(1, 2, 1)
+    ax2 = fig.add_subplot(1, 2, 2)
+
+    # PERFORM THE FIT
+    par_lin, cov_lin = curve_fit(f = lin, xdata = df['Qin (pC)'], ydata = df['Vmax (V)'], sigma = df['sigma Vmax (V)'], absolute_sigma = True)
+    func = lin(df['Qin (pC)'], *par_lin)
+
+    # COMPUTE RESIDUALS
+    res = df['Vmax (V)'] - func
+
+    # COMPUTE CHI2
+    chi2 = np.sum((res/df['sigma Vmax (V)'])**2)
+
+    # GET FIT PARAMETERS AND PARAMETER ERRORS
+    error = []
+
+    for i in range(len(par_lin)):
+        try:
+            error.append(np.absolute(cov_lin[i][i])**0.5)
+        except:
+            error.append( 0.00 )
+
+    fit_par = par_lin
+    fit_err = np.array(error)
+
+    a = fit_par[0]
+    b = fit_par[1]
+    err_a = fit_err[0]
+    err_b = fit_err[1]
+
+    # PLOT DATA
+    ax1.errorbar(df['Qin (pC)'], df['Vmax (V)'], xerr = 0, yerr = df['sigma Vmax (V)'], marker = '.', markersize = 13,
+                elinewidth=1, color = '#000000', linewidth=0, capsize=2, label = 'Data')
+
+    # PLOT FIT FUNCTION
+    ax1.plot(df['Qin (pC)'], func, color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'Fit')
+
+    # DRAW DASHED 'ZERO' LINE
+    ax2.axhline(color = '#000000', linewidth = 0.5, linestyle = 'dashed')
+
+    # DRAW RESIDUALS
+    ax2.errorbar(df['Qin (pC)'], res, xerr=0, yerr=df['sigma Vmax (V)'], marker = '.', markersize = 13, 
+                elinewidth=1, color = '#000000', linewidth=0, capsize=2, label = 'Residuals')
+
+    # PLOT TITLE
+    #ax1.set_title('PreAmp - Preliminary Vmax vs Qin Plot', fontsize = 32)
+    #ax2.set_title('Residui', fontsize = 32)
+    fig.suptitle('PreAmp - Vmax vs Qin Plot', fontsize=32)
+
+    # AXIS LABELS
+    ax1.set_xlabel('Qin (pC)', fontsize = 26, loc = 'right')
+    ax1.set_ylabel('Vmax (V)', fontsize = 26, loc = 'top')
+    ax2.set_xlabel('Qin (pC)', fontsize = 26, loc = 'right')
+    ax2.set_ylabel('Vmax - fit (V)', fontsize = 26, loc = 'top')
+
+    # AXIS TICKS
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax1.minorticks_on()
+    ax2.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax2.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax2.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax2.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax2.minorticks_on()
+    ax2.yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
+    ax2.yaxis.get_offset_text().set_fontsize(22)
+    ax2.ticklabel_format(axis = 'y', style = 'scientific', scilimits = (0, 0))
+
+    # PLOT RANGE
+    ax1.set_xlim(left = 30, right = 185)
+    ax1.set_ylim(bottom = .12, top = .82)
+    ax2.set_xlim(left = 30, right = 185)
+    ax2.set_ylim(bottom = -0.05, top = 0.05)
+
+    # SAVE FIGURE
+    fig.savefig('../Plots/PreAmp/Vmax_Qin_lin_fit.png', dpi = 300, facecolor='white')
+
+    plt.show()
+
+
+
