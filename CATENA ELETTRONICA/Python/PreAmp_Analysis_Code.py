@@ -100,7 +100,7 @@ def carica_teorica():
     Qth = T_init * V_amplitude / Rin
     sigma_Qth = T_init * np.sqrt( (sigma_V_amplitude / Rin)**2 + (V_amplitude * sigma_Rin / Rin**2)**2 )
 
-    print('Qth =  ' + format(Qth * 1e12, '1.3f') + ' +/- ' + format(sigma_Qth * 1e12, '1.3f') + '  pC')
+    print('Q_th =  ' + format(Qth * 1e12, '1.3f') + ' +/- ' + format(sigma_Qth * 1e12, '1.3f') + '  pC')
 
 ####### STIMA TEORICA DEL TEMPO CARATTERISTICO
 def tau_teorico():
@@ -111,7 +111,7 @@ def tau_teorico():
     tau_th = Rf * Cf
     sigma_tau_th = np.sqrt( (Cf * sigma_Rf)**2 + (Rf * sigma_Cf)**2 )
 
-    print('\u03C4th =  ' + format(tau_th * 1e6, '1.3f') + ' +/- ' + format(sigma_tau_th * 1e6, '1.3f') + '  \u03BCs')
+    print('\u03C4_th =  ' + format(tau_th * 1e6, '1.3f') + ' +/- ' + format(sigma_tau_th * 1e6, '1.3f') + '  \u03BCs')
 
 ####### STIMA TEORICA DI VMAX
 def Vmax_teorico():
@@ -122,5 +122,5 @@ def Vmax_teorico():
     Vmax_th = Qth / Cf
     sigma_Vmax_th = np.sqrt( (sigma_Qth / Cf)**2 + (Qth * sigma_Cf / Cf**2)**2 )
 
-    print('Vmax,th =  ' + format(Vmax_th * 1e3, '1.3f') + ' +/- ' + format(sigma_Vmax_th * 1e3, '1.3f') + '  mV')
+    print('Vmax_th =  ' + format(Vmax_th * 1e3, '1.3f') + ' +/- ' + format(sigma_Vmax_th * 1e3, '1.3f') + '  mV')
 
