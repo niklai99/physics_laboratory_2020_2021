@@ -127,16 +127,29 @@ def Vmax_teorico():
 
 ####### READ DATA
 def get_data(file_name):
+
     df = pd.read_csv(file_name, index_col = False, header = None, sep = '\t')
     df.index = np.arange(1, len(df)+1)
+
     return df
 
 ####### LINEAR FUCTION
-def lin(x, a, b):
+def lin(x, a, b):  
     return a + b * x
 
 ####### PRE-AMP LINEAR FIT
 def preamp_lin_fit(df):
+
+    # CONSTANTS
+    XMIN = 30
+    XMAX = 185
+    YMIN = 0.12
+    YMAX = 0.82
+    RESXMIN = XMIN
+    RESXMAX = XMAX
+    RESYMIN = -0.03
+    RESYMAX = 0.03
+
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,8))
     ax1 = fig.add_subplot(1, 2, 1)
@@ -169,12 +182,16 @@ def preamp_lin_fit(df):
     err_a = fit_err[0]
     err_b = fit_err[1]
 
+    # COMPUTE SIGMA_POST
+    sigma_post = np.sqrt(np.sum(res)**2 / (len(df['Qin (pC)']) - len(par_lin))) 
+
     # PLOT DATA
     ax1.errorbar(df['Qin (pC)'], df['Vmax (V)'], xerr = 0, yerr = df['sigma Vmax (V)'], marker = '.', markersize = 13,
                 elinewidth=1, color = '#000000', linewidth=0, capsize=2, label = 'Data')
 
     # PLOT FIT FUNCTION
-    ax1.plot(df['Qin (pC)'], func, color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'Fit')
+    ax1.plot(np.arange(XMIN, XMAX + 1, 1), lin(np.arange(XMIN, XMAX + 1, 1), *par_lin), color = '#FF4B00', linewidth = 2, 
+            linestyle = '-', label = 'Fit')
 
     # DRAW DASHED 'ZERO' LINE
     ax2.axhline(color = '#000000', linewidth = 0.5, linestyle = 'dashed')
@@ -183,16 +200,30 @@ def preamp_lin_fit(df):
     ax2.errorbar(df['Qin (pC)'], res, xerr=0, yerr=df['sigma Vmax (V)'], marker = '.', markersize = 13, 
                 elinewidth=1, color = '#000000', linewidth=0, capsize=2, label = 'Residuals')
 
+    # PRINT FIT RESULTS ON THE PLOT
+    q = 'a = ' + format(a, '1.3f') + ' V +/- ' + format(err_a, '1.3f') + ' V'
+    m = 'b = ' + format(b * 1e3, '1.2f') + ' +/- ' + format(err_b * 1e3, '1.2f') + ' nF$^{-1}$'
+    chisq = '$\chi^{2}$ / ndf = ' + format(chi2, '1.2f') + ' / ' + format(len(df['Qin (pC)']) - len(par_lin), '1.0f') 
+    sigmap = '\u03C3$_{post}$ = ' + format(sigma_post, '1.4f') + ' V'
+
+    ax1.text(0.15, 0.85, 'Fit Function', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
+    ax1.text(0.20, 0.80, 'y = a + bx', fontsize = 18, transform=ax1.transAxes)
+
+
+    ax1.text(0.45, 0.35, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
+    ax1.text(0.45, 0.28, q, fontsize = 18, transform=ax1.transAxes)
+    ax1.text(0.45, 0.22, m, fontsize = 18, transform=ax1.transAxes)
+    ax1.text(0.45, 0.16, chisq, fontsize = 18, transform=ax1.transAxes)
+    ax1.text(0.45, 0.10, sigmap, fontsize = 18, transform=ax1.transAxes)
+
     # PLOT TITLE
-    #ax1.set_title('PreAmp - Preliminary Vmax vs Qin Plot', fontsize = 32)
-    #ax2.set_title('Residui', fontsize = 32)
-    fig.suptitle('PreAmp - Vmax vs Qin Plot', fontsize=32)
+    fig.suptitle('PreAmp - $V_{max}$ vs $Q_{in}$ Plot', fontsize=32)
 
     # AXIS LABELS
-    ax1.set_xlabel('Qin (pC)', fontsize = 26, loc = 'right')
-    ax1.set_ylabel('Vmax (V)', fontsize = 26, loc = 'top')
-    ax2.set_xlabel('Qin (pC)', fontsize = 26, loc = 'right')
-    ax2.set_ylabel('Vmax - fit (V)', fontsize = 26, loc = 'top')
+    ax1.set_xlabel('$Q_{in}$ (pC)', fontsize = 24, loc = 'right')
+    ax1.set_ylabel('$V_{max}$ (V)', fontsize = 24, loc = 'top', labelpad=0)
+    ax2.set_xlabel('$Q_{in}$ (pC)', fontsize = 24, loc = 'right')
+    ax2.set_ylabel('$V_{max}$ - fit (V)', fontsize = 24, loc = 'top', labelpad=-15)
 
     # AXIS TICKS
     ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
@@ -210,10 +241,10 @@ def preamp_lin_fit(df):
     ax2.ticklabel_format(axis = 'y', style = 'scientific', scilimits = (0, 0))
 
     # PLOT RANGE
-    ax1.set_xlim(left = 30, right = 185)
-    ax1.set_ylim(bottom = .12, top = .82)
-    ax2.set_xlim(left = 30, right = 185)
-    ax2.set_ylim(bottom = -0.05, top = 0.05)
+    ax1.set_xlim(left = XMIN, right = XMAX)
+    ax1.set_ylim(bottom = YMIN, top = YMAX)
+    ax2.set_xlim(left = RESXMIN, right = RESXMAX)
+    ax2.set_ylim(bottom = RESYMIN, top = RESYMAX)
 
     # SAVE FIGURE
     fig.savefig('../Plots/PreAmp/Vmax_Qin_lin_fit.png', dpi = 300, facecolor='white')
