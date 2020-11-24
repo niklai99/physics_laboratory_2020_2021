@@ -305,4 +305,62 @@ def propagazione_Tr(T, Vin, Vout, Vdivin, Vdivout):
 
     return sigma
 
+####### PRE-AMP BODE PLOT
+def preamp_bode_plot(df, sim):
 
+    # CONSTANTS
+    XMIN = 0.9
+    XMAX = 6.1
+    YMIN = -40
+    YMAX = 30
+
+    #RESXMIN = XMIN
+    #RESXMAX = XMAX
+    #RESYMIN = -0.03
+    #RESYMAX = 0.03
+
+    # FIG SETTINGS AND AXES
+    fig = plt.figure(figsize=(16,8))
+    ax1 = fig.add_subplot(1, 1, 1)
+
+    # PLOT DATA
+    ax1.errorbar(df['log10f (dec)'], df['H (dB)'], xerr = 0, yerr = df['sigma H (dB)'], marker = '.', markersize = 13,
+                elinewidth=1, color = '#000000', linewidth=0, capsize=2, label = 'Data')
+    
+    # PLOT SIMULATIONS
+    ax1.plot(sim['f'], sim['H'], color = '#0e94ff', linewidth = 2, label = 'Simulation')
+
+    # PLOT TITLE
+    fig.suptitle('PreAmp - Bode Plot', fontsize=32)
+
+    # AXIS LABELS
+    ax1.set_xlabel('log$_{10}$(f) (dec)', fontsize = 24, loc = 'right')
+    ax1.set_ylabel('H (dB)', fontsize = 24, loc = 'top', labelpad=0)
+
+    # AXIS TICKS
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax1.minorticks_on()
+
+    # PLOT RANGE
+    ax1.set_xlim(left = XMIN, right = XMAX)
+    ax1.set_ylim(bottom = YMIN, top = YMAX)
+
+    # MAKE LEGEND
+    ax1.legend(loc = 'best', prop = {'size': 22}, ncol = 1, frameon = True, fancybox = False, framealpha = 1)
+
+    # SAVE FIGURE
+    #fig.savefig('../Plots/PreAmp/Vmax_Qin_lin_fit.png', dpi = 300, facecolor='white')
+
+    plt.show()
+
+####### READ BODE SIMULATION
+def get_bode_sim(filename):
+
+    data = pd.read_csv(filename, sep = '\t', index_col = False)
+
+    data['f'] = np.log10(data['f'])
+
+    return data
