@@ -334,23 +334,24 @@ def preamp_bode_plot(df, sim):
     YMIN = -42
     YMAX = 30
 
-    #RESXMIN = XMIN
-    #RESXMAX = XMAX
-    #RESYMIN = -0.03
-    #RESYMAX = 0.03
+    RESXMIN = XMIN
+    RESXMAX = XMAX
+    RESYMIN = -0.9
+    RESYMAX = 0.9
 
     data1 = df.iloc[:3, :]
-    data2 = df.iloc[6:, :]
+    data2 = df.iloc[6:-1, :]
 
     # FIG SETTINGS AND AXES
-    fig = plt.figure(figsize=(16,8))
-    ax1 = fig.add_subplot(1, 1, 1)
+    fig = plt.figure(figsize=(16,14))
+    ax1 =  plt.subplot2grid((10, 1), (0, 0), rowspan=6, colspan=1)
+    ax2 =  plt.subplot2grid((10, 1), (8, 0), rowspan=2, colspan=1)
 
     # PERFORM THE FITS
-    par1, cov1 = curve_fit(f = lin, xdata = data1['log10f (dec)'], ydata = data1['H (dB)'])
+    par1, cov1 = curve_fit(f = lin, xdata = data1['log10f (dec)'], ydata = data1['H (dB)'], sigma = data1['sigma Hr (dB)'], absolute_sigma = True)
     func1 = lin(df['log10f (dec)'], *par1)
 
-    par2, cov2 = curve_fit(f = lin, xdata = data2['log10f (dec)'], ydata = data2['H (dB)'])
+    par2, cov2 = curve_fit(f = lin, xdata = data2['log10f (dec)'], ydata = data2['H (dB)'], sigma = data2['sigma Hr (dB)'], absolute_sigma = True)
     func2 = lin(df['log10f (dec)'], *par2)
 
     # GET FIT PARAMETERS AND PARAMETER ERRORS
@@ -385,6 +386,18 @@ def preamp_bode_plot(df, sim):
     err_e = fit_err2[0]
     err_f = fit_err2[1]
 
+    # COMPUTE RESIDUALS
+    res1 = data1['H (dB)'] - lin(data1['log10f (dec)'], *par1)
+    res2 = data2['H (dB)'] - lin(data2['log10f (dec)'], *par2)
+
+    # COMPUTE CHI2
+    chi21 = np.sum((res1/data1['sigma Hr (dB)'])**2)
+    chi22 = np.sum((res2/data2['sigma Hr (dB)'])**2)
+
+    # COMPUTE SIGMA_POST
+    sigma_post1 = np.sqrt(np.sum(res1)**2 / (len(data1['log10f (dec)']) - len(par1))) 
+    sigma_post2 = np.sqrt(np.sum(res2)**2 / (len(data2['log10f (dec)']) - len(par2))) 
+
     # COMPUTE X AND Y INTERSECTION
     x_int = (e - c) / (d - f)
     y_int = lin(x_int, *par1)
@@ -404,26 +417,40 @@ def preamp_bode_plot(df, sim):
     # ax1.vlines(x = x_int, ymin = YMIN, ymax = y_int, color = '#000000', linestyle = 'dotted')
 
     # PRINT FIT RESULTS ON THE PLOT
-    q1 = 'a = ' + format(e, '1.1f') + ' +/- ' + format(err_e, '1.1f') + ' dB'
-    m1 = 'b = ' + format(f, '1.2f') + ' +/- ' + format(err_f, '1.2f') + ' dB/dec'
-    q2 = 'c = ' + format(c, '1.2f') + ' +/- ' + format(err_c, '1.2f') + ' dB'
-    m2 = 'd = ' + format(d, '1.2f') + ' +/- ' + format(err_d, '1.2f') + ' dB/dec'
-    #chisq1 = '$\chi^{2}$ / ndf = ' + format(chi2, '1.2f') + ' / ' + format(len(df['Qin (pC)']) - len(par_lin), '1.0f') 
-    #sigmap1 = '\u03C3$_{post}$ = ' + format(sigma_post, '1.4f') + ' V'
+    q2 = 'a = ' + format(e, '1.1f') + ' +/- ' + format(err_e, '1.1f') + ' dB'
+    m2 = 'b = ' + format(f, '1.2f') + ' +/- ' + format(err_f, '1.2f') + ' dB/dec'
+    q1 = 'c = ' + format(c, '1.1f') + ' +/- ' + format(err_c, '1.1f') + ' dB'
+    m1 = 'd = ' + format(d, '1.2f') + ' +/- ' + format(err_d, '1.2f') + ' dB/dec'
+    chisq1 = '$\chi^{2}$ / ndf = ' + format(chi21, '1.2f') + ' / ' + format(len(data1['log10f (dec)']) - len(par1), '1.0f') 
+    sigmap1 = '\u03C3$_{post}$ = ' + format(sigma_post1, '1.4f') + ' dB'
+    chisq2 = '$\chi^{2}$ / ndf = ' + format(chi22, '1.0f') + ' / ' + format(len(data2['log10f (dec)']) - len(par2), '1.0f') 
+    sigmap2 = '\u03C3$_{post}$ = ' + format(sigma_post2, '1.3f') + ' dB'
 
     ax1.text(0.05, 0.75, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
-    ax1.text(0.05, 0.62, q1 + '\n' + m1, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
-            bbox = dict( facecolor = '#00b4ff', edgecolor = '#00b4ff', alpha = 0.1, linewidth = 2 ))
-    ax1.text(0.05, 0.50, q2 + '\n' + m2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
-            bbox = dict( facecolor = '#FF4B00', edgecolor = '#FF4B00', alpha = 0.1, linewidth = 2 ))
 
+    ax1.text(0.05, 0.26, q1 + '\n' + m1 + '\n' + chisq1 + '\n' + sigmap1, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+            bbox = dict( facecolor = '#FF4B00', edgecolor = '#FF4B00', alpha = 0.1, linewidth = 2 ))
+    ax1.text(0.05, 0.50, q2 + '\n' + m2 + '\n' + chisq2 + '\n' + sigmap2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+            bbox = dict( facecolor = '#00b4ff', edgecolor = '#00b4ff', alpha = 0.1, linewidth = 2 ))
+
+    # DRAW RESIDUALS
+    ax2.errorbar(data1['log10f (dec)'], res1, xerr = 0, yerr = data1['sigma Hr (dB)'], marker = '.', markersize = 13,
+                elinewidth=1, color = '#FF4B00', linewidth=0, capsize=2, label = 'Measures')
+
+    ax2.errorbar(data2['log10f (dec)'], res2, xerr = 0, yerr = data2['sigma Hr (dB)'], marker = '.', markersize = 13,
+                elinewidth=1, color = '#00b4ff', linewidth=0, capsize=2, label = 'Measures')
+
+    # DRAW DASHED 'ZERO' LINE
+    ax2.axhline(color = '#000000', linewidth = 0.5, linestyle = 'dashed')
     
     # PLOT TITLE
-    fig.suptitle('PreAmp - Bode Plot', fontsize=32)
+    ax1.set_title('PreAmp - Bode Plot', fontsize=32)
 
     # AXIS LABELS
     ax1.set_xlabel('log$_{10}$(freq.) (dec)', fontsize = 24, loc = 'right')
     ax1.set_ylabel('H (dB)', fontsize = 24, loc = 'top', labelpad=0)
+    ax2.set_xlabel('log$_{10}$(freq.) (dec)', fontsize = 24, loc = 'right')
+    ax2.set_ylabel('H - fit (dB)', fontsize = 24, loc = 'top', labelpad=0)
 
     # AXIS TICKS
     ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
@@ -431,10 +458,17 @@ def preamp_bode_plot(df, sim):
     ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
     ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
     ax1.minorticks_on()
+    ax2.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax2.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax2.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax2.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax2.minorticks_on()
 
     # PLOT RANGE
     ax1.set_xlim(left = XMIN, right = XMAX)
     ax1.set_ylim(bottom = YMIN, top = YMAX)
+    ax2.set_xlim(left = RESXMIN, right = RESXMAX)
+    ax2.set_ylim(bottom = RESYMIN, top = RESYMAX)
 
     # MAKE LEGEND
     handles, labels = ax1.get_legend_handles_labels()
