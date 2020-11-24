@@ -59,4 +59,5 @@ Confronto i risultati con la simulazione Spice
 
 ## Planning of the 2st Day
 
-### SHAPER 
+### SHAPER CR-RC
+

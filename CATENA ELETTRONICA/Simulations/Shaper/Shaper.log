@@ -1,0 +1,21 @@
+Circuit: * D:\GitHub\physics_laboratory_2020_2021\CATENA ELETTRONICA\Simulations\Shaper\Shaper.asc
+
+Direct Newton iteration for .op point succeeded.
+
+Date: Tue Nov 24 20:55:05 2020
+Total elapsed time: 0.091 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 6062
+traniter = 6058
+tranpoints = 3030
+accept = 3027
+rejected = 3
+matrix size = 11
+fillins = 0
+solver = Normal
+Matrix Compiler1: 396 bytes object code size  0.1/0.1/[0.1]
+Matrix Compiler2: 847 bytes object code size  0.1/0.1/[0.1]
+
