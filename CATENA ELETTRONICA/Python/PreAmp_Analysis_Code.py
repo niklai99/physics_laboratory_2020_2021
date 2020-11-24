@@ -83,6 +83,16 @@ b = 0
 err_a = 0
 err_b = 0
 
+c = 0
+d = 0
+err_c = 0
+err_d = 0
+
+e = 0
+f = 0
+err_e = 0
+err_f = 0
+
 ####### MISURE DIRETTE DELLE COMPONENTI CIRCUITALI
 def misure_dirette():
 
@@ -308,6 +318,16 @@ def propagazione_Tr(T, Vin, Vout, Vdivin, Vdivout):
 ####### PRE-AMP BODE PLOT
 def preamp_bode_plot(df, sim):
 
+    global c 
+    global d 
+    global err_c 
+    global err_d 
+    
+    global e 
+    global f
+    global err_e 
+    global err_f
+
     # CONSTANTS
     XMIN = 0.9
     XMAX = 6.1
@@ -319,22 +339,75 @@ def preamp_bode_plot(df, sim):
     #RESYMIN = -0.03
     #RESYMAX = 0.03
 
+    data1 = df.iloc[:3, :]
+    data2 = df.iloc[6:, :]
+
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,8))
     ax1 = fig.add_subplot(1, 1, 1)
 
+    # PERFORM THE FITS
+    par1, cov1 = curve_fit(f = lin, xdata = data1['log10f (dec)'], ydata = data1['H (dB)'])
+    func1 = lin(df['log10f (dec)'], *par1)
+
+    par2, cov2 = curve_fit(f = lin, xdata = data2['log10f (dec)'], ydata = data2['H (dB)'])
+    func2 = lin(df['log10f (dec)'], *par2)
+
+    # GET FIT PARAMETERS AND PARAMETER ERRORS
+    error1 = []
+    error2 = []
+
+    for i in range(len(par1)):
+        try:
+            error1.append(np.absolute(cov1[i][i])**0.5)
+        except:
+            error1.append( 0.00 )
+
+    for i in range(len(par2)):
+        try:
+            error2.append(np.absolute(cov2[i][i])**0.5)
+        except:
+            error2.append( 0.00 )
+
+    fit_par1 = par1
+    fit_err1 = np.array(error1)
+
+    fit_par2 = par2
+    fit_err2 = np.array(error2)
+
+    c = fit_par1[0]
+    d = fit_par1[1]
+    err_c = fit_err1[0]
+    err_d = fit_err1[1]
+
+    e = fit_par2[0]
+    f = fit_par2[1]
+    err_e = fit_err2[0]
+    err_f = fit_err2[1]
+
+    # COMPUTE X AND Y INTERSECTION
+    x_int = (e - c) / (d - f)
+    y_int = lin(x_int, *par1)
+
     # PLOT DATA
     ax1.errorbar(df['log10f (dec)'], df['H (dB)'], xerr = 0, yerr = df['sigma H (dB)'], marker = '.', markersize = 13,
-                elinewidth=1, color = '#000000', linewidth=0, capsize=2, label = 'Data')
+                elinewidth=1, color = '#000000', linewidth=0, capsize=2, label = 'Measures')
     
     # PLOT SIMULATIONS
-    ax1.plot(sim['f'], sim['H'], color = '#0e94ff', linewidth = 2, label = 'Simulation')
+    ax1.plot(sim['f'], sim['H'], color = '#4b00ff', linewidth = 1, label = 'Simulation')
+
+    # PLOT FIT FUNCTIONS
+    ax1.plot(df['log10f (dec)'], func1, color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'y = c + dx')
+    ax1.plot(df['log10f (dec)'], func2, color = '#00b4ff', linewidth = 2, linestyle = 'dashed', label = 'y = a + bx')
+
+    # DRAW INTERSECTION LINE
+    # ax1.vlines(x = x_int, ymin = YMIN, ymax = y_int, color = '#000000', linestyle = 'dotted')
 
     # PLOT TITLE
     fig.suptitle('PreAmp - Bode Plot', fontsize=32)
 
     # AXIS LABELS
-    ax1.set_xlabel('log$_{10}$(f) (dec)', fontsize = 24, loc = 'right')
+    ax1.set_xlabel('log$_{10}$(freq.) (dec)', fontsize = 24, loc = 'right')
     ax1.set_ylabel('H (dB)', fontsize = 24, loc = 'top', labelpad=0)
 
     # AXIS TICKS
@@ -349,7 +422,11 @@ def preamp_bode_plot(df, sim):
     ax1.set_ylim(bottom = YMIN, top = YMAX)
 
     # MAKE LEGEND
-    ax1.legend(loc = 'best', prop = {'size': 22}, ncol = 1, frameon = True, fancybox = False, framealpha = 1)
+    handles, labels = ax1.get_legend_handles_labels()
+    order = [3, 0, 2, 1]
+    ax1.legend([handles[idx] for idx in order], [labels[idx] for idx in order], loc = 'best', prop = {'size': 22}, 
+                ncol = 2, frameon = True, fancybox = False, framealpha = 1)
+    
 
     # SAVE FIGURE
     #fig.savefig('../Plots/PreAmp/Vmax_Qin_lin_fit.png', dpi = 300, facecolor='white')
