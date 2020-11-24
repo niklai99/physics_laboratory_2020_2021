@@ -277,12 +277,11 @@ def compute_Cf_fit():
 
     sigma_Cf_fit = np.sqrt( (err_b / b**2)**2 + (0.015 / b)**2 )
 
-
     print('Cf_fit = ' + format(Cf_fit, '1.2f') + ' +/- ' + format(sigma_Cf_fit, '1.2f') + '  pF')
 
 ##### CALCOLO COMPATIBILITA
 def compatib(x, y, errx, erry):
-    
+
     comp = np.abs( x - y ) / np.sqrt( errx**2 + erry**2 )
 
     return comp
