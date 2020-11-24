@@ -345,9 +345,6 @@ def preamp_bode_plot(df, sim):
     # BLU
     data2 = df.iloc[6:-2, :]
 
-    data1.to_csv('DATA1.txt', header=None, index=None, sep=' ', mode='a')
-    data2.to_csv('DATA2.txt', header=None, index=None, sep=' ', mode='a')
-
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,10))
     ax1 = plt.subplot2grid((10, 1), (0, 0), rowspan=8, colspan=1)
@@ -518,7 +515,7 @@ def preamp_bode_plot(df, sim):
     
 
     # SAVE FIGURE
-    fig.savefig('../Plots/PreAmp/bode_plot.png', dpi = 300, facecolor = 'white')
+    #fig.savefig('../Plots/PreAmp/bode_plot.png', dpi = 300, facecolor = 'white')
 
     plt.show()
 
