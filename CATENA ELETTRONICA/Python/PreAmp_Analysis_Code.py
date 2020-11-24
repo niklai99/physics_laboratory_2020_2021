@@ -331,7 +331,7 @@ def preamp_bode_plot(df, sim):
     # CONSTANTS
     XMIN = 0.9
     XMAX = 6.1
-    YMIN = -40
+    YMIN = -42
     YMAX = 30
 
     #RESXMIN = XMIN
@@ -394,15 +394,30 @@ def preamp_bode_plot(df, sim):
                 elinewidth=1, color = '#000000', linewidth=0, capsize=2, label = 'Measures')
     
     # PLOT SIMULATIONS
-    ax1.plot(sim['f'], sim['H'], color = '#4b00ff', linewidth = 1, label = 'Simulation')
+    ax1.plot(sim['f'], sim['H'], color = '#4b00ff', linewidth = 1, linestyle = '-', label = 'Simulation')
 
     # PLOT FIT FUNCTIONS
-    ax1.plot(df['log10f (dec)'], func1, color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'y = c + dx')
-    ax1.plot(df['log10f (dec)'], func2, color = '#00b4ff', linewidth = 2, linestyle = 'dashed', label = 'y = a + bx')
+    ax1.plot(np.arange(XMIN, XMAX + 1, 1), lin(np.arange(XMIN, XMAX + 1, 1), *par1), color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'y = c + dx')
+    ax1.plot(np.arange(XMIN, XMAX + 1, 1), lin(np.arange(XMIN, XMAX + 1, 1), *par2), color = '#00b4ff', linewidth = 2, linestyle = 'dashed', label = 'y = a + bx')
 
     # DRAW INTERSECTION LINE
     # ax1.vlines(x = x_int, ymin = YMIN, ymax = y_int, color = '#000000', linestyle = 'dotted')
 
+    # PRINT FIT RESULTS ON THE PLOT
+    q1 = 'a = ' + format(e, '1.1f') + ' +/- ' + format(err_e, '1.1f') + ' dB'
+    m1 = 'b = ' + format(f, '1.2f') + ' +/- ' + format(err_f, '1.2f') + ' dB/dec'
+    q2 = 'c = ' + format(c, '1.2f') + ' +/- ' + format(err_c, '1.2f') + ' dB'
+    m2 = 'd = ' + format(d, '1.2f') + ' +/- ' + format(err_d, '1.2f') + ' dB/dec'
+    #chisq1 = '$\chi^{2}$ / ndf = ' + format(chi2, '1.2f') + ' / ' + format(len(df['Qin (pC)']) - len(par_lin), '1.0f') 
+    #sigmap1 = '\u03C3$_{post}$ = ' + format(sigma_post, '1.4f') + ' V'
+
+    ax1.text(0.05, 0.75, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
+    ax1.text(0.05, 0.62, q1 + '\n' + m1, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+            bbox = dict( facecolor = '#00b4ff', edgecolor = '#00b4ff', alpha = 0.1, linewidth = 2 ))
+    ax1.text(0.05, 0.50, q2 + '\n' + m2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+            bbox = dict( facecolor = '#FF4B00', edgecolor = '#FF4B00', alpha = 0.1, linewidth = 2 ))
+
+    
     # PLOT TITLE
     fig.suptitle('PreAmp - Bode Plot', fontsize=32)
 
@@ -429,7 +444,7 @@ def preamp_bode_plot(df, sim):
     
 
     # SAVE FIGURE
-    #fig.savefig('../Plots/PreAmp/Vmax_Qin_lin_fit.png', dpi = 300, facecolor='white')
+    fig.savefig('../Plots/PreAmp/bode_plot.png', dpi = 300, facecolor = 'white')
 
     plt.show()
 
