@@ -336,16 +336,16 @@ def preamp_bode_plot(df, sim):
 
     RESXMIN = XMIN
     RESXMAX = XMAX
-    RESYMIN = -0.9
-    RESYMAX = 0.9
+    RESYMIN = -0.3
+    RESYMAX = 0.4
 
     data1 = df.iloc[:3, :]
-    data2 = df.iloc[6:-1, :]
+    data2 = df.iloc[6:-2, :]
 
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,14))
-    ax1 =  plt.subplot2grid((10, 1), (0, 0), rowspan=6, colspan=1)
-    ax2 =  plt.subplot2grid((10, 1), (8, 0), rowspan=2, colspan=1)
+    ax1 =  plt.subplot2grid((10, 1), (0, 0), rowspan=7, colspan=1)
+    ax2 =  plt.subplot2grid((10, 1), (7, 0), rowspan=3, colspan=1)
 
     # PERFORM THE FITS
     par1, cov1 = curve_fit(f = lin, xdata = data1['log10f (dec)'], ydata = data1['H (dB)'], sigma = data1['sigma Hr (dB)'], absolute_sigma = True)
@@ -424,7 +424,7 @@ def preamp_bode_plot(df, sim):
     chisq1 = '$\chi^{2}$ / ndf = ' + format(chi21, '1.2f') + ' / ' + format(len(data1['log10f (dec)']) - len(par1), '1.0f') 
     sigmap1 = '\u03C3$_{post}$ = ' + format(sigma_post1, '1.4f') + ' dB'
     chisq2 = '$\chi^{2}$ / ndf = ' + format(chi22, '1.0f') + ' / ' + format(len(data2['log10f (dec)']) - len(par2), '1.0f') 
-    sigmap2 = '\u03C3$_{post}$ = ' + format(sigma_post2, '1.3f') + ' dB'
+    sigmap2 = '\u03C3$_{post}$ = ' + format(sigma_post2, '1.2f') + ' dB'
 
     ax1.text(0.05, 0.75, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
 
@@ -447,13 +447,14 @@ def preamp_bode_plot(df, sim):
     ax1.set_title('PreAmp - Bode Plot', fontsize=32)
 
     # AXIS LABELS
-    ax1.set_xlabel('log$_{10}$(freq.) (dec)', fontsize = 24, loc = 'right')
+    # ax1.set_xlabel('log$_{10}$(freq.) (dec)', fontsize = 24, loc = 'right')
     ax1.set_ylabel('H (dB)', fontsize = 24, loc = 'top', labelpad=0)
     ax2.set_xlabel('log$_{10}$(freq.) (dec)', fontsize = 24, loc = 'right')
-    ax2.set_ylabel('H - fit (dB)', fontsize = 24, loc = 'top', labelpad=0)
+    ax2.set_ylabel('H - fit (dB)', fontsize = 24, loc = 'center', labelpad=-15)
 
     # AXIS TICKS
-    ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'x', which = 'major', labelsize = 0, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'y', which = 'major', labelsize = 22, direction = 'in', length = 10)
     ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
     ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
     ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
