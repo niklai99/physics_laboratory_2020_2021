@@ -61,3 +61,36 @@ Confronto i risultati con la simulazione Spice
 
 ### SHAPER CR-RC
 
+Assemblo il circuito in figura
+
+![PreAmp Circuito](./Simulations/Shaper/Shaper_circuit.png)
+
+* Imposto sul CH1 del generatore un'onda quadra.
+  * Frequenza 100Hz
+  * Vlow = 0V
+  * Vhigh = 1V 
+
+* SCELGO R<sub>1sh</sub> = R<sub>2sh</sub> TRA 90k&Omega; E 160k&Omega;
+* SCELGO C<sub>1sh</sub> = C<sub>2sh</sub> TRA 90pF E 160pF
+
+* Calcolo il tempo caratteristico &tau;<sub>sh</sub> = R<sub>1sh</sub>C<sub>1sh</sub> = R<sub>2sh</sub>C<sub>2sh</sub>
+
+* **EFFETTUO LE SEGUENTI MISURE**
+  * Valore del massimo V<sub>sh</sub><sup>MAX</sup> _CHE DEVE ESSERE V<sub>in</sub> / e_
+  * Tempo in cui viene assunto il massimo t<sub>sh</sub><sup>MAX</sup> _CHE DEVE ESSERE PROPRIO &tau;<sub>sh</sub>_
+
+* Registro ora una forma d'onda con Arduino
+
+* Studio la risposta in frequenza da 10Hz a 1MHz
+
+#### ATTACCO IL PREAMPLIFICATORE IN INGRESSO ALLO SHAPER
+
+Devo ripristinare le condizioni del PreAmp per verificare che funzioni: IMPULSO QUADRATO T = 5us f = 1kHz Vlow = 0V
+Vhigh = -1V
+
+* Prendo nota della tensione massima V<sub>pre</sub><sup>MAX</sup> in uscita dal preamplificatore
+* Misuro il massimo V<sub>sh</sub><sup>MAX</sup> del segnale in uscita, il tempo in cui viene raggiunto e il massimo di undershoot
+* Calcolo il valore di R<sub>pz</sub> per compensare l'effetto &rarr; R<sub>pz</sub> = &tau;<sub>pre</sub> / C<sub>1sh</sub>
+  * Ricordo che, teoricamente, &tau;<sub>pre</sub> = 161.486 +/- 6.493 &mu;s
+
+Posso ora prendere Arduino sia senza sia con Rpz e ho finito per oggi.
