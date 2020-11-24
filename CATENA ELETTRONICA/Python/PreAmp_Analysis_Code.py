@@ -16,7 +16,7 @@ from scipy.optimize import curve_fit
 # Misure Dirette
 Rin = 56564 #Ohm
 Rf = 696060 #Ohm
-Cf = 0.000000000222 #Farad
+Cf = 0.000000000232 #Farad
 
 # Fondo Scala
 FS_Rin = 100000 #Ohm
@@ -72,6 +72,16 @@ sigma_tau_th = 0
 
 Vmax_th = 0
 sigma_Vmax_th = 0
+
+Cf_fit = 0
+sigma_Cf_fit = 0
+
+### PARAMETRI FIT
+
+a = 0
+b = 0
+err_a = 0
+err_b = 0
 
 ####### MISURE DIRETTE DELLE COMPONENTI CIRCUITALI
 def misure_dirette():
@@ -139,6 +149,11 @@ def lin(x, a, b):
 
 ####### PRE-AMP LINEAR FIT
 def preamp_lin_fit(df):
+
+    global a
+    global b
+    global err_a
+    global err_b
 
     # CONSTANTS
     XMIN = 30
@@ -209,7 +224,6 @@ def preamp_lin_fit(df):
     ax1.text(0.15, 0.85, 'Fit Function', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
     ax1.text(0.20, 0.80, 'y = a + bx', fontsize = 18, transform=ax1.transAxes)
 
-
     ax1.text(0.45, 0.35, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
     ax1.text(0.45, 0.28, q, fontsize = 18, transform=ax1.transAxes)
     ax1.text(0.45, 0.22, m, fontsize = 18, transform=ax1.transAxes)
@@ -247,9 +261,23 @@ def preamp_lin_fit(df):
     ax2.set_ylim(bottom = RESYMIN, top = RESYMAX)
 
     # SAVE FIGURE
-    fig.savefig('../Plots/PreAmp/Vmax_Qin_lin_fit.png', dpi = 300, facecolor='white')
+    #fig.savefig('../Plots/PreAmp/Vmax_Qin_lin_fit.png', dpi = 300, facecolor='white')
 
     plt.show()
 
+##### CALCOLO CF DAL FIT
+def compute_Cf_fit():
 
+    global Cf_fit
+    global sigma_Cf_fit
+    global b
+    global err_b
+
+    Cf_fit = b**-1
+
+
+    print('Cf_fit = ' + format(Cf_fit, '1.2f') + ' +/- ' + '  pF')
+
+    
+    
 
