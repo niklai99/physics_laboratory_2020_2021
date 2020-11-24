@@ -124,3 +124,10 @@ def Vmax_teorico():
 
     print('Vmax_th =  ' + format(Vmax_th * 1e3, '1.3f') + ' +/- ' + format(sigma_Vmax_th * 1e3, '1.3f') + '  mV')
 
+
+####### READ DATA
+def get_data(file_name):
+    df = pd.read_csv(file_name, index_col = False, header = None, sep = '\t')
+    df.index = np.arange(1, len(df)+1)
+    return df
+
