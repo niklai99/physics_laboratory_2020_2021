@@ -114,6 +114,10 @@ tau_bode = 0
 sigma_tau_bode = 0
 
 ### ------------------------------------ ------------------- --------------------------------------
+### ------------------------------------ ------------------- --------------------------------------
+### ------------------------------------------ FUNCTIONS ------------------------------------------
+### ------------------------------------ ------------------- --------------------------------------
+### ------------------------------------ ------------------- --------------------------------------
 
 
 ####### MISURE DIRETTE DELLE COMPONENTI CIRCUITALI
@@ -623,8 +627,8 @@ def freq_taglio_bode():
     print( 'Frequenza di Taglio Bode ft_bode = ' + format(ft_bode * 1e-3, '.2f') + ' +/- ' + format(sigma_ft_bode * 1e-3, '.2f') + '  kHz')
     print( 'Compatibilità frequenza di taglio \u03BB = ' + format(compatib(ft_th, ft_bode, sigma_ft_th, sigma_ft_bode), '1.2f'))
 
- 
-    
+
+
 ####### TEMPO CARATTERISTICO STIMATO CON BODE
 def tau_bode():
 
@@ -637,3 +641,37 @@ def tau_bode():
     print( 'Tempo caratteristico stimato con Bode \u03C4_bode = ' + format(1e6 * tau_bode, '1.2f') + ' +/- ' + format(1e6 * sigma_tau_bode, '1.2f') + '  \u03BCs')
     print( 'Tempo caratteristico stimato teorico \u03C4_th = ' + format(1e6 * tau_th, '1.2f') + ' +/- ' + format(1e6 * sigma_tau_th, '1.2f') + '  \u03BCs')
     print( 'Compatibilità tempo caratteristico \u03BB = ' + format(compatib(tau_bode, tau_th, sigma_tau_bode, sigma_tau_th), '1.2f'))
+    
+
+
+####### ARDUINO PLOT
+def preamp_arduino_plot(data):
+    # FIG SETTINGS AND AXES
+    fig = plt.figure(figsize=(16,8))
+    ax1 = fig.add_subplot(1, 1, 1)
+
+    # PLOT DATA
+    ax1.plot(data['time'], data['ADC'], color = '#227FF7', linewidth = 2, label = 'Data')
+
+    # PLOT TITLE
+    ax1.set_title('PreAmp - Preliminary Arduino Waveform', fontsize = 32)
+
+    # AXIS LABELS
+    ax1.set_xlabel('time (a.u.)', fontsize = 26, loc = 'right')
+    ax1.set_ylabel('ADC (a.u.)', fontsize = 26, loc = 'top')
+
+    # AXIS TICKS
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax1.minorticks_on()
+
+    # PLOT RANGE
+    ax1.set_xlim(left = 0, right = 2047)
+    ax1.set_ylim(bottom = 750, top = 1270)
+
+    # SAVE FIGURE
+    #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
+
+    plt.show()
