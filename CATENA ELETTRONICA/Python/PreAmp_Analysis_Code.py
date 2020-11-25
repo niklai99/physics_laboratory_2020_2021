@@ -98,8 +98,8 @@ err_f = 0
 
 ft_bode = 0
 sigma_ft_bode = 0
-tau_bode
-sigma_tau_bode
+tau_bode = 0
+sigma_tau_bode = 0
 
 
 
@@ -591,9 +591,9 @@ def tau_bode():
     global tau_bode
     global sigma_tau_bode
 
-    tau_bode = (2 * np.pi * PA.ft_bode)**-1 
-    sigma_tau_bode = PA.sigma_ft_bode * (2 * np.pi * PA.ft_bode**2)**-1
+    tau_bode = (2 * np.pi * ft_bode)**-1 
+    sigma_tau_bode = sigma_ft_bode * (2 * np.pi * ft_bode**2)**-1
 
     print( 'Tempo caratteristico stimato con Bode \u03C4_bode = ' + format(1e6 * tau_bode, '1.2f') + ' +/- ' + format(1e6 * sigma_tau_bode, '1.2f') + '  \u03BCs')
-    print( 'Tempo caratteristico stimato teorico \u03C4_th = ' + format(1e6 * PA.tau_th, '1.2f') + ' +/- ' + format(1e6 * PA.sigma_tau_th, '1.2f') + '  \u03BCs')
-    print( 'Compatibilità tempo caratteristico \u03BB = ' + format(PA.compatib(tau_bode, PA.tau_th, sigma_tau_bode, PA.sigma_tau_th), '1.2f'))
+    print( 'Tempo caratteristico stimato teorico \u03C4_th = ' + format(1e6 * tau_th, '1.2f') + ' +/- ' + format(1e6 * sigma_tau_th, '1.2f') + '  \u03BCs')
+    print( 'Compatibilità tempo caratteristico \u03BB = ' + format(compatib(tau_bode, tau_th, sigma_tau_bode, sigma_tau_th), '1.2f'))
