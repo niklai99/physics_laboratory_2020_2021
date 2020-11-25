@@ -1,43 +1,51 @@
 # FORMAT PER REGISTRAZIONE DATI RACCOLTI DA POSTARE IN MOODLE (come FILE DI TESTO, NO WORD, PDF o altre varianti di formato)
-# - inserire i dati seguendo il formato indicato
 # - si possono utilizzare i modificatori tipo LTspice: k (kilo), Meg(mega), m(milli), u(micro), n(nano), p(pico)
-# - per eventuali commenti mettete un cancelletto a inizio riga
-
+#
 # --------------------------------------
-
 # ESPERIENZA CATENA ELETTRONICA
-
 # --------------------------------------
-# 1) PRE AMPLIFICATORE
+# 
+# per ogni punto dell'esperienza utilizzare il seguente formato:
+#
+# una riga di commento (inizio con #) con il numero del punto
+#
+# per le misure: 
+# una riga di commento che dice di cosa si tratta
+# una riga di commento con l'indicazione della sequenza dei dati riportati
+# righe con i dati nella sequenza corrispondente
 
-# misura componenti: label, dato letto, scala (es. R1, 123.6k, 600k)
-# un componente per riga
+# 1.1 Generatore di impulsi di corrente
+# Componenti circuitali
+# label, dato letto , fondoscala
 
 Rin, 56.564k, 100k
 Rf_pre, 696.06k, 1000k
 Cf_pre, 222p, 1000p
 
 # misura segnale generatore 
+# label, dato letto, V/div
 
 Vlow, 8m, 200m
 Vhigh, -1.01, 200m
 
+# 1.2 Preamplificatore di carica
 # stima teorica della carica, tempo caratteristico, Vmax e frequenza di taglio
+# label, valore
 
 Qin, 90p
 tau, 154us
 Vmax, 405m
 ft, 1.03k
 
-# tensione massima sperimentale con scala
+# misure sperimentali di tau e Vmax
+# label, valore, V/div (eventualmente)
 
 Vmax_sper, 392m, 100m
-
-# tau sperimentale
-
 tau_sper, 158u
 
-# dati verifica linearità: T, Vmax, scala
+# 1.3 Verifica della linearità del preamplificatore
+# dati acquisiti per la verifica della linearità del preamplificatore
+# T, Vmax, V/div
 
 2u, 162m, 50m
 3u, 238m, 50m
@@ -49,7 +57,9 @@ tau_sper, 158u
 9u, 704m, 200m
 10u, 776m, 200m
 
-# dati risposta in frequenza: f, Vin, scala Vin, Vout, scala Vout
+# 1.5 Risposta in frequenza
+# dati per bode
+# f, Vin, Scala Vin, Vout, Scala Vout
 
 10,  	 1.04, 200m, 13.00, 2.6
 50,	     1.04, 200m, 13.00, 2.6
@@ -65,4 +75,69 @@ tau_sper, 158u
 100000,	 1.04, 200m, 0.132, 50m
 500000,	 1.04, 200m, 0.026, 50m
 1000000, 1.04, 200m, 0.012, 50m
+ 
+# 2.1 Shaper base CR-RC
+# Componenti circuitali
+# label, dato letto , fondoscala
 
+R1, 100.99k, 1000k
+R2, 99.93k, 1000k
+C1, 157p, 1000p
+C2, 159p, 1000p
+
+# stima teorica dei due tau_shaper
+# label, valore
+
+tau1, 15.86u
+tau2, 15.89u
+
+# misura segnale generatore 
+# label, dato letto, V/div
+
+Vlow, 0, 200m
+Vhigh, 1.01, 200m
+
+# misura del massimo del segnale in uscita e il tempo in cui viene assunto
+# label, valore, Scala
+
+Vmax, 342m, 65m
+tau, 16u, 85u
+
+# 2.2 Risposta in frequenza dello shaper base
+# dati per bode
+# f, Vin, Scala Vin, Vout, Scala Vout
+
+50,	     1.02,	200m,	0.0056,	20m
+100,	 1.02,	200m,	0.0104,	20m
+250,     1.02,	200m,	0.0248,	20m
+500,	 1.02,	200m,	0.0488,	20m
+1000,	 1.02,	200m,	0.0960,	50m
+2000,	 1.02,	200m,	0.1860,	50m
+3000,	 1.02,	200m,	0.2660,	50m
+4000,	 1.02,	200m,	0.3320,	100m
+5000,	 1.02,	200m,	0.3840,	100m
+6000,	 1.02,	200m,	0.4200,	100m
+7000,	 1.02,	200m,	0.4440,	100m
+8000,	 1.02,	200m,	0.4640,	200m
+9000,	 1.02,	200m,	0.4680,	200m
+10000,	 1.02,	200m,	0.4720,	200m
+12000,	 1.02,	200m,	0.4600,	200m
+15000,	 1.02,	200m,	0.4320,	200m
+20000,	 1.02,	200m,	0.3720,	100m
+25000,	 1.02,	200m,	0.3200,	100m
+50000,	 1.02,	200m,	0.1820,	50m
+100000,	 1.02,	200m,	0.0936,	20m
+200000,	 1.02,	200m,	0.0496,	20m
+350000,	 1.02,	200m,	0.0320,	20m
+500000,	 1.02,	200m,	0.0264,	20m
+1000000, 1.02,	200m,	0.0200,	20m
+
+
+
+
+
+
+
+# --------------------------------------
+# eventuali commenti
+#
