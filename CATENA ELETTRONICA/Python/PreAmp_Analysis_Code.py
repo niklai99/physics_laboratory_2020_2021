@@ -686,18 +686,45 @@ def preamp_arduino_plot_lin(data):
     ax1 = fig.add_subplot(1, 1, 1)
 
     # PERFORM THE FIT
-    par_lin, cov_lin = curve_fit(f = lin, xdata = data['time'], ydata = data['lin ADC'])
-    func = lin(data['time'], *par_lin)
+    par, cov = curve_fit(f = lin, xdata = data['time (ms)'], ydata = data['lin ADC'])
+    func = lin(data['time (ms)'], *par)
+
+    # GET FIT PARAMETERS AND PARAMETER ERRORS
+    error = []
+
+    for i in range(len(par)):
+        try:
+            error.append(np.absolute(cov[i][i])**0.5)
+        except:
+            error.append( 0.00 )
+
+    fit_par = par
+    fit_err = np.array(error)
+
+
+    a = fit_par[0]
+    b = fit_par[1]
+
+    err_a = fit_err[0]
+    err_b = fit_err[1]
+
 
     # PLOT DATA
-    ax1.plot(data['time'], data['lin ADC'], color = '#227FF7', linewidth = 0, marker = '.', markersize = 10, label = 'Data')
-    ax1.plot(data['time'], func, color = '#FF4B00', linewidth = 2, label = 'Fit')
+    ax1.plot(data['time (ms)'], data['lin ADC'], color = '#227FF7', linewidth = 0, marker = '.', markersize = 10, label = 'Data')
+    ax1.plot(data['time (ms)'], func, color = '#FF4B00', linewidth = 2, label = 'Fit')
+
+    # aa = 'a = ' + format(a, '1.2f') + ' +/- ' + format(err_a, '1.2f')
+    # bb = 'b = ' + format(b, '1.0f') + ' +/- ' + format(err_b, '1.0f')
+
+
+    # ax1.text(0.4, 0.7, 'Fit Function        y = a + b * exp(-x / \u03C4)', fontsize = 22, color = '#000000', transform = ax1.transAxes)
+    # ax1.text(0.5, 0.5, aa + '\n' + bb + '\n' + cc, fontsize = 18, color = '#000000', transform = ax1.transAxes)
 
     # PLOT TITLE
-    ax1.set_title('PreAmp - Preliminary Arduino Waveform', fontsize = 32)
+    ax1.set_title('PreAmp - Preliminary Arduino LinFit', fontsize = 32)
 
     # AXIS LABELS
-    ax1.set_xlabel('time (a.u.)', fontsize = 26, loc = 'right')
+    ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
     ax1.set_ylabel('logADC (a.u.)', fontsize = 26, loc = 'top')
 
     # AXIS TICKS
@@ -708,11 +735,11 @@ def preamp_arduino_plot_lin(data):
     ax1.minorticks_on()
 
     # PLOT RANGE
-    ax1.set_xlim(left = 280, right = 1200)
-    #ax1.set_ylim(bottom = 750, top = 1270)
+    ax1.set_xlim(left = 0.30, right = 0.80)
+    ax1.set_ylim(top = 6.3)
 
     # SAVE FIGURE
-    #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
+    #fig.savefig('../Plots/PreAmp/arduino_lin_fit.png', dpi = 300)
 
     plt.show()
 
@@ -778,7 +805,6 @@ def preamp_arduino_fit(data):
 
     # PLOT RANGE
     ax1.set_xlim(left = 0.30, right = 1.25)
-
     ax1.set_ylim(bottom = 770, top = 1240)
 
     # SAVE FIGURE
