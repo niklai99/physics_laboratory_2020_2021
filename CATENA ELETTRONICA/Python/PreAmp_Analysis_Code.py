@@ -199,6 +199,10 @@ def get_data(file_name):
 def lin(x, a, b):  
     return a + b * x
 
+####### EXPONENTIAL FUCTION
+def esp(x, a, b, c):  
+    return a + b * np.exp(-c * x)
+    
 
 
 ####### PRE-AMP LINEAR FIT
@@ -651,13 +655,13 @@ def preamp_arduino_plot(data):
     ax1 = fig.add_subplot(1, 1, 1)
 
     # PLOT DATA
-    ax1.plot(data['time'], data['ADC'], color = '#227FF7', linewidth = 2, label = 'Data')
+    ax1.plot(data['time (ms)'], data['ADC'], color = '#227FF7', linewidth = 2, label = 'Data')
 
     # PLOT TITLE
     ax1.set_title('PreAmp - Preliminary Arduino Waveform', fontsize = 32)
 
     # AXIS LABELS
-    ax1.set_xlabel('time (a.u.)', fontsize = 26, loc = 'right')
+    ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
     ax1.set_ylabel('ADC (a.u.)', fontsize = 26, loc = 'top')
 
     # AXIS TICKS
@@ -668,7 +672,7 @@ def preamp_arduino_plot(data):
     ax1.minorticks_on()
 
     # PLOT RANGE
-    ax1.set_xlim(left = 0, right = 2047)
+    ax1.set_xlim(left = 0, right = 2.15)
     ax1.set_ylim(bottom = 750, top = 1270)
 
     # SAVE FIGURE
@@ -681,8 +685,13 @@ def preamp_arduino_plot_lin(data):
     fig = plt.figure(figsize=(16,8))
     ax1 = fig.add_subplot(1, 1, 1)
 
+    # PERFORM THE FIT
+    par_lin, cov_lin = curve_fit(f = lin, xdata = data['time'], ydata = data['lin ADC'])
+    func = lin(data['time'], *par_lin)
+
     # PLOT DATA
     ax1.plot(data['time'], data['lin ADC'], color = '#227FF7', linewidth = 0, marker = '.', markersize = 10, label = 'Data')
+    ax1.plot(data['time'], func, color = '#FF4B00', linewidth = 2, label = 'Fit')
 
     # PLOT TITLE
     ax1.set_title('PreAmp - Preliminary Arduino Waveform', fontsize = 32)
@@ -699,7 +708,7 @@ def preamp_arduino_plot_lin(data):
     ax1.minorticks_on()
 
     # PLOT RANGE
-    ax1.set_xlim(left = 0, right = 2047)
+    ax1.set_xlim(left = 280, right = 1200)
     #ax1.set_ylim(bottom = 750, top = 1270)
 
     # SAVE FIGURE
@@ -715,14 +724,51 @@ def preamp_arduino_fit(data):
     fig = plt.figure(figsize=(16,8))
     ax1 = fig.add_subplot(1, 1, 1)
 
+    par, cov = curve_fit(f = esp, xdata = data['time (ms)'], ydata = data['ADC'], maxfev=1000, 
+                        p0 = [790, 0, 6.6], bounds = ([770, 0, 0], [810, 5000, 10]))
+
+    func = esp(data['time (ms)'], *par)
+
+    # GET FIT PARAMETERS AND PARAMETER ERRORS
+    error = []
+
+    for i in range(len(par)):
+        try:
+            error.append(np.absolute(cov[i][i])**0.5)
+        except:
+            error.append( 0.00 )
+
+    fit_par = par
+    fit_err = np.array(error)
+
+
+    # ARANCIONE
+    a = fit_par[0]
+    b = fit_par[1]
+    c = fit_par[2]
+
+    err_a = fit_err[0]
+    err_b = fit_err[1]
+    err_c = fit_err[2]
+
+
     # PLOT DATA
-    ax1.plot(data['time'], data['ADC'], color = '#227FF7', linewidth = 2, label = 'Data')
+    ax1.plot(data['time (ms)'], data['ADC'], color = '#227FF7', linewidth = 2, label = 'Data')
+    ax1.plot(data['time (ms)'], func, color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'Fit')
+
+    aa = 'a = ' + format(a, '1.3f') + ' +/- ' + format(err_a, '1.3f')
+    bb = 'b = ' + format(b, '1.2f') + ' +/- ' + format(err_b, '1.2f')
+    cc = 'c = ' + format(c, '1.7f') + ' +/- ' + format(err_c, '1.7f')
+
+
+
+    ax1.text(0.5, 0.7, aa + '\n' + bb + '\n' + cc, fontsize = 18, color = '#000000', transform = ax1.transAxes)
 
     # PLOT TITLE
-    ax1.set_title('PreAmp - Preliminary Arduino Waveform', fontsize = 32)
+    ax1.set_title('PreAmp - Preliminary Arduino ExpFit', fontsize = 32)
 
     # AXIS LABELS
-    ax1.set_xlabel('time (a.u.)', fontsize = 26, loc = 'right')
+    ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
     ax1.set_ylabel('ADC (a.u.)', fontsize = 26, loc = 'top')
 
     # AXIS TICKS
@@ -733,8 +779,9 @@ def preamp_arduino_fit(data):
     ax1.minorticks_on()
 
     # PLOT RANGE
-    ax1.set_xlim(left = 250, right = 1250)
-    ax1.set_ylim(bottom = 750, top = 1270)
+    ax1.set_xlim(left = 0.30, right = 1.25)
+
+    ax1.set_ylim(bottom = 770, top = 1240)
 
     # SAVE FIGURE
     #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
