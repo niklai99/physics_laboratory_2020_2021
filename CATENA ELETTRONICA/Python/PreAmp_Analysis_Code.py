@@ -201,7 +201,7 @@ def lin(x, a, b):
 
 ####### EXPONENTIAL FUCTION
 def esp(x, a, b, c):  
-    return a + b * np.exp(-c * x)
+    return a + b * np.exp(- x * c**-1)
     
 
 
@@ -725,7 +725,7 @@ def preamp_arduino_fit(data):
     ax1 = fig.add_subplot(1, 1, 1)
 
     par, cov = curve_fit(f = esp, xdata = data['time (ms)'], ydata = data['ADC'], maxfev=1000, 
-                        p0 = [790, 0, 6.6], bounds = ([770, 0, 0], [810, 5000, 10]))
+                        p0 = [790, 0, 0.151], bounds = ([770, 0, 0], [810, 5000, 0.2]))
 
     func = esp(data['time (ms)'], *par)
 
@@ -742,7 +742,6 @@ def preamp_arduino_fit(data):
     fit_err = np.array(error)
 
 
-    # ARANCIONE
     a = fit_par[0]
     b = fit_par[1]
     c = fit_par[2]
@@ -756,13 +755,12 @@ def preamp_arduino_fit(data):
     ax1.plot(data['time (ms)'], data['ADC'], color = '#227FF7', linewidth = 2, label = 'Data')
     ax1.plot(data['time (ms)'], func, color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'Fit')
 
-    aa = 'a = ' + format(a, '1.3f') + ' +/- ' + format(err_a, '1.3f')
-    bb = 'b = ' + format(b, '1.2f') + ' +/- ' + format(err_b, '1.2f')
-    cc = 'c = ' + format(c, '1.7f') + ' +/- ' + format(err_c, '1.7f')
+    aa = 'a = ' + format(a, '1.2f') + ' +/- ' + format(err_a, '1.2f') + '  ADC counts'
+    bb = 'b = ' + format(b, '1.0f') + ' +/- ' + format(err_b, '1.0f')
+    cc = '\u03C4 = ' + format(c * 1e3, '1.2f') + ' +/- ' + format(err_c * 1e3, '1.2f') + '  \u03BCs'
 
-
-
-    ax1.text(0.5, 0.7, aa + '\n' + bb + '\n' + cc, fontsize = 18, color = '#000000', transform = ax1.transAxes)
+    ax1.text(0.4, 0.7, 'Fit Function        y = a + b * exp(-x / \u03C4)', fontsize = 22, color = '#000000', transform = ax1.transAxes)
+    ax1.text(0.5, 0.5, aa + '\n' + bb + '\n' + cc, fontsize = 18, color = '#000000', transform = ax1.transAxes)
 
     # PLOT TITLE
     ax1.set_title('PreAmp - Preliminary Arduino ExpFit', fontsize = 32)
@@ -784,6 +782,6 @@ def preamp_arduino_fit(data):
     ax1.set_ylim(bottom = 770, top = 1240)
 
     # SAVE FIGURE
-    #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
+    #fig.savefig('../Plots/PreAmp/arduino_exp_fit.png', dpi = 300, facecolor = 'white')
 
     plt.show()
