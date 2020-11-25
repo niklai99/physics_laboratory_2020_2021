@@ -10,6 +10,7 @@ import seaborn as sns
 import numpy as np
 from scipy import stats
 from scipy.optimize import curve_fit
+from scipy.misc import derivative
 
 ### CONSTANTS
 
@@ -93,6 +94,13 @@ f = 0
 err_e = 0
 err_f = 0
 
+ft_bode = 0
+sigma_ft_bode = 0
+ft_th = 0
+sigma_ft_th = 0
+
+
+
 ####### MISURE DIRETTE DELLE COMPONENTI CIRCUITALI
 def misure_dirette():
 
@@ -127,9 +135,14 @@ def tau_teorico():
 
     global tau_th
     global sigma_tau_th
+    global ft_th
+    global sigma_ft_th
 
     tau_th = Rf * Cf
     sigma_tau_th = np.sqrt( (Cf * sigma_Rf)**2 + (Rf * sigma_Cf)**2 )
+
+    ft_th = ( 2 * np.pi )**-1 * tau_th**-1
+    sigma_ft_th = ( 2 * np.pi )**-1 * sigma_tau_th * tau_th**-2
 
     print('\u03C4_th =  ' + format(tau_th * 1e6, '1.3f') + ' +/- ' + format(sigma_tau_th * 1e6, '1.3f') + '  \u03BCs')
 
@@ -328,6 +341,9 @@ def preamp_bode_plot(df, sim):
     global err_e 
     global err_f
 
+    global ft_bode
+    global sigma_ft_bode
+
     # CONSTANTS
     XMIN = 0.9
     XMAX = 6.1
@@ -422,9 +438,39 @@ def preamp_bode_plot(df, sim):
     # BLU
     sigma_post2 = np.sqrt( np.sum( res2**2 ) / (len(data2['log10f (dec)']) - 2) )
 
+    # COMPUTE DERIVATIVES
+    def xc(x):
+        return (e - x) / (d - f)
+    derc = derivative(xc, c, dx=1e-8)
+
+    def xd(x):
+        return (e - c) / (x - f)
+    derd = derivative(xd, d, dx=1e-8)
+
+    def xe(x):
+        return (x - c) / (d - f)
+    dere = derivative(xe, e, dx=1e-8)
+
+    def xf(x):
+        return (e - c) / (d - x)
+    derf = derivative(xf, f, dx=1e-8)
+
+    #print(format(derc, '1.3f'))
+    #print(format(derd, '1.3f'))
+    #print(format(dere, '1.3f'))
+    #print(format(derf, '1.3f'))
 
     # COMPUTE X AND Y INTERSECTION
     x_int = (e - c) / (d - f)
+    sigma_x_int = np.sqrt( (derc * err_c)**2 +  (derd * err_d)**2 + (dere * err_e)**2 + (derf * err_f)**2 +
+                            2 * derc * derd * cov1[0][1] + 2 * dere * derf * cov2[0][1] )
+
+    #print(format(x_int, '1.3f'))
+    #print(format(sigma_x_int, '1.3f'))
+
+    ft_bode = 10**x_int
+    sigma_ft_bode  = sigma_x_int * 10**x_int * np.log(10)
+
     y_int = lin(x_int, *par1)
 
     # PLOT DATA
@@ -516,7 +562,8 @@ def preamp_bode_plot(df, sim):
 
     # SAVE FIGURE
     #fig.savefig('../Plots/PreAmp/bode_plot.png', dpi = 300, facecolor = 'white')
-
+    global k 
+    k = 2
     plt.show()
 
 ####### READ BODE SIMULATION
