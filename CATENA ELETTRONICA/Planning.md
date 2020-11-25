@@ -57,7 +57,7 @@ Confronto i risultati con la simulazione Spice
 
 # Lab Session 25/11/2020
 
-## Planning of the 2st Day
+## Planning of the 2nd Day
 
 ### SHAPER CR-RC
 
@@ -94,3 +94,32 @@ Vhigh = -1V
   * Ricordo che, teoricamente, &tau;<sub>pre</sub> = 161.486 +/- 6.493 &mu;s
 
 Posso ora prendere Arduino sia senza sia con Rpz e ho finito per oggi.
+
+
+# Lab Session 26/11/2020
+
+## Planning of the 3rd Day
+
+### CATENA COMPLETA
+
+Assemblo un semplicissimo amplificatore non invertente per amplificare il segnale che esce dallo shaper. 
+
+* Imposto sul generatore un impulso quadrato di durata T = 10 &mu;s con la solita ampiezza negativa
+* Misuro il massimo del segnale in uscita dallo shaper
+* Calcolo quanta amplificazione mi serve per avere 2V
+* Uso le resistenze per ottenere tale amplificazione
+
+#### Linearità della Catena Elettronica
+Acquisisco con Arduino le forme d'onda al variare di T da 2&mu;s a 10&mu;s
+
+* Prendo Vmax per ogni forma d'onda e costruisco il plot Vmax vs Qin come nel caso PreAmp
+  
+#### Risposta in Frequenza &rarr; THEBODE
+
+#### EFfetto dello Shaping Time
+
+Cambio le resistenza di shaping Rsh1 e Rsh2 con una coppia di valore ridotto in modo da modificare &tau;sh senza però
+influenzare la compensazione di pole-zero.
+
+* Acquisisco la forma d'onda con Arduino
+  
