@@ -70,6 +70,8 @@ sigma_Qth = 0
 
 tau_th = 0
 sigma_tau_th = 0
+ft_th = 0
+sigma_ft_th = 0
 
 Vmax_th = 0
 sigma_Vmax_th = 0
@@ -96,8 +98,9 @@ err_f = 0
 
 ft_bode = 0
 sigma_ft_bode = 0
-ft_th = 0
-sigma_ft_th = 0
+tau_bode
+sigma_tau_bode
+
 
 
 
@@ -574,3 +577,23 @@ def get_bode_sim(filename):
     data['f'] = np.log10(data['f'])
 
     return data
+
+####### FREQUENZA DI TAGLIO STIMATA CON BODE
+def freq_taglio_bode():
+
+    print( 'Frequenza di Taglio teorica ft_th = ' + format(ft_th * 1e-3, '.2f') + ' +/- ' + format(sigma_ft_th * 1e-3, '.2f') + '  kHz')
+    print( 'Frequenza di Taglio Bode ft_bode = ' + format(ft_bode * 1e-3, '.2f') + ' +/- ' + format(sigma_ft_bode * 1e-3, '.2f') + '  kHz')
+    print( 'Compatibilità frequenza di taglio \u03BB = ' + format(compatib(ft_th, ft_bode, sigma_ft_th, sigma_ft_bode), '1.2f'))
+    
+####### TEMPO CARATTERISTICO STIMATO CON BODE
+def tau_bode():
+
+    global tau_bode
+    global sigma_tau_bode
+
+    tau_bode = (2 * np.pi * PA.ft_bode)**-1 
+    sigma_tau_bode = PA.sigma_ft_bode * (2 * np.pi * PA.ft_bode**2)**-1
+
+    print( 'Tempo caratteristico stimato con Bode \u03C4_bode = ' + format(1e6 * tau_bode, '1.2f') + ' +/- ' + format(1e6 * sigma_tau_bode, '1.2f') + '  \u03BCs')
+    print( 'Tempo caratteristico stimato teorico \u03C4_th = ' + format(1e6 * PA.tau_th, '1.2f') + ' +/- ' + format(1e6 * PA.sigma_tau_th, '1.2f') + '  \u03BCs')
+    print( 'Compatibilità tempo caratteristico \u03BB = ' + format(PA.compatib(tau_bode, PA.tau_th, sigma_tau_bode, PA.sigma_tau_th), '1.2f'))
