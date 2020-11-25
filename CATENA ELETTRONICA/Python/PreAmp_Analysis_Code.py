@@ -12,7 +12,7 @@ from scipy import stats
 from scipy.optimize import curve_fit
 from scipy.misc import derivative
 
-### CONSTANTS
+### ------------------------------------ COMPONENTI CIRCUITALI ------------------------------------
 
 # Misure Dirette
 Rin = 56564 #Ohm
@@ -49,6 +49,10 @@ sigma_Rin = np.sqrt(sigma_L_Rin**2 + sigma_D_Rin**2)
 sigma_Rf = np.sqrt(sigma_L_Rf**2 + sigma_D_Rf**2)
 sigma_Cf = np.sqrt(sigma_L_Cf**2 + sigma_D_Cf**2)
 
+### ------------------------------------ ------------------- --------------------------------------
+
+### ------------------------------------- MISURE SPERIMENTALI -------------------------------------
+
 #Generatore
 T_init = 0.000005 #Secondi
 Vlow_sper = 0.008 #Volt
@@ -63,7 +67,9 @@ sigma_Vmax_sper = 0.007111568040875373 #Volt
 
 tau_sper = 158 #MicroSecondi us ~circa
 
-### VARIABILI GLOBALI
+### ------------------------------------ ------------------- --------------------------------------
+
+### ---------------------------------------- STIME TEORICHE ---------------------------------------
 
 Qth = 0
 sigma_Qth = 0
@@ -79,7 +85,9 @@ sigma_Vmax_th = 0
 Cf_fit = 0
 sigma_Cf_fit = 0
 
-### PARAMETRI FIT
+### ------------------------------------ ------------------- --------------------------------------
+
+### ---------------------------------------- FIT PARAMETERS ---------------------------------------
 
 a = 0
 b = 0
@@ -96,12 +104,16 @@ f = 0
 err_e = 0
 err_f = 0
 
+### ------------------------------------ ------------------- --------------------------------------
+
+### ------------------------------------------ STIME BODE -----------------------------------------
+
 ft_bode = 0
 sigma_ft_bode = 0
 tau_bode = 0
 sigma_tau_bode = 0
 
-
+### ------------------------------------ ------------------- --------------------------------------
 
 
 ####### MISURE DIRETTE DELLE COMPONENTI CIRCUITALI
@@ -115,12 +127,16 @@ def misure_dirette():
 
     return df
 
+
+
 ####### PROPAGAZIONE SUI CURSORI
 def propagazione_cursori(Vdiv, measure):
 
     sigma = np.sqrt( (0.04 * Vdiv)**2 + (0.015 * measure)**2)
 
     return sigma
+
+
 
 ####### STIMA TEORICA DELLA CARICA
 def carica_teorica():
@@ -132,6 +148,8 @@ def carica_teorica():
     sigma_Qth = T_init * np.sqrt( (sigma_V_amplitude / Rin)**2 + (V_amplitude * sigma_Rin / Rin**2)**2 )
 
     print('Q_th =  ' + format(Qth * 1e12, '1.3f') + ' +/- ' + format(sigma_Qth * 1e12, '1.3f') + '  pC')
+
+
 
 ####### STIMA TEORICA DEL TEMPO CARATTERISTICO
 def tau_teorico():
@@ -148,6 +166,8 @@ def tau_teorico():
     sigma_ft_th = ( 2 * np.pi )**-1 * sigma_tau_th * tau_th**-2
 
     print('\u03C4_th =  ' + format(tau_th * 1e6, '1.3f') + ' +/- ' + format(sigma_tau_th * 1e6, '1.3f') + '  \u03BCs')
+
+
 
 ####### STIMA TEORICA DI VMAX
 def Vmax_teorico():
@@ -169,9 +189,13 @@ def get_data(file_name):
 
     return df
 
+
+
 ####### LINEAR FUCTION
 def lin(x, a, b):  
     return a + b * x
+
+
 
 ####### PRE-AMP LINEAR FIT
 def preamp_lin_fit(df):
@@ -291,6 +315,8 @@ def preamp_lin_fit(df):
 
     plt.show()
 
+
+
 ##### CALCOLO CF DAL FIT
 def compute_Cf_fit():
 
@@ -305,12 +331,16 @@ def compute_Cf_fit():
 
     print('Cf_fit = ' + format(Cf_fit, '1.2f') + ' +/- ' + format(sigma_Cf_fit, '1.2f') + '  pF')
 
+
+
 ##### CALCOLO COMPATIBILITA
 def compatib(x, y, errx, erry):
 
     comp = np.abs( x - y ) / np.sqrt( errx**2 + erry**2 )
 
     return comp
+
+
 
 ##### PROPAGAZIONE FUNZIONE DI TRASFERIMENTO
 def propagazione_T(T, Vin, Vout, Vdivin, Vdivout):
@@ -322,6 +352,8 @@ def propagazione_T(T, Vin, Vout, Vdivin, Vdivout):
 
     return sigma
 
+
+
 ##### PROPAGAZIONE FUNZIONE DI TRASFERIMENTO SENZA CONTRIBUTO DI SCALA
 def propagazione_Tr(T, Vin, Vout, Vdivin, Vdivout):
 
@@ -330,6 +362,8 @@ def propagazione_Tr(T, Vin, Vout, Vdivin, Vdivout):
     sigma = T * np.sqrt( (sigmaL * Vdivin / Vin)**2 + (sigmaL * Vdivout / Vout)**2)
 
     return sigma
+
+
 
 ####### PRE-AMP BODE PLOT
 def preamp_bode_plot(df, sim):
@@ -569,6 +603,8 @@ def preamp_bode_plot(df, sim):
     k = 2
     plt.show()
 
+
+
 ####### READ BODE SIMULATION
 def get_bode_sim(filename):
 
@@ -578,12 +614,16 @@ def get_bode_sim(filename):
 
     return data
 
+
+
 ####### FREQUENZA DI TAGLIO STIMATA CON BODE
 def freq_taglio_bode():
 
     print( 'Frequenza di Taglio teorica ft_th = ' + format(ft_th * 1e-3, '.2f') + ' +/- ' + format(sigma_ft_th * 1e-3, '.2f') + '  kHz')
     print( 'Frequenza di Taglio Bode ft_bode = ' + format(ft_bode * 1e-3, '.2f') + ' +/- ' + format(sigma_ft_bode * 1e-3, '.2f') + '  kHz')
     print( 'Compatibilità frequenza di taglio \u03BB = ' + format(compatib(ft_th, ft_bode, sigma_ft_th, sigma_ft_bode), '1.2f'))
+
+ 
     
 ####### TEMPO CARATTERISTICO STIMATO CON BODE
 def tau_bode():
