@@ -675,3 +675,68 @@ def preamp_arduino_plot(data):
     #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
 
     plt.show()
+
+def preamp_arduino_plot_lin(data):
+    # FIG SETTINGS AND AXES
+    fig = plt.figure(figsize=(16,8))
+    ax1 = fig.add_subplot(1, 1, 1)
+
+    # PLOT DATA
+    ax1.plot(data['time'], data['lin ADC'], color = '#227FF7', linewidth = 0, marker = '.', markersize = 10, label = 'Data')
+
+    # PLOT TITLE
+    ax1.set_title('PreAmp - Preliminary Arduino Waveform', fontsize = 32)
+
+    # AXIS LABELS
+    ax1.set_xlabel('time (a.u.)', fontsize = 26, loc = 'right')
+    ax1.set_ylabel('logADC (a.u.)', fontsize = 26, loc = 'top')
+
+    # AXIS TICKS
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax1.minorticks_on()
+
+    # PLOT RANGE
+    ax1.set_xlim(left = 0, right = 2047)
+    #ax1.set_ylim(bottom = 750, top = 1270)
+
+    # SAVE FIGURE
+    #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
+
+    plt.show()
+
+
+
+
+def preamp_arduino_fit(data):
+    # FIG SETTINGS AND AXES
+    fig = plt.figure(figsize=(16,8))
+    ax1 = fig.add_subplot(1, 1, 1)
+
+    # PLOT DATA
+    ax1.plot(data['time'], data['ADC'], color = '#227FF7', linewidth = 2, label = 'Data')
+
+    # PLOT TITLE
+    ax1.set_title('PreAmp - Preliminary Arduino Waveform', fontsize = 32)
+
+    # AXIS LABELS
+    ax1.set_xlabel('time (a.u.)', fontsize = 26, loc = 'right')
+    ax1.set_ylabel('ADC (a.u.)', fontsize = 26, loc = 'top')
+
+    # AXIS TICKS
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax1.minorticks_on()
+
+    # PLOT RANGE
+    ax1.set_xlim(left = 250, right = 1250)
+    ax1.set_ylim(bottom = 750, top = 1270)
+
+    # SAVE FIGURE
+    #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
+
+    plt.show()
