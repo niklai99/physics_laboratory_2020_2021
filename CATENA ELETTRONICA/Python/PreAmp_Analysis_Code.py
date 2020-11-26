@@ -739,7 +739,7 @@ def preamp_arduino_plot_lin(data):
     ax1.set_ylim(top = 6.3)
 
     # SAVE FIGURE
-    #fig.savefig('../Plots/PreAmp/arduino_lin_fit.png', dpi = 300)
+    fig.savefig('../Plots/PreAmp/arduino_lin_fit.png', dpi = 300, facecolor = 'white')
 
     plt.show()
 
