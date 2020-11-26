@@ -132,6 +132,82 @@ tau, 16u, 85u
 500000,	 1.02,	200m,	0.0264,	20m
 1000000, 1.02,	200m,	0.0200,	20m
 
+# 2.3 Shaper CR-RC con compensazione Pole-Zero
+# resistenza di compensazione pole-Zero
+# label, dato letto , fondoscala
+
+Rpz, 1.0132M, 10M
+
+# valore di tensione massimo in uscita dal preamplificatore
+# label, valore, V/div
+
+Vpre_max, 396m, 100m
+
+# valore di tensione massimo in uscita dallo shaper 
+# con relativo tempo 
+# e tensione di undershoot
+# label, valore, scala
+
+Vsh_max, 123m, 26m
+tsh_max, 17u, 25u
+Vundershoot, 19.7m, 26m
+
+# 3 Circuito amplificatore non invertente e catena elettronica completa
+# Misure dirette di R1a e R2a
+# label, dato letto , fondoscala
+
+R1a, 9.982k, 100k
+R2a, 82.393k, 100k
+
+# Segnale in uscita dallo shaper con T = 10us
+# label, valore, scala
+
+Vsh_max, 260m, 50m
+
+# 3.1 Linearità della catena elettronica
+# dati acquisiti per la verifica della linearità della catena
+# ho acquisto le forme d'onda con Arduino
+# riporto per semplicità il massimo del segnale in uscita in ADC counts
+# Q, Vmax_sper
+
+35.9946260p, 1418
+53.9919380p, 1728
+71.9892510p, 2046
+89.9865640p, 2367  
+107.983877p, 2688  
+125.981189p, 3006  
+143.978502p, 3329  
+161.975815p, 3654  
+179.973128p, 3980  
+
+# 3.2 Risposta in frequenza della catena elettronica
+# dati per bode
+# f, Vin, Scala Vin, Vout, Scala Vout
+
+10,	    1.02, 200m, 10.30, 2.00
+50,	    1.02, 200m, 10.30, 2.00
+100,	1.02, 200m, 10.30, 2.00
+250,    1.02, 200m, 10.30, 2.00
+500,    1.02, 200m, 10.30, 2.00
+1000,	1.02, 200m, 10.10, 2.00
+2000,	1.02, 200m, 9.840, 2.00
+3000,	1.02, 200m, 9.360, 2.00
+4000,	1.02, 200m, 8.880, 2.00
+5000,	1.02, 200m, 8.240, 2.00
+6000,	1.02, 200m, 7.600, 2.00
+7000,	1.02, 200m, 6.960, 2.00
+8000,	1.02, 200m, 6.400, 2.00
+9000,	1.02, 200m, 5.840, 2.00
+10000,	1.02, 200m, 5.280, 2.00
+12000,	1.02, 200m, 4.400, 2.00
+15000,	1.02, 200m, 3.320, 1.00
+20000,	1.02, 200m, 2.160, 0.50
+25000,	1.02, 200m, 1.500, 0.50
+30000,	1.02, 200m, 1.100, 0.20
+40000,	1.02, 200m, 0.680, 0.20
+50000,	1.02, 200m, 0.420, 0.10
+100000,	1.02, 200m, 0.104, 0.02
+
 
 
 
