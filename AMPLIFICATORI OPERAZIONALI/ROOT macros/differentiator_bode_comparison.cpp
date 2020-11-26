@@ -16,7 +16,7 @@ using namespace std;
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-const string FILE_NAME = "../Data/data_differentiator_bode.txt";
+const string FILE_NAME = "../Data/data_differentiator_bode_r.txt";
 const string OUT_FILE = "../Data/Simulations/DIFF_OUT.txt";
 
 double XMIN = 1.8;
