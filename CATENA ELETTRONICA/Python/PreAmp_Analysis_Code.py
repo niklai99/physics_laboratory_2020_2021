@@ -607,8 +607,7 @@ def preamp_bode_plot(df, sim):
 
     # SAVE FIGURE
     #fig.savefig('../Plots/PreAmp/bode_plot.png', dpi = 300, facecolor = 'white')
-    global k 
-    k = 2
+    
     plt.show()
 
 
