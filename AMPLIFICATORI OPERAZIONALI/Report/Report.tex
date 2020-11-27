@@ -86,9 +86,9 @@
 
 \section{Obiettivo}
 
-Verificare la linearità di un amplificatore operazionale e misurare il guadagno di un circuito che lo comprenda.
-Misurare la frequenza di taglio di un filtro attivo. Calcolare il sampling rate e la funzione di calibrazione in
-tensione di una scheda Arduino Due.
+Verificare la linearità di un amplificatore operazionale e misurare il guadagno di un circuito amplificatore. Misurare
+la frequenza di taglio di un filtro attivo passa alto e verificarne il comportamento derivatore. Calcolare il sampling
+rate e la funzione di calibrazione in tensione di una scheda Arduino Due.
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	APPARATO SPERIMENTALE
@@ -140,14 +140,14 @@ quanto ci si trova in condizioni di non idealità. Le resistenze esterne, invece
 
 \noindent direttamente utilizzando il multimetro Metrix MTX3292, ottenendo i risultati esposti in
 \autoref{t:direct_measures}. Si utilizza poi un generatore di tensione continua con $V_{\text{cc}}=+15\,\si{\volt}$ e
-$V_{\text{ee}}=-15\,\si{\volt}$ per l'alimentazione dell'amplificatore operazionale. Si assume, inoltre, che esso abbia
-un comportamento ideale, ovvero che il polo positivo ed il polo negativo si trovino allo stesso potenziale. Il segnale
-viene prelevato nei punti \textit{IN} e \textit{OUT} evidenziati nello schema in \autoref{i:opamp_circuit} (e verrà in
-seguito richiamato rispettivamente come $V_{\text{in}}$ e $V_{\text{out}}$) utilizzando due sonde con fattore di
-attenuazione 10X. Nel canale CH1 dell'oscilloscopio viene visualizzato il segnale in ingresso $V_{\text{in}}$, mentre il
-segnale in uscita $V_{\text{out}}$ è prelevato dalla sonda collegata al canale CH2. Per entrambi i canali viene
-selezionata la modalità "attenuazione sonda 10X", in modo da compensare la riduzione del segnale dovuta alle sonde e
-visualizzare quindi nel display il segnale reale. Il generatore di funzioni viene poi configurato in
+$V_{\text{ee}}=-15\,\si{\volt}$ per alimentare l'operazionale. Si assume, inoltre, che esso abbia un comportamento
+ideale, ovvero che il polo positivo ed il polo negativo si trovino allo stesso potenziale (\textit{virtual short}). Il
+segnale viene prelevato nei punti \textit{IN} e \textit{OUT} evidenziati nello schema in \autoref{i:opamp_circuit} (e
+verrà in seguito richiamato rispettivamente come $V_{\text{in}}$ e $V_{\text{out}}$) utilizzando due sonde 10X. Dal
+canale CH1 dell'oscilloscopio viene visualizzato il segnale in ingresso $V_{\text{in}}$, mentre il segnale in uscita
+$V_{\text{out}}$ è prelevato dalla sonda collegata al canale CH2. Per entrambi i canali viene selezionata la modalità
+"attenuazione sonda 10X", in modo da compensare la riduzione del segnale dovuta alle sonde e visualizzare quindi nel
+display il segnale reale. Il generatore di funzioni viene poi configurato in
 
 \begin{wraptable}{L}{0.5\textwidth}
 	\small
@@ -176,16 +176,16 @@ visualizzare quindi nel display il segnale reale. Il generatore di funzioni vien
 \noindent  modalità "50 Ohm", in modo che l'impedenza d'uscita del generatore sia comparabile con
 $R_3\approx 50\,\si{\ohm}$. Ci si aspetta così di trovare una tensione in ingresso $V_{\text{in}}$ in accordo con la
 tensione nominale erogata dal generatore. Si imposta infine il generatore di funzioni in modo da erogare un segnale di
-tipo sinusoidale con frequenza $f_{\text{gen}}=1\,\si{k\hertz}$, mantenuta costante in questa sezione, e di ampiezza
+tipo sinusoidale con frequenza $f_{\text{gen}}=1\,\si{k\hertz}$ (mantenuta costante in questa sezione) e ampiezza
 invece variabile tra $200\,\si{\mV}$ picco picco e $3.5\,\si{\V}$ picco picco. \\
 
 \noindent Dall'assunzione di idealità dell'amplificatore operazionale segue che, risolvendo il circuito, il segnale in
 uscita è legato a quello in ingresso da $V_{\text{out}} = - R_{\text{f}} / R_{1} \, V_{\text{in}}$, dove il segno meno
-(dovuto alla particolare configurazione dell'operazionale) indica un segnale in output invertito\footnote{Ci si aspetta
-che i massimi del segnale in ingresso corrispondano ai minimi del segnale in uscita e viceversa.} rispetto a quello in
-ingresso, e amplificato di un fattore $G \equiv R_{\text{f}} / R_{1}$. Facendo riferimento ai valori
-delle resistenze $R_{\text{f}}$ ed $R_1$ riportate in \autoref{t:direct_measures}, l'aspettativa teorica per il guadagno
-del circuito è dunque 
+(dovuto alla particolare configurazione dell'operazionale) indica un segnale in output invertito rispetto a quello in
+ingresso\footnote{Ci si aspetta che i massimi del segnale in ingresso corrispondano ai minimi del segnale in uscita e
+viceversa.}, e amplificato di un fattore $G \equiv R_{\text{f}} / R_{1}$. Facendo riferimento ai valori delle resistenze
+$R_{\text{f}}$ ed $R_1$ riportate in \autoref{t:direct_measures}, l'aspettativa teorica per il guadagno del circuito è
+dunque 
 \begin{align}\label{e:guadagno}
 	G&=\frac{R_{\text{f}}}{R_{1}} = 10.194 \pm 0.006
 	&
@@ -214,15 +214,15 @@ rappresentate due
 \textit{blu}) è la risposta a $V_{\text{gen}}=0.5\,\si{\volt}$, mentre la seconda (in tonalità \textit{rossa}) a
 $V_{\text{gen}}=3\,\si{\volt}$. Dal grafico si nota chiaramente come la risposta $V_{\text{out}}$ ad un segnale in
 ingresso $V_{\text{gen}}=0.5\,\si{\volt}$ sia perfettamente conforme alle aspettative: viene mantenuta la forma
-sinusoidale del segnale, amplificato di circa un fattore 10 ed invertito rispetto alla tensione $V_{\text{in}}$. Si nota
-inoltre come questo non si ripresenti anche nel caso della risposta a $V_{\text{gen}}=3\,\si{\volt}$: il segnale in
-uscita presenta, infatti, i picchi di massimo e minimo tagliati a livello $V_{\text{sat}}=\pm 15\,\si{\volt}$. Questo
-accade perchè, essendo l'amplificatore operazionale una componente attiva del circuito, è stato alimentato con una
-tensione continua a $\pm 15\,\si{\volt}$ (come riportato sopra). Per la conservazione dell'energia, allora, l'operazionale
-non può fornire in output una tensione maggiore di quanta ne riceve esso stesso in alimentazione. Si parla quindi di
-\textit{saturazione} del segnale in uscita a $V_{\text{sat}}=\pm 15\,\si{\volt}$. Per quanto detto,  avendo $G \approx
-10$, ci si aspetta che questo fenomeno inizi a manifestarsi attorno ad un valore nominale di tensione
-$V_{\text{gen}}=1.5\,\si{\volt}$.
+sinusoidale del segnale, amplificato di circa un fattore 10 ed invertito di segno rispetto alla tensione
+$V_{\text{in}}$. Si nota inoltre come questo non si ripresenti però nel caso della risposta a
+$V_{\text{gen}}=3\,\si{\volt}$: il segnale in uscita presenta, infatti, i picchi di massimo e minimo tagliati a livello
+$V_{\text{sat}}=\pm 15\,\si{\volt}$. Questo accade perchè, essendo l'amplificatore operazionale una componente attiva
+del circuito, è stato alimentato con una tensione continua a $\pm 15\,\si{\volt}$ (come riportato sopra) e per la
+conservazione dell'energia, allora, l'operazionale non può fornire in output una tensione maggiore di quanta ne riceve
+esso stesso in alimentazione. Si parla quindi di \textit{saturazione} del segnale in uscita a $V_{\text{sat}}=\pm
+15\,\si{\volt}$. Per quanto detto,  avendo $G \approx 10$, ci si aspetta che questo fenomeno inizi a manifestarsi
+attorno ad un valore nominale di tensione $V_{\text{gen}}=1.5\,\si{\volt}$.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -264,11 +264,13 @@ $V_{\text{in}}$ sia a $V_{\text{out}}$) si associa la seguente incertezza:
 \begin{equation}\label{e:osc}
 	\sigma_{V} = \sqrt{ (\sigma_{\text{L}}\times\text{V/div})^2 + (\sigma_{\text{k}}\times\text{measure})^2 }
 \end{equation}
-\noindent dove $\sigma_{\text{L}}=0.04$ rappresenta il contributo di lettura e $\sigma_{\text{k}}=1.5\%$ il contributo di scala
-associati all'oscilloscopio mentre V/div rappresenta la scala di acquisizione della misura.
+\noindent dove $\sigma_{\text{L}}=0.04$ rappresenta il contributo di lettura e $\sigma_{\text{k}}=1.5\%$ il contributo
+di scala associati all'oscilloscopio mentre V/div rappresenta la scala di acquisizione della misura\footnote{Si vuole
+raffigurare entrambi i contributi d'errore per evidenziarne l'ordine di grandezza relativo, in particolare nel grafico
+dei residui dove la scala di rappresentazione è la stessa per entrambi gli assi.}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_alldata_eda.png}
+	\includegraphics[width=15cm]{../Plots/Report_Plots/opamp_plot_alldata_eda.png}
 	\caption{\small Grafico delle misure acquisite interpolate linearmente e relativo grafico dei residui.}
 	\label{i:opamp_eda}
 \end{figure}
