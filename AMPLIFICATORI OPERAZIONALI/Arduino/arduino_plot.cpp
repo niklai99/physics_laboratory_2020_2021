@@ -42,7 +42,7 @@ double sampling_rate(vector<double>&, vector<double>&, vector<double>&, const do
 void arduino_plot()
 {   
     /*--- COSTANTI ---*/
-    const string FILE_NAME = "./Data/calib_time_ROOT.dat";
+    const string FILE_NAME = "./Data/calib_time_18_ROOT.dat";
     const double XMIN = 0;
     const double XMAX = 2000;
     const double YMIN = 700;
