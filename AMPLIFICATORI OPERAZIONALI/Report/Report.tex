@@ -267,7 +267,9 @@ $V_{\text{in}}$ sia a $V_{\text{out}}$) si associa la seguente incertezza:
 \noindent dove $\sigma_{\text{L}}=0.04$ rappresenta il contributo di lettura e $\sigma_{\text{k}}=1.5\%$ il contributo
 di scala associati all'oscilloscopio mentre V/div rappresenta la scala di acquisizione della misura\footnote{Si vuole
 raffigurare entrambi i contributi d'errore per evidenziarne l'ordine di grandezza relativo, in particolare nel grafico
-dei residui dove la scala di rappresentazione è la stessa per entrambi gli assi.}.
+dei residui dove la scala di rappresentazione è la stessa per entrambi gli assi.}. Si evidenzia che, avendo acquisito le
+misure utilizzando scale diverse e canali diversi, il contributo di scala verrà sempre tenuto in considerazione nei fit
+lineari, nonostante questo non influenzi direttamente l'andamento dei residui.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=15cm]{../Plots/Report_Plots/opamp_plot_alldata_eda.png}
@@ -294,16 +296,15 @@ $V_{\text{out}}$.
 
 \subsubsection{Linearità e Amplificazione}\label{s:pre} 
 
-Si procede ora considerando il campione di coppie $\{V_{\text{in}},\,V_{\text{out}}\}_{\text{MAX}}$ corrispondente alle
-misure di massimo e $\{V_{\text{in}},\,V_{\text{out}}\}_{\text{MIN}}$ di minimo separatamente. A priori, infatti, non si
-ha la certezza che i due siano caratterizzati dalla stessa amplificazione $G$ e che non sia presente una sistematica di
-shift/offset verticale tra dataset. Si utilizzeranno quindi le informazioni sui parametri delle rispettive rette
-interpolanti per quantificare l'accordo tra i due campioni di misure. Chiaramente, nelle interpolazioni successive, non
-verranno considerati gli outliers identificati nella sezione precedente. Si è notato, inoltre, come l'errore sulle
-misure di $V_{\text{in}}$ non sia trascurabile rispetto a quello su $V_{\text{out}}$. Per tenere conto di questo, ci si
-propone allora di effettuare un fit preliminare nel quale si considera unicamente l'errore su $V_{\text{out}}$. Il
-coefficiente angolare $m$ della retta viene dunque utilizzato per proiettare il contributo di incertezza dovuto a
-$V_{\text{out}}$ lungo l'asse delle ordinate secondo
+Si procede ora considerando separatamente i campioni di coppie $\{V_{\text{in}},\,V_{\text{out}}\}_{\text{MAX}}$
+corrispondenti alle misure di massimo e $\{V_{\text{in}},\,V_{\text{out}}\}_{\text{MIN}}$ di minimo. A priori, infatti,
+non si ha la certezza che i due siano caratterizzati dalla stessa amplificazione $G$ e che non sia presente una
+sistematica di shift/offset verticale tra i dataset. Chiaramente, nelle interpolazioni successive, non verranno
+considerati gli outliers identificati nella sezione precedente. Si è notato, inoltre, come l'errore sulle misure di
+$V_{\text{in}}$ non sia trascurabile rispetto a quello su $V_{\text{out}}$. Per tenere conto di questo, ci si propone
+allora di effettuare un fit preliminare nel quale si considera unicamente l'errore su $V_{\text{out}}$. Il coefficiente
+angolare $m$ della retta viene dunque utilizzato per proiettare il contributo di incertezza dovuto a $V_{\text{out}}$
+lungo l'asse delle ordinate secondo
 \begin{equation}\label{e:proj}
 	\sigma_{y} = \sqrt{	\sigma_{V_{\text{out}}}^2	+	m^2	\sigma_{V_{\text{in}}}^2	}
 \end{equation}
@@ -395,7 +396,7 @@ amplificazione $G$ e che non siano tra loro sfalsati verticalmente in modo signi
 rappresentato in \autoref{i:opamp_all_proj}. 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_all_projected.png}
+	\includegraphics[width=15cm]{../Plots/Report_Plots/opamp_plot_all_projected.png}
 	\caption{\small A sinistra: grafico rappresentante il dataset dei massimi ed il dataset dei minimi uniti assieme, 
 	con relativa retta interpolante e parametri del fit. A destra: grafico dei residui $V_{\text{out}}-\text{fit}$.}
 	\label{i:opamp_all_proj}
@@ -429,7 +430,7 @@ il coefficiente angolare restituito da tale interpolazione, si proietta il contr
 \autoref{e:proj}. Si ripete quindi il fit, che viene rappresentato in \autoref{i:opamp_pp}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{../Plots/Report_Plots/opamp_plot_pp_projected.png}
+	\includegraphics[width=15cm]{../Plots/Report_Plots/opamp_plot_pp_projected.png}
 	\caption{\small A sinistra: grafico rappresentante il dataset delle grandezze picco picco, 
 	con relativa retta interpolante e parametri del fit. A destra: grafico dei residui $V_{\text{pp, out}}-\text{fit}$.}
 	\label{i:opamp_pp}
@@ -446,9 +447,9 @@ posteriori, inoltre, risulta essere appena maggiore dell'incertezza associata al
 notevolmente inferiore per i dati successivi. Tale valore di $\sigma_{\text{post}}$ è indice di una buona distribuzione
 delle misure attorno alla retta suggerendo, assieme all'andamento dei residui, una soddisfacente linearità
 dell'amplificatore operazionale. Il valore estremamente ridotto del $\chi^2$, invece, non permette nè di rigettare
-l'ipotesi di linearità, nè di poterla confermare (diverso se il $\chi^2$ fosse stato molto grande). Altri
+l'ipotesi di linearità, nè di poterla confermare (diverso invece se il $\chi^2$ fosse stato molto grande). Altri
 possibili indicatori, come il coefficiente di correlazione e la $t$ di Student non si ritengono, in questo caso,
-significativi.
+significativi dato il contesto.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -459,11 +460,11 @@ significativi.
 
 Si vuole ora esporre e confrontare le stime dell'amplificazione $G$ del circuito, ricavate nel corso dell'analisi
 riportata nella sezione precedente, rappresentando tali stime in \autoref{i:opamp_comp}. Il primo punto a sinistra (1)
-corrisponde alla stima teorica di $G$, ottenuta in \autoref{e:guadagno} utilizzando le misure dirette della rete
-resistiva del circuito. Il secondo ed il terzo punto (2) (3) corrispondono invece alle stime ottenute interpolando
-separatamente il campione di massimi ed il campione di minimi. Queste presentano rispettivamente una compatibilità
-$\lambda_{\text{MAX}}=1.3$ e $\lambda_{\text{MIN}}=0.2$ con la stima teorica (1) e una compatibilità $\lambda=0.7$ tra
-loro. Nonostante (1) ed il valore ottenuto analizzando il campione di minimi si trovino in
+corrisponde alla stima teorica di $G$, ottenuta in \autoref{e:guadagno} utilizzando le misure dirette delle resistenze.
+Il secondo ed il terzo punto (2) (3) corrispondono invece alle stime ottenute interpolando separatamente il campione di
+massimi ed il campione di minimi. Queste presentano rispettivamente una compatibilità $\lambda_{\text{MAX}}=1.3$ e
+$\lambda_{\text{MIN}}=0.2$ con la stima teorica (1) e una compatibilità $\lambda=0.7$ tra loro. Nonostante (1) ed il
+valore ottenuto analizzando il campione di minimi si trovino in
 
 \begin{wrapfigure}{L}{0.5\textwidth}
 	\centering
@@ -510,8 +511,8 @@ digitale Metrix a fondo scala $1\,\si{n\farad}$). Vengono poi utilizzate le stes
 generatore di funzioni in modo da erogare un'onda triangolare di ampiezza $1\,\si{\volt}$ e frequenza $1\,\si{\kHz}$ al
 fine di verificare il comportamento derivatore del circuito. Successivamente, per lo studio della risposta in frequenza,
 si utilizza un'onda sinusoidale di ampiezza $1\,\si{\volt}$ picco picco e frequenza variabile tra $100\,\si{\Hz}$ e
-$1\,\si{\MHz}$. Nel dominio delle frequenze, il modulo della funzione di trasferimento
-$H=\left|V_{\text{out}}/V_{\text{in}}\right|$ risulta essere
+$1\,\si{\MHz}$. Il modulo della funzione di trasferimento del circuito $H=\left|V_{\text{out}}/V_{\text{in}}\right|$, in
+condizioni stazionarie, risulta
 \begin{align}
 	H(\omega) &= \frac{R_{\text{f}}}{R_{1}}\frac{\omega}{\sqrt{\omega^2+\omega_0^2}} & \text{con}\,\,\,\, \omega_{0}&=\frac{1}{R_{1}C_{1}}
 \end{align}
@@ -539,8 +540,8 @@ ingresso sia del segnale in uscita facendo variare la frequenza dell'onda sinuso
 $100\,\si{\Hz}$ fino a $1\,\si{\MHz}$. Inizialmente, viene effettuata un'acquisizione preliminare al fine di individuare
 gli intervalli di frequenza più interessanti, quali l'intorno della frequenza di taglio e l'intorno del massimo di
 amplificazione. Si trova infatti che quest'ultimo non viene assunto al tendere della frequenza verso valori sempre
-maggiori ma, piuttosto, si ha un fenomeno di attenuazione del segnale in uscita oltre una certa frequenza "di massimo".
-Campionando poi in modo più fitto tali intervalli di frequenze si riesce a fornire una stima "sperimentale" della massima
+maggiori ma, piuttosto, si ha un fenomeno di attenuazione del segnale in uscita oltre una certa frequenza. Campionando
+poi in modo più fitto tali intervalli di frequenze si riesce a fornire una stima "sperimentale" della massima
 amplificazione $G_{\text{sper}}\approx 9.8$ e della frequenza di taglio $f_{\text{t, sper}}\approx 19.7\,\si{k\Hz}$.
 
 
@@ -551,8 +552,8 @@ amplificazione $G_{\text{sper}}\approx 9.8$ e della frequenza di taglio $f_{\tex
 \subsection{Dati e Analisi}
 
 Si vuole inizialmente verificare il comportamento derivatore del circuito sfruttando l'onda triangolare in ingresso.
-Successivamente invece si vogliono rappresentare le misure acquisite sperimentalmente sotto forma di grafico di Bode:
-dallo studio di questo si vogliono poi estrarre informazioni di carattere generale sui dati e fornire una stima della
+Successivamente invece si vogliono rappresentare le misure acquisite sperimentalmente tramite un grafico di Bode: dallo
+studio di questo si vogliono poi estrarre informazioni di carattere generale sui dati e fornire una stima della
 frequenza di taglio del circuito.
 
 
@@ -586,7 +587,7 @@ frequenza dell'onda triangolare in ingresso la forma dell'onda quadra migliori, 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsubsection{Grafico di Bode}
-Si vogliono ora rappresentare le misure acquisite sperimentalmente sfruttando un grafico di Bode. Date le misure di
+Si vogliono ora rappresentare le misure acquisite sperimentalmente attraverso un grafico di Bode. Date le misure di
 tensione $V_{\text{in}}$ e $V_{\text{out}}$, dunque, viene calcolata la funzione di trasferimento $H$, alla quale viene
 associata un'incertezza $\sigma_{H}$ data da
 \begin{align}\label{e:diff_err}
@@ -597,7 +598,7 @@ associata un'incertezza $\sigma_{H}$ data da
 						2\left(	\frac{	\sigma_{\text{k}}	}{	k	}	\right)^2 }	
 \end{align}
 \noindent dove $\sigma_{\text{L}}=0.04$ rappresenta l'incertezza di lettura associata all'oscilloscopio, i termini
-$V_{\text{in}}/\text{div}$ e $V_{\text{out}}/\text{div}$ corrispondono al numero di volt per divisione per il canale di
+$V_{\text{in}}/\text{div}$ e $V_{\text{out}}/\text{div}$ corrispondono al numero di Volt per divisione per il canale di
 acquisizione rispettivamente del segnale in ingresso e del segnale in uscita, mentre $\sigma_{\text{k}}=1.5\%$
 rappresenta l'incertezza di guadagno associata all'oscilloscopio: quest'ultima viene considerata in quanto le misure non
 sono state acquisite utilizzando un'unica scala e, inoltre, sono state acquisite utilizzando due diversi canali. Si
@@ -629,28 +630,30 @@ comportamento, infatti, si trova in disaccordo con
 		\label{i:diff_sim_comp}
 	\end{wrapfigure}
 	
-\noindent la simulazione Spice del circuito ed è, con buona probabilità, indice della presenza di una capacità (non
-considerata nella simulazione) in parallelo al circuito: breadboard, cavi, sonde, oscilloscopio. Effettuando
-un'ulteriore simulazione, aggiungendo una capacità $C_{2}=7\,\si{\pF}$ in parallelo alla resistenza di feedback
-$R_{\text{f}}$, si trova un notevole miglioramento nell'accordo tra punti simulati e misure sperimentali: questo
-conferma dunque che l'effetto di attenuazione della funzione di trasferimento del circuito è dovuto a dei contributi
-capacitivi non trascurabili posti in parallelo ad esso. In \autoref{i:diff_sim_comp} è messo in evidenza questo
-confronto tra i dati sperimentali e quelli simulati, sia trascurando la capacità $C_{2}$ (in arancione) sia invece
-tenendone conto (in azzurro). Si procede ora nella ricerca della frequenza di taglio $f_{\text{t}}$ del circuito: la
-strategia per la stima di tale frequenza è la seguente. Inizialmente si stima il massimo della funzione di
-trasferimento come vertice della parabola e si associa a tale valore una retta orizzontale
-$y=H_{\text{max}}=19.79\pm 0.05\,\text{dB}$, dove nel computo dell'errore sono state tenute in considerazione le
-opportune covarianze tra i parametri della parabola. Si calcola poi il punto di intersezione con la retta  $y=a+bx$
-in arancione: la coordinata $x$ di tale punto fornisce quindi una stima della frequenza di taglio
+\noindent la simulazione Spice del circuito ed è, probabilmente, indice della presenza di una capacità parassita (non
+considerata nella simulazione) in parallelo al circuito causata da breadboard, cavi, sonde, oscilloscopio.\footnote{È da
+considerare, inoltre, il GBW (o meglio la frequenza di guadagno unitario) dell'operazionale.} Effettuando un'ulteriore
+simulazione, aggiungendo una capacità $C_{2}=7\,\si{\pF}$ in parallelo alla resistenza di feedback $R_{\text{f}}$, si
+trova un notevole miglioramento nell'accordo tra punti simulati e misure sperimentali: questo conferma dunque che
+l'effetto di attenuazione della funzione di trasferimento del circuito è dovuto a contributi capacitivi non trascurabili
+posti in parallelo. In \autoref{i:diff_sim_comp} è messo in evidenza questo confronto tra i dati sperimentali e quelli
+simulati, sia trascurando la capacità $C_{2}$ (in arancione) sia invece tenendone conto (in azzurro). Si procede ora
+nella ricerca della frequenza di taglio $f_{\text{t}}$ del circuito. La strategia per la stima di tale frequenza è la
+seguente: inizialmente si stima il massimo della funzione di trasferimento come vertice della parabola e si associa a
+tale valore una retta orizzontale $y=H_{\text{max}}=19.79\pm 0.05\,\text{dB}$,dove nel computo dell'errore sono state
+tenute in considerazione le opportune covarianze tra i parametri della parabola. Si calcola poi il punto di intersezione
+con la retta $y=a+bx$ in arancione: la coordinata $x$ di tale punto fornisce quindi una stima della frequenza di taglio
 $f_{\text{t}}=4.370 \pm 0.017\,\text{dec}$ (anche in questo caso nel computo dell'errore è stata considerata la
 covarianza tra i parametri $a$ e $b$ della retta). Convertendo quanto trovato in Hertz, la frequenza di taglio così
-stimata risulta essere $f_{\text{t}}=23.4 \pm 0.9\,\si{k\Hz}$. Tale valore è però incompatibile sia con le
-aspettative teoriche sia con quanto trovato sperimentalmente, seppur in modo approssimativo. Si ipotizza dunque che
-la causa possa essere il leggero disaccordo tra il coefficiente angolare della retta arancione $b = 19.03\pm
-0.16\,\text{dB/dec}$ e l'aspettativa $b_{\text{th}}=20\,\text{dB/dec}$: sfruttando la strategia riportata sopra,
-infatti, una pendenza minore di tale retta si tradurrebbe in un aumento della frequenza di taglio. Nella sezione
-successiva allora ci si propone di stimare la frequenza di taglio $f_{\text{t}}$ utilizzando un metodo alternativo
-al fine di verificare se questa incompatibilità con le aspettative risulti essere ricorrente.
+stimata risulta essere $f_{\text{t}}=23.4 \pm 0.9\,\si{k\Hz}$. Tale valore è però incompatibile sia con le aspettative
+teoriche sia con quanto trovato sperimentalmente, seppur in modo approssimativo. Si ipotizza dunque che la causa possa
+essere il leggero disaccordo tra il coefficiente angolare della retta arancione $b = 19.03\pm 0.16\,\text{dB/dec}$ e
+l'aspettativa $b_{\text{th}}=20\,\text{dB/dec}$: sfruttando la strategia riportata sopra, infatti, una pendenza minore
+di tale retta si tradurrebbe in un aumento della frequenza di taglio. Si associa a questa anomalia la scarsa
+campionatura a basse frequenze: un numero maggiore di misure tra $100\,\si{\Hz}$ e $10\,\si{k\Hz}$ renderebbe
+sicuramente il fit più significativo. Nella sezione successiva allora ci si propone di stimare la frequenza di taglio
+$f_{\text{t}}$ utilizzando un metodo alternativo al fine di verificare se questa incompatibilità con le aspettative
+risulti essere ricorrente.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -702,7 +705,7 @@ in \autoref{e:diff_prop} non è stato considerato il contributo relativo ad $H_{
 grandezza inferiore rispetto agli altri termini e non modifica in quantità apprezzabile la stima finale dell'errore.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{../Plots/Report_Plots/diff_linear.png}
+	\includegraphics[width=15cm]{../Plots/Report_Plots/diff_linear.png}
 	\caption{\small Fit lineare delle misure in un intorno della frequenza di taglio e relativo grafico dei residui.}
 	\label{i:diff_linear}
 \end{figure}
@@ -723,7 +726,7 @@ con quanto ricavato studiando il grafico di Bode ($\lambda = 3.0$).
 \section{Arduino}
 In questa sezione si vuole effettuare una calibrazione della scheda Arduino Due. In particolare, si vuole quantificare
 il sampling rate dell'ADC della scheda e determinare la funzione di calibrazione in tensione, ovvero $V = a + b \cdot
-\text{ADC}$ dove $V$ è il valore in Volt del segnale, $\text{ADC}$ è la tensione in ADC counts acquisita da Arduino,
+\text{ADC}$, dove $V$ è il valore in Volt del segnale, $\text{ADC}$ è la tensione in ADC counts acquisita da Arduino,
 mentre $a$ e $b$ sono i parametri di calibrazione. Si ricorda che la scheda in questione presenta un ADC a 12 bit,
 ovvero 4096 valori, e l'\textit{operating voltage} caratteristico (ovvero il valore massimo di tensione che può leggere
 in input) è $V_{\text{op}}=3.3\,\si{\volt}$.\footnote{\url{https://www.arduino.cc/en/pmwiki.php?n=Main/arduinoBoardDue}}
@@ -742,7 +745,7 @@ $5\,\si{k\hertz}$. Conoscendo il periodo dell'onda quadra in ingresso ($T=1/f$),
 $S = N / T = N \, f$ con $N$ il numero di misure acquisite in un periodo. Per calcolare $N$ viene computata la derivata
 numerica della forma d'onda: questa presenterà dei picchi positivi quando la funzione passa da zero a $1\,\si{\volt}$ e
 picchi negativi quando scende da $1\,\si{\volt}$ a zero. Il numero di acquisizioni in un periodo sarà allora il numeri
-di punti compresi tra due picchi positivi della funzione derivata. Si trova allora un sampling rate $S = 955000 s^{-1}$,
+di punti compresi tra due picchi positivi della funzione derivata. Si trova allora un sampling rate $S = 0.955\,\text{Msps}$,
 ovvero 955000 acquisizioni al secondo.
 
 
@@ -753,19 +756,19 @@ ovvero 955000 acquisizioni al secondo.
 \subsection{Calibrazione in Tensione}
 Si vuole ora verificare la linearità dell'ADC interno alla scheda e stimare i parametri $a$, $b$ della funzione di
 calibrazione, in quanto si è interessati a convertire il segnale acquisito da ADC counts in Volt. Si acquisiscono allora
-diverse forme d'onda facendo variare la tensione del generatore, avendo cura di misurare il segnale erogato con i
-cursori dell'oscilloscopio, in quanto può non essere esattamente uguale a quello nominale indicato dal generatore. Si
-rappresentano in grafico i valori di tensione $V$ misurati sperimentalmente contro la media dei punti appartenenti ai
+diverse forme d'onda quadra variando la tensione massima $V_{\text{high}}$, avendo cura di misurare il segnale erogato
+con i cursori dell'oscilloscopio, in quanto può non essere esattamente uguale a quello nominale indicato dal generatore.
+Si rappresentano in grafico i valori di tensione $V$ misurati sperimentalmente contro la media dei punti appartenenti ai
 picchi della relativa forma d'onda (si decide di non considerare unicamente il massimo della forma in quanto è possibile
 si tratti di una fluttuazione). Per quanto riguarda le incertezze associate ai dati, si associa lungo y l'errore
 riportato in \autoref{e:osc} (misure acquisite utilizzando i cursori), mentre si assume che l'incertezza di acquisizione
 delle misure di Arduino sia trascurabile rispetto a quella dell'oscilloscopio e non viene quindi considerata.
 Effettuando poi un'interpolazione lineare, riportata in \autoref{i:ar_calib}, si ricavano l'offset (cioè quanti Volt
-corrispondono allo zero dell'ADC) ed il coefficiente angolare (cioè come scalano i Volt rispetto all'ADC).
-Osservando il grafico dei residui, si nota un marcato andamento anomalo dei punti a tensioni maggiori, oltre i
-$2\,\si{\volt}$: la scheda, cioè, risponde in modo leggermente diverso a seconda della tensione in ingresso. Questo è,
-molto probabilmente, dovuto al circuito di protezione dei pin di ingresso (limitatore di tensione a diodi, utile per
-evitare di bruciare la scheda) che ne altera la risposta avvicinandosi a tensioni pericolose. Si prova allora ad
+corrispondono allo zero dell'ADC) ed il coefficiente angolare (cioè come scalano i Volt rispetto all'ADC). Osservando il
+grafico dei residui, si nota un marcato andamento anomalo dei punti a tensioni maggiori, oltre i $2\,\si{\volt}$: la
+scheda, cioè, risponde in modo leggermente diverso a seconda della tensione in ingresso. Questo è dovuto molto
+probabilmente al circuito di protezione dei pin di ingresso (limitatore di tensione a diodi, utile per evitare di
+bruciare la scheda) che ne altera la risposta avvicinandosi a tensioni potenzialmente dannose. Si prova allora ad
 effettuare nuovamente l'interpolazione rimuovendo i punti relativi a tensioni in ingresso maggiori di $2\,\si{\volt}$:
 nonostante l'andamento dei residui migliori, anche il primo punto (tensione in ingresso pari a $200\,\si{\mV}$) si trova
 essere fuori trend. Si ottengono quindi due zone in cui la linearità dell'ADC risulta essere ottimale: la prima tra
@@ -791,24 +794,25 @@ $500\,\si{\mV}$ e $1.8\,\si{\volt}$ (parametri di calibrazione: $a = -0.59 \pm 0
 
 Ripercorrendo brevemente ciò che è emerso dall'analisi effettuata, si vuole cominciare osservando che la linearità
 dell'amplificatore operazione è stata verificata dall'andamento dei residui in \autoref{i:opamp_pp} e dall'errore a
-posteriori del campione di grandezze picco picco. Non è stato invece possibile fare riferimento ai valori di $\chi^2$ in
-quanto la correlazione tra gli errori rende tali valori decisamente ridotti rispetto al numero di gradi di libertà.
-Dallo studio dell'amplificazione del circuito, rappresentato in \autoref{i:opamp_circuit}, è emersa poi una sistematica
-di offset/shift verticale tra il campione di misure dei massimi e quello dei minimi. A causa di ciò, è stato necessario
-considerare le grandezze picco picco per ricavare una stima che tenesse conto di entrambi i dataset e che fosse conforme
-alle aspettative. La miglior stima dell'amplificazione del circuito risulta dunque essere $G=10.29 \pm 0.11$, ottenuta
-come coefficiente angolare della retta interpolante il campione di grandezze picco picco. Spostando ora l'attenzione sul
-circuito derivatore, dall'analisi in frequenza è emerso un comportamento più fedele ad un filtro passa banda piuttosto
-che un passa alto (cioè l'aspettativa teorica) e si è ipotizzato che la causa fosse la presenza di una capacità
-parassita in parallelo al circuito. La frequenza di taglio estrapolata attraverso la prima strategia si è ritrovata
-essere scarsamente compatibile con le aspettative teoriche, e la causa di ciò potrebbe essere una campionatura troppo
-rarefatta a basse frequenze che ha portato ad una stima non ottimale della retta a 20 dB/dec. L'interpolazione lineare
-ristretta all'intorno della frequenza di taglio, nel quale la campionatura è sufficientemente fitta, invece restituisce
-una stima $f_{\text{t}}=19.8 \pm 0.8\,\si{\kHz}$ in ottimo accordo con le aspettative. Si prende dunque quest'ultima
-come miglior stima della frequenza di taglio. Per quanto riguarda la calibrazione della scheda Arduino Due, infine, si è
-stimato un sampling rate di $955000$ acquisizioni al secondo e una funzione di calibrazione conforme alle aspettative,
-ovvero con un coefficiente angolare $m=0.766\pm 0.013\,\text{mV/adc counts}$ e un offset $q=-0.59\pm0.02\,\si{\volt}$
-per valori di tensione in ingresso sotto circa $2\,\si{\volt}$.
+posteriori del campione di grandezze picco picco. Non è stato invece possibile fare riferimento ai valori di $\chi^2$ a
+causa della correlazione tra gli errori. Dallo studio dell'amplificazione del circuito, rappresentato in
+\autoref{i:opamp_circuit}, è poi emersa una sistematica di offset/shift verticale tra il campione di misure dei massimi
+e quello dei minimi che può essere imputabile ad un livello di tensione continua sotto i segnali acquisiti. È perciò
+risultato necessario considerare le grandezze picco picco per ricavare una stima che tenesse conto di entrambi i dataset
+e che fosse svincolata dall'offset trovato. La miglior stima dell'amplificazione del circuito risulta dunque essere
+$G=10.29 \pm 0.11$, ottenuta come coefficiente angolare della retta interpolante il campione di grandezze picco picco
+(\autoref{i:opamp_pp}). \\ Spostando ora l'attenzione sul circuito derivatore, dall'analisi in frequenza è emersa una
+discrepanza con le aspettative ad alte frequenze:si è ipotizzato che la causa fosse la presenza di una capacità
+parassita in parallelo al circuito, oltre ad essere manifestazione della frequenza di guadagno unitario
+dell'operazionale. La frequenza di taglio estrapolata attraverso la prima strategia è risultata scarsamente compatibile
+con le aspettative teoriche, e la causa di ciò potrebbe essere una campionatura troppo rarefatta a basse frequenze che
+ha portato ad una stima non ottimale della retta a 20 dB/dec. L'interpolazione lineare ristretta all'intorno della
+frequenza di taglio, in cui la campionatura è sufficientemente fitta, invece restituisce una stima $f_{\text{t}}=19.8
+\pm 0.8\,\si{\kHz}$ in ottimo accordo con le aspettative. Si prende dunque quest'ultima come miglior stima della
+frequenza di taglio. Per quanto riguarda la calibrazione della scheda Arduino Due, infine, si è stimato un sampling rate
+$S = 0.955\,\text{Msps}$ e una funzione di calibrazione conforme alle aspettative, ovvero con un coefficiente angolare
+$m=0.766\pm 0.013\,\text{mV/adc counts}$ e un offset $q=-0.59\pm0.02\,\si{\volt}$ per valori di tensione in ingresso
+sotto circa $2\,\si{\volt}$.
 
 
 %----------------------------------------------------END OF FILE----------------------------------------------------------------------------
