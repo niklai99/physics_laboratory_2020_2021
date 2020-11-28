@@ -71,47 +71,47 @@ tau_sper = 158 #MicroSecondi us ~circa
 
 ### ---------------------------------------- STIME TEORICHE ---------------------------------------
 
-Qth = 0
-sigma_Qth = 0
+Qth : float
+sigma_Qth : float
 
-tau_th = 0
-sigma_tau_th = 0
-ft_th = 0
-sigma_ft_th = 0
+tau_th : float
+sigma_tau_th : float
+ft_th : float
+sigma_ft_th : float
 
-Vmax_th = 0
-sigma_Vmax_th = 0
+Vmax_th : float
+sigma_Vmax_th : float
 
-Cf_fit = 0
-sigma_Cf_fit = 0
+Cf_fit : float
+sigma_Cf_fit : float
 
 ### ------------------------------------ ------------------- --------------------------------------
 
 ### ---------------------------------------- FIT PARAMETERS ---------------------------------------
 
-a = 0
-b = 0
-err_a = 0
-err_b = 0
+a : float
+b : float
+err_a : float
+err_b : float
 
-c = 0
-d = 0
-err_c = 0
-err_d = 0
+c : float
+d : float
+err_c : float
+err_d : float
 
-e = 0
-f = 0
-err_e = 0
-err_f = 0
+e : float
+f : float
+err_e : float
+err_f : float
 
 ### ------------------------------------ ------------------- --------------------------------------
 
 ### ------------------------------------------ STIME BODE -----------------------------------------
 
-ft_bode = 0
-sigma_ft_bode = 0
-tau_bode = 0
-sigma_tau_bode = 0
+ft_bode : float
+sigma_ft_bode : float
+tau_bode : float
+sigma_tau_bode : float
 
 ### ------------------------------------ ------------------- --------------------------------------
 ### ------------------------------------ ------------------- --------------------------------------
