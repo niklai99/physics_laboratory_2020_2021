@@ -264,12 +264,12 @@ $V_{\text{in}}$ sia a $V_{\text{out}}$) si associa la seguente incertezza:
 \begin{equation}\label{e:osc}
 	\sigma_{V} = \sqrt{ (\sigma_{\text{L}}\times\text{V/div})^2 + (\sigma_{\text{k}}\times\text{measure})^2 }
 \end{equation}
-\noindent dove $\sigma_{\text{L}}=0.04$ rappresenta il contributo di lettura e $\sigma_{\text{k}}=1.5\%$ il contributo
-di scala associati all'oscilloscopio mentre V/div rappresenta la scala di acquisizione della misura\footnote{Si vuole
-raffigurare entrambi i contributi d'errore per evidenziarne l'ordine di grandezza relativo, in particolare nel grafico
-dei residui dove la scala di rappresentazione è la stessa per entrambi gli assi.}. Si evidenzia che, avendo acquisito le
-misure utilizzando scale diverse e canali diversi, il contributo di scala verrà sempre tenuto in considerazione nei fit
-lineari, nonostante questo non influenzi direttamente l'andamento dei residui.
+\noindent dove $\sigma_{\text{L}}=0.04$ e $\sigma_{\text{k}}=1.5\%$ rappresentano rispettivamente il contributo di
+lettura e di scala associati all'oscilloscopio mentre V/div rappresenta la scala di acquisizione della
+misura.\footnote{Si vuole raffigurare entrambi i contributi d'errore per evidenziarne l'ordine di grandezza relativo, in
+particolare nel grafico dei residui dove la scala di rappresentazione è la stessa per entrambi gli assi.} Si evidenzia
+che, acquisendo le misure utilizzando scale diverse e canali diversi, il contributo $\sigma_{\text{k}}$ verrà sempre
+tenuto in considerazione nei fit lineari, nonostante questo non influenzi direttamente l'andamento dei residui.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=15cm]{../Plots/Report_Plots/opamp_plot_alldata_eda.png}
@@ -705,14 +705,13 @@ apprezzabile la stima finale dell'errore.
 	\caption{\small Fit lineare delle misure in un intorno della frequenza di taglio e relativo grafico dei residui.}
 	\label{i:diff_linear}
 \end{figure}
-\noindent Si nota immediatamente una leggera tendenza parabolica dell'andamento dei residui, tuttavia, pur avendo
-trascurato il contributo di scala nel calcolo delle incertezze, i punti si distribuiscono tutti entro il loro errore. Il
-$\chi^2$ risulta in ogni caso compatibile con il suo valore di aspettazione ($\lambda = 0.9$), pur segnalando una
-possibile sovrastima dell'errore sulle misure (ipotesi assecondata anche dall'errore a posteriori, che risulta essere
-circa $1/3$ rispetto alle incertezze assegnate ai dati). La stima della frequenza di taglio che si ottiene è, infine,
-$f_{\text{t}} = 19.6\pm 0.8\,\si{\kHz}$: questa risulta essere in ottimo accordo con le previsioni teoriche
-($\lambda=0.6$) e con quanto trovato sperimentalmente. Di conseguenza, questa si trova essere scarsamente compatibile
-con quanto ricavato studiando il grafico di Bode ($\lambda = 4.5$).
+\noindent Pur avendo trascurato il contributo di scala nel calcolo delle incertezze, i punti si distribuiscono tutti
+entro il loro errore. Il $\chi^2$ risulta in ogni caso compatibile con il suo valore di aspettazione ($\lambda = 0.9$),
+pur segnalando una leggera sovrastima dell'errore sulle misure (ipotesi assecondata anche dall'errore a posteriori,
+che risulta essere circa $1/3$ rispetto alle incertezze assegnate ai dati). La stima della frequenza di taglio che si
+ottiene è, infine, $f_{\text{t}} = 19.6\pm 0.8\,\si{\kHz}$: questa risulta essere in ottimo accordo con le previsioni
+teoriche ($\lambda=0.6$) e con quanto trovato sperimentalmente. Di conseguenza, questa si trova essere scarsamente
+compatibile con quanto ricavato studiando il grafico di Bode ($\lambda = 4.5$).
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
