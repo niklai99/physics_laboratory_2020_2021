@@ -114,6 +114,33 @@ tau_bode : float
 sigma_tau_bode : float
 
 ### ------------------------------------ ------------------- --------------------------------------
+
+### ------------------------------------- CALIBRAZIONE ARDUINO ------------------------------------
+
+arduino_calib_offset : float
+arduino_calib_slope : float
+arduino_calib_offset_err : float
+arduino_calib_slope_err : float
+
+### ------------------------------------ ------------------- --------------------------------------
+
+### ------------------------------------- EXPFIT ARDUINO ------------------------------------
+
+arduino_exp_a    : float
+arduino_exp_b    : float
+arduino_exp_tau  : float
+
+arduino_exp_a_err   : float
+arduino_exp_b_err   : float
+arduino_exp_tau_err : float
+
+
+### ------------------------------------ ------------------- --------------------------------------
+
+
+
+
+### ------------------------------------ ------------------- --------------------------------------
 ### ------------------------------------ ------------------- --------------------------------------
 ### ------------------------------------------ FUNCTIONS ------------------------------------------
 ### ------------------------------------ ------------------- --------------------------------------
@@ -633,7 +660,7 @@ def freq_taglio_bode():
 
 
 ####### TEMPO CARATTERISTICO STIMATO CON BODE
-def tau_bode():
+def tau_thebode():
 
     global tau_bode
     global sigma_tau_bode
@@ -654,14 +681,14 @@ def preamp_arduino_plot(data):
     ax1 = fig.add_subplot(1, 1, 1)
 
     # PLOT DATA
-    ax1.plot(data['time (ms)'], data['ADC'], color = '#227FF7', linewidth = 2, label = 'Data')
+    ax1.plot(data['time (ms)'], data['V (V)'], color = '#227FF7', linewidth = 2, label = 'Data')
 
     # PLOT TITLE
     ax1.set_title('PreAmp - Preliminary Arduino Waveform', fontsize = 32)
 
     # AXIS LABELS
     ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
-    ax1.set_ylabel('ADC (a.u.)', fontsize = 26, loc = 'top')
+    ax1.set_ylabel('V (V)', fontsize = 26, loc = 'top')
 
     # AXIS TICKS
     ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
@@ -672,13 +699,15 @@ def preamp_arduino_plot(data):
 
     # PLOT RANGE
     ax1.set_xlim(left = 0, right = 2.15)
-    ax1.set_ylim(bottom = 750, top = 1270)
+    ax1.set_ylim(bottom = 0, top = 0.42)
 
     # SAVE FIGURE
     #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
 
     plt.show()
 
+
+####### ARDUINO LINEAR PLOT
 def preamp_arduino_plot_lin(data):
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,8))
@@ -744,16 +773,31 @@ def preamp_arduino_plot_lin(data):
 
 
 
-
+####### ARDUINO EXPONENTIAL FIT
 def preamp_arduino_fit(data):
-    # FIG SETTINGS AND AXES
-    fig = plt.figure(figsize=(16,8))
-    ax1 = fig.add_subplot(1, 1, 1)
 
-    par, cov = curve_fit(f = esp, xdata = data['time (ms)'], ydata = data['ADC'], maxfev=1000, 
-                        p0 = [790, 0, 0.151], bounds = ([770, 0, 0], [810, 5000, 0.2]))
+    global arduino_exp_a      
+    global arduino_exp_b      
+    global arduino_exp_tau    
+    global arduino_exp_a_err  
+    global arduino_exp_b_err  
+    global arduino_exp_tau_err
+
+    # FIG SETTINGS AND AXES
+    fig = plt.figure(figsize=(19.2, 9), dpi = 100)
+    ax1 = fig.add_subplot(1, 2, 1)
+    ax2 = fig.add_subplot(1, 2, 2)
+
+    par, cov = curve_fit(f = esp, xdata = data['time (ms)'], ydata = data['V (V)'], maxfev=1000, 
+                        p0 = [0.02, 0.6, 0.151], sigma = data['err V (V)'], absolute_sigma = True)
 
     func = esp(data['time (ms)'], *par)
+
+    # COMPUTE RESIDUALS
+    res = data['V (V)'] - func
+
+    # COMPUTE CHI2
+    chi2 = np.sum((res/data['err V (V)'])**2)
 
     # GET FIT PARAMETERS AND PARAMETER ERRORS
     error = []
@@ -768,32 +812,48 @@ def preamp_arduino_fit(data):
     fit_err = np.array(error)
 
 
-    a = fit_par[0]
-    b = fit_par[1]
-    c = fit_par[2]
+    arduino_exp_a = fit_par[0]
+    arduino_exp_b = fit_par[1]
+    arduino_exp_tau = fit_par[2]
 
-    err_a = fit_err[0]
-    err_b = fit_err[1]
-    err_c = fit_err[2]
+    arduino_exp_a_err = fit_err[0]
+    arduino_exp_b_err = fit_err[1]
+    arduino_exp_tau_err = fit_err[2]
 
+    # COMPUTE SIGMA_POST
+    sigma_post = np.sqrt( np.sum( res**2 ) / (len(data['V (V)']) - 2) ) 
 
     # PLOT DATA
-    ax1.plot(data['time (ms)'], data['ADC'], color = '#227FF7', linewidth = 2, label = 'Data')
+    ax1.plot(data['time (ms)'], data['V (V)'], color = '#227FF7', linewidth = 2, label = 'Data')
     ax1.plot(data['time (ms)'], func, color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'Fit')
 
-    aa = 'a = ' + format(a, '1.2f') + ' +/- ' + format(err_a, '1.2f') + '  ADC counts'
-    bb = 'b = ' + format(b, '1.0f') + ' +/- ' + format(err_b, '1.0f')
-    cc = '\u03C4 = ' + format(c * 1e3, '1.2f') + ' +/- ' + format(err_c * 1e3, '1.2f') + '  \u03BCs'
+    # PLOT RESIDUALS
+    ax2.errorbar(data['time (ms)'], res, xerr = 0, yerr = data['err V (V)'], marker = '.', markersize = 13,
+                elinewidth=1, color = '#227FF7', linewidth=0, capsize=2, label = 'Residuals')
 
-    ax1.text(0.4, 0.7, 'Fit Function        y = a + b * exp(-x / \u03C4)', fontsize = 22, color = '#000000', transform = ax1.transAxes)
-    ax1.text(0.5, 0.5, aa + '\n' + bb + '\n' + cc, fontsize = 18, color = '#000000', transform = ax1.transAxes)
+    # DRAW DASHED 'ZERO' LINE
+    ax2.axhline(color = '#000000', linewidth = 0.5, linestyle = 'dashed')
+
+    aa = 'a = ' + format(arduino_exp_a, '1.4f') + ' +/- ' + format(arduino_exp_a_err, '1.4f') + '  V'
+    bb = 'b = ' + format(arduino_exp_b, '1.2f') + ' +/- ' + format(arduino_exp_b_err, '1.2f')
+    cc = '\u03C4 = ' + format(arduino_exp_tau * 1e3, '1.2f') + ' +/- ' + format(arduino_exp_tau_err * 1e3, '1.2f') + '  \u03BCs'
+    chisq = '$\chi^{2}$ / ndf = ' + format(chi2, '1.1f') + ' / ' + format(len(data['time (ms)'] ) - len(par), '1.0f') 
+    sigmap = '\u03C3$_{post}$ = ' + format(sigma_post, '1.3f') + '  V'
+    
+    ax1.text(0.15, 0.90, 'Fit Function', fontsize = 28, fontweight = 'bold', transform=ax1.transAxes)
+
+    ax1.text(0.19, 0.83, 'y = a + b * exp(-x / \u03C4)', fontsize = 26, color = '#000000', transform = ax1.transAxes)
+
+    ax1.text(0.28, 0.35, aa + '\n' + bb + '\n' + cc + '\n' + chisq + '\n' + sigmap, fontsize = 24, color = '#000000', transform = ax1.transAxes)
 
     # PLOT TITLE
-    ax1.set_title('PreAmp - Preliminary Arduino ExpFit', fontsize = 32)
+    fig.suptitle('PreAmp - Arduino ExpFit', fontsize = 36)
 
     # AXIS LABELS
     ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
-    ax1.set_ylabel('ADC (a.u.)', fontsize = 26, loc = 'top')
+    ax1.set_ylabel('V (V)', fontsize = 26, loc = 'top')
+    ax2.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
+    ax2.set_ylabel('V - fit (V)', fontsize = 26, loc = 'top', labelpad = -15)
 
     # AXIS TICKS
     ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
@@ -801,12 +861,361 @@ def preamp_arduino_fit(data):
     ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
     ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
     ax1.minorticks_on()
+    ax2.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax2.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax2.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax2.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax2.minorticks_on()
 
     # PLOT RANGE
     ax1.set_xlim(left = 0.30, right = 1.25)
-    ax1.set_ylim(bottom = 770, top = 1240)
+    ax1.set_ylim(bottom = 0, top = 0.42)
+    ax2.set_xlim(left = 0.30, right = 1.25)
+    ax2.set_ylim(bottom = -0.05, top = 0.05)
 
     # SAVE FIGURE
     #fig.savefig('../Plots/PreAmp/arduino_exp_fit.png', dpi = 300, facecolor = 'white')
 
     plt.show()
+
+
+####### TEMPO CARATTERISTICO STIMATO ARDUINO EXPFIT
+def tau_arduino_exp():
+
+    print( 'Tempo caratteristico stimato con Arduino \u03C4_exp = ' + format(1e3 * arduino_exp_tau, '1.2f') + ' +/- ' + format(1e3 * arduino_exp_tau_err, '1.2f') + '  \u03BCs')
+    print( 'Tempo caratteristico stimato teorico \u03C4_th = ' + format(1e6 * tau_th, '1.2f') + ' +/- ' + format(1e6 * sigma_tau_th, '1.2f') + '  \u03BCs')
+    print( 'Compatibilità tempo caratteristico \u03BB = ' + format(compatib(1e-3 * arduino_exp_tau, tau_th, 1e-3 * arduino_exp_tau_err, sigma_tau_th), '1.2f'))
+
+
+
+####### ARDUINO CALIRATION READ DATA
+def arduino_calib_read():
+    # READ DATA
+    file_in =  '../Data/PreAmp/calib_in_18.txt'
+    file_vdiv =  '../Data/PreAmp/calib_in_vdiv_18.txt'
+    file1 = '../Data/PreAmp/calib_02_18_ROOT.dat'
+    file2 = '../Data/PreAmp/calib_05_18_ROOT.dat'
+    file3 = '../Data/PreAmp/calib_08_18_ROOT.dat'
+    file4 = '../Data/PreAmp/calib_10_18_ROOT.dat'
+    file5 = '../Data/PreAmp/calib_12_18_ROOT.dat'
+    file6 = '../Data/PreAmp/calib_15_18_ROOT.dat'
+    file7 = '../Data/PreAmp/calib_18_18_ROOT.dat'
+    file8 = '../Data/PreAmp/calib_20_18_ROOT.dat'
+    file9 = '../Data/PreAmp/calib_21_18_ROOT.dat'
+    file10 = '../Data/PreAmp/calib_22_18_ROOT.dat'
+    file11 = '../Data/PreAmp/calib_23_18_ROOT.dat'
+    file12 = '../Data/PreAmp/calib_24_18_ROOT.dat'
+    file13 = '../Data/PreAmp/calib_25_18_ROOT.dat'
+
+    data1 = pd.read_csv(file1, sep = ' ', index_col = False, header = None)
+    data1.index = np.arange(1, len(data1)+1)
+    data1.columns = ['time', 'ADC']
+
+    data2 = pd.read_csv(file2, sep = ' ', index_col = False, header = None)
+    data2.index = np.arange(1, len(data2)+1)
+    data2.columns = ['time', 'ADC']
+
+    data3 = pd.read_csv(file3, sep = ' ', index_col = False, header = None)
+    data3.index = np.arange(1, len(data3)+1)
+    data3.columns = ['time', 'ADC']
+
+    data4 = pd.read_csv(file4, sep = ' ', index_col = False, header = None)
+    data4.index = np.arange(1, len(data4)+1)
+    data4.columns = ['time', 'ADC']
+
+    data5 = pd.read_csv(file5, sep = ' ', index_col = False, header = None)
+    data5.index = np.arange(1, len(data5)+1)
+    data5.columns = ['time', 'ADC']
+
+    data6 = pd.read_csv(file6, sep = ' ', index_col = False, header = None)
+    data6.index = np.arange(1, len(data6)+1)
+    data6.columns = ['time', 'ADC']
+
+    data7 = pd.read_csv(file7, sep = ' ', index_col = False, header = None)
+    data7.index = np.arange(1, len(data7)+1)
+    data7.columns = ['time', 'ADC']
+
+    data8 = pd.read_csv(file8, sep = ' ', index_col = False, header = None)
+    data8.index = np.arange(1, len(data8)+1)
+    data8.columns = ['time', 'ADC']
+
+    data9 = pd.read_csv(file9, sep = ' ', index_col = False, header = None)
+    data9.index = np.arange(1, len(data9)+1)
+    data9.columns = ['time', 'ADC']
+
+    data10 = pd.read_csv(file10, sep = ' ', index_col = False, header = None)
+    data10.index = np.arange(1, len(data10)+1)
+    data10.columns = ['time', 'ADC']
+
+    data11 = pd.read_csv(file11, sep = ' ', index_col = False, header = None)
+    data11.index = np.arange(1, len(data11)+1)
+    data11.columns = ['time', 'ADC']
+
+    data12 = pd.read_csv(file12, sep = ' ', index_col = False, header = None)
+    data12.index = np.arange(1, len(data12)+1)
+    data12.columns = ['time', 'ADC']
+
+    data13 = pd.read_csv(file13, sep = ' ', index_col = False, header = None)
+    data13.index = np.arange(1, len(data13)+1)
+    data13.columns = ['time', 'ADC']
+
+    # GET MAX VALUES
+    max1 = data1['ADC'].max()
+    max2 = data2['ADC'].max()
+    max3 = data3['ADC'].max()
+    max4 = data4['ADC'].max()
+    max5 = data5['ADC'].max()
+    max6 = data6['ADC'].max()
+    max7 = data7['ADC'].max()
+    max8 = data8['ADC'].max()
+    max9 = data9['ADC'].max()
+    max10 = data10['ADC'].max()
+    max11 = data11['ADC'].max()
+    max12 = data12['ADC'].max()
+    max13 = data13['ADC'].max()
+
+    max_values = np.array([max1, max2, max3, max4, max5, max6, max7, max8, max9, max10, max11, max12, max13])
+
+    #data_in =  pd.read_csv(file_in, sep = ' ', index_col = False, header = None)
+    #data_in.index = np.arange(1, len(data_in)+1)
+    #data_in.columns = ['Vin']
+    #Vin = data_in.to_numpy()
+
+    Vin = np.loadtxt(file_in)
+
+    Vdiv = np.loadtxt(file_vdiv)
+
+    data = pd.DataFrame({'max_values': list(max_values), 'Vin': list(Vin), 'Vdiv': list(Vdiv)}, columns = ['max_values', 'Vin', 'Vdiv'])
+
+    return data
+
+####### ARDUINO CALIRATION READ DATA LOW TENSIONS
+def arduino_calib_read_low():
+    # READ DATA
+    file_in =  '../Data/PreAmp/calib_in_18.txt'
+    file_vdiv =  '../Data/PreAmp/calib_in_vdiv_18.txt'
+    file1 = '../Data/PreAmp/calib_02_18_ROOT.dat'
+    file2 = '../Data/PreAmp/calib_05_18_ROOT.dat'
+    file3 = '../Data/PreAmp/calib_08_18_ROOT.dat'
+    file4 = '../Data/PreAmp/calib_10_18_ROOT.dat'
+    file5 = '../Data/PreAmp/calib_12_18_ROOT.dat'
+    file6 = '../Data/PreAmp/calib_15_18_ROOT.dat'
+    file7 = '../Data/PreAmp/calib_18_18_ROOT.dat'
+    file8 = '../Data/PreAmp/calib_20_18_ROOT.dat'
+    file9 = '../Data/PreAmp/calib_21_18_ROOT.dat'
+    file10 = '../Data/PreAmp/calib_22_18_ROOT.dat'
+    file11 = '../Data/PreAmp/calib_23_18_ROOT.dat'
+    file12 = '../Data/PreAmp/calib_24_18_ROOT.dat'
+    file13 = '../Data/PreAmp/calib_25_18_ROOT.dat'
+
+    data1 = pd.read_csv(file1, sep = ' ', index_col = False, header = None)
+    data1.index = np.arange(1, len(data1)+1)
+    data1.columns = ['time', 'ADC']
+
+    data2 = pd.read_csv(file2, sep = ' ', index_col = False, header = None)
+    data2.index = np.arange(1, len(data2)+1)
+    data2.columns = ['time', 'ADC']
+
+    data3 = pd.read_csv(file3, sep = ' ', index_col = False, header = None)
+    data3.index = np.arange(1, len(data3)+1)
+    data3.columns = ['time', 'ADC']
+
+    data4 = pd.read_csv(file4, sep = ' ', index_col = False, header = None)
+    data4.index = np.arange(1, len(data4)+1)
+    data4.columns = ['time', 'ADC']
+
+    data5 = pd.read_csv(file5, sep = ' ', index_col = False, header = None)
+    data5.index = np.arange(1, len(data5)+1)
+    data5.columns = ['time', 'ADC']
+
+    data6 = pd.read_csv(file6, sep = ' ', index_col = False, header = None)
+    data6.index = np.arange(1, len(data6)+1)
+    data6.columns = ['time', 'ADC']
+
+    data7 = pd.read_csv(file7, sep = ' ', index_col = False, header = None)
+    data7.index = np.arange(1, len(data7)+1)
+    data7.columns = ['time', 'ADC']
+
+    data8 = pd.read_csv(file8, sep = ' ', index_col = False, header = None)
+    data8.index = np.arange(1, len(data8)+1)
+    data8.columns = ['time', 'ADC']
+
+    data9 = pd.read_csv(file9, sep = ' ', index_col = False, header = None)
+    data9.index = np.arange(1, len(data9)+1)
+    data9.columns = ['time', 'ADC']
+
+    data10 = pd.read_csv(file10, sep = ' ', index_col = False, header = None)
+    data10.index = np.arange(1, len(data10)+1)
+    data10.columns = ['time', 'ADC']
+
+    data11 = pd.read_csv(file11, sep = ' ', index_col = False, header = None)
+    data11.index = np.arange(1, len(data11)+1)
+    data11.columns = ['time', 'ADC']
+
+    data12 = pd.read_csv(file12, sep = ' ', index_col = False, header = None)
+    data12.index = np.arange(1, len(data12)+1)
+    data12.columns = ['time', 'ADC']
+
+    data13 = pd.read_csv(file13, sep = ' ', index_col = False, header = None)
+    data13.index = np.arange(1, len(data13)+1)
+    data13.columns = ['time', 'ADC']
+
+    # GET MAX VALUES
+    max1 = data1['ADC'].max()
+    max2 = data2['ADC'].max()
+    max3 = data3['ADC'].max()
+    max4 = data4['ADC'].max()
+    max5 = data5['ADC'].max()
+    max6 = data6['ADC'].max()
+    max7 = data7['ADC'].max()
+    max8 = data8['ADC'].max()
+    max9 = data9['ADC'].max()
+    max10 = data10['ADC'].max()
+    max11 = data11['ADC'].max()
+    max12 = data12['ADC'].max()
+    max13 = data13['ADC'].max()
+
+    max_values = np.array([max1, max2, max3, max4, max5, max6, max7, max8, max9, max10, max11, max12, max13])
+
+    #data_in =  pd.read_csv(file_in, sep = ' ', index_col = False, header = None)
+    #data_in.index = np.arange(1, len(data_in)+1)
+    #data_in.columns = ['Vin']
+    #Vin = data_in.to_numpy()
+
+    Vin = np.loadtxt(file_in)
+
+    Vdiv = np.loadtxt(file_vdiv)
+
+    data = pd.DataFrame({'max_values': list(max_values), 'Vin': list(Vin), 'Vdiv': list(Vdiv)}, columns = ['max_values', 'Vin', 'Vdiv'])
+    
+    data = data.iloc[:3,:]
+
+    return data
+
+####### ARDUINO CALIBRATION FIT
+def arduino_calib_plot(data):
+
+    global arduino_calib_offset
+    global arduino_calib_slope
+    global arduino_calib_offset_err
+    global arduino_calib_slope_err
+
+    XMIN = 800
+    XMAX = 4200
+    YMIN = 0
+    YMAX = 2.7
+    RESXMIN = XMIN
+    RESXMAX = XMAX
+    RESYMIN = -0.08
+    RESYMAX = 0.08
+
+    # FIG SETTINGS AND AXES
+    fig = plt.figure(figsize=(16,8))
+    ax1 = fig.add_subplot(1, 2, 1)
+    ax2 = fig.add_subplot(1, 2, 2)
+
+    # PERFORM THE FIT
+    par_lin, cov_lin = curve_fit(f = lin, xdata = data['max_values'], ydata = data['Vin'])
+    func = lin(data['max_values'], *par_lin)
+
+    # COMPUTE RESIDUALS
+    res = data['Vin'] - func
+
+    # COMPUTE CHI2
+    chi2 = np.sum((res/data['err Vin'])**2)
+
+    # GET FIT PARAMETERS AND PARAMETER ERRORS
+    error = []
+    for i in range(len(par_lin)):
+        try:
+            error.append(np.absolute(cov_lin[i][i])**0.5)
+        except:
+            error.append( 0.00 )
+
+    fit_par = par_lin
+    fit_err = np.array(error)
+
+    arduino_calib_offset = fit_par[0]
+    arduino_calib_slope = fit_par[1]
+    arduino_calib_offset_err = fit_err[0]
+    arduino_calib_slope_err = fit_err[1]
+
+    # COMPUTE SIGMA_POST
+    sigma_post = np.sqrt( np.sum( res**2 ) / (len(data['max_values']) - 2) ) 
+
+    # PLOT DATA
+    ax1.errorbar(data['max_values'], data['Vin'], xerr = 0, yerr = data['err Vin'], color = '#000000', linewidth = 0, marker = '.', markersize = 15, elinewidth=1, capsize=2, label = 'Data')
+
+    # PLOT FIT FUNCTION
+    ax1.plot(np.arange(XMIN, XMAX + 1, 1), lin(np.arange(XMIN, XMAX + 1, 1), *par_lin), color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'Fit')
+    
+    # DRAW DASHED 'ZERO' LINE
+    ax2.axhline(color = '#000000', linewidth = 0.5, linestyle = 'dashed')
+
+    # DRAW RESIDUALS
+    ax2.errorbar(data['max_values'], res, xerr=0, yerr = data['err Vin'], marker = '.', markersize = 13, 
+            elinewidth=1, color = '#000000', linewidth=0, capsize=2, label = 'Residuals')
+
+    q = 'a = ' + format(arduino_calib_offset, '1.3f') + ' V +/- ' + format(arduino_calib_offset_err, '1.3f') + ' V'
+    m = 'b = ' + format(arduino_calib_slope * 1e3, '1.3f') + ' +/- ' + format(arduino_calib_slope_err * 1e3, '1.3f') + ' mV/adc'
+    chisq = '$\chi^{2}$ / ndf = ' + format(chi2, '1.2f') + ' / ' + format(len(data['max_values']) - len(par_lin), '1.0f') 
+    sigmap = '\u03C3$_{post}$ = ' + format(sigma_post, '1.3f') + ' V'
+    ax1.text(0.15, 0.85, 'Fit Function', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
+    ax1.text(0.20, 0.80, 'y = a + bx', fontsize = 18, transform=ax1.transAxes)
+    ax1.text(0.45, 0.35, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
+    ax1.text(0.40, 0.28, q, fontsize = 18, transform=ax1.transAxes)
+    ax1.text(0.40, 0.22, m, fontsize = 18, transform=ax1.transAxes)
+    ax1.text(0.40, 0.16, chisq, fontsize = 18, transform=ax1.transAxes)
+    ax1.text(0.40, 0.10, sigmap, fontsize = 18, transform=ax1.transAxes)
+
+    # PLOT TITLE
+    fig.suptitle('Arduino 18 Calibration Fit', fontsize=32)
+
+    # AXIS LABELS
+    ax1.set_xlabel('V (adc)', fontsize = 26, loc = 'right')
+    ax1.set_ylabel('V (V)', fontsize = 26, loc = 'top')
+
+    # AXIS TICKS
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax1.minorticks_on()
+    ax2.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax2.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax2.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax2.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax2.minorticks_on()
+
+    # PLOT RANGE
+    ax1.set_xlim(left = XMIN, right = XMAX)
+    ax1.set_ylim(bottom = YMIN, top = YMAX)
+    ax2.set_xlim(left = RESXMIN, right = RESXMAX)
+    ax2.set_ylim(bottom = RESYMIN, top = RESYMAX)
+
+    # SAVE FIGURE
+    #fig.savefig('../Logbook/catena_linearity.png', dpi = 300, facecolor = 'white')
+
+    plt.show()
+
+
+####### ARDUINO GET CALIBRATION FUNCTION
+def get_calib_function():
+    print(
+        'VOLT = ' +  ' (' + format(arduino_calib_offset, '.3f') + ' +/- ' + format(arduino_calib_offset_err, '.3f') + ') ' + ' + ' 
+        + ' (' + format(arduino_calib_slope, '.6f') + ' +/- ' + format(arduino_calib_slope_err, '.6f') + ') ' + ' ADC'
+    )
+
+
+
+####### ARDUINO CALIBRATON
+def arduino_calib(ADC):
+    V = arduino_calib_offset + arduino_calib_slope * ADC
+    return V
+
+
+
+####### ARDUINO CALIBRATON ERROR
+def arduino_calib_err():
+    errV = np.sqrt(arduino_calib_offset_err**2 + arduino_calib_slope_err**2)
+    return errV
