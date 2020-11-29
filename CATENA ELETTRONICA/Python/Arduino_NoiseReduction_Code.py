@@ -205,7 +205,7 @@ def arduino_waveform_IIR_filter(data):
     ax1.legend(loc = 'upper right', prop = {'size': 22}, ncol = 1, frameon = True, fancybox = False, framealpha = 1)
 
     # SAVE FIGURE
-    fig.savefig('../Plots/Arduino_NR/preamp_waveform_IIR_filter.png', dpi = 300, facecolor = 'white')
+    #fig.savefig('../Plots/Arduino_NR/preamp_waveform_IIR_filter.png', dpi = 300, facecolor = 'white')
 
     plt.show()
 
