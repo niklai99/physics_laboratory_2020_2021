@@ -143,7 +143,7 @@ def arduino_waveform(data):
     ax1.plot(data['time (ms)'], data['V (V)'], color = '#227FF7', linewidth = 2, label = 'Data')
 
     # PLOT TITLE
-    ax1.set_title('PreAmp - Preliminary Arduino Waveform', fontsize = 32)
+    ax1.set_title('PreAmp - Arduino Waveform', fontsize = 32)
 
     # AXIS LABELS
     ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
@@ -161,7 +161,7 @@ def arduino_waveform(data):
     ax1.set_ylim(bottom = 0, top = 0.42)
 
     # SAVE FIGURE
-    #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
+    fig.savefig('../Plots/Arduino_NR/preamp_waveform.png', dpi = 300, facecolor = 'white')
 
     plt.show()
 
@@ -177,7 +177,7 @@ def arduino_waveform_IIR_filter(data):
     ax1.plot(data['time (ms)'], data['V filter'], color = '#FF4000', linewidth = 2, label = 'Filtered Data')
 
     # PLOT TITLE
-    ax1.set_title('PreAmp - Filtered Arduino Waveform', fontsize = 32)
+    ax1.set_title('PreAmp - IIR Filtered Arduino Waveform', fontsize = 32)
 
     # AXIS LABELS
     ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
@@ -197,7 +197,7 @@ def arduino_waveform_IIR_filter(data):
     ax1.legend(loc = 'upper right', prop = {'size': 22}, ncol = 1, frameon = True, fancybox = False, framealpha = 1)
 
     # SAVE FIGURE
-    #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
+    fig.savefig('../Plots/Arduino_NR/preamp_waveform_IIR_filter.png', dpi = 300, facecolor = 'white')
 
     plt.show()
 
@@ -213,7 +213,7 @@ def arduino_waveform_IIR_filter_peek(data_peek):
     ax1.plot(data_peek['time (ms)'], data_peek['V filter'], color = '#FF4000', linewidth = 2, label = 'Filtered Data')
 
     # PLOT TITLE
-    ax1.set_title('PreAmp - Filtered Arduino Waveform', fontsize = 32)
+    ax1.set_title('PreAmp - IIR Filtered Arduino Data', fontsize = 32)
 
     # AXIS LABELS
     ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
@@ -233,7 +233,7 @@ def arduino_waveform_IIR_filter_peek(data_peek):
     ax1.legend(loc = 'upper right', prop = {'size': 22}, ncol = 1, frameon = True, fancybox = False, framealpha = 1)
 
     # SAVE FIGURE
-    #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
+    fig.savefig('../Plots/Arduino_NR/preamp_waveform_IIR_filter_peek.png', dpi = 300, facecolor = 'white')
 
     plt.show()
 
@@ -315,9 +315,9 @@ def arduino_IIR_exp_fit(data_peek):
     ax2.text(0.28, 0.35, aa2 + '\n' + bb2 + '\n' + cc2, fontsize = 22, color = '#000000', transform = ax2.transAxes)
 
     # PLOT TITLE
-    ax1.set_title('Filtered Data', fontsize = 32)
+    ax1.set_title('IIR Filtered Data', fontsize = 32)
     ax2.set_title('Unfiltered Data', fontsize = 32)
-    fig.suptitle('PreAmp - Arduino ExpFit', fontsize = 36, y = 1.01)
+    #fig.suptitle('PreAmp - Arduino ExpFit', fontsize = 36, y = 1.01)
 
     # AXIS LABELS
     ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
@@ -344,7 +344,7 @@ def arduino_IIR_exp_fit(data_peek):
     ax2.set_ylim(bottom = 0, top = 0.42)
 
     # SAVE FIGURE
-    #fig.savefig('../Plots/PreAmp/arduino_exp_fit.png', dpi = 300, facecolor = 'white')
+    fig.savefig('../Plots/Arduino_NR/preamp_IIR_expfit.png', dpi = 300, facecolor = 'white')
 
     plt.show()
 
@@ -359,7 +359,7 @@ def arduino_waveform_BUTTER_filter_peek(data_peek):
     ax1.plot(data_peek['time (ms)'], data_peek['V filter2'], color = '#FF4000', linewidth = 2, label = 'Filtered Data')
 
     # PLOT TITLE
-    ax1.set_title('PreAmp - Filtered Arduino Waveform', fontsize = 32)
+    ax1.set_title('PreAmp - BUTTER Filtered Arduino Data', fontsize = 32)
 
     # AXIS LABELS
     ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
@@ -379,7 +379,7 @@ def arduino_waveform_BUTTER_filter_peek(data_peek):
     ax1.legend(loc = 'upper right', prop = {'size': 22}, ncol = 1, frameon = True, fancybox = False, framealpha = 1)
 
     # SAVE FIGURE
-    #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
+    fig.savefig('../Plots/Arduino_NR/preamp_waveform_BUTTER_filter_peek.png', dpi = 300, facecolor = 'white')
 
     plt.show()
 
@@ -388,20 +388,20 @@ def arduino_waveform_BUTTER_filter_peek(data_peek):
 def arduino_BUTTER_exp_fit(data_peek):
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,8))
-    
+
     ax1 = fig.add_subplot(1, 2, 2)
     ax2 = fig.add_subplot(1, 2, 1)
-    
+
     par, cov = curve_fit(f = esp, xdata = data_peek['time (ms)'], ydata = data_peek['V filter2'], maxfev=1000, 
                         p0 = [0.02, 0.6, 0.151], sigma = data_peek['err V (V)'], absolute_sigma = True)
-    
+
     func = esp(data_peek['time (ms)'], *par)
-    
+
     par2, cov2 = curve_fit(f = esp, xdata = data_peek['time (ms)'], ydata = data_peek['V (V)'], maxfev=1000, 
                         p0 = [0.02, 0.6, 0.151], sigma = data_peek['err V (V)'], absolute_sigma = True)
-    
+
     func2 = esp(data_peek['time (ms)'], *par2)
-    
+
     # GET FIT PARAMETERS AND PARAMETER ERRORS
     error = []
     for i in range(len(par)):
@@ -409,68 +409,68 @@ def arduino_BUTTER_exp_fit(data_peek):
             error.append(np.absolute(cov[i][i])**0.5)
         except:
             error.append( 0.00 )
-    
+
     fit_par = par
     fit_err = np.array(error)
-    
+
     a = fit_par[0]
     b = fit_par[1]
     tau = fit_par[2]
     a_err = fit_err[0]
     b_err = fit_err[1]
     tau_err = fit_err[2]
-    
+
     error2 = []
     for i in range(len(par2)):
         try:
             error2.append(np.absolute(cov2[i][i])**0.5)
         except:
             error2.append( 0.00 )
-    
+
     fit_par2 = par2
     fit_err2 = np.array(error2)
-    
+
     a2 = fit_par2[0]
     b2 = fit_par2[1]
     tau2 = fit_par2[2]
     err_a2 = fit_err2[0]
     err_b2 = fit_err2[1]
     err_tau2 = fit_err2[2]
-    
+
     # PLOT DATA
     ax1.plot(data_peek['time (ms)'], data_peek['V filter2'], color = '#227FF7', linewidth = 2, label = 'Data')
     ax1.plot(data_peek['time (ms)'], func, color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'Fit')
-    
+
     ax2.plot(data_peek['time (ms)'], data_peek['V (V)'], color = '#227FF7', linewidth = 2, label = 'Data')
     ax2.plot(data_peek['time (ms)'], func2, color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'Fit')
-    
+
     aa = 'a = ' + format(a, '1.4f') + ' +/- ' + format(a_err, '1.4f') + '  V'
     bb = 'b = ' + format(b, '1.2f') + ' +/- ' + format(b_err, '1.2f')
     cc = '\u03C4 = ' + format(tau * 1e3, '1.2f') + ' +/- ' + format(tau_err * 1e3, '1.2f') + '  \u03BCs'
-    
+
     aa2 = 'a = ' + format(a2, '1.4f') + ' +/- ' + format(err_a2, '1.4f') + '  V'
     bb2 = 'b = ' + format(b2, '1.2f') + ' +/- ' + format(err_b2, '1.2f')
     cc2 = '\u03C4 = ' + format(tau2 * 1e3, '1.2f') + ' +/- ' + format(err_tau2 * 1e3, '1.2f') + '  \u03BCs'
-    
+
     ax1.text(0.15, 0.90, 'Fit Function', fontsize = 28, fontweight = 'bold', transform=ax1.transAxes)
     ax1.text(0.19, 0.83, 'y = a + b * exp(-x / \u03C4)', fontsize = 26, color = '#000000', transform = ax1.transAxes)
     ax1.text(0.28, 0.35, aa + '\n' + bb + '\n' + cc, fontsize = 22, color = '#000000', transform = ax1.transAxes)
-    
+
     ax2.text(0.15, 0.90, 'Fit Function', fontsize = 28, fontweight = 'bold', transform=ax2.transAxes)
     ax2.text(0.19, 0.83, 'y = a + b * exp(-x / \u03C4)', fontsize = 26, color = '#000000', transform = ax2.transAxes)
     ax2.text(0.28, 0.35, aa2 + '\n' + bb2 + '\n' + cc2, fontsize = 22, color = '#000000', transform = ax2.transAxes)
-    
+
     # PLOT TITLE
-    ax1.set_title('Filtered Data', fontsize = 32)
+    ax1.set_title('BUTTER Filtered Data', fontsize = 32)
     ax2.set_title('Unfiltered Data', fontsize = 32)
-    fig.suptitle('PreAmp - Arduino ExpFit', fontsize = 36, y = 1.01)
-    
+    #fig.suptitle('PreAmp - Arduino ExpFit', fontsize = 36, y = 1.01)
+
     # AXIS LABELS
     ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
     ax1.set_ylabel('V (V)', fontsize = 26, loc = 'top', labelpad = -5)
     ax2.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
     ax2.set_ylabel('V (V)', fontsize = 26, loc = 'top', labelpad = -5)
-    
+
     # AXIS TICKS
     ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
     ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
@@ -482,14 +482,14 @@ def arduino_BUTTER_exp_fit(data_peek):
     ax2.set_xticks(ticks = ax1.get_xticks(), minor = True)
     ax2.set_yticks(ticks = ax1.get_yticks(), minor = True)
     ax2.minorticks_on()
-    
+
     # PLOT RANGE
     ax1.set_xlim(left = 0.30, right = 1.25)
     ax1.set_ylim(bottom = 0, top = 0.42)
     ax2.set_xlim(left = 0.30, right = 1.25)
     ax2.set_ylim(bottom = 0, top = 0.42)
-    
+
     # SAVE FIGURE
-    #fig.savefig('../Plots/PreAmp/arduino_exp_fit.png', dpi = 300, facecolor = 'white')
-    
+    fig.savefig('../Plots/Arduino_NR/preamp_BUTTER_expfit.png', dpi = 300, facecolor = 'white')
+
     plt.show()
