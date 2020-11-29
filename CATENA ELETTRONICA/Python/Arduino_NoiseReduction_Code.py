@@ -561,6 +561,8 @@ def arduino_lin_fit(data_peek):
     fig = plt.figure(figsize=(16,8))
     ax1 = fig.add_subplot(1, 1, 1)
 
+    data_peek = data_peek[(data_peek['time (ms)'] < 0.8)]
+
     # PERFORM THE FIT
     par, cov = curve_fit(f = lin, xdata = data_peek['time (ms)'], ydata = data_peek['logV'], sigma = data_peek['err logV'], absolute_sigma=True)
 
@@ -616,7 +618,7 @@ def arduino_lin_fit(data_peek):
     ax1.minorticks_on()
 
     # PLOT RANGE
-    ax1.set_xlim(left = 0.30, right = 0.94)
+    ax1.set_xlim(left = 0.30, right = 0.8)
     ax1.set_ylim(bottom = -6, top = 0)
 
     # SAVE FIGURE
@@ -631,6 +633,8 @@ def arduino_butter_lin_fit(data_peek):
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,8))
     ax1 = fig.add_subplot(1, 1, 1)
+
+    data_peek = data_peek[(data_peek['time (ms)'] < 0.8)]
 
     # PERFORM THE FIT
     par, cov = curve_fit(f = lin, xdata = data_peek['time (ms)'], ydata = data_peek['logV filter'], sigma = data_peek['err logV filter'], absolute_sigma=True)
@@ -688,10 +692,36 @@ def arduino_butter_lin_fit(data_peek):
     ax1.minorticks_on()
 
     # PLOT RANGE
-    ax1.set_xlim(left = 0.30, right = 0.87)
+    ax1.set_xlim(left = 0.30, right = 0.8)
     ax1.set_ylim(bottom = -6, top = 0)
 
     # SAVE FIGURE
     #fig.savefig('../Plots/Arduino_NR/preamp_butter_linfit.png', dpi = 300, facecolor = 'white')
 
     plt.show()
+
+
+
+def arduino_calibration(data):
+    # PERFORM THE FIT
+    par, cov = curve_fit(f = lin, xdata = data['max_values'], ydata = data['Vin'], sigma = data['err Vin'], absolute_sigma=True)
+
+    # GET FIT PARAMETERS AND PARAMETER ERRORS
+    error = []
+    for i in range(len(par)):
+        try:
+            error.append(np.absolute(cov[i][i])**0.5)
+        except:
+            error.append( 0.00 )
+    fit_par = par
+    fit_err = np.array(error)
+    arduino_calib_offset = fit_par[0]
+    arduino_calib_slope = fit_par[1]
+    arduino_calib_offset_err = fit_err[0]
+    arduino_calib_slope_err = fit_err[1]
+
+    # PRINT CALIBRATION FUNCTION
+    print(
+            'VOLT = ' +  ' (' + format(arduino_calib_offset, '.3f') + ' +/- ' + format(arduino_calib_offset_err, '.3f') + ') ' + ' + ' 
+            + ' (' + format(arduino_calib_slope, '.6f') + ' +/- ' + format(arduino_calib_slope_err, '.6f') + ') ' + ' ADC'
+        )
