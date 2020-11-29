@@ -12,7 +12,15 @@ from scipy import stats
 from scipy.optimize import curve_fit
 from scipy.misc import derivative
 
+####### GLOBAL OFFSET FOR LINEARIZATION
 
+butter_exp_offset : float
+unfiltered_exp_offset : float
+IIR_exp_offset : float
+
+butter_exp_offset_err : float
+unfiltered_exp_offset_err : float
+IIR_exp_offset_err : float
 
 ####### LINEAR FUCTION
 def lin(x, a, b):  
@@ -240,21 +248,39 @@ def arduino_waveform_IIR_filter_peek(data_peek):
 
 
 def arduino_IIR_exp_fit(data_peek):
+
+    global IIR_exp_offset
+    global IIR_exp_offset_err
+
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,8))
 
     ax1 = fig.add_subplot(1, 2, 2)
     ax2 = fig.add_subplot(1, 2, 1)
 
+    # FILTERED FIT
     par, cov = curve_fit(f = esp, xdata = data_peek['time (ms)'], ydata = data_peek['V filter'], maxfev=1000, 
                         p0 = [0.02, 0.6, 0.151], sigma = data_peek['err V (V)'], absolute_sigma = True)
 
     func = esp(data_peek['time (ms)'], *par)
 
+    # COMPUTE RESIDUALS
+    res = data_peek['V filter'] - func
+
+    # COMPUTE CHI2
+    chi2 = np.sum((res/data_peek['err V (V)'])**2)
+
+    # UNFILTERED FIT
     par2, cov2 = curve_fit(f = esp, xdata = data_peek['time (ms)'], ydata = data_peek['V (V)'], maxfev=1000, 
                         p0 = [0.02, 0.6, 0.151], sigma = data_peek['err V (V)'], absolute_sigma = True)
 
     func2 = esp(data_peek['time (ms)'], *par2)
+
+    # COMPUTE RESIDUALS
+    res2 = data_peek['V (V)'] - func2
+
+    # COMPUTE CHI2
+    chi22 = np.sum((res2/data_peek['err V (V)'])**2)
 
     # GET FIT PARAMETERS AND PARAMETER ERRORS
     error = []
@@ -273,6 +299,9 @@ def arduino_IIR_exp_fit(data_peek):
     a_err = fit_err[0]
     b_err = fit_err[1]
     tau_err = fit_err[2]
+
+    IIR_exp_offset = a
+    IIR_exp_offset_err = a_err
 
     error2 = []
     for i in range(len(par2)):
@@ -301,18 +330,20 @@ def arduino_IIR_exp_fit(data_peek):
     aa = 'a = ' + format(a, '1.4f') + ' +/- ' + format(a_err, '1.4f') + '  V'
     bb = 'b = ' + format(b, '1.2f') + ' +/- ' + format(b_err, '1.2f')
     cc = '\u03C4 = ' + format(tau * 1e3, '1.2f') + ' +/- ' + format(tau_err * 1e3, '1.2f') + '  \u03BCs'
+    chisq = '$\chi^{2}$ / ndf = ' + format(chi2, '1.1f') + ' / ' + format(len(data_peek['time (ms)'] ) - len(par), '1.0f') 
 
     aa2 = 'a = ' + format(a2, '1.4f') + ' +/- ' + format(err_a2, '1.4f') + '  V'
     bb2 = 'b = ' + format(b2, '1.2f') + ' +/- ' + format(err_b2, '1.2f')
     cc2 = '\u03C4 = ' + format(tau2 * 1e3, '1.2f') + ' +/- ' + format(err_tau2 * 1e3, '1.2f') + '  \u03BCs'
+    chisq2 = '$\chi^{2}$ / ndf = ' + format(chi22, '1.1f') + ' / ' + format(len(data_peek['time (ms)'] ) - len(par2), '1.0f') 
 
     ax1.text(0.15, 0.90, 'Fit Function', fontsize = 28, fontweight = 'bold', transform=ax1.transAxes)
     ax1.text(0.19, 0.83, 'y = a + b * exp(-x / \u03C4)', fontsize = 26, color = '#000000', transform = ax1.transAxes)
-    ax1.text(0.28, 0.35, aa + '\n' + bb + '\n' + cc, fontsize = 22, color = '#000000', transform = ax1.transAxes)
+    ax1.text(0.28, 0.35, aa + '\n' + bb + '\n' + cc + '\n' + chisq, fontsize = 22, color = '#000000', transform = ax1.transAxes)
 
     ax2.text(0.15, 0.90, 'Fit Function', fontsize = 28, fontweight = 'bold', transform=ax2.transAxes)
     ax2.text(0.19, 0.83, 'y = a + b * exp(-x / \u03C4)', fontsize = 26, color = '#000000', transform = ax2.transAxes)
-    ax2.text(0.28, 0.35, aa2 + '\n' + bb2 + '\n' + cc2, fontsize = 22, color = '#000000', transform = ax2.transAxes)
+    ax2.text(0.28, 0.35, aa2 + '\n' + bb2 + '\n' + cc2 + '\n' + chisq2, fontsize = 22, color = '#000000', transform = ax2.transAxes)
 
     # PLOT TITLE
     ax1.set_title('IIR Filtered Data', fontsize = 32)
@@ -386,21 +417,42 @@ def arduino_waveform_BUTTER_filter_peek(data_peek):
 
 
 def arduino_BUTTER_exp_fit(data_peek):
+
+    global butter_exp_offset
+    global unfiltered_exp_offset
+    global butter_exp_offset_err
+    global unfiltered_exp_offset_err
+
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,8))
 
     ax1 = fig.add_subplot(1, 2, 2)
     ax2 = fig.add_subplot(1, 2, 1)
 
+
+    # FILTERED FIT
     par, cov = curve_fit(f = esp, xdata = data_peek['time (ms)'], ydata = data_peek['V filter2'], maxfev=1000, 
                         p0 = [0.02, 0.6, 0.151], sigma = data_peek['err V (V)'], absolute_sigma = True)
 
     func = esp(data_peek['time (ms)'], *par)
 
+    # COMPUTE RESIDUALS
+    res = data_peek['V filter2'] - func
+
+    # COMPUTE CHI2
+    chi2 = np.sum((res/data_peek['err V (V)'])**2)
+
+    # UNFILTERED FIT
     par2, cov2 = curve_fit(f = esp, xdata = data_peek['time (ms)'], ydata = data_peek['V (V)'], maxfev=1000, 
                         p0 = [0.02, 0.6, 0.151], sigma = data_peek['err V (V)'], absolute_sigma = True)
 
     func2 = esp(data_peek['time (ms)'], *par2)
+
+    # COMPUTE RESIDUALS
+    res2 = data_peek['V (V)'] - func2
+
+    # COMPUTE CHI2
+    chi22 = np.sum((res2/data_peek['err V (V)'])**2)
 
     # GET FIT PARAMETERS AND PARAMETER ERRORS
     error = []
@@ -420,6 +472,9 @@ def arduino_BUTTER_exp_fit(data_peek):
     b_err = fit_err[1]
     tau_err = fit_err[2]
 
+    butter_exp_offset = a
+    butter_exp_offset_err = a_err
+
     error2 = []
     for i in range(len(par2)):
         try:
@@ -437,6 +492,9 @@ def arduino_BUTTER_exp_fit(data_peek):
     err_b2 = fit_err2[1]
     err_tau2 = fit_err2[2]
 
+    unfiltered_exp_offset = a2
+    unfiltered_exp_offset_err = err_a2
+
     # PLOT DATA
     ax1.plot(data_peek['time (ms)'], data_peek['V filter2'], color = '#227FF7', linewidth = 2, label = 'Data')
     ax1.plot(data_peek['time (ms)'], func, color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'Fit')
@@ -447,18 +505,20 @@ def arduino_BUTTER_exp_fit(data_peek):
     aa = 'a = ' + format(a, '1.4f') + ' +/- ' + format(a_err, '1.4f') + '  V'
     bb = 'b = ' + format(b, '1.2f') + ' +/- ' + format(b_err, '1.2f')
     cc = '\u03C4 = ' + format(tau * 1e3, '1.2f') + ' +/- ' + format(tau_err * 1e3, '1.2f') + '  \u03BCs'
+    chisq = '$\chi^{2}$ / ndf = ' + format(chi2, '1.1f') + ' / ' + format(len(data_peek['time (ms)'] ) - len(par), '1.0f') 
 
     aa2 = 'a = ' + format(a2, '1.4f') + ' +/- ' + format(err_a2, '1.4f') + '  V'
     bb2 = 'b = ' + format(b2, '1.2f') + ' +/- ' + format(err_b2, '1.2f')
     cc2 = '\u03C4 = ' + format(tau2 * 1e3, '1.2f') + ' +/- ' + format(err_tau2 * 1e3, '1.2f') + '  \u03BCs'
+    chisq2 = '$\chi^{2}$ / ndf = ' + format(chi22, '1.1f') + ' / ' + format(len(data_peek['time (ms)'] ) - len(par2), '1.0f') 
 
     ax1.text(0.15, 0.90, 'Fit Function', fontsize = 28, fontweight = 'bold', transform=ax1.transAxes)
     ax1.text(0.19, 0.83, 'y = a + b * exp(-x / \u03C4)', fontsize = 26, color = '#000000', transform = ax1.transAxes)
-    ax1.text(0.28, 0.35, aa + '\n' + bb + '\n' + cc, fontsize = 22, color = '#000000', transform = ax1.transAxes)
+    ax1.text(0.28, 0.35, aa + '\n' + bb + '\n' + cc + '\n' + chisq, fontsize = 22, color = '#000000', transform = ax1.transAxes)
 
     ax2.text(0.15, 0.90, 'Fit Function', fontsize = 28, fontweight = 'bold', transform=ax2.transAxes)
     ax2.text(0.19, 0.83, 'y = a + b * exp(-x / \u03C4)', fontsize = 26, color = '#000000', transform = ax2.transAxes)
-    ax2.text(0.28, 0.35, aa2 + '\n' + bb2 + '\n' + cc2, fontsize = 22, color = '#000000', transform = ax2.transAxes)
+    ax2.text(0.28, 0.35, aa2 + '\n' + bb2 + '\n' + cc2 + '\n' + chisq2, fontsize = 22, color = '#000000', transform = ax2.transAxes)
 
     # PLOT TITLE
     ax1.set_title('BUTTER Filtered Data', fontsize = 32)
@@ -491,5 +551,147 @@ def arduino_BUTTER_exp_fit(data_peek):
 
     # SAVE FIGURE
     fig.savefig('../Plots/Arduino_NR/preamp_BUTTER_expfit.png', dpi = 300, facecolor = 'white')
+
+    plt.show()
+
+
+
+def arduino_lin_fit(data_peek):
+    # FIG SETTINGS AND AXES
+    fig = plt.figure(figsize=(16,8))
+    ax1 = fig.add_subplot(1, 1, 1)
+
+    # PERFORM THE FIT
+    par, cov = curve_fit(f = lin, xdata = data_peek['time (ms)'], ydata = data_peek['logV'], sigma = data_peek['err logV'], absolute_sigma=True)
+
+    func = lin(data_peek['time (ms)'], *par)
+
+    # COMPUTE RESIDUALS
+    res = data_peek['logV'] - func
+
+    # COMPUTE CHI2
+    chi2 = np.sum((res/data_peek['err logV'])**2)
+
+    # GET FIT PARAMETERS AND PARAMETER ERRORS
+    error = []
+    for i in range(len(par)):
+        try:
+            error.append(np.absolute(cov[i][i])**0.5)
+        except:
+            error.append( 0.00 )
+
+    fit_par = par
+    fit_err = np.array(error)
+
+    a = fit_par[0]
+    b = fit_par[1]
+    err_a = fit_err[0]
+    err_b = fit_err[1]
+
+    # PLOT DATA
+    ax1.errorbar(data_peek['time (ms)'], data_peek['logV'], xerr = 0, yerr = data_peek['err logV'], elinewidth=1, capsize=2, color = '#227FF7', linewidth = 0, marker = '.', markersize = 10, label = 'data_peek')
+    ax1.plot(data_peek['time (ms)'], func, color = '#FF4B00', linewidth = 2, label = 'Fit')
+
+    aa = 'a = ' + format(a, '1.3f') + ' +/- ' + format(err_a, '1.3f')
+    bb = 'b = ' + format(b, '1.3f') + ' +/- ' + format(err_b, '1.3f') + '  ms$^{-1}$'
+    tau = ' \u03C4 = ' + format(-b**-1 * 1e3, '1.2f') + ' +/- ' + format(err_b * b**-2 * 1e3, '1.2f') + '  \u03BCs'
+    chisq = '$\chi^{2}$ / ndf = ' + format(chi2, '1.1f') + ' / ' + format(len(data_peek['time (ms)'] ) - len(par), '1.0f') 
+    ax1.text(0.05, 0.45, 'Fit Function', fontsize = 28, fontweight = 'bold', transform=ax1.transAxes)
+    ax1.text(0.07, 0.37, 'y = a + b * x', fontsize = 26, color = '#000000', transform = ax1.transAxes)
+    ax1.text(0.1, 0.1, aa + '\n' + bb + '\n' + chisq, fontsize = 22, color = '#000000', transform = ax1.transAxes)
+    ax1.text(0.4, 0.8, tau, fontsize = 26, color = '#000000', transform = ax1.transAxes)
+
+    # PLOT TITLE
+    ax1.set_title('PreAmp - Unfiltered Arduino LinFit', fontsize = 32)
+
+    # AXIS LABELS
+    ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
+    ax1.set_ylabel('log(V)', fontsize = 26, loc = 'top')
+
+    # AXIS TICKS
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax1.minorticks_on()
+
+    # PLOT RANGE
+    ax1.set_xlim(left = 0.30, right = 0.94)
+    ax1.set_ylim(bottom = -6, top = 0)
+
+    # SAVE FIGURE
+    #fig.savefig('../Plots/Arduino_NR/preamp_unfiltered_linfit.png', dpi = 300, facecolor = 'white')
+
+    plt.show()
+
+
+
+
+def arduino_butter_lin_fit(data_peek):
+    # FIG SETTINGS AND AXES
+    fig = plt.figure(figsize=(16,8))
+    ax1 = fig.add_subplot(1, 1, 1)
+
+    # PERFORM THE FIT
+    par, cov = curve_fit(f = lin, xdata = data_peek['time (ms)'], ydata = data_peek['logV filter'], sigma = data_peek['err logV filter'], absolute_sigma=True)
+
+    func = lin(data_peek['time (ms)'], *par)
+
+    # COMPUTE RESIDUALS
+    res = data_peek['logV filter'] - func
+
+    # COMPUTE CHI2
+    chi2 = np.sum((res/data_peek['err logV filter'])**2)
+
+    # GET FIT PARAMETERS AND PARAMETER ERRORS
+    error = []
+    for i in range(len(par)):
+        try:
+            error.append(np.absolute(cov[i][i])**0.5)
+        except:
+            error.append( 0.00 )
+
+    fit_par = par
+    fit_err = np.array(error)
+
+    a = fit_par[0]
+    b = fit_par[1]
+    err_a = fit_err[0]
+    err_b = fit_err[1]
+
+    # PLOT DATA
+    ax1.errorbar(data_peek['time (ms)'], data_peek['logV filter'], xerr = 0, yerr = data_peek['err logV filter'], elinewidth=1, 
+                capsize=2, color = '#227FF7', linewidth = 0, marker = '.', markersize = 10, label = 'data_peek')
+    ax1.plot(data_peek['time (ms)'], func, color = '#FF4B00', linewidth = 2, label = 'Fit')
+
+    aa = 'a = ' + format(a, '1.3f') + ' +/- ' + format(err_a, '1.3f')
+    bb = 'b = ' + format(b, '1.3f') + ' +/- ' + format(err_b, '1.3f') + '  ms$^{-1}$'
+    tau = ' \u03C4 = ' + format(-b**-1 * 1e3, '1.2f') + ' +/- ' + format(err_b * b**-2 * 1e3, '1.2f') + '  \u03BCs'
+    chisq = '$\chi^{2}$ / ndf = ' + format(chi2, '1.1f') + ' / ' + format(len(data_peek['time (ms)'] ) - len(par), '1.0f') 
+    ax1.text(0.05, 0.45, 'Fit Function', fontsize = 28, fontweight = 'bold', transform=ax1.transAxes)
+    ax1.text(0.07, 0.37, 'y = a + b * x', fontsize = 26, color = '#000000', transform = ax1.transAxes)
+    ax1.text(0.1, 0.1, aa + '\n' + bb + '\n' + chisq, fontsize = 22, color = '#000000', transform = ax1.transAxes)
+    ax1.text(0.4, 0.8, tau, fontsize = 26, color = '#000000', transform = ax1.transAxes)
+
+    # PLOT TITLE
+    ax1.set_title('PreAmp - Filtered Arduino LinFit', fontsize = 32)
+
+    # AXIS LABELS
+    ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
+    ax1.set_ylabel('log(V)', fontsize = 26, loc = 'top')
+
+    # AXIS TICKS
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax1.minorticks_on()
+
+    # PLOT RANGE
+    ax1.set_xlim(left = 0.30, right = 0.87)
+    ax1.set_ylim(bottom = -6, top = 0)
+
+    # SAVE FIGURE
+    #fig.savefig('../Plots/Arduino_NR/preamp_butter_linfit.png', dpi = 300, facecolor = 'white')
 
     plt.show()
