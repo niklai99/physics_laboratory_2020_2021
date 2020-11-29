@@ -612,14 +612,11 @@ misure acquisite assieme ai punti ottenuti attraverso una simulazione Spice dell
 	rispettivamente per la retta e per la parabola.}
 	\label{i:diff_bode}
 \end{figure}
-\noindent Si noti inizialmente che nel grafico sono riportate due interpolazioni. La prima, lineare, è caratterizzata
-dalla traccia arancione: per questo fit sono state prese in considerazione unicamente le prime tre misure in quanto,
-ampliando ulteriormente l'intervallo di interpolazione, sarebbero stati considerati punti che non rispettano il trend
-lineare. La seconda, invece, è un fit parabolico (traccia azzurra) ristretto all'intorno del massimo della funzione di
-trasferimento. Confrontando le misure sperimentali con la simulazione Spice, la zona lineare sulla sinistra e l'intorno
-della frequenza di taglio presentano un accordo soddisfacente tra le due. Spostando l'attenzione verso la zona destra
-del grafico, invece, si vede chiaramente un effetto di attenuazione della funzione di trasferimento, tipico di un filtro
-passa banda piuttosto che di un passa alto. Questo comportamento, infatti, si trova in disaccordo con la 
+\noindent Confrontando inizialmente le misure sperimentali con la simulazione Spice, la zona lineare sulla sinistra e
+l'intorno della frequenza di taglio presentano un accordo soddisfacente tra le due. Spostando l'attenzione verso la zona
+destra del grafico, invece, si vede chiaramente un effetto di attenuazione della funzione di trasferimento, tipico di un
+filtro passa banda piuttosto che di un passa alto. Questo comportamento, infatti, si trova in disaccordo con la
+simulazione Spice del circuito ed è, probabilmente,
 
 	\begin{wrapfigure}{R}{0.5\textwidth}
 		\centering
@@ -628,7 +625,7 @@ passa banda piuttosto che di un passa alto. Questo comportamento, infatti, si tr
 		\label{i:diff_sim_comp}
 	\end{wrapfigure}
 	
-\noindent simulazione Spice del circuito ed è, probabilmente, indice della presenza di una capacità parassita (non
+\noindent indice della presenza di una capacità parassita (non
 considerata nella simulazione) in parallelo al circuito causata da breadboard, cavi, sonde, oscilloscopio.\footnote{È da
 considerare, inoltre, il GBW (o meglio la frequenza di guadagno unitario) dell'operazionale.} Simulando nuovamente la
 risposta del circuito aggiungendo una capacità $C_{2}=7\,\si{\pF}$ in parallelo alla resistenza di feedback
@@ -636,14 +633,18 @@ $R_{\text{f}}$ si trova un notevole miglioramento nell'accordo tra punti simulat
 dunque che l'effetto di attenuazione della funzione di trasferimento del circuito è dovuto a contributi capacitivi non
 trascurabili posti in parallelo. In \autoref{i:diff_sim_comp} è messo in evidenza questo confronto tra i dati
 sperimentali e quelli simulati, sia trascurando la capacità $C_{2}$ (in arancione) sia invece tenendone conto (in
-azzurro). Si procede ora nella ricerca della frequenza di taglio $f_{\text{t}}$ del circuito. La strategia per la stima
-di tale frequenza è la seguente: inizialmente si stima il massimo della funzione di trasferimento come vertice della
-parabola e si associa a tale valore una retta orizzontale $y=H_{\text{max}}=19.79\pm
+azzurro). Si procede ora nella ricerca della frequenza di taglio $f_{\text{t}}$ del circuito. Si noti che nel grafico
+sono riportate due interpolazioni. La prima, lineare, è caratterizzata dalla traccia arancione: per questo fit sono
+state prese in considerazione unicamente le prime tre misure in quanto, ampliando ulteriormente l'intervallo di
+interpolazione, sarebbero stati considerati punti che non rispettano il trend lineare. La seconda, invece, è un fit
+parabolico (traccia azzurra) ristretto all'intorno del massimo della funzione di trasferimento. La strategia per la
+stima di tale frequenza è la seguente: inizialmente si stima il massimo della funzione di trasferimento come vertice
+della parabola e si associa a tale valore una retta orizzontale $y=H_{\text{max}}=19.79\pm
 0.03\,\text{dB}$.\footnote{Nel calcolo sono state prese in considerazione le opportune covarianze.\label{refnote}} Si
 calcola poi il punto di intersezione con la retta $y=a+bx$ in arancione: la coordinata $x$ di tale punto fornisce quindi
-una stima della frequenza di taglio $f_{\text{t}}=4.371 \pm 0.007\,\text{dec}$.\footnotemark[4] Convertendo
-quanto trovato in Hertz, la frequenza di taglio così stimata risulta essere $f_{\text{t}}=23.5 \pm 0.4\,\si{k\Hz}$. Tale
-valore è però incompatibile sia con le aspettative teoriche sia con quanto trovato sperimentalmente, seppur in modo
+una stima della frequenza di taglio $f_{\text{t}}=4.371 \pm 0.007\,\text{dec}$.\footnotemark[4] Convertendo quanto
+trovato in Hertz, la frequenza di taglio così stimata risulta essere $f_{\text{t}}=23.5 \pm 0.4\,\si{k\Hz}$. Tale valore
+è però incompatibile sia con le aspettative teoriche sia con quanto trovato sperimentalmente, seppur in modo
 approssimativo. Si ipotizza dunque che la causa possa essere il leggero disaccordo tra il coefficiente angolare della
 retta arancione $b = 18.98\pm 0.09\,\text{dB/dec}$ e l'aspettativa $b_{\text{th}}=20\,\text{dB/dec}$: sfruttando la
 strategia riportata sopra, infatti, una pendenza minore di tale retta si tradurrebbe in un aumento della frequenza di
@@ -797,10 +798,10 @@ risultato necessario considerare le grandezze picco picco per ricavare una stima
 e che fosse svincolata dall'offset trovato. La miglior stima dell'amplificazione del circuito risulta dunque essere
 $G=10.29 \pm 0.11$, ottenuta come coefficiente angolare della retta interpolante il campione di grandezze picco picco
 (\autoref{i:opamp_pp}). Spostando ora l'attenzione sul circuito derivatore, dall'analisi in frequenza è emersa una
-discrepanza con le aspettative ad alte frequenze:si è ipotizzato che la causa fosse la presenza di una capacità
+discrepanza con le aspettative ad alte frequenze: si è ipotizzato che la causa fosse la presenza di una capacità
 parassita in parallelo al circuito, oltre ad essere manifestazione della frequenza di guadagno unitario
 dell'operazionale. La frequenza di taglio estrapolata attraverso la prima strategia è risultata scarsamente compatibile
-con le aspettative teoriche, e la causa di ciò potrebbe essere una campionatura troppo rarefatta a basse frequenze che
+con le aspettative teoriche e la causa di ciò potrebbe essere una campionatura troppo rarefatta a basse frequenze che
 ha portato ad una stima non ottimale della retta a 20 dB/dec. L'interpolazione lineare ristretta all'intorno della
 frequenza di taglio, in cui la campionatura è sufficientemente fitta, invece restituisce una stima $f_{\text{t}}=19.8
 \pm 0.8\,\si{\kHz}$ in ottimo accordo con le aspettative. Si prende dunque quest'ultima come miglior stima della

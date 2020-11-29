@@ -93,18 +93,15 @@ sigma_C2 = np.sqrt(sigma_L_C2**2 + sigma_D_C2**2)
 ### ------------------------------------- MISURE SPERIMENTALI -------------------------------------
 
 #Generatore
-T_init = 0.000005 #Secondi
-Vlow_sper = 0.008 #Volt
-Vhigh_sper = -1.01 #Volt
-V_amplitude = np.abs(Vlow_sper - Vhigh_sper)
-sigma_V_amplitude = 0.018908646170469
+freq = 100 #Hz
+Amp = 1.01 #V
+err_Amp = propagazione_cursori(0.2, Amp)
 
-#Valori Sperimentali
-Vmax_sper = 0.392 #Volt
-Vdiv_Vmax_sper = 0.1 #Volt/div
-sigma_Vmax_sper = 0.007111568040875373 #Volt
 
-tau_sper = 158 #MicroSecondi us ~circa
+#Segnale in uscita
+V_out_max = 0.342
+Vdiv_out_max = 0.065
+err_V_out_max = propagazione_cursori(Vdiv_out_max, V_out_max)
 
 ### ------------------------------------ ------------------- --------------------------------------
 
@@ -128,6 +125,15 @@ def propagazione_cursori(Vdiv, measure):
     sigma = np.sqrt( (0.04 * Vdiv)**2 + (0.015 * measure)**2)
 
     return sigma
+
+
+
+##### CALCOLO COMPATIBILITA
+def compatib(x, y, errx, erry):
+
+    comp = np.abs( x - y ) / np.sqrt( errx**2 + erry**2 )
+
+    return comp
 
 
 
@@ -175,3 +181,8 @@ def get_tau_sh_mean():
     
     print('\u03C4_sh_th =  ' + format(tau_sh_th * 1e6, '1.2f') + ' +/- ' + format(sigma_tau_sh_th * 1e6, '1.2f') + '  \u03BCs')
     
+
+
+
+def get_V_out_max():
+    l = compatib
