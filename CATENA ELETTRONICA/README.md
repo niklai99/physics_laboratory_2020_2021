@@ -10,9 +10,19 @@ NOTEBOOK](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2
 
 * Verifica accordo tra misure sperimentali e stime teoriche
 * Verifica della linearità del preamplificatore
+  
+    ![LINEARITA PREAMP](./Plots/PreAmp/Vmax_Qin_lin_fit.png)
+
 * Stima della capacità di feedback 
 * Stima del tempo caratteristico dello smorzamento esponenziale
+
+    ![ARDUINO TAU](./Plots/Arduino_NR/preamp_BUTTER_expfit.png)
+
 * Analisi in frequenza e stima della frequenza di taglio
+  
+    ![THEBODE](./Plots/PreAmp/bode_plot.png)
+
+
 
 **NOTA BENE:** L'analisi della forma d'onda acquisita con Arduino è riportata
 [qui](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2021/blob/master/CATENA%20ELETTRONICA/Python/Arduino%20-%20Noise%20Reduction.ipynb)!
