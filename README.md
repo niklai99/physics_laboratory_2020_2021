@@ -1,4 +1,13 @@
-# physics_laboratory_2020_2021
-In this repository are stored all the files I made during my third year undergrad lab class.
+# LABORATORIO DI FISICA (III ANNO)
 
-This README is still incomplete: check out the subfolders for more detailed informations!
+## Anno Accademico 2020 - 2021
+
+### Elettronica
+
+- [x] AMPLIFICATORI OPERAZIONALI
+- [ ] CATENA ELETTRONICA 
+
+### Spettroscopia
+
+- [ ] CAMERA DI BRAGG
+- [ ] EFFETTO ZEEMAN
