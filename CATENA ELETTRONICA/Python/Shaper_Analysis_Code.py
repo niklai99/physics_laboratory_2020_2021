@@ -626,3 +626,71 @@ def get_bw():
         'f_low = ' + format(f_low * 1e-3, '.1f') + ' +/- ' + format(sigma_f_low * 1e-3, '.1f') + '  kHz\n' + 
         'f_high = ' + format(f_high * 1e-3, '.1f') + ' +/- ' + format(sigma_f_high * 1e-3, '.1f') + '  kHz'
     )
+
+
+
+####### ARDUINO PLOT
+def arduino_calib_plot(data):
+    # FIG SETTINGS AND AXES
+    fig = plt.figure(figsize=(16,8))
+    ax1 = fig.add_subplot(1, 1, 1)
+
+    # PLOT DATA
+    ax1.plot(data['time (ms)'], data['V (V)'], color = '#227FF7', linewidth = 2, label = 'Data')
+
+    # PLOT TITLE
+    ax1.set_title('Shaper - Arduino Calib Waveform', fontsize = 32)
+
+    # AXIS LABELS
+    ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
+    ax1.set_ylabel('V (V)', fontsize = 26, loc = 'top')
+
+    # AXIS TICKS
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax1.minorticks_on()
+
+    # PLOT RANGE
+    ax1.set_xlim(left = 0, right = 1.0)
+    ax1.set_ylim(bottom = -0.1, top = 1.1)
+
+    # SAVE FIGURE
+    #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
+
+    plt.show()
+
+
+
+####### ARDUINO PLOT
+def arduino_ideal_shaper_plot(data):
+    # FIG SETTINGS AND AXES
+    fig = plt.figure(figsize=(16,8))
+    ax1 = fig.add_subplot(1, 1, 1)
+
+    # PLOT DATA
+    ax1.plot(data['time (ms)'], data['V (V)'], color = '#227FF7', linewidth = 2, label = 'Data')
+
+    # PLOT TITLE
+    ax1.set_title('Shaper - Ideal PreAmp Arduino Waveform', fontsize = 32)
+
+    # AXIS LABELS
+    ax1.set_xlabel('time (ms)', fontsize = 26, loc = 'right')
+    ax1.set_ylabel('V (V)', fontsize = 26, loc = 'top')
+
+    # AXIS TICKS
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax1.minorticks_on()
+
+    # PLOT RANGE
+    ax1.set_xlim(left = 0.62, right = 0.80)
+    ax1.set_ylim(bottom = 0, top = 0.6)
+
+    # SAVE FIGURE
+    #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
+
+    plt.show()
