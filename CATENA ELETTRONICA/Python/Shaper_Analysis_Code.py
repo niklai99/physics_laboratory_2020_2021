@@ -119,6 +119,24 @@ sigma_tau_sh_th : float
 sigma_tau_sh_th1 : float
 sigma_tau_sh_th2 : float
 
+ft_th : float
+sigma_ft_th : float
+
+
+### ------------------------------------ BODE FIT PARAMETERS --------------------------------------
+
+a : float
+b : float
+err_a :float
+err_b :float
+
+c : float
+d : float
+err_c :float
+err_d :float
+
+ft_bode : float
+sigma_ft_bode : float
 
 
 
@@ -221,6 +239,17 @@ def get_tau_sh_mean():
     
     print('\u03C4_sh_th =  ' + format(tau_sh_th * 1e6, '1.2f') + ' +/- ' + format(sigma_tau_sh_th * 1e6, '1.2f') + '  \u03BCs')
     
+####### FREQUENZA DI TAGLIO TEORICA
+def get_ft_th():
+
+    global ft_th
+    global sigma_ft_th
+
+    ft_th = (tau_sh_th * 2 * np.pi)**-1
+    sigma_ft_th = (2 * np.pi)**-1 * sigma_tau_sh_th * tau_sh_th**-2 
+    
+    print('ft_th =  ' + format(ft_th * 1e-3, '1.1f') + ' +/- ' + format(sigma_ft_th * 1e-3, '1.1f') + '  kHz')
+    
 
 
 
@@ -271,16 +300,38 @@ def lin(x, a, b):
 
 def bode_plot(df, sim):
 
+    # ---------- VARIABILI GLOBALI
+    global a
+    global err_a
+    global b
+    global err_b
+    global c
+    global err_c
+    global d
+    global err_d
+
+    global ft_bode
+    global sigma_ft_bode
+    # ----------------------------
+
+    # ----------------- PLOT RANGE
     XMIN = 40
     XMAX = 1.2 * 1e6
     YMIN = -50
     YMAX = 0
+    RESXMIN = XMIN
+    RESXMAX = XMAX
+    RESYMIN = -0.9
+    RESYMAX = 0.9
+    # ----------------------------
 
+    # ------------------ FIT RANGE
     # ARANCIONE
-    data1 = df.iloc[2:6, :]
+    data1 = df.iloc[1:6, :]
 
     # BLU
     data2 = df.iloc[18:21, :]
+    # ----------------------------
 
     # ARANCIONE
     par1, cov1 = curve_fit(f = lin, xdata = data1['log10f (dec)'], ydata = data1['H (dB)'], sigma = data1['sigma Hr (dB)'], absolute_sigma = True)
@@ -353,11 +404,50 @@ def bode_plot(df, sim):
     sigma_post2 = np.sqrt( np.sum( res2**2 ) / (len(data2['log10f (dec)']) - 2) )
 
 
+
+    # INTERSEZIONE X
+    x_int = (a - c) / (d - b)
+
+    # COMPUTE DERIVATIVES
+    def xa(x):
+        return (x - c) / (d - b)
+    dera = derivative(xa, a, dx=1e-8)
+
+    def xb(x):
+        return (a - c) / (d - x)
+    derb = derivative(xb, b, dx=1e-8)
+
+    def xc(x):
+        return (a - x) / (d - b)
+    derc = derivative(xc, c, dx=1e-8)
+
+    def xd(x):
+        return (a - c) / (x - b)
+    derd = derivative(xd, d, dx=1e-8)
+
+    #print(format(derc, '1.3f'))
+    #print(format(derd, '1.3f'))
+    #print(format(dere, '1.3f'))
+    #print(format(derf, '1.3f'))
+
+    sigma_x_int = np.sqrt( (dera * err_a)**2 +  (derb * err_b)**2 + (derc * err_c)**2 + (derd * err_d)**2 +
+                            2 * dera * derb * cov1[0][1] + 2 * derc * derd * cov2[0][1] )
+
+    #print(format(x_int, '1.3f'))
+    #print(format(sigma_x_int, '1.3f'))
+
+    ft_bode = 10**x_int
+    sigma_ft_bode  = sigma_x_int * 10**x_int * np.log(10)
+
+    y_int = lin(x_int, *par1)
+
+
+
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,10))
-    ax1 = fig.add_subplot(1, 1, 1)
-    #ax1 = plt.subplot2grid((10, 1), (0, 0), rowspan=8, colspan=1)
-    #ax2 = plt.subplot2grid((10, 1), (8, 0), rowspan=2, colspan=1)
+    #ax1 = fig.add_subplot(1, 1, 1)
+    ax1 = plt.subplot2grid((10, 1), (0, 0), rowspan=8, colspan=1)
+    ax2 = plt.subplot2grid((10, 1), (8, 0), rowspan=2, colspan=1)
 
 
     # PLOT DATA
@@ -372,39 +462,98 @@ def bode_plot(df, sim):
     ax1.plot(np.arange(XMIN, XMAX + 1, 1), lin(np.log10(np.arange(XMIN, XMAX+1, 1)), *par2), color = '#00b4ff', linewidth = 2, linestyle = 'dashed', label = 'y = c + dx')
 
 
+    # ARANCIONE
+    q1 = 'a = ' + format(a, '1.1f') + ' +/- ' + format(err_a, '1.1f') + ' dB'
+    m1 = 'b = ' + format(b, '1.2f') + ' +/- ' + format(err_b, '1.2f') + ' dB/dec'
+    chisq1 = '$\chi^{2}$ / ndf = ' + format(chi21, '1.2f') + ' / ' + format(len(data1['log10f (dec)']) - 2, '1.0f') 
+    sigmap1 = '\u03C3$_{post}$ = ' + format(sigma_post1, '1.2f') + ' dB'
+
+    # BLU
+    q2 = 'c = ' + format(c, '1.1f') + ' +/- ' + format(err_c, '1.1f') + ' dB'
+    m2 = 'd = ' + format(d, '1.2f') + ' +/- ' + format(err_d, '1.2f') + ' dB/dec'
+    chisq2 = '$\chi^{2}$ / ndf = ' + format(chi22, '1.2f') + ' / ' + format(len(data2['log10f (dec)']) - 2, '1.0f') 
+    sigmap2 = '\u03C3$_{post}$ = ' + format(sigma_post2, '1.2f') + ' dB'
+
+    ax1.text(0.42, 0.60, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
+
+    # ARANCIONE
+    ax1.text(0.40, 0.35, q1 + '\n' + m1 + '\n' + chisq1 + '\n' + sigmap1, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+            bbox = dict( facecolor = '#FF4B00', edgecolor = '#FF4B00', alpha = 0.1, linewidth = 2 ))
+
+    # BLU        
+    ax1.text(0.40, 0.10, q2 + '\n' + m2 + '\n' + chisq2 + '\n' + sigmap2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+            bbox = dict( facecolor = '#00b4ff', edgecolor = '#00b4ff', alpha = 0.1, linewidth = 2 ))
+
+
+    # DRAW RESIDUALS
+
+    # ARANCIONE
+    ax2.errorbar(data1['freq (Hz)'], res1, xerr = 0, yerr = data1['sigma Hr (dB)'], marker = '.', markersize = 13,
+                elinewidth=1, color = '#000000', ecolor = '#FF4B00', linewidth=0, capsize=2, label = 'Measures')
+
+    # BLU 
+    ax2.errorbar(data2['freq (Hz)'], res2, xerr = 0, yerr = data2['sigma Hr (dB)'], marker = '.', markersize = 13,
+                elinewidth=1, color = '#000000', ecolor = '#00b4ff', linewidth=0, capsize=2, label = 'Measures')
+
+    # DRAW DASHED 'ZERO' LINE
+    ax2.axhline(color = '#000000', linewidth = 0.5, linestyle = 'dashed')
+
     # PLOT TITLE
     ax1.set_title('Shaper - Bode Plot', fontsize=32)
 
     # AXIS LABELS
     # ax1.set_xlabel('log$_{10}$(freq.) (dec)', fontsize = 24, loc = 'right')
     ax1.set_ylabel('H (dB)', fontsize = 24, loc = 'top', labelpad = 0)
-    ax1.set_xlabel('frequency (Hz)', fontsize = 24, loc = 'right')
+    ax2.set_xlabel('frequency (Hz)', fontsize = 24, loc = 'right')
+    ax2.set_ylabel('H - fit (dB)', fontsize = 24, loc = 'center', labelpad = 0)
 
     # AXIS TICKS
-    ax1.tick_params(axis = 'x', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'x', which = 'major', labelsize = 0, direction = 'in', length = 10)
     ax1.tick_params(axis = 'y', which = 'major', labelsize = 22, direction = 'in', length = 10)
     ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
     ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
     ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
     ax1.minorticks_on()
+    ax2.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax2.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax2.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax2.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax2.minorticks_on()
 
     # PLOT RANGE
     ax1.set_xlim(left = XMIN, right = XMAX)
     ax1.set_ylim(bottom = YMIN, top = YMAX)
+    ax2.set_xlim(left = RESXMIN, right = RESXMAX)
+    ax2.set_ylim(bottom = RESYMIN, top = RESYMAX)
     
 
     # MAKE LEGEND
     handles, labels = ax1.get_legend_handles_labels()
     order = [3, 0, 1, 2]
-    ax1.legend([handles[idx] for idx in order], [labels[idx] for idx in order], loc = 'best', prop = {'size': 22}, 
-                ncol = 2, frameon = True, fancybox = False, framealpha = 1)
+    ax1.legend([handles[idx] for idx in order], [labels[idx] for idx in order], loc = 'upper left', prop = {'size': 20}, 
+                ncol = 1, frameon = True, fancybox = False, framealpha = 1)
 
 
-
-    
     ax1.set_xscale('log')
+    ax2.set_xscale('log')
+    
     
     # SAVE FIGURE
     #fig.savefig('../Plots/Shaper/bode_plot.png', dpi = 300, facecolor = 'white')
     
     plt.show()
+
+
+def get_ft_bode():
+    
+    print(
+        'f_t_bode = ' + format(ft_bode * 1e-3, '.1f') + ' +/- ' + format(sigma_ft_bode * 1e-3, '.1f') + '   kHz'
+    )
+
+def get_ft_comp():
+
+    l = compatib(ft_bode, ft_th, sigma_ft_bode, sigma_ft_th)
+
+    print(
+        'Compatibilità \u03BB = ' + format(l, '.2f')
+    )
