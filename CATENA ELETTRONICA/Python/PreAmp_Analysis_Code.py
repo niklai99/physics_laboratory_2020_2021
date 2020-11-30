@@ -417,8 +417,8 @@ def preamp_bode_plot(df, sim):
     global sigma_ft_bode
 
     # CONSTANTS
-    XMIN = 0.9
-    XMAX = 6.1
+    XMIN = 8
+    XMAX = 1.2 * 1e6
     YMIN = -42
     YMAX = 30
 
@@ -546,15 +546,15 @@ def preamp_bode_plot(df, sim):
     y_int = lin(x_int, *par1)
 
     # PLOT DATA
-    ax1.errorbar(df['log10f (dec)'], df['H (dB)'], xerr = 0, yerr = df['sigma H (dB)'], marker = '.', markersize = 13,
+    ax1.errorbar(df['freq (Hz)'], df['H (dB)'], xerr = 0, yerr = df['sigma Hr (dB)'], marker = '.', markersize = 13,
                 elinewidth=1, color = '#000000', linewidth=0, capsize=2, label = 'Measures')
     
     # PLOT SIMULATIONS
-    ax1.plot(sim['f'], sim['H'], color = '#4b00ff', linewidth = 1, linestyle = '-', label = 'Simulation')
+    ax1.plot(10**sim['f'], sim['H'], color = '#4b00ff', linewidth = 1, linestyle = '-', label = 'Simulation')
 
     # PLOT FIT FUNCTIONS
-    ax1.plot(np.arange(XMIN, XMAX + 1, 1), lin(np.arange(XMIN, XMAX + 1, 1), *par1), color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'y = c + dx')
-    ax1.plot(np.arange(XMIN, XMAX + 1, 1), lin(np.arange(XMIN, XMAX + 1, 1), *par2), color = '#00b4ff', linewidth = 2, linestyle = 'dashed', label = 'y = a + bx')
+    ax1.plot(np.arange(XMIN, XMAX + 1, 1), lin(np.log10(np.arange(XMIN, XMAX+1, 1)), *par1), color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'y = c + dx')
+    ax1.plot(np.arange(XMIN, XMAX + 1, 1), lin(np.log10(np.arange(XMIN, XMAX+1, 1)), *par2), color = '#00b4ff', linewidth = 2, linestyle = 'dashed', label = 'y = a + bx')
 
     # DRAW INTERSECTION LINE
     # ax1.vlines(x = x_int, ymin = YMIN, ymax = y_int, color = '#000000', linestyle = 'dotted')
@@ -587,12 +587,12 @@ def preamp_bode_plot(df, sim):
     # DRAW RESIDUALS
 
     # ARANCIONE
-    ax2.errorbar(data1['log10f (dec)'], res1, xerr = 0, yerr = data1['sigma Hr (dB)'], marker = '.', markersize = 13,
-                elinewidth=1, color = '#FF4B00', linewidth=0, capsize=2, label = 'Measures')
+    ax2.errorbar(data1['freq (Hz)'], res1, xerr = 0, yerr = data1['sigma Hr (dB)'], marker = '.', markersize = 13,
+                elinewidth=1, color = '#000000', ecolor = '#FF4B00', linewidth=0, capsize=2, label = 'Measures')
 
     # BLU 
-    ax2.errorbar(data2['log10f (dec)'], res2, xerr = 0, yerr = data2['sigma Hr (dB)'], marker = '.', markersize = 13,
-                elinewidth=1, color = '#00b4ff', linewidth=0, capsize=2, label = 'Measures')
+    ax2.errorbar(data2['freq (Hz)'], res2, xerr = 0, yerr = data2['sigma Hr (dB)'], marker = '.', markersize = 13,
+                elinewidth=1, color = '#000000', ecolor = '#00b4ff', linewidth=0, capsize=2, label = 'Measures')
 
     # DRAW DASHED 'ZERO' LINE
     ax2.axhline(color = '#000000', linewidth = 0.5, linestyle = 'dashed')
@@ -603,7 +603,7 @@ def preamp_bode_plot(df, sim):
     # AXIS LABELS
     # ax1.set_xlabel('log$_{10}$(freq.) (dec)', fontsize = 24, loc = 'right')
     ax1.set_ylabel('H (dB)', fontsize = 24, loc = 'top', labelpad = 0)
-    ax2.set_xlabel('log$_{10}$(freq.) (dec)', fontsize = 24, loc = 'right')
+    ax2.set_xlabel('frequency (Hz)', fontsize = 24, loc = 'right')
     ax2.set_ylabel('H - fit (dB)', fontsize = 24, loc = 'center', labelpad = 0)
 
     # AXIS TICKS
@@ -630,8 +630,11 @@ def preamp_bode_plot(df, sim):
     order = [3, 0, 2, 1]
     ax1.legend([handles[idx] for idx in order], [labels[idx] for idx in order], loc = 'best', prop = {'size': 22}, 
                 ncol = 2, frameon = True, fancybox = False, framealpha = 1)
-    
 
+    
+    ax1.set_xscale('log')
+    ax2.set_xscale('log')
+    
     # SAVE FIGURE
     #fig.savefig('../Plots/PreAmp/bode_plot.png', dpi = 300, facecolor = 'white')
     
