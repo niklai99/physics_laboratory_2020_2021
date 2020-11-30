@@ -1,9 +1,11 @@
 # RELAZIONE CONCLUSA! :sparkles:
 
-## Data di consegna: 29 - 11 - 2020
+## Data di consegna: _29 - 11 - 2020_
 
-### La repository è pubblica &rarr; è possibile usufruire di tutto ciò che è contenuto al suo interno! :tada: :confetti_ball:
-
-#### Se mi citate nelle relazioni mi fate molto contento, tipo a fondo pagina :smile: (basta il link al mio profilo GitHub)
-
-#### Se avete correzioni o suggerimenti contattatemi! Thanks :heart:
+### Obiettivo
+ 
+* Verificare la linearità di un _amplificatore operazionale_ 
+* Misurare il _guadagno_ di un circuito amplificatore
+* Verificare il comportamento _derivatore_ di un filtro attivo passa alto
+* Misurare la _frequenza di taglio_ di tale filtro
+* Calibrare una scheda Arduino Due
