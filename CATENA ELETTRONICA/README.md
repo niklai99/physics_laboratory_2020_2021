@@ -1,7 +1,31 @@
-# ESPERIENZA DELLA CATENA ELETTRONICA - IN CORSO
+# ESPERIENZA: CATENA ELETTRONICA
 
-## Devo (ad oggi) ancora iniziare la stesura della relazione... 
+## FASE DI ANALISI DATI 
 
-### Per tenere traccia dell'analisi dati che sto sviluppando fare riferimento al Notebook "PreAmp - Analysis" nella cartella Python
+### Preamplificatore  &rarr; analisi ( _quasi_ ) completata
 
-### Alternativamente premi sul link [PreAmp - Analysis](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2021/blob/master/CATENA%20ELETTRONICA/Python/PreAmp%20-%20Analysis.ipynb)
+[JUPYTER
+NOTEBOOK](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2021/blob/master/CATENA%20ELETTRONICA/Python/PreAmp%20-%20Analysis.ipynb)
+: nel notebook è riportata passo passo l'analisi dati riguardante il preamplificatore. In particolare:
+
+* Verifica accordo tra misure sperimentali e stime teoriche
+* Verifica della linearità del preamplificatore
+* Stima della capacità di feedback 
+* Stima del tempo caratteristico dello smorzamento esponenziale
+* Analisi in frequenza e stima della frequenza di taglio
+
+**NOTA BENE:** L'analisi della forma d'onda acquisita con Arduino è riportata
+[qui](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2021/blob/master/CATENA%20ELETTRONICA/Python/Arduino%20-%20Noise%20Reduction.ipynb)!
+Sono riportati anche alcuni tentativi di riduzione del rumore di fondo, ma l'analisi ancora non è conclusa. Una media
+mobile sembra essere la soluzione più facile dal punto di vista della propagazione degli errori!
+
+### Shaper CR-RC  &rarr; analisi incompleta
+
+[JUPYTER
+NOTEBOOK](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2021/blob/master/CATENA%20ELETTRONICA/Python/Shaper%20-%20Analysis.ipynb):
+il notebook viene aggiornato _molto_ spesso :smile:
+
+### Catena Completa  &rarr; analisi assente
+
+Prossimamente su questi schermi :heart:
+
