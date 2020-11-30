@@ -694,7 +694,7 @@ def arduino_ideal_shaper_plot(data, sim):
     ax1.legend(loc = 'best', prop = {'size': 20}, ncol = 1, frameon = True, fancybox = False, framealpha = 1)
 
     # SAVE FIGURE
-    #fig.savefig('../Plots/Shaper/shaper_ideal_waveform.png', dpi = 300, facecolor = 'white')
+    #fig.savefig('../Plots/Shaper/shaper_ideal_waveform_newcalib.png', dpi = 300, facecolor = 'white')
 
     plt.show()
 
