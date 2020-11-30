@@ -137,6 +137,10 @@ err_d :float
 
 ft_bode : float
 sigma_ft_bode : float
+f_low : float
+sigma_f_low : float
+f_high : float
+sigma_f_high : float
 
 
 
@@ -312,6 +316,10 @@ def bode_plot(df, sim):
 
     global ft_bode
     global sigma_ft_bode
+    global f_low
+    global sigma_f_low
+    global f_high
+    global sigma_f_high
     # ----------------------------
 
     # ----------------- PLOT RANGE
@@ -442,6 +450,55 @@ def bode_plot(df, sim):
     y_int = lin(x_int, *par1)
 
 
+    df_max = df.loc[df['H (dB)'] == df['H (dB)'].max()]
+    y_max = df_max['H (dB)'].max()
+    err_ymax = df_max['sigma Hr (dB)'].max()
+    y_red = y_max - 3
+    err_yred = err_ymax
+
+    x_low = (y_red - a) * b**-1
+    x_high = (y_red - c) * d**-1
+
+    f_low = 10**(x_low)
+    f_high = 10**(x_high)
+
+
+    # COMPUTE DERIVATIVES 2
+    def xlowa(x):
+        return (y_red - x_low) * b**-1
+    derxlowa = derivative(xlowa, a, dx=1e-8)
+
+    def xlowb(x):
+        return (y_red - a) * x**-1
+    derxlowb = derivative(xlowb, b, dx=1e-8)
+
+    def xlowy(x):
+        return (x - a) * b**-1
+    derxlowy = derivative(xlowy, y_red, dx=1e-8)
+
+    def xhighc(x):
+        return (y_red - x) * d**-1
+    derxhighc = derivative(xhighc, c, dx=1e-8)
+
+    def xhighd(x):
+        return (y_red - c) * x**-1
+    derxhighd = derivative(xhighd, d, dx=1e-8)
+
+    def xhighy(x):
+        return (x - c) * d**-1
+    derxhighy = derivative(xhighy, y_red, dx=1e-8)
+
+
+    sigma_x_low = np.sqrt( (derxlowa * err_a)**2 +  (derxlowb * err_b)**2 + (derxlowy * err_yred)**2 +
+                            2 * derxlowa * derxlowb * cov1[0][1])
+
+    sigma_x_high = np.sqrt( (derxhighc * err_c)**2 +  (derxhighd * err_d)**2 + (derxhighy * err_yred)**2 +
+                            2 * derxhighc * derxhighd * cov2[0][1])
+
+    sigma_f_low = sigma_x_low * 10**x_low * np.log(10)
+            
+    sigma_f_high = sigma_x_high * 10**x_high * np.log(10)
+
 
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,10))
@@ -484,6 +541,11 @@ def bode_plot(df, sim):
     ax1.text(0.40, 0.10, q2 + '\n' + m2 + '\n' + chisq2 + '\n' + sigmap2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
             bbox = dict( facecolor = '#00b4ff', edgecolor = '#00b4ff', alpha = 0.1, linewidth = 2 ))
 
+
+
+    #   ax1.vlines(x = f_low, ymin = YMIN, ymax = y_red, color = '#000000', linestyle = 'dotted')
+    #   ax1.vlines(x = f_high, ymin = YMIN, ymax = y_red, color = '#000000', linestyle = 'dotted')
+    #   ax1.axhline(y = y_red, color = '#000000', linewidth = 0.5, linestyle = 'dashed')
 
     # DRAW RESIDUALS
 
@@ -547,7 +609,7 @@ def bode_plot(df, sim):
 def get_ft_bode():
     
     print(
-        'f_t_bode = ' + format(ft_bode * 1e-3, '.1f') + ' +/- ' + format(sigma_ft_bode * 1e-3, '.1f') + '   kHz'
+        'ft_bode = ' + format(ft_bode * 1e-3, '.1f') + ' +/- ' + format(sigma_ft_bode * 1e-3, '.1f') + '  kHz'
     )
 
 def get_ft_comp():
@@ -556,4 +618,11 @@ def get_ft_comp():
 
     print(
         'Compatibilità \u03BB = ' + format(l, '.2f')
+    )
+
+def get_bw():
+
+    print(
+        'f_low = ' + format(f_low * 1e-3, '.1f') + ' +/- ' + format(sigma_f_low * 1e-3, '.1f') + '  kHz\n' + 
+        'f_high = ' + format(f_high * 1e-3, '.1f') + ' +/- ' + format(sigma_f_high * 1e-3, '.1f') + '  kHz'
     )
