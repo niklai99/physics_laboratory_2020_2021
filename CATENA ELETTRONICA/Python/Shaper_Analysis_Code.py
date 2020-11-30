@@ -664,13 +664,14 @@ def arduino_calib_plot(data):
 
 
 ####### ARDUINO PLOT
-def arduino_ideal_shaper_plot(data):
+def arduino_ideal_shaper_plot(data, sim):
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,8))
     ax1 = fig.add_subplot(1, 1, 1)
 
     # PLOT DATA
     ax1.plot(data['time (ms)'], data['V (V)'], color = '#227FF7', linewidth = 2, label = 'Data')
+    ax1.plot(sim['time (ms)'], sim['V (V)'], color = '#FF4B00', linewidth = 2, label = 'Simulation')
 
     # PLOT TITLE
     ax1.set_title('Shaper - Ideal PreAmp Arduino Waveform', fontsize = 32)
@@ -687,10 +688,18 @@ def arduino_ideal_shaper_plot(data):
     ax1.minorticks_on()
 
     # PLOT RANGE
-    ax1.set_xlim(left = 0.62, right = 0.80)
-    ax1.set_ylim(bottom = 0, top = 0.6)
+    ax1.set_xlim(left = 0.6365, right = 0.8)
+    ax1.set_ylim(bottom = -0.04, top = 0.5)
+
+    ax1.legend(loc = 'best', prop = {'size': 20}, ncol = 1, frameon = True, fancybox = False, framealpha = 1)
 
     # SAVE FIGURE
-    #fig.savefig('../Logbook/shaper_base_arduino_waveform.png', dpi = 300)
+    #fig.savefig('../Plots/Shaper/shaper_ideal_waveform.png', dpi = 300, facecolor = 'white')
 
     plt.show()
+
+def get_sim(filename):
+
+    data = pd.read_csv(filename, sep = '\t', index_col = False)
+
+    return data
