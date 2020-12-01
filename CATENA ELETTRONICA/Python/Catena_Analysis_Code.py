@@ -28,8 +28,27 @@ sigma_D = 0.58 * D * RES
 sigma_R1a = np.sqrt( (sigma_L* R1a)**2 + sigma_D**2 )
 sigma_R2a = np.sqrt( (sigma_L* R2a)**2 + sigma_D**2 )
 
+### ------------------------------------- MISURE SPERIMENTALI -------------------------------------
 
+#Generatore
+V_gen = 1.02 #volt
+sigma_V_gen = propagazione_cursori(0.5, V_gen) #volt
 
+#Shaper
+V_shaper = 0.26 #volt
+sigma_V_shaper = propagazione_cursori(0.05, V_shaper) #volt
+
+#Catena Completa
+V_catena = 2.32 #volt
+sigma_V_catena = propagazione_cursori(0.5, V_catena) #volt
+
+### ------------------------------------------ STIME -----------------------------------------------
+
+G_sper = 1 + R2a / R1a
+sigma_G_sper = np.sqrt( (sigma_D / R1a)**2 + (sigma_D / R2a)**2 + 2 * sigma_L**2)
+
+V_catena_expected = G_sper * V_shaper
+sigma_V_catena_expected = np.sqrt( (V_shaper * sigma_G_sper)**2 + (G_sper * sigma_V_shaper)**2 )
 
 
 
@@ -57,7 +76,7 @@ def misure_dirette():
 ####### PROPAGAZIONE SUI CURSORI
 def propagazione_cursori(Vdiv, measure):
 
-    sigma = np.sqrt( (0.04 * Vdiv)**2 + (0.015 * measure)**2)
+    sigma = np.sqrt( (0.04 * Vdiv)**2 + (0.015 * measure)**2 )
 
     return sigma
 
