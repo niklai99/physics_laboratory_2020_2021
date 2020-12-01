@@ -29,11 +29,25 @@ NOTEBOOK](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2
 Sono riportati anche alcuni tentativi di riduzione del rumore di fondo, ma l'analisi ancora non è conclusa. Una media
 mobile sembra essere la soluzione più facile dal punto di vista della propagazione degli errori!
 
-### Shaper CR-RC  &rarr; analisi incompleta
+### Shaper CR-RC  &rarr; analisi completata
 
 [JUPYTER
 NOTEBOOK](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2021/blob/master/CATENA%20ELETTRONICA/Python/Shaper%20-%20Analysis.ipynb):
-il notebook viene aggiornato _molto_ spesso :smile:
+: nel notebook è riportata passo passo l'analisi dati riguardante il preamplificatore. In particolare:
+
+* Verifica accordo tra misure sperimentali e stime teoriche
+* Analisi in frequenza e stima della frequenza di taglio
+  
+    ![THEBODE](./Plots/Shaper/bode_plot.png)
+
+* Studio delle forme d'onda acquisite con Arduino dello Shaper collegato a
+  * Generatore = preamplificatore ideale
+        ![SHAPER IDEALE](./Plots/Shaper/shaper_ideal_waveform_newcalib.png)
+  * Preamplificatore
+        ![SHAPER PREAMP](./Plots/Shaper/shaper_preamp_waveform_newcalib.png)
+  * Preamplificatore con compensazione di _pole-zero_
+        ![SHAPER PREAMP RPZ](./Plots/Shaper/shaper_preamp_rpz_waveform_newcalib.png)
+
 
 ### Catena Completa  &rarr; analisi assente
 
