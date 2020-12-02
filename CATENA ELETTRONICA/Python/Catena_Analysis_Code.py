@@ -297,24 +297,90 @@ def max_values_calib(data):
 def linearity_plot(data):
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,8))
-    ax1 = fig.add_subplot(1, 1, 1)
+    ax1 = fig.add_subplot(1, 2, 1)
+    ax2 = fig.add_subplot(1, 2, 2)
+
+    data.drop(axis = 0, labels = [0, 8], inplace = True)
+
+    # CONSTANTS
+    XMIN = 30
+    XMAX = 185
+    YMIN = 0.25
+    YMAX = 2.75
+    RESXMIN = XMIN
+    RESXMAX = XMAX
+    RESYMIN = -0.025
+    RESYMAX = 0.025
     
     # PERFORM THE FIT
     par_lin, cov_lin = curve_fit(f = lin, xdata = data['charge'], ydata = data['V (V)'], sigma=data['err V (V)'], absolute_sigma=True)
     func = lin(data['charge'], *par_lin)
-    
+
+    # GET FIT PARAMETERS AND PARAMETER ERRORS
+    error = []
+
+    for i in range(len(par_lin)):
+        try:
+            error.append(np.absolute(cov_lin[i][i])**0.5)
+        except:
+            error.append( 0.00 )
+
+    fit_par = par_lin
+    fit_err = np.array(error)
+
+    a = fit_par[0]
+    b = fit_par[1]
+    err_a = fit_err[0]
+    err_b = fit_err[1]
+
+    # COMPUTE RESIDUALS
+    res = data['V (V)'] - func
+
+    # COMPUTE CHI2
+    chi2 = np.sum((res/data['err V (V)'])**2)
+
+    # COMPUTE SIGMA_POST
+    sigma_post = np.sqrt( np.sum( res**2 ) / (len(data['charge']) - 2) ) 
+
+
     # PLOT DATA
-    ax1.plot(data['charge'], data['V (V)'], color = '#000000', linewidth = 0, marker = '.', markersize = 15, label = 'Data')
+    ax1.errorbar(data['charge'], data['V (V)'], xerr = 0, yerr = data['err V (V)'], color = '#000000', linewidth = 0, marker = '.', markersize = 13, 
+                elinewidth=1, capsize = 2,  label = 'Data')
     
     # PLOT FIT FUNCTION
-    ax1.plot(np.arange(20, 200, 0.1), lin(np.arange(20, 200, 0.1), *par_lin), color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'Fit')
+    ax1.plot(np.arange(XMIN, XMAX, 0.1), lin(np.arange(XMIN, XMAX, 0.1), *par_lin), color = '#FF4B00', linewidth = 2, linestyle = 'solid', label = 'Fit')
+    
+    # DRAW DASHED 'ZERO' LINE
+    ax2.axhline(color = '#000000', linewidth = 0.5, linestyle = 'dashed')
+
+    # DRAW RESIDUALS
+    ax2.errorbar(data['charge'], res, xerr=0, yerr=data['err V (V)'], marker = '.', markersize = 13, 
+                elinewidth=1, color = '#000000', linewidth=0, capsize=2, label = 'Residuals')
+
+
+    # PRINT FIT RESULTS ON THE PLOT
+    q = 'a = ' + format(a, '1.3f') + ' V +/- ' + format(err_a, '1.3f') + ' V'
+    m = 'b = ' + format(b * 1e3, '1.2f') + ' +/- ' + format(err_b * 1e3, '1.2f') + ' nF$^{-1}$'
+    chisq = '$\chi^{2}$ / ndf = ' + format(chi2, '1.2f') + ' / ' + format(len(data['charge']) - len(par_lin), '1.0f') 
+    sigmap = '\u03C3$_{post}$ = ' + format(sigma_post, '1.3f') + ' V'
+
+    ax1.text(0.15, 0.85, 'Fit Function', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
+    ax1.text(0.20, 0.80, 'y = a + bx', fontsize = 18, transform=ax1.transAxes)
+
+    ax1.text(0.45, 0.35, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
+    ax1.text(0.45, 0.28, q, fontsize = 18, transform=ax1.transAxes)
+    ax1.text(0.45, 0.22, m, fontsize = 18, transform=ax1.transAxes)
+    ax1.text(0.45, 0.16, chisq, fontsize = 18, transform=ax1.transAxes)
+    ax1.text(0.45, 0.10, sigmap, fontsize = 18, transform=ax1.transAxes)
     
     # PLOT TITLE
-    ax1.set_title('Catena Elettronica - Vmax vs Qin', fontsize = 32)
+    fig.suptitle('PreAmp - $V_{max}$ vs $Q_{in}$ Plot', fontsize=32)
     
     # AXIS LABELS
-    ax1.set_xlabel('Qin (pF)', fontsize = 26, loc = 'right')
-    ax1.set_ylabel('Vmax (V)', fontsize = 26, loc = 'top')
+    ax1.set_xlabel('$Q_{in}$ (pC)', fontsize = 24, loc = 'right')
+    ax1.set_ylabel('$V_{max}$ (V)', fontsize = 24, loc = 'top', labelpad=0)
+    ax2.set_xlabel('$Q_{in}$ (pC)', fontsize = 24, loc = 'right')
+    ax2.set_ylabel('$V_{max}$ - fit (V)', fontsize = 24, loc = 'top', labelpad=-15)
     
     # AXIS TICKS
     ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
@@ -322,13 +388,292 @@ def linearity_plot(data):
     ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
     ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
     ax1.minorticks_on()
+    ax2.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax2.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax2.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax2.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax2.minorticks_on()
+    ax2.yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
+    ax2.yaxis.get_offset_text().set_fontsize(22)
+    ax2.ticklabel_format(axis = 'y', style = 'scientific', scilimits = (0, 0))
     
     # PLOT RANGE
-    ax1.set_xlim(left = 20, right = 200)
-    ax1.set_ylim(bottom = 0.25, top = 2.75)
+    ax1.set_xlim(left = XMIN, right = XMAX)
+    ax1.set_ylim(bottom = YMIN, top = YMAX)
+    ax2.set_xlim(left = RESXMIN, right = RESXMAX)
+    ax2.set_ylim(bottom = RESYMIN, top = RESYMAX)
     
     # SAVE FIGURE
-    #fig.savefig('../Logbook/catena_linearity.png', dpi = 300, facecolor = 'white')
+    #fig.savefig('../Plots/Catena/catena_linearity.png', dpi = 300, facecolor = 'white')
     
     plt.show()
 
+####### READ DATA
+def get_data(file_name):
+
+    df = pd.read_csv(file_name, index_col = False, header = None, sep = '\t')
+    df.index = np.arange(1, len(df)+1)
+
+    return df
+
+
+##### PROPAGAZIONE FUNZIONE DI TRASFERIMENTO
+def propagazione_T(T, Vin, Vout, Vdivin, Vdivout):
+
+    sigmaL = 0.040
+    sigmaK = 0.015
+
+    sigma = T * np.sqrt( (sigmaL * Vdivin / Vin)**2 + (sigmaL * Vdivout / Vout)**2 + 2 * (sigmaK)**2)
+
+    return sigma
+
+
+
+##### PROPAGAZIONE FUNZIONE DI TRASFERIMENTO SENZA CONTRIBUTO DI SCALA
+def propagazione_Tr(T, Vin, Vout, Vdivin, Vdivout):
+
+    sigmaL = 0.040
+
+    sigma = T * np.sqrt( (sigmaL * Vdivin / Vin)**2 + (sigmaL * Vdivout / Vout)**2)
+
+    return sigma
+
+
+def bode_plot(df):
+
+    #global c 
+    #global d 
+    #global err_c 
+    #global err_d 
+    
+    #global e 
+    #global f
+    #global err_e 
+    #global err_f
+
+    #global ft_bode
+    #global sigma_ft_bode
+
+    # CONSTANTS
+    XMIN = 7
+    XMAX = 1.3 * 1e5
+    YMIN = -27
+    YMAX = 27
+
+    RESXMIN = XMIN
+    RESXMAX = XMAX
+    RESYMIN = -0.5
+    RESYMAX = 0.5
+
+    # ARANCIONE
+    data1 = df.iloc[:6, :]
+
+    # BLU
+    data2 = df.iloc[19:, :]
+
+    # FIG SETTINGS AND AXES
+    fig = plt.figure(figsize=(16,10))
+    ax1 = plt.subplot2grid((10, 1), (0, 0), rowspan=8, colspan=1)
+    ax2 = plt.subplot2grid((10, 1), (8, 0), rowspan=2, colspan=1)
+
+    # PERFORM THE FITS
+
+    # ARANCIONE
+    par1, cov1 = curve_fit(f = lin, xdata = data1['log10f (dec)'], ydata = data1['H (dB)'], sigma = data1['sigma Hr (dB)'], absolute_sigma = True)
+    func1 = lin(df['log10f (dec)'], *par1)
+
+    # BLU
+    par2, cov2 = curve_fit(f = lin, xdata = data2['log10f (dec)'], ydata = data2['H (dB)'], sigma = data2['sigma Hr (dB)'], absolute_sigma = True)
+    func2 = lin(df['log10f (dec)'], *par2)
+
+    # GET FIT PARAMETERS AND PARAMETER ERRORS
+    error1 = []
+    error2 = []
+
+    # ARANCIONE
+    for i in range(len(par1)):
+        try:
+            error1.append(np.absolute(cov1[i][i])**0.5)
+        except:
+            error1.append( 0.00 )
+
+    ## BLU
+    for i in range(len(par2)):
+        try:
+            error2.append(np.absolute(cov2[i][i])**0.5)
+        except:
+            error2.append( 0.00 )
+
+    ## ARANCIONE
+    fit_par1 = par1
+    fit_err1 = np.array(error1)
+
+    # BLU
+    fit_par2 = par2
+    fit_err2 = np.array(error2)
+
+    ## ARANCIONE
+    c = fit_par1[0]
+    d = fit_par1[1]
+    err_c = fit_err1[0]
+    err_d = fit_err1[1]
+
+    ## BLU
+    e = fit_par2[0]
+    f = fit_par2[1]
+    err_e = fit_err2[0]
+    err_f = fit_err2[1]
+
+    # COMPUTE RESIDUALS
+
+    # ARANCIONE
+    res1 = data1['H (dB)'] - lin(data1['log10f (dec)'], c, d)
+
+    # BLU
+    res2 = data2['H (dB)'] - lin(data2['log10f (dec)'], e, f)
+
+    # COMPUTE CHI2
+
+    # ARANCIONE
+    chi21 = np.sum((res1/data1['sigma Hr (dB)'])**2)
+
+    # BLU
+    chi22 = np.sum((res2/data2['sigma Hr (dB)'])**2)
+
+    # COMPUTE SIGMA_POST
+
+    # ARANCIONE
+    sigma_post1 = np.sqrt( np.sum( res1**2 ) / (len(data1['log10f (dec)']) - 2) )
+
+    # BLU
+    sigma_post2 = np.sqrt( np.sum( res2**2 ) / (len(data2['log10f (dec)']) - 2) )
+
+    ## COMPUTE DERIVATIVES
+    #def xc(x):
+    #    return (e - x) / (d - f)
+    #derc = derivative(xc, c, dx=1e-8)
+
+    #def xd(x):
+    #    return (e - c) / (x - f)
+    #derd = derivative(xd, d, dx=1e-8)
+
+    #def xe(x):
+    #    return (x - c) / (d - f)
+    #dere = derivative(xe, e, dx=1e-8)
+
+    #def xf(x):
+    #    return (e - c) / (d - x)
+    #derf = derivative(xf, f, dx=1e-8)
+
+    ##print(format(derc, '1.3f'))
+    ##print(format(derd, '1.3f'))
+    ##print(format(dere, '1.3f'))
+    ##print(format(derf, '1.3f'))
+
+    ## COMPUTE X AND Y INTERSECTION
+    #x_int = (e - c) / (d - f)
+    #sigma_x_int = np.sqrt( (derc * err_c)**2 +  (derd * err_d)**2 + (dere * err_e)**2 + (derf * err_f)**2 +
+    #                        2 * derc * derd * cov1[0][1] + 2 * dere * derf * cov2[0][1] )
+
+    ##print(format(x_int, '1.3f'))
+    ##print(format(sigma_x_int, '1.3f'))
+
+    #ft_bode = 10**x_int
+    #sigma_ft_bode  = sigma_x_int * 10**x_int * np.log(10)
+
+    #y_int = lin(x_int, *par1)
+
+    # PLOT DATA
+    ax1.errorbar(df['freq (Hz)'], df['H (dB)'], xerr = 0, yerr = df['sigma Hr (dB)'], marker = '.', markersize = 13,
+                elinewidth=1, color = '#000000', linewidth=0, capsize=2, label = 'Measures')
+    
+    # PLOT SIMULATIONS
+    #ax1.plot(10**sim['f'], sim['H'], color = '#4b00ff', linewidth = 1, linestyle = '-', label = 'Simulation')
+
+    # PLOT FIT FUNCTIONS
+    ax1.plot(np.arange(XMIN, XMAX + 1, 1), lin(np.log10(np.arange(XMIN, XMAX+1, 1)), *par1), color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'y = c + dx')
+    ax1.plot(np.arange(XMIN, XMAX + 1, 1), lin(np.log10(np.arange(XMIN, XMAX+1, 1)), *par2), color = '#00b4ff', linewidth = 2, linestyle = 'dashed', label = 'y = a + bx')
+
+    # DRAW INTERSECTION LINE
+    # ax1.vlines(x = x_int, ymin = YMIN, ymax = y_int, color = '#000000', linestyle = 'dotted')
+
+    # PRINT FIT RESULTS ON THE PLOT
+
+    # BLU
+    q2 = 'a = ' + format(e, '1.1f') + ' +/- ' + format(err_e, '1.1f') + ' dB'
+    m2 = 'b = ' + format(f, '1.2f') + ' +/- ' + format(err_f, '1.2f') + ' dB/dec'
+    chisq2 = '$\chi^{2}$ / ndf = ' + format(chi22, '1.0f') + ' / ' + format(len(data2['log10f (dec)']) - 2, '1.0f') 
+    sigmap2 = '\u03C3$_{post}$ = ' + format(sigma_post2, '1.2f') + ' dB'
+
+    # ARANCIONE
+    q1 = 'c = ' + format(c, '1.1f') + ' +/- ' + format(err_c, '1.1f') + ' dB'
+    m1 = 'd = ' + format(d, '1.2f') + ' +/- ' + format(err_d, '1.2f') + ' dB/dec'
+    chisq1 = '$\chi^{2}$ / ndf = ' + format(chi21, '1.2f') + ' / ' + format(len(data1['log10f (dec)']) - 2, '1.0f') 
+    sigmap1 = '\u03C3$_{post}$ = ' + format(sigma_post1, '1.2f') + ' dB'
+
+
+    ax1.text(0.05, 0.70, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
+
+    # ARANCIONE
+    ax1.text(0.05, 0.21, q1 + '\n' + m1 + '\n' + chisq1 + '\n' + sigmap1, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+            bbox = dict( facecolor = '#FF4B00', edgecolor = '#FF4B00', alpha = 0.1, linewidth = 2 ))
+
+    # BLU        
+    ax1.text(0.05, 0.45, q2 + '\n' + m2 + '\n' + chisq2 + '\n' + sigmap2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+            bbox = dict( facecolor = '#00b4ff', edgecolor = '#00b4ff', alpha = 0.1, linewidth = 2 ))
+
+    # DRAW RESIDUALS
+
+    # ARANCIONE
+    ax2.errorbar(data1['freq (Hz)'], res1, xerr = 0, yerr = data1['sigma Hr (dB)'], marker = '.', markersize = 13,
+                elinewidth=1, color = '#000000', ecolor = '#FF4B00', linewidth=0, capsize=2, label = 'Measures')
+
+    # BLU 
+    ax2.errorbar(data2['freq (Hz)'], res2, xerr = 0, yerr = data2['sigma Hr (dB)'], marker = '.', markersize = 13,
+                elinewidth=1, color = '#000000', ecolor = '#00b4ff', linewidth=0, capsize=2, label = 'Measures')
+
+    # DRAW DASHED 'ZERO' LINE
+    ax2.axhline(color = '#000000', linewidth = 0.5, linestyle = 'dashed')
+    
+    # PLOT TITLE
+    ax1.set_title('Catena Elettronica - Bode Plot', fontsize=32)
+
+    # AXIS LABELS
+    # ax1.set_xlabel('frequency (Hz)', fontsize = 0, loc = 'right')
+    ax1.set_ylabel('H (dB)', fontsize = 24, loc = 'top', labelpad = 0)
+    ax2.set_xlabel('frequency (Hz)', fontsize = 24, loc = 'right')
+    ax2.set_ylabel('H - fit (dB)', fontsize = 24, loc = 'center', labelpad = 0)
+
+    # AXIS TICKS
+    ax1.tick_params(axis = 'x', which = 'major', labelsize = 0, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'y', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax1.minorticks_on()
+    ax2.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax2.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax2.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax2.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax2.minorticks_on()
+
+    # PLOT RANGE
+    ax1.set_xlim(left = XMIN, right = XMAX)
+    ax1.set_ylim(bottom = YMIN, top = YMAX)
+    ax2.set_xlim(left = RESXMIN, right = RESXMAX)
+    ax2.set_ylim(bottom = RESYMIN, top = RESYMAX)
+
+    # MAKE LEGEND
+    #handles, labels = ax1.get_legend_handles_labels()
+    #order = [3, 0, 2, 1]
+    #ax1.legend([handles[idx] for idx in order], [labels[idx] for idx in order], loc = 'best', prop = {'size': 22}, 
+    #            ncol = 2, frameon = True, fancybox = False, framealpha = 1)
+
+    
+    ax1.set_xscale('log')
+    ax2.set_xscale('log')
+    
+    # SAVE FIGURE
+    #fig.savefig('../Plots/PreAmp/bode_plot.png', dpi = 300, facecolor = 'white')
+    
+    plt.show()
