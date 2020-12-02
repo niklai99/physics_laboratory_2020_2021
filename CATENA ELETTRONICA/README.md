@@ -51,5 +51,12 @@ NOTEBOOK](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2
 
 ### Catena Completa  &rarr; analisi assente
 
-Prossimamente su questi schermi :heart:
+[JUPYTER
+NOTEBOOK](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2021/blob/master/CATENA%20ELETTRONICA/Python/PreAmp%20-%20Analysis.ipynb)
+: nel notebook è riportata passo passo l'analisi dati riguardante la catena elettronica completa.  In particolare 
 
+* Verifica accordo tra misure sperimentali e stime teoriche
+* Verifica della linearità della catena 
+* Analisi in frequenza e stima della frequenza di taglio
+  
+    ![THEBODE](./Plots/Catena/bode_plot.png)
