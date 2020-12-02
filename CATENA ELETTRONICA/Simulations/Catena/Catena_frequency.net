@@ -1,0 +1,22 @@
+* D:\GitHub\physics_laboratory_2020_2021\CATENA ELETTRONICA\Simulations\Catena\Catena_frequency.asc
+V1 V+ 0 15
+V2 V- 0 -15
+XU1 0 A V+ V- N001 level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+Rin A IN 56.564k
+Rf_pre N001 A 696.060k
+Rg IN N002 25
+Vg1 N002 0 PULSE(0 1 1k 0 0 0 1m) AC 1 0
+Cf_pre N001 A 232p
+XU2 N003 N004 V+ V- N004 level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+Csh1 N003 N001 157p
+Rsh1 0 N003 101k
+Rsh2 N006 N004 99.9k
+Csh2 N006 0 159p
+Rpz1 N003 N001 1013200
+XU3 N006 N005 V+ V- OUT level.2 Avol=1Meg GBW=10Meg Slew=10Meg ilimit=25m rail=0 Vos=0 phimargin=45 en=0 enk=0 in=0 ink=0 Rin=500Meg
+R1a N005 0 9982
+R2a OUT N005 82393
+.ac dec 50 10 0.1Meg
+.lib UniversalOpamps2.sub
+.backanno
+.end

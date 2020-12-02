@@ -59,7 +59,18 @@ V_catena_expected = G_sper * V_shaper
 sigma_V_catena_expected = np.sqrt( (V_shaper * sigma_G_sper)**2 + (G_sper * sigma_V_shaper)**2 )
 
 
+c : float
+d : float
+err_c : float
+err_d : float
 
+e : float
+f : float
+err_e : float
+err_f : float
+
+ft_bode : float
+sigma_ft_bode : float
 
 
 ### ------------------------------------ ------------------- --------------------------------------
@@ -439,20 +450,20 @@ def propagazione_Tr(T, Vin, Vout, Vdivin, Vdivout):
     return sigma
 
 
-def bode_plot(df):
+def bode_plot(df, sim):
 
-    #global c 
-    #global d 
-    #global err_c 
-    #global err_d 
-    
-    #global e 
-    #global f
-    #global err_e 
-    #global err_f
+    global c 
+    global d 
+    global err_c 
+    global err_d 
 
-    #global ft_bode
-    #global sigma_ft_bode
+    global e 
+    global f
+    global err_e 
+    global err_f
+
+    global ft_bode
+    global sigma_ft_bode
 
     # CONSTANTS
     XMIN = 7
@@ -548,47 +559,47 @@ def bode_plot(df):
     # BLU
     sigma_post2 = np.sqrt( np.sum( res2**2 ) / (len(data2['log10f (dec)']) - 2) )
 
-    ## COMPUTE DERIVATIVES
-    #def xc(x):
-    #    return (e - x) / (d - f)
-    #derc = derivative(xc, c, dx=1e-8)
+    # COMPUTE DERIVATIVES
+    def xc(x):
+        return (e - x) / (d - f)
+    derc = derivative(xc, c, dx=1e-8)
 
-    #def xd(x):
-    #    return (e - c) / (x - f)
-    #derd = derivative(xd, d, dx=1e-8)
+    def xd(x):
+        return (e - c) / (x - f)
+    derd = derivative(xd, d, dx=1e-8)
 
-    #def xe(x):
-    #    return (x - c) / (d - f)
-    #dere = derivative(xe, e, dx=1e-8)
+    def xe(x):
+        return (x - c) / (d - f)
+    dere = derivative(xe, e, dx=1e-8)
 
-    #def xf(x):
-    #    return (e - c) / (d - x)
-    #derf = derivative(xf, f, dx=1e-8)
+    def xf(x):
+        return (e - c) / (d - x)
+    derf = derivative(xf, f, dx=1e-8)
 
-    ##print(format(derc, '1.3f'))
-    ##print(format(derd, '1.3f'))
-    ##print(format(dere, '1.3f'))
-    ##print(format(derf, '1.3f'))
+    #print(format(derc, '1.3f'))
+    #print(format(derd, '1.3f'))
+    #print(format(dere, '1.3f'))
+    #print(format(derf, '1.3f'))
 
-    ## COMPUTE X AND Y INTERSECTION
-    #x_int = (e - c) / (d - f)
-    #sigma_x_int = np.sqrt( (derc * err_c)**2 +  (derd * err_d)**2 + (dere * err_e)**2 + (derf * err_f)**2 +
-    #                        2 * derc * derd * cov1[0][1] + 2 * dere * derf * cov2[0][1] )
+    # COMPUTE X AND Y INTERSECTION
+    x_int = (e - c) / (d - f)
+    sigma_x_int = np.sqrt( (derc * err_c)**2 +  (derd * err_d)**2 + (dere * err_e)**2 + (derf * err_f)**2 +
+                            2 * derc * derd * cov1[0][1] + 2 * dere * derf * cov2[0][1] )
 
-    ##print(format(x_int, '1.3f'))
-    ##print(format(sigma_x_int, '1.3f'))
+    #print(format(x_int, '1.3f'))
+    #print(format(sigma_x_int, '1.3f'))
 
-    #ft_bode = 10**x_int
-    #sigma_ft_bode  = sigma_x_int * 10**x_int * np.log(10)
+    ft_bode = 10**x_int
+    sigma_ft_bode  = sigma_x_int * 10**x_int * np.log(10)
 
-    #y_int = lin(x_int, *par1)
+    y_int = lin(x_int, *par1)
 
     # PLOT DATA
     ax1.errorbar(df['freq (Hz)'], df['H (dB)'], xerr = 0, yerr = df['sigma Hr (dB)'], marker = '.', markersize = 13,
                 elinewidth=1, color = '#000000', linewidth=0, capsize=2, label = 'Measures')
     
     # PLOT SIMULATIONS
-    #ax1.plot(10**sim['f'], sim['H'], color = '#4b00ff', linewidth = 1, linestyle = '-', label = 'Simulation')
+    ax1.plot(sim['f'], sim['H'], color = '#4b00ff', linewidth = 1, linestyle = '-', label = 'Simulation')
 
     # PLOT FIT FUNCTIONS
     ax1.plot(np.arange(XMIN, XMAX + 1, 1), lin(np.log10(np.arange(XMIN, XMAX+1, 1)), *par1), color = '#FF4B00', linewidth = 2, linestyle = 'dashed', label = 'y = c + dx')
@@ -601,25 +612,25 @@ def bode_plot(df):
 
     # BLU
     q2 = 'a = ' + format(e, '1.1f') + ' +/- ' + format(err_e, '1.1f') + ' dB'
-    m2 = 'b = ' + format(f, '1.2f') + ' +/- ' + format(err_f, '1.2f') + ' dB/dec'
+    m2 = 'b = ' + format(f, '1.1f') + ' +/- ' + format(err_f, '1.1f') + ' dB/dec'
     chisq2 = '$\chi^{2}$ / ndf = ' + format(chi22, '1.0f') + ' / ' + format(len(data2['log10f (dec)']) - 2, '1.0f') 
     sigmap2 = '\u03C3$_{post}$ = ' + format(sigma_post2, '1.2f') + ' dB'
 
     # ARANCIONE
-    q1 = 'c = ' + format(c, '1.1f') + ' +/- ' + format(err_c, '1.1f') + ' dB'
+    q1 = 'c = ' + format(c, '1.2f') + ' +/- ' + format(err_c, '1.2f') + ' dB'
     m1 = 'd = ' + format(d, '1.2f') + ' +/- ' + format(err_d, '1.2f') + ' dB/dec'
     chisq1 = '$\chi^{2}$ / ndf = ' + format(chi21, '1.2f') + ' / ' + format(len(data1['log10f (dec)']) - 2, '1.0f') 
     sigmap1 = '\u03C3$_{post}$ = ' + format(sigma_post1, '1.2f') + ' dB'
 
 
-    ax1.text(0.05, 0.70, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
+    ax1.text(0.07, 0.72, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
 
     # ARANCIONE
-    ax1.text(0.05, 0.21, q1 + '\n' + m1 + '\n' + chisq1 + '\n' + sigmap1, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+    ax1.text(0.07, 0.23, q1 + '\n' + m1 + '\n' + chisq1 + '\n' + sigmap1, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
             bbox = dict( facecolor = '#FF4B00', edgecolor = '#FF4B00', alpha = 0.1, linewidth = 2 ))
 
     # BLU        
-    ax1.text(0.05, 0.45, q2 + '\n' + m2 + '\n' + chisq2 + '\n' + sigmap2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+    ax1.text(0.07, 0.47, q2 + '\n' + m2 + '\n' + chisq2 + '\n' + sigmap2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
             bbox = dict( facecolor = '#00b4ff', edgecolor = '#00b4ff', alpha = 0.1, linewidth = 2 ))
 
     # DRAW RESIDUALS
@@ -664,16 +675,30 @@ def bode_plot(df):
     ax2.set_ylim(bottom = RESYMIN, top = RESYMAX)
 
     # MAKE LEGEND
-    #handles, labels = ax1.get_legend_handles_labels()
-    #order = [3, 0, 2, 1]
-    #ax1.legend([handles[idx] for idx in order], [labels[idx] for idx in order], loc = 'best', prop = {'size': 22}, 
-    #            ncol = 2, frameon = True, fancybox = False, framealpha = 1)
+    handles, labels = ax1.get_legend_handles_labels()
+    order = [3, 0, 2, 1]
+    ax1.legend([handles[idx] for idx in order], [labels[idx] for idx in order], loc = 'best', prop = {'size': 22}, 
+                ncol = 2, frameon = True, fancybox = False, framealpha = 1)
 
     
     ax1.set_xscale('log')
     ax2.set_xscale('log')
     
     # SAVE FIGURE
-    #fig.savefig('../Plots/PreAmp/bode_plot.png', dpi = 300, facecolor = 'white')
+    #fig.savefig('../Plots/Catena/bode_plot.png', dpi = 300, facecolor = 'white')
     
     plt.show()
+
+
+####### FREQUENZA DI TAGLIO STIMATA CON BODE
+def freq_taglio_bode():
+
+    print( 'Frequenza di Taglio Bode ft_bode = ' + format(ft_bode * 1e-3, '.2f') + ' +/- ' + format(sigma_ft_bode * 1e-3, '.2f') + '  kHz')
+    
+
+####### READ BODE SIMULATION
+def get_bode_sim(filename):
+
+    data = pd.read_csv(filename, sep = '\t', index_col = False)
+
+    return data
