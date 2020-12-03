@@ -288,10 +288,11 @@ def arduino_calib():
 
     ADC_amplitude = ADC_max - ADC_min
 
-    b = 1 / ADC_amplitude
+    b = V_gen / ADC_amplitude
     a = -b * ADC_min
 
-    err_b = b * propagazione_cursori(0.2, 1)
+    err_b = propagazione_cursori(0.2, V_gen) / ADC_amplitude
+    #err_b = b * propagazione_cursori(0.2, 1)
     err_a = ADC_min * err_b
 
     return a, b, err_a, err_b
@@ -302,7 +303,7 @@ def max_values_calib(data):
     a, b, err_a, err_b = arduino_calib()
 
     data['V (V)'] = a + b * data['max_values']
-    data['err V (V)'] = np.sqrt( err_a**2 + err_b**2 )
+    data['err V (V)'] = np.sqrt( err_a**2 + ( data['max_values'] * err_b )**2 )
 
 
 def linearity_plot(data):
@@ -320,8 +321,8 @@ def linearity_plot(data):
     YMAX = 2.75
     RESXMIN = XMIN
     RESXMAX = XMAX
-    RESYMIN = -0.025
-    RESYMAX = 0.025
+    RESYMIN = -0.05
+    RESYMAX = 0.05
     
     # PERFORM THE FIT
     par_lin, cov_lin = curve_fit(f = lin, xdata = data['charge'], ydata = data['V (V)'], sigma=data['err V (V)'], absolute_sigma=True)

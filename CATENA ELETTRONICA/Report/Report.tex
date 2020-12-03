@@ -86,6 +86,66 @@
 
 \section{Obiettivo}
 
+Assemblare i moduli principali costituenti una catena elettronica (\textit{preamplificatore}, \textit{shaper},
+\textit{amplificatore}). Studiarne il segnale in uscita e la risposta in frequenza per ciascuno di essi.
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	APPARATO SPERIMENTALE
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Strumentazione e Componenti}\label{s:strumenti}
+
+Nel corso dell'esperienza vengono utilizzati:
+\begin{itemize}[itemsep=-0.5ex]
+	\item Multimetro digitale Metrix MTX3292
+	\item Generatore di funzioni Tektronix AFG1022
+	\item Oscilloscopio digitale Tektronix TBS1102B
+	\item Alimentatore di tensione continua TTi
+	\item Due circuiti integrati TL082C (in totale quattro amplificatori operazionali)
+	\item Resistori e condensatori di varie taglie
+	\item Scheda Arduino Due
+\end{itemize}
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	CATENA ELETTRONICA
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Catena Elettronica}\label{s:catel}
+
+L'esperienza si basa sull'assemblamento e sullo studio della risposta di una serie di moduli volti a simulare
+l'elettronica associata ad un \textit{rivelatore di radiazione}. In laboratorio, quindi, si utilizza il generatore di
+funzioni in modo da erogare un segnale che ricordi la rivelazione di un evento da parte del detector: questo segnale
+viene quindi inizialmente elaborato dal \textit{preamplificatore} (di tipo \textit{charge-sensitive}) e successivamente
+dallo \textit{shaper} (di tipo \textit{CR-RC}). Ll segnale in uscita dal formatore viene infine amplificato per
+favorirne l'acquisizione da parte di una DAQ, che corrisponde in questo caso all'ADC della scheda Arduino Due. I tre
+stadi (\textit{preamplificatore}, \textit{shaper}, \textit{amplificatore}) costituiscono dunque la \textit{catena
+elettronica} rappresentata in \autoref{i:circuito}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../Simulations/catena_circuito.png}
+	\caption{\small Schema a costanti concentrate della catena elettronica suddivisa nei tre moduli di interesse.}
+	\label{i:circuito}
+\end{figure}
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	PREAMPLIFICATORE
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Preamplificatore}\label{s:preamp} 
+
+Il primo stadio della catena \textit{(preamplificatore)} si utilizza per migliorare il rapporto segnale/rumore, in modo
+da trasferire un segnale più pulito all'elettronica di acquisizione. Si assembla in laboratorio un preamplificatore
+\textit{charge sensitive}: come si può osservare in \autoref{i:circuito} il modulo consiste di un circuito integratore
+e la tensione in uscita è quindi direttamente proporzionale alla carica in ingresso. Lo scopo di questa sezione,
+dedicata al preamplificatore, è di studiare il segnale in uscita verificandone l'integrazione e la linearità rispetto
+alla carica in ingresso, oltre alla risposta in frequenza del filtro passa basso ricercandone la frequenza di taglio.
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	CONFIGURAZIONE SPERIMENTALE
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Configurazione Sperimentale}\label{s:preamp_config}
 
 
 
@@ -94,6 +154,54 @@
 
 
 
+
+
+
+
+
+
+
+
+
+\subsection{Acquisizione Misure}\label{s:preamp_misure}
+\subsection{Dati e Analisi}\label{s:preamp_analisi}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\section{Shaper}\label{s:shaper}
+%
+%\subsection{Configurazione Sperimentale}\label{s:shaper_config}
+%\subsection{Acquisizione Misure}\label{s:shaper_misure}
+%\subsection{Dati e Analisi}\label{s:shaper_analisi}
+%
+%\section{Catena Elettronica Completa}\label{s:catena}
+%
+%\subsection{Configurazione Sperimentale}\label{s:catena_config}
+%\subsection{Acquisizione Misure}\label{s:catena_misure}
+%\subsection{Dati e Analisi}\label{s:catena_analisi}
+%
+%\section{Conclusioni}
 
 
 
