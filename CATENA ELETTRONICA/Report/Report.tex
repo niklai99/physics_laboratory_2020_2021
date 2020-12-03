@@ -147,6 +147,35 @@ alla carica in ingresso, oltre alla risposta in frequenza del filtro passa basso
 
 \subsection{Configurazione Sperimentale}\label{s:preamp_config}
 
+Si comincia utilizzando il generatore per simulare i segnali del rivelatore, impostando sul CH1 un impulso quadrato di
+frequenza $f_{\text{gen}} = 1 \,\si{k\Hz}$, tensione di riferimento $V_{\text{high}} = 0 \,\si{\volt}$, ampiezza
+\textit{negativa} $V_{\text{low}} = -1 \,\si{\volt}$ e durata $T = 5 \,\si{\us}$. Viene successivamente assemblato sulla
+breadboard il primo modulo
+
+\begin{wraptable}{L}{0.5\textwidth}
+	\small
+	\centering
+	\begin{tabular}{x{1.8cm} x{2.5cm} x{2cm} } \toprule[0.5px]\toprule[0.1px]	
+		\multicolumn{3}{c}{Misure Dirette - $R_{\text{in}}$  $R_{\text{f}}$  $C_{\text{f}}$}\tn
+		\midrule[0.1px]
+		Resistenza & Valore & F.S. \tn
+		\addlinespace
+		$R_{\text{in}}$ & $56.56 \pm 0.02\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn
+		$R_{\text{f}}$ & $696.1 \pm 0.3\,\si{k\ohm}$ & $1000\,\si{k\ohm}$ \tn
+		$C_{\text{f}}$ & $0.232 \pm 0.009\,\si{n\farad}$ & $1\,\si{n\farad}$ \tn
+		\bottomrule[0.5px]		
+	\end{tabular}
+	\caption{\footnotesize Misure dirette delle componenti circuitali con relativo fondo scala.}
+	\label{t:direct_measures}
+\end{wraptable}	
+
+\noindent in \autoref{i:circuito} utilizzando le componenti circuitali riportate in \autoref{t:direct_measures},
+misurate con il multimetro Metrix. Si utilizza poi un generatore di tensione continua con
+$V_{\text{cc}}=+15\,\si{\volt}$ e $V_{\text{ee}}=-15\,\si{\volt}$ per alimentare l'operazionale. Si assume, inoltre, che
+esso abbia un comportamento ideale, ovvero che il polo positivo ed il polo negativo si trovino allo stesso potenziale
+(\textit{virtual short}). Il segnale in ingresso $V_{\text{in}}$ viene prelevato nel punto \textit{IN} evidenziato nello
+schema, mentre il segnale in uscita $V_{\text{out}}$ dal preamplificatore viene prelevato al termine del primo modulo. I
+segnali vengono acquisiti utilizzando due sonde 10X.
 
 
 
@@ -158,11 +187,7 @@ alla carica in ingresso, oltre alla risposta in frequenza del filtro passa basso
 
 
 
-
-
-
-
-
+\cleardoublepage
 \subsection{Acquisizione Misure}\label{s:preamp_misure}
 \subsection{Dati e Analisi}\label{s:preamp_analisi}
 
