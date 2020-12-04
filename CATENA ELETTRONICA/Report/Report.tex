@@ -3,7 +3,7 @@
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
 \documentclass[a4paper,11pt]{article} % Font and paper size
-
+\linespread{0.9}
 \input{structure.tex} % Include the file specifying document layout and packages
 
 
@@ -220,19 +220,22 @@ in ingresso $Q_{\text{in}}$ come esposto in \autoref{e:preamp_vout}. Si fa varia
 erogato dal generatore di funzioni da $2\,\si{\us}$ a $10\,\si{\us}$, in modo da modificare di volta in volta la
 quantità di carica iniettata nel preamplificatore: per ogni $T$ viene calcolata la quantità di carica totale
 $Q_{\text{c}}$ e viene misurato con l'oscilloscopio il valore massimo del segnale in uscita
-$V^{\text{max}}_{\text{out}}$. Le coppie $\{Q_{\text{c}},\,V^{\text{max}}_{\text{out}}\}$ vengono successivamente
-rappresentante in \autoref{i:preamp_linearity} e interpolate linearmente. Ai valori di tensione misurati con
-l'oscilloscopio viene associato l'errore di acquisizione comprendente sia il contributo di lettura sia il contributo sul
-guadagno verticale in quanto nel processo di misura sono state utilizzate scale diverse, con la consapevolezza che
-quest'ultime portano ad una correlazioe almeno parziale delle incertezze. Gli errori sulla carica $Q_{\text{c}}$,
-invece, sono totalmente correlati tra loro: $V_{\text{in}}$ e $R_{\text{in}}$ sono, chiaramente, costanti e l'incertezza
-sulla carica è semplicemente riscalata dal tempo $T$. Si assume, ragionevolmente, che l'incertezza sulla durata $T$ del
-segnale sia trascurabile. \newpage
+$V^{\text{max}}_{\text{out}}$.  Ai valori di tensione misurati con l'oscilloscopio viene associato l'errore di
+acquisizione comprendente sia il contributo di lettura sia il contributo sul guadagno verticale in quanto nel processo
+di misura sono state utilizzate scale diverse, con la consapevolezza che quest'ultime portano ad una correlazioe almeno
+parziale delle incertezze. Gli errori sulla carica $Q_{\text{c}}$, invece, sono totalmente correlati tra loro:
+$V_{\text{in}}$ e $R_{\text{in}}$ sono, chiaramente, costanti e l'incertezza sulla carica è dunque semplicemente
+l'incertezza sulla corrente in ingresso al preamplificatore $\sigma_{I_{\text{in}}}$ riscalata dal tempo $T$. Si assume,
+ragionevolmente, che l'incertezza sulla durata $T$ del segnale sia trascurabile. Si rappresentano ora in
+\autoref{i:preamp_linearity} le coppie $\{Q_{\text{c}},\,V^{\text{max}}_{\text{out}}\}$ interpolate da una retta: il
+coefficiente angolare di quest'ultima corrisponde analiticamente all'inverso della capacità di feedback $C_{\text{f}}$.
+La bontà del fit, l'andamento dei residui ed il confronto di $C_{\text{f}}^{\text{fit}}$ con quanto misurato
+direttamente con il multimetro verranno presi in considerazione per verificare la linearità del preamplificatore.\newpage
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Plots/PreAmp/Vmax_Qin_lin_fit.png}
-	\caption{\small }
+	\caption{\small Fit lineare del massimo di tensione in uscita contro la carica totale in ingresso.}
 	\label{i:preamp_linearity}
 \end{figure}
 
