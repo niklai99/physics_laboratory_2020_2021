@@ -122,7 +122,7 @@ stadi (\textit{preamplificatore}, \textit{shaper}, \textit{amplificatore}) costi
 elettronica} rappresentata in \autoref{i:circuito}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{../Simulations/catena_circuito.png}
+	\includegraphics[width=0.9\linewidth]{../Simulations/catena_circuito.png}
 	\caption{\small Schema a costanti concentrate della catena elettronica suddivisa nei tre moduli di interesse.}
 	\label{i:circuito}
 \end{figure}
@@ -229,8 +229,11 @@ l'incertezza sulla corrente in ingresso al preamplificatore $\sigma_{I_{\text{in
 ragionevolmente, che l'incertezza sulla durata $T$ del segnale sia trascurabile. Si rappresentano ora in
 \autoref{i:preamp_linearity} le coppie $\{Q_{\text{c}},\,V^{\text{max}}_{\text{out}}\}$ interpolate da una retta: il
 coefficiente angolare di quest'ultima corrisponde analiticamente all'inverso della capacità di feedback $C_{\text{f}}$.
-La bontà del fit, l'andamento dei residui ed il confronto di $C_{\text{f}}^{\text{fit}}$ con quanto misurato
-direttamente con il multimetro verranno presi in considerazione per verificare la linearità del preamplificatore.\newpage
+Nell'effettuare la regressione si decide di trascurare l'incertezza sulla carica $Q_{\text{c}}$ (in quanto totalmente
+correlata) e di aggiungere tale contributo successivamente nel calcolo dell'errore sulla capacità $C_{\text{f}}$. La
+bontà del fit, l'andamento dei residui, l'errore a posteriori ed il confronto di $C_{\text{f}}^{\text{fit}}$ con quanto
+misurato direttamente con il multimetro verranno presi in considerazione per verificare la linearità del
+preamplificatore rispetto alla carica in ingresso.
 
 \begin{figure}[H]
 	\centering
@@ -239,7 +242,19 @@ direttamente con il multimetro verranno presi in considerazione per verificare l
 	\label{i:preamp_linearity}
 \end{figure}
 
-
+\noindent Si noti, inizialmente, come il $\chi^2$ della regressione sia notevolmente inferiore rispetto al suo valore di
+aspettazione: essendo a conoscenza della parziale correlazione tra gli errori di scala dell'oscilloscopio ciò non
+risulta essere sorprendente in quanto il fit non ne tiene ovviamente conto. Segue direttamente una sottostima
+dell'errore sui parametri $a$ e $b$ della retta interpolante. Un piccolo (rispetto ai gradi di libertà) valore di
+$\chi^2$ purtroppo non permette nè di confermare l'ipotesi di linearità nè di poterla rigettare. L'errore a posteriori,
+invece, si trova essere dello stesso ordine di grandezza dell'errore associato alle tensioni più basse (i primi punti)
+mentre diventa gradualmente un'ordine di grandezza inferiore rispetto all'incertezza associata alle tensioni maggiori.
+Questo suggerisce una soddisfacente distribuzione dei punti attorno alla retta di regressione, che si traduce nel
+grafico dei residui in un'ottimale distribuzione attorno allo zero. I residui, infatti, non presentano andamenti
+patologici accentuati e lo zero risulta essere sempre ben compreso nelle barre d'errore. Concentrando ora l'attenzione
+sui parametri della retta restituiti dal fit, si può notare come l'intercetta $a$ sia ben compatibile con zero,
+evidenziando l'assenza di un eventuale offset sistematico o un errore di zero. Dal coefficiente angolare, invece, si
+ricava la stima della capacità di feedback 
 
 
 
