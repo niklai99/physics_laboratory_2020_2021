@@ -255,8 +255,27 @@ patologici accentuati e lo zero risulta essere sempre ben compreso nelle barre d
 sui parametri della retta restituiti dal fit, si può notare come l'intercetta $a$ sia ben compatibile con zero,
 evidenziando l'assenza di un eventuale offset sistematico o un errore di zero. Dal coefficiente angolare, invece, si
 ricava la stima della capacità di feedback 
-
-
+\begin{align}
+	C_{\text{f}}^{\text{fit}}& = 0.232 \pm 0.003 \,\si{n\farad} 
+	& 
+	&\text{con} \,\,\,\, \sigma_{ C_{\text{f}}^{\text{fit}} } = 
+	\sqrt
+	{ 
+		\left(
+			\frac{1}{b^2}
+		\right)^2
+		\sigma_b^2 +
+		\left(
+			\frac{1}{b_r}
+		\right)^2
+		\sigma_I^2
+	}
+\end{align}
+\noindent dove, nel computo dell'errore, $\sigma_I$ rappresenta l'errore sulla corrente $I =
+\frac{V_{\text{in}}}{R_{\text{in}}}$ che, nel fit, verrebbe riscalato dalla durata $T$ del segnale. La stima della
+capacità di feedback risulta essere in ottima compatibilità ($\lambda = 0.05$) con quanto misurato con il multimetro
+(\autoref{t:direct_measures}). Questo porta quindi ad un'ulteriore conferma della linearità del preamplificatore, che
+risulta comportarsi conformemente alle aspettative teoriche. 
 
 
 

@@ -67,6 +67,8 @@ sigma_Vmax_sper = 0.007111568040875373 #Volt
 
 tau_sper = 158 #MicroSecondi us ~circa
 
+
+
 ### ------------------------------------ ------------------- --------------------------------------
 
 ### ---------------------------------------- STIME TEORICHE ---------------------------------------
@@ -84,6 +86,9 @@ sigma_Vmax_th : float
 
 Cf_fit : float
 sigma_Cf_fit : float
+
+I = V_amplitude / Rin
+sigma_I = np.sqrt( (sigma_V_amplitude / Rin)**2 + (V_amplitude * sigma_Rin / Rin**2)**2 )
 
 ### ------------------------------------ ------------------- --------------------------------------
 
@@ -362,9 +367,13 @@ def compute_Cf_fit():
 
     Cf_fit = b**-1
 
-    sigma_Cf_fit = np.sqrt( (err_b / b**2)**2 + (0.015 / b)**2 )
 
-    print('Cf_fit = ' + format(Cf_fit, '1.2f') + ' +/- ' + format(sigma_Cf_fit, '1.2f') + '  pF')
+    sigma_Cf_fit = np.sqrt( ( 1 * err_b / b**2 )**2 + ( sigma_I / b )**2 )
+    #sigma_Cf_fit = np.sqrt( ( I * err_b / b**2 )**2 + ( sigma_I / b )**2 )
+
+    #sigma_Cf_fit = np.sqrt( (err_b / b**2)**2 + (0.015 / b)**2 )
+
+    print('Cf_fit = ' + format(Cf_fit, '1.5f') + ' +/- ' + format(sigma_Cf_fit, '1.5f') + '  pF')
 
 
 
