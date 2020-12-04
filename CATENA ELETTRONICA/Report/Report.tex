@@ -120,7 +120,6 @@ dallo \textit{shaper} (di tipo \textit{CR-RC}). Ll segnale in uscita dal formato
 favorirne l'acquisizione da parte di una DAQ, che corrisponde in questo caso all'ADC della scheda Arduino Due. I tre
 stadi (\textit{preamplificatore}, \textit{shaper}, \textit{amplificatore}) costituiscono dunque la \textit{catena
 elettronica} rappresentata in \autoref{i:circuito}.
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Simulations/catena_circuito.png}
@@ -180,14 +179,14 @@ cablaggio), il sistema è un filtro passa basso con frequenza di taglio $f_{\tex
 che risulta essere molto maggiore delle frequenze in gioco: risulta allora corretto assumere il modulo in ingresso del
 tutto equivalente ad un generatore ideale, come rappresentato in \autoref{i:circuito}. Trattando ora il preamplificatore,
 la funzione di trasferimento del circuito risulta essere 
-\begin{align}
+\begin{align}\label{e:preamp_H}
 	H(s) &= - \frac{ 1 }{ R_{\text{in}}\,C_{\text{f}} } \,\, \frac{1}{ s + \frac{ 1 }{ \tau_{\text{f}} } } & 
 	&\text{con  } \,\, \tau_{\text{f}} = R_{\text{f}}\,C_{\text{f}} \equiv \tau^{\text{pre}}
 \end{align}
 \noindent Ricavando allora la risposta ad un segnale a gradino nell'approssimazione $T\ll\tau^{\text{pre}}$ si trova una
 crescita lineare direttamente proporzionale alla carica in ingresso al preamplificatore per $0 < t < T$ e una
 decrescita smorzata esponenzialmente per $t \gg T$:
-\begin{align}
+\begin{align}\label{e:preamp_vout}
 	V^{\text{pre}}_{\text{out}}(t) &= 
 	\begin{cases} 
 		-\frac{ Q_{\text{in}} (t) }{ C_{\text{f}} } & 0 < t < T \\
@@ -203,11 +202,11 @@ decrescita smorzata esponenzialmente per $t \gg T$:
 \noindent dove, appunto, $Q_{\text{in}} (t)$ corrisponde alla carica raccolta al tempo $t$ dal preamplificatore mentre
 $Q_{\text{c}}$ rappresenta la carica \textit{totale} accumulata nel preamplificatore. Ci si aspetta allora che il
 segnale in uscita $V^{\text{th}}_{\text{out}}$ visualizzato sull'oscilloscopio presenti una salita lineare, un valore di
-tensione massimo corrispondente a $V_{\text{max}}^{\text{pre}} = 0.388 \pm 0.017 \,\si{\volt}$ (misurando l'ampiezza del
+tensione massimo corrispondente a $V_{\text{max}}^{\text{th}} = 0.388 \pm 0.017 \,\si{\volt}$ (misurando l'ampiezza del
 segnale in ingresso $V_{\text{in}} = 1.02 \pm 0.02 \,\si{\volt}$), e successivamente una decrescita esponenziale di
 tempo caratteristico $\tau^{\text{th}} = 0.161 \pm 0.006 \,\si{\us}$. Sperimentalmente, si misura un valore massimo
-di tensione pari a $V^{\text{sper}}_{\text{out}} = 0.392 \pm 0.007 \,\si{\volt}$ e un tempo caratteristico di circa
-$\tau^{\text{sper}} \approx 0.158 \,\si{\us}$, perfettamente in linea con le aspettative. Si vuole, tuttavia,
+di tensione pari a $V^{\text{sper}}_{\text{max}} = 0.392 \pm 0.007 \,\si{\volt}$ e un tempo caratteristico di circa
+$\tau^{\text{sper}} \approx 0.158 \,\si{\us}$, perfettamente in linea con le aspettative. Si vuole, in ogni caso,
 approfondire lo studio della risposta del preamplificatore nelle sezioni successive. 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -216,7 +215,26 @@ approfondire lo studio della risposta del preamplificatore nelle sezioni success
 
 \subsection{Linearità del Preamplificatore}\label{s:preamp_linearity}
 
+Ci si propone ora di verificare la dipendenza lineare del segnale in uscita $V^{\text{pre}}_{\text{out}}$ dalla carica
+in ingresso $Q_{\text{in}}$ come esposto in \autoref{e:preamp_vout}. Si fa variare dunque la durata $T$ del segnale
+erogato dal generatore di funzioni da $2\,\si{\us}$ a $10\,\si{\us}$, in modo da modificare di volta in volta la
+quantità di carica iniettata nel preamplificatore: per ogni $T$ viene calcolata la quantità di carica totale
+$Q_{\text{c}}$ e viene misurato con l'oscilloscopio il valore massimo del segnale in uscita
+$V^{\text{max}}_{\text{out}}$. Le coppie $\{Q_{\text{c}},\,V^{\text{max}}_{\text{out}}\}$ vengono successivamente
+rappresentante in \autoref{i:preamp_linearity} e interpolate linearmente. Ai valori di tensione misurati con
+l'oscilloscopio viene associato l'errore di acquisizione comprendente sia il contributo di lettura sia il contributo sul
+guadagno verticale in quanto nel processo di misura sono state utilizzate scale diverse, con la consapevolezza che
+quest'ultime portano ad una correlazioe almeno parziale delle incertezze. Gli errori sulla carica $Q_{\text{c}}$,
+invece, sono totalmente correlati tra loro: $V_{\text{in}}$ e $R_{\text{in}}$ sono, chiaramente, costanti e l'incertezza
+sulla carica è semplicemente riscalata dal tempo $T$. Si assume, ragionevolmente, che l'incertezza sulla durata $T$ del
+segnale sia trascurabile. \newpage
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../Plots/PreAmp/Vmax_Qin_lin_fit.png}
+	\caption{\small }
+	\label{i:preamp_linearity}
+\end{figure}
 
 
 
