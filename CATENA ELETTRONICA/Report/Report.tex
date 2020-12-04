@@ -185,7 +185,7 @@ la funzione di trasferimento del circuito risulta essere
 	&\text{con  } \,\, \tau_{\text{f}} = R_{\text{f}}\,C_{\text{f}} \equiv \tau^{\text{pre}}
 \end{align}
 \noindent Ricavando allora la risposta ad un segnale a gradino nell'approssimazione $T\ll\tau^{\text{pre}}$ si trova una
-crescita lineare direttamente proporzionale alla corrente in ingresso al preamplificatore per $0 < t < T$ e una
+crescita lineare direttamente proporzionale alla carica in ingresso al preamplificatore per $0 < t < T$ e una
 decrescita smorzata esponenzialmente per $t \gg T$:
 \begin{align}
 	V^{\text{pre}}_{\text{out}}(t) &= 
@@ -202,36 +202,19 @@ decrescita smorzata esponenzialmente per $t \gg T$:
 \end{align}	
 \noindent dove, appunto, $Q_{\text{in}} (t)$ corrisponde alla carica raccolta al tempo $t$ dal preamplificatore mentre
 $Q_{\text{c}}$ rappresenta la carica \textit{totale} accumulata nel preamplificatore. Ci si aspetta allora che il
-segnale in uscita $V^{\text{pre}}_{\text{out}}$ visualizzato sull'oscilloscopio presenti una salita lineare, un valore
-di tensione massimo corrispondente a $V_{\text{max}}^{\text{pre}} = 0.388 \pm 0.017 \,\si{\volt}$ (misurando l'ampiezza
-del segnale in ingresso $V_{\text{in}} = 1.02 \pm 0.02 \,\si{\volt}$), e successivamente una decrescita esponenziale di
-tempo caratteristico $\tau^{\text{pre}} = 0.161 \pm 0.006 \,\si{n\farad}$.
+segnale in uscita $V^{\text{th}}_{\text{out}}$ visualizzato sull'oscilloscopio presenti una salita lineare, un valore di
+tensione massimo corrispondente a $V_{\text{max}}^{\text{pre}} = 0.388 \pm 0.017 \,\si{\volt}$ (misurando l'ampiezza del
+segnale in ingresso $V_{\text{in}} = 1.02 \pm 0.02 \,\si{\volt}$), e successivamente una decrescita esponenziale di
+tempo caratteristico $\tau^{\text{th}} = 0.161 \pm 0.006 \,\si{\us}$. Sperimentalmente, si misura un valore massimo
+di tensione pari a $V^{\text{sper}}_{\text{out}} = 0.392 \pm 0.007 \,\si{\volt}$ e un tempo caratteristico di circa
+$\tau^{\text{sper}} \approx 0.158 \,\si{\us}$, perfettamente in linea con le aspettative. Si vuole, tuttavia,
+approfondire lo studio della risposta del preamplificatore nelle sezioni successive. 
 
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	LINEARITA DEL PREAMP
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\cleardoublepage
-\subsection{Acquisizione Misure}\label{s:preamp_misure}
-\subsection{Dati e Analisi}\label{s:preamp_analisi}
-
-
-
-
-
+\subsection{Linearità del Preamplificatore}\label{s:preamp_linearity}
 
 
 
@@ -251,19 +234,21 @@ tempo caratteristico $\tau^{\text{pre}} = 0.161 \pm 0.006 \,\si{n\farad}$.
 
 
 
-%\section{Shaper}\label{s:shaper}
-%
-%\subsection{Configurazione Sperimentale}\label{s:shaper_config}
-%\subsection{Acquisizione Misure}\label{s:shaper_misure}
-%\subsection{Dati e Analisi}\label{s:shaper_analisi}
-%
-%\section{Catena Elettronica Completa}\label{s:catena}
-%
-%\subsection{Configurazione Sperimentale}\label{s:catena_config}
-%\subsection{Acquisizione Misure}\label{s:catena_misure}
-%\subsection{Dati e Analisi}\label{s:catena_analisi}
-%
-%\section{Conclusioni}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
