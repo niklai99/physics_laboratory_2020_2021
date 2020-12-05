@@ -49,7 +49,7 @@ NOTEBOOK](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2
         ![SHAPER PREAMP RPZ](./Plots/Shaper/shaper_preamp_rpz_waveform_newcalib.png)
 
 
-### Catena Completa  &rarr; analisi assente
+### Catena Completa  &rarr; analisi completata
 
 [JUPYTER
 NOTEBOOK](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2021/blob/master/CATENA%20ELETTRONICA/Python/PreAmp%20-%20Analysis.ipynb)
