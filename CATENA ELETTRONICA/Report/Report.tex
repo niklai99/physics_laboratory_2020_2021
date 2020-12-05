@@ -321,6 +321,15 @@ misure acquisite assieme ai punti ottenuti attraverso una simulazione Spice dell
 	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.}
 	\label{i:preamp_thebode}
 \end{figure}
+\noindent Confrontando inizialmente le misure sperimentali con la simulazione Spice, si nota un ottimo accordo in tutto
+lo spettro di frequenze. Questo è chiaramente indice di una risposta in frequenza del circuito compatibile con le
+aspettative: il comportamento del filtro, infatti, è evidentemente un passa basso. A basse frequenze, la funzione di
+trasferimento è pressochè costante a $22\,\si{dB}$ (retta in \textit{arancione}), mentre per frequenze crescenti la
+funzione di trasferimento decresce linearmente con coefficiente angolare conforme all'aspettativa dei
+$-20\,\si{dB/dec}$. L'ascissa del punto di intersezione tra le due rette di regressione fornisce una stima della
+frequenza di taglio del circuito $f_{\text{t}} = 1.03 \pm 0.03 \,\si{\kHz}$, compatibile in modo soddisfacente ($\lambda
+= 0.9$) con la frequenza di taglio teorica esposta in \autoref{e:preamp_ft_th}. Si vuole sottolineare che nel computo
+dell'errore su $f_{\text{t}}$ è stata presa in considerazione la convarianza tra parametri appartenenti allo stesso fit.
 
 
 
