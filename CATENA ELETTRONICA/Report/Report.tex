@@ -229,24 +229,18 @@ l'incertezza sulla corrente in ingresso al preamplificatore $\sigma_{I_{\text{in
 ragionevolmente, che l'incertezza sulla durata $T$ del segnale sia trascurabile. Si rappresentano ora in
 \autoref{i:preamp_linearity} le coppie $\{Q_{\text{c}},\,V^{\text{max}}_{\text{out}}\}$ interpolate da una retta: il
 coefficiente angolare di quest'ultima corrisponde analiticamente all'inverso della capacità di feedback $C_{\text{f}}$.
-Nell'effettuare la regressione si decide di trascurare l'incertezza sulla carica $Q_{\text{c}}$ (in quanto totalmente
-correlata) e di aggiungere tale contributo successivamente nel calcolo dell'errore sulla capacità $C_{\text{f}}$. La
-bontà del fit, l'andamento dei residui, l'errore a posteriori ed il confronto di $C_{\text{f}}^{\text{fit}}$ con quanto
-misurato direttamente con il multimetro verranno presi in considerazione per verificare la linearità del
-preamplificatore rispetto alla carica in ingresso.
-%
-%
-%	DEVO DIRE CHE GLI ERRORI RELATIVI SU X E Y SONO DELLO STESSO ODG QUINDI NON POSSO TRASCURARE L'ERRORE MA NON LO
-%	CONSIDERO NEL FIT QUINDI LO SCORPORO E LO AGGIUNGO DOPO
-%
-%
+Si vuole evidenziare che gli errori relativi su $V^{\text{pre}}_{\text{out}}$ e su $Q_{\text{c}}$ sono entrambi circa il
+$2\%$ della misura: nell'effettuare la regressione si decide di trascurare l'incertezza sulla carica $Q_{\text{c}}$ (in
+quanto totalmente correlata) e di aggiungere tale contributo successivamente nel calcolo dell'errore sulla capacità
+$C_{\text{f}}$. La bontà del fit, l'andamento dei residui, l'errore a posteriori ed il confronto di
+$C_{\text{f}}^{\text{fit}}$ con quanto misurato direttamente con il multimetro verranno presi in considerazione per
+verificare la linearità del preamplificatore rispetto alla carica in ingresso.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Plots/PreAmp/Vmax_Qin_lin_fit.png}
 	\caption{\small Fit lineare del massimo di tensione in uscita contro la carica totale in ingresso.}
 	\label{i:preamp_linearity}
 \end{figure}
-
 \noindent Si noti, inizialmente, come il $\chi^2$ della regressione sia notevolmente inferiore rispetto al suo valore di
 aspettazione: essendo a conoscenza della parziale correlazione tra gli errori di scala dell'oscilloscopio ciò non
 risulta essere sorprendente in quanto il fit non ne tiene ovviamente conto. Segue direttamente una sottostima
@@ -282,14 +276,51 @@ capacità di feedback risulta essere in ottima compatibilità ($\lambda = 0.05$)
 (\autoref{t:direct_measures}). Questo porta quindi ad un'ulteriore conferma della linearità del preamplificatore, che
 risulta comportarsi conformemente alle aspettative teoriche. 
 
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	SMORZAMENTO ESPONENZIALE
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
+\subsection{Forma d'Onda del segnale in uscita}\label{s:preamp_waveform}
 
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	THEBODE
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
+\subsection{Grafico di Bode}\label{s:preamp_bode}
 
-
-
-
-
+Si vuole ora studiare la risposta in frequenza del preamplificatore: si modificano le impostazioni del generatore in
+modo da erogare un'onda sinusoidale di ampiezza $1\,\si{\volt}$ e frequenza $f_{\text{gen}}$ variabile da $10\,\si{\Hz}$
+a $1\,\si{\MHz}$. Per quanto riportato in \autoref{e:preamp_H}, ci si aspetta un comportamento da filtro passa basso
+avente frequenza di taglio
+\begin{align}\label{e:preamp_ft_th}
+	f_{\text{t}}&=\frac{1}{2\pi R_{\text{f}}C_{\text{f}}}= 0.99 \pm 0.04 \,\si{k\Hz} & 
+	\text{con\,\,\,\,}\sigma_{f_{\text{t}}}&
+	=\frac{1}{2\pi}\sqrt{	\left(\frac{1}{C_{\text{f}}R_{\text{f}}^2}\right)^2\sigma_{R_{\text{f}}}^2	+
+	 \left(\frac{1}{C_{\text{f}}^2R_{\text{f}}}\right)^2\sigma_{C_{\text{f}}}^2   }																		
+\end{align}
+\noindent Si intende ora rappresentare le misure acquisite sperimentalmente attraverso un grafico di Bode. Viene
+acquisita allora l'ampiezza del segnale sia in ingresso sia in uscita utilizzando l'oscilloscopio e viene calcolata la
+funzione di trasferimento $H$, alla quale viene associata un'incertezza $\sigma_{H}$ data da
+\begin{align}\label{e:preamp_H_err}
+	H&=\frac{V_{\text{out}}}{V_{\text{in}}} & 
+	\sigma_{H}&= H \sqrt{	
+						\left(	\frac{	\sigma_{\text{L}}\times V_{\text{in}}/\text{div}	}{	V_{\text{in}}	}	\right)^2	 + 
+						\left(	\frac{	\sigma_{\text{L}}\times V_{\text{out}}/\text{div}	}{	V_{\text{out}}	}	\right)^2 }
+\end{align}
+\noindent dove $\sigma_{\text{L}}=0.04$ rappresenta l'incertezza di lettura associata all'oscilloscopio mentre i termini
+$V_{\text{in}}/\text{div}$ e $V_{\text{out}}/\text{div}$ corrispondono al numero di Volt per divisione per il canale di
+acquisizione rispettivamente del segnale in ingresso e del segnale in uscita. L'incertezza di guadagno associata
+all'oscilloscopio non viene invece considerata in quanto, dovendo successivamente prendere il logaritmo
+$\text{log}_{10}H$ della funzione di trasferimento, tale contributo viene scaricato interamente nell'intercetta delle
+interpolazioni volte a caratterizzare l'andamento delle misure. Si assume infine trascurabile l'incertezza sulla
+frequenza dell'onda erogata dal generatore. Si rappresenta allora in \autoref{i:preamp_thebode} il grafico di Bode delle
+misure acquisite assieme ai punti ottenuti attraverso una simulazione Spice della risposta del circuito.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../Plots/PreAmp/bode_plot.png}
+	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.}
+	\label{i:preamp_thebode}
+\end{figure}
 
 
 

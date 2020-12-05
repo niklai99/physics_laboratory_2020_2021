@@ -623,6 +623,7 @@ def preamp_bode_plot(df, sim):
     ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
     ax1.minorticks_on()
     ax2.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax2.tick_params(axis = 'x', which = 'major', pad = 10)
     ax2.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
     ax2.set_xticks(ticks = ax1.get_xticks(), minor = True)
     ax2.set_yticks(ticks = ax1.get_yticks(), minor = True)
