@@ -1101,7 +1101,7 @@ def arduino_calib_read_low():
 
     data = pd.DataFrame({'max_values': list(max_values), 'Vin': list(Vin), 'Vdiv': list(Vdiv)}, columns = ['max_values', 'Vin', 'Vdiv'])
     
-    data = data.iloc[:3,:]
+    data = data.iloc[:4,:]
 
     return data
 
@@ -1128,7 +1128,7 @@ def arduino_calib_plot(data):
     ax2 = fig.add_subplot(1, 2, 2)
 
     # PERFORM THE FIT
-    par_lin, cov_lin = curve_fit(f = lin, xdata = data['max_values'], ydata = data['Vin'])
+    par_lin, cov_lin = curve_fit(f = lin, xdata = data['max_values'], ydata = data['Vin'], sigma = data['err Vin'], absolute_sigma = True)
     func = lin(data['max_values'], *par_lin)
 
     # COMPUTE RESIDUALS
