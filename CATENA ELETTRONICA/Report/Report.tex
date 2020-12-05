@@ -282,6 +282,28 @@ risulta comportarsi conformemente alle aspettative teoriche.
 
 \subsection{Forma d'Onda del segnale in uscita}\label{s:preamp_waveform}
 
+In questa sezione si vuole analizzare il segnale in uscita dal preamplificatore $V^{\text{pre}}_{\text{out}}$:
+sfruttando la stessa configurazione sperimentale presentata in \autoref{s:preamp_config} viene acquisita la forma d'onda
+del segnale utilizzando la scheda Arduino Due. Inizialmente, si apportano le seguenti conversioni: dividendo il numero
+di acquisizione per il sampling rate $S=0.955\,\text{Msps}$ si ottiene l'evoluzione temporale (in secondi) della forma
+d'onda, mentre sfruttando la funzione di calibrazione in tensione $V= a  +  b \, ADC$ (con $a=-0.637 \pm
+0.010\,\si{\volt}$ e $b=0.828\pm0.007\,\si{mV/ADC counts}$) si ottengono i valori in Volt delle misure acquisite. In
+\autoref{i:preamp_waveform} è esposto quanto acquisito dalla scheda Arduino: si nota immediatamente come siano stati
+registrati due "eventi", o meglio nel tempo di acquisizione impostato per Arduino il generatore di funzioni ha erogato
+due impulsi di tensione. Il segnale registrato, inoltre, risulta essere 
+
+\begin{wrapfigure}{R}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.5\textwidth]{../Plots/Arduino_NR/preamp_waveform.png}
+	\caption{\small Segnale in uscita dal preamplificatore.}
+	\label{i:preamp_waveform}
+\end{wrapfigure}
+
+\noindent leggermente rumoroso: per rendere l'analisi successiva meglio gestibile si decide di sovrapporre i due picchi
+di tensione e di effettuarne una media.
+
+
+\cleardoublepage
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	THEBODE
 %-------------------------------------------------------------------------------------------------------------------------------------------
