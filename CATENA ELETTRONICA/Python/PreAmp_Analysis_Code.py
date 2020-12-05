@@ -368,7 +368,7 @@ def compute_Cf_fit():
     Cf_fit = b**-1
 
 
-    sigma_Cf_fit = np.sqrt( ( err_b / b**2 )**2 + ( sigma_I / ( b * I ) )**2 )
+    sigma_Cf_fit = np.sqrt( ( err_b / b**2 )**2 + 2 * ( sigma_I / ( b * I ) )**2 )
     #sigma_Cf_fit = np.sqrt( ( I * err_b / b**2 )**2 + ( sigma_I / b )**2 )
 
     #sigma_Cf_fit = np.sqrt( (err_b / b**2)**2 + (0.015 / b)**2 )
