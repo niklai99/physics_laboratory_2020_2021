@@ -204,7 +204,7 @@ $Q_{\text{c}}$ rappresenta la carica \textit{totale} accumulata nel preamplifica
 segnale in uscita $V^{\text{th}}_{\text{out}}$ visualizzato sull'oscilloscopio presenti una salita lineare, un valore di
 tensione massimo corrispondente a $V_{\text{max}}^{\text{th}} = 0.388 \pm 0.017 \,\si{\volt}$ (misurando l'ampiezza del
 segnale in ingresso $V_{\text{in}} = 1.02 \pm 0.02 \,\si{\volt}$), e successivamente una decrescita esponenziale di
-tempo caratteristico $\tau^{\text{th}} = 0.161 \pm 0.006 \,\si{\us}$. Sperimentalmente, si misura un valore massimo
+tempo caratteristico $\tau^{\text{th}} = 0.161 \pm 0.006 \,\si{\ms}$. Sperimentalmente, si misura un valore massimo
 di tensione pari a $V^{\text{sper}}_{\text{max}} = 0.392 \pm 0.007 \,\si{\volt}$ e un tempo caratteristico di circa
 $\tau^{\text{sper}} \approx 0.158 \,\si{\us}$, perfettamente in linea con le aspettative. Si vuole, in ogni caso,
 approfondire lo studio della risposta del preamplificatore nelle sezioni successive. 
@@ -311,6 +311,17 @@ l'oscilloscopio. Ci si concentra ora sulla stima del tempo caratteristico $\tau^
 effettuare un fit esponenziale del tipo $y = a + b\,\text{exp}(-x/\tau)$. Successivamente, sfruttando i parametri $a$
 e $b$ per normalizzare i dati, si vuole considerare il logaritmo delle tensioni normalizzate ed effettuare una
 regressione lineare.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../Plots/PreAmp/preamp_arduino_fit.png}
+	\caption{\small A sinistra: fit esponenziale dello smorzamento del segnale in uscita. 
+					A destra: fit lineare del logaritmo del segnale in uscita normalizzato.}
+	\label{i:preamp_arduino_fit}
+\end{figure}
+\noindent Osservando rapidamente il grafico a sinistra, si nota come il segnale segua in modo ottimale la funzione
+esponenziale: la stima del tempo caratteristico $\tau^{\text{exp}}$, inoltre, risulta essere sufficientemente
+compatibile con la stima teorica $\tau^{\text{th}} = 0.161 \pm 0.006 \,\si{\ms}$ ($\lambda = 1.4$). Dal grafico di
+denstra, invece, si nota chiaramente una sovrastima dell'errore: 
 
 
 \cleardoublepage
