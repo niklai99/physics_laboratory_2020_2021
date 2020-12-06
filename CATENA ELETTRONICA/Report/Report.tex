@@ -286,11 +286,11 @@ In questa sezione si vuole analizzare il segnale in uscita dal preamplificatore 
 sfruttando la stessa configurazione sperimentale presentata in \autoref{s:preamp_config} viene acquisita la forma d'onda
 del segnale utilizzando la scheda Arduino Due. Inizialmente, si apportano le seguenti conversioni: dividendo il numero
 di acquisizione per il sampling rate $S=0.955\,\text{Msps}$ si ottiene l'evoluzione temporale (in secondi) della forma
-d'onda, mentre sfruttando la funzione di calibrazione in tensione $V= a  +  b \, ADC$ (con $a=-0.637 \pm
-0.010\,\si{\volt}$ e $b=0.828\pm0.007\,\si{mV/ADC counts}$) si ottengono i valori in Volt delle misure acquisite. In
-\autoref{i:preamp_waveform} è esposto quanto acquisito dalla scheda Arduino: si nota immediatamente come siano stati
-registrati due "eventi", o meglio nel tempo di acquisizione impostato per Arduino il generatore di funzioni ha erogato
-due impulsi di tensione. Il segnale registrato, inoltre, risulta essere 
+d'onda, mentre sfruttando la funzione di calibrazione in tensione $V= a  +  b \, \text{counts}$ (con $a=-0.637 \pm
+0.010\,\si{\volt}$ e $b=0.828\pm0.007\,\si{mV/ADC counts}$) si ottengono i valori in Volt delle misure acquisite in ADC
+counts. A tali valori si associa l'errore per propagazione $\sigma_{V} = \sqrt{\sigma_a^2+\text{counts}^2\sigma_b^2}$:
+si nota, tuttavia, che il contributo relativo a $\sigma_b$ è semplicemente riscalato per la misura in ADC counts
+acquisita da arduino, ed è trattabile quindi come un errore di scala. Per effettuare i fit, dunque, questo 
 
 \begin{wrapfigure}{R}{0.5\textwidth}
 	\centering
@@ -299,8 +299,12 @@ due impulsi di tensione. Il segnale registrato, inoltre, risulta essere
 	\label{i:preamp_waveform}
 \end{wrapfigure}
 
-\noindent leggermente rumoroso: per rendere l'analisi successiva meglio gestibile si decide di sovrapporre i due picchi
-di tensione e di effettuarne una media.
+\noindent non viene considerato e verrà poi aggiunto successivamente sulla stima del tempo di smorzamento
+$\tau^{\text{pre}}$. In \autoref{i:preamp_waveform} è esposto quanto acquisito dalla scheda Arduino: si nota
+immediatamente come siano stati registrati due "eventi", o meglio nel tempo di acquisizione impostato per Arduino il
+generatore di funzioni ha erogato due impulsi di tensione. Il segnale registrato, inoltre, risulta essere leggermente
+rumoroso: per rendere l'analisi successiva meglio gestibile si decide di sovrapporre i due picchi di tensione e di
+effettuarne una media.
 
 
 \cleardoublepage

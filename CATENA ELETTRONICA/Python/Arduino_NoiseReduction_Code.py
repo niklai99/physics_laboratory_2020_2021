@@ -22,6 +22,12 @@ butter_exp_offset_err : float
 unfiltered_exp_offset_err : float
 IIR_exp_offset_err : float
 
+
+arduino_calib_offset : float
+arduino_calib_slope : float
+arduino_calib_offset_err : float
+arduino_calib_slope_err : float
+
 ####### LINEAR FUCTION
 def lin(x, a, b):  
     return a + b * x
@@ -126,7 +132,7 @@ def arduino_calib_read_low():
 
     data = pd.DataFrame({'max_values': list(max_values), 'Vin': list(Vin), 'Vdiv': list(Vdiv)}, columns = ['max_values', 'Vin', 'Vdiv'])
     
-    data = data.iloc[:3,:]
+    data = data.iloc[:4,:]
 
     return data
 
@@ -703,6 +709,11 @@ def arduino_butter_lin_fit(data_peek):
 
 
 def arduino_calibration(data):
+
+    global arduino_calib_offset
+    global arduino_calib_slope
+    global arduino_calib_offset_err
+    global arduino_calib_slope_err
     # PERFORM THE FIT
     par, cov = curve_fit(f = lin, xdata = data['max_values'], ydata = data['Vin'], sigma = data['err Vin'], absolute_sigma=True)
 
