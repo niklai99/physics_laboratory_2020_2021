@@ -287,14 +287,14 @@ sfruttando la stessa configurazione sperimentale presentata in \autoref{s:preamp
 del segnale utilizzando la scheda Arduino Due. Inizialmente, si apportano le seguenti conversioni: dividendo il numero
 di acquisizione per il sampling rate $S=0.955\,\text{Msps}$ si ottiene l'evoluzione temporale (in secondi) della forma
 d'onda, mentre sfruttando la funzione di calibrazione in tensione $V= a  +  b \, \text{counts}$ (con $a=-0.637 \pm
-0.010\,\si{\volt}$ e $b=0.828\pm0.007\,\si{mV/ADC counts}$) si ottengono i valori in Volt delle misure acquisite in ADC
+0.010\,\si{\volt}$ e $b=0.828\pm0.007\,\si{mV/counts}$) si ottengono i valori in Volt delle misure acquisite in ADC
 counts. A tali valori si associa l'errore per propagazione $\sigma_{V} = \sqrt{\sigma_a^2+\text{counts}^2\sigma_b^2}$:
 si nota, tuttavia, che il contributo relativo a $\sigma_b$ è semplicemente riscalato per la misura in ADC counts
 acquisita da arduino, ed è trattabile quindi come un errore di scala. Per effettuare i fit, dunque, questo 
 
 \begin{wrapfigure}{R}{0.5\textwidth}
 	\centering
-	\includegraphics[width=0.5\textwidth]{../Plots/Arduino_NR/preamp_waveform.png}
+	\includegraphics[width=0.5\textwidth]{../Plots/PreAmp/preamp_waveform.png}
 	\caption{\small Segnale in uscita dal preamplificatore.}
 	\label{i:preamp_waveform}
 \end{wrapfigure}
@@ -304,7 +304,13 @@ $\tau^{\text{pre}}$. In \autoref{i:preamp_waveform} è esposto quanto acquisito 
 immediatamente come siano stati registrati due "eventi", o meglio nel tempo di acquisizione impostato per Arduino il
 generatore di funzioni ha erogato due impulsi di tensione. Il segnale registrato, inoltre, risulta essere leggermente
 rumoroso: per rendere l'analisi successiva meglio gestibile si decide di sovrapporre i due picchi di tensione e di
-effettuarne una media.
+effettuarne una media. Osservando la \autoref{i:preamp_waveform}, si può inoltre notare chiaramente la salita lineare
+del segnale e la descrescita esponenziale, come previsto in \autoref{e:preamp_vout}. Il valore massimo di tensione
+acquisito con la scheda Arduino, inoltre, è in linea con le aspettative e con quanto misurato sperimentalmente con
+l'oscilloscopio. Ci si concentra ora sulla stima del tempo caratteristico $\tau^{\text{pre}}$: si vuole inizialmente
+effettuare un fit esponenziale del tipo $y = a + b\,\text{exp}(-x/\tau)$. Successivamente, sfruttando i parametri $a$
+e $b$ per normalizzare i dati, si vuole considerare il logaritmo delle tensioni normalizzate ed effettuare una
+regressione lineare.
 
 
 \cleardoublepage
