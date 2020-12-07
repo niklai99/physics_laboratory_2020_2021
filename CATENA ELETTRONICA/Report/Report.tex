@@ -421,6 +421,7 @@ uscita sia ridotta rispetto allo smorzamento esponenziale della tensione dovuto 
 Si comincia assemblando sulla breadboard il secondo modulo rappresentato in \autoref{i:circuito} utilizzando le
 resistenze e capacità riportate in \autoref{t:shaper_direct_measures}. Si evidenzia che per la prima fase di analisi non
 viene montata la resistenza $R_{\text{pz}}$: la compensazione di \textit{pole zero} verrà trattata in seguito.
+Inizialmente, allora,
 
 \begin{wraptable}{L}{0.5\textwidth}
 	\small
@@ -440,8 +441,26 @@ viene montata la resistenza $R_{\text{pz}}$: la compensazione di \textit{pole ze
 	\label{t:shaper_direct_measures}
 \end{wraptable}	
 
-
-
+\noindent  si vuole studiare il comportamento dello shaper in risposta ad un segnale \textit{ideale}, tale da avere una
+salita (quasi) istantanea e da rimanere costante al valore massimo. Un tale segnale viene simulato facendo erogare al
+generatore di funzioni un'onda quadra a bassa frequenza ($100\,\si{\Hz}$) di tensioni $V_{\text{low}} = 0\,\si{\volt}$ e
+$V_{\text{high}} = 1\,\si{\volt}$. Prima di trattare analiticamente il circuito, calcolando la funzione di trasferimento
+e la risposta ad un segnale a gradino, si vuole far notare che la presenza del \textit{buffer} tra il modulo CR ed il
+modulo RC permette di fattorizzare la funzione di trasferimento complessiva del circuito $H(s) = H_{\text{CR}} \,
+H_{\text{RC}}$, dove $H_{\text{CR}}$ e $H_{\text{RC}}$ sono semplicemente le funzioni di trasferimento di un circuito RC
+rispettivamente in configurazione passa alto e passa basso. In questo modo quindi il calcolo della funzione di
+trasferimento si semplifica notevolmente ed il comportamento del filtro risulta essere più prevedibile. Inoltre, per la
+trattazione analitica del circuito e della sua risposta si considera l'approssimazione $R_1 \, C_1 \equiv
+\tau^{\text{sh}}_1 \approx \tau^{\text{sh}}_2 \equiv R_2 \, C_2$, ragionevole in quanto si ha $\tau^{\text{sh}}_1 =
+15.86 \pm 0.91 \,\si{\us}$ e $\tau^{\text{sh}}_2 = 15.89 \pm 0.90 \,\si{\us}$ (si mostrano due cifre decimali
+esclusivamente per evidenziare la sottile differenza tra i due valori). Come tempo caratteristico dello shaper si
+considera allora la media pesata $\tau^{\text{sh}} = 15.9 \pm 0.6 \,\si{\us}$. In questa approssimazione, la funzione di
+trasferimento del circuito risulta essere
+\begin{align}\label{e:shaper_H}
+	H(s) &= \frac{ 1 }{ \tau^{ \text{sh} } }  \,  \frac{ s }{ \left( s + \frac{ 1 }{ \tau^{ \text{sh} } } \right)^2}  &
+	&\text{con} \,\,\,\, \tau^{\text{sh}}= 15.9 \pm 0.6 \,\si{\us}
+\end{align}
+\noindent 
 
 
 
