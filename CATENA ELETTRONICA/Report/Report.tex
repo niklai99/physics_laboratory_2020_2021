@@ -564,7 +564,7 @@ Il segnale, infatti, dopo aver raggiunto il massimo scende sotto allo zero (\tex
 abbastanza lentamente (nel caso ideale dopo $200\,\si{\us}$ il segnale si è già azzerato, in questo caso invece è
 necessario attendere circa $600\,\si{\us}$). La risoluzione di questo problema consiste nel porre una resistenza
 adeguata in parallelo alla capacità $C_{1}$: scegliendo questa tale che $R_{\text{pz}} =
-\frac{\tau^{\text{pre}}}{C_{1}}$, si trova $R_{\text{pz}} \gg R_{1}$ e di conseguena la funzione di trasferimento
+\frac{\tau^{\text{pre}}}{C_{1}}$, si trova $R_{\text{pz}} \gg R_{1}$ e di conseguenza la funzione di trasferimento
 \begin{align}
 	H(s) &= 
 		\frac{
@@ -578,7 +578,7 @@ adeguata in parallelo alla capacità $C_{1}$: scegliendo questa tale che $R_{\te
 			s + \frac{ 1 }{ \tau^{ \text{pz} } }
 			}
 			{
-			s + \frac{ 1 }{ \tau^{ \text{sh} } }
+			s + \frac{ 1 }{ \tau^{ \text{1} } }
 			} &
 	&\text{con} \,\,\,\,	
 	\begin{cases}
@@ -586,7 +586,10 @@ adeguata in parallelo alla capacità $C_{1}$: scegliendo questa tale che $R_{\te
 		\tau^{ \parallel } = C_{ 1 }\left(\frac{1}{R_{1}}+\frac{1}{R_{\text{pz}}}\right)^{-1}\\
 	\end{cases}	
 \end{align}
-\noindent risulta, in buona approssimazione, avere lo stesso polo di 
+\noindent risulta, in buona approssimazione, avere lo stesso polo del modulo CR dello shaper. Di conseguenza, la
+funzione di trasferimento dello shaper con aggiunta la resistenza $R_{\text{pz}}$ continua ad avere un polo doppio in
+$f_{\text{polo}}$ e questo non ne altera le proprietà caratteristiche. La correzione apportata per eliminare l'effetto ti
+\textit{undershoot} prende il nome di compensazione \textit{pole zero}. 
 
 
 \begin{figure}[H]
