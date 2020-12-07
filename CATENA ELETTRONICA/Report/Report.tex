@@ -413,10 +413,10 @@ verificare che il segnale in uscita sia direttamente proporzionale al segnale in
 uscita sia ridotta rispetto allo smorzamento esponenziale della tensione dovuto al preamplificatore. 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
-%	CONFIGURAZIONE SPERIMENTALE
+%	CONFIGURAZIONE SPERIMENTALE IDEALE
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Configurazione Sperimentale}\label{s:shaper_config}
+\subsection{Configurazione Sperimentale Ideale}\label{s:shaper_config_ideale}
 
 Si comincia assemblando sulla breadboard il secondo modulo rappresentato in \autoref{i:circuito} utilizzando le
 resistenze e capacità riportate in \autoref{t:shaper_direct_measures}. Si evidenzia che per la prima fase di analisi non
@@ -472,9 +472,23 @@ l'attenzione sulla risposta dello shaper ad un segnale in ingresso ideale, ci si
 \end{equation}
 \noindent che presenta un massimo $V_{\text{out}}^{\text{max}}= V_{\text{in}}/e$ direttamente proporzionale al segnale
 in ingresso, che quindi preserva l'informazione sulla carica raccolta dal preamplificatore. Inoltre, tale massimo viene
-assunto ad un tempo $t^{\text{max}} = \tau^{\text{sh}}$
+assunto ad un tempo $t^{\text{max}} = \tau^{\text{sh}}$: lo \textit{shaping time}, quindi, determina approssimativamente
+la durata del segnale in uscita dallo shaper. Si noti che $\tau^{\text{sh}}$ è un ordine di grandezza inferiore rispetto
+al tempo caratteristico $\tau^{\text{pre}}$: da questo si deduce quindi che la durata del segnale viene notevolmente
+ridotta grazie all'azione dello shaper, come anticipato in \autoref{s:shaper}. Avendo misurato con l'oscilloscopio il
+segnale in ingresso, ci si aspetta allora un segnale massimo in uscita $V_{\text{th}}^{\text{max}}= 0.372 \pm
+0.006\,\si{\volt}$, mentre sperimentalmente si misura $V_{\text{sper}}^{\text{max}}= 0.342 \pm 0.006\,\si{\volt}$:
+quest'ultimo si discosta del $7.9\%$ rispetto al primo. Questa incongruenza tra aspettativa teorica e misura
+sperimentale si attribuisce principalmente alle componenti circuitali ed alle sistematiche presenti nel circuito stesso.
+Il valore massimo $V_{\text{sper}}^{\text{max}}$ viene invece assunto ad un tempo conforme allo \textit{shaping time}.
+Viene acquisita la forma d'onda del segnale in uscita utilizzando la scheda Arduino: questa viene rappresentata in
+Figura x dopo per il confronto....
 
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	THEBODE
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
+\subsection{Analisi in Frequenza}\label{s:shaper_bode}
 
 
 
