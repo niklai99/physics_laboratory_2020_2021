@@ -290,7 +290,7 @@ d'onda, mentre sfruttando la funzione di calibrazione in tensione $V= a  +  b \,
 0.010\,\si{\volt}$ e $b=0.828\pm0.007\,\si{mV/counts}$) si ottengono i valori in Volt delle misure acquisite in ADC
 counts. A tali valori si associa l'errore per propagazione $\sigma_{V} = \sqrt{\sigma_a^2+\text{counts}^2\sigma_b^2}$:
 si nota, tuttavia, che il contributo relativo a $\sigma_b$ è semplicemente riscalato per la misura in ADC counts
-acquisita da arduino, ed è trattabile quindi come un errore di scala. Per effettuare i fit, dunque, questo 
+acquisita da arduino, ed è trattabile quindi come un errore di scala. In \autoref{i:preamp_waveform} è esposto quanto
 
 \begin{wrapfigure}{R}{0.5\textwidth}
 	\centering
@@ -299,18 +299,22 @@ acquisita da arduino, ed è trattabile quindi come un errore di scala. Per effet
 	\label{i:preamp_waveform}
 \end{wrapfigure}
 
-\noindent non viene considerato e verrà poi aggiunto successivamente sulla stima del tempo di smorzamento
-$\tau^{\text{pre}}$. In \autoref{i:preamp_waveform} è esposto quanto acquisito dalla scheda Arduino: si nota
-immediatamente come siano stati registrati due "eventi", o meglio nel tempo di acquisizione impostato per Arduino il
-generatore di funzioni ha erogato due impulsi di tensione. Il segnale registrato, inoltre, risulta essere leggermente
-rumoroso: per rendere l'analisi successiva meglio gestibile si decide di sovrapporre i due picchi di tensione e di
-effettuarne una media. Osservando la \autoref{i:preamp_waveform}, si può inoltre notare chiaramente la salita lineare
-del segnale e la descrescita esponenziale, come previsto in \autoref{e:preamp_vout}. Il valore massimo di tensione
-acquisito con la scheda Arduino, inoltre, è in linea con le aspettative e con quanto misurato sperimentalmente con
-l'oscilloscopio. Ci si concentra ora sulla stima del tempo caratteristico $\tau^{\text{pre}}$: si vuole inizialmente
-effettuare un fit esponenziale del tipo $y = a + b\,\text{exp}(-x/\tau)$. Successivamente, sfruttando i parametri $a$
-e $b$ per normalizzare i dati, si vuole considerare il logaritmo delle tensioni normalizzate ed effettuare una
-regressione lineare.
+\noindent  acquisito dalla scheda Arduino: si nota immediatamente come siano stati registrati due "eventi", o
+meglio nel tempo di acquisizione impostato per Arduino il generatore di funzioni ha erogato due impulsi di tensione. Il
+segnale registrato, inoltre, risulta essere leggermente rumoroso: per rendere l'analisi successiva meglio gestibile si
+decide di sovrapporre i due picchi di tensione e di effettuarne una media. Osservando la \autoref{i:preamp_waveform}, si
+può inoltre notare chiaramente la salita lineare del segnale e la descrescita esponenziale, come previsto in
+\autoref{e:preamp_vout}. Il valore massimo di tensione acquisito con la scheda Arduino, inoltre, è in linea con le
+aspettative e con quanto misurato sperimentalmente con l'oscilloscopio. Ci si concentra ora sulla stima del tempo
+caratteristico $\tau^{\text{pre}}$: si vuole inizialmente effettuare un fit esponenziale del tipo $y = a +
+b\,\text{exp}(-x/\tau)$. Successivamente, sfruttando i parametri $a$ e $b$ per normalizzare i dati, si vuole considerare
+il logaritmo delle tensioni normalizzate ed effettuare una regressione lineare. Non è infatti possibile, per questioni
+analitiche, considerare semplicemente il logaritmo delle tensioni $V$ ed aspettarsi un andamento lineare: si considera
+invece il logaritmo delle tensioni normalizzate $\tilde{V} = (V-a)/b$ e l'errore su $\tilde{V}$ è dato per propagazione.
+In questo modo, quindi, i dati si distribuiscono secondo $\log(\tilde{V})= -\frac{t}{\tau}$. Nell'effettuare il fit
+esponenziale si decide di tenere conto dell'errore di scala dato dalla calibrazione della scheda Arduino, mentre per
+quanto riguarda la regressione lineare, si sceglie di non considerarlo in quanto, considerando il logaritmo delle
+tensioni, tale contributo viene interamente scaricato nell'offset della retta del fit. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Plots/PreAmp/preamp_arduino_fit.png}
