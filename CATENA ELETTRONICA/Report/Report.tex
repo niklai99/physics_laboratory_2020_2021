@@ -204,9 +204,9 @@ $Q_{\text{c}}$ rappresenta la carica \textit{totale} accumulata nel preamplifica
 segnale in uscita $V^{\text{th}}_{\text{out}}$ visualizzato sull'oscilloscopio presenti una salita lineare, un valore di
 tensione massimo corrispondente a $V_{\text{max}}^{\text{th}} = 0.388 \pm 0.017 \,\si{\volt}$ (misurando l'ampiezza del
 segnale in ingresso $V_{\text{in}} = 1.02 \pm 0.02 \,\si{\volt}$), e successivamente una decrescita esponenziale di
-tempo caratteristico $\tau^{\text{th}} = 0.161 \pm 0.006 \,\si{\ms}$. Sperimentalmente, si misura un valore massimo
+tempo caratteristico $\tau^{\text{th}} = 161 \pm 6 \,\si{\us}$. Sperimentalmente, si misura un valore massimo
 di tensione pari a $V^{\text{sper}}_{\text{max}} = 0.392 \pm 0.007 \,\si{\volt}$ e un tempo caratteristico di circa
-$\tau^{\text{sper}} \approx 0.158 \,\si{\us}$, perfettamente in linea con le aspettative. Si vuole, in ogni caso,
+$\tau^{\text{sper}} \approx 158 \,\si{\us}$, perfettamente in linea con le aspettative. Si vuole, in ogni caso,
 approfondire lo studio della risposta del preamplificatore nelle sezioni successive. 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -237,7 +237,7 @@ $C_{\text{f}}^{\text{fit}}$ con quanto misurato direttamente con il multimetro v
 verificare la linearità del preamplificatore rispetto alla carica in ingresso.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{../Plots/PreAmp/Vmax_Qin_lin_fit.png}
+	\includegraphics[width=0.9\linewidth]{../Plots/PreAmp/Vmax_Qin_lin_fit.png}
 	\caption{\small Fit lineare del massimo di tensione in uscita contro la carica totale in ingresso.}
 	\label{i:preamp_linearity}
 \end{figure}
@@ -324,11 +324,21 @@ tensioni, tale contributo viene interamente scaricato nell'offset della retta de
 \end{figure}
 \noindent Osservando rapidamente il grafico a sinistra, si nota come il segnale segua in modo ottimale la funzione
 esponenziale: la stima del tempo caratteristico $\tau^{\text{exp}}$, inoltre, risulta essere sufficientemente
-compatibile con la stima teorica $\tau^{\text{th}} = 0.161 \pm 0.006 \,\si{\ms}$ ($\lambda = 1.4$). Dal grafico di
-denstra, invece, si nota chiaramente una sovrastima dell'errore: 
+compatibile con la stima teorica $\tau^{\text{th}} = 161 \pm 6 \,\si{\us}$ ($\lambda = 1.4$). Come stima del tempo
+caratteristico, in ogni caso, si preferisce quanto trovato dalla regressione lineare: tale metodo, infatti, è
+complessivamente più robusto, più preciso e fornisce una stima migliore sugli errori dei parametri. Dal grafico a
+destra, quindi, si nota chiaramente come computare il logaritmo delle tensioni $\tilde{V}$ porti a considerare più
+"pesanti" (barre d'errore più piccole) i punti a monte della discesa esponenziale e a dare conseguentemente meno peso ai
+punti di coda. Questi ultimi, eccessivamente prossimi allo zero, non vengono considerati dato che la propagazione
+dell'errore su di essi porta ad un contributo decisamente troppo grande ed il fit non ne è praticamente influenzato. Il
+$\chi^2$, molto minore del suo valore di aspettazione, indica una probabile sovrastima dell'errore: le misure in cima
+alla discesa si distribuiscono estremamente fedelmente attorno alla retta, compatibilmente con il loro errore, mentre le
+misure verso la coda risultano discostarsi più sensibilmente dal fit. Tuttavia, sembra che l'incremento dell'errore su
+queste ultime sia eccessivo, e che queste si distribuiscano attorno alla retta più fedelmente di quanto ci si aspetta
+dalle barre d'errore. Calcolando ora il tempo caratteristico si trova $\tau^{\text{lin}}= -1/b = 153.9 \pm 1.0
+\,\si{\us}$: questo presenta infine una compatibilità $\lambda = 1.2$ con  la stima teorica $\tau^{\text{th}}$.
 
 
-\cleardoublepage
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	THEBODE
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -364,7 +374,7 @@ frequenza dell'onda erogata dal generatore. Si rappresenta allora in \autoref{i:
 misure acquisite assieme ai punti ottenuti attraverso una simulazione Spice della risposta del circuito.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{../Plots/PreAmp/bode_plot.png}
+	\includegraphics[width=0.9\linewidth]{../Plots/PreAmp/bode_plot.png}
 	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.}
 	\label{i:preamp_thebode}
 \end{figure}
@@ -377,8 +387,20 @@ $-20\,\si{dB/dec}$. L'ascissa del punto di intersezione tra le due rette di regr
 frequenza di taglio del circuito $f_{\text{t}} = 1.03 \pm 0.03 \,\si{\kHz}$, compatibile in modo soddisfacente ($\lambda
 = 0.9$) con la frequenza di taglio teorica esposta in \autoref{e:preamp_ft_th}. Si vuole sottolineare che nel computo
 dell'errore su $f_{\text{t}}$ è stata presa in considerazione la convarianza tra parametri appartenenti allo stesso fit.
+Osservando infine che la formula analitca frequenza di taglio $f_{\text{t}}$ riportata in \autoref{e:preamp_ft_th}
+contiene il termine $R_{\text{f}} \, C_{\text{f}}=\tau^{\text{pre}}$, si vuole valutare l'accordo tra la frequenza di
+taglio ottenuta dal grafico di Bode e la frequenza di taglio teorica, utilizzando però
+$\tau^{\text{pre}}=\tau^{\text{lin}}$ ricavato nella sezione precedente. Si ottiene dunque una frequenza di taglio
+$f_{\text{t}}^{\text{lin}} = 1.034 \pm 0.007 \,\si{\kHz}$ ed è in eccellente compatibilità con quanto appena stimato
+($\lambda = 0.13$). Da questo notevole accordo si deduce l'assenza di possibili sistematicità di metodo, sia nella stima
+del tempo caratteristico attraverso il fit lineare in \autoref{i:preamp_arduino_fit}, sia nella stima della frequenza di
+taglio analizzando il grafico di Bode. 
 
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	SHAPER
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
+\section{Shaper CR-RC}\label{s:shaper}
 
 
 
