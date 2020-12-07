@@ -776,3 +776,54 @@ def arduino_preamp_shaper_rpz_plot(data, sim):
     #fig.savefig('../Plots/Shaper/shaper_preamp_rpz_waveform_newcalib.png', dpi = 300, facecolor = 'white')
 
     plt.show()
+
+
+
+def make_plot(data1, data2, sim1, sim2):
+    fig = plt.figure(figsize=(32,8))
+    ax1 = fig.add_subplot(1, 2, 1)
+    ax2 = fig.add_subplot(1, 2, 2)
+
+    # PLOT DATA
+    ax1.plot(sim1['time (ms)'] * 1e3, sim1['V (V)'] * 1e3, color = '#FF4B00', linewidth = 4, label = 'Simulation')
+    ax1.plot(data1['time (ms)'] * 1e3, data1['V (V)'] * 1e3, color = '#227FF7', linewidth = 4, label = 'Data')
+    ax2.plot(sim2['time (ms)'] * 1e3, sim2['V (V)'] * 1e3, color = '#FF4B00', linewidth = 4, label = 'Simulation')
+    ax2.plot(data2['time (ms)'] * 1e3, data2['V (V)'] * 1e3, color = '#227FF7', linewidth = 4, label = 'Data')
+
+    # PLOT TITLE
+    ax1.set_title('Shaper - Real PreAmp Waveform', fontsize = 36)
+    ax2.set_title('Shaper - Real PreAmp w/ Rpz Waveform', fontsize = 36)
+
+    # AXIS LABELS
+    ax1.set_xlabel('time ($\mu$s)', fontsize = 32, loc = 'right')
+    ax1.set_ylabel('V (mV)', fontsize = 32, loc = 'top')
+    ax2.set_xlabel('time ($\mu$s)', fontsize = 32, loc = 'right')
+    ax2.set_ylabel('V (mV)', fontsize = 32, loc = 'top')
+
+    # AXIS TICKS
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax1.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax1.minorticks_on()
+    ax2.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax2.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
+    ax2.set_xticks(ticks = ax1.get_xticks(), minor = True)
+    ax2.set_yticks(ticks = ax1.get_yticks(), minor = True)
+    ax2.minorticks_on()
+
+    # PLOT RANGE
+    ax1.set_xlim(left = 0, right = .55 * 1e3)
+    ax1.set_ylim(bottom = -0.03 * 1e3, top = 0.160 * 1e3)
+    ax2.set_xlim(left = 0, right = .3 * 1e3)
+    ax2.set_ylim(bottom = -0.03 * 1e3, top = 0.160 * 1e3)
+
+    ax1.legend(loc = 'best', prop = {'size': 28}, ncol = 1, frameon = True, fancybox = False, framealpha = 1)
+    ax2.legend(loc = 'best', prop = {'size': 28}, ncol = 1, frameon = True, fancybox = False, framealpha = 1)
+    
+    # SAVE FIGURE
+    #fig.savefig('../Plots/Shaper/shaper_preamp_waveforms.png', dpi = 300, facecolor = 'white')
+
+    plt.show()
+
+

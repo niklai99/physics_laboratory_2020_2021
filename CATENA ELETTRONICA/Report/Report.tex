@@ -544,7 +544,7 @@ ottiene quindi la \textit{mid band} dello shaper, delimitata da
 \end{align}
 \noindent Si vuole infine sottolineare che l'ottimo accordo della frequenza $f_{\text{polo}}$ con l'aspettativa teorica
 (in cui compare la media pesata $\tau^{\text{sh}}$) supporta ulteriormente la validità dell'approssimazione
-$\tau^{\text{sh}}_1 \approx \tau^{\text{sh}}_2$, esposta in \autoref{s:shaper_config_ideale}.
+$\tau^{\text{sh}}_1 \approx \tau^{\text{sh}}_2$.
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	SHAPER + PREAMP
@@ -553,8 +553,21 @@ $\tau^{\text{sh}}_1 \approx \tau^{\text{sh}}_2$, esposta in \autoref{s:shaper_co
 \subsection{Shaper con Preamplificatore in ingresso}\label{s:shaper_preamp}
 
 In questa sezione si vuole studiare il comportamento dello shaper con in ingresso il segnale elaborato dal
-preamplificatore. 
+preamplificatore. Il generatore di funzioni viene configurato nuovamente come in \autoref{s:preamp_config}: impulso
+quadrato di frequenza $f_{\text{gen}} = 1 \,\si{k\Hz}$, tensione di riferimento $V_{\text{high}} = 0 \,\si{\volt}$,
+ampiezza \textit{negativa} $V_{\text{low}} = -1 \,\si{\volt}$ e durata $T = 5 \,\si{\us}$. In questa configurazione, il
+segnale in ingresso allo shaper corrisponde a quello rappresentato in \autoref{i:preamp_waveform}: la salita è ora
+lineare, non più "istantanea", ed il segnale è smorzato esponenzialmente, non più costante al valore massimo.  
 
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../Plots/Shaper/shaper_preamp_waveforms.png}
+	\caption{\small A sinistra: segnale in uscita dallo shaper senza resistenza di compensazione. 
+					A destra: segnale in uscita dallo shaper con resistenza di compensazione.}
+	\label{i:shaper_waveforms}
+\end{figure}
 
 
 
