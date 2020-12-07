@@ -385,6 +385,9 @@ INPUT ../Plots/PreAmp/preamp_arduino_fit.png
 INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/PreAmp/bode_plot.png
 INPUT ../Plots/PreAmp/bode_plot.png
 INPUT ../Plots/PreAmp/bode_plot.png
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/Shaper/shaper_ideal.png
+INPUT ../Plots/Shaper/shaper_ideal.png
+INPUT ../Plots/Shaper/shaper_ideal.png
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
