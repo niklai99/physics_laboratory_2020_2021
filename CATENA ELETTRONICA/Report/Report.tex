@@ -490,9 +490,71 @@ Figura x dopo per il confronto....
 
 \subsection{Analisi in Frequenza}\label{s:shaper_bode}
 
+Si vuole ora studiare la risposta in frequenza dello shaper: si modificano le impostazioni del generatore in
+modo da erogare un'onda sinusoidale di ampiezza $1\,\si{\volt}$ e frequenza $f_{\text{gen}}$ variabile da $50\,\si{\Hz}$
+a $1\,\si{\MHz}$. Per quanto riportato in \autoref{e:preamp_H}, ci si aspetta un comportamento da filtro passa banda
+avente frequenza di massimo
+\begin{align}\label{e:shaper_ft_th}
+	f_{\text{polo}}&=\frac{1}{2\pi \tau^{\text{sh}}}= 10.0 \pm 0.4 \,\si{k\Hz} & 
+	\text{con\,\,\,\,}\sigma_{f_{\text{polo}}}&
+	=\frac{1}{2\pi}\frac{\sigma_{\tau^{\text{sh}}}}{\tau^{2}_{\text{sh}}}																		
+\end{align}
+\noindent Si intende ora rappresentare le misure acquisite sperimentalmente attraverso un grafico di Bode. Viene
+acquisita allora l'ampiezza del segnale sia in ingresso sia in uscita utilizzando l'oscilloscopio e viene calcolata la
+funzione di trasferimento $H$, alla quale viene associata un'incertezza $\sigma_{H}$ data da \autoref{e:preamp_H_err}.
+L'incertezza di guadagno associata all'oscilloscopio non viene invece considerata in quanto, dovendo successivamente
+prendere il logaritmo $\text{log}_{10}H$ della funzione di trasferimento, tale contributo viene scaricato interamente
+nell'intercetta delle interpolazioni volte a caratterizzare l'andamento delle misure. Si assume infine trascurabile
+l'incertezza sulla frequenza dell'onda erogata dal generatore. Si rappresenta allora in \autoref{i:shaper_thebode} il
+grafico di Bode delle misure acquisite assieme ai punti ottenuti attraverso una simulazione Spice della risposta del
+circuito (pagina seguente). Confrontando inizialmente le misure sperimentali con la simulazione Spice si nota un ottimo
+accordo a basse frequenze e nella zona di \textit{mid band}, mentre per alte frequenze (attorno al MHz) si osserva un
+sensibile disaccordo tra misure sperimentali e simulazione Spice: la causa di questa anomalia si crede essere dovuta
+alla GBW dell'operazionale, la quale non è stata presa in considerazione nel simulare la risposta del
+circuito.\footnote{La \textit{Gain BandWidth} dell'amplificatore operazionale, anche detta \textit{frequenza a guadagno
+unitario}, determina il massimo guadagno ottenibile ad una data frequenza.} In ogni caso, il filtro si comporta come da
+aspettative: la funzione di trasferimento presenta una crescita lineare a basse frequenze (zona di derivazione) con
+pendenza $19.3 \pm 0.2 \,\text{dB/dec}$ ed una decrescita lineare ad alte frequenze (zona di integrazione) con pendenza
+$-18.8 \pm 0.3 \,\text{dB/dec}$. L'ascissa del punto di intersezione delle due rette di regressione fornisce una stima
+della frequenza relativo al polo $f_{\text{polo}} = 9.6 \pm 0.2 \,\si{k\Hz}$, in ottima compatibilità con la frequenza
+del polo teorica esposta in \autoref{e:shaper_ft_th} ($\lambda = 0.8$). Partendo dalla stima ottenuta per
+$f_{\text{polo}}$, si ricerca il valore massimo della funzione di trasferimento: sottraendo infine $3\,\text{dB}$ a tale
+massimo e cercando le ascisse di intersezione con le due rette di regressione si riesce a determinare la larghezza di
+banda $\Delta f$ del filtro. Si ottiene quindi la \textit{mid band} dello shaper, delimitata da
+\begin{align}\label{e:shaper_bw}
+	f_{\text{low}} &= 3.7 \pm 0.4 \,\si{k\Hz} &
+	f_{\text{high}} &= 26.1 \pm 0.8\,\si{k\Hz}
+\end{align}
+\noindent 
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{../Plots/Shaper/bode_plot.png}
+	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.}
+	\label{i:shaper_thebode}
+\end{figure}
 
 
 
+
+%\noindent Confrontando inizialmente le misure sperimentali con la simulazione Spice, si nota un ottimo accordo in tutto
+%lo spettro di frequenze. Questo è chiaramente indice di una risposta in frequenza del circuito compatibile con le
+%aspettative: il comportamento del filtro, infatti, è evidentemente un passa basso. A basse frequenze, la funzione di
+%trasferimento è pressochè costante a $22\,\si{dB}$ (retta in \textit{arancione}), mentre per frequenze crescenti la
+%funzione di trasferimento decresce linearmente con coefficiente angolare conforme all'aspettativa dei
+%$-20\,\si{dB/dec}$. L'ascissa del punto di intersezione tra le due rette di regressione fornisce una stima della
+%frequenza di taglio del circuito $f_{\text{t}} = 1.03 \pm 0.03 \,\si{\kHz}$, compatibile in modo soddisfacente ($\lambda
+%= 0.9$) con la frequenza di taglio teorica esposta in \autoref{e:preamp_ft_th}. Si vuole sottolineare che nel computo
+%dell'errore su $f_{\text{t}}$ è stata presa in considerazione la convarianza tra parametri appartenenti allo stesso fit.
+%Osservando infine che la formula analitca frequenza di taglio $f_{\text{t}}$ riportata in \autoref{e:preamp_ft_th}
+%contiene il termine $R_{\text{f}} \, C_{\text{f}}=\tau^{\text{pre}}$, si vuole valutare l'accordo tra la frequenza di
+%taglio ottenuta dal grafico di Bode e la frequenza di taglio teorica, utilizzando però
+%$\tau^{\text{pre}}=\tau^{\text{lin}}$ ricavato nella sezione precedente. Si ottiene dunque una frequenza di taglio
+%$f_{\text{t}}^{\text{lin}} = 1.034 \pm 0.007 \,\si{\kHz}$ ed è in eccellente compatibilità con quanto appena stimato
+%($\lambda = 0.13$). Da questo notevole accordo si deduce l'assenza di possibili sistematicità di metodo, sia nella stima
+%del tempo caratteristico attraverso il fit lineare in \autoref{i:preamp_arduino_fit}, sia nella stima della frequenza di
+%taglio analizzando il grafico di Bode. 
 
 
 

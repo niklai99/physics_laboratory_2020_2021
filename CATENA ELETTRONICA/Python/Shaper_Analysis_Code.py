@@ -521,13 +521,13 @@ def bode_plot(df, sim):
 
     # ARANCIONE
     q1 = 'a = ' + format(a, '1.1f') + ' +/- ' + format(err_a, '1.1f') + ' dB'
-    m1 = 'b = ' + format(b, '1.2f') + ' +/- ' + format(err_b, '1.2f') + ' dB/dec'
+    m1 = 'b = ' + format(b, '1.1f') + ' +/- ' + format(err_b, '1.1f') + ' dB/dec'
     chisq1 = '$\chi^{2}$ / ndf = ' + format(chi21, '1.2f') + ' / ' + format(len(data1['log10f (dec)']) - 2, '1.0f') 
     sigmap1 = '\u03C3$_{post}$ = ' + format(sigma_post1, '1.2f') + ' dB'
 
     # BLU
     q2 = 'c = ' + format(c, '1.1f') + ' +/- ' + format(err_c, '1.1f') + ' dB'
-    m2 = 'd = ' + format(d, '1.2f') + ' +/- ' + format(err_d, '1.2f') + ' dB/dec'
+    m2 = 'd = ' + format(d, '1.1f') + ' +/- ' + format(err_d, '1.1f') + ' dB/dec'
     chisq2 = '$\chi^{2}$ / ndf = ' + format(chi22, '1.2f') + ' / ' + format(len(data2['log10f (dec)']) - 2, '1.0f') 
     sigmap2 = '\u03C3$_{post}$ = ' + format(sigma_post2, '1.2f') + ' dB'
 
