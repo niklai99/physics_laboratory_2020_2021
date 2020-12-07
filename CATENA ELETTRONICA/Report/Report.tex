@@ -157,11 +157,11 @@ segnale). Viene successivamente assemblato
 	\begin{tabular}{x{1.8cm} x{2.5cm} x{2cm} } \toprule[0.5px]\toprule[0.1px]	
 		\multicolumn{3}{c}{Misure Dirette - Preamplificatore}\tn
 		\midrule[0.1px]
-		Resistenza & Valore & F.S. \tn
+		Label & Valore & F.S. \tn
 		\addlinespace
 		$R_{\text{in}}$ & $56.56 \pm 0.02\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn
 		$R_{\text{f}}$ & $696.1 \pm 0.3\,\si{k\ohm}$ & $1000\,\si{k\ohm}$ \tn
-		$C_{\text{f}}$ & $0.232 \pm 0.009\,\si{n\farad}$ & $1\,\si{n\farad}$ \tn
+		$C_{\text{f}}$ & $232 \pm 9\,\si{p\farad}$ & $1000\,\si{p\farad}$ \tn
 		\bottomrule[0.5px]		
 	\end{tabular}
 	\caption{\footnotesize Misure dirette delle componenti circuitali.}
@@ -400,7 +400,9 @@ taglio analizzando il grafico di Bode.
 %	SHAPER
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
-\section{Shaper CR-RC}\label{s:shaper} Il secondo stadio della catena (\textit{shaper}) si utilizza per modificare la
+\section{Shaper CR-RC}\label{s:shaper} 
+
+Il secondo stadio della catena (\textit{shaper}) si utilizza per modificare la
 forma del segnale in uscita dal preamplificatore. Si vuole, in particolare, accorciare il tempo di discesa al fine di
 evitare un possibile \textit{signal pile up} nel caso di un'elevata frequenza di acquisizione. In tale situazione,
 infatti, il segnale di un acquisizione successiva si sovrapporrebbe (almeno parzialmente) a quello dell'acquisizione
@@ -416,8 +418,27 @@ uscita sia ridotta rispetto allo smorzamento esponenziale della tensione dovuto 
 
 \subsection{Configurazione Sperimentale}\label{s:shaper_config}
 
+Si comincia assemblando sulla breadboard il secondo modulo rappresentato in \autoref{i:circuito} utilizzando le
+resistenze e capacità riportate in \autoref{t:shaper_direct_measures}. Si evidenzia che per la prima fase di analisi non
+viene montata la resistenza $R_{\text{pz}}$: la compensazione di \textit{pole zero} verrà trattata in seguito.
 
-
+\begin{wraptable}{L}{0.5\textwidth}
+	\small
+	\centering
+	\begin{tabular}{x{1.8cm} x{2.5cm} x{2cm} } \toprule[0.5px]\toprule[0.1px]	
+		\multicolumn{3}{c}{Misure Dirette - Shaper}\tn
+		\midrule[0.1px]
+		Label & Valore & F.S. \tn
+		\addlinespace
+		$R_{1}$ & $100.99 \pm 0.06\,\si{k\ohm}$ & $1000\,\si{k\ohm}$ \tn
+		$R_{2}$ & $99.93  \pm 0.06\,\si{k\ohm}$ & $1000\,\si{k\ohm}$ \tn
+		$C_{1}$ & $157    \pm 9 \,\si{n\farad}$ & $1000\,\si{p\farad}$ \tn
+		$C_{2}$ & $159    \pm 9 \,\si{n\farad}$ & $1000\,\si{p\farad}$ \tn
+		\bottomrule[0.5px]		
+	\end{tabular}
+	\caption{\footnotesize Misure dirette delle componenti circuitali.}
+	\label{t:shaper_direct_measures}
+\end{wraptable}	
 
 
 
