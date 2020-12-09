@@ -380,7 +380,6 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msb
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/tcrm0700.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/ecrm0700.tfm
-INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/ecrm0900.tfm
 INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/PreAmp/Vmax_Qin_lin_fit.png
 INPUT ../Plots/PreAmp/Vmax_Qin_lin_fit.png
 INPUT ../Plots/PreAmp/Vmax_Qin_lin_fit.png
@@ -396,6 +395,7 @@ INPUT ../Plots/PreAmp/bode_plot.png
 INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/Shaper/shaper_ideal.png
 INPUT ../Plots/Shaper/shaper_ideal.png
 INPUT ../Plots/Shaper/shaper_ideal.png
+INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/ecrm0900.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm

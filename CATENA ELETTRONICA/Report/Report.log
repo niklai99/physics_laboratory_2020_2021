@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  9 DEC 2020 16:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  9 DEC 2020 16:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1290,13 +1290,13 @@ File: ../Plots/PreAmp/Vmax_Qin_lin_fit.png Graphic file (type png)
 Package pdftex.def Info: ../Plots/PreAmp/Vmax_Qin_lin_fit.png  used on input line 242.
 (pdftex.def)             Requested size: 435.32422pt x 249.16837pt.
  [2]
-<../Plots/PreAmp/preamp_waveform.png, id=120, 2477.05424pt x 1332.77925pt>
+<../Plots/PreAmp/preamp_waveform.png, id=119, 2477.05424pt x 1332.77925pt>
 File: ../Plots/PreAmp/preamp_waveform.png Graphic file (type png)
 <use ../Plots/PreAmp/preamp_waveform.png>
 Package pdftex.def Info: ../Plots/PreAmp/preamp_waveform.png  used on input line 299.
 (pdftex.def)             Requested size: 241.84843pt x 130.11322pt.
  [3 <../Plots/PreAmp/Vmax_Qin_lin_fit.png>]
-<../Plots/PreAmp/preamp_arduino_fit.png, id=129, 4664.42625pt x 1370.721pt>
+<../Plots/PreAmp/preamp_arduino_fit.png, id=128, 4664.42625pt x 1370.721pt>
 File: ../Plots/PreAmp/preamp_arduino_fit.png Graphic file (type png)
 <use ../Plots/PreAmp/preamp_arduino_fit.png>
 Package pdftex.def Info: ../Plots/PreAmp/preamp_arduino_fit.png  used on input line 322.
@@ -1317,13 +1317,13 @@ Underfull \hbox (badness 1184) in paragraph at lines 304--326
  []
 
 [4 <../Plots/PreAmp/preamp_waveform.png> <../Plots/PreAmp/preamp_arduino_fit.png>]
-<../Plots/PreAmp/bode_plot.png, id=140, 2522.82526pt x 1624.26825pt>
+<../Plots/PreAmp/bode_plot.png, id=139, 2522.82526pt x 1624.26825pt>
 File: ../Plots/PreAmp/bode_plot.png Graphic file (type png)
 <use ../Plots/PreAmp/bode_plot.png>
 Package pdftex.def Info: ../Plots/PreAmp/bode_plot.png  used on input line 379.
 (pdftex.def)             Requested size: 435.32422pt x 280.26093pt.
  [5 <../Plots/PreAmp/bode_plot.png>] [6]
-<../Plots/Shaper/shaper_ideal.png, id=162, 2571.00525pt x 1366.50525pt>
+<../Plots/Shaper/shaper_ideal.png, id=161, 2571.00525pt x 1366.50525pt>
 File: ../Plots/Shaper/shaper_ideal.png Graphic file (type png)
 <use ../Plots/Shaper/shaper_ideal.png>
 Package pdftex.def Info: ../Plots/Shaper/shaper_ideal.png  used on input line 481.
@@ -1377,7 +1377,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  57i,22n,54p,10525b,1001s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.pdf" (11 pages, 2915750 bytes).
+Output written on "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.pdf" (11 pages, 2915460 bytes).
 PDF statistics:
  338 PDF objects out of 1000 (max. 8388607)
  275 compressed objects within 3 object streams
