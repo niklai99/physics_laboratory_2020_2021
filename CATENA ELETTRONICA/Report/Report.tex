@@ -5,7 +5,9 @@
 \documentclass[a4paper,11pt]{article} % Font and paper size
 \linespread{0.9}
 \input{structure.tex} % Include the file specifying document layout and packages
-
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	GENERAL INFORMATION 
@@ -492,7 +494,7 @@ sperimentale si attribuisce principalmente alle componenti circuitali ed alle si
 Il valore massimo $V_{\text{sper}}^{\text{max}}$ viene invece assunto ad un tempo conforme allo \textit{shaping time}.
 In \autoref{i:shaper_ideal} viene mostrato il segnale in uscita, acquisito con la scheda Arduino, assieme alla
 simulazione Spice: si nota chiaramente come la tensione sperimentale sia inferiore alle aspettative, come già
-anticipato. Si fa notare, tuttavia, che il valore massimo dei dati acquisiti risulta essere $0.342 \pm 0.011 \,\si{\volt}$ e questo
+anticipato. Si fa notare, tuttavia, che il valore massimo dei dati acquisiti risulta essere $0.34 \pm 0.02 \,\si{\volt}$ e questo
 viene assunto ad un tempo $t \approx 15.9\,\si{\us}$ perfettamente in linea con quanto misurato sperimentalmente.
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -603,9 +605,30 @@ in precedenza.
 					A destra: segnale in uscita dallo shaper con resistenza di compensazione.}
 	\label{i:shaper_waveforms}
 \end{figure}
-% Dire i risultati sperimentali e quelli teorici
+\noindent Si vuole ora confrontare le misure sperimentali acquisite con l'oscilloscopio e i dati acquisiti con la scheda
+Arduino. 
 
+\begin{table}[H]
+	\small
+	\centering
+	\begin{tabular}{x{2.2cm} x{2.3cm} | x{2.2cm} x{1.8cm} | x{2.5cm} x{2.3cm}} \toprule[0.5px]\toprule[0.1px]	
+		\multicolumn{6}{c}{Shaper - Segnale in uscita senza $R_{\text{pz}}$}\tn
+		\midrule[0.1px]
 
+		\multicolumn{2}{c}{$V_{\text{max}} \,(\si{\milli\volt}) $} & \multicolumn{2}{c}{$t_{\text{max}} \,(\si{\us})$} & 
+		\multicolumn{2}{c}{$V_{\text{undershoot}} \,(\si{\milli\volt})$} \tn
+		Osc. & Arduino & Osc. & Arduino & Osc. & Arduino \tn
+
+		\addlinespace
+
+		$ 123 \pm 2 $&$ 124 \pm 19 $&$ 17 \pm 1 $&$ \sim 16.81 $&$ -19.7 \pm 1.1 $&$ -20 \pm  17 $\tn
+		$ $&$ $&$ $&$ $&$ $&$ $\tn
+
+		\bottomrule[0.5px]		
+	\end{tabular}
+	\caption{\footnotesize Confronto segnale in uscita dallo shaper.}
+	\label{t:shaper_vout}
+\end{table}	
 
 
 

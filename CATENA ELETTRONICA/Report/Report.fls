@@ -254,6 +254,14 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/siunitx/siunitx.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/translator/translator.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/translator/translator.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/translator/translator.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/psnfss/pifont.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/psnfss/pifont.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/psnfss/upzd.fd
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/psnfss/upzd.fd
+INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/psnfss/upsy.fd
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/psnfss/upsy.fd
+INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm
 INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.aux
 INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.aux
 OUTPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.aux
@@ -410,8 +418,8 @@ INPUT ../Plots/Shaper/shaper_preamp_waveforms.png
 INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.aux
 INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.out
 INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.out
-INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
