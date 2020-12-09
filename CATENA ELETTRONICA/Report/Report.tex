@@ -665,6 +665,23 @@ $t_{\text{max}}$ risulta essere, in ogni caso, in linea con le simulazioni Spice
 
 \section{Catena Elettronica Completa}\label{s:catena}
 
+Generalmente, in una catena elettronica associata ad un detector, lo \textit{shaper} non ha solamente la funzione di
+modificare la forma del segnale, bensì di applicare inoltre un'amplificazione. In tal caso il modulo prende il nome di
+\textit{shaping amplifier}. In laboratorio, invece, si è voluto disaccoppiare i due moduli: si assembla quindi un
+amplificatore \textit{non invertente} basilare collegato all'uscita dello \textit{shaper}. Lo scopo di questo terzo ed
+ultimo stadio della catena è ottimizzare l'ampiezza del segnale per sfruttare al meglio il range in input della DAQ,
+ovvero in questo caso l'ADC della scheda Arduino Due. Questa, infatti, può ricevere nell'input analogico segnali
+\textit{positivi} su un range di circa $3\,\si{\volt}$, nonostante sia opportuno notare che già oltre i $2\,\si{\volt}$
+i vari circuiti di protezione dei pin in ingresso tendono ad alterare l'acquisizione del segnale. Quest'ultimo, infine,
+viene convertito lavorando su 12 bit, cioè 4096 valori. Come è stato evidenziato nelle sezioni precedenti, i segnali
+acquisiti in uscita dallo \textit{shaper} si aggirano attorno al centinaio di milliVolt: essendo allora il segnale già
+positivo è sufficiente un'amplificazione lineare non invertente per adattare il segnale al range dell'ADC di Arduino. 
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	CONFIGURAZIONE SPERIMENTALE
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Configurazione Sperimentale}\label{s:catena_config}
 
 
 
