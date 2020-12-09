@@ -606,8 +606,8 @@ in precedenza.
 	\label{i:shaper_waveforms}
 \end{figure}
 \noindent Si vuole ora confrontare le misure sperimentali acquisite con l'oscilloscopio ed i dati acquisiti con la scheda
-Arduino. In \autoref{t:shaper_vout} si riportano quindi le msiure del massimo della tensione, il tempo in cui tale
-massimo viene assunto e, eventualmente, la tensione di \textit{undershoot}. 
+Arduino. In \autoref{t:shaper_vout} si riportano quindi le misure del massimo della tensione $V_{\text{max}}$, il tempo in cui tale
+massimo viene assunto $t_{\text{max}}$ e, eventualmente, la tensione di \textit{undershoot} $V_{\text{undershoot}}$. 
 
 \begin{table}[H]
 	\small
@@ -645,7 +645,11 @@ massimo viene assunto e, eventualmente, la tensione di \textit{undershoot}.
 % simulazione diversa dalle aspettative
 % taushaper più grande perchè la salita è lineare e non istantanea
 % strano aumento della tensione con Rpz boh zero idee bro
-\noindent
+\noindent Si noti allora come tutte le misure acquisite con l'oscilloscopio e con Arduino sono tra loro consistenti.
+Inoltre, risulta evidente una notevole differenza di precisione tra le due tipologie di acquisizione: per quanto
+riguarda le misure di tensione l'oscilloscopio si trova essere circa un ordine di grandezza più preciso. L'errore
+relativo sulla misura del massimo $V_{\text{max}}$, infatti, risulta essere per l'acquisizione con Arduino di circa il
+$15\%$, mentre per l'acquisizione con l'oscilloscopio si trova circa $1.6\%$.
 
 
 
