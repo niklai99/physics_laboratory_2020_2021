@@ -1,11 +1,10 @@
 Circuit: * D:\GitHub\physics_laboratory_2020_2021\CATENA ELETTRONICA\Simulations\Catena\Catena_frequency.asc
 
-Limiting rise time of source vg1 to 0.0001
-Limiting fall time of source vg1 to 0.0001
+Vg1: Missing value, assumed 0V @ DC
 Direct Newton iteration for .op point succeeded.
 
-Date: Wed Dec 02 13:12:28 2020
-Total elapsed time: 0.042 seconds.
+Date: Wed Dec 09 15:46:56 2020
+Total elapsed time: 0.033 seconds.
 
 tnom = 27
 temp = 27
@@ -18,5 +17,5 @@ rejected = 0
 matrix size = 17
 fillins = 3
 solver = Normal
-Matrix Compiler1:      62 opcodes
+Matrix Compiler1: 1.04 KB object code size
 Matrix Compiler2: 1.74 KB object code size
