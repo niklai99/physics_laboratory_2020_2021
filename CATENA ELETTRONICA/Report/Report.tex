@@ -605,8 +605,9 @@ in precedenza.
 					A destra: segnale in uscita dallo shaper con resistenza di compensazione.}
 	\label{i:shaper_waveforms}
 \end{figure}
-\noindent Si vuole ora confrontare le misure sperimentali acquisite con l'oscilloscopio e i dati acquisiti con la scheda
-Arduino. 
+\noindent Si vuole ora confrontare le misure sperimentali acquisite con l'oscilloscopio ed i dati acquisiti con la scheda
+Arduino. In \autoref{t:shaper_vout} si riportano quindi le msiure del massimo della tensione, il tempo in cui tale
+massimo viene assunto e, eventualmente, la tensione di \textit{undershoot}. 
 
 \begin{table}[H]
 	\small
@@ -631,16 +632,20 @@ Arduino.
 		\multicolumn{2}{c}{$V_{\text{undershoot}} \,(\si{\milli\volt})$} \tn
 		Osc. & Arduino & Osc. & Arduino & Osc. & Arduino \tn
 
-		\addlinespace
+		%\addlinespace
 
 		$ 129 \pm 2 $&$ 131 \pm 19 $&$ 17 \pm 1 $&$ \sim 17.7 $& \xmark & \xmark \tn
 
 		\bottomrule[0.5px]		
 	\end{tabular}
-	\caption{\footnotesize Confronto segnale in uscita dallo shaper.}
+	\caption{\footnotesize Confronto del segnale in uscita tra le due configurazioni dello shaper.}
 	\label{t:shaper_vout}
 \end{table}	
-
+% arduino - osc sono consistenti
+% simulazione diversa dalle aspettative
+% taushaper più grande perchè la salita è lineare e non istantanea
+% strano aumento della tensione con Rpz boh zero idee bro
+\noindent
 
 
 
