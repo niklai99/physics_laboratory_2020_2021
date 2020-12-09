@@ -641,9 +641,6 @@ massimo viene assunto $t_{\text{max}}$ e, eventualmente, la tensione di \textit{
 	\caption{\small Confronto del segnale in uscita tra le due configurazioni dello shaper.}
 	\label{t:shaper_vout}
 \end{table}	
-% simulazione diversa dalle aspettative
-% taushaper più grande perchè la salita è lineare e non istantanea
-% strano aumento della tensione con Rpz boh zero idee bro
 \noindent Si noti allora come tutte le misure acquisite con l'oscilloscopio e con Arduino sono tra loro consistenti.
 Inoltre, risulta evidente una notevole differenza di precisione tra le due tipologie di acquisizione: per quanto
 riguarda le misure di tensione l'oscilloscopio si trova essere circa un ordine di grandezza più preciso. L'errore
@@ -656,7 +653,11 @@ Questo era già stato osservato in \autoref{i:shaper_ideal}: il segnale misurato
 l'oscilloscopio risulta essere sempre leggermente minore delle aspettative. Si ritiene, tuttavia, più rilevante
 l'elevato accordo tra metodologie di acquisizione differenti, piuttosto che la lieve discrepanza con simulazioni. Come
 si è già fatto notare, infatti, questa deviazione dalle aspettative teoriche viene associata a delle sistematiche
-inerenti alle componenti circuitali ed all'assemblaggio del circuito stesso. 
+inerenti alle componenti circuitali ed all'assemblaggio del circuito stesso. Si noti ora invece come il tempo
+$t_{\text{max}}$ sia leggermente aumentato rispetto al caso ideale ($t_{\text{max}}^{\text{ideal}}\approx
+15.9\,\si{\us}$): la causa di ciò si crede essere ancora la perdita di idealità del segnale. La salita lineare, e non
+più "istantanea", infatti, causa un leggero ritardo nel raggiungimento del massimo di tensione. Il tempo
+$t_{\text{max}}$ risulta essere, in ogni caso, in linea con le simulazioni Spice e quindi con le aspettative. 
 
 
 
