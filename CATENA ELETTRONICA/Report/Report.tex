@@ -589,9 +589,13 @@ adeguata in parallelo alla capacità $C_{1}$: scegliendo questa tale che $R_{\te
 \noindent risulta, in buona approssimazione, avere lo stesso polo del modulo CR dello shaper. Di conseguenza, la
 funzione di trasferimento dello shaper con aggiunta la resistenza $R_{\text{pz}}$ continua ad avere un polo doppio in
 $f_{\text{polo}}$ e questo non ne altera le proprietà caratteristiche. La correzione apportata per eliminare l'effetto ti
-\textit{undershoot} prende il nome di compensazione \textit{pole zero}. 
-
-
+\textit{undershoot} prende il nome di compensazione \textit{pole zero}. In laboratorio, quindi, viene montata una
+resistenza $R_{\text{pz}} = 1.013 \pm 0.007 \, \si{\mega\ohm}$ ($\text{F.S.} 10\,\si{\mega\ohm}$) molto simile a quella
+necessaria per compensare l'effetto di \textit{undershoot} ($R_{\text{pz}}^{\text{th}} = 1.03 \pm 0.07 \,
+\si{\mega\ohm}$): osservando il grafico a destra in \autoref{i:shaper_waveforms} si nota quindi come l'effetto sia del
+tutto scoparso. Il segnale ora, infatti, dopo aver assunto il valore massimo decresce senza scendere sotto la
+\textit{baseline}. Inoltre, il segnale si azzera completamente dopo circa $200\,\si{\us}$, come nel caso ideale trattato
+in precedenza.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Plots/Shaper/shaper_preamp_waveforms.png}
@@ -599,7 +603,7 @@ $f_{\text{polo}}$ e questo non ne altera le proprietà caratteristiche. La corre
 					A destra: segnale in uscita dallo shaper con resistenza di compensazione.}
 	\label{i:shaper_waveforms}
 \end{figure}
-
+% Dire i risultati sperimentali e quelli teorici
 
 
 
