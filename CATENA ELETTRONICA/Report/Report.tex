@@ -611,8 +611,20 @@ Arduino.
 \begin{table}[H]
 	\small
 	\centering
-	\begin{tabular}{x{2.2cm} x{2.3cm} | x{2.2cm} x{1.8cm} | x{2.5cm} x{2.3cm}} \toprule[0.5px]\toprule[0.1px]	
-		\multicolumn{6}{c}{Shaper - Segnale in uscita senza $R_{\text{pz}}$}\tn
+	\begin{tabular}{x{2.2cm} x{2.2cm} | x{2.2cm} x{2.2cm} | x{2.2cm} x{2.2cm}} \toprule[0.5px]\toprule[0.1px]	
+		\multicolumn{6}{c}{Shaper - Segnale in uscita \textit{senza} $R_{\text{pz}}$}\tn
+		\midrule[0.1px]
+
+		\multicolumn{2}{c}{$V_{\text{max}} \,(\si{\milli\volt}) $} & \multicolumn{2}{c}{$t_{\text{max}} \,(\si{\us})$} & 
+		\multicolumn{2}{c}{$V_{\text{undershoot}} \,(\si{\milli\volt})$} \tn
+		Osc. & Arduino & Osc. & Arduino & Osc. & Arduino \tn
+
+		%\addlinespace
+
+		$ 123 \pm 2 $&$ 124 \pm 19 $&$ 17 \pm 1 $&$ \sim 16.8 $&$ -19.7 \pm 1.1 $&$ -20 \pm  17 $\tn
+
+		\midrule[0.1px]
+		\multicolumn{6}{c}{Shaper - Segnale in uscita \textit{con} $R_{\text{pz}}$}\tn
 		\midrule[0.1px]
 
 		\multicolumn{2}{c}{$V_{\text{max}} \,(\si{\milli\volt}) $} & \multicolumn{2}{c}{$t_{\text{max}} \,(\si{\us})$} & 
@@ -621,8 +633,7 @@ Arduino.
 
 		\addlinespace
 
-		$ 123 \pm 2 $&$ 124 \pm 19 $&$ 17 \pm 1 $&$ \sim 16.81 $&$ -19.7 \pm 1.1 $&$ -20 \pm  17 $\tn
-		$ $&$ $&$ $&$ $&$ $&$ $\tn
+		$ 129 \pm 2 $&$ 131 \pm 19 $&$ 17 \pm 1 $&$ \sim 17.7 $& \xmark & \xmark \tn
 
 		\bottomrule[0.5px]		
 	\end{tabular}
