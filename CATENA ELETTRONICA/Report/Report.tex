@@ -641,7 +641,6 @@ massimo viene assunto $t_{\text{max}}$ e, eventualmente, la tensione di \textit{
 	\caption{\small Confronto del segnale in uscita tra le due configurazioni dello shaper.}
 	\label{t:shaper_vout}
 \end{table}	
-% arduino - osc sono consistenti
 % simulazione diversa dalle aspettative
 % taushaper più grande perchè la salita è lineare e non istantanea
 % strano aumento della tensione con Rpz boh zero idee bro
@@ -650,7 +649,14 @@ Inoltre, risulta evidente una notevole differenza di precisione tra le due tipol
 riguarda le misure di tensione l'oscilloscopio si trova essere circa un ordine di grandezza più preciso. L'errore
 relativo sulla misura del massimo $V_{\text{max}}$, infatti, risulta essere per l'acquisizione con Arduino di circa il
 $15\%$, mentre per l'acquisizione con l'oscilloscopio si trova circa $1.6\%$.
-
+%potrebbe essere perchè non sto sfruttando tutti i 4000 bit di arduino!! è fatto apposta per essere più preciso quando
+%le tensioni sono grandi? 
+Osservando l'accordo tra misure acquisite con Arduino e le simulazioni Spice, invece, si nota una lieve discrepanza.
+Questo era già stato osservato in \autoref{i:shaper_ideal}: il segnale misurato sia con la scheda Arduino sia con
+l'oscilloscopio risulta essere sempre leggermente minore delle aspettative. Si ritiene, tuttavia, più rilevante
+l'elevato accordo tra metodologie di acquisizione differenti, piuttosto che la lieve discrepanza con simulazioni. Come
+si è già fatto notare, infatti, questa deviazione dalle aspettative teoriche viene associata a delle sistematiche
+inerenti alle componenti circuitali ed all'assemblaggio del circuito stesso. 
 
 
 
