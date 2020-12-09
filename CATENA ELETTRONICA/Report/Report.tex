@@ -709,11 +709,33 @@ segnale $V_{\text{shaper}}^{\text{max}} = 260 \pm 4\,\si{\milli\volt}$, misurato
 dunque, in uscita dalla catena completa un segnale di ampiezza $V_{\text{out}}^{\text{th}} = 2.41 \pm 0.04
 \,\si{\volt}$. Si misura, invece, utilizzando l'oscilloscopio una tensione $V_{\text{out}}^{\text{sper}} = 2.32 \pm 0.04
 \,\si{\volt}$. Emerge nuovamente la leggera discrepanza tra le aspettative sulla tensione e le effettive misure
-sperimentali. 
-
-
-
-
+sperimentali. Per il calcolo della funzione di trasferimento complessiva della catena si moltiplicano tra loro le
+funzioni di trasferimento dei singoli moduli:
+\begin{align}\label{e:catena_H}
+	H(s) &= \underbrace{ - \frac{ 1 }{ R_{\text{in}}\,C_{\text{f}} } \,\, \frac{1}{ s + \frac{ 1 }{ \tau^{\text{pre}} } } }_\text{preamplificatore} \,\,
+	\underbrace{ \frac{ 1 }{ \tau^{ \text{sh} } }  \,  \frac{ s + \frac{1}{\tau^{\text{pz}}} }{ \left( s + \frac{ 1 }{ \tau^{ \text{sh} } } \right)^2} }_\text{shaper} \,\,
+	\underbrace{ \left( 1 + \frac{R_{2\text{a}}}{R_{1\text{a}}} \right) }_\text{amplificatore}
+	&
+	&\text{con} \,\,\, 
+	\begin{cases}
+		\tau^{\text{pre}} = R_{\text{f}}\,C_{\text{f}}  \\
+		\tau^{\text{sh}} = R_{1}\,C_{1} = R_{2}\,C_{2}  \\
+		\tau^{\text{pz}} = R_{\text{pz}}\,C_{1}         \\
+	\end{cases}	
+\end{align}
+\noindent Si ricorda ora che la resistenza di compensazione $R_{\text{pz}}$ è stata scelta tale che $R_{\text{pz}} =
+\frac{\tau^{\text{pre}}}{C_{1}}$: si trova allora $\tau^{\text{pz}} = \tau^{\text{pre}}$ e la funzione di trasferimento
+diventa
+\begin{equation}\label{e:catena_H_final}
+	H(s) = -\frac{ 1 + \frac{R_{2\text{a}}}{R_{1\text{a}}} }{ R_{\text{in}} \,\, C_{\text{f}} \,\, \tau^{ \text{sh} } }	\,\,\,
+			\frac{1}{\left( s + \frac{ 1 }{ \tau^{ \text{sh} } } \right)^2}
+\end{equation}
+\noindent Si noti allora che la funzione di trasferimento effettiva della catena elettronica completa non presenta zeri,
+mentre presenta lo stesso polo doppio dello \textit{shaper}. Ci si aspetta dunque che il comportamento in frequenza
+della catena sia quello di un filtro passa basso avente frequenza di taglio teorica $f_{\text{t}} = 10.0 \pm 0.4
+\,\si{k\Hz}$ (sperimentalmente si è invece trovato, in \autoref{s:shaper_bode}, $f_{\text{t}} = 9.6 \pm 0.2
+\,\si{k\Hz}$). Per frequenze minori ci si aspetta, nel grafico di Bode, un andamento costante delle misure mentre, per
+frequenze maggiori, ci si aspetta una decrescita lineare con pendenza $-40\,\text{dB/dec}$.
 
 
 
