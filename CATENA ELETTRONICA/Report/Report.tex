@@ -785,8 +785,8 @@ fuori trend.}
 
 Si vuole ora studiare la risposta in frequenza della catena elettronica: si imposta il generatore in modo da erogare
 un'onda sinusoidale di ampiezza $1\,\si{\volt}$ e frequenza $f_{\text{gen}}$ variabile da $10\,\si{\Hz}$ a
-$100\,\si{\kilo\Hz}$. Per quanto riportato in \autoref{s:catena_config}, ci si aspetta un comportamento da filtro passa basso
-avente frequenza di taglio analoga a quella dello \textit{shaper} (\autoref{s:shaper_bode}). Si acquisisce quindi
+$100\,\si{\kilo\Hz}$. Per quanto riportato in \autoref{s:catena_config}, ci si aspetta un comportamento da filtro passa
+basso avente frequenza di taglio analoga a quella dello \textit{shaper} (\autoref{s:shaper_bode}). Si acquisisce quindi
 l'ampiezza del segnale sia in ingresso sia in uscita utilizzando l'oscilloscopio e viene calcolata la funzione di
 trasferimento $H$, alla quale viene associata un'incertezza $\sigma_{H}$ data da \autoref{e:preamp_H_err}. L'incertezza
 di guadagno associata all'oscilloscopio non viene invece considerata in quanto, dovendo successivamente prendere il
@@ -799,7 +799,11 @@ accordo in tutto lo spettro di frequenze. Questo è chiaramente indice di una ri
 aspettative: a basse frequenze la funzione di trasferimento è costante a $20.1 \pm 0.2 \,\text{dB}$ mentre per frequenze
 crescenti la funzione di trasferimento subisce un'attenuazione lineare di pendenza $-39.2\pm 0.3\,\text{dB/dec}$, in
 linea con l'aspettativa dei $-40\,\text{dB/dec}$ dovuti al polo doppio. L'ascissa del punto di intersezione tra le due
-rette di regressione fornisce quindi una stima della frequenza di taglio del circuito $f_{\text{t}}= 9.72 \pm 0.13 \,\si{\kilo\Hz}$.
+rette di regressione fornisce quindi una stima della frequenza di taglio del circuito $f_{\text{t}}= 9.72 \pm 0.13
+\,\si{\kilo\Hz}$. Si ricorda quindi che la frequenza di taglio teorica attesa è $f_{\text{t}} = 10.0 \pm 0.4
+\,\si{k\Hz}$, mentre la frequenza relativa al polo della funzione di trasferimento dello shaper ricavata dal grafico di
+Bode in \autoref{i:shaper_thebode} risulta essere $f_{\text{t}} = 9.6 \pm 0.2 \,\si{k\Hz}$.
+%calcolo le compatibilià bro
 
 
 
