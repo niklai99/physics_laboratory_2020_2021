@@ -474,8 +474,8 @@ def bode_plot(df, sim):
 
     RESXMIN = XMIN
     RESXMAX = XMAX
-    RESYMIN = -0.5
-    RESYMAX = 0.5
+    RESYMIN = -0.4
+    RESYMAX = 0.4
 
     # ARANCIONE
     data1 = df.iloc[:6, :]
@@ -663,7 +663,7 @@ def bode_plot(df, sim):
     ax1.set_xticks(ticks = ax1.get_xticks(), minor = True)
     ax1.set_yticks(ticks = ax1.get_yticks(), minor = True)
     ax1.minorticks_on()
-    ax2.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
+    ax2.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10, pad = 5)
     ax2.tick_params(axis = 'both', which = 'minor', labelsize = 22, direction = 'in', length = 5)
     ax2.set_xticks(ticks = ax1.get_xticks(), minor = True)
     ax2.set_yticks(ticks = ax1.get_yticks(), minor = True)
@@ -686,7 +686,7 @@ def bode_plot(df, sim):
     ax2.set_xscale('log')
     
     # SAVE FIGURE
-    #fig.savefig('../Plots/Catena/bode_plot.png', dpi = 300, facecolor = 'white')
+    fig.savefig('../Plots/Catena/bode_plot.png', dpi = 300, facecolor = 'white')
     
     plt.show()
 

@@ -774,10 +774,36 @@ fuori trend.}
 
 
 
+% 70.7 pF dal coefficiente angolare
+% 78.9968 pF dal parallelo C1 C2 shaper
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	THEBODE
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Analisi in Frequenza}\label{s:catena_bode}
+
+Si vuole ora studiare la risposta in frequenza della catena elettronica: si imposta il generatore in modo da erogare
+un'onda sinusoidale di ampiezza $1\,\si{\volt}$ e frequenza $f_{\text{gen}}$ variabile da $10\,\si{\Hz}$ a
+$100\,\si{\kilo\Hz}$. Per quanto riportato in \autoref{s:catena_config}, ci si aspetta un comportamento da filtro passa basso
+avente frequenza di taglio analoga a quella dello \textit{shaper} (\autoref{s:shaper_bode}). Si acquisisce quindi
+l'ampiezza del segnale sia in ingresso sia in uscita utilizzando l'oscilloscopio e viene calcolata la funzione di
+trasferimento $H$, alla quale viene associata un'incertezza $\sigma_{H}$ data da \autoref{e:preamp_H_err}. L'incertezza
+di guadagno associata all'oscilloscopio non viene invece considerata in quanto, dovendo successivamente prendere il
+logaritmo $\text{log}_{10}H$ della funzione di trasferimento, tale contributo viene scaricato interamente
+nell'intercetta delle interpolazioni volte a caratterizzare l'andamento delle misure. Si assume infine trascurabile
+l'incertezza sulla frequenza dell'onda erogata dal generatore. Si rappresenta allora in \autoref{i:shaper_thebode} il
+grafico di Bode delle misure acquisite assieme ai punti ottenuti attraverso una simulazione Spice della risposta del
+circuito (pagina seguente).
 
 
 
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{../Plots/Catena/bode_plot.png}
+	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.}
+	\label{i:catena_thebode}
+\end{figure}
 
 
 
