@@ -52,7 +52,7 @@ NOTEBOOK](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2
 
 * Studio delle forme d'onda acquisite con Arduino dello Shaper collegato a
   * Generatore = preamplificatore ideale
-        ![SHAPER IDEALE](./Plots/Shaper/shaper_ideal_waveform_newcalib.png)
+        ![SHAPER IDEALE](./Plots/Shaper/shaper_ideal.png)
   * Preamplificatore
         ![SHAPER PREAMP](./Plots/Shaper/shaper_preamp_waveform_newcalib.png)
   * Preamplificatore con compensazione di _pole-zero_
