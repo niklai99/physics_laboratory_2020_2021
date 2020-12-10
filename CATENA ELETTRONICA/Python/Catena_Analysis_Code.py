@@ -686,7 +686,7 @@ def bode_plot(df, sim):
     ax2.set_xscale('log')
     
     # SAVE FIGURE
-    fig.savefig('../Plots/Catena/bode_plot.png', dpi = 300, facecolor = 'white')
+    #fig.savefig('../Plots/Catena/bode_plot.png', dpi = 300, facecolor = 'white')
     
     plt.show()
 

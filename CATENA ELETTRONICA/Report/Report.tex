@@ -114,7 +114,7 @@ Nel corso dell'esperienza vengono utilizzati:
 
 \section{Introduzione}\label{s:intro}
 
-L'esperienza si basa sull'assemblamento e sullo studio della risposta di una serie di moduli volti a simulare
+L'esperienza si basa su l'assemblamento e sullo studio della risposta di una serie di moduli volti a simulare
 l'elettronica associata ad un \textit{rivelatore di radiazione}. In laboratorio, quindi, si utilizza il generatore di
 funzioni in modo da erogare un segnale che ricordi la rivelazione di un evento da parte del detector: questo segnale
 viene quindi inizialmente elaborato dal \textit{preamplificatore} (di tipo \textit{charge-sensitive}) e successivamente
@@ -176,7 +176,7 @@ $V_{\text{cc}}=+15\,\si{\volt}$ e $V_{\text{ee}}=-15\,\si{\volt}$ per alimentare
 esso abbia un comportamento ideale, ovvero che il polo positivo ed il polo negativo si trovino allo stesso potenziale
 (\textit{virtual short}). Il segnale in ingresso $V_{\text{in}}$ viene prelevato nel punto \textit{IN} evidenziato nello
 schema mentre il segnale in uscita $V^{\text{pre}}_{\text{out}}$ dal preamplificatore viene prelevato al termine del
-primo modulo, entrambi utilizzando sonde 10X. Concentrando l'attezione sul modulo di ingresso (generatore reale e
+primo modulo, entrambi utilizzando sonde 10X. Concentrando l'attenzione sul modulo di ingresso (generatore reale e
 cablaggio), il sistema è un filtro passa basso con frequenza di taglio $f_{\text{t}}^{\text{in}}\approx 32 \,\si{\MHz}$
 che risulta essere molto maggiore delle frequenze in gioco: risulta allora corretto assumere il modulo in ingresso del
 tutto equivalente ad un generatore ideale, come rappresentato in \autoref{i:circuito}. Trattando ora il preamplificatore,
@@ -224,7 +224,7 @@ quantità di carica iniettata nel preamplificatore: per ogni $T$ viene calcolata
 $Q_{\text{c}}$ e viene misurato con l'oscilloscopio il valore massimo del segnale in uscita
 $V^{\text{max}}_{\text{out}}$.  Ai valori di tensione misurati con l'oscilloscopio viene associato l'errore di
 acquisizione comprendente sia il contributo di lettura sia il contributo sul guadagno verticale in quanto nel processo
-di misura sono state utilizzate scale diverse, con la consapevolezza che quest'ultime portano ad una correlazioe almeno
+di misura sono state utilizzate scale diverse, con la consapevolezza che queste ultime portano ad una correlazione almeno
 parziale delle incertezze. Gli errori sulla carica $Q_{\text{c}}$, invece, sono totalmente correlati tra loro:
 $V_{\text{in}}$ e $R_{\text{in}}$ sono, chiaramente, costanti e l'incertezza sulla carica è dunque semplicemente
 l'incertezza sulla corrente in ingresso al preamplificatore $\sigma_{I_{\text{in}}}$ riscalata dal tempo $T$. Si assume,
@@ -247,7 +247,7 @@ verificare la linearità del preamplificatore rispetto alla carica in ingresso.
 aspettazione: essendo a conoscenza della parziale correlazione tra gli errori di scala dell'oscilloscopio ciò non
 risulta essere sorprendente in quanto il fit non ne tiene ovviamente conto. Segue direttamente una sottostima
 dell'errore sui parametri $a$ e $b$ della retta interpolante. Un piccolo (rispetto ai gradi di libertà) valore di
-$\chi^2$ purtroppo non permette nè di confermare l'ipotesi di linearità nè di poterla rigettare. L'errore a posteriori,
+$\chi^2$ purtroppo non permette nè di confermare l'ipotesi di linearità né di poterla rigettare. L'errore a posteriori,
 invece, si trova essere dello stesso ordine di grandezza dell'errore associato alle tensioni più basse (i primi punti)
 mentre diventa gradualmente un'ordine di grandezza inferiore rispetto all'incertezza associata alle tensioni maggiori.
 Questo suggerisce una soddisfacente distribuzione dei punti attorno alla retta di regressione, che si traduce nel
@@ -305,7 +305,7 @@ acquisita da arduino, ed è trattabile quindi come un errore di scala. In \autor
 meglio nel tempo di acquisizione impostato per Arduino il generatore di funzioni ha erogato due impulsi di tensione. Il
 segnale registrato, inoltre, risulta essere leggermente rumoroso: per rendere l'analisi successiva meglio gestibile si
 decide di sovrapporre i due picchi di tensione e di effettuarne una media. Osservando la \autoref{i:preamp_waveform}, si
-può inoltre notare chiaramente la salita lineare del segnale e la descrescita esponenziale, come previsto in
+può inoltre notare chiaramente la salita lineare del segnale e la decrescita esponenziale, come previsto in
 \autoref{e:preamp_vout}. Il valore massimo di tensione acquisito con la scheda Arduino, inoltre, è in linea con le
 aspettative e con quanto misurato sperimentalmente con l'oscilloscopio. Ci si concentra ora sulla stima del tempo
 caratteristico $\tau^{\text{pre}}$: si vuole inizialmente effettuare un fit esponenziale del tipo $y = a +
@@ -388,8 +388,8 @@ funzione di trasferimento decresce linearmente con coefficiente angolare conform
 $-20\,\si{dB/dec}$. L'ascissa del punto di intersezione tra le due rette di regressione fornisce una stima della
 frequenza di taglio del circuito $f_{\text{t}} = 1.03 \pm 0.03 \,\si{\kHz}$, compatibile in modo soddisfacente ($\lambda
 = 0.9$) con la frequenza di taglio teorica esposta in \autoref{e:preamp_ft_th}. Si vuole sottolineare che nel computo
-dell'errore su $f_{\text{t}}$ è stata presa in considerazione la convarianza tra parametri appartenenti allo stesso fit.
-Osservando infine che la formula analitca frequenza di taglio $f_{\text{t}}$ riportata in \autoref{e:preamp_ft_th}
+dell'errore su $f_{\text{t}}$ è stata presa in considerazione la covarianza tra parametri appartenenti allo stesso fit.
+Osservando infine che la formula analitica frequenza di taglio $f_{\text{t}}$ riportata in \autoref{e:preamp_ft_th}
 contiene il termine $R_{\text{f}} \, C_{\text{f}}=\tau^{\text{pre}}$, si vuole valutare l'accordo tra la frequenza di
 taglio ottenuta dal grafico di Bode e la frequenza di taglio teorica, utilizzando però
 $\tau^{\text{pre}}=\tau^{\text{lin}}$ ricavato nella sezione precedente. Si ottiene dunque una frequenza di taglio
@@ -407,7 +407,7 @@ taglio analizzando il grafico di Bode.
 Il secondo stadio della catena (\textit{shaper}) si utilizza per modificare la
 forma del segnale in uscita dal preamplificatore. Si vuole, in particolare, accorciare il tempo di discesa al fine di
 evitare un possibile \textit{signal pile up} nel caso di un'elevata frequenza di acquisizione. In tale situazione,
-infatti, il segnale di un acquisizione successiva si sovrapporrebbe (almeno parzialmente) a quello dell'acquisizione
+infatti, il segnale di un'acquisizione successiva si sovrapporrebbe (almeno parzialmente) a quello dell'acquisizione
 precedente, rendendo estremamente più complicato estrarre le corrette informazioni dalle due acquisizioni. È inoltre
 importante che lo shaper preservi l'informazione sulla carica in ingresso, in quanto questa risulta essere il modello
 utilizzando nell'esperienza per simulare l'evento rivelato dal detector. Nelle sezioni successive, quindi, si vuole
@@ -595,7 +595,7 @@ $f_{\text{polo}}$ e questo non ne altera le proprietà caratteristiche. La corre
 resistenza $R_{\text{pz}} = 1.013 \pm 0.007 \, \si{\mega\ohm}$ ($\text{F.S.} 10\,\si{\mega\ohm}$) molto simile a quella
 necessaria per compensare l'effetto di \textit{undershoot} ($R_{\text{pz}}^{\text{th}} = 1.03 \pm 0.07 \,
 \si{\mega\ohm}$): osservando il grafico a destra in \autoref{i:shaper_waveforms} si nota quindi come l'effetto sia del
-tutto scoparso. Il segnale ora, infatti, dopo aver assunto il valore massimo decresce senza scendere sotto la
+tutto scomparso. Il segnale ora, infatti, dopo aver assunto il valore massimo decresce senza scendere sotto la
 \textit{baseline}. Inoltre, il segnale si azzera completamente dopo circa $200\,\si{\us}$, come nel caso ideale trattato
 in precedenza.
 \begin{figure}[H]
@@ -803,17 +803,17 @@ rette di regressione fornisce quindi una stima della frequenza di taglio del cir
 \,\si{\kilo\Hz}$. Si ricorda quindi che la frequenza di taglio teorica attesa è $f_{\text{t}} = 10.0 \pm 0.4
 \,\si{k\Hz}$, mentre la frequenza relativa al polo della funzione di trasferimento dello shaper ricavata dal grafico di
 Bode in \autoref{i:shaper_thebode} risulta essere $f_{\text{t}} = 9.6 \pm 0.2 \,\si{k\Hz}$.
-%calcolo le compatibilià bro
-
-
-
+La stima della frequenza di taglio appena trovata presenta un'ottima compatibilità con queste ultime: in particolare si
+ha una compatibilità $\lambda = 0.7$ con la stima teorica e $\lambda = 0.3$ con la frequenza relativa al polo dello
+\textit{shaper}. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\linewidth]{../Plots/Catena/bode_plot.png}
 	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.}
 	\label{i:catena_thebode}
 \end{figure}
-
+\noindent È stata quindi verificata la validità di \autoref{e:catena_H_final}, fortemente dipendente dalla corretta
+scelta delle componenti circuitali al fine di poter effettuare determinate approssimazioni e identificazioni. 
 
 
 
