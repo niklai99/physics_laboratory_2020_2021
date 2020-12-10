@@ -748,7 +748,15 @@ $Q_{\text{c}}$ raccolta dal preamplificatore.
 
 \subsection{Linearità della Catena Elettronica}\label{s:catena_linearity}
 
-
+Ci si propone qui di verificare la dipendenza lineare del segnale in uscita $V_{\text{out}}^{\text{max}}$ dalla catena
+elettronica rispetto alla carica totale $Q_{\text{c}}$ raccolta dal preamplificatore. Si fa variare dunque la durata $T$
+dell'impulso quadrato erogato dal generatore di funzioni da $2\,\si{\us}$ a $10\,\si{\us}$, in modo da modificare di
+volta in volta la carica iniettata nel preamplificatore: per ogni $T$ viene calcolata la quantità di carica totale
+$Q_{\text{c}}$ secondo \autoref{e:preamp_vout} e si acquisisce poi, utilizzando la scheda Arduino Due, la forma d'onda
+del segnale in uscita. Da quest'ultima si misura infine l'ampiezza effettiva del segnale in uscita. L'incertezza
+associata alle tensioni è quindi data dalla calibrazione della scheda. Per quanto riguarda gli errori sulla carica, in
+analogia a quanto riportato in \autoref{s:preamp_linearity}, questi sono totalmente correlati e si procede come
+discusso.
 
 
 
