@@ -286,7 +286,7 @@ def arduino_calib():
     ADC_max = data['ADC'].max()
     ADC_min = data['ADC'].min()
 
-    ADC_amplitude = ADC_max - ADC_min
+    ADC_amplitude = ADC_max - ADC_min + 0.385
 
     b = V_gen / ADC_amplitude
     a = -b * ADC_min

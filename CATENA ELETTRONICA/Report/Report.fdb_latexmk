@@ -1,5 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1607591763 "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.pdf" "Report" 1607591773
+["pdflatex"] 1607597015 "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.pdf" "Report" 1607597026
+  "../Plots/Catena/catena_linearity.png" 1607596819 328729 8f3f239156302a789c052e46ce569af4 ""
   "../Plots/PreAmp/Vmax_Qin_lin_fit.png" 1607098126 300312 0defa793f75bdd8e5c87878e77aea069 ""
   "../Plots/PreAmp/bode_plot.png" 1607174089 417004 1b8e9252e10e7bd58b3be1102f286c8a ""
   "../Plots/PreAmp/preamp_arduino_fit.png" 1607273955 664923 612aa58e7e3a87a5c52910ef91b7b601 ""
@@ -8,11 +9,11 @@
   "../Plots/Shaper/shaper_ideal.png" 1607358495 298717 4ef802811bc08ed8cedeb67e776a3164 ""
   "../Plots/Shaper/shaper_preamp_waveforms.png" 1607359977 474986 425068ac621ba9a7548ec54d2e6f5baf ""
   "../Simulations/catena_circuito.png" 1607003633 28939 e5e07212f8464aabeeb1d3df25b95427 ""
-  "Report.aux" 1607591772 13100 6563668cddf76c43eee8fa245e99feb3 ""
-  "Report.out" 1607591772 1026 c527c7f1ae8477c701391d6617c689e7 ""
-  "Report.tex" 1607591755 54099 3adee365857436c9edd9005e10bc8268 ""
-  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.aux" 1607591772 13100 6563668cddf76c43eee8fa245e99feb3 ""
-  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.tex" 1607591755 54099 3adee365857436c9edd9005e10bc8268 ""
+  "Report.aux" 1607597025 13881 bef906db35bf483b69075ee8582f406b ""
+  "Report.out" 1607597025 1026 c527c7f1ae8477c701391d6617c689e7 ""
+  "Report.tex" 1607597011 54352 a93bcd1566a09666306190e5a5ae2250 ""
+  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.aux" 1607597025 13881 bef906db35bf483b69075ee8582f406b ""
+  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.tex" 1607597011 54352 a93bcd1566a09666306190e5a5ae2250 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1543003531 2971 def0b6c1f0b107b3b936def894055589 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1543003531 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1543004023 3332 103109f5612ad95229751940c61aada0 ""
@@ -286,8 +287,8 @@
   "structure.tex" 1607007966 1884 c481f65cfd06eb26e0ba8d49c9d4cd8d ""
   (generated)
   "Report.aux"
+  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.log"
+  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.pdf"
   "Report.out"
   "Report.pdf"
-  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.pdf"
-  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.log"
   "Report.log"
