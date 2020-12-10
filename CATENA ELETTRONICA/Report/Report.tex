@@ -794,7 +794,12 @@ logaritmo $\text{log}_{10}H$ della funzione di trasferimento, tale contributo vi
 nell'intercetta delle interpolazioni volte a caratterizzare l'andamento delle misure. Si assume infine trascurabile
 l'incertezza sulla frequenza dell'onda erogata dal generatore. Si rappresenta allora in \autoref{i:shaper_thebode} il
 grafico di Bode delle misure acquisite assieme ai punti ottenuti attraverso una simulazione Spice della risposta del
-circuito (pagina seguente).
+circuito (pagina seguente). Confrontando inizialmente le misure sperimentali con la simulazione Spice, si nota un ottimo
+accordo in tutto lo spettro di frequenze. Questo è chiaramente indice di una risposta in frequenza conforme alle
+aspettative: a basse frequenze la funzione di trasferimento è costante a $20.1 \pm 0.2 \,\text{dB}$ mentre per frequenze
+crescenti la funzione di trasferimento subisce un'attenuazione lineare di pendenza $-39.2\pm 0.3\,\text{dB/dec}$, in
+linea con l'aspettativa dei $-40\,\text{dB/dec}$ dovuti al polo doppio. L'ascissa del punto di intersezione tra le due
+rette di regressione fornisce quindi una stima della frequenza di taglio del circuito $f_{\text{t}}= 9.72 \pm 0.13 \,\si{\kilo\Hz}$.
 
 
 
@@ -804,6 +809,27 @@ circuito (pagina seguente).
 	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.}
 	\label{i:catena_thebode}
 \end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
