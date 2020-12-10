@@ -8,9 +8,9 @@ Il file PDF della relazione si trova [QUI](https://nbviewer.jupyter.org/github/n
 
 ### Preamplificatore  &rarr; dovrebbe essere finito
 
-### Shaper  &rarr; finendo analisi in frequenza
+### Shaper  &rarr; dovrebbe essere finito
 
-### Catena Completa  &rarr; alto mare
+### Catena Completa  &rarr; manca linearità e bode
 
 ## FASE DI ANALISI DATI (completata)
 
