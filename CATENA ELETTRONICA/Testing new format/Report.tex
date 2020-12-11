@@ -8,7 +8,10 @@
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
-
+\usepackage{titlesec}
+\titlespacing{\section}{0em}{1em}{0.5em}
+\titlespacing{\subsection}{0em}{1em}{0.5em}
+\setlength{\parindent}{0pt}
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	GENERAL INFORMATION 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -116,18 +119,17 @@ Nel corso dell'esperienza vengono utilizzati:
 
 \section{Introduzione}\label{s:intro}
 
-L'esperienza consiste nel progettare una catena elettronica tipicamente associata ad un \textit{rivelatore di
-radiazione}. Si vogliono quindi assemblare sulla breadboard una serie di moduli e studiare inizialmente il comportamento
-di ciascuno per poi, infine, verificare il funzionamento della catena completa. In laboratorio, quindi, si utilizza il
-generatore di funzioni per simulare un segnale acquisibile dalla rivelazione di un evento da parte del detector. Questo
-segnale viene inizialmente elaborato da un \textit{preamplificatore} (di tipo \textit{charge sensitive}) e
-successivamente da uno \textit{shaper} (di tipo \textit{CR-RC}). Il segnale uscente dal formatore viene, infine,
-amplificato per favorirne l'acquisizione da parte di una DAQ che, per l'esperienza di laboratorio, corrisponde all'ADC
-della scheda Arduino Due. I tre stadi (\textit{preamplificatore}, \textit{shaper}, \textit{amplificatore}) costituiscono
-dunque la \textit{catena elettronica} rappresentata in \autoref{i:circuito}.
+L'esperienza si basa su l'assemblamento e sullo studio della risposta di una serie di moduli volti a simulare
+l'elettronica associata ad un \textit{rivelatore di radiazione}. In laboratorio, quindi, si utilizza il generatore di
+funzioni per simulare un segnale acquisibile dalla rivelazione di un evento da parte del detector. Questo segnale viene
+inizialmente elaborato dal \textit{preamplificatore} (di tipo \textit{charge sensitive}) e successivamente dallo
+\textit{shaper} (di tipo \textit{CR-RC}). Il segnale in uscita dal formatore viene infine amplificato per favorirne
+l'acquisizione da parte di una DAQ, che corrisponde in questo caso all'ADC della scheda Arduino Due. I tre stadi
+(\textit{preamplificatore}, \textit{shaper}, \textit{amplificatore}) costituiscono dunque la \textit{catena elettronica}
+rappresentata in \autoref{i:circuito}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{../Simulations/catena_circuito.png}
+	\includegraphics[width=0.85\linewidth]{../Simulations/catena_circuito.png}
 	\caption{\small Schema a costanti concentrate della catena elettronica suddivisa nei tre moduli di interesse.}
 	\label{i:circuito}
 \end{figure}
@@ -142,7 +144,18 @@ Il primo stadio della catena \textit{(preamplificatore)} si utilizza per miglior
 da trasferire un segnale più pulito all'elettronica di acquisizione. In laboratorio si assembla un preamplificatore
 \textit{charge sensitive}: il modulo, infatti, consiste di un circuito integratore e la tensione in uscita è quindi
 direttamente proporzionale alla carica in ingresso. Nelle sezioni successive si vuole ricavare analiticamente il
-comportamento teorico del preamplificatore e, successivamente, verificarne l'accordo con la risposta sperimentale.
+comportamento teorico del preamplificatore e, successivamente, verificarne l'accordo con la risposta sperimentale. In
+particolare, ci si concentra sulle caratteristiche del segnale in uscita, la sua linearità rispetto alla carica in
+ingresso e sull'analisi in frequenza del circuito.%altre 4 righe
+
+
+
+
+
+
+
+
+
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	CONFIGURAZIONE SPERIMENTALE

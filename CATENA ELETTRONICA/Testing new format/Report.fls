@@ -262,6 +262,8 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/psnfss/upsy.fd
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/psnfss/upsy.fd
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/titlesec/titlesec.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/titlesec/titlesec.sty
 INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux
 INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux
 OUTPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux

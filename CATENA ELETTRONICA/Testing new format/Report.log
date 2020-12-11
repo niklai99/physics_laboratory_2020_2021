@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  11 DEC 2020 15:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  11 DEC 2020 15:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1138,44 +1138,55 @@ File: upzd.fd 2001/06/04 font definitions for U/pzd.
 LaTeX Font Info:    Try loading font information for U+psy on input line 64.
  (d:/Programmi/texlive/2018/texmf-dist/tex/latex/psnfss/upsy.fd
 File: upsy.fd 2001/06/04 font definitions for U/psy.
-)) (d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux)
+)) (d:/Programmi/texlive/2018/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
+\ttl@box=\box98
+\beforetitleunit=\skip77
+\aftertitleunit=\skip78
+\ttl@plus=\dimen317
+\ttl@minus=\dimen318
+\ttl@toksa=\toks43
+\titlewidth=\dimen319
+\titlewidthlast=\dimen320
+\titlewidthfirst=\dimen321
+) (d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux)
 \openout1 = `Report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 38.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 38.
  (d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Info: Redefining \it@ocap on input line 35.
-LaTeX Info: Redefining \it@ccap on input line 35.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Info: Redefining \it@ocap on input line 38.
+LaTeX Info: Redefining \it@ccap on input line 38.
  (d:/Programmi/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count344
-\scratchdimen=\dimen317
-\scratchbox=\box98
+\scratchdimen=\dimen322
+\scratchbox=\box99
 \nofMPsegments=\count345
 \nofMParguments=\count346
-\everyMPshowfont=\toks43
+\everyMPshowfont=\toks44
 \MPscratchCnt=\count347
-\MPscratchDim=\dimen318
+\MPscratchDim=\dimen323
 \MPnumerator=\count348
 \makeMPintoPDFobject=\count349
-\everyMPtoPDFconversion=\toks44
+\everyMPtoPDFconversion=\toks45
 ) (d:/Programmi/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
  (d:/Programmi/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
@@ -1190,14 +1201,14 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 \symgns@font=\mathgroup9
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
-(Font)                  TS1/cmr/m/n --> TS1/cmr/bx/n on input line 35.
-Package gensymb Info: Math companion symbols declared on input line 35.
-LaTeX Info: Redefining \degree on input line 35.
-LaTeX Info: Redefining \celsius on input line 35.
-Package gensymb Info: Using text companion symbols for \degree, \celsius and \perthousand on input line 35.
-LaTeX Info: Redefining \ohm on input line 35.
-Package gensymb Info: Using \textohm for \ohm on input line 35.
-Package gensymb Info: Using \textmu for \micro on input line 35.
+(Font)                  TS1/cmr/m/n --> TS1/cmr/bx/n on input line 38.
+Package gensymb Info: Math companion symbols declared on input line 38.
+LaTeX Info: Redefining \degree on input line 38.
+LaTeX Info: Redefining \celsius on input line 38.
+Package gensymb Info: Using text companion symbols for \degree, \celsius and \perthousand on input line 38.
+LaTeX Info: Redefining \ohm on input line 38.
+Package gensymb Info: Using \textohm for \ohm on input line 38.
+Package gensymb Info: Using \textmu for \micro on input line 38.
  ABD: EveryShipout initializing macros
 \c@lstlisting=\count350
 
@@ -1235,8 +1246,8 @@ Package gensymb Info: Using \textmu for \micro on input line 35.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box99
-Package hyperref Info: Link coloring OFF on input line 35.
+\AtBeginShipoutBox=\box100
+Package hyperref Info: Link coloring OFF on input line 38.
 (d:/Programmi/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
  (d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -1244,9 +1255,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count351
 )
-LaTeX Info: Redefining \ref on input line 35.
-LaTeX Info: Redefining \pageref on input line 35.
-LaTeX Info: Redefining \nameref on input line 35.
+LaTeX Info: Redefining \ref on input line 38.
+LaTeX Info: Redefining \pageref on input line 38.
+LaTeX Info: Redefining \nameref on input line 38.
  (d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.out) (d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.out)
 \@outlinefile=\write4
 \openout4 = `Report.out'.
@@ -1258,60 +1269,61 @@ Dictionary: translator-basic-dictionary, Language: English
 ) (d:/Programmi/texlive/2018/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
 File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 35.
+LaTeX Font Info:    Try loading font information for U+msa on input line 38.
  (d:/Programmi/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 35.
+LaTeX Font Info:    Try loading font information for U+msb on input line 38.
  (d:/Programmi/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {d:/Programmi/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (4.55846pt too wide) in paragraph at lines 92--95
-\T1/cmr/m/n/10.95 Assemblare i mo-du-li prin-ci-pa-li co-sti-tuen-ti una ca-te-na elet-tro-ni-ca (\T1/cmr/m/it/10.95 pre-am-pli-fi-ca-to-re\T1/cmr/m/n/10.95 , \T1/cmr/m/it/10.95 sha-per\T1/cmr/m/n/10.95 , \T1/cmr/m/it/10.95 am-pli-fi-ca-to-re\T1/cmr/m/n/10.95 )
+Overfull \hbox (4.55846pt too wide) in paragraph at lines 95--98
+[]\T1/cmr/m/n/10.95 Assemblare i mo-du-li prin-ci-pa-li co-sti-tuen-ti una ca-te-na elet-tro-ni-ca (\T1/cmr/m/it/10.95 pre-am-pli-fi-ca-to-re\T1/cmr/m/n/10.95 , \T1/cmr/m/it/10.95 sha-per\T1/cmr/m/n/10.95 , \T1/cmr/m/it/10.95 am-pli-fi-ca-to-re\T1/cmr/m/n/10.95 )
  []
 
 <../Simulations/catena_circuito.png, id=86, 1153.30875pt x 325.81725pt>
 File: ../Simulations/catena_circuito.png Graphic file (type png)
 <use ../Simulations/catena_circuito.png>
-Package pdftex.def Info: ../Simulations/catena_circuito.png  used on input line 130.
-(pdftex.def)             Requested size: 435.32422pt x 122.98158pt.
+Package pdftex.def Info: ../Simulations/catena_circuito.png  used on input line 132.
+(pdftex.def)             Requested size: 411.14528pt x 116.15065pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.175 \noindent
+l.188 \noindent
                 sulla breadboard il primo modulo in \autoref{i:circuito} uti... [1
 
  <../Simulations/catena_circuito.png>]
-<../Plots/PreAmp/Vmax_Qin_lin_fit.png, id=101, 2450.55525pt x 1402.64024pt>
+<../Plots/PreAmp/Vmax_Qin_lin_fit.png, id=106, 2450.55525pt x 1402.64024pt>
 File: ../Plots/PreAmp/Vmax_Qin_lin_fit.png Graphic file (type png)
 <use ../Plots/PreAmp/Vmax_Qin_lin_fit.png>
-Package pdftex.def Info: ../Plots/PreAmp/Vmax_Qin_lin_fit.png  used on input line 244.
+Package pdftex.def Info: ../Plots/PreAmp/Vmax_Qin_lin_fit.png  used on input line 257.
 (pdftex.def)             Requested size: 435.32422pt x 249.16837pt.
- [2] [3 <../Plots/PreAmp/Vmax_Qin_lin_fit.png>]
-<../Plots/PreAmp/preamp_waveform.png, id=132, 2477.05424pt x 1332.77925pt>
+ [2]
+<../Plots/PreAmp/preamp_waveform.png, id=126, 2477.05424pt x 1332.77925pt>
 File: ../Plots/PreAmp/preamp_waveform.png Graphic file (type png)
 <use ../Plots/PreAmp/preamp_waveform.png>
-Package pdftex.def Info: ../Plots/PreAmp/preamp_waveform.png  used on input line 301.
+Package pdftex.def Info: ../Plots/PreAmp/preamp_waveform.png  used on input line 314.
 (pdftex.def)             Requested size: 241.84843pt x 130.11322pt.
+ [3 <../Plots/PreAmp/Vmax_Qin_lin_fit.png>]
 <../Plots/PreAmp/preamp_arduino_fit.png, id=135, 4664.42625pt x 1370.721pt>
 File: ../Plots/PreAmp/preamp_arduino_fit.png Graphic file (type png)
 <use ../Plots/PreAmp/preamp_arduino_fit.png>
-Package pdftex.def Info: ../Plots/PreAmp/preamp_arduino_fit.png  used on input line 324.
+Package pdftex.def Info: ../Plots/PreAmp/preamp_arduino_fit.png  used on input line 337.
 (pdftex.def)             Requested size: 483.69687pt x 142.14168pt.
 
-Underfull \hbox (badness 7379) in paragraph at lines 306--328
+Underfull \hbox (badness 7379) in paragraph at lines 319--341
 []\T1/cmr/m/n/10.95 acquisito dal-la sche-da Ar-dui-no: si no-ta
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 306--328
+Underfull \hbox (badness 1648) in paragraph at lines 319--341
 \T1/cmr/m/n/10.95 re-gi-stra-to, inol-tre, ri-sul-ta es-se-re leg-ger-men-te
  []
 
 
-Underfull \hbox (badness 1789) in paragraph at lines 306--328
+Underfull \hbox (badness 1789) in paragraph at lines 319--341
 \T1/cmr/m/n/10.95 la sa-li-ta li-nea-re del se-gna-le e la de-cre-sci-ta
  []
 
@@ -1319,83 +1331,83 @@ Underfull \hbox (badness 1789) in paragraph at lines 306--328
 <../Plots/PreAmp/bode_plot.png, id=146, 2522.82526pt x 1624.26825pt>
 File: ../Plots/PreAmp/bode_plot.png Graphic file (type png)
 <use ../Plots/PreAmp/bode_plot.png>
-Package pdftex.def Info: ../Plots/PreAmp/bode_plot.png  used on input line 381.
+Package pdftex.def Info: ../Plots/PreAmp/bode_plot.png  used on input line 394.
 (pdftex.def)             Requested size: 435.32422pt x 280.26093pt.
- [5]
-Overfull \hbox (4.3192pt too wide) in paragraph at lines 409--418
+ [5 <../Plots/PreAmp/bode_plot.png>]
+Overfull \hbox (4.3192pt too wide) in paragraph at lines 422--431
 \T1/cmr/m/n/10.95 un'ac-qui-si-zio-ne suc-ces-si-va si so-vrap-por-reb-be (al-me-no par-zial-men-te) a quel-lo del-l'ac-qui-si-zio-ne pre-ce-den-te,
  []
 
-[6 <../Plots/PreAmp/bode_plot.png>] [7]
-<../Plots/Shaper/shaper_ideal.png, id=172, 2571.00525pt x 1366.50525pt>
+[6]
+<../Plots/Shaper/shaper_ideal.png, id=168, 2571.00525pt x 1366.50525pt>
 File: ../Plots/Shaper/shaper_ideal.png Graphic file (type png)
 <use ../Plots/Shaper/shaper_ideal.png>
-Package pdftex.def Info: ../Plots/Shaper/shaper_ideal.png  used on input line 483.
+Package pdftex.def Info: ../Plots/Shaper/shaper_ideal.png  used on input line 496.
 (pdftex.def)             Requested size: 241.84843pt x 128.52657pt.
 
-Underfull \hbox (badness 1325) in paragraph at lines 488--501
+Underfull \hbox (badness 1325) in paragraph at lines 501--514
 \T1/cmr/m/n/10.95 men-tre spe-ri-men-tal-men-te si mi-su-ra $\OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 =
  []
 
 
-Underfull \hbox (badness 1496) in paragraph at lines 488--501
+Underfull \hbox (badness 1496) in paragraph at lines 501--514
 \T1/cmr/m/n/10.95 si at-tri-bui-sce prin-ci-pal-men-te al-le com-po-nen-ti
  []
 
-[8 <../Plots/Shaper/shaper_ideal.png>]
-<../Plots/Shaper/bode_plot.png, id=192, 2472.23625pt x 1588.13326pt>
+[7 <../Plots/Shaper/shaper_ideal.png>]
+<../Plots/Shaper/bode_plot.png, id=188, 2472.23625pt x 1588.13326pt>
 File: ../Plots/Shaper/bode_plot.png Graphic file (type png)
 <use ../Plots/Shaper/bode_plot.png>
-Package pdftex.def Info: ../Plots/Shaper/bode_plot.png  used on input line 534.
+Package pdftex.def Info: ../Plots/Shaper/bode_plot.png  used on input line 547.
 (pdftex.def)             Requested size: 435.32422pt x 279.64803pt.
-<../Plots/Shaper/shaper_preamp_waveforms.png, id=198, 4775.24025pt x 1378.55025pt>
+<../Plots/Shaper/shaper_preamp_waveforms.png, id=194, 4775.24025pt x 1378.55025pt>
 File: ../Plots/Shaper/shaper_preamp_waveforms.png Graphic file (type png)
 <use ../Plots/Shaper/shaper_preamp_waveforms.png>
-Package pdftex.def Info: ../Plots/Shaper/shaper_preamp_waveforms.png  used on input line 605.
+Package pdftex.def Info: ../Plots/Shaper/shaper_preamp_waveforms.png  used on input line 618.
 (pdftex.def)             Requested size: 483.69687pt x 139.63004pt.
- [9 <../Plots/Shaper/bode_plot.png>] [10 <../Plots/Shaper/shaper_preamp_waveforms.png>]
-Underfull \hbox (badness 2452) in paragraph at lines 709--716
+ [8 <../Plots/Shaper/bode_plot.png>] [9 <../Plots/Shaper/shaper_preamp_waveforms.png>]
+Underfull \hbox (badness 2452) in paragraph at lines 722--729
 \T1/cmr/m/n/10.95 pa-ri a $\OML/cmm/m/it/10.95 T \OT1/cmr/m/n/10.95 = 10 []$\T1/cmr/m/n/10.95 , si ha in in-gres-so un
  []
 
 
-Underfull \hbox (badness 1496) in paragraph at lines 709--716
+Underfull \hbox (badness 1496) in paragraph at lines 722--729
 \OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 = 2\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 41 \OMS/cmsy/m/n/10.95 ^^F \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 04 []$\T1/cmr/m/n/10.95 . Si mi-su-ra, in-ve-ce,
  []
 
-<../Plots/Catena/catena_linearity.png, id=227, 2462.60025pt x 1397.82225pt>
+<../Plots/Catena/catena_linearity.png, id=223, 2462.60025pt x 1397.82225pt>
 File: ../Plots/Catena/catena_linearity.png Graphic file (type png)
 <use ../Plots/Catena/catena_linearity.png>
-Package pdftex.def Info: ../Plots/Catena/catena_linearity.png  used on input line 764.
+Package pdftex.def Info: ../Plots/Catena/catena_linearity.png  used on input line 777.
 (pdftex.def)             Requested size: 435.32422pt x 247.09673pt.
-[11]
-<../Plots/Catena/bode_plot.png, id=242, 2510.78024pt x 1592.95125pt>
+[10]
+<../Plots/Catena/bode_plot.png, id=238, 2510.78024pt x 1592.95125pt>
 File: ../Plots/Catena/bode_plot.png Graphic file (type png)
 <use ../Plots/Catena/bode_plot.png>
-Package pdftex.def Info: ../Plots/Catena/bode_plot.png  used on input line 813.
+Package pdftex.def Info: ../Plots/Catena/bode_plot.png  used on input line 826.
 (pdftex.def)             Requested size: 435.32422pt x 276.16986pt.
- [12 <../Plots/Catena/catena_linearity.png>] [13 <../Plots/Catena/bode_plot.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 843.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 843.
+ [11 <../Plots/Catena/catena_linearity.png>] [12 <../Plots/Catena/bode_plot.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 856.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 856.
  (d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 843.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 843.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 856.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 856.
 Package rerunfilecheck Info: File `Report.out' has not changed.
 (rerunfilecheck)             Checksum: 9FE66ED5E97E805A728127C4F75F8550;1096.
  ) 
 Here is how much of TeX's memory you used:
- 32406 strings out of 492649
- 631625 string characters out of 6128653
- 688558 words of memory out of 5000000
- 35723 multiletter control sequences out of 15000+600000
+ 32656 strings out of 492649
+ 634819 string characters out of 6128653
+ 693453 words of memory out of 5000000
+ 35970 multiletter control sequences out of 15000+600000
  568997 words of font info for 123 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,22n,54p,10537b,1001s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,22n,54p,10537b,999s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.pdf" (14 pages, 3551965 bytes).
+Output written on "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.pdf" (13 pages, 3551616 bytes).
 PDF statistics:
- 388 PDF objects out of 1000 (max. 8388607)
- 315 compressed objects within 4 object streams
- 58 named destinations out of 1000 (max. 500000)
+ 384 PDF objects out of 1000 (max. 8388607)
+ 312 compressed objects within 4 object streams
+ 57 named destinations out of 1000 (max. 500000)
  191 words of extra memory for PDF output out of 10000 (max. 10000000)
 
