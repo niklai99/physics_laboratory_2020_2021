@@ -134,6 +134,7 @@ rappresentata in \autoref{i:circuito}.
 	\label{i:circuito}
 \end{figure}
 
+
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	PREAMPLIFICATORE
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -146,8 +147,7 @@ da trasferire un segnale più pulito all'elettronica di acquisizione. In laborat
 direttamente proporzionale alla carica in ingresso. Nelle sezioni successive si vuole ricavare analiticamente il
 comportamento teorico del preamplificatore e, successivamente, verificarne l'accordo con la risposta sperimentale. In
 particolare, ci si concentra sulle caratteristiche del segnale in uscita, la sua linearità rispetto alla carica in
-ingresso e sull'analisi in frequenza del circuito.%altre 4 righe
-
+ingresso e sull'analisi in frequenza del circuito.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -212,12 +212,32 @@ rappresentando $H(s)$ in un grafico di Bode ci si aspetta allora un andamento co
 $-20\,\text{dB/dec}$ per frequenze maggiori. Facendo riferimento ai valori delle componenti circuitali riportati in
 \autoref{t:direct_measures}, il tempo caratteristico del preamplificatore e la frequenza di taglio del filtro risultano
 essere
-\begin{align}
+
+\begin{align}\label{e:preamp_stime_th}
 	\tau_{\text{pre}} & = 161 \pm 6 \,\si{\us}
 	&
 	f_{\text{t}} & = 0.99 \pm 0.04 \,\si{\kilo\Hz}
 \end{align}
 
+Si ricava, infine, la risposta del circuito ad un segnale a gradino: nell'approssimazione $T\ll\tau^{\text{pre}}$ si trova
+una crescita lineare direttamente proporzionale alla carica in ingresso al preamplificatore per $0 < t < T$ e una
+decrescita smorzata esponenzialmente per $t \gg T$:
+
+\begin{align}\label{e:preamp_vout} 
+	V^{\text{pre}}_{\text{out}}(t) &= \begin{cases} -\frac{ Q_{\text{in}}
+	(t)}{C_{\text{f}} } & 0 < t < T \\
+        -\frac{ Q_{\text{c}} }{ C_{\text{f}} } \, e^{ -\frac{ t }{ \tau^{\text{pre}} } } & t \gg T \\
+    \end{cases}
+    & 
+    &\text{con} \,\,\, 
+    \begin{cases} 
+        Q_{\text{in}} (t) = I_{\text{in}}\,t = \frac{ V_{\text{in}} }{ R_{\text{in}} }\,t \\
+        Q_{\text{c}} = I_{\text{in}}\,T = \frac{ V_{\text{in}} }{ R_{\text{in}} }\,T \\
+    \end{cases}
+\end{align} 
+
+dove, appunto, $Q_{\text{in}} (t)$ corrisponde alla carica raccolta al tempo $t$ dal preamplificatore mentre
+$Q_{\text{c}}$ rappresenta la carica \textit{totale} accumulata nel preamplificatore. 
 
 
 
@@ -225,42 +245,14 @@ essere
 
 
 
-%	Si comincia utilizzando il generatore per simulare i segnali del rivelatore, impostando sul CH1 un impulso quadrato
-%	di frequenza $f_{\text{gen}} = 1 \,\si{k\Hz}$, tensione di riferimento $V_{\text{high}} = 0 \,\si{\volt}$, ampiezza
-%	\textit{negativa} $V_{\text{low}} = -1 \,\si{\volt}$ e durata $T = 5 \,\si{\us}$ (cioè il tempo di raccolta del
-%	segnale). Viene successivamente assemblato 
-%
-%	\begin{wraptable}{L}{0.5\textwidth} \small \centering \begin{tabular}{x{1.8cm} x{2.5cm} x{2cm} }
-%	    \toprule[0.5px]\toprule[0.1px]   
-%	        \multicolumn{3}{c}{Misure Dirette - Preamplificatore}\tn \midrule[0.1px] Label & Valore & F.S. \tn
-%	        \addlinespace $R_{\text{in}}$ & $56.56 \pm 0.02\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn $R_{\text{f}}$ & $696.1
-%	        \pm 0.3\,\si{k\ohm}$ & $1000\,\si{k\ohm}$ \tn $C_{\text{f}}$ & $232 \pm 9\,\si{p\farad}$ &
-%	        $1000\,\si{p\farad}$ \tn \bottomrule[0.5px]      
-%	    \end{tabular} \caption{\small Misure dirette delle componenti circuitali.} \label{t:direct_measures}
-%	    \end{wraptable} 
-%
-%	\noindent sulla breadboard il primo modulo in \autoref{i:circuito} utilizzando le componenti circuitali riportate in
-%	\autoref{t:direct_measures}, misurate con il multimetro Metrix. Si utilizza poi un generatore di tensione continua
-%	con $V_{\text{cc}}=+15\,\si{\volt}$ e $V_{\text{ee}}=-15\,\si{\volt}$ per alimentare l'operazionale. Si assume,
-%	inoltre, che esso abbia un comportamento ideale, ovvero che il polo positivo ed il polo negativo si trovino allo
-%	stesso potenziale (\textit{virtual short}). Il segnale in ingresso $V_{\text{in}}$ viene prelevato nel punto
-%	\textit{IN} evidenziato nello schema mentre il segnale in uscita $V^{\text{pre}}_{\text{out}}$ dal preamplificatore
-%	viene prelevato al termine del primo modulo, entrambi utilizzando sonde 10X. 
 
-%	Concentrando l'attenzione sul modulo di ingresso (generatore reale e cablaggio), il sistema è un filtro passa basso
-%	con frequenza di taglio $f_{\text{t}}^{\text{in}}\approx 32 \,\si{\MHz}$ che risulta essere molto maggiore delle
-%	frequenze in gioco: risulta allora corretto assumere il modulo in ingresso del tutto equivalente ad un generatore
-%	ideale, come rappresentato in \autoref{i:circuito}. 
 
-%	Trattando ora il preamplificatore, la funzione di trasferimento del circuito risulta essere
-%	\begin{align}\label{e:preamp_H} H(s) &= - \frac{ 1 }{ R_{\text{in}}\,C_{\text{f}} } \,\, \frac{1}{ s + \frac{
-%	1}{\tau_{\text{f}} } } & &\text{con  } \,\, \tau_{\text{f}} = R_{\text{f}}\,C_{\text{f}} \equiv \tau^{\text{pre}}
-%	\end{align} \noindent Ricavando allora la risposta ad un segnale a gradino nell'approssimazione
-%	$T\ll\tau^{\text{pre}}$ si trova una crescita lineare direttamente proporzionale alla carica in ingresso al
-%	preamplificatore per $0 < t < T$ e una decrescita smorzata esponenzialmente per $t \gg T$:
+%   Ricavando allora la risposta ad un segnale a gradino nell'approssimazione $T\ll\tau^{\text{pre}}$ si trova una
+%   crescita lineare direttamente proporzionale alla carica in ingresso al preamplificatore per $0 < t < T$ e una
+%   decrescita smorzata esponenzialmente per $t \gg T$:
 
-%	\begin{align}\label{e:preamp_vout} V^{\text{pre}}_{\text{out}}(t) &= \begin{cases} -\frac{ Q_{\text{in}} (t)
-%	}{C_{\text{f}} } & 0 < t < T \\
+%	\begin{align}\label{e:preamp_vout} V^{\text{pre}}_{\text{out}}(t) &= \begin{cases} -\frac{ Q_{\text{in}}
+%	(t)}{C_{\text{f}} } & 0 < t < T \\
 %	        -\frac{ Q_{\text{c}} }{ C_{\text{f}} } \, e^{ -\frac{ t }{ \tau^{\text{pre}} } } & t \gg T \\
 %	    \end{cases}
 %	    & 
@@ -269,16 +261,17 @@ essere
 %	        Q_{\text{in}} (t) = I_{\text{in}}\,t = \frac{ V_{\text{in}} }{ R_{\text{in}} }\,t \\
 %	        Q_{\text{c}} = I_{\text{in}}\,T = \frac{ V_{\text{in}} }{ R_{\text{in}} }\,T \\
 %	    \end{cases}
-%	\end{align} \noindent dove, appunto, $Q_{\text{in}} (t)$ corrisponde alla carica raccolta al tempo $t$ dal
-%	preamplificatore mentre $Q_{\text{c}}$ rappresenta la carica \textit{totale} accumulata nel preamplificatore. Ci si
-%	aspetta allora che il segnale in uscita $V^{\text{th}}_{\text{out}}$ visualizzato sull'oscilloscopio presenti una
-%	salita lineare, un valore di tensione massimo corrispondente a $V_{\text{max}}^{\text{th}} = 0.388 \pm 0.017
-%	\,\si{\volt}$ (misurando l'ampiezza del segnale in ingresso $V_{\text{in}} = 1.02 \pm 0.02 \,\si{\volt}$), e
-%	successivamente una decrescita esponenziale di tempo caratteristico $\tau^{\text{th}} = 161 \pm 6 \,\si{\us}$.
-%	Sperimentalmente, si misura un valore massimo di tensione pari a $V^{\text{sper}}_{\text{max}} = 0.392 \pm 0.007
-%	\,\si{\volt}$ e un tempo caratteristico di circa $\tau^{\text{sper}} \approx 158 \,\si{\us}$, perfettamente in linea
-%	con le aspettative. Si vuole, in ogni caso, approfondire lo studio della risposta del preamplificatore nelle sezioni
-%	successive. 
+%	\end{align} 
+
+%	dove, appunto, $Q_{\text{in}} (t)$ corrisponde alla carica raccolta al tempo $t$ dal preamplificatore mentre
+%	$Q_{\text{c}}$ rappresenta la carica \textit{totale} accumulata nel preamplificatore. Ci si aspetta allora che il
+%	segnale in uscita $V^{\text{th}}_{\text{out}}$ visualizzato sull'oscilloscopio presenti una salita lineare, un
+%	valore di tensione massimo corrispondente a $V_{\text{max}}^{\text{th}} = 0.388 \pm 0.017 \,\si{\volt}$ (misurando
+%	l'ampiezza del segnale in ingresso $V_{\text{in}} = 1.02 \pm 0.02 \,\si{\volt}$), e successivamente una decrescita
+%	esponenziale di tempo caratteristico $\tau^{\text{th}} = 161 \pm 6 \,\si{\us}$. Sperimentalmente, si misura un
+%	valore massimo di tensione pari a $V^{\text{sper}}_{\text{max}} = 0.392 \pm 0.007 \,\si{\volt}$ e un tempo
+%	caratteristico di circa $\tau^{\text{sper}} \approx 158 \,\si{\us}$, perfettamente in linea con le aspettative. Si
+%	vuole, in ogni caso, approfondire lo studio della risposta del preamplificatore nelle sezioni successive. 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	LINEARITA DEL PREAMP
