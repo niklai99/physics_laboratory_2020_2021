@@ -49,8 +49,8 @@
 
 \abovedisplayshortskip=0pt
 \belowdisplayshortskip=0pt
-\abovedisplayskip=0pt
-\belowdisplayskip=10pt
+\abovedisplayskip=-5pt
+\belowdisplayskip=5pt
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -275,15 +275,21 @@ l'oscilloscopio.
 	\label{t:preamp_sper_th}
 \end{wraptable}	
 
-Si vuole allora confrontare queste ultime con le aspettative teoriche.
+Confrontando ultime con le aspettative teoriche si nota chiaramente come ci sia un accordo generale tra le predizioni
+analitiche e l'effettiva risposta del preamplificatore. Osservando poi \autoref{e:preamp_vout}, è esplicita la
+dipendenza lineare del segnale in uscita rispetto alla carica in ingresso al preamplificatore: nella sezione successiva
+si vuole quindi verificare che tale linearità venga rispettata. Chiaramente, è importante che ciò avvenga in quanto la
+carica in questione rappresenta in questo caso un'idealizzazione del rivelamento di radiazione ionizzante da parte di un
+detector: è logico richiedere dunque che il preamplificatore risponda in modo lineare alla quantità di carica che riceve
+in ingresso.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	LINEARITA DEL PREAMP
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
-%\subsection{Linearità del Preamplificatore}\label{s:preamp_linearity}
-%
+\subsection{Linearità del Preamplificatore}\label{s:preamp_linearity}
+
 %Ci si propone ora di verificare la dipendenza lineare del segnale in uscita $V^{\text{pre}}_{\text{out}}$ dalla carica
 %in ingresso $Q_{\text{in}}$ come esposto in \autoref{e:preamp_vout}. Si fa variare dunque la durata $T$ del segnale
 %erogato dal generatore di funzioni da $2\,\si{\us}$ a $10\,\si{\us}$, in modo da modificare di volta in volta la
