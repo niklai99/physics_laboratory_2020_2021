@@ -226,7 +226,7 @@ essere
 	f_{\text{t}} & = 0.99 \pm 0.04 \,\si{\kilo\Hz}
 \end{align}
 
-Si ricava, infine, la risposta del circuito ad un segnale a gradino: nell'approssimazione $T\ll\tau^{\text{pre}}$ si trova
+Si ricava, infine, la risposta del circuito ad un segnale a gradino: nell'approssimazione $T\ll\tau_{\text{pre}}$ si trova
 una crescita lineare direttamente proporzionale alla carica in ingresso al preamplificatore per $0 < t < T$ e una
 decrescita smorzata esponenzialmente per $t \gg T$:
 
@@ -290,32 +290,71 @@ in ingresso.
 
 \subsection{Linearità del Preamplificatore}\label{s:preamp_linearity}
 
-%Ci si propone ora di verificare la dipendenza lineare del segnale in uscita $V^{\text{pre}}_{\text{out}}$ dalla carica
-%in ingresso $Q_{\text{in}}$ come esposto in \autoref{e:preamp_vout}. Si fa variare dunque la durata $T$ del segnale
-%erogato dal generatore di funzioni da $2\,\si{\us}$ a $10\,\si{\us}$, in modo da modificare di volta in volta la
-%quantità di carica iniettata nel preamplificatore: per ogni $T$ viene calcolata la quantità di carica totale
-%$Q_{\text{c}}$ e viene misurato con l'oscilloscopio il valore massimo del segnale in uscita
-%$V^{\text{max}}_{\text{out}}$.  Ai valori di tensione misurati con l'oscilloscopio viene associato l'errore di
-%acquisizione comprendente sia il contributo di lettura sia il contributo sul guadagno verticale in quanto nel processo
-%di misura sono state utilizzate scale diverse, con la consapevolezza che queste ultime portano ad una correlazione almeno
-%parziale delle incertezze. Gli errori sulla carica $Q_{\text{c}}$, invece, sono totalmente correlati tra loro:
-%$V_{\text{in}}$ e $R_{\text{in}}$ sono, chiaramente, costanti e l'incertezza sulla carica è dunque semplicemente
-%l'incertezza sulla corrente in ingresso al preamplificatore $\sigma_{I_{\text{in}}}$ riscalata dal tempo $T$. Si assume,
-%ragionevolmente, che l'incertezza sulla durata $T$ del segnale sia trascurabile. Si rappresentano ora in
-%\autoref{i:preamp_linearity} le coppie $\{Q_{\text{c}},\,V^{\text{max}}_{\text{out}}\}$ interpolate da una retta: il
-%coefficiente angolare di quest'ultima corrisponde analiticamente all'inverso della capacità di feedback $C_{\text{f}}$.
-%Si vuole evidenziare che gli errori relativi su $V^{\text{pre}}_{\text{out}}$ e su $Q_{\text{c}}$ sono entrambi circa il
-%$2\%$ della misura: nell'effettuare la regressione si decide di trascurare l'incertezza sulla carica $Q_{\text{c}}$ (in
-%quanto totalmente correlata) e di aggiungere tale contributo successivamente nel calcolo dell'errore sulla capacità
-%$C_{\text{f}}$. La bontà del fit, l'andamento dei residui, l'errore a posteriori ed il confronto di
-%$C_{\text{f}}^{\text{fit}}$ con quanto misurato direttamente con il multimetro verranno presi in considerazione per
-%verificare la linearità del preamplificatore rispetto alla carica in ingresso.
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=0.9\linewidth]{../Plots/PreAmp/Vmax_Qin_lin_fit.png}
-%	\caption{\small Fit lineare del massimo di tensione in uscita contro la carica totale in ingresso.}
-%	\label{i:preamp_linearity}
-%\end{figure}
+Ci si propone ora di verificare la dipendenza lineare del segnale in uscita $V^{\text{pre}}_{\text{out}}$ dalla carica
+in ingresso $Q_{\text{in}}$ come esposto in \autoref{e:preamp_vout}. Si fa variare dunque la durata $T$ del segnale
+erogato dal generatore di funzioni da $2\,\si{\us}$ a $10\,\si{\us}$, in modo da modificare di volta in volta la
+quantità di carica iniettata nel preamplificatore rimanendo nell'approssimazione $T\ll\tau_{\text{pre}}$: per ogni $T$
+viene calcolata la quantità di carica totale $Q_{\text{c}}$ e viene misurato con l'oscilloscopio il valore massimo del
+segnale in uscita $V^{\text{max}}_{\text{out}}$. Ai valori di tensione misurati con l'oscilloscopio viene associato
+l'errore di acquisizione comprendente sia il contributo di lettura sia il contributo sul guadagno verticale in quanto
+nel processo di misura sono state utilizzate scale diverse, con la consapevolezza che queste ultime portano ad una
+correlazione almeno parziale delle incertezze. Gli errori sulla carica $Q_{\text{c}}$, invece, vengono calcolati per
+propagazione assumendo, ragionevolmente, che l'incertezza sulla durata $T$ del segnale sia trascurabile. Questi
+risultano allora totalmente correlati tra loro: $V_{\text{in}}$ e $R_{\text{in}}$ sono, chiaramente, costanti e
+l'incertezza sulla carica è dunque semplicemente l'incertezza sulla corrente in ingresso al preamplificatore
+$\sigma_{I_{\text{in}}}$ riscalata dal tempo $T$. 
+
+\begin{table}[H]
+
+	\small
+	\centering
+
+	\begin{tabular}{x{2.2cm} x{2.2cm} x{2.2cm} x{0.5cm} x{2.2cm} x{2.2cm}} 
+		
+		\toprule[0.5px]\toprule[0.1px]	
+
+		\multicolumn{6}{c}{Linearità del Preamplificatore - Misure}\tn
+
+		\midrule[0.1px]
+
+		$T\,(\si{\us})$ & $Q_{\text{c}}\,(\si{\pico\coulomb})$ & $V^{\text{max}}_{\text{out}}\,(\si{\milli\volt})$ &  &
+		$\sigma_{ Q_{\text{c}} } / Q_{\text{c}}$ & $\sigma_{ V^{\text{max}}_{\text{out}} } /
+		V^{\text{max}}_{\text{out}}$ \tn
+
+		\addlinespace
+
+		$2 $	&	$36.0	\pm 0.7$	&	$162	\pm 3 $ &&	$1.9\%$	&	$1.9\%$ \tn
+		$3 $	&	$54.0	\pm 1.0$	&	$238	\pm 4 $ &&	$1.9\%$	&	$1.7\%$ \tn
+		$4 $	&	$72.0	\pm 1.3$	&	$320	\pm 6 $ &&	$1.9\%$	&	$2.0\%$ \tn
+		$5 $	&	$90		\pm 2  $	&	$392	\pm 7 $ &&	$1.9\%$	&	$1.8\%$ \tn
+		$6 $	&	$108	\pm 2  $	&	$472	\pm 8 $ &&	$1.9\%$	&	$1.7\%$ \tn
+		$7 $	&	$126	\pm 2  $	&	$548	\pm 9 $ &&	$1.9\%$	&	$1.7\%$ \tn
+		$8 $	&	$144	\pm 3  $	&	$632	\pm 12$ &&	$1.9\%$	&	$2.0\%$ \tn
+		$9 $	&	$162	\pm 3  $	&	$704	\pm 13$ &&	$1.9\%$	&	$1.9\%$ \tn
+		$10$	&	$180	\pm 3  $	&	$776	\pm 14$ &&	$1.9\%$	&	$1.8\%$ \tn
+		
+		\bottomrule[0.5px]		
+	\end{tabular}
+	\caption{\small Confronto del segnale in uscita tra le due configurazioni dello shaper.}
+	\label{t:preamp_data}
+\end{table}	
+
+Si rappresentano ora in \autoref{i:preamp_linearity} le coppie $\{Q_{\text{c}},\,V^{\text{max}}_{\text{out}}\}$: il
+coefficiente angolare della retta di regressione corrisponde analiticamente all'inverso della capacità di feedback
+$C_{\text{f}}$. Si vuole evidenziare che gli errori relativi su $V^{\text{pre}}_{\text{out}}$ e su $Q_{\text{c}}$ sono
+entrambi circa il $2\%$ della misura: nell'effettuare la regressione si decide di trascurare l'incertezza sulla carica
+$Q_{\text{c}}$ (in quanto totalmente correlata) e di aggiungere tale contributo successivamente nel calcolo dell'errore
+sulla capacità $C_{\text{f}}$. La bontà del fit, l'andamento dei residui, l'errore a posteriori ed il confronto di
+$C_{\text{f}}^{\text{fit}}$ con quanto misurato direttamente con il multimetro verranno presi in considerazione per
+verificare la linearità del preamplificatore rispetto alla carica in ingresso.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{../Plots/PreAmp/Vmax_Qin_lin_fit.png}
+	\caption{\small Fit lineare del massimo di tensione in uscita contro la carica totale in ingresso.}
+	\label{i:preamp_linearity}
+\end{figure}
+
 %\noindent Si noti, inizialmente, come il $\chi^2$ della regressione sia notevolmente inferiore rispetto al suo valore di
 %aspettazione: essendo a conoscenza della parziale correlazione tra gli errori di scala dell'oscilloscopio ciò non
 %risulta essere sorprendente in quanto il fit non ne tiene ovviamente conto. Segue direttamente una sottostima
