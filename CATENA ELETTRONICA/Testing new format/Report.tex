@@ -101,6 +101,7 @@
 Assemblare una catena elettronica associata ad un rivelatore di radiazione. Studiare il segnale in uscita e la risposta
 in frequenza dei singoli moduli e della catena elettronica completa.
 
+
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	APPARATO SPERIMENTALE
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -118,6 +119,7 @@ Nel corso dell'esperienza vengono utilizzati:
 	\item Scheda Arduino Due
 \end{itemize}
 
+
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	CATENA ELETTRONICA
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -132,6 +134,7 @@ inizialmente elaborato dal \textit{preamplificatore} (di tipo \textit{charge sen
 l'acquisizione da parte di una DAQ, che corrisponde in questo caso all'ADC della scheda Arduino Due. I tre stadi
 (\textit{preamplificatore}, \textit{shaper}, \textit{amplificatore}) costituiscono dunque la \textit{catena elettronica}
 rappresentata in \autoref{i:circuito}.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\linewidth]{../Simulations/catena_circuito.png}
@@ -390,71 +393,76 @@ eventuale offset sistematico o un errore di zero. Dal coefficiente angolare $b$ 
 \noindent dove, nel computo dell'errore, $\sigma_I$ rappresenta l'errore sulla corrente $I =
 \frac{V_{\text{in}}}{R_{\text{in}}}$ che, nel fit, verrebbe riscalato dalla durata $T$ del segnale. La stima della
 capacità di feedback risulta essere in ottima compatibilità ($\lambda = 0.05$) con quanto misurato con il multimetro
-(\autoref{t:direct_measures}): questo porta quindi ad un'ulteriore conferma di una \textit{corretta} linearità del preamplificatore.
+(\autoref{t:direct_measures}): questo porta quindi ad un'ulteriore conferma di una \textit{corretta} linearità del
+preamplificatore.
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
-%%	SMORZAMENTO ESPONENZIALE
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%
-%\subsection{Forma d'Onda del segnale in uscita}\label{s:preamp_waveform}
-%
-%In questa sezione si vuole analizzare il segnale in uscita dal preamplificatore $V^{\text{pre}}_{\text{out}}$:
-%sfruttando la stessa configurazione sperimentale presentata in \autoref{s:preamp_config} viene acquisita la forma d'onda
-%del segnale utilizzando la scheda Arduino Due. Inizialmente, si apportano le seguenti conversioni: dividendo il numero
-%di acquisizione per il sampling rate $S=0.955\,\text{Msps}$ si ottiene l'evoluzione temporale (in secondi) della forma
-%d'onda, mentre sfruttando la funzione di calibrazione in tensione $V= a  +  b \, \text{counts}$ (con $a=-0.637 \pm
-%0.010\,\si{\volt}$ e $b=0.828\pm0.007\,\si{mV/counts}$) si ottengono i valori in Volt delle misure acquisite in ADC
-%counts. A tali valori si associa l'errore per propagazione $\sigma_{V} = \sqrt{\sigma_a^2+\text{counts}^2\sigma_b^2}$:
-%si nota, tuttavia, che il contributo relativo a $\sigma_b$ è semplicemente riscalato per la misura in ADC counts
-%acquisita da arduino, ed è trattabile quindi come un errore di scala. In \autoref{i:preamp_waveform} è esposto quanto
-%
-%\begin{wrapfigure}{R}{0.5\textwidth}
-%	\centering
-%	\includegraphics[width=0.5\textwidth]{../Plots/PreAmp/preamp_waveform.png}
-%	\caption{\small Segnale in uscita dal preamplificatore.}
-%	\label{i:preamp_waveform}
-%\end{wrapfigure}
-%
-%\noindent  acquisito dalla scheda Arduino: si nota immediatamente come siano stati registrati due "eventi", o
-%meglio nel tempo di acquisizione impostato per Arduino il generatore di funzioni ha erogato due impulsi di tensione. Il
-%segnale registrato, inoltre, risulta essere leggermente rumoroso: per rendere l'analisi successiva meglio gestibile si
-%decide di sovrapporre i due picchi di tensione e di effettuarne una media. Osservando la \autoref{i:preamp_waveform}, si
-%può inoltre notare chiaramente la salita lineare del segnale e la decrescita esponenziale, come previsto in
-%\autoref{e:preamp_vout}. Il valore massimo di tensione acquisito con la scheda Arduino, inoltre, è in linea con le
-%aspettative e con quanto misurato sperimentalmente con l'oscilloscopio. Ci si concentra ora sulla stima del tempo
-%caratteristico $\tau^{\text{pre}}$: si vuole inizialmente effettuare un fit esponenziale del tipo $y = a +
-%b\,\text{exp}(-x/\tau)$. Successivamente, sfruttando i parametri $a$ e $b$ per normalizzare i dati, si vuole considerare
-%il logaritmo delle tensioni normalizzate ed effettuare una regressione lineare. Non è infatti possibile, per questioni
-%analitiche, considerare semplicemente il logaritmo delle tensioni $V$ ed aspettarsi un andamento lineare: si considera
-%invece il logaritmo delle tensioni normalizzate $\tilde{V} = (V-a)/b$ e l'errore su $\tilde{V}$ è dato per propagazione.
-%In questo modo, quindi, i dati si distribuiscono secondo $\log(\tilde{V})= -\frac{t}{\tau}$. Nell'effettuare il fit
-%esponenziale si decide di tenere conto dell'errore di scala dato dalla calibrazione della scheda Arduino, mentre per
-%quanto riguarda la regressione lineare si sceglie di non considerarlo in quanto, computando il logaritmo delle
-%tensioni, tale contributo viene interamente scaricato nell'offset della retta del fit. 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=\linewidth]{../Plots/PreAmp/preamp_arduino_fit.png}
-%	\caption{\small A sinistra: fit esponenziale dello smorzamento del segnale in uscita. 
-%					A destra: fit lineare del logaritmo del segnale in uscita normalizzato.}
-%	\label{i:preamp_arduino_fit}
-%\end{figure}
-%\noindent Osservando rapidamente il grafico a sinistra, si nota come il segnale segua in modo ottimale la funzione
-%esponenziale: la stima del tempo caratteristico $\tau^{\text{exp}}$, inoltre, risulta essere sufficientemente
-%compatibile con la stima teorica $\tau^{\text{th}} = 161 \pm 6 \,\si{\us}$ ($\lambda = 1.4$). Come stima del tempo
-%caratteristico, in ogni caso, si preferisce quanto trovato dalla regressione lineare: tale metodo, infatti, è
-%complessivamente più robusto, più preciso e fornisce una stima migliore sugli errori dei parametri. Dal grafico a
-%destra, quindi, si nota chiaramente come computare il logaritmo delle tensioni $\tilde{V}$ porti a considerare più
-%"pesanti" (barre d'errore più piccole) i punti a monte della discesa esponenziale e a dare conseguentemente meno peso ai
-%punti di coda. Questi ultimi, eccessivamente prossimi allo zero, non vengono considerati dato che la propagazione
-%dell'errore su di essi porta ad un contributo decisamente troppo grande ed il fit non ne è praticamente influenzato. Il
-%$\chi^2$, molto minore del suo valore di aspettazione, indica una probabile sovrastima dell'errore: le misure in cima
-%alla discesa si distribuiscono estremamente fedelmente attorno alla retta, compatibilmente con il loro errore, mentre le
-%misure verso la coda risultano discostarsi più sensibilmente dal fit. Tuttavia, sembra che l'incremento dell'errore su
-%queste ultime sia eccessivo, e che queste si distribuiscano attorno alla retta più fedelmente di quanto ci si aspetta
-%dalle barre d'errore. Calcolando ora il tempo caratteristico si trova $\tau^{\text{lin}}= -1/b = 153.9 \pm 1.0
-%\,\si{\us}$: questo presenta infine una compatibilità $\lambda = 1.2$ con  la stima teorica $\tau^{\text{th}}$.
-%
-%
+%	SMORZAMENTO ESPONENZIALE
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Forma d'Onda del segnale in uscita}\label{s:preamp_waveform}
+
+In questa sezione si vuole analizzare il segnale in uscita dal preamplificatore $V^{\text{pre}}_{\text{out}}$:
+sfruttando la stessa configurazione sperimentale presentata in \autoref{s:preamp_config} viene acquisita la forma d'onda
+del segnale utilizzando la scheda Arduino Due. 
+
+% Inizialmente, si apportano le seguenti conversioni: dividendo il numero
+% di acquisizione per il sampling rate $S=0.955\,\text{Msps}$ si ottiene l'evoluzione temporale (in secondi) della forma
+% d'onda, mentre sfruttando la funzione di calibrazione in tensione $V= a  +  b \, \text{counts}$ (con $a=-0.637 \pm
+% 0.010\,\si{\volt}$ e $b=0.828\pm0.007\,\si{mV/counts}$) si ottengono i valori in Volt delle misure acquisite in ADC
+% counts. A tali valori si associa l'errore per propagazione $\sigma_{V} = \sqrt{\sigma_a^2+\text{counts}^2\sigma_b^2}$:
+% si nota, tuttavia, che il contributo relativo a $\sigma_b$ è semplicemente riscalato per la misura in ADC counts
+% acquisita da arduino, ed è trattabile quindi come un errore di scala. In \autoref{i:preamp_waveform} è esposto quanto
+
+% \begin{wrapfigure}{R}{0.5\textwidth}
+% 	\centering
+% 	\includegraphics[width=0.5\textwidth]{../Plots/PreAmp/preamp_waveform.png}
+% 	\caption{\small Segnale in uscita dal preamplificatore.}
+% 	\label{i:preamp_waveform}
+% \end{wrapfigure}
+
+% acquisito dalla scheda Arduino: si nota immediatamente come siano stati registrati due "eventi", o
+% meglio nel tempo di acquisizione impostato per Arduino il generatore di funzioni ha erogato due impulsi di tensione. Il
+% segnale registrato, inoltre, risulta essere leggermente rumoroso: per rendere l'analisi successiva meglio gestibile si
+% decide di sovrapporre i due picchi di tensione e di effettuarne una media. Osservando la \autoref{i:preamp_waveform}, si
+% può inoltre notare chiaramente la salita lineare del segnale e la decrescita esponenziale, come previsto in
+% \autoref{e:preamp_vout}. Il valore massimo di tensione acquisito con la scheda Arduino, inoltre, è in linea con le
+% aspettative e con quanto misurato sperimentalmente con l'oscilloscopio. Ci si concentra ora sulla stima del tempo
+% caratteristico $\tau^{\text{pre}}$: si vuole inizialmente effettuare un fit esponenziale del tipo $y = a +
+% b\,\text{exp}(-x/\tau)$. Successivamente, sfruttando i parametri $a$ e $b$ per normalizzare i dati, si vuole considerare
+% il logaritmo delle tensioni normalizzate ed effettuare una regressione lineare. Non è infatti possibile, per questioni
+% analitiche, considerare semplicemente il logaritmo delle tensioni $V$ ed aspettarsi un andamento lineare: si considera
+% invece il logaritmo delle tensioni normalizzate $\tilde{V} = (V-a)/b$ e l'errore su $\tilde{V}$ è dato per propagazione.
+% In questo modo, quindi, i dati si distribuiscono secondo $\log(\tilde{V})= -\frac{t}{\tau}$. Nell'effettuare il fit
+% esponenziale si decide di tenere conto dell'errore di scala dato dalla calibrazione della scheda Arduino, mentre per
+% quanto riguarda la regressione lineare si sceglie di non considerarlo in quanto, computando il logaritmo delle
+% tensioni, tale contributo viene interamente scaricato nell'offset della retta del fit. 
+% 
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=\linewidth]{../Plots/PreAmp/preamp_arduino_fit.png}
+% 	\caption{\small A sinistra: fit esponenziale dello smorzamento del segnale in uscita. 
+% 					A destra: fit lineare del logaritmo del segnale in uscita normalizzato.}
+% 	\label{i:preamp_arduino_fit}
+% \end{figure}
+% 
+% Osservando rapidamente il grafico a sinistra, si nota come il segnale segua in modo ottimale la funzione
+% esponenziale: la stima del tempo caratteristico $\tau^{\text{exp}}$, inoltre, risulta essere sufficientemente
+% compatibile con la stima teorica $\tau^{\text{th}} = 161 \pm 6 \,\si{\us}$ ($\lambda = 1.4$). Come stima del tempo
+% caratteristico, in ogni caso, si preferisce quanto trovato dalla regressione lineare: tale metodo, infatti, è
+% complessivamente più robusto, più preciso e fornisce una stima migliore sugli errori dei parametri. Dal grafico a
+% destra, quindi, si nota chiaramente come computare il logaritmo delle tensioni $\tilde{V}$ porti a considerare più
+% "pesanti" (barre d'errore più piccole) i punti a monte della discesa esponenziale e a dare conseguentemente meno peso ai
+% punti di coda. Questi ultimi, eccessivamente prossimi allo zero, non vengono considerati dato che la propagazione
+% dell'errore su di essi porta ad un contributo decisamente troppo grande ed il fit non ne è praticamente influenzato. Il
+% $\chi^2$, molto minore del suo valore di aspettazione, indica una probabile sovrastima dell'errore: le misure in cima
+% alla discesa si distribuiscono estremamente fedelmente attorno alla retta, compatibilmente con il loro errore, mentre le
+% misure verso la coda risultano discostarsi più sensibilmente dal fit. Tuttavia, sembra che l'incremento dell'errore su
+% queste ultime sia eccessivo, e che queste si distribuiscano attorno alla retta più fedelmente di quanto ci si aspetta
+% dalle barre d'errore. Calcolando ora il tempo caratteristico si trova $\tau^{\text{lin}}= -1/b = 153.9 \pm 1.0
+% \,\si{\us}$: questo presenta infine una compatibilità $\lambda = 1.2$ con  la stima teorica $\tau^{\text{th}}$.
+
+
 %%-------------------------------------------------------------------------------------------------------------------------------------------
 %%	THEBODE
 %%-------------------------------------------------------------------------------------------------------------------------------------------
