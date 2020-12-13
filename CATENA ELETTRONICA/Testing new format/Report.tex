@@ -496,62 +496,59 @@ misurato sperimentalmente (\autoref{t:preamp_sper_th}).
 
 \subsection{Grafico di Bode}\label{s:preamp_bode}
 
-%Si vuole ora studiare la risposta in frequenza del preamplificatore: si modificano le impostazioni del generatore in
-%modo da erogare un'onda sinusoidale di ampiezza $1\,\si{\volt}$ e frequenza $f_{\text{gen}}$ variabile da $10\,\si{\Hz}$
-%a $1\,\si{\MHz}$. Per quanto riportato in \autoref{e:preamp_H}, ci si aspetta un comportamento da filtro passa basso
-%avente frequenza di taglio
-%\begin{align}\label{e:preamp_ft_th}
-%	f_{\text{t}}&=\frac{1}{2\pi R_{\text{f}}C_{\text{f}}}= 0.99 \pm 0.04 \,\si{k\Hz} & 
-%	\text{con\,\,\,\,}\sigma_{f_{\text{t}}}&
-%	=\frac{1}{2\pi}\sqrt{	\left(\frac{1}{C_{\text{f}}R_{\text{f}}^2}\right)^2\sigma_{R_{\text{f}}}^2	+
-%	 \left(\frac{1}{C_{\text{f}}^2R_{\text{f}}}\right)^2\sigma_{C_{\text{f}}}^2   }																		
-%\end{align}
-%\noindent Si intende ora rappresentare le misure acquisite sperimentalmente attraverso un grafico di Bode. Viene
-%acquisita allora l'ampiezza del segnale sia in ingresso sia in uscita utilizzando l'oscilloscopio e viene calcolata la
-%funzione di trasferimento $H$, alla quale viene associata un'incertezza $\sigma_{H}$ data da
-%\begin{align}\label{e:preamp_H_err}
-%	H&=\frac{V_{\text{out}}}{V_{\text{in}}} & 
-%	\sigma_{H}&= H \sqrt{	
-%						\left(	\frac{	\sigma_{\text{L}}\times V_{\text{in}}/\text{div}	}{	V_{\text{in}}	}	\right)^2	 + 
-%						\left(	\frac{	\sigma_{\text{L}}\times V_{\text{out}}/\text{div}	}{	V_{\text{out}}	}	\right)^2 }
-%\end{align}
-%\noindent dove $\sigma_{\text{L}}=0.04$ rappresenta l'incertezza di lettura associata all'oscilloscopio mentre i termini
-%$V_{\text{in}}/\text{div}$ e $V_{\text{out}}/\text{div}$ corrispondono al numero di Volt per divisione per il canale di
-%acquisizione rispettivamente del segnale in ingresso e del segnale in uscita. L'incertezza di guadagno associata
-%all'oscilloscopio non viene invece considerata in quanto, dovendo successivamente prendere il logaritmo
-%$\text{log}_{10}H$ della funzione di trasferimento, tale contributo viene scaricato interamente nell'intercetta delle
-%interpolazioni volte a caratterizzare l'andamento delle misure. Si assume infine trascurabile l'incertezza sulla
-%frequenza dell'onda erogata dal generatore. Si rappresenta allora in \autoref{i:preamp_thebode} il grafico di Bode delle
-%misure acquisite assieme ai punti ottenuti attraverso una simulazione Spice della risposta del circuito.
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=0.9\linewidth]{../Plots/PreAmp/bode_plot.png}
-%	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.}
-%	\label{i:preamp_thebode}
-%\end{figure}
-%\noindent Confrontando inizialmente le misure sperimentali con la simulazione Spice, si nota un ottimo accordo in tutto
-%lo spettro di frequenze. Questo è chiaramente indice di una risposta in frequenza del circuito compatibile con le
-%aspettative: il comportamento del filtro, infatti, è evidentemente un passa basso. A basse frequenze, la funzione di
-%trasferimento è pressochè costante a $22\,\si{dB}$ (retta in \textit{arancione}), mentre per frequenze crescenti la
-%funzione di trasferimento decresce linearmente con coefficiente angolare conforme all'aspettativa dei
-%$-20\,\si{dB/dec}$. L'ascissa del punto di intersezione tra le due rette di regressione fornisce una stima della
-%frequenza di taglio del circuito $f_{\text{t}} = 1.03 \pm 0.03 \,\si{\kHz}$, compatibile in modo soddisfacente ($\lambda
-%= 0.9$) con la frequenza di taglio teorica esposta in \autoref{e:preamp_ft_th}. Si vuole sottolineare che nel computo
-%dell'errore su $f_{\text{t}}$ è stata presa in considerazione la covarianza tra parametri appartenenti allo stesso fit.
-%Osservando infine che la formula analitica frequenza di taglio $f_{\text{t}}$ riportata in \autoref{e:preamp_ft_th}
-%contiene il termine $R_{\text{f}} \, C_{\text{f}}=\tau^{\text{pre}}$, si vuole valutare l'accordo tra la frequenza di
-%taglio ottenuta dal grafico di Bode e la frequenza di taglio teorica, utilizzando però
-%$\tau^{\text{pre}}=\tau^{\text{lin}}$ ricavato nella sezione precedente. Si ottiene dunque una frequenza di taglio
-%$f_{\text{t}}^{\text{lin}} = 1.034 \pm 0.007 \,\si{\kHz}$ ed è in eccellente compatibilità con quanto appena stimato
-%($\lambda = 0.13$). Da questo notevole accordo si deduce l'assenza di possibili sistematicità di metodo, sia nella stima
-%del tempo caratteristico attraverso il fit lineare in \autoref{i:preamp_arduino_fit}, sia nella stima della frequenza di
-%taglio analizzando il grafico di Bode. 
-%
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%%	SHAPER
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%
-%\section{Shaper CR-RC}\label{s:shaper} 
+Si vuole ora studiare la risposta in frequenza del preamplificatore: si modificano le impostazioni del generatore in
+modo da erogare un'onda sinusoidale di ampiezza $1\,\si{\volt}$ e frequenza $f_{\text{gen}}$ variabile da $10\,\si{\Hz}$
+a $1\,\si{\MHz}$. Viene acquisita allora l'ampiezza del segnale sia in ingresso sia in uscita utilizzando
+l'oscilloscopio e viene calcolata la funzione di trasferimento $H$, alla quale viene associata un'incertezza
+$\sigma_{H}$ data da
+
+\begin{align}\label{e:preamp_H_err}
+	H&=\frac{V_{\text{out}}}{V_{\text{in}}} & 
+	\sigma_{H}&= H \sqrt{	
+						\left(	\frac{	\sigma_{\text{L}}\times V_{\text{in}}/\text{div}	}{	V_{\text{in}}	}	\right)^2	 + 
+						\left(	\frac{	\sigma_{\text{L}}\times V_{\text{out}}/\text{div}	}{	V_{\text{out}}	}	\right)^2 }
+\end{align}
+
+dove $\sigma_{\text{L}}=0.04$ rappresenta l'incertezza di lettura associata all'oscilloscopio mentre i termini
+$V_{\text{in}}/\text{div}$ e $V_{\text{out}}/\text{div}$ corrispondono al numero di Volt per divisione per il canale di
+acquisizione rispettivamente del segnale in ingresso e del segnale in uscita. L'incertezza di guadagno associata
+all'oscilloscopio non viene invece considerata in quanto, volendo rappresentare le misure acquisite sperimentalmente
+attraverso un grafico di Bode, tale contributo viene scaricato interamente nell'intercetta delle interpolazioni volte a
+caratterizzare l'andamento delle misure. L'errore sulle misure espresse in Decibel viene calcolato per propagazione. Si
+assume infine trascurabile l'incertezza sulla frequenza dell'onda erogata dal generatore. Si faccia quindi riferimento a
+quanto riportato in \autoref{s:preamp_th} per le aspettative teoriche della risposta in frequenza del circuito. Si
+rappresenta ora in \autoref{i:preamp_thebode} il grafico di Bode delle misure acquisite assieme ai punti ottenuti
+attraverso una simulazione Spice della risposta del circuito.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{../Plots/PreAmp/bode_plot.png}
+	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.}
+	\label{i:preamp_thebode}
+\end{figure}
+
+Confrontando inizialmente le misure sperimentali con la simulazione Spice, si nota un ottimo accordo in tutto lo spettro
+di frequenze. Questo è chiaramente indice di una risposta in frequenza del circuito compatibile con le aspettative: il
+comportamento del filtro, infatti, è evidentemente un passa basso. A basse frequenze, la funzione di trasferimento è
+pressochè costante a $22\,\si{dB}$ (retta in \textit{arancione}), mentre per frequenze crescenti la funzione di
+trasferimento decresce linearmente con coefficiente angolare conforme all'aspettativa dei $-20\,\si{dB/dec}$. L'ascissa
+del punto di intersezione tra le due rette di regressione fornisce una stima della frequenza di taglio del circuito
+$f_{\text{t}} = 1.03 \pm 0.03 \,\si{\kHz}$, compatibile in modo soddisfacente ($\lambda = 0.9$) con la frequenza di
+taglio teorica esposta in \autoref{e:preamp_stime_th}. Si vuole sottolineare che nel computo dell'errore su
+$f_{\text{t}}$ è stata presa in considerazione la covarianza tra parametri appartenenti allo stesso fit. Osservando
+infine che la formula analitica frequenza di taglio $f_{\text{t}}$ riportata in \autoref{e:preamp_stime_th} contiene il
+tempo caratteristico $\tau_{\text{pre}}$, si vuole valutare l'accordo tra la frequenza di taglio ottenuta dal grafico di
+Bode e la frequenza di taglio teorica, utilizzando però $\tau_{\text{pre}}=\tau_{\text{pre}}^{\text{lin}}$ ricavato
+nella sezione precedente. Si ottiene dunque una frequenza di taglio $f_{\text{t}}^{\text{lin}} = 1.0340 \pm 0.0013
+\,\si{\kHz}$ ed è in eccellente compatibilità con quanto appena stimato ($\lambda = 0.13$). Da questo notevole accordo
+si deduce l'assenza di possibili sistematicità di metodo, sia nella stima del tempo caratteristico attraverso il fit
+lineare in \autoref{i:preamp_arduino_fit}, sia nella stima della frequenza di taglio analizzando il grafico di Bode. 
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	SHAPER
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Shaper CR-RC}\label{s:shaper} 
 %
 %Il secondo stadio della catena (\textit{shaper}) si utilizza per modificare la
 %forma del segnale in uscita dal preamplificatore. Si vuole, in particolare, accorciare il tempo di discesa al fine di
