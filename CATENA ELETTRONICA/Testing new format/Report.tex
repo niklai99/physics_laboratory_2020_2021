@@ -404,14 +404,15 @@ preamplificatore.
 
 In questa sezione si vuole analizzare il segnale in uscita dal preamplificatore $V^{\text{pre}}_{\text{out}}$:
 sfruttando la stessa configurazione sperimentale presentata in \autoref{s:preamp_config} viene acquisita la forma d'onda
-del segnale utilizzando la scheda Arduino Due. 
+del segnale utilizzando la scheda Arduino Due. Inizialmente allora si vogliono convertire le grandezze acquisite dalla
+scheda in unità arbitrarie a grandezze fisicamente rilevanti. In particolare, dividendo il numero di acquisizione per il
+sampling rate $S=0.955\,\text{Msps}$ si ottiene l'evoluzione temporale (in secondi) del segnale acquisito. Sfruttando
+invece la funzione di calibrazione in tensione $V= a  +  b \cdot \text{counts}$ (con $a=-0.637 \pm 0.010\,\si{\volt}$ e
+$b=0.828\pm0.007\,\si{mV/counts}$) si ottengono i valori in Volt delle misure acquisite in ADC counts. Per quanto
+riguarda l'errore da associare a tali valori di tensione, ci si ritrova davanti ad un certo numero di complicazioni. 
 
-% Inizialmente, si apportano le seguenti conversioni: dividendo il numero
-% di acquisizione per il sampling rate $S=0.955\,\text{Msps}$ si ottiene l'evoluzione temporale (in secondi) della forma
-% d'onda, mentre sfruttando la funzione di calibrazione in tensione $V= a  +  b \, \text{counts}$ (con $a=-0.637 \pm
-% 0.010\,\si{\volt}$ e $b=0.828\pm0.007\,\si{mV/counts}$) si ottengono i valori in Volt delle misure acquisite in ADC
-% counts. A tali valori si associa l'errore per propagazione $\sigma_{V} = \sqrt{\sigma_a^2+\text{counts}^2\sigma_b^2}$:
-% si nota, tuttavia, che il contributo relativo a $\sigma_b$ è semplicemente riscalato per la misura in ADC counts
+% A tali valori si associa l'errore per propagazione $\sigma_{V} = \sqrt{\sigma_a^2+\text{counts}^2\sigma_b^2}$: si
+% nota, tuttavia, che il contributo relativo a $\sigma_b$ è semplicemente riscalato per la misura in ADC counts
 % acquisita da arduino, ed è trattabile quindi come un errore di scala. In \autoref{i:preamp_waveform} è esposto quanto
 
 % \begin{wrapfigure}{R}{0.5\textwidth}
@@ -440,7 +441,7 @@ del segnale utilizzando la scheda Arduino Due.
 % 
 % \begin{figure}[H]
 % 	\centering
-% 	\includegraphics[width=\linewidth]{../Plots/PreAmp/preamp_arduino_fit.png}
+% 	\includegraphics[width=\linewidth]{../Plots/PreAmp/preamp_arduino_fit2.png}
 % 	\caption{\small A sinistra: fit esponenziale dello smorzamento del segnale in uscita. 
 % 					A destra: fit lineare del logaritmo del segnale in uscita normalizzato.}
 % 	\label{i:preamp_arduino_fit}
