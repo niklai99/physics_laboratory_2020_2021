@@ -1,11 +1,11 @@
 # Fdb version 3
-["pdflatex"] 1607848150 "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.pdf" "Report" 1607848152
+["pdflatex"] 1607848877 "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.pdf" "Report" 1607848880
   "../Simulations/catena_circuito.png" 1607003633 28939 e5e07212f8464aabeeb1d3df25b95427 ""
-  "Report.aux" 1607848152 3224 54abd49fd268552b62e7e6cf6e10f0ad ""
-  "Report.out" 1607848152 350 2e55fa279b52905d9859a9392ada2a30 ""
-  "Report.tex" 1607848148 63181 453f5bb689f66314149a048cb06746e4 ""
-  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux" 1607848152 3224 54abd49fd268552b62e7e6cf6e10f0ad ""
-  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.tex" 1607848148 63181 453f5bb689f66314149a048cb06746e4 ""
+  "Report.aux" 1607848879 3220 415cd5a691cd3911399b20377e0ef263 ""
+  "Report.out" 1607848879 350 2e55fa279b52905d9859a9392ada2a30 ""
+  "Report.tex" 1607848876 63487 b718c147e0d30d10f83800fd96c88adb ""
+  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux" 1607848879 3220 415cd5a691cd3911399b20377e0ef263 ""
+  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.tex" 1607848876 63487 b718c147e0d30d10f83800fd96c88adb ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1543003212 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1543003212 35469 dcf3a5f2fc1862f5952e3ee5eb1d98c4 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1543003212 35752 024fb6c41858982481f6968b5fc26508 ""
@@ -180,7 +180,7 @@
   "d:/Programmi/texlive/2018/texmf-dist/tex/latex/xcolor/xcolor.sty" 1543005859 55589 34128738f682d033422ca125f82e5d62 ""
   "structure.tex" 1607007966 1884 c481f65cfd06eb26e0ba8d49c9d4cd8d ""
   (generated)
-  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.pdf"
-  "Report.out"
-  "Report.aux"
   "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.log"
+  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.pdf"
+  "Report.aux"
+  "Report.out"

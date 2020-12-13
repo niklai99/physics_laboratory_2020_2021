@@ -159,7 +159,9 @@ ingresso e sull'analisi in frequenza del circuito.%altre 4 righe
 Si comincia utilizzando il generatore per simulare i segnali del rivelatore, impostando sul CH1 un impulso quadrato di
 frequenza $f_{\text{gen}} = 1 \,\si{k\Hz}$, tensione di riferimento $V_{\text{high}} = 0 \,\si{\volt}$, ampiezza
 \textit{negativa} $V_{\text{low}} = -1 \,\si{\volt}$ e durata $T = 5 \,\si{\us}$ (cioè il tempo di raccolta del
-segnale). Viene successivamente assemblato 
+segnale). Viene successivamente assemblato sulla breadboard il primo modulo in \autoref{i:circuito} utilizzando le
+componenti circuitali riportate in \autoref{t:direct_measures}, misurate con il multimetro Metrix. Si utilizza poi un
+generatore di tensione continua con $V_{\text{cc}} = +15 \,\si{\volt}$
 
 \begin{wraptable}{L}{0.5\textwidth}
 	\small
@@ -178,20 +180,18 @@ segnale). Viene successivamente assemblato
 	\label{t:direct_measures}
 \end{wraptable}	
 
-\noindent sulla breadboard il primo modulo in \autoref{i:circuito} utilizzando le componenti circuitali riportate in
-\autoref{t:direct_measures}, misurate con il multimetro Metrix. Si utilizza poi un generatore di tensione continua con
-$V_{\text{cc}}=+15\,\si{\volt}$ e $V_{\text{ee}}=-15\,\si{\volt}$ per alimentare l'operazionale. Si assume, inoltre, che
-esso abbia un comportamento ideale, ovvero che il polo positivo ed il polo negativo si trovino allo stesso potenziale
-(\textit{virtual short}). Il segnale in ingresso $V_{\text{in}}$ viene prelevato nel punto \textit{IN} evidenziato nello
-schema mentre il segnale in uscita $V^{\text{pre}}_{\text{out}}$ dal preamplificatore viene prelevato al termine del
-primo modulo, entrambi utilizzando sonde 10X.
+e $V_{\text{ee}} = -15 \,\si{\volt}$ per alimentare l'operazionale. Si assume che esso abbia un comportamento
+ideale, ovvero che il polo positivo ed il polo negativo si trovino allo stesso potenziale (\textit{virtual short}). Il
+segnale in ingresso $V_{\text{in}}$ viene prelevato nel punto \textit{IN} evidenziato nello schema mentre il segnale in
+uscita $V^{\text{pre}}_{\text{out}}$ dal preamplificatore viene prelevato al termine del primo modulo, entrambi
+utilizzando sonde 10X.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	TRATTAZIONE ANALITICA
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Trattazione analitica}\label{s:preamp_config} 
+\subsection{Trattazione analitica}\label{s:preamp_th} 
 
 Concentrando inizialmente l'attenzione sul modulo di ingresso (generatore reale e cablaggio), il sistema è un filtro
 passa basso con frequenza di taglio $f_{\text{t}}^{\text{in}}\approx 32 \,\si{\MHz}$, molto maggiore delle frequenze in
@@ -209,7 +209,14 @@ configurazione invertente, la presenza di un unico polo e l'assenza di zeri.
 Data la forma della funzione di trasferimento, la risposta in frequenza sarà quella di un filtro \textit{passa basso}:
 rappresentando $H(s)$ in un grafico di Bode ci si aspetta allora un andamento costante a basse frequenze fino alla
 \textit{frequenza di taglio} $f_{\text{t}}=\frac{1}{2\pi\tau_{\text{pre}}}$ e una decrescita lineare con pendenza
-$-20\,\text{dB/dec}$ per frequenze maggiori. 
+$-20\,\text{dB/dec}$ per frequenze maggiori. Facendo riferimento ai valori delle componenti circuitali riportati in
+\autoref{t:direct_measures}, il tempo caratteristico del preamplificatore e la frequenza di taglio del filtro risultano
+essere
+\begin{align}
+	\tau_{\text{pre}} & = 161 \pm 6 \,\si{\us}
+	&
+	f_{\text{t}} & = 0.99 \pm 0.04 \,\si{\kilo\Hz}
+\end{align}
 
 
 
