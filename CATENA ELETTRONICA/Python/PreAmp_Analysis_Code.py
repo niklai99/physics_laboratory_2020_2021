@@ -246,14 +246,14 @@ def preamp_lin_fit(df):
     global err_b
 
     # CONSTANTS
-    XMIN = 30
-    XMAX = 185
-    YMIN = 0.12
-    YMAX = 0.82
+    XMIN = 25
+    XMAX = 190
+    YMIN = 0.12 * 1e3
+    YMAX = 0.82 * 1e3
     RESXMIN = XMIN
     RESXMAX = XMAX
-    RESYMIN = -0.03
-    RESYMAX = 0.03
+    RESYMIN = -25
+    RESYMAX = 25
 
     # FIG SETTINGS AND AXES
     fig = plt.figure(figsize=(16,8))
@@ -306,10 +306,10 @@ def preamp_lin_fit(df):
                 elinewidth=1, color = '#000000', linewidth=0, capsize=2, label = 'Residuals')
 
     # PRINT FIT RESULTS ON THE PLOT
-    q = 'a = ' + format(a, '1.3f') + ' V +/- ' + format(err_a, '1.3f') + ' V'
-    m = 'b = ' + format(b * 1e3, '1.2f') + ' +/- ' + format(err_b * 1e3, '1.2f') + ' nF$^{-1}$'
+    q = 'a = ' + format(a, '1.0f') + ' +/- ' + format(err_a, '1.0f') + ' mV'
+    m = 'b = ' + format(b, '1.2f') + ' +/- ' + format(err_b, '1.2f') + ' nF$^{-1}$'
     chisq = '$\chi^{2}$ / ndf = ' + format(chi2, '1.2f') + ' / ' + format(len(df['Qin (pC)']) - len(par_lin), '1.0f') 
-    sigmap = '\u03C3$_{post}$ = ' + format(sigma_post, '1.3f') + ' V'
+    sigmap = '\u03C3$_{post}$ = ' + format(sigma_post, '1.0f') + ' mV'
 
     ax1.text(0.15, 0.85, 'Fit Function', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
     ax1.text(0.20, 0.80, 'y = a + bx', fontsize = 18, transform=ax1.transAxes)
@@ -321,13 +321,13 @@ def preamp_lin_fit(df):
     ax1.text(0.45, 0.10, sigmap, fontsize = 18, transform=ax1.transAxes)
 
     # PLOT TITLE
-    fig.suptitle('PreAmp - $V_{max}$ vs $Q_{in}$ Plot', fontsize=32)
+    fig.suptitle('PreAmp - $V_{max}$ vs $Q_{c}$ Plot', fontsize=32)
 
     # AXIS LABELS
-    ax1.set_xlabel('$Q_{in}$ (pC)', fontsize = 24, loc = 'right')
-    ax1.set_ylabel('$V_{max}$ (V)', fontsize = 24, loc = 'top', labelpad=0)
-    ax2.set_xlabel('$Q_{in}$ (pC)', fontsize = 24, loc = 'right')
-    ax2.set_ylabel('$V_{max}$ - fit (V)', fontsize = 24, loc = 'top', labelpad=-15)
+    ax1.set_xlabel('$Q_{c}$ (pC)', fontsize = 24, loc = 'right')
+    ax1.set_ylabel('$V_{max}$ (mV)', fontsize = 24, loc = 'top', labelpad=0)
+    ax2.set_xlabel('$Q_{c}$ (pC)', fontsize = 24, loc = 'right')
+    ax2.set_ylabel('$V_{max}$ - fit (mV)', fontsize = 24, loc = 'top', labelpad=-15)
 
     # AXIS TICKS
     ax1.tick_params(axis = 'both', which = 'major', labelsize = 22, direction = 'in', length = 10)
@@ -340,9 +340,7 @@ def preamp_lin_fit(df):
     ax2.set_xticks(ticks = ax1.get_xticks(), minor = True)
     ax2.set_yticks(ticks = ax1.get_yticks(), minor = True)
     ax2.minorticks_on()
-    ax2.yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
-    ax2.yaxis.get_offset_text().set_fontsize(22)
-    ax2.ticklabel_format(axis = 'y', style = 'scientific', scilimits = (0, 0))
+
 
     # PLOT RANGE
     ax1.set_xlim(left = XMIN, right = XMAX)
@@ -351,7 +349,7 @@ def preamp_lin_fit(df):
     ax2.set_ylim(bottom = RESYMIN, top = RESYMAX)
 
     # SAVE FIGURE
-    #fig.savefig('../Plots/PreAmp/Vmax_Qin_lin_fit.png', dpi = 300, facecolor='white')
+    #fig.savefig('../Plots/PreAmp/linearity_fit.png', dpi = 300, facecolor='white')
 
     plt.show()
 
