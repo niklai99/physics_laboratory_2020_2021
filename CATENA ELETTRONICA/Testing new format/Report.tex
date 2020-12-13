@@ -12,6 +12,7 @@
 \titlespacing{\section}{0em}{1em}{0.5em}
 \titlespacing{\subsection}{0em}{1em}{0.5em}
 \setlength{\parindent}{0pt}
+
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	GENERAL INFORMATION 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -45,6 +46,11 @@
 \def\sectionautorefname{Sezione} 
 \def\subsectionautorefname{Sezione} 
 \def\subsubsectionautorefname{Sezione}
+
+\abovedisplayshortskip=0pt
+\belowdisplayshortskip=0pt
+\abovedisplayskip=0pt
+\belowdisplayskip=10pt
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -92,9 +98,8 @@
 
 \section{Obiettivo}
 
-Assemblare i moduli principali costituenti una catena elettronica (\textit{preamplificatore}, \textit{shaper},
-\textit{amplificatore}) per un rivelatore di radiazione. Studiare il segnale in uscita e la risposta in frequenza dei
-singoli moduli e della catena elettronica completa.
+Assemblare una catena elettronica associata ad un rivelatore di radiazione. Studiare il segnale in uscita e la risposta
+in frequenza dei singoli moduli e della catena elettronica completa.
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %	APPARATO SPERIMENTALE
@@ -129,7 +134,7 @@ l'acquisizione da parte di una DAQ, che corrisponde in questo caso all'ADC della
 rappresentata in \autoref{i:circuito}.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\linewidth]{../Simulations/catena_circuito.png}
+	\includegraphics[width=0.9\linewidth]{../Simulations/catena_circuito.png}
 	\caption{\small Schema a costanti concentrate della catena elettronica suddivisa nei tre moduli di interesse.}
 	\label{i:circuito}
 \end{figure}
@@ -191,7 +196,7 @@ utilizzando sonde 10X.
 %	TRATTAZIONE ANALITICA
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Trattazione analitica}\label{s:preamp_th} 
+\subsection{Trattazione Analitica}\label{s:preamp_th} 
 
 Concentrando inizialmente l'attenzione sul modulo di ingresso (generatore reale e cablaggio), il sistema è un filtro
 passa basso con frequenza di taglio $f_{\text{t}}^{\text{in}}\approx 32 \,\si{\MHz}$, molto maggiore delle frequenze in
