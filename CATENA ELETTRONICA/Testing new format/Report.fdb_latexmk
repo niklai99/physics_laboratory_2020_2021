@@ -1,14 +1,14 @@
 # Fdb version 3
-["pdflatex"] 1607876804 "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.pdf" "Report" 1607876813
+["pdflatex"] 1607877742 "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.pdf" "Report" 1607877753
   "../Plots/PreAmp/linearity_fit.png" 1607859355 308018 d4672d8d13283c6e556165751c7b1d5f ""
   "../Plots/PreAmp/preamp_arduino_fit2.png" 1607868194 660480 ceaf12950c10c8d97a6cc4f146d21c03 ""
   "../Plots/PreAmp/preamp_waveform.png" 1607268811 308514 ae660e68c41583a2ca49c278ebaa3213 ""
   "../Simulations/catena_circuito.png" 1607003633 28939 e5e07212f8464aabeeb1d3df25b95427 ""
-  "Report.aux" 1607876810 7629 8932ba7487ffe7218bdc0ba8b7fa93da ""
-  "Report.out" 1607876810 515 60db38d4f4fb11cb1195d59067d3138d ""
-  "Report.tex" 1607876801 65253 bced14eb167f0dd12568ce97b154eba9 ""
-  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux" 1607876810 7629 8932ba7487ffe7218bdc0ba8b7fa93da ""
-  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.tex" 1607876801 65253 bced14eb167f0dd12568ce97b154eba9 ""
+  "Report.aux" 1607877749 7797 7c02c408aadfc5827ab6d0efbac6e208 ""
+  "Report.out" 1607877749 579 74417a424aaeec17a9729e0d958d0453 ""
+  "Report.tex" 1607877733 65542 7a777764d70728cc78c0791a9b3d9556 ""
+  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux" 1607877749 7797 7c02c408aadfc5827ab6d0efbac6e208 ""
+  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.tex" 1607877733 65542 7a777764d70728cc78c0791a9b3d9556 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1543003212 30251 6afa5cb1d0204815a708a080681d4674 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1543003212 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1543003212 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
@@ -189,6 +189,6 @@
   "structure.tex" 1607007966 1884 c481f65cfd06eb26e0ba8d49c9d4cd8d ""
   (generated)
   "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.pdf"
-  "Report.aux"
   "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.log"
+  "Report.aux"
   "Report.out"

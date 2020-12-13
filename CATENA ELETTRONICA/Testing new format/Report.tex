@@ -454,7 +454,7 @@ effettuarne una media.
 Osservando la \autoref{i:preamp_waveform}, si può inoltre notare chiaramente la salita lineare del segnale e la
 decrescita esponenziale, come previsto in \autoref{e:preamp_vout}. Il valore massimo di tensione acquisito con la scheda
 Arduino, inoltre, è in linea con le aspettative e con quanto misurato sperimentalmente con l'oscilloscopio. Ci si
-concentra ora sulla stima del tempo caratteristico $\tau^{\text{pre}}$: si vuole inizialmente effettuare un fit
+concentra ora sulla stima del tempo caratteristico $\tau_{\text{pre}}$: si vuole inizialmente effettuare un fit
 esponenziale del tipo $y = a + b\,\text{exp}(-x/\tau)$. Successivamente, sfruttando i parametri $a$ e $b$ per
 normalizzare i dati, si vuole considerare il logaritmo delle tensioni normalizzate ed effettuare una regressione
 lineare. Non è infatti possibile, per questioni analitiche, considerare semplicemente il logaritmo delle tensioni $V$ ed
@@ -470,29 +470,32 @@ $\log(\tilde{V})= -\frac{t}{\tau}$.
 	\label{i:preamp_arduino_fit}
 \end{figure}
  
-% Osservando rapidamente il grafico a sinistra, si nota come il segnale segua in modo ottimale la funzione
-% esponenziale: la stima del tempo caratteristico $\tau^{\text{exp}}$, inoltre, risulta essere sufficientemente
-% compatibile con la stima teorica $\tau^{\text{th}} = 161 \pm 6 \,\si{\us}$ ($\lambda = 1.4$). Come stima del tempo
-% caratteristico, in ogni caso, si preferisce quanto trovato dalla regressione lineare: tale metodo, infatti, è
-% complessivamente più robusto, più preciso e fornisce una stima migliore sugli errori dei parametri. Dal grafico a
-% destra, quindi, si nota chiaramente come computare il logaritmo delle tensioni $\tilde{V}$ porti a considerare più
-% "pesanti" (barre d'errore più piccole) i punti a monte della discesa esponenziale e a dare conseguentemente meno peso ai
-% punti di coda. Questi ultimi, eccessivamente prossimi allo zero, non vengono considerati dato che la propagazione
-% dell'errore su di essi porta ad un contributo decisamente troppo grande ed il fit non ne è praticamente influenzato. Il
-% $\chi^2$, molto minore del suo valore di aspettazione, indica una probabile sovrastima dell'errore: le misure in cima
-% alla discesa si distribuiscono estremamente fedelmente attorno alla retta, compatibilmente con il loro errore, mentre le
-% misure verso la coda risultano discostarsi più sensibilmente dal fit. Tuttavia, sembra che l'incremento dell'errore su
-% queste ultime sia eccessivo, e che queste si distribuiscano attorno alla retta più fedelmente di quanto ci si aspetta
-% dalle barre d'errore. Calcolando ora il tempo caratteristico si trova $\tau^{\text{lin}}= -1/b = 153.9 \pm 1.0
-% \,\si{\us}$: questo presenta infine una compatibilità $\lambda = 1.2$ con  la stima teorica $\tau^{\text{th}}$.
+Osservando rapidamente il grafico a sinistra, si nota come il segnale segua in modo ottimale la funzione esponenziale:
+la stima del tempo caratteristico $\tau_{\text{pre}}^{\text{exp}}$, inoltre, risulta essere sufficientemente compatibile
+con la stima teorica $\tau_{\text{pre}}^{\text{th}} = 161 \pm 6 \,\si{\us}$ ($\lambda = 1.5$). Come stima del tempo
+caratteristico, in ogni caso, si preferisce quanto trovato dalla regressione lineare: tale metodo, infatti, è
+complessivamente più robusto, più preciso e fornisce una stima migliore sugli errori dei parametri. Dal grafico a
+destra, quindi, si nota chiaramente come computare il logaritmo delle tensioni $\tilde{V}$ porti a considerare più
+"pesanti" (barre d'errore più piccole) i punti a monte della discesa esponenziale e a dare conseguentemente meno peso ai
+punti di coda. Questi ultimi, eccessivamente prossimi allo zero, non vengono considerati dato che la propagazione
+dell'errore su di essi porta ad un contributo decisamente troppo grande ed il fit non ne è praticamente influenzato. Il
+$\chi^2$, inoltre risulta essere in soddisfacente accordo con il suo valore di aspettazione ($Z = 1.6$): le misure in
+cima alla discesa si distribuiscono estremamente fedelmente attorno alla retta, compatibilmente con il loro errore,
+mentre le misure verso la coda risultano discostarsi più sensibilmente dal fit. Si nota, infine, che rimuovendo dati
+outlier scartando tutti i punti che distano più di $3\sigma$ dalla retta di regressione i risultati non vengono
+sensibilmente influenzati: queste misure si trovano quasi esclusivamente sulla coda di destra e, avendo un errore
+notevolmente maggiore rispetto ai punti situati in alto a sinistra, hanno poca influenza sulla retta del fit. Calcolando
+ora il tempo caratteristico si trova $\tau_{\text{pre}}^{\text{lin}}= -1/b = 153.9 \pm 0.2 \,\si{\us}$: questo presenta
+infine una compatibilità $\lambda = 1.2$ con  la stima teorica $\tau_{\text{pre}}^{\text{th}}$ ed è in linea con quanto
+misurato sperimentalmente (\autoref{t:preamp_sper_th}).
 
 
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%%	THEBODE
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%
-%\subsection{Grafico di Bode}\label{s:preamp_bode}
-%
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	THEBODE
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Grafico di Bode}\label{s:preamp_bode}
+
 %Si vuole ora studiare la risposta in frequenza del preamplificatore: si modificano le impostazioni del generatore in
 %modo da erogare un'onda sinusoidale di ampiezza $1\,\si{\volt}$ e frequenza $f_{\text{gen}}$ variabile da $10\,\si{\Hz}$
 %a $1\,\si{\MHz}$. Per quanto riportato in \autoref{e:preamp_H}, ci si aspetta un comportamento da filtro passa basso
