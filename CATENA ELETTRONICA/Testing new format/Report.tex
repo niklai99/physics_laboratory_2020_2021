@@ -390,7 +390,7 @@ eventuale offset sistematico o un errore di zero. Dal coefficiente angolare $b$ 
 	}
 \end{align}
 
-\noindent dove, nel computo dell'errore, $\sigma_I$ rappresenta l'errore sulla corrente $I =
+dove, nel computo dell'errore, $\sigma_I$ rappresenta l'errore sulla corrente $I =
 \frac{V_{\text{in}}}{R_{\text{in}}}$ che, nel fit, verrebbe riscalato dalla durata $T$ del segnale. La stima della
 capacità di feedback risulta essere in ottima compatibilità ($\lambda = 0.05$) con quanto misurato con il multimetro
 (\autoref{t:direct_measures}): questo porta quindi ad un'ulteriore conferma di una \textit{corretta} linearità del
@@ -409,7 +409,36 @@ scheda in unità arbitrarie a grandezze fisicamente rilevanti. In particolare, d
 sampling rate $S=0.955\,\text{Msps}$ si ottiene l'evoluzione temporale (in secondi) del segnale acquisito. Sfruttando
 invece la funzione di calibrazione in tensione $V= a  +  b \cdot \text{counts}$ (con $a=-0.637 \pm 0.010\,\si{\volt}$ e
 $b=0.828\pm0.007\,\si{mV/counts}$) si ottengono i valori in Volt delle misure acquisite in ADC counts. Per quanto
-riguarda l'errore da associare a tali valori di tensione, ci si ritrova davanti ad un certo numero di complicazioni. 
+riguarda l'errore da associare a tali valori di tensione, ci si ritrova davanti ad un certo numero di complicazioni. La
+prima idea sarebbe sfruttare gli errori sui parametri di calibrazione e, per propagazione, trovare l'incertezza sui
+valori di tensione secondo 
+
+\begin{equation}
+	\sigma_{V} = \sqrt{\sigma_a^2 + \text{counts}^2 \cdot \sigma_b^2 + 2 \cdot \text{counts} \cdot \text{cov}(a,b)}
+\end{equation}
+
+Tuttavia, questa strategia porta ad una notevole sovrastima degli errori: così facendo, si associa ai valori di tensione
+$V$ un'incertezza proveniente dal fit di calibrazione, pesato con gli errori di misura dati dall'oscilloscopio. Si perde
+quindi l'informazione sull'accuratezza effettiva della scheda Arduino, che risulta essere invece decisamente migliore.
+Inoltre, i parametri ($a$, $b$) e, soprattutto, i loro errori ($\sigma_a$, $\sigma_b$) della funzione di calibrazione
+dipendono fortemente dal range di tensioni che si sceglie di adottare per la calibrazione: quest'ultima, infatti,
+risulta essere sensibilmente differente per bassi valori di tensione (fino a circa $1.5\,\si{\volt}$) e per alti valori
+di tensione a causa dei circuiti di protezione dei pin di ingresso. Si sceglie quindi di adottare una metodologia
+differente per stimare le incertezze sui valori di tensione $V$. Ricordando che l'ADC della scheda Arduino Due converte
+segnali analogici con tensione di riferimento $V_{\text{ref}}=3.3\,\si{\volt}$ su un range di $N = 12$ bit (ovvero 4096
+valori), si trova una risoluzione di tensione dell’ADC, ovvero la più piccola variazione di tensione in ingresso che
+causa la variazione di 1 bit del valore convertito in uscita, pari a 
+
+\begin{equation}
+	\Delta V = \frac{V_{\text{ref}}}{2^N} = \frac{3.3\,\si{\volt}}{4096} = 0.81 \,\si{\milli\volt}
+\end{equation}\\
+Per valutare gli effetti dell'accuratezza complessiva dell’acquisizione dell’ADC sulla stima della tensione in ingresso
+ad Arduino, occorre ricordare che ciascun bit della conversione digitale ha un peso pari alla risoluzione di tensione
+dell’ADC. Assumendo poi una un'accuratezza di $\pm 4$ LSB (bit meno significativo) sull’acquisizione dell’ADC si ottiene un'accuratezza sulla
+stima della tensione in ingresso di $\Delta V \times 4 = 3.2 \,\si{\milli\volt}$. Assumendo infine che questa si
+distribuisca uniformemente, si arriva alla stima finale dell'incertezza sulle stime dei valori di tensione $\sigma_{V} =
+1.9 \,\si{\milli\volt}$. 
+
 
 % A tali valori si associa l'errore per propagazione $\sigma_{V} = \sqrt{\sigma_a^2+\text{counts}^2\sigma_b^2}$: si
 % nota, tuttavia, che il contributo relativo a $\sigma_b$ è semplicemente riscalato per la misura in ADC counts
