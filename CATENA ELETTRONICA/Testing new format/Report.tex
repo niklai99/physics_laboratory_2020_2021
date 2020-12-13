@@ -434,48 +434,42 @@ causa la variazione di 1 bit del valore convertito in uscita, pari a
 \end{equation}\\
 Per valutare gli effetti dell'accuratezza complessiva dell’acquisizione dell’ADC sulla stima della tensione in ingresso
 ad Arduino, occorre ricordare che ciascun bit della conversione digitale ha un peso pari alla risoluzione di tensione
-dell’ADC. Assumendo poi una un'accuratezza di $\pm 4$ LSB (bit meno significativo) sull’acquisizione dell’ADC si ottiene un'accuratezza sulla
-stima della tensione in ingresso di $\Delta V \times 4 = 3.2 \,\si{\milli\volt}$. Assumendo infine che questa si
-distribuisca uniformemente, si arriva alla stima finale dell'incertezza sulle stime dei valori di tensione $\sigma_{V} =
-1.9 \,\si{\milli\volt}$. 
+dell’ADC. Assumendo poi una un'accuratezza di $\pm 4$ LSB (bit meno significativo) sull’acquisizione dell’ADC si ottiene
+un'accuratezza sulla stima della tensione in ingresso di $\Delta V \times 4 = 3.2 \,\si{\milli\volt}$. Assumendo infine
+che questa si distribuisca uniformemente, si arriva alla stima finale dell'incertezza sulle stime dei valori di tensione
+$\sigma_{V} = 1.9 \,\si{\milli\volt}$.\footnote{Tamberi, G. (2016). \textit{La Conversione Analogico/Digitale con
+Arduino}. (Prima Edizione).} In \autoref{i:preamp_waveform} è esposto quanto acquisito dalla scheda Arduino: si nota
+immediatamente come siano stati registrati due "eventi", o meglio nel tempo di acquisizione impostato per Arduino il
+generatore di funzioni ha erogato due impulsi di tensione. Il segnale registrato, inoltre, risulta essere leggermente
+rumoroso: per rendere l'analisi successiva meglio gestibile si decide di sovrapporre i due picchi di tensione e di
+effettuarne una media. 
 
+ \begin{wrapfigure}{R}{0.5\textwidth}
+ 	\centering
+ 	\includegraphics[width=0.5\textwidth]{../Plots/PreAmp/preamp_waveform.png}
+ 	\caption{\small Segnale in uscita dal preamplificatore.}
+ 	\label{i:preamp_waveform}
+ \end{wrapfigure}
 
-% A tali valori si associa l'errore per propagazione $\sigma_{V} = \sqrt{\sigma_a^2+\text{counts}^2\sigma_b^2}$: si
-% nota, tuttavia, che il contributo relativo a $\sigma_b$ è semplicemente riscalato per la misura in ADC counts
-% acquisita da arduino, ed è trattabile quindi come un errore di scala. In \autoref{i:preamp_waveform} è esposto quanto
-
-% \begin{wrapfigure}{R}{0.5\textwidth}
-% 	\centering
-% 	\includegraphics[width=0.5\textwidth]{../Plots/PreAmp/preamp_waveform.png}
-% 	\caption{\small Segnale in uscita dal preamplificatore.}
-% 	\label{i:preamp_waveform}
-% \end{wrapfigure}
-
-% acquisito dalla scheda Arduino: si nota immediatamente come siano stati registrati due "eventi", o
-% meglio nel tempo di acquisizione impostato per Arduino il generatore di funzioni ha erogato due impulsi di tensione. Il
-% segnale registrato, inoltre, risulta essere leggermente rumoroso: per rendere l'analisi successiva meglio gestibile si
-% decide di sovrapporre i due picchi di tensione e di effettuarne una media. Osservando la \autoref{i:preamp_waveform}, si
-% può inoltre notare chiaramente la salita lineare del segnale e la decrescita esponenziale, come previsto in
-% \autoref{e:preamp_vout}. Il valore massimo di tensione acquisito con la scheda Arduino, inoltre, è in linea con le
-% aspettative e con quanto misurato sperimentalmente con l'oscilloscopio. Ci si concentra ora sulla stima del tempo
-% caratteristico $\tau^{\text{pre}}$: si vuole inizialmente effettuare un fit esponenziale del tipo $y = a +
-% b\,\text{exp}(-x/\tau)$. Successivamente, sfruttando i parametri $a$ e $b$ per normalizzare i dati, si vuole considerare
-% il logaritmo delle tensioni normalizzate ed effettuare una regressione lineare. Non è infatti possibile, per questioni
-% analitiche, considerare semplicemente il logaritmo delle tensioni $V$ ed aspettarsi un andamento lineare: si considera
-% invece il logaritmo delle tensioni normalizzate $\tilde{V} = (V-a)/b$ e l'errore su $\tilde{V}$ è dato per propagazione.
-% In questo modo, quindi, i dati si distribuiscono secondo $\log(\tilde{V})= -\frac{t}{\tau}$. Nell'effettuare il fit
-% esponenziale si decide di tenere conto dell'errore di scala dato dalla calibrazione della scheda Arduino, mentre per
-% quanto riguarda la regressione lineare si sceglie di non considerarlo in quanto, computando il logaritmo delle
-% tensioni, tale contributo viene interamente scaricato nell'offset della retta del fit. 
-% 
-% \begin{figure}[H]
-% 	\centering
-% 	\includegraphics[width=\linewidth]{../Plots/PreAmp/preamp_arduino_fit2.png}
-% 	\caption{\small A sinistra: fit esponenziale dello smorzamento del segnale in uscita. 
-% 					A destra: fit lineare del logaritmo del segnale in uscita normalizzato.}
-% 	\label{i:preamp_arduino_fit}
-% \end{figure}
-% 
+Osservando la \autoref{i:preamp_waveform}, si può inoltre notare chiaramente la salita lineare del segnale e la
+decrescita esponenziale, come previsto in \autoref{e:preamp_vout}. Il valore massimo di tensione acquisito con la scheda
+Arduino, inoltre, è in linea con le aspettative e con quanto misurato sperimentalmente con l'oscilloscopio. Ci si
+concentra ora sulla stima del tempo caratteristico $\tau^{\text{pre}}$: si vuole inizialmente effettuare un fit
+esponenziale del tipo $y = a + b\,\text{exp}(-x/\tau)$. Successivamente, sfruttando i parametri $a$ e $b$ per
+normalizzare i dati, si vuole considerare il logaritmo delle tensioni normalizzate ed effettuare una regressione
+lineare. Non è infatti possibile, per questioni analitiche, considerare semplicemente il logaritmo delle tensioni $V$ ed
+aspettarsi un andamento lineare: si considera invece il logaritmo delle tensioni normalizzate $\tilde{V} = (V-a)/b$ e
+l'errore su $\tilde{V}$ è dato per propagazione. In questo modo, quindi, i dati si distribuiscono secondo
+$\log(\tilde{V})= -\frac{t}{\tau}$. 
+ 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../Plots/PreAmp/preamp_arduino_fit2.png}
+	\caption{\small A sinistra: fit esponenziale dello smorzamento del segnale in uscita. 
+					A destra: fit lineare del logaritmo del segnale in uscita normalizzato.}
+	\label{i:preamp_arduino_fit}
+\end{figure}
+ 
 % Osservando rapidamente il grafico a sinistra, si nota come il segnale segua in modo ottimale la funzione
 % esponenziale: la stima del tempo caratteristico $\tau^{\text{exp}}$, inoltre, risulta essere sufficientemente
 % compatibile con la stima teorica $\tau^{\text{th}} = 161 \pm 6 \,\si{\us}$ ($\lambda = 1.4$). Come stima del tempo
