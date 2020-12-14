@@ -550,6 +550,42 @@ lineare in \autoref{i:preamp_arduino_fit}, sia nella stima della frequenza di ta
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Shaper CR-RC}\label{s:shaper} 
+
+Riprendendo ora quanto esposto in \autoref{s:preamp_th}, si ottiene in uscita dal preamplificatore un segnale
+dirattamente proporzionale alla carica in ingresso. Questo segnale è caratterizzato da una salita lineare fino al
+raggiungimento del massimo di tensione (in modulo) $V_{\text{out}}^{\text{max}}=\frac{Q_{\text{c}}}{C_{\text{f}}}$ ed
+uno smorzamento esponenziale di tempo caratteristico $\tau_{\text{pre}}$ di circa un centinaio di $\si{\us}$. Si nota
+allora in \autoref{i:preamp_waveform} che un segnale di questo tipo impiega circa $1\,\si{\milli\second}$ per azzerarsi
+completamente. Il secondo stadio della catena 
+
+\begin{wrapfigure}{L}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.5\textwidth]{../Plots/PreAmp/signal_pileup.png}
+	\caption{\small Signal pile-up simulazione Spice.}
+	\label{i:preamp_pileup}
+\end{wrapfigure}
+
+(\textit{shaper}) si utilizza per modificare la forma del segnale in
+uscita dal preamplificatore, rendendolo più simile ad una curva gaussiana ed accorciandone la durata effettiva. Si è
+particolarmente interessati a diminuire il tempo di discesa al fine di evitare un possibile \textit{signal pile up} nel
+caso di un'elevata frequenza di acquisizione. In tale situazione, infatti, il segnale di un'acquisizione precedente si
+sovrapporrebbe (almeno parzialmente) a quello dell'acquisizione successiva, rendendo estremamente più complicato
+estrarre le corrette informazioni dalle due acquisizioni. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 %
 %Il secondo stadio della catena (\textit{shaper}) si utilizza per modificare la
 %forma del segnale in uscita dal preamplificatore. Si vuole, in particolare, accorciare il tempo di discesa al fine di
