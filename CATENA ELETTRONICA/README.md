@@ -25,7 +25,7 @@ NOTEBOOK](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2
 * Verifica accordo tra misure sperimentali e stime teoriche
 * Verifica della linearità del preamplificatore
   
-    ![LINEARITA PREAMP](./Plots/PreAmp/Vmax_Qin_lin_fit.png)
+    ![LINEARITA PREAMP](./Plots/PreAmp/linearity_fit.png)
 
 * Stima della capacità di feedback 
 * Stima del tempo caratteristico dello smorzamento esponenziale
