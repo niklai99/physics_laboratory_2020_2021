@@ -30,16 +30,12 @@ NOTEBOOK](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2
 * Stima della capacità di feedback 
 * Stima del tempo caratteristico dello smorzamento esponenziale
 
-    ![ARDUINO TAU](./Plots/PreAmp/preamp_arduino_fit.png)
+    ![ARDUINO TAU](./Plots/PreAmp/preamp_arduino_fit2.png)
 
 * Analisi in frequenza e stima della frequenza di taglio
   
     ![THEBODE](./Plots/PreAmp/bode_plot.png)
 
-
-
-**NOTA BENE:** L'analisi della forma d'onda acquisita con Arduino è riportata
-[qui](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2021/blob/master/CATENA%20ELETTRONICA/Python/Arduino%20Test/Arduino%20Test%202.ipynb)!
 
 ### Shaper CR-RC  &rarr; analisi completata
 
@@ -69,6 +65,9 @@ NOTEBOOK](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2
 
 * Verifica accordo tra misure sperimentali e stime teoriche
 * Verifica della linearità della catena 
+
+    ![LIN](./Plots/Catena/catena_linearity.png)
+
 * Analisi in frequenza e stima della frequenza di taglio
   
     ![THEBODE](./Plots/Catena/bode_plot.png)
