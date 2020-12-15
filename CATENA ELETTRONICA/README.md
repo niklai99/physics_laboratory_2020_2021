@@ -2,15 +2,17 @@
 
 ***
 
-## STESURA DELLA RELAZIONE (in corso)
+## STESURA DELLA RELAZIONE 
 
-Il file PDF della relazione si trova [QUI](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2021/blob/master/CATENA%20ELETTRONICA/Report/Report.pdf)!
+### Terminata la stesura preliminare
 
-### Preamplificatore  &rarr; dovrebbe essere finito
+Il file PDF della relazione preliminare si trova
+[QUI](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2021/blob/master/CATENA%20ELETTRONICA/Report/Report.pdf)!
 
-### Shaper  &rarr; dovrebbe essere finito
+### Stesura definitiva fino allo shaper
 
-### Catena Completa  &rarr; manca linearità e bode
+Il file PDF della relazione definitiva (incompleta) si trova
+[QUI](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2021/blob/master/CATENA%20ELETTRONICA/Testing%20new%20format/Report.pdf)!
 
 ## FASE DI ANALISI DATI (completata)
 
