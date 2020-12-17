@@ -428,7 +428,6 @@ differente per stimare le incertezze sui valori di tensione $V$. Ricordando che 
 segnali analogici con tensione di riferimento $V_{\text{ref}}=3.3\,\si{\volt}$ su un range di $N = 12$ bit (ovvero 4096
 valori), si trova una risoluzione di tensione dell’ADC, ovvero la più piccola variazione di tensione in ingresso che
 causa la variazione di 1 bit del valore convertito in uscita, pari a 
-
 \begin{equation}
 	\Delta V = \frac{V_{\text{ref}}}{2^N} = \frac{3.3\,\si{\volt}}{4096} = 0.81 \,\si{\milli\volt}
 \end{equation}\\
@@ -674,21 +673,32 @@ Si noti quindi come la forma analitica di $H(s)$ presenti uno zero nell'origine 
 \textit{shaping time}. Il grafico di Bode della risposta in frequenza presenta allora una salita lineare con pendenza
 $20\,\si{dB/dec}$ fino al raggiungimento della frequenza $f_{\text{polo}}$ relativa al polo doppio per poi decrescere
 linearmente con pendenza $-20\,\si{dB/dec}$. Il filtro è dunque un passa banda, la cui banda passante (e di conseguenza
-gli intervalli di integrazione e derivazione del segnale) è influenzata dallo \textit{shaping time}.
+gli intervalli di integrazione e derivazione del segnale) è influenzata dallo \textit{shaping time}. Concentrando ora
+l'attenzione sulla risposta dello shaper ad un segnale in ingresso ideale, ci si aspetta in uscita una tensione data da 
+\begin{equation} 
+	V_{\text{out}}(t)=\frac{V_{\text{in}}}{\tau^{ \text{sh} }} \, t \,
+	e^{-\frac{t}{\tau^{ \text{sh} } }} 
+\end{equation} 
+
+che presenta un massimo $V_{\text{out}}^{\text{max}}= V_{\text{in}}/e$ direttamente proporzionale al segnale in
+ingresso, che quindi contiene l'informazione sulla carica raccolta dal preamplificatore. Inoltre, tale massimo viene
+assunto ad un tempo $t^{\text{max}} = \tau_{\text{sh}}$: lo \textit{shaping time}, quindi, determina approssimativamente
+la durata del segnale in uscita dallo shaper. Si noti che $\tau_{\text{sh}}$ è un ordine di grandezza inferiore rispetto
+al tempo caratteristico $\tau_{\text{pre}}$: da questo si deduce quindi che la durata del segnale viene notevolmente
+ridotta grazie all'azione dello shaper, come anticipato in \autoref{s:shaper}. 
 
 
-%Concentrando ora l'attenzione sulla
-%risposta dello shaper ad un segnale in ingresso ideale, ci si aspetta in uscita una tensione data da 
-%
-%\begin{equation} 
-%	V_{\text{out}}(t)=\frac{V_{\text{in}}}{\tau^{ \text{sh} }} \, t \,
-%	e^{-\frac{t}{\tau^{ \text{sh} } }} 
-%\end{equation} 
-%
-%che presenta un massimo $V_{\text{out}}^{\text{max}}= V_{\text{in}}/e$ direttamente proporzionale al segnale in
-%ingresso, che quindi preserva l'informazione sulla carica raccolta dal preamplificatore. Inoltre, tale massimo viene
-%assunto 
-%
+%Avendo misurato con l'oscilloscopio il segnale in ingresso, ci si aspetta allora un segnale massimo in uscita
+%$V_{\text{th}}^{\text{max}}= 0.372 \pm 0.006\,\si{\volt}$, mentre sperimentalmente si misura
+%$V_{\text{sper}}^{\text{max}}= 0.342 \pm 0.006\,\si{\volt}$: quest'ultimo si discosta del $7.9\%$ rispetto al primo.
+%Questa incongruenza tra aspettativa teorica e misura sperimentale si attribuisce principalmente alle componenti
+%circuitali ed alle sistematiche presenti nel circuito stesso. Il valore massimo $V_{\text{sper}}^{\text{max}}$ viene
+%invece assunto ad un tempo conforme allo \textit{shaping time}. In \autoref{i:shaper_ideal} viene mostrato il segnale
+%in uscita, acquisito con la scheda Arduino, assieme alla simulazione Spice: si nota chiaramente come la tensione
+%sperimentale sia inferiore alle aspettative, come già anticipato. Si fa notare, tuttavia, che il valore massimo dei
+%dati acquisiti risulta essere $0.34 \pm 0.02 \,\si{\volt}$ e questo viene assunto ad un tempo $t \approx
+%15.9\,\si{\us}$ perfettamente in linea con quanto misurato sperimentalmente.
+
 %\begin{wrapfigure}{R}{0.5\textwidth} 
 %	\centering 
 %	\includegraphics[width=0.5\textwidth]{../Plots/Shaper/shaper_ideal.png}
@@ -696,20 +706,6 @@ gli intervalli di integrazione e derivazione del segnale) è influenzata dallo \
 %   \label{i:shaper_ideal} 
 %\end{wrapfigure}
 %
-%ad un tempo $t^{\text{max}} = \tau^{\text{sh}}$: lo \textit{shaping time}, quindi, determina approssimativamente la
-%durata del segnale in uscita dallo shaper. Si noti che $\tau^{\text{sh}}$ è un ordine di grandezza inferiore rispetto al
-%tempo caratteristico $\tau^{\text{pre}}$: da questo si deduce quindi che la durata del segnale viene notevolmente
-%ridotta grazie all'azione dello shaper, come anticipato in \autoref{s:shaper}. Avendo misurato con l'oscilloscopio il
-%segnale in ingresso, ci si aspetta allora un segnale massimo in uscita $V_{\text{th}}^{\text{max}}= 0.372 \pm
-%0.006\,\si{\volt}$, mentre sperimentalmente si misura $V_{\text{sper}}^{\text{max}}= 0.342 \pm 0.006\,\si{\volt}$:
-%quest'ultimo si discosta del $7.9\%$ rispetto al primo. Questa incongruenza tra aspettativa teorica e misura
-%sperimentale si attribuisce principalmente alle componenti circuitali ed alle sistematiche presenti nel circuito stesso.
-%Il valore massimo $V_{\text{sper}}^{\text{max}}$ viene invece assunto ad un tempo conforme allo \textit{shaping time}.
-%In \autoref{i:shaper_ideal} viene mostrato il segnale in uscita, acquisito con la scheda Arduino, assieme alla
-%simulazione Spice: si nota chiaramente come la tensione sperimentale sia inferiore alle aspettative, come già
-%anticipato. Si fa notare, tuttavia, che il valore massimo dei dati acquisiti risulta essere $0.34 \pm 0.02 \,\si{\volt}$
-%e questo viene assunto ad un tempo $t \approx 15.9\,\si{\us}$ perfettamente in linea con quanto misurato
-%sperimentalmente.
 
 
 %%-------------------------------------------------------------------------------------------------------------------------------------------
