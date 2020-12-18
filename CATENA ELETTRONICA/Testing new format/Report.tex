@@ -686,9 +686,7 @@ assunto ad un tempo $t^{\text{max}} = \tau_{\text{sh}}$: lo \textit{shaping time
 la durata del segnale in uscita dallo shaper. Si noti che $\tau_{\text{sh}}$ è un ordine di grandezza inferiore rispetto
 al tempo caratteristico $\tau_{\text{pre}}$: da questo si deduce quindi che la durata del segnale viene notevolmente
 ridotta grazie all'azione dello shaper, come anticipato in \autoref{s:shaper}. Al fine di verificare il corretto
-funzionamento dell'apparato sperimentale, si riportano in \autoref{t:shaper_sper_th} le misure sperimentali del massimo
-della tensione e dello \textit{shaping time} $\tau_{\text{sh}}$ acquisite con l'oscilloscopio. 
-Confrontando la misura di $V_{\text{max}}^{\text{sper}}$ con l'aspettativa teorica emerge 
+funzionamento dell'apparato 
 
 \begin{wraptable}{R}{0.50\textwidth}
 	\small
@@ -712,11 +710,14 @@ Confrontando la misura di $V_{\text{max}}^{\text{sper}}$ con l'aspettativa teori
 	\label{t:shaper_sper_th}
 \end{wraptable}	
 
-una sensibile discrepanza tra le due: la prima, infatti, si discosta del $7.9\%$ rispetto alla seconda. Questa
-incongruenza si attribuisce principalmente alle componenti circuitali ed alle sistematiche presenti nel circuito stesso,
-comprendendo quindi anche la capacità parassita dovuta ai cavi ed alla breadboard. Tale valore massimo, tuttavia, viene
-assunto ad un tempo $\tau_{\text{sh}}^{\text{sper}}$ perfettamente conforme allo \textit{shaping time}. In
-\autoref{i:shaper_ideal} viene mostrato il segnale in uscita acquisito con la scheda Arduino assieme alla simulazione
+sperimentale, si riportano in \autoref{t:shaper_sper_th} le misure sperimentali del massimo della tensione e dello
+\textit{shaping time} $\tau_{\text{sh}}$ acquisite con l'oscilloscopio. Confrontando la misura di
+$V_{\text{max}}^{\text{sper}}$ con l'aspettativa teorica emerge una sensibile discrepanza tra le due: la prima, infatti,
+si discosta del $7.9\%$ rispetto alla seconda. Questa incongruenza si attribuisce principalmente alle componenti
+circuitali ed alle sistematiche presenti nel circuito stesso, comprendendo quindi anche la capacità parassita dovuta ai
+cavi ed alla breadboard. Tale valore massimo, tuttavia, viene assunto ad un tempo $\tau_{\text{sh}}^{\text{sper}}$
+perfettamente conforme allo \textit{shaping time}. In \autoref{i:shaper_ideal} viene mostrato il segnale in uscita
+acquisito con la scheda Arduino assieme alla simulazione
 
 \begin{wrapfigure}{L}{0.5\textwidth} 
 	\centering 
@@ -725,12 +726,14 @@ assunto ad un tempo $\tau_{\text{sh}}^{\text{sper}}$ perfettamente conforme allo
    \label{i:shaper_ideal} 
 \end{wrapfigure}
 
- Spice: si nota chiaramente come la tensione
-sperimentale sia inferiore alle aspettative, come già evidenziato in \autoref{t:shaper_sper_th}. Si fa notare, tuttavia,
-che il valore massimo dei dati acquisiti risulta essere $0.34 \pm 0.02 \,\si{\volt}$ e questo viene assunto ad un tempo
-$t \approx 15.9\,\si{\us}$ perfettamente in linea con quanto misurato sperimentalmente.
+ Spice: si nota chiaramente come la tensione sperimentale sia inferiore alle aspettative, come già evidenziato in
+\autoref{t:shaper_sper_th}. Si fa notare, tuttavia, che il valore massimo dei dati acquisiti con la scheda Arduino
+risulta essere $V_{\text{max}} = 341.5 \pm 1.9 \,\si{\milli\volt}$ e questo viene assunto ad un tempo $t \approx 15.9\,\si{\us}$
+perfettamente in linea con quanto misurato sperimentalmente mediante l'oscilloscopio.
 
-
+%problemi di impedenza
+%notare che si smorza molto prima del segnale preamp
+%notare la forma più gaussiana
 
 
 
