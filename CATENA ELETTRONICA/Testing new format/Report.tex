@@ -685,11 +685,10 @@ ingresso, che quindi contiene l'informazione sulla carica raccolta dal preamplif
 assunto ad un tempo $t^{\text{max}} = \tau_{\text{sh}}$: lo \textit{shaping time}, quindi, determina approssimativamente
 la durata del segnale in uscita dallo shaper. Si noti che $\tau_{\text{sh}}$ è un ordine di grandezza inferiore rispetto
 al tempo caratteristico $\tau_{\text{pre}}$: da questo si deduce quindi che la durata del segnale viene notevolmente
-ridotta grazie all'azione dello shaper, come anticipato in \autoref{s:shaper}. \\
-
-Al fine di verificare il corretto funzionamento dell'apparato sperimentale, si riportano in \autoref{t:shaper_sper_th}
-le misure sperimentali del massimo della tensione e dello \textit{shaping time} $\tau_{\text{sh}}$ acquisite con
-l'oscilloscopio. 
+ridotta grazie all'azione dello shaper, come anticipato in \autoref{s:shaper}. Al fine di verificare il corretto
+funzionamento dell'apparato sperimentale, si riportano in \autoref{t:shaper_sper_th} le misure sperimentali del massimo
+della tensione e dello \textit{shaping time} $\tau_{\text{sh}}$ acquisite con l'oscilloscopio. 
+Confrontando la misura di $V_{\text{max}}^{\text{sper}}$ con l'aspettativa teorica emerge 
 
 \begin{wraptable}{R}{0.50\textwidth}
 	\small
@@ -713,33 +712,26 @@ l'oscilloscopio.
 	\label{t:shaper_sper_th}
 \end{wraptable}	
 
-Confrontando la misura di $V_{\text{max}}^{\text{sper}}$ con l'aspettativa teorica emerge una sensibile discrepanza tra
-le due: la prima, infatti, si discosta del $7.9\%$ rispetto alla seconda. Questa incongruenza si attribuisce
-principalmente alle componenti circuitali ed alle sistematiche presenti nel circuito stesso, comprendendo quindi anche
-la capacità parassita dovuta ai cavi ed alla breadboard. Tale valore massimo, tuttavia, viene assunto ad un tempo
-$\tau_{\text{sh}}^{\text{sper}}$ perfettamente conforme allo \textit{shaping time}. 
+una sensibile discrepanza tra le due: la prima, infatti, si discosta del $7.9\%$ rispetto alla seconda. Questa
+incongruenza si attribuisce principalmente alle componenti circuitali ed alle sistematiche presenti nel circuito stesso,
+comprendendo quindi anche la capacità parassita dovuta ai cavi ed alla breadboard. Tale valore massimo, tuttavia, viene
+assunto ad un tempo $\tau_{\text{sh}}^{\text{sper}}$ perfettamente conforme allo \textit{shaping time}. In
+\autoref{i:shaper_ideal} viene mostrato il segnale in uscita acquisito con la scheda Arduino assieme alla simulazione
+
+\begin{wrapfigure}{L}{0.5\textwidth} 
+	\centering 
+	\includegraphics[width=0.5\textwidth]{../Plots/Shaper/shaper_ideal.png}
+   \caption{\small Segnale in uscita dallo shaper.} 
+   \label{i:shaper_ideal} 
+\end{wrapfigure}
+
+ Spice: si nota chiaramente come la tensione
+sperimentale sia inferiore alle aspettative, come già evidenziato in \autoref{t:shaper_sper_th}. Si fa notare, tuttavia,
+che il valore massimo dei dati acquisiti risulta essere $0.34 \pm 0.02 \,\si{\volt}$ e questo viene assunto ad un tempo
+$t \approx 15.9\,\si{\us}$ perfettamente in linea con quanto misurato sperimentalmente.
 
 
 
-
-%Avendo misurato con l'oscilloscopio il segnale in ingresso, ci si aspetta allora un segnale massimo in uscita
-%$V_{\text{th}}^{\text{max}}= 0.372 \pm 0.006\,\si{\volt}$, mentre sperimentalmente si misura
-%$V_{\text{sper}}^{\text{max}}= 0.342 \pm 0.006\,\si{\volt}$: quest'ultimo si discosta del $7.9\%$ rispetto al primo.
-%Questa incongruenza tra aspettativa teorica e misura sperimentale si attribuisce principalmente alle componenti
-%circuitali ed alle sistematiche presenti nel circuito stesso. Il valore massimo $V_{\text{sper}}^{\text{max}}$ viene
-%invece assunto ad un tempo conforme allo \textit{shaping time}. In \autoref{i:shaper_ideal} viene mostrato il segnale
-%in uscita, acquisito con la scheda Arduino, assieme alla simulazione Spice: si nota chiaramente come la tensione
-%sperimentale sia inferiore alle aspettative, come già anticipato. Si fa notare, tuttavia, che il valore massimo dei
-%dati acquisiti risulta essere $0.34 \pm 0.02 \,\si{\volt}$ e questo viene assunto ad un tempo $t \approx
-%15.9\,\si{\us}$ perfettamente in linea con quanto misurato sperimentalmente.
-
-%\begin{wrapfigure}{R}{0.5\textwidth} 
-%	\centering 
-%	\includegraphics[width=0.5\textwidth]{../Plots/Shaper/shaper_ideal.png}
-%   \caption{\small Segnale in uscita dallo shaper.} 
-%   \label{i:shaper_ideal} 
-%\end{wrapfigure}
-%
 
 
 %%-------------------------------------------------------------------------------------------------------------------------------------------
