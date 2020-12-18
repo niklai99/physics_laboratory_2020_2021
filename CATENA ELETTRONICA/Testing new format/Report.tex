@@ -621,8 +621,8 @@ di tensioni $V_{\text{low}} = 0\,\si{\volt}$ e $V_{\text{high}} = 1\,\si{\volt}$
 
 \subsection{Trattazione Analitica}\label{s:shaper_th}
 
-Prima di trattare analiticamente il circuito, si vuole far notare la presenza di un \textit{buffer} tra il modulo CR ed
-il modulo RC. Il \textit{buffer}, che non altera il comportamento del circuito, permette di fattorizzare
+Si noti inizialmente (\autoref{i:circuito}) la presenza di un \textit{buffer} tra il modulo CR ed il modulo RC. Il \textit{buffer}, che non
+altera il comportamento del circuito, permette di fattorizzare la funzione di trasferimento
 
 \begin{wraptable}{R}{0.3\textwidth}
 	\small
@@ -651,7 +651,7 @@ il modulo RC. Il \textit{buffer}, che non altera il comportamento del circuito, 
 	\label{t:shaper_shaping_time}
 \end{wraptable}	
 
- la funzione di trasferimento complessiva $H(s) = H_{\text{CR}} \, H_{\text{RC}}$, dove $H_{\text{CR}}$ e
+ complessiva $H(s) = H_{\text{CR}} \, H_{\text{RC}}$, dove $H_{\text{CR}}$ e
 $H_{\text{RC}}$ sono rispettivamente le funzioni di trasferimento di un circuito RC in configurazione passa alto e passa
 basso. In questo modo, quindi, il calcolo della funzione di trasferimento si semplifica notevolmente. Inoltre, si vuole
 assumere $R_1 \, C_1 \equiv \tau^{\text{sh}}_1 \approx \tau^{\text{sh}}_2 \equiv R_2 \, C_2$: questa approssimazione
@@ -685,7 +685,37 @@ ingresso, che quindi contiene l'informazione sulla carica raccolta dal preamplif
 assunto ad un tempo $t^{\text{max}} = \tau_{\text{sh}}$: lo \textit{shaping time}, quindi, determina approssimativamente
 la durata del segnale in uscita dallo shaper. Si noti che $\tau_{\text{sh}}$ è un ordine di grandezza inferiore rispetto
 al tempo caratteristico $\tau_{\text{pre}}$: da questo si deduce quindi che la durata del segnale viene notevolmente
-ridotta grazie all'azione dello shaper, come anticipato in \autoref{s:shaper}. 
+ridotta grazie all'azione dello shaper, come anticipato in \autoref{s:shaper}. \\
+
+Al fine di verificare il corretto funzionamento dell'apparato sperimentale, si riportano in \autoref{t:shaper_sper_th}
+le misure sperimentali del massimo della tensione e dello \textit{shaping time} $\tau_{\text{sh}}$ acquisite con
+l'oscilloscopio. 
+
+\begin{wraptable}{R}{0.50\textwidth}
+	\small
+	\centering
+	\begin{tabular}{x{1.8cm} x{1.8cm} x{1.7cm} x{1.7cm}} \toprule[0.5px]\toprule[0.1px]	
+
+		\multicolumn{4}{c}{Controllo Apparato - Shaper} \tn
+
+		\midrule[0.1px]
+
+		$V_{\text{max}}^{\text{th}} \,(\si{\milli\volt})$ & $V_{\text{max}}^{\text{sper}} \,(\si{\milli\volt})$ &
+		$\tau_{\text{sh}}^{\text{th}} \,(\si{\us})$ & $\tau_{\text{sh}}^{\text{sper}} \,(\si{\us})$ \tn
+
+		\addlinespace
+
+		$372 \pm 6$ & $342 \pm 6$ & $15.9 \pm 0.6$ & $16 \pm 3$ \tn
+
+		\bottomrule[0.5px]		
+	\end{tabular}
+	\caption{\small Confronto tra stime teoriche e misure sperimentali.}
+	\label{t:shaper_sper_th}
+\end{wraptable}	
+
+
+
+
 
 
 %Avendo misurato con l'oscilloscopio il segnale in ingresso, ci si aspetta allora un segnale massimo in uscita
