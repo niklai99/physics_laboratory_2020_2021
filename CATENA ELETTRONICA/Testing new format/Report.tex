@@ -647,7 +647,7 @@ altera il comportamento del circuito, permette di fattorizzare la funzione di tr
 
 		\bottomrule[0.5px]		
 	\end{tabular}
-	\caption{\small Stime del tempo caratteristico dello shaper.}
+	\caption{\small Stime di $\tau^{\text{sh}}$.}
 	\label{t:shaper_shaping_time}
 \end{wraptable}	
 
@@ -733,62 +733,75 @@ mostrato il segnale in uscita acquisito con la scheda Arduino assieme alla simul
 la tensione sperimentale sia inferiore alle aspettative, come già evidenziato in \autoref{t:shaper_sper_th}. Si fa
 notare, tuttavia, che il valore massimo dei dati acquisiti con la scheda Arduino risulta essere $V_{\text{max}} = 341.5
 \pm 1.9 \,\si{\milli\volt}$ e questo viene assunto ad un tempo $t \approx 15.9\,\si{\us}$ perfettamente in linea con
-quanto misurato sperimentalmente mediante l'oscilloscopio.
+quanto misurato sperimentalmente mediante l'oscilloscopio. Si noti, inoltre, che il segnale si azzera dopo circa
+$150\,\si{\us}$, ovvero molto prima rispetto al segnale in uscita dal preamplificatore (\autoref{i:preamp_waveform}):
+come anticipato in \autoref{s:shaper}, questo aspetto è fondamentale per evitare un \textit{signal pile up} in caso di
+alta frequenza di acquisizione. Si vuole infine specificare che il convertitore all'interno della scheda Arduino Due è
+ottimizzato per ricevere in ingresso segnali provenienti da una sorgente la cui impedenza di uscita sia sufficientemente
+bassa. Secondo il datasheet Atmel (relativo alla CPU su cui è basata la scheda), questa deve essere al massimo di
+$10\,\si{\kilo\ohm}$.\footnote{Link al datasheet: \url{https://bit.ly/3nwOQSN}} Questo non è chiaramente il caso dell'uscita dallo
+\textit{shaper}: una tale impedenza porterebbe quindi ad una scorretta conversione del segnale. Per ovviare al problema,
+il segnale viene prelevato in uscita dalla \textit{catena elettronica completa} (), la quale presenta un'impedenza in
+uscita idealmente nulla, e dividendo i valori misurati per il fattore di amplificazione $G$ () si riporta il segnale
+allo stadio non amplificato. Questa procedura viene effettuata anche per la configurazione \textit{reale} dello
+\textit{shaper + preamplificatore}, trattata in seguito.
 
-%problemi di impedenza
-%notare che si smorza molto prima del segnale preamp
-%notare la forma più gaussiana
 
 
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%  THEBODE
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
+\subsection{Analisi in Frequenza}\label{s:shaper_bode}
 
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%%  THEBODE
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%
-%\subsection{Analisi in Frequenza}\label{s:shaper_bode}
-%
-%Si vuole ora studiare la risposta in frequenza dello shaper: si imposta il generatore in modo da erogare un'onda
-%sinusoidale di ampiezza $1\,\si{\volt}$ e frequenza $f_{\text{gen}}$ variabile da $50\,\si{\Hz}$ a $1\,\si{\MHz}$. Per
-%quanto riportato in \autoref{e:preamp_H}, ci si aspetta un comportamento da filtro passa banda avente frequenza di
-%massimo \begin{align}\label{e:shaper_ft_th} f_{\text{polo}}&=\frac{1}{2\pi \tau^{\text{sh}}}= 10.0 \pm 0.4 \,\si{k\Hz}
-%& \text{con\,\,\,\,}\sigma_{f_{\text{polo}}}& =\frac{1}{2\pi}\frac{\sigma_{\tau^{\text{sh}}}}{\tau^{2}_{\text{sh}}}
-%
-%\end{align} \noindent  Si acquisisce quindi l'ampiezza del segnale sia in ingresso sia in uscita utilizzando
-%l'oscilloscopio e viene calcolata la funzione di trasferimento $H$, alla quale viene associata un'incertezza
-%$\sigma_{H}$ data da \autoref{e:preamp_H_err}. L'incertezza di guadagno associata all'oscilloscopio non viene invece
-%considerata in quanto, dovendo successivamente prendere il logaritmo $\text{log}_{10}H$ della funzione di
-%trasferimento, tale contributo viene scaricato interamente nell'intercetta delle interpolazioni volte a caratterizzare
-%l'andamento delle misure. Si assume infine trascurabile l'incertezza sulla frequenza dell'onda erogata dal generatore.
-%Si rappresenta allora in \autoref{i:shaper_thebode} il grafico di Bode delle misure acquisite assieme ai punti ottenuti
-%attraverso una simulazione Spice della risposta del circuito (pagina seguente). Confrontando inizialmente le misure
-%sperimentali con la simulazione Spice si nota un ottimo accordo a basse frequenze e nella zona di \textit{mid band},
-%mentre per alte frequenze (attorno al MHz) si osserva un sensibile disaccordo tra misure sperimentali e simulazione
-%Spice: la causa di questa anomalia si crede essere dovuta alla GBW dell'operazionale, la quale non è stata presa in
-%considerazione nel simulare la risposta del circuito.\footnote{La \textit{Gain BandWidth} dell'amplificatore
-%operazionale, anche detta \textit{frequenza a guadagno unitario}, determina il massimo guadagno ottenibile ad una data
-%frequenza.} In ogni caso, il filtro si comporta come da aspettative: la funzione di trasferimento presenta una crescita
-%lineare a basse frequenze (zona di derivazione) con pendenza $19.3 \pm 0.2 \,\text{dB/dec}$ ed una \newpage
-%\begin{figure}[H] \centering \includegraphics[width=0.9\linewidth]{../Plots/Shaper/bode_plot.png} \caption{\small
-%Grafico di Bode delle misure sperimentali e dei dati simulati.} \label{i:shaper_thebode} \end{figure} \noindent
-%decrescita lineare ad alte frequenze (zona di integrazione) con pendenza $-18.8 \pm 0.3 \,\text{dB/dec}$. L'ascissa del
-%punto di intersezione delle due rette di regressione fornisce una stima della frequenza relativo al polo
-%$f_{\text{polo}} = 9.6 \pm 0.2 \,\si{k\Hz}$, in ottima compatibilità con la frequenza del polo teorica esposta in
-%\autoref{e:shaper_ft_th} ($\lambda = 0.8$). Partendo dalla stima ottenuta per $f_{\text{polo}}$, si ricerca il valore
-%massimo della funzione di trasferimento: sottraendo infine $3\,\text{dB}$ a tale massimo e cercando le ascisse di
-%intersezione con le due rette di regressione si riesce a determinare la larghezza di banda $\Delta f$ del filtro. Si
-%ottiene quindi la \textit{mid band} dello shaper, delimitata da \begin{align}\label{e:shaper_bw} f_{\text{low}} &= 3.7
-%\pm 0.4 \,\si{k\Hz} & f_{\text{high}} &= 26.1 \pm 0.8\,\si{k\Hz} \end{align} \noindent Si vuole infine sottolineare che
-%l'ottimo accordo della frequenza $f_{\text{polo}}$ con l'aspettativa teorica (in cui compare la media pesata
-%$\tau^{\text{sh}}$) supporta ulteriormente la validità dell'approssimazione $\tau^{\text{sh}}_1 \approx
-%\tau^{\text{sh}}_2$.
-%
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%%  SHAPER + PREAMP
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%
-%\subsection{Shaper con Preamplificatore in ingresso}\label{s:shaper_preamp}
-%
+Si vuole ora studiare la risposta in frequenza dello shaper (configurazione \textit{ideale}): si imposta il generatore
+in modo da erogare un'onda sinusoidale di ampiezza $1\,\si{\volt}$ e frequenza $f_{\text{gen}}$ variabile da
+$50\,\si{\Hz}$ a $1\,\si{\MHz}$. Si acquisisce quindi l'ampiezza del segnale sia in ingresso sia in uscita utilizzando
+l'oscilloscopio e viene calcolata la funzione di trasferimento $H$, alla quale viene associata un'incertezza
+$\sigma_{H}$ data da \autoref{e:preamp_H_err}. Si rimanda a \autoref{s:preamp_bode} per le considerazioni sugli errori
+associati alle misure, in quanto risulta essere perfettamente analogo. Si rappresenta allora in
+\autoref{i:shaper_thebode} il grafico di Bode delle misure acquisite e di una simulazione Spice della risposta del
+circuito. 
+
+\begin{figure}[H] 
+	\centering 
+	\includegraphics[width=0.9\linewidth]{../Plots/Shaper/bode_plot.png} 
+	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.} 
+	\label{i:shaper_thebode} 
+\end{figure} 
+
+Confrontando inizialmente le misure sperimentali con la simulazione Spice si nota un ottimo accordo a basse frequenze.
+Nella zona di \textit{mid band} si ha invece un leggero scostamento: i dati sperimentali risultano essere lievemente
+inferiori rispetto alla simulazione. Per alte frequenze (attorno al MHz) si osserva infine un notevole disaccordo tra
+l'andamento delle misure sperimentali e la simulazione Spice: la causa di questa anomalia si crede essere dovuta alla
+GBW dell'operazionale, la quale non è stata presa in considerazione nel simulare la risposta del circuito.\footnote{La
+\textit{Gain BandWidth} dell'amplificatore operazionale, anche detta \textit{frequenza a guadagno unitario}, determina
+il massimo guadagno ottenibile ad una data frequenza.} In ogni caso, il filtro si comporta secondo le aspettative
+riportate in \autoref{s:shaper_th}: la funzione di trasferimento presenta una crescita lineare a basse frequenze (zona
+di derivazione) con pendenza $19.3 \pm 0.2 \,\text{dB/dec}$ ed una decrescita lineare ad alte frequenze (zona di
+integrazione) con pendenza $-18.8 \pm 0.3 \,\text{dB/dec}$. L'ascissa del punto di intersezione delle due rette di
+regressione fornisce una stima della frequenza relativo al polo $f_{\text{polo}} = 9.6 \pm 0.2 \,\si{k\Hz}$, in ottima
+compatibilità con la frequenza del polo teorica esposta in \autoref{e:shaper_H} ($\lambda = 0.8$). Sottraendo infine
+$3\,\text{dB}$ al massimo della funzione di trasferimento, le ascisse dei punti di intersezione con le due rette di
+regressione determinano la larghezza di banda $\Delta f$ del filtro. Si ottiene quindi la \textit{bandwidth} dello
+shaper, delimitata da 
+
+\begin{align}\label{e:shaper_bw} 
+	f_{\text{low}} &= 3.7 \pm 0.4 \,\si{k\Hz} 
+	& 
+	f_{\text{high}} &= 26.1 \pm 0.8\,\si{k\Hz} 
+\end{align}
+
+Si vuole infine sottolineare che l'ottimo accordo della frequenza $f_{\text{polo}}$ con l'aspettativa teorica (in cui
+compare la media pesata $\tau^{\text{sh}}$) supporta ulteriormente la validità dell'approssimazione $\tau^{\text{sh}}_1
+\approx \tau^{\text{sh}}_2$.
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%  SHAPER + PREAMP
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Shaper con Preamplificatore in ingresso}\label{s:shaper_preamp}
+
 %In questa sezione si vuole studiare il comportamento dello shaper con in ingresso il segnale elaborato dal
 %preamplificatore. Il generatore di funzioni viene configurato nuovamente come in \autoref{s:preamp_config}: impulso
 %quadrato di frequenza $f_{\text{gen}} = 1 \,\si{k\Hz}$, tensione di riferimento $V_{\text{high}} = 0 \,\si{\volt}$,
@@ -921,11 +934,11 @@ quanto misurato sperimentalmente mediante l'oscilloscopio.
 %\,\si{\volt}$. Si misura, invece, utilizzando l'oscilloscopio una tensione $V_{\text{out}}^{\text{sper}} = 2.32 \pm
 %0.04 \,\si{\volt}$. Emerge nuovamente la leggera discrepanza tra le aspettative sulla tensione e le effettive misure
 %sperimentali. Per il calcolo della funzione di trasferimento complessiva della catena si moltiplicano tra loro le
-%funzioni di trasferimento dei singoli moduli: \begin{align}\label{e:catena_H} H(s) &= \underbrace{ - \frac{ 1
-%}{R_{\text{in}}\,C_{\text{f}} } \,\, \frac{1}{ s + \frac{ 1 }{ \tau^{\text{pre}} } } }_\text{preamplificatore} \,\,
-%\underbrace{ \frac{ 1 }{ \tau^{ \text{sh} } }  \,  \frac{ s + \frac{1}{\tau^{\text{pz}}} }{ \left( s + \frac{ 1
-%}{\tau^{ \text{sh} } } \right)^2} }_\text{shaper} \,\, \underbrace{ \left( 1 + \frac{R_{2\text{a}}}{R_{1\text{a}}}
-%\right) }_\text{amplificatore}
+%funzioni di trasferimento dei singoli moduli: \begin{align}\label{e:catena_H} H(s) &= \underbrace{ -
+%\frac{1}{R_{\text{in}}\,C_{\text{f}} } \,\, \frac{1}{ s + \frac{ 1 }{ \tau^{\text{pre}} } } }_\text{preamplificatore}
+%\,\, \underbrace{ \frac{ 1 }{ \tau^{ \text{sh} } }  \,  \frac{ s + \frac{1}{\tau^{\text{pz}}} }{ \left( s +
+%\frac{1}{\tau^{ \text{sh} } } \right)^2} }_\text{shaper} \,\, \underbrace{ \left( 1 +
+%\frac{R_{2\text{a}}}{R_{1\text{a}}} \right) }_\text{amplificatore}
 %   &
 %   &\text{con} \,\,\, \begin{cases} \tau^{\text{pre}} = R_{\text{f}}\,C_{\text{f}}  \\
 %       \tau^{\text{sh}} = R_{1}\,C_{1} = R_{2}\,C_{2}  \\
@@ -1015,7 +1028,7 @@ quanto misurato sperimentalmente mediante l'oscilloscopio.
 
 %\begin{figure}[H]
 %	\centering
-%	\includegraphics[width=0.9\linewidth]{../Plots/Catena/trend2.png}
+%	\includegraphics[width=0.9\linewidth]{../Plots/Catena/trend3.png}
 %	\caption{\small Trend.}
 %	\label{i:preamp_linearity}
 %\end{figure}
