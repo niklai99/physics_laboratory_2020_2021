@@ -654,7 +654,7 @@ altera il comportamento del circuito, permette di fattorizzare la funzione di tr
  complessiva $H(s) = H_{\text{CR}} \, H_{\text{RC}}$, dove $H_{\text{CR}}$ e
 $H_{\text{RC}}$ sono rispettivamente le funzioni di trasferimento di un circuito RC in configurazione passa alto e passa
 basso. In questo modo, quindi, il calcolo della funzione di trasferimento si semplifica notevolmente. Inoltre, si vuole
-assumere $R_1 \, C_1 \equiv \tau^{\text{sh}}_1 \approx \tau^{\text{sh}}_2 \equiv R_2 \, C_2$: questa approssimazione
+assumere $R_1 \, C_1 \equiv \tau_{\text{sh}1} \approx \tau_{\text{sh2}} \equiv R_2 \, C_2$: questa approssimazione
 risulta ragionevole osservando i valori riportati \autoref{t:shaper_shaping_time} e, di conseguenza, si considera la
 media pesata dei due come tempo caratteristico dello shaper, detto \textit{shaping time}. L'effettiva validità di questa
 approssimazione può essere verificata studiando il grafico di Bode della risposta in frequenza del circuito. La funzione
@@ -793,8 +793,8 @@ shaper, delimitata da
 \end{align}
 
 Si vuole infine sottolineare che l'ottimo accordo della frequenza $f_{\text{polo}}$ con l'aspettativa teorica (in cui
-compare la media pesata $\tau^{\text{sh}}$) supporta ulteriormente la validità dell'approssimazione $\tau^{\text{sh}}_1
-\approx \tau^{\text{sh}}_2$.
+compare la media pesata $\tau_{\text{sh}}$) supporta ulteriormente la validità dell'approssimazione $\tau_{\text{sh}1}
+\approx \tau_{\text{sh}2}$.
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %  SHAPER + PREAMP
