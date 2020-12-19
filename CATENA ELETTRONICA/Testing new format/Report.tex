@@ -808,61 +808,52 @@ elettronica associata ad un rivelatore di radiazione, ovviamente, questo non è 
 infatti, lo \textit{shaper} è posto in coda al \textit{preamplificatore}, che fornisce in uscita il segnale
 rappresentato in \autoref{i:preamp_waveform}. la salita è ora lineare, non più "istantanea", ed il segnale è smorzato
 esponenzialmente, non più costante al suo valore massimo. Questa deviazione dall'idealità porta a rilevanti deformazioni
-del segnale in uscita dallo \textit{shaper}. 
+del segnale in uscita dallo \textit{shaper}. Osservando il grafico a sinistra in \autoref{i:shaper_waveforms} si nota
+chiaramente il fenomeno di \textit{undershoot} del segnale: questo, infatti, dopo aver raggiunto il massimo di tensione
+scende sotto allo zero (\textit{baseline}) per poi tendere ad esso abbastanza lentamente. Si ricorda che, nel caso
+ideale, già dopo $150\,\si{\us}$ il segnale si poteva considerare azzerato, mentre in questa situazione è necessario
+attendere circa $600\,\si{\us}$. È tuttavia possibile aggirare l'effetto di \textit{undershoot} ponendo una resistenza
+adeguata in parallelo alla capacità $C_{1}$: scegliendo quindi $R_{\text{pz}}$ tale che $R_{\text{pz}} =
+\frac{\tau^{\text{pre}}}{C_{1}}$ si trova $R_{\text{pz}} \gg R_{1}$ e di conseguenza la funzione di trasferimento del
+modulo CR assume la forma
 
+\begin{align} 
+	H(s) &= \frac{s + \frac{ 1 }{ \tau^{ \text{pz} } }
+		}
+		{
+		s + \frac{ 1 }{ \tau^{ \parallel } }
+		} 
+	\approx
+	\frac{
+		s + \frac{ 1 }{ \tau^{ \text{pz} } }
+		}
+		{
+		s + \frac{ 1 }{ \tau^{ \text{1} } }
+		} &
+	&\text{con} \,\,\,\,    
+	\begin{cases} \tau^{ \text{pz} } = C_{ 1 }\, R_{ \text{pz} }  \\
+		\tau^{ \parallel } = C_{ 1 }\left(\frac{1}{R_{1}}+\frac{1}{R_{\text{pz}}}\right)^{-1}\\
+	\end{cases} 
+\end{align}
 
+e risulta avere, in buona approssimazione, lo stesso polo de modulo CR \textit{base}. Di conseguenza, la funzione di
+trasferimento complessiva dello \textit{shaper compensato} continua ad avere un polo doppio in $f_{\text{polo}}$ e
+questo non ne altera le proprietà caratteristiche. La correzione apportata per eliminare l'effetto di
+\textit{undershoot} prende il nome di compensazione \textit{pole zero}. In laboratorio, quindi, viene montata una
+resistenza $R_{\text{pz}} = 1.013 \pm 0.007 \, \si{\mega\ohm}$ ($\text{F.S.} 10\,\si{\mega\ohm}$) molto simile a quella
+necessaria per compensare l'effetto di \textit{undershoot} ($R_{\text{pz}}^{\text{th}} = 1.03 \pm 0.07 \,
+\si{\mega\ohm}$): osservando il grafico a destra in \autoref{i:shaper_waveforms} si nota quindi come l'effetto sia del
+tutto scomparso. Il segnale ora, infatti, dopo aver assunto il valore massimo decresce senza scendere sotto la
+\textit{baseline}. Inoltre, il segnale si azzera completamente dopo circa $200\,\si{\us}$, come nel caso ideale trattato
+in precedenza. 
 
-
-%In questa sezione si vuole studiare il comportamento dello shaper con in ingresso il segnale elaborato dal
-%preamplificatore. Il generatore di funzioni viene configurato nuovamente come in \autoref{s:preamp_config}: impulso
-%quadrato di frequenza $f_{\text{gen}} = 1 \,\si{k\Hz}$, tensione di riferimento $V_{\text{high}} = 0 \,\si{\volt}$,
-%ampiezza \textit{negativa} $V_{\text{low}} = -1 \,\si{\volt}$ e durata $T = 5 \,\si{\us}$. In questa configurazione, il
-%segnale in ingresso allo shaper corrisponde a quello rappresentato in \autoref{i:preamp_waveform}: la salita è ora
-%lineare, non più "istantanea", ed il segnale è smorzato esponenzialmente, non più costante al valore massimo. 
-
-%Questa deviazione dall'idealità del segnale in ingresso allo shaper porta a rilevanti deformazioni del segnale in
-%uscita: osservando il grafico a sinistra in \autoref{i:shaper_waveforms} si nota chiaramente il fenomeno di
-%\textit{undershoot}. Il segnale, infatti, dopo aver raggiunto il massimo scende sotto allo zero (\textit{baseline}) per
-%poi tendere ad esso abbastanza lentamente (nel caso ideale dopo $200\,\si{\us}$ il segnale si è già azzerato, in questo
-%caso invece è necessario attendere circa $600\,\si{\us}$). La risoluzione di questo problema consiste nel porre una
-%resistenza adeguata in parallelo alla capacità $C_{1}$: scegliendo questa tale che $R_{\text{pz}} =
-%\frac{\tau^{\text{pre}}}{C_{1}}$, si trova $R_{\text{pz}} \gg R_{1}$ e di conseguenza la funzione di trasferimento
-
-%\begin{align} H(s) &= \frac{s + \frac{ 1 }{ \tau^{ \text{pz} } }
-%           }
-%           {
-%           s + \frac{ 1 }{ \tau^{ \parallel } }
-%           } 
-%       \approx
-%       \frac{
-%           s + \frac{ 1 }{ \tau^{ \text{pz} } }
-%           }
-%           {
-%           s + \frac{ 1 }{ \tau^{ \text{1} } }
-%           } &
-%   &\text{con} \,\,\,\,    
-%   \begin{cases} \tau^{ \text{pz} } = C_{ 1 }\, R_{ \text{pz} }  \\
-%       \tau^{ \parallel } = C_{ 1 }\left(\frac{1}{R_{1}}+\frac{1}{R_{\text{pz}}}\right)^{-1}\\
-%   \end{cases} \end{align}
-
-%risulta, in buona approssimazione, avere lo stesso polo del modulo CR dello shaper. Di conseguenza, la funzione di
-%trasferimento dello shaper con aggiunta la resistenza $R_{\text{pz}}$ continua ad avere un polo doppio in
-%$f_{\text{polo}}$ e questo non ne altera le proprietà caratteristiche. La correzione apportata per eliminare l'effetto
-%ti \textit{undershoot} prende il nome di compensazione \textit{pole zero}. In laboratorio, quindi, viene montata una
-%resistenza $R_{\text{pz}} = 1.013 \pm 0.007 \, \si{\mega\ohm}$ ($\text{F.S.} 10\,\si{\mega\ohm}$) molto simile a quella
-%necessaria per compensare l'effetto di \textit{undershoot} ($R_{\text{pz}}^{\text{th}} = 1.03 \pm 0.07 \,
-%\si{\mega\ohm}$): osservando il grafico a destra in \autoref{i:shaper_waveforms} si nota quindi come l'effetto sia del
-%tutto scomparso. Il segnale ora, infatti, dopo aver assunto il valore massimo decresce senza scendere sotto la
-%\textit{baseline}. Inoltre, il segnale si azzera completamente dopo circa $200\,\si{\us}$, come nel caso ideale
-%trattato in precedenza. 
-
-%\begin{figure}[H] 
-%	\centering
-%	\includegraphics[width=\linewidth]{../Plots/Shaper/shaper_preamp_waveforms.png} 
-%	\caption{\small A sinistra: segnale in uscita dallo shaper senza resistenza di compensazione. 
-%				A destra: segnale in uscita dallo shaper con resistenza di compensazione.} 
-%	\label{i:shaper_waveforms} 
-%\end{figure} 
+\begin{figure}[H] 
+	\centering
+	\includegraphics[width=\linewidth]{../Plots/Shaper/shaper_preamp_waveforms.png} 
+	\caption{\small A sinistra: segnale in uscita dallo shaper senza resistenza di compensazione. 
+				A destra: segnale in uscita dallo shaper con resistenza di compensazione.} 
+	\label{i:shaper_waveforms} 
+\end{figure} 
 
 %Si vuole ora confrontare le misure sperimentali acquisite con l'oscilloscopio ed i dati acquisiti con la scheda
 %Arduino. In \autoref{t:shaper_vout} si riportano quindi le misure del massimo della tensione $V_{\text{max}}$, il tempo
