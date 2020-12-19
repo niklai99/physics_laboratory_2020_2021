@@ -855,39 +855,41 @@ in precedenza.
 	\label{i:shaper_waveforms} 
 \end{figure} 
 
-%Si vuole ora confrontare le misure sperimentali acquisite con l'oscilloscopio ed i dati acquisiti con la scheda
-%Arduino. In \autoref{t:shaper_vout} si riportano quindi le misure del massimo della tensione $V_{\text{max}}$, il tempo
-%in cui tale massimo viene assunto $t_{\text{max}}$ e, eventualmente, la tensione di \textit{undershoot}
-%$V_{\text{undershoot}}$. 
-%
-%\begin{table}[H] \small \centering \begin{tabular}{x{2.2cm} x{2.2cm} | x{2.2cm} x{2.2cm} | x{2.2cm} x{2.2cm}}
-%   \toprule[0.5px]\toprule[0.1px]   
-%       \multicolumn{6}{c}{Shaper - Segnale in uscita \textit{senza} $R_{\text{pz}}$}\tn \midrule[0.1px]
-%
-%       \multicolumn{2}{c}{$V_{\text{max}} \,(\si{\milli\volt}) $} & \multicolumn{2}{c}{$t_{\text{max}} \,(\si{\us})$} & 
-%       \multicolumn{2}{c}{$V_{\text{undershoot}} \,(\si{\milli\volt})$} \tn
-%       Osc. & Arduino & Osc. & Arduino & Osc. & Arduino \tn
-%
-%       %\addlinespace
-%
-%       $ 123 \pm 2 $&$ 124 \pm 19 $&$ 17 \pm 1 $&$ \sim 16.8 $&$ -19.7 \pm 1.1 $&$ -20 \pm  17 $\tn
-%
-%       \midrule[0.1px]
-%       \multicolumn{6}{c}{Shaper - Segnale in uscita \textit{con} $R_{\text{pz}}$}\tn
-%       \midrule[0.1px]
-%
-%       \multicolumn{2}{c}{$V_{\text{max}} \,(\si{\milli\volt}) $} & \multicolumn{2}{c}{$t_{\text{max}} \,(\si{\us})$} & 
-%       \multicolumn{2}{c}{$V_{\text{undershoot}} \,(\si{\milli\volt})$} \tn
-%       Osc. & Arduino & Osc. & Arduino & Osc. & Arduino \tn
-%
-%       %\addlinespace
-%
-%       $ 129 \pm 2 $&$ 131 \pm 19 $&$ 17 \pm 1 $&$ \sim 17.7 $& \xmark & \xmark \tn
-%
-%       \bottomrule[0.5px]      
-%   \end{tabular} \caption{\small Confronto del segnale in uscita tra le due configurazioni dello shaper.}
-%   \label{t:shaper_vout} \end{table}    
-%\noindent Si noti allora come tutte le misure acquisite con l'oscilloscopio e con Arduino sono tra loro consistenti.
+Si vuole ora confrontare le misure sperimentali acquisite con l'oscilloscopio ed i dati acquisiti con la scheda
+Arduino. In \autoref{t:shaper_vout} si riportano quindi le misure del massimo della tensione $V_{\text{max}}$, il tempo
+in cui tale massimo viene assunto $t_{\text{max}}$ e, eventualmente, la tensione di \textit{undershoot}
+$V_{\text{undershoot}}$. 
+
+\begin{table}[H] \small \centering \begin{tabular}{x{2.2cm} x{2.2cm} | x{2.2cm} x{2.2cm} | x{2.2cm} x{2.2cm}}
+   \toprule[0.5px]\toprule[0.1px]   
+       \multicolumn{6}{c}{Shaper - Segnale in uscita \textit{senza} $R_{\text{pz}}$}\tn \midrule[0.1px]
+
+       \multicolumn{2}{c}{$V_{\text{max}} \,(\si{\milli\volt}) $} & \multicolumn{2}{c}{$t_{\text{max}} \,(\si{\us})$} & 
+       \multicolumn{2}{c}{$V_{\text{undershoot}} \,(\si{\milli\volt})$} \tn
+       Osc. & Arduino & Osc. & Arduino & Osc. & Arduino \tn
+
+       %\addlinespace
+
+       $ 123 \pm 2 $&$ 124 \pm 2 $&$ 17 \pm 1 $&$ \sim 16.8 $&$ -19.7 \pm 1.1 $&$ -20 \pm  17 $\tn
+
+       \midrule[0.1px]
+       \multicolumn{6}{c}{Shaper - Segnale in uscita \textit{con} $R_{\text{pz}}$}\tn
+       \midrule[0.1px]
+
+       \multicolumn{2}{c}{$V_{\text{max}} \,(\si{\milli\volt}) $} & \multicolumn{2}{c}{$t_{\text{max}} \,(\si{\us})$} & 
+       \multicolumn{2}{c}{$V_{\text{undershoot}} \,(\si{\milli\volt})$} \tn
+       Osc. & Arduino & Osc. & Arduino & Osc. & Arduino \tn
+
+       %\addlinespace
+
+       $ 129 \pm 2 $&$ 131 \pm 2 $&$ 17 \pm 1 $&$ \sim 17.7 $& \xmark & \xmark \tn
+
+       \bottomrule[0.5px]      
+   \end{tabular} \caption{\small Confronto del segnale in uscita tra le due configurazioni dello shaper.}
+   \label{t:shaper_vout} 
+\end{table}    
+
+%Si noti allora come tutte le misure acquisite con l'oscilloscopio e con Arduino sono tra loro consistenti.
 %Inoltre, risulta evidente una notevole differenza di precisione tra le due tipologie di acquisizione: per quanto
 %riguarda le misure di tensione l'oscilloscopio si trova essere circa un ordine di grandezza più preciso. L'errore
 %relativo sulla misura del massimo $V_{\text{max}}$, infatti, risulta essere per l'acquisizione con Arduino di circa il
