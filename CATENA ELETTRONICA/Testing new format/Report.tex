@@ -1023,40 +1023,85 @@ carica in ingresso ed il modulo finale amplifica semplicemente la tensione senza
 si aspetta che il valore massimo del segnale in uscita $V_{\text{out}}^{\text{max}}$ dalla catena elettronica completa
 risulti lineare rispetto alla carica totale $Q_{\text{c}}$ raccolta dal preamplificatore.
 
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%%  LINEARITA DELLA CATENA
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%
-%\subsection{Linearità della Catena Elettronica}\label{s:catena_linearity}
-%
-%Ci si propone qui di verificare la dipendenza lineare del segnale in uscita $V_{\text{out}}^{\text{max}}$ dalla catena
-%elettronica rispetto alla carica totale $Q_{\text{c}}$ raccolta dal preamplificatore. Si fa variare dunque la durata
-%$T$ dell'impulso quadrato erogato dal generatore di funzioni da $2\,\si{\us}$ a $10\,\si{\us}$, in modo da modificare
-%di volta in volta la carica iniettata nel preamplificatore: per ogni $T$ viene calcolata la quantità di carica totale
-%$Q_{\text{c}}$ secondo \autoref{e:preamp_vout} e si acquisisce poi, utilizzando la scheda Arduino Due, la forma d'onda
-%del segnale in uscita. Da quest'ultima si misura infine l'ampiezza effettiva del segnale in uscita. L'incertezza
-%associata alle tensioni è quindi data dalla calibrazione della scheda. Per quanto riguarda gli errori sulla carica, in
-%analogia a quanto riportato in \autoref{s:preamp_linearity}, questi sono totalmente correlati e si procede come
-%discusso. \begin{figure}[H] \centering \includegraphics[width=0.9\linewidth]{../Plots/Catena/catena_linearity.png}
-%\caption{\small Fit lineare del massimo di tensione in uscita contro la carica totale in ingresso.}
-%\label{i:catena_linearity} \end{figure} \noindent Si nota immediatamente, osservando il grafico dei residui, come gli
-%errori associati alle misure siano eccessivamente grandi a confronto con l'effettiva distribuzione dei punti attorno
-%alla retta. Il $\chi^2$ infatti risulta essere molto minore rispetto al suo valore di aspettazione e l'errore a
-%posteriori risulta essere circa un ordine di grandezza inferiore rispetto alle incertezze associate alle misure.
-%L'andamento dei residui è sufficientemente regolare e, assieme all'ottima distribuzione delle misure attorno alla retta
-%caratterizzata dall'errore a posteriori, si può quindi affermare una soddisfacente linearità della catena.\footnote{Si
-%evidenzia che nel grafico in \autoref{i:catena_linearity} è stato reiettato il primo punto, corrispondente a
-%$T=2\,\si{\us}$ in quanto fortemente fuori trend.}
-%
-%
-%
-%% 70.7 pF dal coefficiente angolare % 78.9968 pF dal parallelo C1 C2 shaper
-%
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%%  THEBODE
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%
-%\subsection{Analisi in Frequenza}\label{s:catena_bode}
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%  LINEARITA DELLA CATENA
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Linearità della Catena Elettronica}\label{s:catena_linearity}
+
+Ci si propone qui di verificare la dipendenza lineare del segnale in uscita $V_{\text{out}}^{\text{max}}$ dalla catena
+elettronica rispetto alla carica totale $Q_{\text{c}}$ raccolta dal preamplificatore. Si fa variare dunque la durata $T$
+dell'impulso quadrato erogato dal generatore di funzioni da $3\,\si{\us}$ a $10\,\si{\us}$, in modo da modificare di
+volta in volta la
+
+\begin{wraptable}{L}{0.50\textwidth}
+
+	\small
+	\centering
+
+	\begin{tabular}{x{1.5cm} x{2.5cm} x{2.5cm}} 
+		
+		\toprule[0.5px]\toprule[0.1px]	
+
+		\multicolumn{3}{c}{Linearità della Catena - Misure}\tn
+
+		\midrule[0.1px]
+
+		$T\,(\si{\us})$ & $Q_{\text{c}}\,(\si{\pico\coulomb})$ & $V^{\text{max}}_{\text{out}}\,(\si{\milli\volt})$ \tn
+
+		\addlinespace
+
+		$3 $	&	$54.0	\pm 1.0$	&	$238	\pm 4 $ \tn
+		$4 $	&	$72.0	\pm 1.3$	&	$320	\pm 6 $ \tn
+		$5 $	&	$90		\pm 2  $	&	$392	\pm 7 $ \tn
+		$6 $	&	$108	\pm 2  $	&	$472	\pm 8 $ \tn
+		$7 $	&	$126	\pm 2  $	&	$548	\pm 9 $ \tn
+		$8 $	&	$144	\pm 3  $	&	$632	\pm 12$ \tn
+		$9 $	&	$162	\pm 3  $	&	$704	\pm 13$ \tn
+		$10$	&	$180	\pm 3  $	&	$776	\pm 14$ \tn
+		
+		\bottomrule[0.5px]
+
+	\end{tabular}
+
+	\caption{\small Dati relativi al grafico in \autoref{i:catena_linearity}.}
+
+	\label{t:catena_data}
+
+\end{wraptable}	
+
+
+carica iniettata nel preamplificatore: per ogni $T$ viene calcolata la quantità di carica totale $Q_{\text{c}}$ secondo
+\autoref{e:preamp_vout} e si acquisisce poi, utilizzando la scheda Arduino Due, la forma d'onda del segnale in uscita.
+Da quest'ultima si misura infine l'ampiezza effettiva del segnale in uscita. Per quanto riguarda gli errori sulla
+carica, in analogia a quanto riportato in \autoref{s:preamp_linearity}, questi sono totalmente correlati e non vengono
+dunque considerati per effettuare il fit, riportato in \autoref{i:catena_linearity}. Si nota immediatamente, osservando
+il grafico dei residui, come gli errori associati alle misure siano leggermente sovrastimati se confrontati con
+l'effettiva distribuzione dei punti attorno alla
+
+\begin{figure}[H] 
+	\centering 
+	\includegraphics[width=0.9\linewidth]{../Plots/Catena/catena_linearity.png}
+	\caption{\small Fit lineare del massimo di tensione in uscita contro la carica totale in ingresso.}
+	\label{i:catena_linearity} 
+\end{figure} 
+
+retta. Il $\chi^2$ infatti risulta essere minore rispetto al suo valore di aspettazione e l'errore a posteriori risulta
+essere un ordine di grandezza inferiore rispetto alle incertezze associate alle misure (si rimanda a
+\autoref{s:preamp_waveform} per gli errori associati alle misure acquisite con Arduino). L'andamento dei residui è
+sufficientemente regolare e, assieme all'ottima distribuzione delle misure attorno alla retta caratterizzata dall'errore
+a posteriori, si può quindi affermare una soddisfacente linearità della catena elettronica completa.
+
+
+
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%  THEBODE
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Analisi in Frequenza}\label{s:catena_bode}
 %
 %Si vuole ora studiare la risposta in frequenza della catena elettronica: si imposta il generatore in modo da erogare
 %un'onda sinusoidale di ampiezza $1\,\si{\volt}$ e frequenza $f_{\text{gen}}$ variabile da $10\,\si{\Hz}$ a
