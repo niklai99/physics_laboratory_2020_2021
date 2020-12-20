@@ -904,76 +904,124 @@ ritardo nel raggiungimento del massimo di tensione. Il tempo $t_{\text{max}}$ ri
 le simulazioni Spice e quindi con le aspettative. 
 
 
-
-
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %  CATENA ELETTRONICA COMPLETA
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Catena Elettronica Completa}\label{s:catena}
 
-%Generalmente, in una catena elettronica associata ad un detector, lo \textit{shaper} non ha solamente la funzione di
-%modificare la forma del segnale, bensì di applicare inoltre un'amplificazione. In tal caso il modulo prende il nome di
-%\textit{shaping amplifier}. In laboratorio, invece, si è voluto disaccoppiare i due moduli: si assembla quindi un
-%amplificatore \textit{non invertente} basilare collegato all'uscita dello \textit{shaper}. Lo scopo di questo terzo ed
-%ultimo stadio della catena è ottimizzare l'ampiezza del segnale per sfruttare al meglio il range in input della DAQ,
-%ovvero in questo caso l'ADC della scheda Arduino Due. Questa, infatti, può ricevere nell'input analogico segnali
-%\textit{positivi} su un range di circa $3\,\si{\volt}$, nonostante sia opportuno notare che già oltre i $2\,\si{\volt}$
-%i vari circuiti di protezione dei pin in ingresso tendono ad alterare l'acquisizione del segnale. Quest'ultimo, infine,
-%viene convertito lavorando su 12 bit, cioè 4096 valori. Come è stato evidenziato nelle sezioni precedenti, i segnali
-%acquisiti in uscita dallo \textit{shaper} si aggirano attorno al centinaio di milliVolt: essendo allora il segnale già
-%positivo è sufficiente un'amplificazione lineare non invertente per adattare il segnale al range dell'ADC di Arduino. 
-%
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%%  CONFIGURAZIONE SPERIMENTALE
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%
-%\subsection{Configurazione Sperimentale}\label{s:catena_config}
-%
-%Si assembla sulla breadboard il terzo modulo, ed ultimo, modulo rappresentato in \autoref{i:circuito} utilizzando le
-%due resistenze riportate in \autoref{t:catena_direct_measures}. Il circuito è un semplice circuito amplificatore non
-%invertente di guadagno $G = 1 + \frac{R_{2\text{a}}}{R_{1\text{a}}} = 9.254 \pm 0.004$. Impostando il generatore come
-%in \autoref{s:preamp_config}, scegliendo 
-%
-%\begin{wraptable}{L}{0.5\textwidth} \small \centering \begin{tabular}{x{1.8cm} x{2.5cm} x{2cm} }
-%   \toprule[0.5px]\toprule[0.1px]   
-%       \multicolumn{3}{c}{Misure Dirette - Shaper}\tn \midrule[0.1px] Label & Valore & F.S. \tn \addlinespace
-%       $R_{1\text{a}}$ & $9.982\pm 0.006\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn $R_{2\text{a}}$ & $82.39  \pm
-%       0.03\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn \bottomrule[0.5px]      
-%   \end{tabular} \caption{\small Misure dirette delle componenti circuitali.} \label{t:catena_direct_measures}
-%   \end{wraptable}    
-%
-%\noindent però un tempo di raccolta del segnale \textit{massimo} pari a $T = 10 \,\si{\us}$, si ha in ingresso un
-%segnale $V_{\text{shaper}}^{\text{max}} = 260 \pm 4\,\si{\milli\volt}$, misurato con l'oscilloscopio. Ci si aspetta,
-%dunque, in uscita dalla catena completa un segnale di ampiezza $V_{\text{out}}^{\text{th}} = 2.41 \pm 0.04
-%\,\si{\volt}$. Si misura, invece, utilizzando l'oscilloscopio una tensione $V_{\text{out}}^{\text{sper}} = 2.32 \pm
-%0.04 \,\si{\volt}$. Emerge nuovamente la leggera discrepanza tra le aspettative sulla tensione e le effettive misure
-%sperimentali. Per il calcolo della funzione di trasferimento complessiva della catena si moltiplicano tra loro le
-%funzioni di trasferimento dei singoli moduli: \begin{align}\label{e:catena_H} H(s) &= \underbrace{ -
-%\frac{1}{R_{\text{in}}\,C_{\text{f}} } \,\, \frac{1}{ s + \frac{ 1 }{ \tau^{\text{pre}} } } }_\text{preamplificatore}
-%\,\, \underbrace{ \frac{ 1 }{ \tau^{ \text{sh} } }  \,  \frac{ s + \frac{1}{\tau^{\text{pz}}} }{ \left( s +
-%\frac{1}{\tau^{ \text{sh} } } \right)^2} }_\text{shaper} \,\, \underbrace{ \left( 1 +
-%\frac{R_{2\text{a}}}{R_{1\text{a}}} \right) }_\text{amplificatore}
-%   &
-%   &\text{con} \,\,\, \begin{cases} \tau^{\text{pre}} = R_{\text{f}}\,C_{\text{f}}  \\
-%       \tau^{\text{sh}} = R_{1}\,C_{1} = R_{2}\,C_{2}  \\
-%       \tau^{\text{pz}} = R_{\text{pz}}\,C_{1}         \\
-%   \end{cases} \end{align} \noindent Si ricorda ora che la resistenza di compensazione $R_{\text{pz}}$ è stata scelta
-%tale che $R_{\text{pz}} = \frac{\tau^{\text{pre}}}{C_{1}}$: si trova allora $\tau^{\text{pz}} = \tau^{\text{pre}}$ e la
-%funzione di trasferimento diventa \begin{equation}\label{e:catena_H_final} H(s) = -\frac{ 1 +
-%\frac{R_{2\text{a}}}{R_{1\text{a}}} }{ R_{\text{in}} \,\, C_{\text{f}} \,\, \tau^{ \text{sh} } } \,\,\,
-%\frac{1}{\left( s + \frac{ 1 }{ \tau^{ \text{sh} } } \right)^2} \end{equation} \noindent Si noti allora che la funzione
-%di trasferimento effettiva della catena elettronica completa non presenta zeri, mentre presenta lo stesso polo doppio
-%dello \textit{shaper}. Ci si aspetta dunque che il comportamento in frequenza della catena sia quello di un filtro
-%passa basso avente frequenza di taglio teorica $f_{\text{t}} = 10.0 \pm 0.4 \,\si{k\Hz}$ (sperimentalmente si è invece
-%trovato, in \autoref{s:shaper_bode}, $f_{\text{t}} = 9.6 \pm 0.2 \,\si{k\Hz}$). Per frequenze minori ci si aspetta, nel
-%grafico di Bode, un andamento costante delle misure mentre, per frequenze maggiori, ci si aspetta una decrescita
-%lineare con pendenza $-40\,\text{dB/dec}$. Infine, in analogia a quanto discusso in \autoref{s:preamp_linearity}
-%riguardo la linearità del preamplificatore, siccome lo shaper (almeno idealmente) preserva l'informazione sulla carica
-%in ingresso ed il modulo finale amplifica semplicemente la tensione senza alterarne le altre caratteristiche, ci si
-%aspetta che il valore massimo del segnale in uscita $V_{\text{out}}^{\text{max}}$ dalla catena elettronica completa
-%risulti lineare rispetto alla carica totale $Q_{\text{c}}$ raccolta dal preamplificatore.
-%
+Generalmente, in una \textit{catena elettronica} associata ad un rivelatore, lo \textit{shaper} non ha solamente la
+funzione di modificare la forma del segnale. Viene infatti progettato in modo tale da fornire anche un'amplificazione e,
+in tal caso, il modulo prende il nome di \textit{shaping amplifier}. Il motivo per cui si è interessati ad amplificare
+il segnale risulta evidente in \autoref{i:catena_pileup}, in cui è raffigurato sia il segnale in 
+
+\begin{wrapfigure}{R}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.5\textwidth]{../Plots/Shaper/signal_pileup_sh.png}
+	\caption{\small Signal pile-up simulazione Spice.}
+	\label{i:catena_pileup}
+\end{wrapfigure}
+
+uscita dal \textit{preamplificatore} (in condizione di \textit{pile up}) sia il segnale in uscita dallo \textit{shaper}:
+l'azione dello \textit{shaper CR-RC} montato in laboratorio riduce in modo ottimae la durata effettiva del segnale,
+rendendo più difficile che si verifichi un \textit{signal pile up}. Tuttavia, l'ampiezza in tensione viene notevolmente
+ridotta: per questo motivo allora, in laboratorio, si assembla in coda allo \textit{shaper} un circuito amplificatore
+con operazionale in configurazione non invertente, ovvero l'ultimo stadio della catena rappresenta in
+\autoref{i:circuito}. Lo scopo di questo terzo ed ultimo stadio della catena è ottimizzare l'ampiezza del segnale per
+sfruttare al meglio il range in input della DAQ, ovvero in questo caso l'ADC della scheda Arduino Due. Questa, infatti,
+può ricevere nell'input analogico segnali \textit{positivi} su un range di circa $3\,\si{\volt}$, nonostante sia
+opportuno notare che già oltre i $2\,\si{\volt}$ i vari circuiti di protezione dei pin in ingresso tendono ad alterare
+l'acquisizione del segnale. Quest'ultimo, infine, viene convertito lavorando su 12 bit, cioè 4096 valori. Come è stato
+evidenziato nelle sezioni precedenti, i segnali acquisiti in uscita dallo \textit{shaper} si aggirano attorno al
+centinaio di milliVolt: essendo allora il segnale già positivo è sufficiente un'amplificazione lineare non invertente
+per adattare il segnale al range dell'ADC di Arduino. 
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%  CONFIGURAZIONE SPERIMENTALE
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Amplificatore non invertente}\label{s:catena_config}
+
+Si assembla sulla breadboard il terzo modulo, ed ultimo, modulo rappresentato in \autoref{i:circuito} utilizzando le due
+resistenze riportate in \autoref{t:catena_direct_measures}. Il circuito è un semplice circuito amplificatore non
+invertente 
+
+\begin{wraptable}{L}{0.5\textwidth} 
+	\small 
+	\centering 
+	\begin{tabular}{x{1.8cm} x{2.5cm} x{2cm}}
+
+	\toprule[0.5px]\toprule[0.1px] 
+	  
+	   \multicolumn{3}{c}{Misure Dirette - Shaper}\tn 
+
+	   \midrule[0.1px] 
+
+	   Label & Valore & F.S. \tn 
+	   
+	   \addlinespace
+       $R_{1\text{a}}$ & $9.982\pm 0.006\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn $R_{2\text{a}}$ & $82.39  \pm
+	   0.03\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn 
+	   
+	   \bottomrule[0.5px]      
+   \end{tabular} 
+   \caption{\small Misure dirette delle componenti circuitali.} \label{t:catena_direct_measures}
+\end{wraptable}    
+
+di guadagno $G = 1 + \frac{R_{2\text{a}}}{R_{1\text{a}}} = 9.254 \pm 0.004$. Impostando il generatore come in
+\autoref{s:preamp_config}, scegliendo però un tempo di raccolta del segnale \textit{massimo} pari a $T = 10 \,\si{\us}$,
+si ha in ingresso un segnale $V_{\text{shaper}}^{\text{max}} = 260 \pm 4\,\si{\milli\volt}$, misurato con
+l'oscilloscopio. Ci si aspetta, dunque, in uscita dalla catena completa un segnale di ampiezza
+$V_{\text{out}}^{\text{th}} = 2.41 \pm 0.04 \,\si{\volt}$. Si misura, invece, utilizzando l'oscilloscopio una tensione
+$V_{\text{out}}^{\text{sper}} = 2.32 \pm 0.04 \,\si{\volt}$: emerge nuovamente la leggera discrepanza tra le aspettative
+sulla tensione e le effettive misure sperimentali. 
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	TRATTAZIONE ANALITICA
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Trattazione Analitica}\label{s:catena_th}
+
+Per il calcolo della funzione di trasferimento complessiva della catena si moltiplicano tra loro le funzioni di
+trasferimento dei singoli moduli: 
+
+\begin{align}\label{e:catena_H} 
+	H(s) &= 
+	\underbrace{ -\frac{1}{R_{\text{in}}\,C_{\text{f}} } \,\, \frac{1}{ s + \frac{ 1 }{ \tau^{\text{pre}} } } }_\text{preamplificatore}
+	\,\, 
+	\underbrace{ \frac{ 1 }{ \tau^{ \text{sh} } }  \,  \frac{ s + \frac{1}{\tau^{\text{pz}}} }{ \left( s +
+	\frac{1}{\tau^{ \text{sh} } } \right)^2} }_\text{shaper} 
+	\,\, 
+	\underbrace{ \left( 1 + \frac{R_{2\text{a}}}{R_{1\text{a}}} \right) }_\text{amplificatore}
+   &
+   &\text{con} \,\,\, 
+   \begin{cases} 
+		\tau^{\text{pre}} = R_{\text{f}}\,C_{\text{f}}  \\
+       \tau^{\text{sh}} = R_{1}\,C_{1} = R_{2}\,C_{2}  \\
+       \tau^{\text{pz}} = R_{\text{pz}}\,C_{1}         \\
+   \end{cases} 
+\end{align} 
+   
+Si ricorda ora che la resistenza di compensazione $R_{\text{pz}}$ è stata scelta tale che $R_{\text{pz}} =
+\frac{\tau^{\text{pre}}}{C_{1}}$: si trova allora $\tau^{\text{pz}} = \tau^{\text{pre}}$ e la funzione di trasferimento
+diventa 
+
+\begin{equation}\label{e:catena_H_final} 
+	H(s) = -\frac{ 1 + \frac{R_{2\text{a}}}{R_{1\text{a}}} }{ R_{\text{in}}
+	\,\, C_{\text{f}} \,\, \tau^{ \text{sh} } } 
+	\,\,\, \frac{1}{\left( s + \frac{ 1 }{ \tau^{ \text{sh} } } \right)^2}
+\end{equation}\\
+Si noti allora che la funzione di trasferimento effettiva della catena elettronica completa non presenta zeri, mentre
+presenta lo stesso polo doppio dello \textit{shaper}. Ci si aspetta dunque che il comportamento in frequenza della
+catena sia quello di un filtro passa basso avente frequenza di taglio teorica $f_{\text{t}} = 10.0 \pm 0.4 \,\si{k\Hz}$
+(sperimentalmente si è invece trovato, in \autoref{s:shaper_bode}, $f_{\text{t}} = 9.6 \pm 0.2 \,\si{k\Hz}$). Per
+frequenze minori ci si aspetta, nel grafico di Bode, un andamento costante delle misure mentre, per frequenze maggiori,
+ci si aspetta una decrescita lineare con pendenza $-40\,\text{dB/dec}$. Infine, in analogia a quanto discusso in
+\autoref{s:preamp_linearity} riguardo la linearità del preamplificatore, siccome lo shaper preserva l'informazione sulla
+carica in ingresso ed il modulo finale amplifica semplicemente la tensione senza alterarne le altre caratteristiche, ci
+si aspetta che il valore massimo del segnale in uscita $V_{\text{out}}^{\text{max}}$ dalla catena elettronica completa
+risulti lineare rispetto alla carica totale $Q_{\text{c}}$ raccolta dal preamplificatore.
+
 %%-------------------------------------------------------------------------------------------------------------------------------------------
 %%  LINEARITA DELLA CATENA
 %%-------------------------------------------------------------------------------------------------------------------------------------------

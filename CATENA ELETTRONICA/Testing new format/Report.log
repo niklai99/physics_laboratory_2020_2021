@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  20 DEC 2020 12:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  20 DEC 2020 13:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1279,7 +1279,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {d:/Programmi/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<../Simulations/catena_circuito.png, id=86, 1153.30875pt x 325.81725pt>
+<../Simulations/catena_circuito.png, id=94, 1153.30875pt x 325.81725pt>
 File: ../Simulations/catena_circuito.png Graphic file (type png)
 <use ../Simulations/catena_circuito.png>
 Package pdftex.def Info: ../Simulations/catena_circuito.png  used on input line 140.
@@ -1335,13 +1335,13 @@ Underfull \hbox (badness 1038) in paragraph at lines 347--355
 \T1/cmr/m/n/10.95 ed il con-fron-to di $\OML/cmm/m/it/10.95 C[]$ \T1/cmr/m/n/10.95 con quan-to mi-su-ra-to
  []
 
-<../Plots/PreAmp/linearity_fit.png, id=130, 2440.91925pt x 1383.36826pt>
+<../Plots/PreAmp/linearity_fit.png, id=138, 2440.91925pt x 1383.36826pt>
 File: ../Plots/PreAmp/linearity_fit.png Graphic file (type png)
 <use ../Plots/PreAmp/linearity_fit.png>
 Package pdftex.def Info: ../Plots/PreAmp/linearity_fit.png  used on input line 358.
 (pdftex.def)             Requested size: 435.32422pt x 246.71582pt.
 [3 <../Plots/PreAmp/linearity_fit.png>]
-<../Plots/PreAmp/preamp_waveform.png, id=144, 2477.05424pt x 1332.77925pt>
+<../Plots/PreAmp/preamp_waveform.png, id=152, 2477.05424pt x 1332.77925pt>
 File: ../Plots/PreAmp/preamp_waveform.png Graphic file (type png)
 <use ../Plots/PreAmp/preamp_waveform.png>
 Package pdftex.def Info: ../Plots/PreAmp/preamp_waveform.png  used on input line 448.
@@ -1371,19 +1371,19 @@ Underfull \hbox (badness 4454) in paragraph at lines 453--463
 \T1/cmr/m/n/10.95 il lo-ga-rit-mo del-le ten-sio-ni nor-ma-liz-za-te ed
  []
 
-<../Plots/PreAmp/preamp_arduino_fit2.png, id=157, 4780.05824pt x 1364.09625pt>
+<../Plots/PreAmp/preamp_arduino_fit2.png, id=165, 4780.05824pt x 1364.09625pt>
 File: ../Plots/PreAmp/preamp_arduino_fit2.png Graphic file (type png)
 <use ../Plots/PreAmp/preamp_arduino_fit2.png>
 Package pdftex.def Info: ../Plots/PreAmp/preamp_arduino_fit2.png  used on input line 466.
 (pdftex.def)             Requested size: 483.69687pt x 138.02032pt.
 [5 <../Plots/PreAmp/preamp_waveform.png> <../Plots/PreAmp/preamp_arduino_fit2.png>]
-<../Plots/PreAmp/bode_plot.png, id=168, 2522.82526pt x 1624.26825pt>
+<../Plots/PreAmp/bode_plot.png, id=176, 2522.82526pt x 1624.26825pt>
 File: ../Plots/PreAmp/bode_plot.png Graphic file (type png)
 <use ../Plots/PreAmp/bode_plot.png>
 Package pdftex.def Info: ../Plots/PreAmp/bode_plot.png  used on input line 523.
 (pdftex.def)             Requested size: 435.32422pt x 280.26093pt.
  [6 <../Plots/PreAmp/bode_plot.png>]
-<../Plots/PreAmp/signal_pileup.png, id=183, 2592.68625pt x 1325.55225pt>
+<../Plots/PreAmp/signal_pileup.png, id=191, 2592.68625pt x 1325.55225pt>
 File: ../Plots/PreAmp/signal_pileup.png Graphic file (type png)
 <use ../Plots/PreAmp/signal_pileup.png>
 Package pdftex.def Info: ../Plots/PreAmp/signal_pileup.png  used on input line 561.
@@ -1438,7 +1438,7 @@ Underfull \hbox (badness 1454) in paragraph at lines 716--722
 \T1/cmr/m/n/10.95 con l'o-scil-lo-sco-pio. Con-fron-tan-do la mi-su-ra
  []
 
-<../Plots/Shaper/shaper_ideal.png, id=201, 2571.00525pt x 1366.50525pt>
+<../Plots/Shaper/shaper_ideal.png, id=209, 2571.00525pt x 1366.50525pt>
 File: ../Plots/Shaper/shaper_ideal.png Graphic file (type png)
 <use ../Plots/Shaper/shaper_ideal.png>
 Package pdftex.def Info: ../Plots/Shaper/shaper_ideal.png  used on input line 725.
@@ -1462,7 +1462,7 @@ Underfull \hbox (badness 2142) in paragraph at lines 730--748
  []
 
 [8 <../Plots/Shaper/shaper_ideal.png>]
-<../Plots/Shaper/bode_plot.png, id=221, 2472.23625pt x 1588.13326pt>
+<../Plots/Shaper/bode_plot.png, id=229, 2472.23625pt x 1588.13326pt>
 File: ../Plots/Shaper/bode_plot.png Graphic file (type png)
 <use ../Plots/Shaper/bode_plot.png>
 Package pdftex.def Info: ../Plots/Shaper/bode_plot.png  used on input line 768.
@@ -1472,33 +1472,49 @@ Overfull \hbox (0.5046pt too wide) in paragraph at lines 805--819
 []\T1/cmr/m/n/10.95 Si vuo-le ora stu-dia-re il com-por-ta-men-to del-lo \T1/cmr/m/it/10.95 sha-per \T1/cmr/m/n/10.95 in con-di-zio-ni più rea-li-sti-che. Nel-le se-zio-ni pre-ce-den-ti
  []
 
-<../Plots/Shaper/shaper_preamp_waveforms.png, id=237, 4775.24025pt x 1378.55025pt>
+<../Plots/Shaper/shaper_preamp_waveforms.png, id=245, 4775.24025pt x 1378.55025pt>
 File: ../Plots/Shaper/shaper_preamp_waveforms.png Graphic file (type png)
 <use ../Plots/Shaper/shaper_preamp_waveforms.png>
 Package pdftex.def Info: ../Plots/Shaper/shaper_preamp_waveforms.png  used on input line 852.
 (pdftex.def)             Requested size: 483.69687pt x 139.63004pt.
-[10 <../Plots/Shaper/shaper_preamp_waveforms.png>] [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1069.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1069.
+[10 <../Plots/Shaper/shaper_preamp_waveforms.png>]
+<../Plots/Shaper/signal_pileup_sh.png, id=261, 2595.09525pt x 1296.64426pt>
+File: ../Plots/Shaper/signal_pileup_sh.png Graphic file (type png)
+<use ../Plots/Shaper/signal_pileup_sh.png>
+Package pdftex.def Info: ../Plots/Shaper/signal_pileup_sh.png  used on input line 920.
+(pdftex.def)             Requested size: 241.84843pt x 120.82805pt.
+
+Underfull \hbox (badness 1783) in paragraph at lines 925--938
+\T1/cmr/m/n/10.95 del-lo \T1/cmr/m/it/10.95 sha-per CR-RC \T1/cmr/m/n/10.95 mon-ta-to in la-bo-ra-to-rio
+ []
+
+[11 <../Plots/Shaper/signal_pileup_sh.png>]
+Underfull \hbox (badness 1496) in paragraph at lines 971--978
+\OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 = 2\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 41 \OMS/cmsy/m/n/10.95 ^^F \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 04 []$\T1/cmr/m/n/10.95 . Si mi-su-ra, in-ve-ce,
+ []
+
+[12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1117.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1117.
  (d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1069.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1069.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1117.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1117.
 Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: CB59741B5C697B6D49707966B16ACE51;1080.
+(rerunfilecheck)             Checksum: 630CF22BF6CE4C59364FCAA09C006C7C;1229.
  ) 
 Here is how much of TeX's memory you used:
- 32669 strings out of 492649
- 635236 string characters out of 6128653
- 696354 words of memory out of 5000000
- 35979 multiletter control sequences out of 15000+600000
+ 32689 strings out of 492649
+ 635648 string characters out of 6128653
+ 696709 words of memory out of 5000000
+ 35991 multiletter control sequences out of 15000+600000
  569310 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,22n,54p,10537b,1010s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.pdf" (12 pages, 3300174 bytes).
+Output written on "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.pdf" (13 pages, 3617106 bytes).
 PDF statistics:
- 381 PDF objects out of 1000 (max. 8388607)
- 312 compressed objects within 4 object streams
- 58 named destinations out of 1000 (max. 500000)
- 186 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 408 PDF objects out of 1000 (max. 8388607)
+ 336 compressed objects within 4 object streams
+ 65 named destinations out of 1000 (max. 500000)
+ 207 words of extra memory for PDF output out of 10000 (max. 10000000)
 
