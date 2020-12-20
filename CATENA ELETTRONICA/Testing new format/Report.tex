@@ -889,29 +889,29 @@ $V_{\text{undershoot}}$.
    \label{t:shaper_vout} 
 \end{table}    
 
-%Si noti allora come tutte le misure acquisite con l'oscilloscopio e con Arduino sono tra loro consistenti.
-%Inoltre, risulta evidente una notevole differenza di precisione tra le due tipologie di acquisizione: per quanto
-%riguarda le misure di tensione l'oscilloscopio si trova essere circa un ordine di grandezza più preciso. L'errore
-%relativo sulla misura del massimo $V_{\text{max}}$, infatti, risulta essere per l'acquisizione con Arduino di circa il
-%$15\%$, mentre per l'acquisizione con l'oscilloscopio si trova circa $1.6\%$. %potrebbe essere perchè non sto
-%sfruttando tutti i 4000 bit di arduino!! è fatto apposta per essere più preciso quando %le tensioni sono grandi?
-%Osservando l'accordo tra misure acquisite con Arduino e le simulazioni Spice, invece, si nota una lieve discrepanza.
-%Questo era già stato osservato in \autoref{i:shaper_ideal}: il segnale misurato sia con la scheda Arduino sia con
-%l'oscilloscopio risulta essere sempre leggermente minore delle aspettative. Si ritiene, tuttavia, più rilevante
-%l'elevato accordo tra metodologie di acquisizione differenti, piuttosto che la lieve discrepanza con simulazioni. Come
-%si è già fatto notare, infatti, questa deviazione dalle aspettative teoriche viene associata a delle sistematiche
-%inerenti alle componenti circuitali ed all'assemblaggio del circuito stesso. Si noti ora invece come il tempo
-%$t_{\text{max}}$ sia leggermente aumentato rispetto al caso ideale ($t_{\text{max}}^{\text{ideal}}\approx
-%15.9\,\si{\us}$): la causa di ciò si crede essere ancora la perdita di idealità del segnale. La salita lineare, e non
-%più "istantanea", infatti, causa un leggero ritardo nel raggiungimento del massimo di tensione. Il tempo
-%$t_{\text{max}}$ risulta essere, in ogni caso, in linea con le simulazioni Spice e quindi con le aspettative. 
-%
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%%  CATENA ELETTRONICA COMPLETA
-%%-------------------------------------------------------------------------------------------------------------------------------------------
-%
-%\section{Catena Elettronica Completa}\label{s:catena}
-%
+Si noti allora come tutte le misure acquisite con l'oscilloscopio e con Arduino sono tra lro consistenti. Inoltre, la
+precisione con cui viene acquisito il segnale risulta essere analoga tra le due tipologie di misure. Osservando
+l'accordo tra i dati acquisiti con Arduino e la simulazione Spice (\autoref{i:shaper_waveforms}), invece, si nota una
+leggera discrepanza. Un effetto analogo è già stato evidenziato in \autoref{i:shaper_ideal}: il segnale misurato sia con
+la scheda Arduino sia con l'oscilloscopio risulta essere sempre lievemente minore delle aspettative. Si ritiene,
+tuttavia, più rilevante l'elevato accordo tra metodologie di acquisizione differenti, piuttosto che il leggero
+disaccordo con le simulazioni. Come è già stato evidenziato in precedenza, infatti, questa deviazione dalle aspettative
+viene attribuita a delle sistematiche inerenti alle componenti circuitali ed al circuito stesso (per esempio capacità
+parassite di breadboard e cavi). Si noti ora invece come il tempo $t_{\text{max}}$ sia ora leggermente aumentato
+rispetto al caso ideale ($t_{\text{max}}^{\text{ideal}} = 15.9 \pm 0.6 \,\si{\us}$): la causa di ciò si crede essere,
+ancora una volta, la perdita di idealità del segnale in ingresso. La salita lineare di questo, infatti, causa un leggero
+ritardo nel raggiungimento del massimo di tensione. Il tempo $t_{\text{max}}$ risulta essere, in ogni caso, in linea con
+le simulazioni Spice e quindi con le aspettative. 
+
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%  CATENA ELETTRONICA COMPLETA
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Catena Elettronica Completa}\label{s:catena}
+
 %Generalmente, in una catena elettronica associata ad un detector, lo \textit{shaper} non ha solamente la funzione di
 %modificare la forma del segnale, bensì di applicare inoltre un'amplificazione. In tal caso il modulo prende il nome di
 %\textit{shaping amplifier}. In laboratorio, invece, si è voluto disaccoppiare i due moduli: si assembla quindi un
