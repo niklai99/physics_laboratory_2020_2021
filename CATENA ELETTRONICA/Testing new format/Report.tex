@@ -436,7 +436,7 @@ ad Arduino, occorre ricordare che ciascun bit della conversione digitale ha un p
 dell’ADC. Assumendo poi una un'accuratezza di $\pm 4$ LSB (bit meno significativo) sull’acquisizione dell’ADC si ottiene
 un'accuratezza sulla stima della tensione in ingresso di $\Delta V \times 4 = 3.2 \,\si{\milli\volt}$. Assumendo infine
 che questa si distribuisca uniformemente, si arriva alla stima finale dell'incertezza sulle stime dei valori di tensione
-$\sigma_{V} = 1.9 \,\si{\milli\volt}$.\footnote{Tamberi, G. (2016). \textit{La Conversione Analogico/Digitale con
+$\sigma_{V} = 2 \,\si{\milli\volt}$.\footnote{Tamberi, G. (2016). \textit{La Conversione Analogico/Digitale con
 Arduino}. (Prima Edizione).} In \autoref{i:preamp_waveform} è esposto quanto acquisito dalla scheda Arduino: si nota
 immediatamente come siano stati registrati due "eventi", o meglio nel tempo di acquisizione impostato per Arduino il
 generatore di funzioni ha erogato due impulsi di tensione. Il segnale registrato, inoltre, risulta essere leggermente
@@ -731,20 +731,20 @@ la capacità parassita dovuta ai cavi ed alla breadboard. Tale valore massimo, t
 $\tau_{\text{sh}}^{\text{sper}}$ perfettamente conforme allo \textit{shaping time}. In \autoref{i:shaper_ideal} viene
 mostrato il segnale in uscita acquisito con la scheda Arduino assieme alla simulazione Spice: si nota chiaramente come
 la tensione sperimentale sia inferiore alle aspettative, come già evidenziato in \autoref{t:shaper_sper_th}. Si fa
-notare, tuttavia, che il valore massimo dei dati acquisiti con la scheda Arduino risulta essere $V_{\text{max}} = 341.5
-\pm 1.9 \,\si{\milli\volt}$ e questo viene assunto ad un tempo $t \approx 15.9\,\si{\us}$ perfettamente in linea con
+notare, tuttavia, che il valore massimo dei dati acquisiti con la scheda Arduino risulta essere $V_{\text{max}} = 342
+\pm 2 \,\si{\milli\volt}$ e questo viene assunto ad un tempo $t \approx 15.9\,\si{\us}$ perfettamente in linea con
 quanto misurato sperimentalmente mediante l'oscilloscopio. Si noti, inoltre, che il segnale si azzera dopo circa
 $150\,\si{\us}$, ovvero molto prima rispetto al segnale in uscita dal preamplificatore (\autoref{i:preamp_waveform}):
 come anticipato in \autoref{s:shaper}, questo aspetto è fondamentale per evitare un \textit{signal pile up} in caso di
 alta frequenza di acquisizione. Si vuole infine specificare che il convertitore all'interno della scheda Arduino Due è
 ottimizzato per ricevere in ingresso segnali provenienti da una sorgente la cui impedenza di uscita sia sufficientemente
 bassa. Secondo il datasheet Atmel (relativo alla CPU su cui è basata la scheda), questa deve essere al massimo di
-$10\,\si{\kilo\ohm}$.\footnote{Link al datasheet: \url{https://bit.ly/3nwOQSN}} Questo non è chiaramente il caso dell'uscita dallo
-\textit{shaper}: una tale impedenza porterebbe quindi ad una scorretta conversione del segnale. Per ovviare al problema,
-il segnale viene prelevato in uscita dalla \textit{catena elettronica completa} (), la quale presenta un'impedenza in
-uscita idealmente nulla, e dividendo i valori misurati per il fattore di amplificazione $G$ () si riporta il segnale
-allo stadio non amplificato. Questa procedura viene effettuata anche per la configurazione \textit{reale} dello
-\textit{shaper + preamplificatore}, trattata in seguito.
+$10\,\si{\kilo\ohm}$.\footnote{Link al datasheet: \url{https://bit.ly/3nwOQSN}} Questo non è chiaramente il caso
+dell'uscita dallo \textit{shaper}: una tale impedenza porterebbe quindi ad una scorretta conversione del segnale. Per
+ovviare al problema, il segnale viene prelevato in uscita dalla \textit{catena elettronica completa}
+(\autoref{s:catena_config}), la quale presenta un'impedenza in uscita idealmente nulla, e dividendo i valori misurati
+per il fattore di amplificazione $G$ si riporta il segnale allo stadio non amplificato. Questa procedura viene
+effettuata anche per la configurazione \textit{reale} dello \textit{shaper + preamplificatore}, trattata in seguito.
 
 
 
@@ -1047,18 +1047,18 @@ volta in volta la
 
 		\midrule[0.1px]
 
-		$T\,(\si{\us})$ & $Q_{\text{c}}\,(\si{\pico\coulomb})$ & $V^{\text{max}}_{\text{out}}\,(\si{\milli\volt})$ \tn
+		$T\,(\si{\us})$ & $Q_{\text{c}}\,(\si{\pico\coulomb})$ & $V^{\text{max}}_{\text{out}}\,(\si{\volt})$ \tn
 
 		\addlinespace
 
-		$3 $	&	$54.0	\pm 1.0$	&	$238	\pm 4 $ \tn
-		$4 $	&	$72.0	\pm 1.3$	&	$320	\pm 6 $ \tn
-		$5 $	&	$90		\pm 2  $	&	$392	\pm 7 $ \tn
-		$6 $	&	$108	\pm 2  $	&	$472	\pm 8 $ \tn
-		$7 $	&	$126	\pm 2  $	&	$548	\pm 9 $ \tn
-		$8 $	&	$144	\pm 3  $	&	$632	\pm 12$ \tn
-		$9 $	&	$162	\pm 3  $	&	$704	\pm 13$ \tn
-		$10$	&	$180	\pm 3  $	&	$776	\pm 14$ \tn
+		$3 $	&	$54.0	\pm 1.0$	&	$0.536	\pm 0.002$ \tn
+		$4 $	&	$72.0	\pm 1.3$	&	$0.790	\pm 0.002$ \tn
+		$5 $	&	$90		\pm 2  $	&	$1.044	\pm 0.002$ \tn
+		$6 $	&	$108	\pm 2  $	&	$1.298	\pm 0.002$ \tn
+		$7 $	&	$126	\pm 2  $	&	$1.554	\pm 0.002$ \tn
+		$8 $	&	$144	\pm 3  $	&	$1.810	\pm 0.002$ \tn
+		$9 $	&	$162	\pm 3  $	&	$2.064	\pm 0.002$ \tn
+		$10$	&	$180	\pm 3  $	&	$2.320	\pm 0.002$ \tn
 		
 		\bottomrule[0.5px]
 
@@ -1081,7 +1081,7 @@ l'effettiva distribuzione dei punti attorno alla
 
 \begin{figure}[H] 
 	\centering 
-	\includegraphics[width=0.9\linewidth]{../Plots/Catena/catena_linearity.png}
+	\includegraphics[width=0.84\linewidth]{../Plots/Catena/catena_linearity.png}
 	\caption{\small Fit lineare del massimo di tensione in uscita contro la carica totale in ingresso.}
 	\label{i:catena_linearity} 
 \end{figure} 
@@ -1090,11 +1090,7 @@ retta. Il $\chi^2$ infatti risulta essere minore rispetto al suo valore di aspet
 essere un ordine di grandezza inferiore rispetto alle incertezze associate alle misure (si rimanda a
 \autoref{s:preamp_waveform} per gli errori associati alle misure acquisite con Arduino). L'andamento dei residui è
 sufficientemente regolare e, assieme all'ottima distribuzione delle misure attorno alla retta caratterizzata dall'errore
-a posteriori, si può quindi affermare una soddisfacente linearità della catena elettronica completa.
-
-
-
-
+a posteriori, si può quindi affermare una soddisfacente linearità della catena elettronica.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -1102,34 +1098,35 @@ a posteriori, si può quindi affermare una soddisfacente linearità della catena
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Analisi in Frequenza}\label{s:catena_bode}
-%
-%Si vuole ora studiare la risposta in frequenza della catena elettronica: si imposta il generatore in modo da erogare
-%un'onda sinusoidale di ampiezza $1\,\si{\volt}$ e frequenza $f_{\text{gen}}$ variabile da $10\,\si{\Hz}$ a
-%$100\,\si{\kilo\Hz}$. Per quanto riportato in \autoref{s:catena_config}, ci si aspetta un comportamento da filtro passa
-%basso avente frequenza di taglio analoga a quella dello \textit{shaper} (\autoref{s:shaper_bode}). Si acquisisce quindi
-%l'ampiezza del segnale sia in ingresso sia in uscita utilizzando l'oscilloscopio e viene calcolata la funzione di
-%trasferimento $H$, alla quale viene associata un'incertezza $\sigma_{H}$ data da \autoref{e:preamp_H_err}. L'incertezza
-%di guadagno associata all'oscilloscopio non viene invece considerata in quanto, dovendo successivamente prendere il
-%logaritmo $\text{log}_{10}H$ della funzione di trasferimento, tale contributo viene scaricato interamente
-%nell'intercetta delle interpolazioni volte a caratterizzare l'andamento delle misure. Si assume infine trascurabile
-%l'incertezza sulla frequenza dell'onda erogata dal generatore. Si rappresenta allora in \autoref{i:shaper_thebode} il
-%grafico di Bode delle misure acquisite assieme ai punti ottenuti attraverso una simulazione Spice della risposta del
-%circuito (pagina seguente). Confrontando inizialmente le misure sperimentali con la simulazione Spice, si nota un
-%ottimo accordo in tutto lo spettro di frequenze. Questo è chiaramente indice di una risposta in frequenza conforme alle
-%aspettative: a basse frequenze la funzione di trasferimento è costante a $20.1 \pm 0.2 \,\text{dB}$ mentre per
-%frequenze crescenti la funzione di trasferimento subisce un'attenuazione lineare di pendenza $-39.2\pm
-%0.3\,\text{dB/dec}$, in linea con l'aspettativa dei $-40\,\text{dB/dec}$ dovuti al polo doppio. L'ascissa del punto di
-%intersezione tra le due rette di regressione fornisce quindi una stima della frequenza di taglio del circuito
-%$f_{\text{t}}= 9.72 \pm 0.13 \,\si{\kilo\Hz}$. Si ricorda quindi che la frequenza di taglio teorica attesa è
-%$f_{\text{t}} = 10.0 \pm 0.4 \,\si{k\Hz}$, mentre la frequenza relativa al polo della funzione di trasferimento dello
-%shaper ricavata dal grafico di Bode in \autoref{i:shaper_thebode} risulta essere $f_{\text{t}} = 9.6 \pm 0.2
-%\,\si{k\Hz}$. La stima della frequenza di taglio appena trovata presenta un'ottima compatibilità con queste ultime: in
-%particolare si ha una compatibilità $\lambda = 0.7$ con la stima teorica e $\lambda = 0.3$ con la frequenza relativa al
-%polo dello \textit{shaper}. \begin{figure}[H] \centering
-%\includegraphics[width=0.9\linewidth]{../Plots/Catena/bode_plot.png} \caption{\small Grafico di Bode delle misure
-%sperimentali e dei dati simulati.} \label{i:catena_thebode} \end{figure} \noindent È stata quindi verificata la
-%validità di \autoref{e:catena_H_final}, fortemente dipendente dalla corretta scelta delle componenti circuitali al fine
-%di poter effettuare determinate approssimazioni e identificazioni. 
+
+Si vuole ora studiare la risposta in frequenza della catena elettronica: per quanto riportato in
+\autoref{s:catena_config}, ci si aspetta un comportamento da filtro passa basso avente frequenza di taglio analoga alla
+frequenza relativa al polo dello \textit{shaper} (\autoref{s:shaper_bode}). Si rappresenta allora in
+\autoref{i:catena_thebode} il grafico di Bode delle misure acquisite assieme ai punti ottenuti attraverso una
+simulazione Spice della risposta del circuito. 
+
+\begin{figure}[H] 
+	\centering
+	\includegraphics[width=0.84\linewidth]{../Plots/Catena/bode_plot.png} 
+	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.} 
+	\label{i:catena_thebode} 
+\end{figure} 
+
+Confrontando inizialmente le misure sperimentali con la simulazione Spice, si nota un ottimo accordo in tutto lo spettro
+di frequenze. Questo è chiaramente indice di una risposta in frequenza conforme alle aspettative: a basse frequenze la
+funzione di trasferimento è costante a $20.1 \pm 0.2 \,\text{dB}$ mentre per frequenze crescenti la funzione di
+trasferimento subisce un'attenuazione lineare di pendenza $-39.2\pm 0.3\,\text{dB/dec}$, in linea con l'aspettativa dei
+$-40\,\text{dB/dec}$ dovuti al polo doppio. L'ascissa del punto di intersezione tra le due rette di regressione fornisce
+quindi una stima della frequenza di taglio del circuito $f_{\text{t}}= 9.72 \pm 0.13 \,\si{\kilo\Hz}$. Si ricorda quindi
+che la frequenza di taglio teorica attesa è $f_{\text{t}} = 10.0 \pm 0.4 \,\si{k\Hz}$, mentre la frequenza relativa al
+polo della funzione di trasferimento dello shaper ricavata dal grafico di Bode in \autoref{i:shaper_thebode} risulta
+essere $f_{\text{t}} = 9.6 \pm 0.2 \,\si{k\Hz}$. La stima della frequenza di taglio appena trovata presenta un'ottima
+compatibilità con queste ultime: in particolare si ha una compatibilità $\lambda = 0.7$ con la stima teorica e $\lambda
+= 0.3$ con la frequenza relativa al polo dello \textit{shaper}. 
+
+
+%È stata quindi verificata la validità di \autoref{e:catena_H_final}, fortemente dipendente dalla corretta scelta delle
+%componenti circuitali al fine di poter effettuare determinate approssimazioni e identificazioni. 
 
 
 
@@ -1139,7 +1136,7 @@ a posteriori, si può quindi affermare una soddisfacente linearità della catena
 %	\centering
 %	\includegraphics[width=0.9\linewidth]{../Plots/Catena/trend3.png}
 %	\caption{\small Trend.}
-%	\label{i:preamp_linearity}
+%	\label{i:trend}
 %\end{figure}
 
 
