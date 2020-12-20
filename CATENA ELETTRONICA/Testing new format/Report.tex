@@ -942,9 +942,9 @@ per adattare il segnale al range dell'ADC di Arduino.
 
 \subsection{Amplificatore non invertente}\label{s:catena_config}
 
-Si assembla sulla breadboard il terzo modulo, ed ultimo, modulo rappresentato in \autoref{i:circuito} utilizzando le due
+Si assembla sulla breadboard il terzo, ed ultimo, modulo rappresentato in \autoref{i:circuito} utilizzando le due
 resistenze riportate in \autoref{t:catena_direct_measures}. Il circuito è un semplice circuito amplificatore non
-invertente 
+invertente di
 
 \begin{wraptable}{L}{0.5\textwidth} 
 	\small 
@@ -969,7 +969,7 @@ invertente
    \label{t:catena_direct_measures}
 \end{wraptable}    
 
-di guadagno $G = 1 + \frac{R_{2\text{a}}}{R_{1\text{a}}} = 9.254 \pm 0.004$. Impostando il generatore come in
+guadagno $G = 1 + \frac{R_{2\text{a}}}{R_{1\text{a}}} = 9.254 \pm 0.004$. Impostando il generatore come in
 \autoref{s:preamp_config}, scegliendo però un tempo di raccolta del segnale \textit{massimo} pari a $T = 10 \,\si{\us}$,
 si ha in ingresso un segnale $V_{\text{shaper}}^{\text{max}} = 260 \pm 4\,\si{\milli\volt}$, misurato con
 l'oscilloscopio. Ci si aspetta, dunque, in uscita dalla catena completa un segnale di ampiezza
