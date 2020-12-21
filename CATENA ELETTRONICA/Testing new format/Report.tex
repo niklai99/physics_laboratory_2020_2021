@@ -1147,19 +1147,28 @@ effettuare determinate approssimazioni e identificazioni.
 
 \subsection{Considerazioni Finali}\label{s:catena_finale}
 
+Si vuole ora cercare di fornire una visione d'insieme della \textit{catena elettronica} studiata nelle sezioni
+precedenti. Si ricorda che il segnale in ingresso, erogato dal generatore di funzioni, consiste in un impulso quadrato
+di frequenza $f_{\text{gen}}= 1 \,\si{\kilo\hertz}$, ampiezza $V_{\text{gen}} = 1 \,\si{\volt}$ e durata $T = 5
+\,\si{\us}$. Il segnale viene quindi inizialmente elaborato dal \textit{preamplificatore}, lineare rispetto alla carica
+totale in ingresso. In 
 
+\begin{wrapfigure}{L}{0.5\textwidth} 
+	\centering 
+	\includegraphics[width=0.5\textwidth]{../Plots/Catena/trend4.png}
+	\vspace{-20pt}
+   \caption{\small Ampiezza del segnale in uscita.} 
+   \label{i:trend} 
+\end{wrapfigure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\linewidth]{../Plots/Catena/trend3.png}
-	\vspace{-10pt}
-	\caption{\small Segnale in uscita per ciascun modulo della catena.}
-	\label{i:trend}
-\end{figure}
-
-
-
-
+seguito, il segnale viene modificato in forma e durata tramite l'azione dello \textit{shaper}. Infine, tale segnale
+viene amplificato per favorirne l'acquisizione da parte dell'ADC della scheda Arduino. In \autoref{i:trend} si evidenzia
+l'andamento dell'ampiezza del segnale dall'ingresso fino all'uscita dell'amplificatore finale, confrontandolo
+parallelamente al trend teorico. I due si trovano in soddisfacente accordo: ad eccezione della tensione in ingresso
+erogata dal generatore, in uscita da ciascun modulo della catena si misura sperimentalmente un'ampiezza leggermente
+inferiore delle aspettative teoriche, come più volte sottolineato in precedenza. Il buon accordo e la coerenza
+dell'andamento permettono dunque di affermare il corretto funzionamento della \textit{catena elettronica} nel suo
+insieme.  
 
 
 
@@ -1174,7 +1183,7 @@ effettuare determinate approssimazioni e identificazioni.
 %  CONCLUSIONI
 %-------------------------------------------------------------------------------------------------------------------------------------------
 
-\section{Conclusioni}\label{s:conclusioni}
+%\section{Conclusioni}\label{s:conclusioni}
 
 
 
