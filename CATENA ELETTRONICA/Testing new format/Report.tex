@@ -1153,7 +1153,7 @@ di frequenza $f_{\text{gen}}= 1 \,\si{\kilo\hertz}$, ampiezza $V_{\text{gen}} = 
 \,\si{\us}$. Il segnale viene quindi inizialmente elaborato dal \textit{preamplificatore}, lineare rispetto alla carica
 totale in ingresso. In 
 
-\begin{wrapfigure}{L}{0.5\textwidth} 
+\begin{wrapfigure}[19]{L}{0.5\textwidth} 
 	\centering 
 	\includegraphics[width=0.5\textwidth]{../Plots/Catena/trend4.png}
 	\vspace{-20pt}
@@ -1164,11 +1164,21 @@ totale in ingresso. In
 seguito, il segnale viene modificato in forma e durata tramite l'azione dello \textit{shaper}. Infine, tale segnale
 viene amplificato per favorirne l'acquisizione da parte dell'ADC della scheda Arduino. In \autoref{i:trend} si evidenzia
 l'andamento dell'ampiezza del segnale dall'ingresso fino all'uscita dell'amplificatore finale, confrontandolo
-parallelamente al trend teorico. I due si trovano in soddisfacente accordo: ad eccezione della tensione in ingresso
-erogata dal generatore, in uscita da ciascun modulo della catena si misura sperimentalmente un'ampiezza leggermente
-inferiore delle aspettative teoriche, come più volte sottolineato in precedenza. Il buon accordo e la coerenza
-dell'andamento permettono dunque di affermare il corretto funzionamento della \textit{catena elettronica} nel suo
-insieme.  
+parallelamente al trend teorico. I due si trovano allora in soddisfacente accordo: ad eccezione della tensione in
+ingresso erogata dal generatore, in uscita da ciascun modulo della catena si misura sperimentalmente un'ampiezza
+leggermente inferiore delle aspettative teoriche, come più volte sottolineato in precedenza. Il buon accordo e la
+coerenza dell'andamento permettono dunque di affermare il corretto funzionamento della \textit{catena elettronica} nel
+suo insieme. L'importanza e l'efficacia dell'azione del \textit{preamplificatore} e dello \textit{shaper} sono state
+ampiamente discusse e verificate in precedenza. Si vuole ora invece essere più quantitativi riguardo all'azione
+dell'\textit{amplificatore} finale. Come anticipato in \autoref{s:catena}, il segnale amplificato è meglio adattato al
+range in input dell'ADC della scheda Arduino. Come conseguenza, sfruttando più correttamente la conversione AD, si
+ottiene un sostanziale aumento di precisione nelle misure. Osservando ad esempio i valori di tensione in uscita dallo
+\textit{shaper} in coda al \textit{preamplificatore} in \autoref{t:shaper_vout}, sia le misure acquisite con
+l'oscilloscopio sia le misure acquisite dalla scheda Arduino presentano un errore relativo del $1.5\%$, trattandosi di
+un centinaio di milliVolt. Per quanto riguarda il segnale amplificato, invece, un'acquisizione con l'oscilloscopio è
+caratterizzata da un errore relativo del $1.7\%$, mentre per un'acquisizione effettuata da Arduino si ottiene
+\textit{almeno} uno $0.2\%$ e adattando più accuratamente il segnale al range dell'ADC si è in grado di aumentare
+ulteriormente la precisione delle misure. 
 
 
 
