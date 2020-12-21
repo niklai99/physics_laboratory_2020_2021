@@ -126,9 +126,9 @@ Nel corso dell'esperienza vengono utilizzati:
 
 \section{Introduzione}\label{s:intro}
 
-L'esperienza si basa su l'assemblamento e sullo studio della risposta di una serie di moduli volti a simulare
-l'elettronica associata ad un \textit{rivelatore di radiazione}. In laboratorio, quindi, si utilizza il generatore di
-funzioni per simulare un segnale acquisibile dalla rivelazione di un evento da parte del detector. Questo segnale viene
+L'esperienza si basa su l'assemblamento e lo studio della risposta di una serie di moduli volti a simulare l'elettronica
+associata ad un \textit{rivelatore di radiazione}. In laboratorio, quindi, si utilizza il generatore di funzioni per
+simulare un segnale tipicamente acquisibile dalla rivelazione di un evento da parte del detector. Questo segnale viene
 inizialmente elaborato dal \textit{preamplificatore} (di tipo \textit{charge sensitive}) e successivamente dallo
 \textit{shaper} (di tipo \textit{CR-RC}). Il segnale in uscita dal formatore viene infine amplificato per favorirne
 l'acquisizione da parte di una DAQ, che corrisponde in questo caso all'ADC della scheda Arduino Due. I tre stadi
@@ -149,13 +149,12 @@ rappresentata in \autoref{i:circuito}.
 
 \section{Preamplificatore}\label{s:preamp} 
 
-Il primo stadio della catena \textit{(preamplificatore)} si utilizza per migliorare il rapporto segnale/rumore, in modo
+Il primo stadio della catena (\textit{preamplificatore}) si utilizza per migliorare il rapporto segnale/rumore, in modo
 da trasferire un segnale più pulito all'elettronica di acquisizione. In laboratorio si assembla un preamplificatore
 \textit{charge sensitive}: il modulo, infatti, consiste di un circuito integratore e la tensione in uscita è quindi
-direttamente proporzionale alla carica in ingresso. Nelle sezioni successive si vuole ricavare analiticamente il
-comportamento teorico del preamplificatore e, successivamente, verificarne l'accordo con la risposta sperimentale. In
-particolare, ci si concentra sulle caratteristiche del segnale in uscita, la sua linearità rispetto alla carica in
-ingresso e sull'analisi in frequenza del circuito.
+direttamente proporzionale alla carica in ingresso. Nelle sezioni successive si vogliono studiare le caratteristiche
+principali del \textit{preamplificatore} e verificare il corretto funzionamento del circuito confrontando la risposta
+sperimentale con il comportamento teorico atteso.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -169,9 +168,11 @@ frequenza $f_{\text{gen}} = 1 \,\si{k\Hz}$, tensione di riferimento $V_{\text{hi
 \textit{negativa} $V_{\text{low}} = -1 \,\si{\volt}$ e durata $T = 5 \,\si{\us}$ (cioè il tempo di raccolta del
 segnale). Viene successivamente assemblato sulla breadboard il primo modulo in \autoref{i:circuito} utilizzando le
 componenti circuitali riportate in \autoref{t:direct_measures}, misurate con il multimetro Metrix. È dunque fondamentale
-che il segnale erogato dal generatore sia 
+che il segnale erogato dal generatore sia \textit{negativo}: avendo un amplificatore operazionale in configurazione
+\textit{invertente} è infatti una richiesta necessaria per poter avere in output un segnale positivo, cioè già
+acquisibile con la scheda Arduino.
 
-\begin{wraptable}{L}{0.5\textwidth}
+\begin{wraptable}[8]{L}{0.5\textwidth}
 	\small
 	\centering
 	\begin{tabular}{x{1.8cm} x{2.5cm} x{2cm} } \toprule[0.5px]\toprule[0.1px]	
@@ -184,17 +185,17 @@ che il segnale erogato dal generatore sia
 		$C_{\text{f}}$ & $232 \pm 9\,\si{p\farad}$ & $1000\,\si{p\farad}$ \tn
 		\bottomrule[0.5px]		
 	\end{tabular}
+	\vspace{-5pt}
 	\caption{\small Misure dirette delle componenti circuitali.}
 	\label{t:direct_measures}
 \end{wraptable}	
 
-\textit{negativo}: avendo un amplificatore operazionale in configurazione \textit{invertente} è infatti una richiesta
-necessaria per poter avere in output un segnale positivo, cioè già acquisibile con la scheda Arduino Due. Si utilizza
-poi un generatore di tensione continua con $V_{\text{cc}} = +15 \,\si{\volt}$ e $V_{\text{ee}} = -15 \,\si{\volt}$ per
-alimentare l'operazionale. Si assume che esso abbia un comportamento ideale, ovvero che il polo positivo ed il polo
-negativo si trovino allo stesso potenziale (\textit{virtual short}). Il segnale in ingresso $V_{\text{in}}$ viene
-prelevato nel punto \textit{IN} evidenziato nello schema mentre il segnale in uscita $V^{\text{pre}}_{\text{out}}$ dal
-preamplificatore viene prelevato al termine del primo modulo, entrambi utilizzando sonde 10X.
+Si utilizza poi un generatore di tensione continua con $V_{\text{cc}} = +15 \,\si{\volt}$ e $V_{\text{ee}} = -15
+\,\si{\volt}$ per alimentare l'operazionale. Si assume che esso abbia un comportamento ideale, ovvero che il polo
+positivo ed il polo negativo si trovino allo stesso potenziale (\textit{virtual short}). Il segnale in ingresso
+$V_{\text{in}}$ viene prelevato nel punto \textit{IN} evidenziato nello schema mentre il segnale in uscita
+$V^{\text{pre}}_{\text{out}}$ dal preamplificatore viene prelevato al termine del primo modulo, entrambi utilizzando
+sonde 10X.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -250,16 +251,12 @@ dove, appunto, $Q_{\text{in}} (t)$ corrisponde alla carica raccolta al tempo $t$
 $Q_{\text{c}}$ rappresenta la carica \textit{totale} accumulata nel preamplificatore. Ci si aspetta allora che il
 segnale in uscita $V_{\text{out}}$ visualizzato sull'oscilloscopio presenti una salita lineare fino ad un valore di
 tensione massimo $V_{\text{out}}^{\text{max}} = \frac{Q_{\text{c}}}{C_{\text{f}}}$ e, successivamente, una decrescita
-esponenziale di tempo caratteristico $\tau_{\text{pre}}$. \\
+esponenziale di tempo caratteristico $\tau_{\text{pre}}$. Al fine di 
 
-Al fine di verificare il corretto funzionamento dell'apparato sperimentale, si riportano in \autoref{t:preamp_sper_th}
-le misure sperimentali del massimo della tensione e della costante di tempo $\tau_{\text{pre}}$ acquisite con
-l'oscilloscopio. 
-
-\begin{wraptable}{R}{0.50\textwidth}
+\begin{wraptable}[7]{R}{0.50\textwidth}
 	\small
 	\centering
-	\begin{tabular}{x{1.8cm} x{1.8cm} x{1.7cm} x{1.7cm}} \toprule[0.5px]\toprule[0.1px]	
+	\begin{tabular}{x{1.8cm} x{1.8cm} x{1.6cm} x{1.6cm}} \toprule[0.5px]\toprule[0.1px]	
 
 		\multicolumn{4}{c}{Controllo Apparato - Preamplificatore} \tn
 
@@ -274,17 +271,22 @@ l'oscilloscopio.
 
 		\bottomrule[0.5px]		
 	\end{tabular}
-	\caption{\small Confronto tra stime teoriche e misure sperimentali.}
+	\vspace{-7pt}
+	\caption{\small Stime teoriche e misure sperimentali.}
 	\label{t:preamp_sper_th}
 \end{wraptable}	
 
-Confrontando ultime con le aspettative teoriche si nota chiaramente come ci sia un accordo generale tra le predizioni
-analitiche e l'effettiva risposta del preamplificatore. Osservando poi \autoref{e:preamp_vout}, è esplicita la
-dipendenza lineare del segnale in uscita rispetto alla carica in ingresso al preamplificatore: nella sezione successiva
-si vuole quindi verificare che tale linearità venga rispettata. Chiaramente, è importante che ciò avvenga in quanto la
-carica in questione rappresenta in questo caso un'idealizzazione del rivelamento di radiazione ionizzante da parte di un
-detector: è logico richiedere dunque che il preamplificatore risponda in modo lineare alla quantità di carica che riceve
-in ingresso.
+verificare il corretto funzionamento dell'apparato sperimentale, si riportano in \autoref{t:preamp_sper_th} le misure
+sperimentali del massimo della tensione e della costante di tempo $\tau_{\text{pre}}$ acquisite con l'oscilloscopio.
+Confrontando le ultime con le aspettative teoriche si nota chiaramente  un accordo generale tra le predizioni analitiche
+e l'effettiva risposta del preamplificatore. Osservando poi \autoref{e:preamp_vout}, è esplicita la dipendenza lineare
+del segnale in uscita rispetto alla carica in ingresso al preamplificatore: nella sezione successiva si vuole quindi
+verificare che tale linearità venga rispettata. 
+
+
+% Chiaramente, è importante che ciò avvenga in quanto la carica in questione rappresenta in questo caso
+% un'idealizzazione del rivelamento di radiazione ionizzante da parte di un detector: è logico richiedere dunque che il
+% preamplificatore risponda in modo lineare alla quantità di carica che riceve in ingresso.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -293,21 +295,21 @@ in ingresso.
 
 \subsection{Linearità del Preamplificatore}\label{s:preamp_linearity}
 
-Ci si propone ora di verificare la dipendenza lineare del segnale in uscita $V^{\text{pre}}_{\text{out}}$ dalla carica
-in ingresso $Q_{\text{in}}$ come esposto in \autoref{e:preamp_vout}. Si fa variare dunque la durata $T$ del segnale
-erogato dal generatore di funzioni da $2\,\si{\us}$ a $10\,\si{\us}$, in modo da modificare di volta in volta la
-quantità di carica iniettata nel preamplificatore rimanendo nell'approssimazione $T\ll\tau_{\text{pre}}$: per ogni $T$
-viene calcolata la quantità di carica totale $Q_{\text{c}}$ e viene misurato con l'oscilloscopio il valore massimo del
-segnale in uscita $V^{\text{max}}_{\text{out}}$. Ai valori di tensione misurati con l'oscilloscopio viene associato
-l'errore di acquisizione comprendente sia il contributo di lettura sia il contributo sul guadagno verticale in quanto
-nel processo di misura sono state utilizzate scale diverse, con la consapevolezza che queste ultime portano ad una
-correlazione almeno parziale delle incertezze. Gli errori sulla carica $Q_{\text{c}}$, invece, vengono calcolati per
-propagazione assumendo, ragionevolmente, che l'incertezza sulla durata $T$ del segnale sia trascurabile. Questi
-risultano allora totalmente correlati tra loro: $V_{\text{in}}$ e $R_{\text{in}}$ rimangono costanti e l'incertezza
-sulla carica è dunque semplicemente l'incertezza sulla corrente in ingresso al preamplificatore riscalata dal tempo $T$.
+Al fine di verificare la dipendenza lineare del segnale in uscita $V^{\text{pre}}_{\text{out}}$ dalla carica in ingresso
+$Q_{\text{c}}$, come esposto in \autoref{e:preamp_vout}, si fa variare la durata $T$ del segnale erogato dal generatore
+di funzioni da $2\,\si{\us}$ a $10\,\si{\us}$, in modo da modificare di volta in volta la quantità di carica iniettata
+nel preamplificatore rimanendo nell'approssimazione $T\ll\tau_{\text{pre}}$. Per ogni $T$ viene calcolata la quantità di
+carica totale $Q_{\text{c}}$ e viene misurato con l'oscilloscopio il valore massimo del segnale in uscita
+$V^{\text{max}}_{\text{out}}$. Ai valori di tensione misurati con l'oscilloscopio viene associato l'errore di
+acquisizione comprendente sia il contributo di lettura sia il contributo sul guadagno verticale in quanto nel processo
+di misura sono state utilizzate scale diverse, con la consapevolezza che queste ultime portano ad una correlazione
+almeno parziale delle incertezze. Gli errori sulla carica $Q_{\text{c}}$, invece, vengono calcolati per propagazione
+assumendo, ragionevolmente, che l'incertezza sulla durata $T$ del segnale sia trascurabile. Questi risultano allora
+totalmente correlati tra loro: $V_{\text{in}}$ e $R_{\text{in}}$ rimangono costanti e l'incertezza sulla carica è dunque
+semplicemente l'incertezza sulla corrente in ingresso al preamplificatore riscalata dal tempo $T$.
 
 
-\begin{wraptable}{L}{0.50\textwidth}
+\begin{wraptable}[14]{L}{0.50\textwidth}
 
 	\small
 	\centering
@@ -337,7 +339,7 @@ sulla carica è dunque semplicemente l'incertezza sulla corrente in ingresso al 
 		\bottomrule[0.5px]
 
 	\end{tabular}
-
+	\vspace{-7pt}
 	\caption{\small Dati relativi al grafico in \autoref{i:preamp_linearity}.}
 
 	\label{t:preamp_data}
@@ -352,14 +354,15 @@ carica $Q_{\text{c}}$ (in quanto totalmente correlata) e di aggiungere tale cont
 dell'errore sulla capacità $C_{\text{f}}$ in \autoref{e:preamp_cf}. La bontà del fit, l'andamento dei residui, l'errore
 a posteriori ed il confronto di $C_{\text{f}}^{\text{fit}}$ con quanto misurato direttamente con il multimetro verranno
 presi in considerazione per verificare la linearità del preamplificatore rispetto alla carica in ingresso. 
-
+\vspace{-7pt}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{../Plots/PreAmp/linearity_fit.png}
+	\includegraphics[width=0.8\linewidth]{../Plots/PreAmp/linearity_fit.png}
+	\vspace{-7pt}
 	\caption{\small Fit lineare del massimo di tensione in uscita contro la carica totale in ingresso.}
 	\label{i:preamp_linearity}
 \end{figure}
-
+\vspace{-7pt}
 Si noti, inizialmente, come il $\chi^2$ della regressione sia notevolmente inferiore rispetto al suo valore di
 aspettazione: essendo a conoscenza della parziale correlazione tra gli errori di scala dell'oscilloscopio ciò non
 risulta essere sorprendente in quanto il fit non ne tiene ovviamente conto. Segue direttamente una sottostima
@@ -389,7 +392,6 @@ eventuale offset sistematico o un errore di zero. Dal coefficiente angolare $b$ 
 		\sigma_I^2
 	}
 \end{align}
-
 dove, nel computo dell'errore, $\sigma_I$ rappresenta l'errore sulla corrente $I =
 \frac{V_{\text{in}}}{R_{\text{in}}}$ che, nel fit, verrebbe riscalato dalla durata $T$ del segnale. La stima della
 capacità di feedback risulta essere in ottima compatibilità ($\lambda = 0.05$) con quanto misurato con il multimetro
@@ -437,38 +439,38 @@ dell’ADC. Assumendo poi una un'accuratezza di $\pm 4$ LSB (bit meno significat
 un'accuratezza sulla stima della tensione in ingresso di $\Delta V \times 4 = 3.2 \,\si{\milli\volt}$. Assumendo infine
 che questa si distribuisca uniformemente, si arriva alla stima finale dell'incertezza sulle stime dei valori di tensione
 $\sigma_{V} = 2 \,\si{\milli\volt}$.\footnote{Tamberi, G. (2016). \textit{La Conversione Analogico/Digitale con
-Arduino}. (Prima Edizione).} In \autoref{i:preamp_waveform} è esposto quanto acquisito dalla scheda Arduino: si nota
-immediatamente come siano stati registrati due "eventi", o meglio nel tempo di acquisizione impostato per Arduino il
-generatore di funzioni ha erogato due impulsi di tensione. Il segnale registrato, inoltre, risulta essere leggermente
-rumoroso: per rendere l'analisi successiva meglio gestibile si decide di sovrapporre i due picchi di tensione e di
-effettuarne una media. 
+Arduino}. (Prima Edizione).} In \autoref{i:preamp_waveform} è esposto quanto acquisito 
 
- \begin{wrapfigure}{R}{0.5\textwidth}
- 	\centering
- 	\includegraphics[width=0.5\textwidth]{../Plots/PreAmp/preamp_waveform.png}
- 	\caption{\small Segnale in uscita dal preamplificatore.}
- 	\label{i:preamp_waveform}
- \end{wrapfigure}
+\begin{wrapfigure}[13]{R}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.5\textwidth]{../Plots/PreAmp/preamp_waveform.png}
+	\vspace{-25pt}
+	\caption{\small Segnale in uscita dal preamplificatore.}
+	\label{i:preamp_waveform}
+\end{wrapfigure}
 
-Osservando la \autoref{i:preamp_waveform}, si può inoltre notare chiaramente la salita lineare del segnale e la
-decrescita esponenziale, come previsto in \autoref{e:preamp_vout}. Il valore massimo di tensione acquisito con la scheda
-Arduino, inoltre, è in linea con le aspettative e con quanto misurato sperimentalmente con l'oscilloscopio. Ci si
-concentra ora sulla stima del tempo caratteristico $\tau_{\text{pre}}$: si vuole inizialmente effettuare un fit
-esponenziale del tipo $y = a + b\,\text{exp}(-x/\tau)$. Successivamente, sfruttando i parametri $a$ e $b$ per
-normalizzare i dati, si vuole considerare il logaritmo delle tensioni normalizzate ed effettuare una regressione
-lineare. Non è infatti possibile, per questioni analitiche, considerare semplicemente il logaritmo delle tensioni $V$ ed
-aspettarsi un andamento lineare: si considera invece il logaritmo delle tensioni normalizzate $\tilde{V} = (V-a)/b$ e
-l'errore su $\tilde{V}$ è dato per propagazione. In questo modo, quindi, i dati si distribuiscono secondo
-$\log(\tilde{V})= -\frac{t}{\tau}$. 
+dalla scheda Arduino: si nota immediatamente come siano stati registrati due "eventi", o meglio nel tempo di
+acquisizione impostato per Arduino il generatore di funzioni ha erogato due impulsi di tensione. Il segnale registrato,
+inoltre, risulta essere leggermente rumoroso: per rendere l'analisi successiva meglio gestibile si decide di sovrapporre
+i due picchi di tensione e di effettuarne una media. Osservando la \autoref{i:preamp_waveform}, si può inoltre notare
+chiaramente la salita lineare del segnale e la decrescita esponenziale, come previsto in \autoref{e:preamp_vout}. Il
+valore massimo di tensione acquisito con la scheda Arduino, inoltre, è in linea con le aspettative e con quanto misurato
+sperimentalmente con l'oscilloscopio. Ci si concentra ora sulla stima del tempo caratteristico $\tau_{\text{pre}}$: si
+vuole inizialmente effettuare un fit esponenziale del tipo $y = a + b\,\text{exp}(-x/\tau)$. Successivamente, sfruttando
+i parametri $a$ e $b$ per normalizzare i dati, si vuole considerare il logaritmo delle tensioni normalizzate $\tilde{V}
+= (V-a)/b$ ed effettuare una regressione lineare. L'errore su $\tilde{V}$ è dato per propagazione, in cui compare la
+covarianza tra i parametri $a$ e $b$ restituiti dal fit esponenziale. In questo modo, quindi, i dati si distribuiscono
+secondo $\log(\tilde{V})= -t/\tau$. 
  
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Plots/PreAmp/preamp_arduino_fit2.png}
+	\vspace{-20pt}
 	\caption{\small A sinistra: fit esponenziale dello smorzamento del segnale in uscita. 
 					A destra: fit lineare del logaritmo del segnale in uscita normalizzato.}
 	\label{i:preamp_arduino_fit}
 \end{figure}
- 
+\vspace{-7pt}
 Osservando rapidamente il grafico a sinistra, si nota come il segnale segua in modo ottimale la funzione esponenziale:
 la stima del tempo caratteristico $\tau_{\text{pre}}^{\text{exp}}$, inoltre, risulta essere sufficientemente compatibile
 con la stima teorica $\tau_{\text{pre}}^{\text{th}} = 161 \pm 6 \,\si{\us}$ ($\lambda = 1.5$). Come stima del tempo
@@ -520,11 +522,12 @@ attraverso una simulazione Spice della risposta del circuito.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth]{../Plots/PreAmp/bode_plot.png}
+	\includegraphics[width=0.8\linewidth]{../Plots/PreAmp/bode_plot.png}
+	\vspace{-10pt}
 	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.}
 	\label{i:preamp_thebode}
 \end{figure}
-
+\vspace{-7pt}
 Confrontando inizialmente le misure sperimentali con la simulazione Spice, si nota un ottimo accordo in tutto lo spettro
 di frequenze. Questo è chiaramente indice di una risposta in frequenza del circuito compatibile con le aspettative: il
 comportamento del filtro, infatti, è evidentemente un passa basso. A basse frequenze, la funzione di trasferimento è
@@ -550,23 +553,24 @@ lineare in \autoref{i:preamp_arduino_fit}, sia nella stima della frequenza di ta
 \section{Shaper CR-RC}\label{s:shaper} 
 
 Riprendendo ora quanto esposto in \autoref{s:preamp_th}, si ottiene in uscita dal preamplificatore un segnale
-dirattamente proporzionale alla carica in ingresso. Questo segnale è caratterizzato da una salita lineare fino al
-raggiungimento del massimo di tensione (in modulo) $V_{\text{out}}^{\text{max}}=\frac{Q_{\text{c}}}{C_{\text{f}}}$ ed
-uno smorzamento esponenziale di tempo caratteristico $\tau_{\text{pre}}$ di circa un centinaio di $\si{\us}$. Si nota
-allora in \autoref{i:preamp_waveform} che un segnale di questo tipo impiega circa $1\,\si{\milli\second}$ per azzerarsi
-completamente. Il secondo stadio della catena 
+dirattamente proporzionale alla carica in ingresso. Questo segnale è caratterizzato da una salita lineare 
 
-\begin{wrapfigure}{L}{0.5\textwidth}
+\begin{wrapfigure}[13]{L}{0.5\textwidth}
 	\centering
 	\includegraphics[width=0.5\textwidth]{../Plots/PreAmp/signal_pileup.png}
+	\vspace{-20pt}
 	\caption{\small Signal pile-up simulazione Spice.}
 	\label{i:preamp_pileup}
 \end{wrapfigure}
 
+fino al raggiungimento del massimo di tensione (in modulo)
+$V_{\text{out}}^{\text{max}}=\frac{Q_{\text{c}}}{C_{\text{f}}}$ ed uno smorzamento esponenziale di tempo caratteristico
+$\tau_{\text{pre}}$ di circa un centinaio di $\si{\us}$. Si nota allora in \autoref{i:preamp_waveform} che un segnale di
+questo tipo impiega circa $1\,\si{\milli\second}$ per azzerarsi completamente. Il secondo stadio della catena
 (\textit{shaper}) si utilizza per modificare la forma del segnale in uscita dal preamplificatore, rendendolo più simile
 ad una curva gaussiana ed accorciandone la durata effettiva. Si è particolarmente interessati a diminuire il tempo di
 discesa al fine di evitare un possibile \textit{signal pile up} nel caso di un'elevata frequenza di acquisizione. In
-tale situazione, infatti, il segnale di un'acquisizione precedente si sovrapporrebbe (almeno parzialmente) a quello
+tale situazione, infatti, il segnale di un'acquisizione precedente si sovrapporrebbe a quello
 dell'acquisizione successiva, rendendo estremamente più complicato estrarre le corrette informazioni dalle due
 acquisizioni. In \autoref{i:preamp_pileup} è raffigurata una simulazione di questo fenomeno, impostando una frequenza
 dell'impulso in ingresso pari a $10\,\si{\kilo\Hz}$. Infine, per quanto affermato in \autoref{s:preamp_th}, è importante
@@ -576,7 +580,7 @@ il comportamento teorico dello shaper e, successivamente, verificarne l'accordo 
 particolare, si vuole verificare che il segnale in uscita sia proporzionale al segnale in ingresso e che la durata del
 segnale in uscita sia ridotta rispetto allo smorzamento esponenziale della tensione dovuto al preamplificatore. Si vuole
 sottolineare, infine, che inizialmente verrà studiato il comportamento dello shaper in condizioni di preamplificatore
-\textit{ideale} mentre successivamente ci si concentrerà sul caso reale, il quale porta a delle leggere complicazioni.
+\textit{ideale} mentre successivamente ci si concentrerà sul caso reale.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -587,10 +591,9 @@ sottolineare, infine, che inizialmente verrà studiato il comportamento dello sh
 
 Si comincia assemblando sulla breadboard il secondo modulo rappresentato in \autoref{i:circuito} utilizzando le
 resistenze e capacità riportate in \autoref{t:shaper_direct_measures}. Si evidenzia che per la prima fase di analisi
-(preamplificatore ideale) non viene montata la resistenza $R_{\text{pz}}$. Per studiare il comportamento dello shaper in
-coda ad 
+(preamplificatore
 
-\begin{wraptable}{L}{0.5\textwidth}
+\begin{wraptable}[10]{L}{0.5\textwidth}
 	\small
 	\centering
 	\begin{tabular}{x{1.8cm} x{2.5cm} x{2cm} } \toprule[0.5px]\toprule[0.1px]	
@@ -604,14 +607,16 @@ coda ad
 		$C_{2}$ & $159    \pm 9 \,\si{n\farad}$ & $1000\,\si{p\farad}$ \tn
 		\bottomrule[0.5px]		
 	\end{tabular}
+	\vspace{-5pt}
 	\caption{\small Misure dirette delle componenti circuitali.}
 	\label{t:shaper_direct_measures}
 \end{wraptable}	
 
-un preamplificatore ideale è sufficiente fornire in ingresso (direttamente allo shaper) un segnale tale da avere una
-salita (quasi) istantanea che mantenga la tensione al valore massimo per un tempo sufficientemente lungo. Un segnale di
-questo tipo viene simulato facendo erogare al generatore di funzioni un'onda quadra a bassa frequenza ($100\,\si{\Hz}$)
-di tensioni $V_{\text{low}} = 0\,\si{\volt}$ e $V_{\text{high}} = 1\,\si{\volt}$. Si rimanda infine a
+ideale) non viene montata la resistenza $R_{\text{pz}}$. Per studiare il comportamento dello shaper in coda ad un
+preamplificatore ideale è sufficiente fornire in ingresso (direttamente allo shaper) un segnale tale da avere una salita
+(quasi) istantanea che mantenga la tensione al valore massimo per un tempo sufficientemente lungo. Un segnale di questo
+tipo viene simulato facendo erogare al generatore di funzioni un'onda quadra a bassa frequenza ($100\,\si{\Hz}$) di
+tensioni $V_{\text{low}} = 0\,\si{\volt}$ e $V_{\text{high}} = 1\,\si{\volt}$. Si rimanda infine a
 \autoref{s:preamp_config} per l'alimentazione dell'operazionale e l'acquisizione del segnale mediante l'oscilloscopio.
 
 
@@ -624,7 +629,7 @@ di tensioni $V_{\text{low}} = 0\,\si{\volt}$ e $V_{\text{high}} = 1\,\si{\volt}$
 Si noti inizialmente (\autoref{i:circuito}) la presenza di un \textit{buffer} tra il modulo CR ed il modulo RC. Il \textit{buffer}, che non
 altera il comportamento del circuito, permette di fattorizzare la funzione di trasferimento
 
-\begin{wraptable}{R}{0.3\textwidth}
+\begin{wraptable}[9]{R}{0.3\textwidth}
 	\small
 	\centering
 	\begin{tabular}{x{3.5cm}} 
@@ -647,6 +652,7 @@ altera il comportamento del circuito, permette di fattorizzare la funzione di tr
 
 		\bottomrule[0.5px]		
 	\end{tabular}
+	\vspace{-5pt}
 	\caption{\small Stime di $\tau^{\text{sh}}$.}
 	\label{t:shaper_shaping_time}
 \end{wraptable}	
@@ -688,10 +694,17 @@ al tempo caratteristico $\tau_{\text{pre}}$: da questo si deduce quindi che la d
 ridotta grazie all'azione dello shaper, come anticipato in \autoref{s:shaper}. 
 
 
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	RISPOSTA DEL CIRCUITO
+%-------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Risposta del Circuito}
 
-\begin{wraptable}{R}{0.50\textwidth}
+Al fine di verificare il corretto funzionamento dell'apparato sperimentale, si riportano in \autoref{t:shaper_sper_th}
+le misure sperimentali del massimo della tensione e dello \textit{shaping time} $\tau_{\text{sh}}$ acquisite con
+l'oscilloscopio.
+
+\begin{wraptable}[7]{R}{0.50\textwidth}
 	\small
 	\centering
 	\begin{tabular}{x{1.8cm} x{1.8cm} x{1.7cm} x{1.7cm}} \toprule[0.5px]\toprule[0.1px]	
@@ -709,42 +722,43 @@ ridotta grazie all'azione dello shaper, come anticipato in \autoref{s:shaper}.
 
 		\bottomrule[0.5px]		
 	\end{tabular}
-	\caption{\small Confronto tra stime teoriche e misure sperimentali.}
+	\vspace{-7pt}
+	\caption{\small Stime teoriche e misure sperimentali.}
 	\label{t:shaper_sper_th}
 \end{wraptable}	
 
-Al fine di verificare il corretto funzionamento dell'apparato sperimentale, si riportano in \autoref{t:shaper_sper_th}
-le misure sperimentali del massimo della tensione e dello \textit{shaping time} $\tau_{\text{sh}}$ acquisite con
-l'oscilloscopio. Confrontando la misura di $V_{\text{max}}^{\text{sper}}$ con l'aspettativa teorica emerge una sensibile
-discrepanza tra le due: la prima, infatti, si discosta del $7.9\%$ rispetto alla seconda. Questa incongruenza si
-attribuisce principalmente alle componenti circuitali ed alle sistematiche presenti nel circuito stesso, comprendendo
-quindi anche
-
-\begin{wrapfigure}{L}{0.5\textwidth} 
-	\centering 
-	\includegraphics[width=0.5\textwidth]{../Plots/Shaper/shaper_ideal.png}
-   \caption{\small Segnale in uscita dallo shaper.} 
-   \label{i:shaper_ideal} 
-\end{wrapfigure}
-
+Confrontando la misura di $V_{\text{max}}^{\text{sper}}$ con l'aspettativa teorica emerge una sensibile discrepanza tra
+le due: la prima, infatti, si discosta del $7.9\%$ rispetto alla seconda. Questa incongruenza si attribuisce
+principalmente alle componenti circuitali ed alle sistematiche presenti nel circuito stesso, comprendendo quindi anche
 la capacità parassita dovuta ai cavi ed alla breadboard. Tale valore massimo, tuttavia, viene assunto ad un tempo
 $\tau_{\text{sh}}^{\text{sper}}$ perfettamente conforme allo \textit{shaping time}. In \autoref{i:shaper_ideal} viene
 mostrato il segnale in uscita acquisito con la scheda Arduino assieme alla simulazione Spice: si nota chiaramente come
 la tensione sperimentale sia inferiore alle aspettative, come già evidenziato in \autoref{t:shaper_sper_th}. Si fa
 notare, tuttavia, che il valore massimo dei dati acquisiti con la scheda Arduino risulta essere $V_{\text{max}} = 342
 \pm 2 \,\si{\milli\volt}$ e questo viene assunto ad un tempo $t \approx 15.9\,\si{\us}$ perfettamente in linea con
-quanto misurato sperimentalmente mediante l'oscilloscopio. Si noti, inoltre, che il segnale si azzera dopo circa
-$150\,\si{\us}$, ovvero molto prima rispetto al segnale in uscita dal preamplificatore (\autoref{i:preamp_waveform}):
-come anticipato in \autoref{s:shaper}, questo aspetto è fondamentale per evitare un \textit{signal pile up} in caso di
-alta frequenza di acquisizione. Si vuole infine specificare che il convertitore all'interno della scheda Arduino Due è
-ottimizzato per ricevere in ingresso segnali provenienti da una sorgente la cui impedenza di uscita sia sufficientemente
-bassa. Secondo il datasheet Atmel (relativo alla CPU su cui è basata la scheda), questa deve essere al massimo di
-$10\,\si{\kilo\ohm}$.\footnote{Link al datasheet: \url{https://bit.ly/3nwOQSN}} Questo non è chiaramente il caso
-dell'uscita dallo \textit{shaper}: una tale impedenza porterebbe quindi ad una scorretta conversione del segnale. Per
-ovviare al problema, il segnale viene prelevato in uscita dalla \textit{catena elettronica completa}
-(\autoref{s:catena_config}), la quale presenta un'impedenza in uscita idealmente nulla, e dividendo i valori misurati
-per il fattore di amplificazione $G$ si riporta il segnale allo stadio non amplificato. Questa procedura viene
-effettuata anche per la configurazione \textit{reale} dello \textit{shaper + preamplificatore}, trattata in seguito.
+quanto misurato sperimentalmente
+
+\begin{wrapfigure}[13]{L}{0.5\textwidth} 
+	\centering 
+	\includegraphics[width=0.5\textwidth]{../Plots/Shaper/shaper_ideal.png}
+	\vspace{-20pt}
+   \caption{\small Segnale in uscita dallo shaper.} 
+   \label{i:shaper_ideal} 
+\end{wrapfigure}
+
+mediante l'oscilloscopio. Si noti, inoltre, che il segnale si azzera dopo circa $150\,\si{\us}$, ovvero molto prima
+rispetto al segnale in uscita dal preamplificatore (\autoref{i:preamp_waveform}): come anticipato in \autoref{s:shaper},
+questo aspetto è fondamentale per evitare un \textit{signal pile up} in caso di alta frequenza di acquisizione. Si vuole
+infine specificare che il convertitore all'interno della scheda Arduino Due è ottimizzato per ricevere in ingresso
+segnali provenienti da una sorgente la cui impedenza di uscita sia sufficientemente bassa. Secondo il datasheet Atmel
+(relativo alla CPU su cui è basata la scheda), questa deve essere al massimo di $10\,\si{\kilo\ohm}$.%\footnote{Link al
+%datasheet: \url{https://bit.ly/3nwOQSN}} 
+Questo non è chiaramente il caso dell'uscita dallo \textit{shaper}: una tale
+impedenza porterebbe quindi ad una scorretta conversione del segnale. Per ovviare al problema, il segnale viene
+prelevato in uscita dalla \textit{catena elettronica completa} (\autoref{s:catena_config}), la quale presenta
+un'impedenza in uscita idealmente nulla, e dividendo i valori misurati per il fattore di amplificazione $G$ si riporta
+il segnale allo stadio non amplificato. Questa procedura viene effettuata anche per la configurazione \textit{reale}
+dello \textit{shaper + preamplificatore}, trattata in seguito.
 
 
 
@@ -761,30 +775,30 @@ l'oscilloscopio e viene calcolata la funzione di trasferimento $H$, alla quale v
 $\sigma_{H}$ data da \autoref{e:preamp_H_err}. Si rimanda a \autoref{s:preamp_bode} per le considerazioni sugli errori
 associati alle misure, in quanto risulta essere perfettamente analogo. Si rappresenta allora in
 \autoref{i:shaper_thebode} il grafico di Bode delle misure acquisite e di una simulazione Spice della risposta del
-circuito. 
+circuito. Confrontando inizialmente le misure sperimentali con la simulazione Spice si nota un ottimo accordo a basse
+frequenze. Nella zona di \textit{mid band} si ha invece un leggero scostamento: i dati sperimentali risultano essere
+lievemente inferiori rispetto alla simulazione. Per alte frequenze (attorno al MHz) si osserva infine un notevole
+disaccordo tra l'andamento delle misure sperimentali e la simulazione Spice: la causa di questa anomalia si crede essere
+dovuta alla GBW dell'operazionale, la quale non è stata presa in considerazione nel simulare la risposta del
+circuito.\footnote{La \textit{Gain BandWidth} dell'amplificatore operazionale, anche detta \textit{frequenza a guadagno
+unitario}, determina il massimo guadagno ottenibile ad una data frequenza.} In ogni caso, il filtro si comporta secondo
+le aspettative riportate in \autoref{s:shaper_th}:
 
 \begin{figure}[H] 
 	\centering 
-	\includegraphics[width=0.9\linewidth]{../Plots/Shaper/bode_plot.png} 
+	\includegraphics[width=0.8\linewidth]{../Plots/Shaper/bode_plot.png} 
+	\vspace{-10pt}
 	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.} 
 	\label{i:shaper_thebode} 
 \end{figure} 
-
-Confrontando inizialmente le misure sperimentali con la simulazione Spice si nota un ottimo accordo a basse frequenze.
-Nella zona di \textit{mid band} si ha invece un leggero scostamento: i dati sperimentali risultano essere lievemente
-inferiori rispetto alla simulazione. Per alte frequenze (attorno al MHz) si osserva infine un notevole disaccordo tra
-l'andamento delle misure sperimentali e la simulazione Spice: la causa di questa anomalia si crede essere dovuta alla
-GBW dell'operazionale, la quale non è stata presa in considerazione nel simulare la risposta del circuito.\footnote{La
-\textit{Gain BandWidth} dell'amplificatore operazionale, anche detta \textit{frequenza a guadagno unitario}, determina
-il massimo guadagno ottenibile ad una data frequenza.} In ogni caso, il filtro si comporta secondo le aspettative
-riportate in \autoref{s:shaper_th}: la funzione di trasferimento presenta una crescita lineare a basse frequenze (zona
-di derivazione) con pendenza $19.3 \pm 0.2 \,\text{dB/dec}$ ed una decrescita lineare ad alte frequenze (zona di
-integrazione) con pendenza $-18.8 \pm 0.3 \,\text{dB/dec}$. L'ascissa del punto di intersezione delle due rette di
-regressione fornisce una stima della frequenza relativo al polo $f_{\text{polo}} = 9.6 \pm 0.2 \,\si{k\Hz}$, in ottima
-compatibilità con la frequenza del polo teorica esposta in \autoref{e:shaper_H} ($\lambda = 0.8$). Sottraendo infine
-$3\,\text{dB}$ al massimo della funzione di trasferimento, le ascisse dei punti di intersezione con le due rette di
-regressione determinano la larghezza di banda $\Delta f$ del filtro. Si ottiene quindi la \textit{bandwidth} dello
-shaper, delimitata da 
+\vspace{-7pt}
+la funzione di trasferimento presenta una crescita lineare a basse frequenze (zona di derivazione) con pendenza $19.3
+\pm 0.2 \,\text{dB/dec}$ ed una decrescita lineare ad alte frequenze (zona di integrazione) con pendenza $-18.8 \pm 0.3
+\,\text{dB/dec}$. L'ascissa del punto di intersezione delle due rette di regressione fornisce una stima della frequenza
+relativo al polo $f_{\text{polo}} = 9.6 \pm 0.2 \,\si{k\Hz}$, in ottima compatibilità con la frequenza del polo teorica
+esposta in \autoref{e:shaper_H} ($\lambda = 0.8$). Sottraendo infine $3\,\text{dB}$ al massimo della funzione di
+trasferimento, le ascisse dei punti di intersezione con le due rette di regressione determinano la larghezza di banda
+$\Delta f$ del filtro. Si ottiene quindi la \textit{bandwidth} dello shaper, delimitata da 
 
 \begin{align}\label{e:shaper_bw} 
 	f_{\text{low}} &= 3.7 \pm 0.4 \,\si{k\Hz} 
@@ -850,11 +864,12 @@ in precedenza.
 \begin{figure}[H] 
 	\centering
 	\includegraphics[width=\linewidth]{../Plots/Shaper/shaper_preamp_waveforms.png} 
+	\vspace{-20pt}
 	\caption{\small A sinistra: segnale in uscita dallo shaper senza resistenza di compensazione. 
 				A destra: segnale in uscita dallo shaper con resistenza di compensazione.} 
 	\label{i:shaper_waveforms} 
 \end{figure} 
-
+\vspace{-7pt}
 Si vuole ora confrontare le misure sperimentali acquisite con l'oscilloscopio ed i dati acquisiti con la scheda
 Arduino. In \autoref{t:shaper_vout} si riportano quindi le misure del massimo della tensione $V_{\text{max}}$, il tempo
 in cui tale massimo viene assunto $t_{\text{max}}$ e, eventualmente, la tensione di \textit{undershoot}
@@ -885,10 +900,12 @@ $V_{\text{undershoot}}$.
        $ 129 \pm 2 $&$ 131 \pm 2 $&$ 17 \pm 1 $&$ \sim 17.7 $& \xmark & \xmark \tn
 
        \bottomrule[0.5px]      
-   \end{tabular} \caption{\small Confronto del segnale in uscita tra le due configurazioni dello shaper.}
+   \end{tabular} 
+   \vspace{-7pt}
+   \caption{\small Confronto del segnale in uscita tra le due configurazioni dello shaper.}
    \label{t:shaper_vout} 
 \end{table}    
-
+\vspace{-7pt}
 Si noti allora come tutte le misure acquisite con l'oscilloscopio e con Arduino sono tra lro consistenti. Inoltre, la
 precisione con cui viene acquisito il segnale risulta essere analoga tra le due tipologie di misure. Osservando
 l'accordo tra i dati acquisiti con Arduino e la simulazione Spice (\autoref{i:shaper_waveforms}), invece, si nota una
@@ -912,29 +929,25 @@ le simulazioni Spice e quindi con le aspettative.
 
 Generalmente, in una \textit{catena elettronica} associata ad un rivelatore, lo \textit{shaper} non ha solamente la
 funzione di modificare la forma del segnale. Viene infatti progettato in modo tale da fornire anche un'amplificazione e,
-in tal caso, il modulo prende il nome di \textit{shaping amplifier}. Il motivo per cui si è interessati ad amplificare
-il segnale risulta evidente in \autoref{i:catena_pileup}, in cui è raffigurato sia il segnale in 
+in tal caso, il modulo prende il nome di \textit{shaping amplifier}. L'azione dello \textit{shaper CR-RC} montato in
+laboratorio riduce in modo ottimale la durata effettiva del segnale, rendendo più difficile che si verifichi un
+\textit{signal pile up}. Tuttavia, l'ampiezza in tensione viene notevolmente ridotta: per questo motivo allora, in
+laboratorio, si assembla in coda allo \textit{shaper} un circuito amplificatore con operazionale in configurazione non
+invertente, ovvero l'ultimo stadio della catena rappresenta in \autoref{i:circuito}. Lo scopo di questo terzo ed ultimo
+stadio della catena è ottimizzare l'ampiezza del segnale per sfruttare al meglio il range in input della DAQ, ovvero in
+questo caso l'ADC della scheda Arduino Due. Questa, infatti, può ricevere nell'input analogico segnali \textit{positivi}
+su un range di circa $3\,\si{\volt}$, nonostante sia opportuno notare che già oltre i $2\,\si{\volt}$ i vari circuiti di
+protezione dei pin in ingresso tendono ad alterare l'acquisizione del segnale. Quest'ultimo, infine, viene convertito
+lavorando su 12 bit, cioè 4096 valori. Come è stato evidenziato nelle sezioni precedenti, i segnali acquisiti in uscita
+dallo \textit{shaper} si aggirano attorno al centinaio di milliVolt: essendo allora il segnale già positivo è
+sufficiente un'amplificazione lineare non invertente per adattare il segnale al range dell'ADC di Arduino. 
 
-\begin{wrapfigure}{R}{0.5\textwidth}
-	\centering
-	\includegraphics[width=0.5\textwidth]{../Plots/Shaper/signal_pileup_sh.png}
-	\caption{\small Signal pile-up simulazione Spice.}
-	\label{i:catena_pileup}
-\end{wrapfigure}
-
-uscita dal \textit{preamplificatore} (in condizione di \textit{pile up}) sia il segnale in uscita dallo \textit{shaper}:
-l'azione dello \textit{shaper CR-RC} montato in laboratorio riduce in modo ottimae la durata effettiva del segnale,
-rendendo più difficile che si verifichi un \textit{signal pile up}. Tuttavia, l'ampiezza in tensione viene notevolmente
-ridotta: per questo motivo allora, in laboratorio, si assembla in coda allo \textit{shaper} un circuito amplificatore
-con operazionale in configurazione non invertente, ovvero l'ultimo stadio della catena rappresenta in
-\autoref{i:circuito}. Lo scopo di questo terzo ed ultimo stadio della catena è ottimizzare l'ampiezza del segnale per
-sfruttare al meglio il range in input della DAQ, ovvero in questo caso l'ADC della scheda Arduino Due. Questa, infatti,
-può ricevere nell'input analogico segnali \textit{positivi} su un range di circa $3\,\si{\volt}$, nonostante sia
-opportuno notare che già oltre i $2\,\si{\volt}$ i vari circuiti di protezione dei pin in ingresso tendono ad alterare
-l'acquisizione del segnale. Quest'ultimo, infine, viene convertito lavorando su 12 bit, cioè 4096 valori. Come è stato
-evidenziato nelle sezioni precedenti, i segnali acquisiti in uscita dallo \textit{shaper} si aggirano attorno al
-centinaio di milliVolt: essendo allora il segnale già positivo è sufficiente un'amplificazione lineare non invertente
-per adattare il segnale al range dell'ADC di Arduino. 
+%\begin{wrapfigure}{R}{0.5\textwidth}
+%	\centering
+%	\includegraphics[width=0.5\textwidth]{../Plots/Shaper/signal_pileup_sh.png}
+%	\caption{\small Signal pile-up simulazione Spice.}
+%	\label{i:catena_pileup}
+%\end{wrapfigure}
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
 %  CONFIGURAZIONE SPERIMENTALE
@@ -946,7 +959,7 @@ Si assembla sulla breadboard il terzo, ed ultimo, modulo rappresentato in \autor
 resistenze riportate in \autoref{t:catena_direct_measures}. Il circuito è un semplice circuito amplificatore non
 invertente di
 
-\begin{wraptable}{L}{0.5\textwidth} 
+\begin{wraptable}[8]{L}{0.5\textwidth} 
 	\small 
 	\centering 
 	\begin{tabular}{x{1.8cm} x{2.5cm} x{2cm}}
@@ -964,7 +977,8 @@ invertente di
 	   0.03\,\si{k\ohm}$ & $100\,\si{k\ohm}$ \tn 
 	   
 	   \bottomrule[0.5px]      
-   \end{tabular} 
+   \end{tabular}
+   \vspace{-5pt} 
    \caption{\small Misure dirette delle componenti circuitali.} 
    \label{t:catena_direct_measures}
 \end{wraptable}    
@@ -985,7 +999,6 @@ sulla tensione e le effettive misure sperimentali.
 
 Per il calcolo della funzione di trasferimento complessiva della catena si moltiplicano tra loro le funzioni di
 trasferimento dei singoli moduli: 
-
 \begin{align}\label{e:catena_H} 
 	H(s) &= 
 	\underbrace{ -\frac{1}{R_{\text{in}}\,C_{\text{f}} } \,\, \frac{1}{ s + \frac{ 1 }{ \tau^{\text{pre}} } } }_\text{preamplificatore}
@@ -1032,9 +1045,22 @@ risulti lineare rispetto alla carica totale $Q_{\text{c}}$ raccolta dal preampli
 Ci si propone qui di verificare la dipendenza lineare del segnale in uscita $V_{\text{out}}^{\text{max}}$ dalla catena
 elettronica rispetto alla carica totale $Q_{\text{c}}$ raccolta dal preamplificatore. Si fa variare dunque la durata $T$
 dell'impulso quadrato erogato dal generatore di funzioni da $3\,\si{\us}$ a $10\,\si{\us}$, in modo da modificare di
-volta in volta la
+volta in volta la carica iniettata nel preamplificatore: per ogni $T$ viene calcolata la quantità di carica totale
+$Q_{\text{c}}$ secondo \autoref{e:preamp_vout} e si acquisisce poi, utilizzando la scheda Arduino Due, la forma d'onda
+del segnale in uscita. Da quest'ultima si misura infine l'ampiezza effettiva del segnale in uscita. Per quanto riguarda
+gli errori sulla carica, in analogia a quanto riportato in \autoref{s:preamp_linearity}, questi sono totalmente
+correlati e non vengono dunque considerati per effettuare il fit, riportato in \autoref{i:catena_linearity}. Si nota
+immediatamente,
 
-\begin{wraptable}{L}{0.50\textwidth}
+\begin{figure}[H] 
+	\centering 
+	\includegraphics[width=0.8\linewidth]{../Plots/Catena/catena_linearity.png}
+	\vspace{-10pt}
+	\caption{\small Fit lineare del massimo di tensione in uscita contro la carica totale in ingresso.}
+	\label{i:catena_linearity} 
+\end{figure} 
+\vspace{-7pt}
+\begin{wraptable}[13]{L}{0.50\textwidth}
 
 	\small
 	\centering
@@ -1063,34 +1089,20 @@ volta in volta la
 		\bottomrule[0.5px]
 
 	\end{tabular}
-
+	\vspace{-5pt}
 	\caption{\small Dati relativi al grafico in \autoref{i:catena_linearity}.}
 
 	\label{t:catena_data}
 
 \end{wraptable}	
 
-
-carica iniettata nel preamplificatore: per ogni $T$ viene calcolata la quantità di carica totale $Q_{\text{c}}$ secondo
-\autoref{e:preamp_vout} e si acquisisce poi, utilizzando la scheda Arduino Due, la forma d'onda del segnale in uscita.
-Da quest'ultima si misura infine l'ampiezza effettiva del segnale in uscita. Per quanto riguarda gli errori sulla
-carica, in analogia a quanto riportato in \autoref{s:preamp_linearity}, questi sono totalmente correlati e non vengono
-dunque considerati per effettuare il fit, riportato in \autoref{i:catena_linearity}. Si nota immediatamente, osservando
-il grafico dei residui, come gli errori associati alle misure siano leggermente sovrastimati se confrontati con
-l'effettiva distribuzione dei punti attorno alla
-
-\begin{figure}[H] 
-	\centering 
-	\includegraphics[width=0.84\linewidth]{../Plots/Catena/catena_linearity.png}
-	\caption{\small Fit lineare del massimo di tensione in uscita contro la carica totale in ingresso.}
-	\label{i:catena_linearity} 
-\end{figure} 
-
-retta. Il $\chi^2$ infatti risulta essere minore rispetto al suo valore di aspettazione e l'errore a posteriori risulta
-essere un ordine di grandezza inferiore rispetto alle incertezze associate alle misure (si rimanda a
-\autoref{s:preamp_waveform} per gli errori associati alle misure acquisite con Arduino). L'andamento dei residui è
-sufficientemente regolare e, assieme all'ottima distribuzione delle misure attorno alla retta caratterizzata dall'errore
-a posteriori, si può quindi affermare una soddisfacente linearità della catena elettronica.
+osservando il grafico dei residui, come gli errori associati alle misure siano leggermente sovrastimati in confronto
+all'effettiva distribuzione dei punti attorno alla retta. Il $\chi^2$ infatti risulta essere minore rispetto al suo
+valore di aspettazione e l'errore a posteriori risulta essere un ordine di grandezza inferiore rispetto alle incertezze
+associate alle misure (si rimanda a \autoref{s:preamp_waveform} per gli errori associati alle misure acquisite con
+Arduino). L'andamento dei residui è sufficientemente regolare e, assieme all'ottima distribuzione delle misure attorno
+alla retta caratterizzata dall'errore a posteriori, si può quindi affermare una soddisfacente linearità della catena
+elettronica.
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -1104,14 +1116,6 @@ Si vuole ora studiare la risposta in frequenza della catena elettronica: per qua
 frequenza relativa al polo dello \textit{shaper} (\autoref{s:shaper_bode}). Si rappresenta allora in
 \autoref{i:catena_thebode} il grafico di Bode delle misure acquisite assieme ai punti ottenuti attraverso una
 simulazione Spice della risposta del circuito. 
-
-\begin{figure}[H] 
-	\centering
-	\includegraphics[width=0.84\linewidth]{../Plots/Catena/bode_plot.png} 
-	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.} 
-	\label{i:catena_thebode} 
-\end{figure} 
-
 Confrontando inizialmente le misure sperimentali con la simulazione Spice, si nota un ottimo accordo in tutto lo spettro
 di frequenze. Questo è chiaramente indice di una risposta in frequenza conforme alle aspettative: a basse frequenze la
 funzione di trasferimento è costante a $20.1 \pm 0.2 \,\text{dB}$ mentre per frequenze crescenti la funzione di
@@ -1125,6 +1129,15 @@ compatibilità con queste ultime: in particolare si ha una compatibilità $\lamb
 = 0.3$ con la frequenza relativa al polo dello \textit{shaper}. È stata quindi verificata la validità di
 \autoref{e:catena_H_final}, fortemente dipendente dalla corretta scelta delle componenti circuitali al fine di poter
 effettuare determinate approssimazioni e identificazioni. 
+
+\begin{figure}[H] 
+	\centering
+	\includegraphics[width=0.8\linewidth]{../Plots/Catena/bode_plot.png} 
+	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.} 
+	\label{i:catena_thebode} 
+\end{figure} 
+
+
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------

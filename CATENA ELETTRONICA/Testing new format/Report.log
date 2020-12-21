@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  21 DEC 2020 15:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  21 DEC 2020 17:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1287,280 +1287,207 @@ Package pdftex.def Info: ../Simulations/catena_circuito.png  used on input line 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.191 \textit{negativo}
-                       : avendo un amplificatore operazionale in configurazi... [1
+l.193 S
+       i utilizza poi un generatore di tensione continua con $V_{\text{cc}} ... [1
 
  <../Simulations/catena_circuito.png>]
-Underfull \hbox (badness 2253) in paragraph at lines 191--198
-\T1/cmr/m/n/10.95 po-si-ti-vo, cioè già ac-qui-si-bi-le con la sche-da
+Underfull \hbox (badness 2173) in paragraph at lines 193--199
+\T1/cmr/m/n/10.95 (\T1/cmr/m/it/10.95 vir-tual short\T1/cmr/m/n/10.95 ). Il se-gna-le in in-gres-so $\OML/cmm/m/it/10.95 V[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 249--254
-
+Underfull \hbox (badness 3713) in paragraph at lines 279--285
+\T1/cmr/m/n/10.95 spe-ri-men-ta-le, si ri-por-ta-no in []Ta-bel-la 2[][] le
  []
 
 
-Overfull \hbox (3.09676pt too wide) in paragraph at lines 255--258
-\T1/cmr/m/n/10.95 mi-su-re spe-ri-men-ta-li del mas-si-mo del-la ten-sio-ne e del-la co-stan-te di tem-po $\OML/cmm/m/it/10.95 ^^\[]$ \T1/cmr/m/n/10.95 ac-qui-si-te con l'o-scil-lo-sco-pio. 
- []
-
-
-Overfull \hbox (5.32082pt too wide) in paragraph at lines 262--277
- [][] 
+Underfull \hbox (badness 1902) in paragraph at lines 279--285
+\T1/cmr/m/n/10.95 l'o-scil-lo-sco-pio. Con-fron-tan-do le ul-ti-me con
  []
 
 [2]
-Underfull \hbox (badness 1509) in paragraph at lines 347--355
+<../Plots/PreAmp/linearity_fit.png, id=154, 2440.91925pt x 1383.36826pt>
+File: ../Plots/PreAmp/linearity_fit.png Graphic file (type png)
+<use ../Plots/PreAmp/linearity_fit.png>
+Package pdftex.def Info: ../Plots/PreAmp/linearity_fit.png  used on input line 360.
+(pdftex.def)             Requested size: 386.95897pt x 219.29591pt.
+
+Underfull \hbox (badness 1509) in paragraph at lines 349--364
 [][]\T1/cmr/m/n/10.95 Si rap-pre-sen-ta-no ora in []Fi-gu-ra 2[][] le cop-pie
  []
 
 
-Underfull \hbox (badness 3872) in paragraph at lines 347--355
+Underfull \hbox (badness 3872) in paragraph at lines 349--364
 \T1/cmr/m/n/10.95 del-la ca-pa-ci-tà di feed-back $\OML/cmm/m/it/10.95 C[]$\T1/cmr/m/n/10.95 . Si vuo-le
  []
 
 
-Underfull \hbox (badness 1231) in paragraph at lines 347--355
+Underfull \hbox (badness 1231) in paragraph at lines 349--364
 \OML/cmm/m/it/10.95 Q[]$ \T1/cmr/m/n/10.95 so-no en-tram-bi cir-ca il $\OT1/cmr/m/n/10.95 2%$ \T1/cmr/m/n/10.95 del-la mi-su-ra:
  []
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 347--355
+Underfull \hbox (badness 1067) in paragraph at lines 349--364
 \T1/cmr/m/n/10.95 di tra-scu-ra-re l'in-cer-tez-za sul-la ca-ri-ca $\OML/cmm/m/it/10.95 Q[]$ \T1/cmr/m/n/10.95 (in
  []
 
 
-Underfull \hbox (badness 1038) in paragraph at lines 347--355
+Underfull \hbox (badness 1038) in paragraph at lines 349--364
 \T1/cmr/m/n/10.95 ed il con-fron-to di $\OML/cmm/m/it/10.95 C[]$ \T1/cmr/m/n/10.95 con quan-to mi-su-ra-to
  []
 
-<../Plots/PreAmp/linearity_fit.png, id=154, 2440.91925pt x 1383.36826pt>
-File: ../Plots/PreAmp/linearity_fit.png Graphic file (type png)
-<use ../Plots/PreAmp/linearity_fit.png>
-Package pdftex.def Info: ../Plots/PreAmp/linearity_fit.png  used on input line 358.
-(pdftex.def)             Requested size: 435.32422pt x 246.71582pt.
 [3 <../Plots/PreAmp/linearity_fit.png>]
 <../Plots/PreAmp/preamp_waveform.png, id=168, 2477.05424pt x 1332.77925pt>
 File: ../Plots/PreAmp/preamp_waveform.png Graphic file (type png)
 <use ../Plots/PreAmp/preamp_waveform.png>
-Package pdftex.def Info: ../Plots/PreAmp/preamp_waveform.png  used on input line 448.
+Package pdftex.def Info: ../Plots/PreAmp/preamp_waveform.png  used on input line 446.
 (pdftex.def)             Requested size: 241.84843pt x 130.11322pt.
- [4]
-Underfull \hbox (badness 3189) in paragraph at lines 453--463
-\T1/cmr/m/n/10.95 chia-ra-men-te la sa-li-ta li-nea-re del se-gna-le e
+
+Underfull \hbox (badness 2452) in paragraph at lines 452--464
+\T1/cmr/m/n/10.95 co-me sia-no sta-ti re-gi-stra-ti due "even-ti", o
  []
 
-
-Underfull \hbox (badness 1888) in paragraph at lines 453--463
-\T1/cmr/m/n/10.95 la de-cre-sci-ta espo-nen-zia-le, co-me pre-vi-sto in
- []
-
-
-Underfull \hbox (badness 2189) in paragraph at lines 453--463
-\T1/cmr/m/n/10.95 spe-ri-men-tal-men-te con l'o-scil-lo-sco-pio. Ci si
- []
-
-
-Underfull \hbox (badness 1552) in paragraph at lines 453--463
-\OML/cmm/m/it/10.95 ^^\[]$\T1/cmr/m/n/10.95 : si vuo-le ini-zial-men-te ef-fet-tua-re un fit
- []
-
-
-Underfull \hbox (badness 4454) in paragraph at lines 453--463
-\T1/cmr/m/n/10.95 il lo-ga-rit-mo del-le ten-sio-ni nor-ma-liz-za-te ed
- []
-
-<../Plots/PreAmp/preamp_arduino_fit2.png, id=181, 4780.05824pt x 1364.09625pt>
+[4 <../Plots/PreAmp/preamp_waveform.png>]
+<../Plots/PreAmp/preamp_arduino_fit2.png, id=182, 4780.05824pt x 1364.09625pt>
 File: ../Plots/PreAmp/preamp_arduino_fit2.png Graphic file (type png)
 <use ../Plots/PreAmp/preamp_arduino_fit2.png>
-Package pdftex.def Info: ../Plots/PreAmp/preamp_arduino_fit2.png  used on input line 466.
+Package pdftex.def Info: ../Plots/PreAmp/preamp_arduino_fit2.png  used on input line 467.
 (pdftex.def)             Requested size: 483.69687pt x 138.02032pt.
-[5 <../Plots/PreAmp/preamp_waveform.png> <../Plots/PreAmp/preamp_arduino_fit2.png>]
-<../Plots/PreAmp/bode_plot.png, id=193, 2522.82526pt x 1624.26825pt>
+<../Plots/PreAmp/bode_plot.png, id=186, 2522.82526pt x 1624.26825pt>
 File: ../Plots/PreAmp/bode_plot.png Graphic file (type png)
 <use ../Plots/PreAmp/bode_plot.png>
-Package pdftex.def Info: ../Plots/PreAmp/bode_plot.png  used on input line 523.
-(pdftex.def)             Requested size: 435.32422pt x 280.26093pt.
- [6 <../Plots/PreAmp/bode_plot.png>]
-<../Plots/PreAmp/signal_pileup.png, id=207, 2592.68625pt x 1325.55225pt>
+Package pdftex.def Info: ../Plots/PreAmp/bode_plot.png  used on input line 525.
+(pdftex.def)             Requested size: 386.95897pt x 249.13184pt.
+ [5 <../Plots/PreAmp/preamp_arduino_fit2.png>]
+<../Plots/PreAmp/signal_pileup.png, id=200, 2592.68625pt x 1325.55225pt>
 File: ../Plots/PreAmp/signal_pileup.png Graphic file (type png)
 <use ../Plots/PreAmp/signal_pileup.png>
-Package pdftex.def Info: ../Plots/PreAmp/signal_pileup.png  used on input line 561.
+Package pdftex.def Info: ../Plots/PreAmp/signal_pileup.png  used on input line 560.
 (pdftex.def)             Requested size: 241.84843pt x 123.6432pt.
 
-Underfull \hbox (badness 1655) in paragraph at lines 566--580
-[][]\T1/cmr/m/n/10.95 (\T1/cmr/m/it/10.95 shaper\T1/cmr/m/n/10.95 ) si uti-liz-za per mo-di-fi-ca-re la for-ma
- []
-
-
-Underfull \hbox (badness 5504) in paragraph at lines 566--580
-\T1/cmr/m/n/10.95 del se-gna-le in usci-ta dal pre-am-pli-fi-ca-to-re,
- []
-
-
-Underfull \hbox (badness 1584) in paragraph at lines 566--580
+Underfull \hbox (badness 1584) in paragraph at lines 566--584
 \T1/cmr/m/n/10.95 ed ac-cor-cian-do-ne la du-ra-ta ef-fet-ti-va. Si è
  []
 
 
-Underfull \hbox (badness 1642) in paragraph at lines 566--580
+Underfull \hbox (badness 1642) in paragraph at lines 566--584
 \T1/cmr/m/it/10.95 pi-le up \T1/cmr/m/n/10.95 nel ca-so di un'e-le-va-ta fre-quen-za di
  []
 
-
-Overfull \hbox (3.95216pt too wide) in paragraph at lines 566--580
-\T1/cmr/m/n/10.95 suc-ces-si-va, ren-den-do estre-ma-men-te più com-pli-ca-to
- []
-
-
-Underfull \hbox (badness 5388) in paragraph at lines 566--580
-\T1/cmr/m/n/10.95 estrar-re le cor-ret-te in-for-ma-zio-ni dal-le due
- []
-
-
-Underfull \hbox (badness 1102) in paragraph at lines 566--580
-\T1/cmr/m/n/10.95 ac-qui-si-zio-ni. In []Fi-gu-ra 6[][] è raf-fi-gu-ra-ta una
- []
-
-[7 <../Plots/PreAmp/signal_pileup.png>]
-Overfull \hbox (5.32082pt too wide) in paragraph at lines 697--712
+[6 <../Plots/PreAmp/bode_plot.png> <../Plots/PreAmp/signal_pileup.png>] [7]
+Overfull \hbox (5.32082pt too wide) in paragraph at lines 710--726
  [][] 
  []
 
 
-Underfull \hbox (badness 6608) in paragraph at lines 716--722
-\T1/cmr/m/n/10.95 del-l'ap-pa-ra-to spe-ri-men-ta-le, si ri-por-ta-no in
+Underfull \hbox (badness 1509) in paragraph at lines 730--740
+\T1/cmr/m/n/10.95 ri-spet-to al-la se-con-da. Que-sta in-con-gruen-za
  []
 
 
-Underfull \hbox (badness 1454) in paragraph at lines 716--722
-\T1/cmr/m/n/10.95 con l'o-scil-lo-sco-pio. Con-fron-tan-do la mi-su-ra
+Underfull \hbox (badness 1496) in paragraph at lines 730--740
+\T1/cmr/m/n/10.95 si at-tri-bui-sce prin-ci-pal-men-te al-le com-po-nen-ti
  []
 
-<../Plots/Shaper/shaper_ideal.png, id=225, 2571.00525pt x 1366.50525pt>
+<../Plots/Shaper/shaper_ideal.png, id=230, 2571.00525pt x 1366.50525pt>
 File: ../Plots/Shaper/shaper_ideal.png Graphic file (type png)
 <use ../Plots/Shaper/shaper_ideal.png>
-Package pdftex.def Info: ../Plots/Shaper/shaper_ideal.png  used on input line 725.
+Package pdftex.def Info: ../Plots/Shaper/shaper_ideal.png  used on input line 743.
 (pdftex.def)             Requested size: 241.84843pt x 128.52657pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 742.
-(d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-Underfull \hbox (badness 1122) in paragraph at lines 730--748
-[][]\T1/cmr/m/n/10.95 la ca-pa-ci-tà pa-ras-si-ta do-vu-ta ai ca-vi ed al-la
- []
-
-
-Underfull \hbox (badness 1168) in paragraph at lines 730--748
-\T1/cmr/m/n/10.95 bread-board. Ta-le va-lo-re mas-si-mo, tut-ta-via,
- []
-
-[8 <../Plots/Shaper/shaper_ideal.png>]
-<../Plots/Shaper/bode_plot.png, id=246, 2472.23625pt x 1588.13326pt>
+<../Plots/Shaper/bode_plot.png, id=239, 2472.23625pt x 1588.13326pt>
 File: ../Plots/Shaper/bode_plot.png Graphic file (type png)
 <use ../Plots/Shaper/bode_plot.png>
-Package pdftex.def Info: ../Plots/Shaper/bode_plot.png  used on input line 768.
-(pdftex.def)             Requested size: 435.32422pt x 279.64803pt.
- [9 <../Plots/Shaper/bode_plot.png>]
-Overfull \hbox (0.5046pt too wide) in paragraph at lines 805--819
+Package pdftex.def Info: ../Plots/Shaper/bode_plot.png  used on input line 789.
+(pdftex.def)             Requested size: 386.95897pt x 248.55717pt.
+[8 <../Plots/Shaper/shaper_ideal.png>]
+Overfull \hbox (0.5046pt too wide) in paragraph at lines 819--833
 []\T1/cmr/m/n/10.95 Si vuo-le ora stu-dia-re il com-por-ta-men-to del-lo \T1/cmr/m/it/10.95 sha-per \T1/cmr/m/n/10.95 in con-di-zio-ni più rea-li-sti-che. Nel-le se-zio-ni pre-ce-den-ti
  []
 
-<../Plots/Shaper/shaper_preamp_waveforms.png, id=262, 4775.24025pt x 1378.55025pt>
+[9 <../Plots/Shaper/bode_plot.png>]
+<../Plots/Shaper/shaper_preamp_waveforms.png, id=263, 4775.24025pt x 1378.55025pt>
 File: ../Plots/Shaper/shaper_preamp_waveforms.png Graphic file (type png)
 <use ../Plots/Shaper/shaper_preamp_waveforms.png>
-Package pdftex.def Info: ../Plots/Shaper/shaper_preamp_waveforms.png  used on input line 852.
+Package pdftex.def Info: ../Plots/Shaper/shaper_preamp_waveforms.png  used on input line 866.
 (pdftex.def)             Requested size: 483.69687pt x 139.63004pt.
-[10 <../Plots/Shaper/shaper_preamp_waveforms.png>]
-<../Plots/Shaper/signal_pileup_sh.png, id=278, 2595.09525pt x 1296.64426pt>
-File: ../Plots/Shaper/signal_pileup_sh.png Graphic file (type png)
-<use ../Plots/Shaper/signal_pileup_sh.png>
-Package pdftex.def Info: ../Plots/Shaper/signal_pileup_sh.png  used on input line 920.
-(pdftex.def)             Requested size: 241.84843pt x 120.82805pt.
-
-Underfull \hbox (badness 1783) in paragraph at lines 925--938
-\T1/cmr/m/n/10.95 del-lo \T1/cmr/m/it/10.95 sha-per CR-RC \T1/cmr/m/n/10.95 mon-ta-to in la-bo-ra-to-rio
- []
-
-[11 <../Plots/Shaper/signal_pileup_sh.png>]
-Underfull \hbox (badness 1205) in paragraph at lines 972--979
+ [10 <../Plots/Shaper/shaper_preamp_waveforms.png>]
+Underfull \hbox (badness 1205) in paragraph at lines 986--993
 [][]\T1/cmr/m/n/10.95 guadagno $\OML/cmm/m/it/10.95 G \OT1/cmr/m/n/10.95 = 1 + [] = 9\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 254 \OMS/cmsy/m/n/10.95 ^^F \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 004$\T1/cmr/m/n/10.95 .
  []
 
 
-Underfull \hbox (badness 1496) in paragraph at lines 972--979
+Underfull \hbox (badness 1496) in paragraph at lines 986--993
 \OML/cmm/m/it/10.95 V[] \OT1/cmr/m/n/10.95 = 2\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 41 \OMS/cmsy/m/n/10.95 ^^F \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 04 []$\T1/cmr/m/n/10.95 . Si mi-su-ra, in-ve-ce,
  []
 
-
-Underfull \hbox (badness 2521) in paragraph at lines 1074--1081
-\T1/cmr/m/n/10.95 in usci-ta. Per quan-to ri-guar-da gli er-ro-ri
- []
-
-
-Underfull \hbox (badness 4266) in paragraph at lines 1074--1081
-\T1/cmr/m/n/10.95 il fit, ri-por-ta-to in []Fi-gu-ra 11[][]. Si no-ta
- []
-
-
-Underfull \hbox (badness 3579) in paragraph at lines 1074--1081
-\T1/cmr/m/n/10.95 co-me gli er-ro-ri as-so-cia-ti al-le mi-su-re sia-no
- []
-
-
-Underfull \hbox (badness 4120) in paragraph at lines 1074--1081
-\T1/cmr/m/n/10.95 leg-ger-men-te so-vra-sti-ma-ti se con-fron-ta-ti con
- []
-
-<../Plots/Catena/catena_linearity.png, id=299, 2477.05424pt x 1417.6965pt>
+<../Plots/Catena/catena_linearity.png, id=284, 2477.05424pt x 1417.6965pt>
 File: ../Plots/Catena/catena_linearity.png Graphic file (type png)
 <use ../Plots/Catena/catena_linearity.png>
-Package pdftex.def Info: ../Plots/Catena/catena_linearity.png  used on input line 1084.
-(pdftex.def)             Requested size: 406.30359pt x 232.52536pt.
-[12]
-Overfull \hbox (0.82494pt too wide) in paragraph at lines 1089--1094
-\T1/cmr/m/n/10.95 suf-fi-cien-te-men-te re-go-la-re e, as-sie-me al-l'ot-ti-ma di-stri-bu-zio-ne del-le mi-su-re at-tor-no al-la ret-ta ca-rat-te-riz-za-ta
+Package pdftex.def Info: ../Plots/Catena/catena_linearity.png  used on input line 1057.
+(pdftex.def)             Requested size: 386.95897pt x 221.44963pt.
+[11]
+Underfull \hbox (badness 3525) in paragraph at lines 1099--1106
+[][]\T1/cmr/m/n/10.95 osservando il gra-fi-co dei re-si-dui, co-me gli
  []
 
 
-Overfull \hbox (2.88364pt too wide) in paragraph at lines 1102--1107
+Overfull \hbox (3.66881pt too wide) in paragraph at lines 1099--1106
+\T1/cmr/m/n/10.95 so-vra-sti-ma-ti in con-fron-to al-l'ef-fet-ti-va di-stri-bu-zio-ne
+ []
+
+
+Underfull \hbox (badness 1496) in paragraph at lines 1099--1106
+\T1/cmr/m/n/10.95 dei pun-ti at-tor-no al-la ret-ta. Il $\OML/cmm/m/it/10.95 ^^_[]$ \T1/cmr/m/n/10.95 in-fat-ti
+ []
+
+
+Underfull \hbox (badness 1902) in paragraph at lines 1099--1106
+\T1/cmr/m/n/10.95 di-stri-bu-zio-ne del-le mi-su-re at-tor-no al-la ret-ta
+ []
+
+
+Underfull \hbox (badness 1147) in paragraph at lines 1099--1106
+\T1/cmr/m/n/10.95 ca-rat-te-riz-za-ta dal-l'er-ro-re a po-ste-rio-ri, si può
+ []
+
+
+Overfull \hbox (2.88364pt too wide) in paragraph at lines 1114--1132
 []\T1/cmr/m/n/10.95 Si vuo-le ora stu-dia-re la ri-spo-sta in fre-quen-za del-la ca-te-na elet-tro-ni-ca: per quan-to ri-por-ta-to in []Se-zio-ne 6.1[][],
  []
 
-<../Plots/Catena/bode_plot.png, id=314, 2510.78024pt x 1592.95125pt>
+<../Plots/Catena/bode_plot.png, id=301, 2510.78024pt x 1592.95125pt>
 File: ../Plots/Catena/bode_plot.png Graphic file (type png)
 <use ../Plots/Catena/bode_plot.png>
-Package pdftex.def Info: ../Plots/Catena/bode_plot.png  used on input line 1110.
-(pdftex.def)             Requested size: 406.30359pt x 257.76987pt.
-[13 <../Plots/Catena/catena_linearity.png> <../Plots/Catena/bode_plot.png>]
-<../Plots/Catena/trend3.png, id=324, 3765.86925pt x 1641.13126pt>
+Package pdftex.def Info: ../Plots/Catena/bode_plot.png  used on input line 1135.
+(pdftex.def)             Requested size: 386.95897pt x 245.49512pt.
+[12 <../Plots/Catena/catena_linearity.png>]
+<../Plots/Catena/trend3.png, id=311, 3765.86925pt x 1641.13126pt>
 File: ../Plots/Catena/trend3.png Graphic file (type png)
 <use ../Plots/Catena/trend3.png>
-Package pdftex.def Info: ../Plots/Catena/trend3.png  used on input line 1140.
+Package pdftex.def Info: ../Plots/Catena/trend3.png  used on input line 1153.
 (pdftex.def)             Requested size: 435.32422pt x 189.69022pt.
- [14 <../Plots/Catena/trend3.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1167.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1167.
+ [13 <../Plots/Catena/bode_plot.png> <../Plots/Catena/trend3.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1180.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1180.
  (d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1167.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1167.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1180.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1180.
 Package rerunfilecheck Info: File `Report.out' has not changed.
 (rerunfilecheck)             Checksum: EB12711A005EFAC197CAA2C1395A964A;1504.
  ) 
 Here is how much of TeX's memory you used:
- 32726 strings out of 492649
- 636439 string characters out of 6128653
- 697295 words of memory out of 5000000
- 36015 multiletter control sequences out of 15000+600000
- 569310 words of font info for 124 fonts, out of 8000000 for 9000
+ 32699 strings out of 492649
+ 635600 string characters out of 6128653
+ 698197 words of memory out of 5000000
+ 35996 multiletter control sequences out of 15000+600000
+ 568997 words of font info for 123 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,22n,54p,10537b,1010s stack positions out of 5000i,500n,10000p,200000b,80000s
-{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.pdf" (15 pages, 4742779 bytes).
+{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfxc2074.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.pdf" (14 pages, 4405495 bytes).
 PDF statistics:
- 457 PDF objects out of 1000 (max. 8388607)
- 376 compressed objects within 4 object streams
- 75 named destinations out of 1000 (max. 500000)
- 254 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 440 PDF objects out of 1000 (max. 8388607)
+ 363 compressed objects within 4 object streams
+ 72 named destinations out of 1000 (max. 500000)
+ 249 words of extra memory for PDF output out of 10000 (max. 10000000)
 
