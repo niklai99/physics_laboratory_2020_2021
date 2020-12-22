@@ -817,10 +817,10 @@ compare la media pesata $\tau_{\text{sh}}$) supporta ulteriormente la validità 
 \subsection{Shaper con Preamplificatore in ingresso}\label{s:shaper_preamp}
 
 Si vuole ora studiare il comportamento dello \textit{shaper} in condizioni più realistiche. Nelle sezioni precedenti
-èstato iniettato nel formatore un segnale \textit{ideale} direttamente erogato dal generatore. Nell'idea di una catena
+è stato iniettato nel formatore un segnale \textit{ideale} direttamente erogato dal generatore. Nell'idea di una catena
 elettronica associata ad un rivelatore di radiazione, ovviamente, questo non è possibile. Nella situazione reale,
 infatti, lo \textit{shaper} è posto in coda al \textit{preamplificatore}, che fornisce in uscita il segnale
-rappresentato in \autoref{i:preamp_waveform}. la salita è ora lineare, non più "istantanea", ed il segnale è smorzato
+rappresentato in \autoref{i:preamp_waveform}. La salita è ora lineare, non più "istantanea", ed il segnale è smorzato
 esponenzialmente, non più costante al suo valore massimo. Questa deviazione dall'idealità porta a rilevanti deformazioni
 del segnale in uscita dallo \textit{shaper}. Osservando il grafico a sinistra in \autoref{i:shaper_waveforms} si nota
 chiaramente il fenomeno di \textit{undershoot} del segnale: questo, infatti, dopo aver raggiunto il massimo di tensione
@@ -850,7 +850,7 @@ modulo CR assume la forma
 	\end{cases} 
 \end{align}
 
-e risulta avere, in buona approssimazione, lo stesso polo de modulo CR \textit{base}. Di conseguenza, la funzione di
+e risulta avere, in buona approssimazione, lo stesso polo del modulo CR \textit{base}. Di conseguenza, la funzione di
 trasferimento complessiva dello \textit{shaper compensato} continua ad avere un polo doppio in $f_{\text{polo}}$ e
 questo non ne altera le proprietà caratteristiche. La correzione apportata per eliminare l'effetto di
 \textit{undershoot} prende il nome di compensazione \textit{pole zero}. In laboratorio, quindi, viene montata una
@@ -906,7 +906,7 @@ $V_{\text{undershoot}}$.
    \label{t:shaper_vout} 
 \end{table}    
 \vspace{-7pt}
-Si noti allora come tutte le misure acquisite con l'oscilloscopio e con Arduino sono tra lro consistenti. Inoltre, la
+Si noti allora come tutte le misure acquisite con l'oscilloscopio e con Arduino sono tra loro consistenti. Inoltre, la
 precisione con cui viene acquisito il segnale risulta essere analoga tra le due tipologie di misure. Osservando
 l'accordo tra i dati acquisiti con Arduino e la simulazione Spice (\autoref{i:shaper_waveforms}), invece, si nota una
 leggera discrepanza. Un effetto analogo è già stato evidenziato in \autoref{i:shaper_ideal}: il segnale misurato sia con
@@ -933,7 +933,7 @@ in tal caso, il modulo prende il nome di \textit{shaping amplifier}. L'azione de
 laboratorio riduce in modo ottimale la durata effettiva del segnale, rendendo più difficile che si verifichi un
 \textit{signal pile up}. Tuttavia, l'ampiezza in tensione viene notevolmente ridotta: per questo motivo allora, in
 laboratorio, si assembla in coda allo \textit{shaper} un circuito amplificatore con operazionale in configurazione non
-invertente, ovvero l'ultimo stadio della catena rappresenta in \autoref{i:circuito}. Lo scopo di questo terzo ed ultimo
+invertente, ovvero l'ultimo stadio della catena rappresentato in \autoref{i:circuito}. Lo scopo di questo terzo ed ultimo
 stadio della catena è ottimizzare l'ampiezza del segnale per sfruttare al meglio il range in input della DAQ, ovvero in
 questo caso l'ADC della scheda Arduino Due. Questa, infatti, può ricevere nell'input analogico segnali \textit{positivi}
 su un range di circa $3\,\si{\volt}$, nonostante sia opportuno notare che già oltre i $2\,\si{\volt}$ i vari circuiti di
