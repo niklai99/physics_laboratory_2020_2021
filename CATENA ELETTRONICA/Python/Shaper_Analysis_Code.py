@@ -501,10 +501,10 @@ def bode_plot(df, sim):
 
 
     # FIG SETTINGS AND AXES
-    fig = plt.figure(figsize=(16,10))
+    fig = plt.figure(figsize=(16,8))
     #ax1 = fig.add_subplot(1, 1, 1)
-    ax1 = plt.subplot2grid((10, 1), (0, 0), rowspan=8, colspan=1)
-    ax2 = plt.subplot2grid((10, 1), (8, 0), rowspan=2, colspan=1)
+    ax1 = plt.subplot2grid((8, 1), (0, 0), rowspan=6, colspan=1)
+    ax2 = plt.subplot2grid((8, 1), (6, 0), rowspan=2, colspan=1)
 
 
     # PLOT DATA
@@ -531,14 +531,14 @@ def bode_plot(df, sim):
     chisq2 = '$\chi^{2}$ / ndf = ' + format(chi22, '1.2f') + ' / ' + format(len(data2['log10f (dec)']) - 2, '1.0f') 
     sigmap2 = '\u03C3$_{post}$ = ' + format(sigma_post2, '1.2f') + ' dB'
 
-    ax1.text(0.42, 0.60, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
+    ax1.text(0.42, 0.53, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
 
     # ARANCIONE
-    ax1.text(0.40, 0.35, q1 + '\n' + m1 + '\n' + chisq1 + '\n' + sigmap1, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+    ax1.text(0.28, 0.20, q1 + '\n' + m1 + '\n' + chisq1 + '\n' + sigmap1, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
             bbox = dict( facecolor = '#FF4B00', edgecolor = '#FF4B00', alpha = 0.1, linewidth = 2 ))
 
     # BLU        
-    ax1.text(0.40, 0.10, q2 + '\n' + m2 + '\n' + chisq2 + '\n' + sigmap2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+    ax1.text(0.53, 0.20, q2 + '\n' + m2 + '\n' + chisq2 + '\n' + sigmap2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
             bbox = dict( facecolor = '#00b4ff', edgecolor = '#00b4ff', alpha = 0.1, linewidth = 2 ))
 
 
@@ -601,7 +601,7 @@ def bode_plot(df, sim):
     
     
     # SAVE FIGURE
-    #fig.savefig('../Plots/Shaper/bode_plot.png', dpi = 300, facecolor = 'white')
+    #fig.savefig('../Plots/Shaper/bode_plot2.png', dpi = 300, facecolor = 'white')
     
     plt.show()
 

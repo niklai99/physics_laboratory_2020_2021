@@ -256,7 +256,7 @@ def preamp_lin_fit(df):
     RESYMAX = 25
 
     # FIG SETTINGS AND AXES
-    fig = plt.figure(figsize=(16,8))
+    fig = plt.figure(figsize=(16,7))
     ax1 = fig.add_subplot(1, 2, 1)
     ax2 = fig.add_subplot(1, 2, 2)
 
@@ -349,7 +349,7 @@ def preamp_lin_fit(df):
     ax2.set_ylim(bottom = RESYMIN, top = RESYMAX)
 
     # SAVE FIGURE
-    #fig.savefig('../Plots/PreAmp/linearity_fit.png', dpi = 300, facecolor='white')
+    #fig.savefig('../Plots/PreAmp/linearity_fit2.png', dpi = 300, facecolor='white')
 
     plt.show()
 
@@ -441,9 +441,9 @@ def preamp_bode_plot(df, sim):
     data2 = df.iloc[6:-2, :]
 
     # FIG SETTINGS AND AXES
-    fig = plt.figure(figsize=(16,10))
-    ax1 = plt.subplot2grid((10, 1), (0, 0), rowspan=8, colspan=1)
-    ax2 = plt.subplot2grid((10, 1), (8, 0), rowspan=2, colspan=1)
+    fig = plt.figure(figsize=(16,8))
+    ax1 = plt.subplot2grid((8, 1), (0, 0), rowspan=6, colspan=1)
+    ax2 = plt.subplot2grid((8, 1), (6, 0), rowspan=2, colspan=1)
 
     # PERFORM THE FITS
 
@@ -584,11 +584,11 @@ def preamp_bode_plot(df, sim):
     ax1.text(0.05, 0.75, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
 
     # ARANCIONE
-    ax1.text(0.05, 0.26, q1 + '\n' + m1 + '\n' + chisq1 + '\n' + sigmap1, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+    ax1.text(0.05, 0.10, q1 + '\n' + m1 + '\n' + chisq1 + '\n' + sigmap1, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
             bbox = dict( facecolor = '#FF4B00', edgecolor = '#FF4B00', alpha = 0.1, linewidth = 2 ))
 
     # BLU        
-    ax1.text(0.05, 0.50, q2 + '\n' + m2 + '\n' + chisq2 + '\n' + sigmap2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+    ax1.text(0.05, 0.45, q2 + '\n' + m2 + '\n' + chisq2 + '\n' + sigmap2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
             bbox = dict( facecolor = '#00b4ff', edgecolor = '#00b4ff', alpha = 0.1, linewidth = 2 ))
 
     # DRAW RESIDUALS
@@ -636,7 +636,7 @@ def preamp_bode_plot(df, sim):
     # MAKE LEGEND
     handles, labels = ax1.get_legend_handles_labels()
     order = [3, 0, 2, 1]
-    ax1.legend([handles[idx] for idx in order], [labels[idx] for idx in order], loc = 'best', prop = {'size': 22}, 
+    ax1.legend([handles[idx] for idx in order], [labels[idx] for idx in order], loc = 'upper right', prop = {'size': 18}, 
                 ncol = 2, frameon = True, fancybox = False, framealpha = 1)
 
     
@@ -644,7 +644,7 @@ def preamp_bode_plot(df, sim):
     ax2.set_xscale('log')
     
     # SAVE FIGURE
-    #fig.savefig('../Plots/PreAmp/bode_plot.png', dpi = 300, facecolor = 'white')
+    #fig.savefig('../Plots/PreAmp/bode_plot2.png', dpi = 300, facecolor = 'white')
     
     plt.show()
 

@@ -357,7 +357,7 @@ presi in considerazione per verificare la linearità del preamplificatore rispet
 \vspace{-7pt}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth]{../Plots/PreAmp/linearity_fit.png}
+	\includegraphics[width=0.8\linewidth]{../Plots/PreAmp/linearity_fit2.png}
 	\vspace{-7pt}
 	\caption{\small Fit lineare del massimo di tensione in uscita contro la carica totale in ingresso.}
 	\label{i:preamp_linearity}
@@ -520,14 +520,14 @@ quanto riportato in \autoref{s:preamp_th} per le aspettative teoriche della risp
 rappresenta ora in \autoref{i:preamp_thebode} il grafico di Bode delle misure acquisite assieme ai punti ottenuti
 attraverso una simulazione Spice della risposta del circuito.
 
-\begin{figure}[H]
+\begin{figure}%[H]
 	\centering
-	\includegraphics[width=0.8\linewidth]{../Plots/PreAmp/bode_plot.png}
+	\includegraphics[width=0.8\linewidth]{../Plots/PreAmp/bode_plot2.png}
 	\vspace{-10pt}
 	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.}
 	\label{i:preamp_thebode}
 \end{figure}
-\vspace{-7pt}
+
 Confrontando inizialmente le misure sperimentali con la simulazione Spice, si nota un ottimo accordo in tutto lo spettro
 di frequenze. Questo è chiaramente indice di una risposta in frequenza del circuito compatibile con le aspettative: il
 comportamento del filtro, infatti, è evidentemente un passa basso. A basse frequenze, la funzione di trasferimento è
@@ -784,14 +784,14 @@ circuito.\footnote{La \textit{Gain BandWidth} dell'amplificatore operazionale, a
 unitario}, determina il massimo guadagno ottenibile ad una data frequenza.} In ogni caso, il filtro si comporta secondo
 le aspettative riportate in \autoref{s:shaper_th}:
 
-\begin{figure}[H] 
+\begin{figure}%[H] 
 	\centering 
-	\includegraphics[width=0.8\linewidth]{../Plots/Shaper/bode_plot.png} 
+	\includegraphics[width=0.8\linewidth]{../Plots/Shaper/bode_plot2.png} 
 	\vspace{-10pt}
 	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.} 
 	\label{i:shaper_thebode} 
 \end{figure} 
-\vspace{-7pt}
+
 la funzione di trasferimento presenta una crescita lineare a basse frequenze (zona di derivazione) con pendenza $19.3
 \pm 0.2 \,\text{dB/dec}$ ed una decrescita lineare ad alte frequenze (zona di integrazione) con pendenza $-18.8 \pm 0.3
 \,\text{dB/dec}$. L'ascissa del punto di intersezione delle due rette di regressione fornisce una stima della frequenza
@@ -859,7 +859,9 @@ necessaria per compensare l'effetto di \textit{undershoot} ($R_{\text{pz}}^{\tex
 \si{\mega\ohm}$): osservando il grafico a destra in \autoref{i:shaper_waveforms} si nota quindi come l'effetto sia del
 tutto scomparso. Il segnale ora, infatti, dopo aver assunto il valore massimo decresce senza scendere sotto la
 \textit{baseline}. Inoltre, il segnale si azzera completamente dopo circa $200\,\si{\us}$, come nel caso ideale trattato
-in precedenza. 
+in precedenza. Si vuole ora confrontare le misure sperimentali acquisite con l'oscilloscopio ed i dati acquisiti con la
+scheda Arduino. In \autoref{t:shaper_vout} si riportano quindi le misure del massimo di tensione, il tempo in cui tale
+massimo viene assunto e la tensione di \textit{undershoot}. 
 
 \begin{figure}[H] 
 	\centering
@@ -869,11 +871,7 @@ in precedenza.
 				A destra: segnale in uscita dallo shaper con resistenza di compensazione.} 
 	\label{i:shaper_waveforms} 
 \end{figure} 
-\vspace{-7pt}
-Si vuole ora confrontare le misure sperimentali acquisite con l'oscilloscopio ed i dati acquisiti con la scheda
-Arduino. In \autoref{t:shaper_vout} si riportano quindi le misure del massimo della tensione $V_{\text{max}}$, il tempo
-in cui tale massimo viene assunto $t_{\text{max}}$ e, eventualmente, la tensione di \textit{undershoot}
-$V_{\text{undershoot}}$. 
+\vspace{-15pt}
 
 \begin{table}[H] \small \centering \begin{tabular}{x{2.2cm} x{2.2cm} | x{2.2cm} x{2.2cm} | x{2.2cm} x{2.2cm}}
    \toprule[0.5px]\toprule[0.1px]   
@@ -1042,15 +1040,6 @@ risulti lineare rispetto alla carica totale $Q_{\text{c}}$ raccolta dal preampli
 
 \subsection{Linearità della Catena Elettronica}\label{s:catena_linearity}
 
-Ci si propone qui di verificare la dipendenza lineare del segnale in uscita $V_{\text{out}}^{\text{max}}$ dalla catena
-elettronica rispetto alla carica totale $Q_{\text{c}}$ raccolta dal preamplificatore. Si fa variare dunque la durata $T$
-dell'impulso quadrato erogato dal generatore di funzioni da $3\,\si{\us}$ a $10\,\si{\us}$, in modo da modificare di
-volta in volta la carica iniettata nel preamplificatore: per ogni $T$ viene calcolata la quantità di carica totale
-$Q_{\text{c}}$ secondo \autoref{e:preamp_vout} e si acquisisce poi, utilizzando la scheda Arduino Due, la forma d'onda
-del segnale in uscita. Da quest'ultima si misura infine l'ampiezza effettiva del segnale in uscita. Per quanto riguarda
-gli errori sulla carica, in analogia a quanto riportato in \autoref{s:preamp_linearity}, questi sono totalmente
-correlati e non vengono dunque considerati per effettuare il fit, riportato in \autoref{i:catena_linearity}. Si nota
-immediatamente,
 
 \begin{wraptable}[13]{L}{0.45\textwidth}
 
@@ -1088,12 +1077,21 @@ immediatamente,
 
 \end{wraptable}	
 
-osservando il grafico dei residui, come gli errori associati alle misure siano leggermente sovrastimati in confronto
-all'effettiva distribuzione dei punti attorno alla retta. Il $\chi^2$ infatti risulta essere minore rispetto al suo
-valore di aspettazione e l'errore a posteriori risulta essere un ordine di grandezza inferiore rispetto alle incertezze
-associate alle misure (si rimanda a \autoref{s:preamp_waveform} per gli errori associati alle misure acquisite con
-Arduino). L'andamento dei residui è sufficientemente regolare e, assieme all'ottima distribuzione delle misure attorno
-alla retta caratterizzata dall'errore a posteriori, si può quindi affermare una soddisfacente linearità della catena.
+Ci si propone qui di verificare la dipendenza lineare del segnale in uscita $V_{\text{out}}^{\text{max}}$ dalla catena
+elettronica rispetto alla carica totale $Q_{\text{c}}$ raccolta dal preamplificatore. Si fa variare dunque la durata $T$
+dell'impulso quadrato erogato dal generatore di funzioni da $3\,\si{\us}$ a $10\,\si{\us}$, in modo da modificare di
+volta in volta la carica iniettata nel preamplificatore: per ogni $T$ viene calcolata la quantità di carica totale
+$Q_{\text{c}}$ secondo \autoref{e:preamp_vout} e si acquisisce poi, utilizzando la scheda Arduino Due, la forma d'onda
+del segnale in uscita. Da quest'ultima si misura infine l'ampiezza effettiva del segnale in uscita. Per quanto riguarda
+gli errori sulla carica, in analogia a quanto riportato in \autoref{s:preamp_linearity}, questi sono totalmente
+correlati e non vengono dunque considerati per effettuare il fit, riportato in \autoref{i:catena_linearity}. Si nota
+immediatamente, osservando il grafico dei residui, come gli errori associati alle misure siano leggermente sovrastimati
+in confronto all'effettiva distribuzione dei punti attorno alla retta. Il $\chi^2$ infatti risulta essere minore
+rispetto al suo valore di aspettazione e l'errore a posteriori risulta essere un ordine di grandezza inferiore rispetto
+alle incertezze associate alle misure (si rimanda a \autoref{s:preamp_waveform} per gli errori associati alle misure
+acquisite con Arduino). L'andamento dei residui è sufficientemente regolare e, assieme all'ottima distribuzione delle
+misure attorno alla retta caratterizzata dall'errore a posteriori, si può quindi affermare una soddisfacente linearità
+della catena.
 
 
 \begin{figure}[H] 
@@ -1116,6 +1114,15 @@ Si vuole ora studiare la risposta in frequenza della catena elettronica: per qua
 frequenza relativa al polo dello \textit{shaper} (\autoref{s:shaper_bode}). Si rappresenta allora in
 \autoref{i:catena_thebode} il grafico di Bode delle misure acquisite assieme ai punti ottenuti attraverso una
 simulazione Spice della risposta del circuito. 
+
+\begin{figure}[H] 
+	\centering
+	\includegraphics[width=0.8\linewidth]{../Plots/Catena/bode_plot2.png} 
+	\vspace{-10pt}
+	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.} 
+	\label{i:catena_thebode} 
+\end{figure} 
+\vspace{-7pt}
 Confrontando inizialmente le misure sperimentali con la simulazione Spice, si nota un ottimo accordo in tutto lo spettro
 di frequenze. Questo è chiaramente indice di una risposta in frequenza conforme alle aspettative: a basse frequenze la
 funzione di trasferimento è costante a $20.1 \pm 0.2 \,\text{dB}$ mentre per frequenze crescenti la funzione di
@@ -1130,13 +1137,7 @@ compatibilità con queste ultime: in particolare si ha una compatibilità $\lamb
 \autoref{e:catena_H_final}, fortemente dipendente dalla corretta scelta delle componenti circuitali al fine di poter
 effettuare determinate approssimazioni e identificazioni. 
 
-\begin{figure}%[H] 
-	\centering
-	\includegraphics[width=0.8\linewidth]{../Plots/Catena/bode_plot2.png} 
-	\vspace{-10pt}
-	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.} 
-	\label{i:catena_thebode} 
-\end{figure} 
+
 
 
 
