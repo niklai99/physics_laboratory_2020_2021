@@ -1,23 +1,28 @@
 Circuit: * D:\GitHub\physics_laboratory_2020_2021\CATENA ELETTRONICA\Simulations\Catena\Catena_frequency.asc
 
-Limiting rise time of source vg1 to 5e-007
-Limiting fall time of source vg1 to 5e-007
+WARNING: Specified period is not longer than the sum of Trise, Tfall, and Ton for vg4.  Increasing period to 2e-006
+Limiting rise time of source vg4 to 3.81165e-022
+Limiting fall time of source vg4 to 3.81165e-022
+Limiting rise time of source vg3 to 5e-007
+Limiting fall time of source vg3 to 5e-007
+Limiting rise time of source vg2 to 3e-007
+Limiting fall time of source vg2 to 3e-007
 Direct Newton iteration for .op point succeeded.
 
-Date: Mon Dec 21 19:04:23 2020
-Total elapsed time: 0.178 seconds.
+Date: Tue Dec 22 15:25:09 2020
+Total elapsed time: 0.828 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 4338
-traniter = 4334
-tranpoints = 2168
-accept = 2146
-rejected = 22
-matrix size = 17
-fillins = 2
+totiter = 49854
+traniter = 49850
+tranpoints = 24926
+accept = 24084
+rejected = 842
+matrix size = 21
+fillins = 3
 solver = Normal
-Matrix Compiler1: 1.01 KB object code size  0.3/0.1/[0.1]
-Matrix Compiler2: 1.72 KB object code size  0.2/0.2/[0.1]
+Matrix Compiler1: 1.13 KB object code size  0.3/0.1/[0.1]
+Matrix Compiler2: 2.00 KB object code size  0.2/0.2/[0.1]
 
