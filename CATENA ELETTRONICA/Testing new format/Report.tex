@@ -1052,12 +1052,12 @@ gli errori sulla carica, in analogia a quanto riportato in \autoref{s:preamp_lin
 correlati e non vengono dunque considerati per effettuare il fit, riportato in \autoref{i:catena_linearity}. Si nota
 immediatamente,
 
-\begin{wraptable}[13]{L}{0.50\textwidth}
+\begin{wraptable}[13]{L}{0.45\textwidth}
 
 	\small
 	\centering
 
-	\begin{tabular}{x{1.5cm} x{2.5cm} x{2.5cm}} 
+	\begin{tabular}{x{1.2cm} x{2.3cm} x{2.3cm}} 
 		
 		\toprule[0.5px]\toprule[0.1px]	
 
@@ -1093,13 +1093,12 @@ all'effettiva distribuzione dei punti attorno alla retta. Il $\chi^2$ infatti ri
 valore di aspettazione e l'errore a posteriori risulta essere un ordine di grandezza inferiore rispetto alle incertezze
 associate alle misure (si rimanda a \autoref{s:preamp_waveform} per gli errori associati alle misure acquisite con
 Arduino). L'andamento dei residui è sufficientemente regolare e, assieme all'ottima distribuzione delle misure attorno
-alla retta caratterizzata dall'errore a posteriori, si può quindi affermare una soddisfacente linearità della catena
-elettronica.
+alla retta caratterizzata dall'errore a posteriori, si può quindi affermare una soddisfacente linearità della catena.
 
 
 \begin{figure}[H] 
 	\centering 
-	\includegraphics[width=0.8\linewidth]{../Plots/Catena/catena_linearity.png}
+	\includegraphics[width=0.8\linewidth]{../Plots/Catena/catena_linearity2.png}
 	\vspace{-10pt}
 	\caption{\small Fit lineare del massimo di tensione in uscita contro la carica totale in ingresso.}
 	\label{i:catena_linearity} 
@@ -1131,9 +1130,9 @@ compatibilità con queste ultime: in particolare si ha una compatibilità $\lamb
 \autoref{e:catena_H_final}, fortemente dipendente dalla corretta scelta delle componenti circuitali al fine di poter
 effettuare determinate approssimazioni e identificazioni. 
 
-\begin{figure}[H] 
+\begin{figure}%[H] 
 	\centering
-	\includegraphics[width=0.8\linewidth]{../Plots/Catena/bode_plot.png} 
+	\includegraphics[width=0.8\linewidth]{../Plots/Catena/bode_plot2.png} 
 	\vspace{-10pt}
 	\caption{\small Grafico di Bode delle misure sperimentali e dei dati simulati.} 
 	\label{i:catena_thebode} 
@@ -1154,7 +1153,7 @@ di frequenza $f_{\text{gen}}= 1 \,\si{\kilo\hertz}$, ampiezza $V_{\text{gen}} = 
 \,\si{\us}$. Il segnale viene quindi inizialmente elaborato dal \textit{preamplificatore}, lineare rispetto alla carica
 totale in ingresso. In 
 
-\begin{wrapfigure}[19]{L}{0.5\textwidth} 
+\begin{wrapfigure}[15]{L}{0.5\textwidth} 
 	\centering 
 	\includegraphics[width=0.5\textwidth]{../Plots/Catena/trend4.png}
 	\vspace{-20pt}

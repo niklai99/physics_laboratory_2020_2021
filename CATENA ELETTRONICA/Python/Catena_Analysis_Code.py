@@ -484,9 +484,9 @@ def bode_plot(df, sim):
     data2 = df.iloc[19:, :]
 
     # FIG SETTINGS AND AXES
-    fig = plt.figure(figsize=(16,10))
-    ax1 = plt.subplot2grid((10, 1), (0, 0), rowspan=8, colspan=1)
-    ax2 = plt.subplot2grid((10, 1), (8, 0), rowspan=2, colspan=1)
+    fig = plt.figure(figsize=(16,8))
+    ax1 = plt.subplot2grid((8, 1), (0, 0), rowspan=6, colspan=1)
+    ax2 = plt.subplot2grid((8, 1), (6, 0), rowspan=2, colspan=1)
 
     # PERFORM THE FITS
 
@@ -620,18 +620,18 @@ def bode_plot(df, sim):
     # ARANCIONE
     q1 = 'c = ' + format(c, '1.2f') + ' +/- ' + format(err_c, '1.2f') + ' dB'
     m1 = 'd = ' + format(d, '1.2f') + ' +/- ' + format(err_d, '1.2f') + ' dB/dec'
-    chisq1 = '$\chi^{2}$ / ndf = ' + format(chi21, '1.2f') + ' / ' + format(len(data1['log10f (dec)']) - 2, '1.0f') 
+    chisq1 = '$\chi^{2}$ / ndf = ' + format(chi21, '1.1f') + ' / ' + format(len(data1['log10f (dec)']) - 2, '1.0f') 
     sigmap1 = '\u03C3$_{post}$ = ' + format(sigma_post1, '1.2f') + ' dB'
 
 
-    ax1.text(0.07, 0.72, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
+    ax1.text(0.07, 0.67, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax1.transAxes)
 
     # ARANCIONE
-    ax1.text(0.07, 0.23, q1 + '\n' + m1 + '\n' + chisq1 + '\n' + sigmap1, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+    ax1.text(0.07, 0.35, q1 + '\n' + m1 + '\n' + chisq1 + '\n' + sigmap1, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
             bbox = dict( facecolor = '#FF4B00', edgecolor = '#FF4B00', alpha = 0.1, linewidth = 2 ))
 
     # BLU        
-    ax1.text(0.07, 0.47, q2 + '\n' + m2 + '\n' + chisq2 + '\n' + sigmap2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
+    ax1.text(0.35, 0.35, q2 + '\n' + m2 + '\n' + chisq2 + '\n' + sigmap2, fontsize = 18, color = '#000000', transform = ax1.transAxes, 
             bbox = dict( facecolor = '#00b4ff', edgecolor = '#00b4ff', alpha = 0.1, linewidth = 2 ))
 
     # DRAW RESIDUALS
@@ -678,7 +678,7 @@ def bode_plot(df, sim):
     # MAKE LEGEND
     handles, labels = ax1.get_legend_handles_labels()
     order = [3, 0, 2, 1]
-    ax1.legend([handles[idx] for idx in order], [labels[idx] for idx in order], loc = 'best', prop = {'size': 22}, 
+    ax1.legend([handles[idx] for idx in order], [labels[idx] for idx in order], loc = 'best', prop = {'size': 18}, 
                 ncol = 2, frameon = True, fancybox = False, framealpha = 1)
 
     
@@ -686,7 +686,7 @@ def bode_plot(df, sim):
     ax2.set_xscale('log')
     
     # SAVE FIGURE
-    #fig.savefig('../Plots/Catena/bode_plot.png', dpi = 300, facecolor = 'white')
+    #fig.savefig('../Plots/Catena/bode_plot2.png', dpi = 300, facecolor = 'white')
     
     plt.show()
 
