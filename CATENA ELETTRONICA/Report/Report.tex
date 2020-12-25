@@ -751,14 +751,12 @@ rispetto al segnale in uscita dal preamplificatore (\autoref{i:preamp_waveform})
 questo aspetto è fondamentale per evitare un \textit{signal pile up} in caso di alta frequenza di acquisizione. Si vuole
 infine specificare che il convertitore all'interno della scheda Arduino Due è ottimizzato per ricevere in ingresso
 segnali provenienti da una sorgente la cui impedenza di uscita sia sufficientemente bassa. Secondo il datasheet Atmel
-(relativo alla CPU su cui è basata la scheda), questa deve essere al massimo di $10\,\si{\kilo\ohm}$.%\footnote{Link al
-%datasheet: \url{https://bit.ly/3nwOQSN}} 
-Questo non è chiaramente il caso dell'uscita dallo shaper: una tale
-impedenza porterebbe quindi ad una scorretta conversione del segnale. Per ovviare al problema, il segnale viene
-prelevato in uscita dalla catena elettronica completa (\autoref{s:catena_config}), la quale presenta
-un'impedenza in uscita idealmente nulla, e dividendo i valori misurati per il fattore di amplificazione $G$ si riporta
-il segnale allo stadio non amplificato. Questa procedura viene effettuata anche per la configurazione \textit{reale}
-dello \textit{shaper + preamplificatore}, trattata in seguito.
+(relativo alla CPU su cui è basata la scheda), questa deve essere al massimo di $10\,\si{\kilo\ohm}$. Questo non è
+chiaramente il caso dell'uscita dallo shaper: una tale impedenza porterebbe quindi ad una scorretta conversione del
+segnale. Per ovviare al problema, il segnale viene prelevato in uscita dalla catena elettronica completa
+(\autoref{s:catena_config}), la quale presenta un'impedenza in uscita idealmente nulla, e dividendo i valori misurati
+per il fattore di amplificazione $G$ si riporta il segnale allo stadio non amplificato. Questa procedura viene
+effettuata anche per la configurazione \textit{reale} dello \textit{shaper + preamplificatore}, trattata in seguito.
 
 
 

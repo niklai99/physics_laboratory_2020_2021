@@ -1,17 +1,17 @@
-PWD d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format
+PWD d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report
 INPUT d:/Programmi/texlive/2018/texmf.cnf
 INPUT d:/Programmi/texlive/2018/texmf-dist/web2c/texmf.cnf
 INPUT d:/Programmi/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.tex
-OUTPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.log
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.tex
+OUTPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.log
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/article.cls
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/article.cls
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/size11.clo
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/size11.clo
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/structure.tex
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/structure.tex
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/structure.tex
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/structure.tex
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/fontenc.sty
@@ -264,9 +264,9 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/psnfss/upsy.fd
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/titlesec/titlesec.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/titlesec/titlesec.sty
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux
-OUTPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.aux
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.aux
+OUTPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.aux
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -281,14 +281,14 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.out
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.out
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.out
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.out
-OUTPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.pdf
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.out
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.out
-OUTPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.out
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.out
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.out
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.out
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.out
+OUTPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.pdf
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.out
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.out
+OUTPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.out
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
@@ -347,7 +347,7 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm
 INPUT d:/Programmi/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/ecti1095.tfm
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/../Simulations/catena_circuito.png
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Simulations/catena_circuito.png
 INPUT ../Simulations/catena_circuito.png
 INPUT ../Simulations/catena_circuito.png
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm
@@ -382,7 +382,7 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msb
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/tcrm0700.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/ecrm0700.tfm
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/../Plots/PreAmp/linearity_fit2.png
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/PreAmp/linearity_fit2.png
 INPUT ../Plots/PreAmp/linearity_fit2.png
 INPUT ../Plots/PreAmp/linearity_fit2.png
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/ecrm0900.tfm
@@ -399,41 +399,41 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msa
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/tcrm0900.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/ecti0900.tfm
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/../Plots/PreAmp/preamp_waveform.png
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/PreAmp/preamp_waveform.png
 INPUT ../Plots/PreAmp/preamp_waveform.png
 INPUT ../Plots/PreAmp/preamp_waveform.png
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/../Plots/PreAmp/preamp_arduino_fit2.png
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/PreAmp/preamp_arduino_fit2.png
 INPUT ../Plots/PreAmp/preamp_arduino_fit2.png
 INPUT ../Plots/PreAmp/preamp_arduino_fit2.png
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/../Plots/PreAmp/bode_plot2.png
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/PreAmp/bode_plot2.png
 INPUT ../Plots/PreAmp/bode_plot2.png
 INPUT ../Plots/PreAmp/bode_plot2.png
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/../Plots/PreAmp/signal_pileup.png
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/PreAmp/signal_pileup.png
 INPUT ../Plots/PreAmp/signal_pileup.png
 INPUT ../Plots/PreAmp/signal_pileup.png
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/../Plots/Shaper/shaper_ideal.png
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/Shaper/shaper_ideal.png
 INPUT ../Plots/Shaper/shaper_ideal.png
 INPUT ../Plots/Shaper/shaper_ideal.png
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/../Plots/Shaper/bode_plot2.png
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/Shaper/bode_plot2.png
 INPUT ../Plots/Shaper/bode_plot2.png
 INPUT ../Plots/Shaper/bode_plot2.png
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/../Plots/Shaper/shaper_preamp_waveforms.png
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/Shaper/shaper_preamp_waveforms.png
 INPUT ../Plots/Shaper/shaper_preamp_waveforms.png
 INPUT ../Plots/Shaper/shaper_preamp_waveforms.png
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/jknappen/ec/ecti1000.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/../Plots/Catena/catena_linearity2.png
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/Catena/catena_linearity2.png
 INPUT ../Plots/Catena/catena_linearity2.png
 INPUT ../Plots/Catena/catena_linearity2.png
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/../Plots/Catena/bode_plot2.png
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/Catena/bode_plot2.png
 INPUT ../Plots/Catena/bode_plot2.png
 INPUT ../Plots/Catena/bode_plot2.png
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/../Plots/Catena/trend4.png
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/../Plots/Catena/trend4.png
 INPUT ../Plots/Catena/trend4.png
 INPUT ../Plots/Catena/trend4.png
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.aux
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.out
-INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Testing new format/Report.out
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.aux
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.out
+INPUT d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.out
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
