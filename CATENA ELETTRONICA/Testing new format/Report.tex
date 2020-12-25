@@ -132,8 +132,8 @@ simulare un segnale tipicamente acquisibile dalla rivelazione di un evento da pa
 inizialmente elaborato dal \textit{preamplificatore} (di tipo \textit{charge sensitive}) e successivamente dallo
 \textit{shaper} (di tipo \textit{CR-RC}). Il segnale in uscita dal formatore viene infine amplificato per favorirne
 l'acquisizione da parte di una DAQ, che corrisponde in questo caso all'ADC della scheda Arduino Due. I tre stadi
-(\textit{preamplificatore}, \textit{shaper}, \textit{amplificatore}) costituiscono dunque la \textit{catena elettronica}
-rappresentata in \autoref{i:circuito}.
+(preamplificatore, shaper, amplificatore) costituiscono dunque la \textit{catena elettronica} rappresentata in
+\autoref{i:circuito}.
 
 \begin{figure}[H]
 	\centering
@@ -153,7 +153,7 @@ Il primo stadio della catena (\textit{preamplificatore}) si utilizza per miglior
 da trasferire un segnale più pulito all'elettronica di acquisizione. In laboratorio si assembla un preamplificatore
 \textit{charge sensitive}: il modulo, infatti, consiste di un circuito integratore e la tensione in uscita è quindi
 direttamente proporzionale alla carica in ingresso. Nelle sezioni successive si vogliono studiare le caratteristiche
-principali del \textit{preamplificatore} e verificare il corretto funzionamento del circuito confrontando la risposta
+principali del preamplificatore e verificare il corretto funzionamento del circuito confrontando la risposta
 sperimentale con il comportamento teorico atteso.
 
 
@@ -168,9 +168,9 @@ frequenza $f_{\text{gen}} = 1 \,\si{k\Hz}$, tensione di riferimento $V_{\text{hi
 \textit{negativa} $V_{\text{low}} = -1 \,\si{\volt}$ e durata $T = 5 \,\si{\us}$ (cioè il tempo di raccolta del
 segnale). Viene successivamente assemblato sulla breadboard il primo modulo in \autoref{i:circuito} utilizzando le
 componenti circuitali riportate in \autoref{t:direct_measures}, misurate con il multimetro Metrix. È dunque fondamentale
-che il segnale erogato dal generatore sia \textit{negativo}: avendo un amplificatore operazionale in configurazione
-\textit{invertente} è infatti una richiesta necessaria per poter avere in output un segnale positivo, cioè già
-acquisibile con la scheda Arduino.
+che il segnale erogato dal generatore sia negativo: avendo un amplificatore operazionale in configurazione invertente è
+infatti una richiesta necessaria per poter avere in output un segnale positivo, cioè già acquisibile con la scheda
+Arduino.
 
 \begin{wraptable}[8]{L}{0.5\textwidth}
 	\small
@@ -219,7 +219,7 @@ configurazione invertente, la presenza di un unico polo e l'assenza di zeri.
 
 Data la forma della funzione di trasferimento, la risposta in frequenza sarà quella di un filtro \textit{passa basso}:
 rappresentando $H(s)$ in un grafico di Bode ci si aspetta allora un andamento costante a basse frequenze fino alla
-\textit{frequenza di taglio} $f_{\text{t}}=\frac{1}{2\pi\tau_{\text{pre}}}$ e una decrescita lineare con pendenza
+frequenza di taglio $f_{\text{t}}=\frac{1}{2\pi\tau_{\text{pre}}}$ e una decrescita lineare con pendenza
 $-20\,\text{dB/dec}$ per frequenze maggiori. Facendo riferimento ai valori delle componenti circuitali riportati in
 \autoref{t:direct_measures}, il tempo caratteristico del preamplificatore e la frequenza di taglio del filtro risultano
 essere
@@ -626,8 +626,8 @@ tensioni $V_{\text{low}} = 0\,\si{\volt}$ e $V_{\text{high}} = 1\,\si{\volt}$. S
 
 \subsection{Trattazione Analitica}\label{s:shaper_th}
 
-Si noti inizialmente (\autoref{i:circuito}) la presenza di un \textit{buffer} tra il modulo CR ed il modulo RC. Il \textit{buffer}, che non
-altera il comportamento del circuito, permette di fattorizzare la funzione di trasferimento
+Si noti inizialmente (\autoref{i:circuito}) la presenza di un \textit{buffer} tra il modulo CR ed il modulo RC. Il
+buffer, che non altera il comportamento del circuito, permette di fattorizzare la funzione di trasferimento
 
 \begin{wraptable}[9]{R}{0.3\textwidth}
 	\small
@@ -653,18 +653,18 @@ altera il comportamento del circuito, permette di fattorizzare la funzione di tr
 		\bottomrule[0.5px]		
 	\end{tabular}
 	\vspace{-5pt}
-	\caption{\small Stime di $\tau^{\text{sh}}$.}
+	\caption{\small Stime di $\tau_{\text{sh}}$.}
 	\label{t:shaper_shaping_time}
 \end{wraptable}	
 
- complessiva $H(s) = H_{\text{CR}} \, H_{\text{RC}}$, dove $H_{\text{CR}}$ e
-$H_{\text{RC}}$ sono rispettivamente le funzioni di trasferimento di un circuito RC in configurazione passa alto e passa
-basso. In questo modo, quindi, il calcolo della funzione di trasferimento si semplifica notevolmente. Inoltre, si vuole
-assumere $R_1 \, C_1 \equiv \tau_{\text{sh}1} \approx \tau_{\text{sh2}} \equiv R_2 \, C_2$: questa approssimazione
-risulta ragionevole osservando i valori riportati \autoref{t:shaper_shaping_time} e, di conseguenza, si considera la
-media pesata dei due come tempo caratteristico dello shaper, detto \textit{shaping time}. L'effettiva validità di questa
-approssimazione può essere verificata studiando il grafico di Bode della risposta in frequenza del circuito. La funzione
-di trasferimento risulta allora essere
+complessiva $H(s) = H_{\text{CR}} \, H_{\text{RC}}$, dove $H_{\text{CR}}$ e $H_{\text{RC}}$ sono rispettivamente le
+funzioni di trasferimento di un circuito RC in configurazione passa alto e passa basso. In questo modo, quindi, il
+calcolo della funzione di trasferimento si semplifica notevolmente. Inoltre, si vuole assumere $R_1 \, C_1 \equiv
+\tau_{\text{sh}1} \approx \tau_{\text{sh2}} \equiv R_2 \, C_2$: questa approssimazione risulta ragionevole osservando i
+valori riportati \autoref{t:shaper_shaping_time} e, di conseguenza, si considera la media pesata dei due come tempo
+caratteristico dello shaper, detto \textit{shaping time}. L'effettiva validità di questa approssimazione può essere
+verificata studiando il grafico di Bode della risposta in frequenza del circuito. La funzione di trasferimento risulta
+allora essere
 
 \begin{align}\label{e:shaper_H} 
 	H(s) &= \frac{ 1 }{ \tau_{\text{sh} } }  \,  
@@ -675,22 +675,22 @@ di trasferimento risulta allora essere
    	f_{\text{polo}}=\frac{1}{2\pi \tau_{\text{sh}}}= 10.0 \pm 0.4 \,\si{k\Hz}
 \end{align}
 
-Si noti quindi come la forma analitica di $H(s)$ presenti uno zero nell'origine ed un polo doppio legato allo
-\textit{shaping time}. Il grafico di Bode della risposta in frequenza presenta allora una salita lineare con pendenza
-$20\,\si{dB/dec}$ fino al raggiungimento della frequenza $f_{\text{polo}}$ relativa al polo doppio per poi decrescere
-linearmente con pendenza $-20\,\si{dB/dec}$. Il filtro è dunque un passa banda, la cui banda passante (e di conseguenza
-gli intervalli di integrazione e derivazione del segnale) è influenzata dallo \textit{shaping time}. Concentrando ora
-l'attenzione sulla risposta dello shaper ad un segnale in ingresso ideale, ci si aspetta in uscita una tensione data da 
+Si noti quindi come la forma analitica di $H(s)$ presenti uno zero nell'origine ed un polo doppio legato allo shaping
+time. Il grafico di Bode della risposta in frequenza presenta allora una salita lineare con pendenza $20\,\si{dB/dec}$
+fino al raggiungimento della frequenza $f_{\text{polo}}$ relativa al polo doppio per poi decrescere linearmente con
+pendenza $-20\,\si{dB/dec}$. Il filtro è dunque un passa banda, la cui banda passante (e di conseguenza gli intervalli
+di integrazione e derivazione del segnale) è influenzata dallo shaping time. Concentrando ora l'attenzione sulla
+risposta dello shaper ad un segnale in ingresso ideale, ci si aspetta in uscita una tensione data da 
 \begin{equation} 
-	V_{\text{out}}(t)=\frac{V_{\text{in}}}{\tau^{ \text{sh} }} \, t \,
-	e^{-\frac{t}{\tau^{ \text{sh} } }} 
+	V_{\text{out}}(t)=\frac{V_{\text{in}}}{\tau_{ \text{sh} }} \, t \,
+	e^{-\frac{t}{\tau_{ \text{sh} } }} 
 \end{equation} 
 
 che presenta un massimo $V_{\text{out}}^{\text{max}}= V_{\text{in}}/e$ direttamente proporzionale al segnale in
 ingresso, che quindi contiene l'informazione sulla carica raccolta dal preamplificatore. Inoltre, tale massimo viene
-assunto ad un tempo $t^{\text{max}} = \tau_{\text{sh}}$: lo \textit{shaping time}, quindi, determina approssimativamente
-la durata del segnale in uscita dallo shaper. Si noti che $\tau_{\text{sh}}$ è un ordine di grandezza inferiore rispetto
-al tempo caratteristico $\tau_{\text{pre}}$: da questo si deduce quindi che la durata del segnale viene notevolmente
+assunto ad un tempo $t^{\text{max}} = \tau_{\text{sh}}$: lo shaping time, quindi, determina approssimativamente la
+durata del segnale in uscita dallo shaper. Si noti che $\tau_{\text{sh}}$ è un ordine di grandezza inferiore rispetto al
+tempo caratteristico $\tau_{\text{pre}}$: da questo si deduce quindi che la durata del segnale viene notevolmente
 ridotta grazie all'azione dello shaper, come anticipato in \autoref{s:shaper}. 
 
 
@@ -701,7 +701,7 @@ ridotta grazie all'azione dello shaper, come anticipato in \autoref{s:shaper}.
 \subsection{Risposta del Circuito}
 
 Al fine di verificare il corretto funzionamento dell'apparato sperimentale, si riportano in \autoref{t:shaper_sper_th}
-le misure sperimentali del massimo della tensione e dello \textit{shaping time} $\tau_{\text{sh}}$ acquisite con
+le misure sperimentali del massimo della tensione e dello shaping time $\tau_{\text{sh}}$ acquisite con
 l'oscilloscopio.
 
 \begin{wraptable}[7]{R}{0.50\textwidth}
@@ -731,7 +731,7 @@ Confrontando la misura di $V_{\text{max}}^{\text{sper}}$ con l'aspettativa teori
 le due: la prima, infatti, si discosta del $7.9\%$ rispetto alla seconda. Questa incongruenza si attribuisce
 principalmente alle componenti circuitali ed alle sistematiche presenti nel circuito stesso, comprendendo quindi anche
 la capacità parassita dovuta ai cavi ed alla breadboard. Tale valore massimo, tuttavia, viene assunto ad un tempo
-$\tau_{\text{sh}}^{\text{sper}}$ perfettamente conforme allo \textit{shaping time}. In \autoref{i:shaper_ideal} viene
+$\tau_{\text{sh}}^{\text{sper}}$ perfettamente conforme allo shaping time. In \autoref{i:shaper_ideal} viene
 mostrato il segnale in uscita acquisito con la scheda Arduino assieme alla simulazione Spice: si nota chiaramente come
 la tensione sperimentale sia inferiore alle aspettative, come già evidenziato in \autoref{t:shaper_sper_th}. Si fa
 notare, tuttavia, che il valore massimo dei dati acquisiti con la scheda Arduino risulta essere $V_{\text{max}} = 342
@@ -753,9 +753,9 @@ infine specificare che il convertitore all'interno della scheda Arduino Due è o
 segnali provenienti da una sorgente la cui impedenza di uscita sia sufficientemente bassa. Secondo il datasheet Atmel
 (relativo alla CPU su cui è basata la scheda), questa deve essere al massimo di $10\,\si{\kilo\ohm}$.%\footnote{Link al
 %datasheet: \url{https://bit.ly/3nwOQSN}} 
-Questo non è chiaramente il caso dell'uscita dallo \textit{shaper}: una tale
+Questo non è chiaramente il caso dell'uscita dallo shaper: una tale
 impedenza porterebbe quindi ad una scorretta conversione del segnale. Per ovviare al problema, il segnale viene
-prelevato in uscita dalla \textit{catena elettronica completa} (\autoref{s:catena_config}), la quale presenta
+prelevato in uscita dalla catena elettronica completa (\autoref{s:catena_config}), la quale presenta
 un'impedenza in uscita idealmente nulla, e dividendo i valori misurati per il fattore di amplificazione $G$ si riporta
 il segnale allo stadio non amplificato. Questa procedura viene effettuata anche per la configurazione \textit{reale}
 dello \textit{shaper + preamplificatore}, trattata in seguito.
@@ -816,13 +816,13 @@ compare la media pesata $\tau_{\text{sh}}$) supporta ulteriormente la validità 
 
 \subsection{Shaper con Preamplificatore in ingresso}\label{s:shaper_preamp}
 
-Si vuole ora studiare il comportamento dello \textit{shaper} in condizioni più realistiche. Nelle sezioni precedenti
+Si vuole ora studiare il comportamento dello shaper in condizioni più realistiche. Nelle sezioni precedenti
 è stato iniettato nel formatore un segnale \textit{ideale} direttamente erogato dal generatore. Nell'idea di una catena
 elettronica associata ad un rivelatore di radiazione, ovviamente, questo non è possibile. Nella situazione reale,
-infatti, lo \textit{shaper} è posto in coda al \textit{preamplificatore}, che fornisce in uscita il segnale
+infatti, lo shaper è posto in coda al preamplificatore, che fornisce in uscita il segnale
 rappresentato in \autoref{i:preamp_waveform}. La salita è ora lineare, non più "istantanea", ed il segnale è smorzato
 esponenzialmente, non più costante al suo valore massimo. Questa deviazione dall'idealità porta a rilevanti deformazioni
-del segnale in uscita dallo \textit{shaper}. Osservando il grafico a sinistra in \autoref{i:shaper_waveforms} si nota
+del segnale in uscita dallo shaper. Osservando il grafico a sinistra in \autoref{i:shaper_waveforms} si nota
 chiaramente il fenomeno di \textit{undershoot} del segnale: questo, infatti, dopo aver raggiunto il massimo di tensione
 scende sotto allo zero (\textit{baseline}) per poi tendere ad esso abbastanza lentamente. Si ricorda che, nel caso
 ideale, già dopo $150\,\si{\us}$ il segnale si poteva considerare azzerato, mentre in questa situazione è necessario
@@ -852,16 +852,15 @@ modulo CR assume la forma
 
 e risulta avere, in buona approssimazione, lo stesso polo del modulo CR \textit{base}. Di conseguenza, la funzione di
 trasferimento complessiva dello \textit{shaper compensato} continua ad avere un polo doppio in $f_{\text{polo}}$ e
-questo non ne altera le proprietà caratteristiche. La correzione apportata per eliminare l'effetto di
-\textit{undershoot} prende il nome di compensazione \textit{pole zero}. In laboratorio, quindi, viene montata una
-resistenza $R_{\text{pz}} = 1.013 \pm 0.007 \, \si{\mega\ohm}$ ($\text{F.S.} 10\,\si{\mega\ohm}$) molto simile a quella
-necessaria per compensare l'effetto di \textit{undershoot} ($R_{\text{pz}}^{\text{th}} = 1.03 \pm 0.07 \,
-\si{\mega\ohm}$): osservando il grafico a destra in \autoref{i:shaper_waveforms} si nota quindi come l'effetto sia del
-tutto scomparso. Il segnale ora, infatti, dopo aver assunto il valore massimo decresce senza scendere sotto la
-\textit{baseline}. Inoltre, il segnale si azzera completamente dopo circa $200\,\si{\us}$, come nel caso ideale trattato
-in precedenza. Si vuole ora confrontare le misure sperimentali acquisite con l'oscilloscopio ed i dati acquisiti con la
-scheda Arduino. In \autoref{t:shaper_vout} si riportano quindi le misure del massimo di tensione, il tempo in cui tale
-massimo viene assunto e la tensione di \textit{undershoot}. 
+questo non ne altera le proprietà caratteristiche. La correzione apportata per eliminare l'effetto di undershoot prende
+il nome di compensazione \textit{pole zero}. In laboratorio, quindi, viene montata una resistenza $R_{\text{pz}} = 1.013
+\pm 0.007 \, \si{\mega\ohm}$ ($\text{F.S.}\,\, 10 \,\si{\mega\ohm}$) molto simile a quella necessaria per compensare
+l'effetto di undershoot ($R_{\text{pz}}^{\text{th}} = 1.03 \pm 0.07 \, \si{\mega\ohm}$): osservando il grafico a destra
+in \autoref{i:shaper_waveforms} si nota quindi come l'effetto sia del tutto scomparso. Il segnale ora, infatti, dopo
+aver assunto il valore massimo decresce senza scendere sotto la baseline. Inoltre, il segnale si azzera completamente
+dopo circa $200\,\si{\us}$, come nel caso ideale trattato in precedenza. Si vuole ora confrontare le misure sperimentali
+acquisite con l'oscilloscopio ed i dati acquisiti con la scheda Arduino. In \autoref{t:shaper_vout} si riportano quindi
+le misure del massimo di tensione, il tempo in cui tale massimo viene assunto e la tensione di undershoot. 
 
 \begin{figure}[H] 
 	\centering
@@ -925,20 +924,20 @@ le simulazioni Spice e quindi con le aspettative.
 
 \section{Catena Elettronica Completa}\label{s:catena}
 
-Generalmente, in una \textit{catena elettronica} associata ad un rivelatore, lo \textit{shaper} non ha solamente la
-funzione di modificare la forma del segnale. Viene infatti progettato in modo tale da fornire anche un'amplificazione e,
-in tal caso, il modulo prende il nome di \textit{shaping amplifier}. L'azione dello \textit{shaper CR-RC} montato in
-laboratorio riduce in modo ottimale la durata effettiva del segnale, rendendo più difficile che si verifichi un
-\textit{signal pile up}. Tuttavia, l'ampiezza in tensione viene notevolmente ridotta: per questo motivo allora, in
-laboratorio, si assembla in coda allo \textit{shaper} un circuito amplificatore con operazionale in configurazione non
-invertente, ovvero l'ultimo stadio della catena rappresentato in \autoref{i:circuito}. Lo scopo di questo terzo ed ultimo
-stadio della catena è ottimizzare l'ampiezza del segnale per sfruttare al meglio il range in input della DAQ, ovvero in
-questo caso l'ADC della scheda Arduino Due. Questa, infatti, può ricevere nell'input analogico segnali \textit{positivi}
-su un range di circa $3\,\si{\volt}$, nonostante sia opportuno notare che già oltre i $2\,\si{\volt}$ i vari circuiti di
-protezione dei pin in ingresso tendono ad alterare l'acquisizione del segnale. Quest'ultimo, infine, viene convertito
-lavorando su 12 bit, cioè 4096 valori. Come è stato evidenziato nelle sezioni precedenti, i segnali acquisiti in uscita
-dallo \textit{shaper} si aggirano attorno al centinaio di milliVolt: essendo allora il segnale già positivo è
-sufficiente un'amplificazione lineare non invertente per adattare il segnale al range dell'ADC di Arduino. 
+Generalmente, in una catena elettronica associata ad un rivelatore, lo shaper non ha solamente la funzione di modificare
+la forma del segnale. Viene infatti progettato in modo tale da fornire anche un'amplificazione e, in tal caso, il modulo
+prende il nome di \textit{shaping amplifier}. L'azione dello \textit{shaper CR-RC} montato in laboratorio riduce in modo
+ottimale la durata effettiva del segnale, rendendo più difficile che si verifichi un \textit{signal pile up}. Tuttavia,
+l'ampiezza in tensione viene notevolmente ridotta: per questo motivo allora, in laboratorio, si assembla in coda allo
+shaper un circuito amplificatore con operazionale in configurazione non invertente, ovvero l'ultimo stadio della catena
+rappresentato in \autoref{i:circuito}. Lo scopo di questo terzo ed ultimo stadio della catena è ottimizzare l'ampiezza
+del segnale per sfruttare al meglio il range in input della DAQ, ovvero in questo caso l'ADC della scheda Arduino Due.
+Questa, infatti, può ricevere nell'input analogico segnali \textit{positivi} su un range di circa $3\,\si{\volt}$,
+nonostante sia opportuno notare che già oltre i $2\,\si{\volt}$ i vari circuiti di protezione dei pin in ingresso
+tendono ad alterare l'acquisizione del segnale. Quest'ultimo, infine, viene convertito lavorando su 12 bit, cioè 4096
+valori. Come è stato evidenziato nelle sezioni precedenti, i segnali acquisiti in uscita dallo shaper si aggirano
+attorno al centinaio di milliVolt: essendo allora il segnale già positivo è sufficiente un'amplificazione lineare non
+invertente per adattare il segnale al range dell'ADC di Arduino. 
 
 %\begin{wrapfigure}{R}{0.5\textwidth}
 %	\centering
@@ -1024,7 +1023,7 @@ diventa
 	\,\,\, \frac{1}{\left( s + \frac{ 1 }{ \tau^{ \text{sh} } } \right)^2}
 \end{equation}\\
 Si noti allora che la funzione di trasferimento effettiva della catena elettronica completa non presenta zeri, mentre
-presenta lo stesso polo doppio dello \textit{shaper}. Ci si aspetta dunque che il comportamento in frequenza della
+presenta lo stesso polo doppio dello shaper. Ci si aspetta dunque che il comportamento in frequenza della
 catena sia quello di un filtro passa basso avente frequenza di taglio teorica $f_{\text{t}} = 10.0 \pm 0.4 \,\si{k\Hz}$
 (sperimentalmente si è invece trovato, in \autoref{s:shaper_bode}, $f_{\text{t}} = 9.6 \pm 0.2 \,\si{k\Hz}$). Per
 frequenze minori ci si aspetta, nel grafico di Bode, un andamento costante delle misure mentre, per frequenze maggiori,
@@ -1111,7 +1110,7 @@ della catena.
 
 Si vuole ora studiare la risposta in frequenza della catena elettronica: per quanto riportato in
 \autoref{s:catena_config}, ci si aspetta un comportamento da filtro passa basso avente frequenza di taglio analoga alla
-frequenza relativa al polo dello \textit{shaper} (\autoref{s:shaper_bode}). Si rappresenta allora in
+frequenza relativa al polo dello shaper (\autoref{s:shaper_bode}). Si rappresenta allora in
 \autoref{i:catena_thebode} il grafico di Bode delle misure acquisite assieme ai punti ottenuti attraverso una
 simulazione Spice della risposta del circuito. 
 
@@ -1133,13 +1132,9 @@ che la frequenza di taglio teorica attesa è $f_{\text{t}} = 10.0 \pm 0.4 \,\si{
 polo della funzione di trasferimento dello shaper ricavata dal grafico di Bode in \autoref{i:shaper_thebode} risulta
 essere $f_{\text{t}} = 9.6 \pm 0.2 \,\si{k\Hz}$. La stima della frequenza di taglio appena trovata presenta un'ottima
 compatibilità con queste ultime: in particolare si ha una compatibilità $\lambda = 0.7$ con la stima teorica e $\lambda
-= 0.3$ con la frequenza relativa al polo dello \textit{shaper}. È stata quindi verificata la validità di
+= 0.3$ con la frequenza relativa al polo dello shaper. È stata quindi verificata la validità di
 \autoref{e:catena_H_final}, fortemente dipendente dalla corretta scelta delle componenti circuitali al fine di poter
 effettuare determinate approssimazioni e identificazioni. 
-
-
-
-
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -1148,10 +1143,10 @@ effettuare determinate approssimazioni e identificazioni.
 
 \subsection{Considerazioni Finali}\label{s:catena_finale}
 
-Si vuole ora cercare di fornire una visione d'insieme della \textit{catena elettronica} studiata nelle sezioni
+Si vuole ora cercare di fornire una visione d'insieme della catena elettronica studiata nelle sezioni
 precedenti. Si ricorda che il segnale in ingresso, erogato dal generatore di funzioni, consiste in un impulso quadrato
 di frequenza $f_{\text{gen}}= 1 \,\si{\kilo\hertz}$, ampiezza $V_{\text{gen}} = 1 \,\si{\volt}$ e durata $T = 5
-\,\si{\us}$. Il segnale viene quindi inizialmente elaborato dal \textit{preamplificatore}, lineare rispetto alla carica
+\,\si{\us}$. Il segnale viene quindi inizialmente elaborato dal preamplificatore, lineare rispetto alla carica
 totale in ingresso. In 
 
 \begin{wrapfigure}[15]{L}{0.5\textwidth} 
@@ -1162,23 +1157,23 @@ totale in ingresso. In
    \label{i:trend} 
 \end{wrapfigure}
 
-seguito, il segnale viene modificato in forma e durata tramite l'azione dello \textit{shaper}. Infine, tale segnale
-viene amplificato per favorirne l'acquisizione da parte dell'ADC della scheda Arduino. In \autoref{i:trend} si evidenzia
+seguito, il segnale viene modificato in forma e durata tramite l'azione dello shaper. Infine, tale segnale viene
+amplificato per favorirne l'acquisizione da parte dell'ADC della scheda Arduino. In \autoref{i:trend} si evidenzia
 l'andamento dell'ampiezza del segnale dall'ingresso fino all'uscita dell'amplificatore finale, confrontandolo
 parallelamente al trend teorico. I due si trovano allora in soddisfacente accordo: ad eccezione della tensione in
 ingresso erogata dal generatore, in uscita da ciascun modulo della catena si misura sperimentalmente un'ampiezza
 leggermente inferiore delle aspettative teoriche, come più volte sottolineato in precedenza. Il buon accordo e la
-coerenza dell'andamento permettono dunque di affermare il corretto funzionamento della \textit{catena elettronica} nel
-suo insieme. L'importanza e l'efficacia dell'azione del \textit{preamplificatore} e dello \textit{shaper} sono state
-ampiamente discusse e verificate in precedenza. Si vuole ora invece essere più quantitativi riguardo all'azione
-dell'\textit{amplificatore} finale. Come anticipato in \autoref{s:catena}, il segnale amplificato è meglio adattato al
-range in input dell'ADC della scheda Arduino. Come conseguenza, sfruttando più correttamente la conversione AD, si
-ottiene un sostanziale aumento di precisione nelle misure. Osservando ad esempio i valori di tensione in uscita dallo
-\textit{shaper} in \autoref{t:shaper_vout}, sia le misure acquisite con l'oscilloscopio sia le misure acquisite dalla
-scheda Arduino presentano un errore relativo del $1.5\%$, trattandosi di un centinaio di milliVolt. Per quanto riguarda
-il segnale amplificato, invece, un'acquisizione con l'oscilloscopio è caratterizzata da un errore relativo del $1.7\%$,
-mentre per un'acquisizione effettuata da Arduino si ottiene \textit{almeno} uno $0.4\%$ e adattando più accuratamente il
-segnale al range dell'ADC si è in grado di aumentare ulteriormente la precisione delle misure fino a circa lo $0.1\%$. 
+coerenza dell'andamento permettono dunque di affermare il corretto funzionamento della catena elettronica nel suo
+insieme. L'importanza e l'efficacia dell'azione del preamplificatore e dello shaper sono state ampiamente discusse e
+verificate in precedenza. Si vuole ora invece essere più quantitativi riguardo all'azione dell'amplificatore finale.
+Come anticipato in \autoref{s:catena}, il segnale amplificato è meglio adattato al range in input dell'ADC della scheda
+Arduino. Come conseguenza, sfruttando più correttamente la conversione AD, si ottiene un sostanziale aumento di
+precisione nelle misure. Osservando ad esempio i valori di tensione in uscita dallo shaper in \autoref{t:shaper_vout},
+sia le misure acquisite con l'oscilloscopio sia le misure acquisite dalla scheda Arduino presentano un errore relativo
+del $1.5\%$, trattandosi di un centinaio di milliVolt. Per quanto riguarda il segnale amplificato, invece,
+un'acquisizione con l'oscilloscopio è caratterizzata da un errore relativo del $1.7\%$, mentre per un'acquisizione
+effettuata da Arduino si ottiene \textit{almeno} uno $0.4\%$ e adattando più accuratamente il segnale al range dell'ADC
+si è in grado di aumentare ulteriormente la precisione delle misure fino a circa lo $0.1\%$. 
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -1187,16 +1182,16 @@ segnale al range dell'ADC si è in grado di aumentare ulteriormente la precision
 
 \section{Conclusioni}\label{s:conclusioni}
 
-In conclusione, è stato messo in evidenza come la \textit{catena elettronica} risponda al segnale in ingresso in modo
-conforme alle aspettative teoriche ed alle simulazioni Spice. I principali vantaggi emersi nel corso dell'esperienza
-riguardo l'utilizzo di un'elettronica modulare di questo tipo sono sicuramente l'ottenere in uscita un segnale
-acquisibile adattato al range specifico della DAQ in utilizzo e l'accorciare la durata effettiva del segnale evitando
-quindi eventuali pile up. Inoltre, è stato evidenziato come queste caratteristiche di interesse dipendano esclusivamente
-dalla scelta delle componenti circuitali: sarebbe dunque possibile sostituire, per esempio, una resistenza
-del modulo amplificatore con un \textit{trimmer} resistivo, al fine di rendere più agevole in laboratorio la corretta
-scelta dell'amplificazione per adattare il segnale al range della DAQ. Analogamente, sarebbe possibile implementare
-trimmer resistivi o capacitivi anche nello shaper, in quanto si è visto che lo \textit{shaping time} è strettamente
-correlato alla durata effettiva del segnale in uscita. 
+In conclusione, è stato messo in evidenza come la catena elettronica risponda al segnale in ingresso in modo conforme
+alle aspettative teoriche ed alle simulazioni Spice. I principali vantaggi emersi nel corso dell'esperienza riguardo
+l'utilizzo di un'elettronica modulare di questo tipo sono sicuramente l'ottenere in uscita un segnale acquisibile
+adattato al range specifico della DAQ in utilizzo e l'accorciare la durata effettiva del segnale evitando quindi
+eventuali pile up. Inoltre, è stato evidenziato come queste caratteristiche di interesse dipendano esclusivamente dalla
+scelta delle componenti circuitali: sarebbe dunque possibile sostituire, per esempio, una resistenza del modulo
+amplificatore con un \textit{trimmer} resistivo, al fine di rendere più agevole in laboratorio la corretta scelta
+dell'amplificazione per adattare il segnale al range della DAQ. Analogamente, sarebbe possibile implementare trimmer
+resistivi o capacitivi anche nello shaper, in quanto si è visto che lo shaping time è strettamente correlato alla durata
+effettiva del segnale in uscita. 
 
 
 %----------------------------------------------------END OF FILE----------------------------------------------------------------------------
