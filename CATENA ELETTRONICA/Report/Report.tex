@@ -1171,7 +1171,11 @@ sia le misure acquisite con l'oscilloscopio sia le misure acquisite dalla scheda
 del $1.5\%$, trattandosi di un centinaio di milliVolt. Per quanto riguarda il segnale amplificato, invece,
 un'acquisizione con l'oscilloscopio è caratterizzata da un errore relativo del $1.7\%$, mentre per un'acquisizione
 effettuata da Arduino si ottiene \textit{almeno} uno $0.4\%$ e adattando più accuratamente il segnale al range dell'ADC
-si è in grado di aumentare ulteriormente la precisione delle misure fino a circa lo $0.1\%$. 
+si è in grado di aumentare ulteriormente la precisione delle misure fino a circa lo $0.1\%$. È opportuno sottolineare,
+tuttavia, che un errore relativo dell'ordine del \textit{per mille} può non essere sempre rappresentativo della reale
+precisione di misura. L'incertezza associata alle misure acquisite con Arduino, infatti, proviene direttamente della
+risoluzione dello strumento e non tiene conto quindi di numerosi effetti e sistematiche che intervengono nel circuito
+stesso, montato sulla breadboard. 
 
 
 %-------------------------------------------------------------------------------------------------------------------------------------------
@@ -1180,16 +1184,17 @@ si è in grado di aumentare ulteriormente la precisione delle misure fino a circ
 
 \section{Conclusioni}\label{s:conclusioni}
 
-In conclusione, è stato messo in evidenza come la catena elettronica risponda al segnale in ingresso in modo conforme
-alle aspettative teoriche ed alle simulazioni Spice. I principali vantaggi emersi nel corso dell'esperienza riguardo
-l'utilizzo di un'elettronica modulare di questo tipo sono sicuramente l'ottenere in uscita un segnale acquisibile
-adattato al range specifico della DAQ in utilizzo e l'accorciare la durata effettiva del segnale evitando quindi
-eventuali pile up. Inoltre, è stato evidenziato come queste caratteristiche di interesse dipendano esclusivamente dalla
-scelta delle componenti circuitali: sarebbe dunque possibile sostituire, per esempio, una resistenza del modulo
-amplificatore con un \textit{trimmer} resistivo, al fine di rendere più agevole in laboratorio la corretta scelta
-dell'amplificazione per adattare il segnale al range della DAQ. Analogamente, sarebbe possibile implementare trimmer
-resistivi o capacitivi anche nello shaper, in quanto si è visto che lo shaping time è strettamente correlato alla durata
-effettiva del segnale in uscita. 
+In conclusione, è stato messo in evidenza più volte come la catena elettronica (e ciascuno stadio preso singolarmente)
+risponda al segnale in ingresso in modo conforme alle aspettative teoriche ed alle simulazioni Spice: in breve, quindi,
+la catena è lineare rispetto alla carica in ingresso e presenta un comportamento da filtro passa basso. I principali
+vantaggi, emersi nel corso dell'esperienza, riguardo l'utilizzo di un'elettronica modulare di questo tipo sono
+sicuramente l'ottenere in uscita un segnale acquisibile adattato al range specifico della DAQ in utilizzo e l'accorciare
+la durata effettiva del segnale evitando quindi eventuali pile up. Inoltre, è stato evidenziato come queste
+caratteristiche di interesse dipendano esclusivamente dalla scelta delle componenti circuitali: sarebbe dunque possibile
+sostituire, per esempio, una resistenza del modulo amplificatore con un \textit{trimmer} resistivo, al fine di rendere
+più agevole in laboratorio la corretta scelta dell'amplificazione per adattare il segnale al range della DAQ.
+Analogamente, sarebbe possibile implementare trimmer resistivi o capacitivi anche nello shaper, in quanto si è visto che
+lo shaping time è strettamente correlato alla durata effettiva del segnale in uscita. 
 
 
 %----------------------------------------------------END OF FILE----------------------------------------------------------------------------
