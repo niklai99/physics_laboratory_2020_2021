@@ -5,7 +5,7 @@
 ### Elettronica
 
 - [x] AMPLIFICATORI OPERAZIONALI
-- [ ] CATENA ELETTRONICA 
+- [x] CATENA ELETTRONICA 
 
 ### Spettroscopia
 
