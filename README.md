@@ -7,7 +7,7 @@
 * Gruppo:
   * [Nicolò Lai](https://github.com/niklai99)
 * Esperienze:
-  - [x] AMPLIFICATORI OPERAZIONALI
+  - [x] [AMPLIFICATORI OPERAZIONALI](AMPLIFICATORI%20OPERAZIONALI/)
   - [x] CATENA ELETTRONICA
 
 ### Spettroscopia (2nd semester)
