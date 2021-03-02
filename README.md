@@ -8,7 +8,7 @@
   * [Nicolò Lai](https://github.com/niklai99)
 * Esperienze:
   - [x] [AMPLIFICATORI OPERAZIONALI](AMPLIFICATORI%20OPERAZIONALI/)
-  - [x] CATENA ELETTRONICA
+  - [x] [CATENA ELETTRONICA](CATENA%20ELETTRONICA/)
 
 ### Spettroscopia (2nd semester)
 
@@ -17,7 +17,7 @@
   * [Vanessa Cerrone](https://github.com/vanessacerrone)
   * [Simone Cigagna](https://github.com/simonecig)
 * Esperienze:
-  - [ ] CAMERA DI BRAGG
-  - [ ] EFFETTO ZEEMAN
-  - [ ] RAGGI X (FOTODIODO)
-  - [ ] RAGGI &gamma; (RIVELATORI A SCINTILLAZIONE)
+  - [ ] [CAMERA DI BRAGG](CAMERA%20DI%20BRAGG)
+  - [ ] [EFFETTO ZEEMAN]()
+  - [ ] [RAGGI X (FOTODIODO)]()
+  - [ ] [RAGGI &gamma; (RIVELATORI A SCINTILLAZIONE)]()
