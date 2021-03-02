@@ -1,9 +1,12 @@
-# Data di consegna: _29 - 11 - 2020_
+# ESPERIENZA: AMPLIFICATORI OPERAZIONALI
 
-## Obiettivo
- 
-* Verificare la linearità di un _amplificatore operazionale_ 
-* Misurare il _guadagno_ di un circuito amplificatore
-* Verificare il comportamento _derivatore_ di un filtro attivo passa alto
-* Misurare la _frequenza di taglio_ di tale filtro
-* Calibrare una scheda Arduino Due
+***
+
+## STESURA DELLA RELAZIONE (completata)
+
+Il file PDF della relazione definitiva si trova
+[QUI](https://nbviewer.jupyter.org/github/niklai99/physics_laboratory_2020_2021/blob/master/AMPLIFICATORI%20OPERAZIONALI/Esp_OpAmp_LaiNicolo1193976.pdf)!
+
+## Data di consegna: _29 - 11 - 2020_
+
+
