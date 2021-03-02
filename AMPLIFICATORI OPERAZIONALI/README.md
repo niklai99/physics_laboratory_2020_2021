@@ -1,8 +1,6 @@
-# RELAZIONE CONCLUSA! :sparkles:
+# Data di consegna: _29 - 11 - 2020_
 
-## Data di consegna: _29 - 11 - 2020_
-
-### Obiettivo
+## Obiettivo
  
 * Verificare la linearità di un _amplificatore operazionale_ 
 * Misurare il _guadagno_ di un circuito amplificatore
