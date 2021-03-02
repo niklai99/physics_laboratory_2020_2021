@@ -5,7 +5,7 @@
 ### Elettronica (1st semester)
 
 * Gruppo:
-  * Nicolò Lai
+  * [Nicolò Lai](https://github.com/niklai99)
 * Esperienze:
   - [x] AMPLIFICATORI OPERAZIONALI
   - [x] CATENA ELETTRONICA
@@ -13,9 +13,9 @@
 ### Spettroscopia (2nd semester)
 
 * Gruppo:
-  * Nicolò Lai
-  * Vanessa Cerrone
-  * Simone Cigagna
+  * [Nicolò Lai](https://github.com/niklai99)
+  * [Vanessa Cerrone](https://github.com/vanessacerrone)
+  * [Simone Cigagna](https://github.com/simonecig)
 * Esperienze:
   - [ ] CAMERA DI BRAGG
   - [ ] EFFETTO ZEEMAN
