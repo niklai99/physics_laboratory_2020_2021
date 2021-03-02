@@ -4,12 +4,20 @@
 
 ### Elettronica (1st semester)
 
-- [x] AMPLIFICATORI OPERAZIONALI
-- [x] CATENA ELETTRONICA
+* Gruppo:
+  * Nicolò Lai
+* Esperienze:
+  - [x] AMPLIFICATORI OPERAZIONALI
+  - [x] CATENA ELETTRONICA
 
 ### Spettroscopia (2nd semester)
 
-- [ ] CAMERA DI BRAGG
-- [ ] EFFETTO ZEEMAN
-- [ ] RAGGI X (FOTODIODO)
-- [ ] RAGGI &gamma; (RIVELATORI A SCINTILLAZIONE)
+* Gruppo:
+  * Nicolò Lai
+  * Vanessa Cerrone
+  * Simone Cigagna
+* Esperienze:
+  - [ ] CAMERA DI BRAGG
+  - [ ] EFFETTO ZEEMAN
+  - [ ] RAGGI X (FOTODIODO)
+  - [ ] RAGGI &gamma; (RIVELATORI A SCINTILLAZIONE)
