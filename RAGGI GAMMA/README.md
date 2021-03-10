@@ -1,5 +1,0 @@
-# ESPERIENZA: RAGGI GAMMA
-
-***
-
-
