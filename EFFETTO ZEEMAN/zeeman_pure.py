@@ -9,7 +9,7 @@ import struct
 
 def main(argv):
     # read data from command line
-    fname = argv[1]
+    fname = argv[0]
     # features not supported yet
     bkgfrom = -1
     bkgto = -1
