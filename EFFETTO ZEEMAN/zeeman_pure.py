@@ -38,7 +38,7 @@ def main(argv):
 
     # read file by chunks (again) to fill histogram
     pf = open(fname, "rb")
-    icol = 0;
+    icol = 0
 
     zhist = np.empty([npixels, ncolumns]) # array to store bin height for 2D hist
     projx = np.empty([ncolumns]) # array to store projection on the X axis

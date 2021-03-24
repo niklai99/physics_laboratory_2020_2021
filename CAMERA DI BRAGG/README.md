@@ -1,5 +1,0 @@
-# ESPERIENZA: CAMERA DI BRAGG
-
-***
-
-
