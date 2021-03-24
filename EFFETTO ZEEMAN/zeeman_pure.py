@@ -7,6 +7,7 @@ import matplotlib.colors
 import seaborn as sns
 import struct
 import pandas as pd
+from matplotlib.colors import ListedColormap
 
 def makeFig(ncolumns, projx):
 
@@ -101,12 +102,18 @@ def main(argv):
     x = np.arange(0,npixels+1,1)
     y = np.arange(0,ncolumns+1,1)
 
+
+    # create a white-to-blue linear colormap
+    cmap = ListedColormap([[1-x, 1-x/2, 1, 1] for x in np.arange(0,1,0.05)])
+    
+
     # 2D histogram
     # python is super dumb so y = rows and x = columns
-    ax1.pcolormesh(y, x, zhist, cmap = 'Blues', shading='flat')
+    ax1.pcolormesh(y, x, zhist, cmap = cmap, shading='flat')
+
 
     # 1D histogram: x projection 
-    ax2.hist(np.arange(0, ncolumns), bins = ncolumns, weights=projx, histtype='step')
+    ax2.hist(np.arange(0, ncolumns), bins = ncolumns, weights=projx, histtype='step', color = '#0451FF')
 
     plt.show()
 
