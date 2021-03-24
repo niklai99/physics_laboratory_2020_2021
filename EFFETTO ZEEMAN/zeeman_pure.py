@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors
 import seaborn as sns
 import struct
+import pandas as pd
 
 def main(argv):
     # read data from command line
@@ -70,8 +71,11 @@ def main(argv):
     # python is super dumb so y = rows and x = columns
     ax[0].pcolormesh(y,x, zhist, shading='flat')
 
-    ax[1].bar(np.arange(0,ncolumns), projx,
-                 width=1.0, color='royalblue')
+    # ax[1].bar(np.arange(0,ncolumns), projx,
+    #              width=1.0, color='royalblue')
+
+    ax[1].hist(np.arange(0,ncolumns), bins = 150, weights=projx, histtype='step')
+
     ax[1].set_ylim(460000,500000)
     plt.show()
 
