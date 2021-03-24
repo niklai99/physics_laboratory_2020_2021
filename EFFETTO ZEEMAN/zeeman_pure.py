@@ -8,9 +8,31 @@ import seaborn as sns
 import struct
 import pandas as pd
 
+def makeFig(ncolumns, projx):
+
+    # create figure
+    fig = plt.figure(figsize=(12,6))
+
+    # create axes
+    ax1 = fig.add_subplot(1, 2, 1)
+    ax2 = fig.add_subplot(1, 2, 2)
+
+    # define y range for ax2
+    YMAX = np.amax(projx)
+    YMIN = np.amin(projx)
+
+    # set plot ranges for ax2
+    ax2.set_xlim(left = 0, right = ncolumns-1)
+    ax2.set_ylim(bottom = YMIN * (1 - 1/100), top = YMAX * (1 + 1/100))
+
+    return fig, ax1, ax2
+
 def main(argv):
+
     # read data from command line
     fname = argv[0]
+
+
     # features not supported yet
     bkgfrom = -1
     bkgto = -1
@@ -18,9 +40,12 @@ def main(argv):
     projYto = -1
     hrname = ''
 
+
     # constants
     npixels=7926
     maxcolumns=1024
+
+    # -------- GET DATA --------
 
     # read binary file
     pf = open(fname, "rb")
@@ -64,19 +89,25 @@ def main(argv):
 
     pf.close()
 
-    # plot
-    fig,ax = plt.subplots(ncols=2)
+    # -------- ----------- --------
+
+
+    # -------- MAKE PLOTS --------
+
+    # create and set figure and axes
+    fig, ax1, ax2 = makeFig(ncolumns, projx)
+
+    # make data arrays
     x = np.arange(0,npixels+1,1)
     y = np.arange(0,ncolumns+1,1)
+
+    # 2D histogram
     # python is super dumb so y = rows and x = columns
-    ax[0].pcolormesh(y,x, zhist, shading='flat')
+    ax1.pcolormesh(y, x, zhist, cmap = 'Blues', shading='flat')
 
-    # ax[1].bar(np.arange(0,ncolumns), projx,
-    #              width=1.0, color='royalblue')
+    # 1D histogram: x projection 
+    ax2.hist(np.arange(0, ncolumns), bins = ncolumns, weights=projx, histtype='step')
 
-    ax[1].hist(np.arange(0,ncolumns), bins = 150, weights=projx, histtype='step')
-
-    ax[1].set_ylim(460000,500000)
     plt.show()
 
 
