@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+#%config InlineBackend.figure_format = 'png'
 # usage:
 # read and plot data:
 #   python zeeman_pure.py zeeman_image.zee
@@ -211,6 +211,7 @@ def main(argv):
     # 1D histogram: x projection
     ax2.hist(xhist1D, bins = len(proj), weights=proj, histtype='step', color = '#0451FF')
 
+    fig.tight_layout()
     plt.show()
 
 
