@@ -127,7 +127,7 @@ def getData(fname):
 
 
 # compute Y-projection
-def projectToY(zhist,projYfrom,projYto, ncolumns):
+def projectToY(zhist, projYfrom, projYto, ncolumns):
 
     projy = np.empty(npixels)
     print("projecting from", projYfrom, projYto)
@@ -182,7 +182,7 @@ def main(argv):
             projYto = int(argv[4]) # ending projection point
 
             # get projection
-            proj = projectToY(zhist,projYfrom,projYto, ncolumns)
+            proj = projectToY(zhist, projYfrom, projYto, ncolumns)
             # restrict projection to requested bounds
             #proj = proj[projYfrom:projYto]
 
