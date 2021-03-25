@@ -7,8 +7,8 @@
 # + subtract background after computing mean bkg in given range (es: 120-140)
 #   python zeeman_pure.py zeeman_image.zee 120 140
 #
-# + plot Y-projection in given range (es: 3700-3900)
-#   python zeeman_pure.py zeeman_image.zee 120 140 3700 3900
+# + plot Y-projection in given range (es: 80-100)
+#   python zeeman_pure.py zeeman_image.zee 120 140 80 100
 
 
 import sys, getopt
@@ -37,7 +37,7 @@ def doBackgroundOp(bkgfrom,bkgto,hist):
         # compute mean background for row i
         for j in range(bkgfrom,bkgto):
             bkg+=hist[i][j]
-        bkg/=(bkgto-bkgfrom+1)
+        bkg/=(bkgto-bkgfrom)
 
         # subtract background from row i
         for j in range(ncolumns):
@@ -132,11 +132,17 @@ def projectToY(zhist,projYfrom,projYto, ncolumns):
     projy = np.empty(npixels)
     print("projecting from", projYfrom, projYto)
 
-    for i in range(projYfrom, projYto):
-        sumy=0
-        for j in range(ncolumns):
-            sumy+= zhist[i][j]
-            projy[i]=sumy
+    # for i in range(projYfrom, projYto):
+    #     sumy=0
+    #     for j in range(ncolumns):
+    #         sumy+= zhist[i][j]
+    #         projy[i]=sumy
+
+    for i in range(npixels):
+        sumy = 0
+        for j in range(projYfrom, projYto):
+            sumy+=zhist[i][j]
+        projy[i]=sumy
 
     return projy
 
@@ -178,14 +184,14 @@ def main(argv):
             # get projection
             proj = projectToY(zhist,projYfrom,projYto, ncolumns)
             # restrict projection to requested bounds
-            proj = proj[projYfrom:projYto]
+            #proj = proj[projYfrom:projYto]
 
             # override plot data
-            xhist1D = range(projYfrom, projYto)
-            #xhist1D = range(0, npixels)
-            projMin = projYfrom
-            projMax = projYto
-            YMIN = np.amin(proj)
+            #xhist1D = range(projYfrom, projYto)
+            xhist1D = range(0, npixels)
+            projMin = 0
+            projMax = npixels
+            YMIN = 0
             YMAX = np.amax(proj)
 
 
