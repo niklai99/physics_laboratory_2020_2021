@@ -22,7 +22,8 @@ from matplotlib.colors import ListedColormap
 # constants
 npixels=7926
 maxcolumns=1024
-LAMBDA = 585.3 * 1e-3 #micrometers
+LAMBDA = 585.3 # nanometers
+d = 4.04 * 1e6 #nanometers (4.04 millimiters)
 dataPath = '../Data/'
 
 # starting/ending points of each peek
@@ -64,7 +65,7 @@ def display3peeks(data):
 
 
 # 2) search for half-max and compute deltaX
-def computeDeltaX(Slice):
+def computeDeltaXru(Slice):
 
     Y = np.array(Slice['Y'])
 
@@ -120,19 +121,54 @@ def computeDeltaX(Slice):
     # print(pixelHalfThreeRight)
 
     # average distance between half maxs
-    deltaX = ( (pixelHalfTwoLeft - pixelHalfOneRight) + (pixelHalfThreeLeft - pixelHalfTwoRight) ) / 2
+    deltaXru = ( (pixelHalfTwoLeft - pixelHalfOneRight) + (pixelHalfThreeLeft - pixelHalfTwoRight) ) / 2
 
-    return deltaX
+    # FWHF of central peek
+    x = pixelHalfTwoRight - pixelHalfTwoLeft
 
+    return deltaXru, x
+
+
+def computeDeltaLru():
+
+    # approximate formula
+    dLru = LAMBDA**2 / (2*d) # nanometers
+
+    return dLru
+
+
+def computeDeltaLambda(dXru, dLru, x):
+
+    dL = (x * dLru) / dXru
+
+    return dL
+
+
+def computeResolvingPower(dL):
+
+    R = LAMBDA / dL
+
+    return R
 
 
 def main():
 
     data = readData()
-    Slice = display3peeks(data)
-    deltaX = computeDeltaX(Slice)
 
-    print('Peek spacing: ' + format(deltaX, '1.0f') + ' pixels')
+    Slice = display3peeks(data)
+    dXru, x = computeDeltaXru(Slice)
+    dLru = computeDeltaLru()
+    dL = computeDeltaLambda(dXru, dLru, x)
+    R = computeResolvingPower(dL)
+
+    print('\n')
+    print('-\u03BB: ' + format(LAMBDA, '1.1f') + ' nanometers')
+    print('-\u0394\u03BB (r.u.): ' + format(dLru, '1.3f') + ' nanometers')
+    print('-Peek spacing: ' + format(dXru, '1.0f') + ' pixels')
+    print('-FWHF central peek: ' + format(x, '1.0f') + ' pixels')
+    print('-\u0394\u03BB: ' + format(dL, '1.3f') + ' nanometers')
+    print('-Resolving Power R: ' + format(R, '1.0f'))
+    print('\n')
 
     plt.show()
 
