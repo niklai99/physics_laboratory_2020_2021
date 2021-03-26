@@ -2,13 +2,13 @@
 #%config InlineBackend.figure_format = 'png'
 # usage:
 # read and plot data:
-#   python zeeman_pure.py zeeman_image.zee
+#   python zeemanPlot.py zeeman_image.zee
 #
 # + subtract background after computing mean bkg in given range (es: 120-140)
-#   python zeeman_pure.py zeeman_image.zee 120 140
+#   python zeemanPlot.py zeeman_image.zee 120 140
 #
 # + plot Y-projection in given range (es: 80-100)
-#   python zeeman_pure.py zeeman_image.zee 120 140 80 100
+#   python zeemanPlot.py zeeman_image.zee 120 140 80 100
 
 
 import sys, getopt
