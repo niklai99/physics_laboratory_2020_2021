@@ -13,24 +13,28 @@ LAMBDA = 585.3 # nanometers
 d = 4.04 * 1e6 #nanometers (4.04 millimiters)
 dataPath = '../Data/'
 
-# starting/ending points of each Peak:
-# first three peaks set (left)
-p1_1 = 1950
-p1_2 = 2050
-p1_3 = 2160
-p1_4 = 2260
-
-# second three peaks set (center)
-p2_1 = 3525
-p2_2 = 3600
-p2_3 = 3675
-p2_4 = 3750
-
-# third three peaks set (right)
-p3_1 = 5290
-p3_2 = 5350
-p3_3 = 5410
-p3_4 = 5470
+# starting/ending points of each peak:
+# each sub-list represents a 3-peaks set
+# example: 
+# [1st peak starts, 1st peak ends/2nd peak start, 2nd peak ends/3rd peak starts, 3rd peak ends]
+p = [
+        [1950, 2050, 2160, 2260],
+        [2260, 2360, 2460, 2560],
+        [2560, 2660, 2750, 2850],
+        [2850, 2930, 3020, 3110],
+        [3110, 3190, 3270, 3360],
+        [3360, 3440, 3520, 3600],
+        [3600, 3675, 3750, 3825],
+        [3825, 3900, 3975, 4050],
+        [4050, 4120, 4190, 4260],
+        [4260, 4330, 4400, 4465],
+        [4465, 4530, 4600, 4665],
+        [4665, 4730, 4795, 4860],
+        [4860, 4925, 4990, 5050],
+        [5050, 5110, 5170, 5230],
+        [5230, 5290, 5350, 5410],
+        [5410, 5470, 5530, 5590]
+    ]
 
 
 # read data from txt file
@@ -41,180 +45,131 @@ def readData():
     return data
 
 
-# COMPUTE DELTA X BETWEEN DIFFRACTION peakS
+# simple function that returns the middle element of a list
+# probably useless
+def middle_element(lst):
 
-# 1) isolate 3 peaks
-def display3peaks(data):
-    
-    slice1 = data[(data['X'] >= p1_1) & (data['X'] <= p1_4)]
-    slice2 = data[(data['X'] >= p2_1) & (data['X'] <= p2_4)]
-    slice3 = data[(data['X'] >= p3_1) & (data['X'] <= p3_4)]
+    if len(lst)%2 == 0:
+        element = int(len(lst)/2) - 1
+        return lst[element]
 
-    # create figure
-    fig = plt.figure(figsize=(12,6))
+    elif len(lst)%2 != 0:
+        element = int(len(lst)/2)
+        return lst[element]
 
-    # create axes
-    ax1 = fig.add_subplot(1, 3, 1)
-    ax2 = fig.add_subplot(1, 3, 2)
-    ax3 = fig.add_subplot(1, 3, 3)
 
-    # axis limits
-    ax1.set_xlim(p1_1, p1_4)
-    ax1.set_ylim(0, np.amax(slice1['Y']) * (1 + 5/100))
+# simple function that returns the first, the central and the last elements of a list
+# probably useless
+def start_middle_end(lst):
 
-    ax2.set_xlim(p2_1, p2_4)
-    ax2.set_ylim(0, np.amax(slice2['Y']) * (1 + 5/100))
+    if len(lst)%2 == 0:
+        element = int(len(lst)/2) - 1
+        return [lst[0], lst[element], lst[-1]]
 
-    ax3.set_xlim(p3_1, p3_4)
-    ax3.set_ylim(0, np.amax(slice3['Y']) * (1 + 5/100))
+    elif len(lst)%2 != 0:
+        element = int(len(lst)/2)
+        return [lst[0], lst[element], lst[-1]]
 
-    # show plots
-    ax1.hist(slice1['X'], bins = len(slice1['Y']), weights = slice1['Y'], histtype = 'step', color = '#0451FF')
-    ax2.hist(slice2['X'], bins = len(slice2['Y']), weights = slice2['Y'], histtype = 'step', color = '#0451FF')
-    ax3.hist(slice3['X'], bins = len(slice3['Y']), weights = slice3['Y'], histtype = 'step', color = '#0451FF')
 
-    # titles
-    ax1.set_title('Left set of peaks')
-    ax2.set_title('Central set of peaks')
-    ax3.set_title('Right set of peaks')
 
-    # labels
-    ax1.set_xlabel('# pixel')
-    ax2.set_xlabel('# pixel')
-    ax3.set_xlabel('# pixel')
-    ax1.set_ylabel('intensity [a.u.]')
-    ax2.set_ylabel('intensity [a.u.]')
-    ax3.set_ylabel('intensity [a.u.]')
+# (almost) automated plotting 
+def plot3peaks(slices):
+
+    n = len(slices)
+
+    # if the list has less than 3 elemnts we plot a single row of plots
+    if n <= 3:
+        
+        # create figure and axes array
+        fig, ax = plt.subplots(ncols=n, figsize=(12,6), squeeze=False)
+
+        # iteration over columns
+        for i in range(n):
+            # set plot range for axes
+            ax[0][i].set_xlim(slices[i]['X'].iloc[0], slices[i]['X'].iloc[-1])
+            ax[0][i].set_ylim(0, np.amax(slices[i]['Y']) * (1 + 5/100))
+            # plot the histogram in each axe
+            ax[0][i].hist(slices[i]['X'], bins = len(slices[i]['Y']), weights = slices[i]['Y'], histtype = 'step', color = '#0451FF')
+
+
+    # if the list has 4 or more elements we need two rows of plots (even case) (please no odd lengths haha lol)
+    elif (n > 3) & (n%2 == 0):
+
+        # create figure and axes array
+        fig, ax = plt.subplots(nrows=int(np.sqrt(n)), ncols=int(np.sqrt(n)), figsize=(12,6), squeeze=False)
+
+        h = 0
+        # iteration over rows
+        for j in range(int(np.sqrt(n))):
+            # iteration over columns
+            for i in range(int(np.sqrt(n))):
+                # set plot range for axes
+                ax[j][i].set_xlim(slices[i+h]['X'].iloc[0], slices[i+h]['X'].iloc[-1])
+                ax[j][i].set_ylim(0, np.amax(slices[i+h]['Y']) * (1 + 5/100))
+                # plot the histogram in each axe
+                ax[j][i].hist(slices[i+h]['X'], bins = len(slices[i+h]['Y']), weights = slices[i+h]['Y'], histtype = 'step', color = '#0451FF')
+            h += int(np.sqrt(n))
+
 
     fig.tight_layout()
-
-    return slice1, slice2, slice3
-
-
-# 2) search for half-max and compute deltaX
-def computeDeltaXru(slice1, slice2, slice3):
-
-    Y1 = np.array(slice1['Y'])
-    Y2 = np.array(slice2['Y'])
-    Y3 = np.array(slice3['Y'])
-
-    # slice three peaks
-    peakOne1 = Y1[:(p1_2-p1_1)]
-    peakTwo1 = Y1[(p1_2-p1_1):(p1_3-p1_2)+(p1_2-p1_1)]
-    peakThree1 = Y1[(p1_3-p1_2)+(p1_2-p1_1):]
-
-    peakOne2 = Y2[:(p2_2-p2_1)]
-    peakTwo2 = Y2[(p2_2-p2_1):(p2_3-p2_2)+(p2_2-p2_1)]
-    peakThree2 = Y2[(p2_3-p2_2)+(p2_2-p2_1):]
-
-    peakOne3 = Y3[:(p3_2-p3_1)]
-    peakTwo3 = Y3[(p3_2-p3_1):(p3_3-p3_2)+(p3_2-p3_1)]
-    peakThree3 = Y3[(p3_3-p3_2)+(p3_2-p3_1):]
-
-    # find max value for each Peak
-    maxOne1 = np.amax(peakOne1)
-    maxTwo1 = np.amax(peakTwo1)
-    maxThree1 = np.amax(peakThree1)
-
-    maxOne2 = np.amax(peakOne2)
-    maxTwo2 = np.amax(peakTwo2)
-    maxThree2 = np.amax(peakThree2)
-
-    maxOne3 = np.amax(peakOne3)
-    maxTwo3 = np.amax(peakTwo3)
-    maxThree3 = np.amax(peakThree3)
-
-    # find max index for each Peak
-    indexOne1 = np.argmax(peakOne1)
-    indexTwo1 = np.argmax(peakTwo1)
-    indexThree1 = np.argmax(peakThree1)
-
-    indexOne2 = np.argmax(peakOne2)
-    indexTwo2 = np.argmax(peakTwo2)
-    indexThree2 = np.argmax(peakThree2)
-
-    indexOne3 = np.argmax(peakOne3)
-    indexTwo3 = np.argmax(peakTwo3)
-    indexThree3 = np.argmax(peakThree3)
-
-    indexMax = [indexTwo1 + p1_2, indexTwo2 + p2_2, indexTwo3 + p3_2]
-
-    # compute half max
-    halfOne1 = maxOne1/2
-    halfTwo1 = maxTwo1/2
-    halfThree1 = maxThree1/2
-
-    halfOne2 = maxOne2/2
-    halfTwo2 = maxTwo2/2
-    halfThree2 = maxThree2/2
-
-    halfOne3 = maxOne3/2
-    halfTwo3 = maxTwo3/2
-    halfThree3 = maxThree3/2
-
-    # search index for half max
-    halfIndexOneLeft1 = (np.abs(peakOne1[:indexOne1]-halfOne1)).argmin() 
-    halfIndexOneRight1 = (np.abs(peakOne1[indexOne1:]-halfOne1)).argmin() + indexOne1 
-    halfIndexTwoLeft1 = (np.abs(peakTwo1[:indexTwo1]-halfTwo1)).argmin() 
-    halfIndexTwoRight1 = (np.abs(peakTwo1[indexTwo1:]-halfTwo1)).argmin() + indexTwo1
-    halfIndexThreeLeft1 = (np.abs(peakThree1[:indexThree1]-halfThree1)).argmin() 
-    halfIndexThreeRight1 = (np.abs(peakThree1[indexThree1:]-halfThree1)).argmin() + indexThree1
-
-    halfIndexOneLeft2 = (np.abs(peakOne2[:indexOne2]-halfOne2)).argmin() 
-    halfIndexOneRight2 = (np.abs(peakOne2[indexOne2:]-halfOne2)).argmin() + indexOne2 
-    halfIndexTwoLeft2 = (np.abs(peakTwo2[:indexTwo2]-halfTwo2)).argmin() 
-    halfIndexTwoRight2 = (np.abs(peakTwo2[indexTwo2:]-halfTwo2)).argmin() + indexTwo2
-    halfIndexThreeLeft2 = (np.abs(peakThree2[:indexThree2]-halfThree2)).argmin() 
-    halfIndexThreeRight2 = (np.abs(peakThree2[indexThree2:]-halfThree2)).argmin() + indexThree2
-
-    halfIndexOneLeft3 = (np.abs(peakOne3[:indexOne3]-halfOne3)).argmin() 
-    halfIndexOneRight3 = (np.abs(peakOne3[indexOne3:]-halfOne3)).argmin() + indexOne3 
-    halfIndexTwoLeft3 = (np.abs(peakTwo3[:indexTwo3]-halfTwo3)).argmin() 
-    halfIndexTwoRight3 = (np.abs(peakTwo3[indexTwo3:]-halfTwo3)).argmin() + indexTwo3
-    halfIndexThreeLeft3 = (np.abs(peakThree3[:indexThree3]-halfThree3)).argmin() 
-    halfIndexThreeRight3 = (np.abs(peakThree3[indexThree3:]-halfThree3)).argmin() + indexThree3
-
-    # compute pixel number related to half maxs
-    pixelHalfOneLeft1 = halfIndexOneLeft1 + p1_1
-    pixelHalfOneRight1 = halfIndexOneRight1 + p1_1
-    pixelHalfTwoLeft1 = halfIndexTwoLeft1 + p1_2
-    pixelHalfTwoRight1 = halfIndexTwoRight1 + p1_2
-    pixelHalfThreeLeft1 = halfIndexThreeLeft1 + p1_3
-    pixelHalfThreeRight1 = halfIndexThreeRight1 + p1_3
-
-    pixelHalfOneLeft2 = halfIndexOneLeft2 + p2_1
-    pixelHalfOneRight2 = halfIndexOneRight2 + p2_1
-    pixelHalfTwoLeft2 = halfIndexTwoLeft2 + p2_2
-    pixelHalfTwoRight2 = halfIndexTwoRight2 + p2_2
-    pixelHalfThreeLeft2 = halfIndexThreeLeft2 + p2_3
-    pixelHalfThreeRight2 = halfIndexThreeRight2 + p2_3
-
-    pixelHalfOneLeft3 = halfIndexOneLeft3 + p3_1
-    pixelHalfOneRight3 = halfIndexOneRight3 + p3_1
-    pixelHalfTwoLeft3 = halfIndexTwoLeft3 + p3_2
-    pixelHalfTwoRight3 = halfIndexTwoRight3 + p3_2
-    pixelHalfThreeLeft3 = halfIndexThreeLeft3 + p3_3
-    pixelHalfThreeRight3 = halfIndexThreeRight3 + p3_3
+    
+    return
 
 
-    # average distance between half maxs (probably wrong path to follow, according to Lunardon)
-    # deltaXru = ( (pixelHalfTwoLeft - pixelHalfOneRight) + (pixelHalfThreeLeft - pixelHalfTwoRight) ) / 2
 
-    # average distance between peaks (probably better path to follow)
-    deltaXru1 = ( ((indexTwo1+p1_2) - (indexOne1+p1_1)) + ((indexThree1+p1_3) - (indexTwo1+p1_2)) ) / 2
-    deltaXru2 = ( ((indexTwo2+p2_2) - (indexOne2+p2_1)) + ((indexThree2+p2_3) - (indexTwo2+p2_2)) ) / 2
-    deltaXru3 = ( ((indexTwo3+p3_2) - (indexOne3+p3_1)) + ((indexThree3+p3_3) - (indexTwo3+p3_2)) ) / 2
+def computeSpacingFWHM(df, p):
 
-    deltaXru = [deltaXru1, deltaXru2, deltaXru3]
+    peaks = []
+    maxs = []
+    halfMaxs = []
 
-    # FWHF of central Peak
-    x1 = pixelHalfTwoRight1 - pixelHalfTwoLeft1
-    x2 = pixelHalfTwoRight2 - pixelHalfTwoLeft2
-    x3 = pixelHalfTwoRight3 - pixelHalfTwoLeft3
+    # iteration over each peak
+    for i in range(3):
 
-    x = [x1, x2, x3]
+        # isolate each peak
+        # now peaks is a list of (three) dataframes, each dataframe containing data about a single peak
+        peaks.append(df.loc[p[i]:p[i+1]])
 
-    return deltaXru, x, indexMax
+        # we want now to find the maximum value, in other words, the height of the peak
+        # now maxs is a list of (three) dataframes, each dataframe containing X and Y of the single peak
+        maxs.append(peaks[i][ peaks[i]['Y'] == np.amax(peaks[i]['Y']) ])
+
+        # we want to compute the half-maximum
+        halfMaxs.append(maxs[i].copy())
+        halfMaxs[i]['Y'] = halfMaxs[i]['Y']/2
+
+        # now we want to compute the X values corresponding to half-max values
+        halfValue = halfMaxs[i]['Y'].iloc[0]
+        maxIndex = int(maxs[i]['X'].iloc[0])
+        halfMaxs[i]['X1'] = (   np.abs(   peaks[i]['Y'].loc[:maxIndex] - halfValue   )   ).argmin() + p[i]
+        halfMaxs[i]['X2'] = (   np.abs(   peaks[i]['Y'].loc[maxIndex:] - halfValue   )   ).argmin() + maxIndex
+
+
+    # now we want to compute the average distance between peaks
+    C1 = maxs[1]['X'].iloc[0] - maxs[0]['X'].iloc[0]
+    C2 = maxs[2]['X'].iloc[0] - maxs[1]['X'].iloc[0]
+    deltaXru = (C1 + C2) / 2
+
+    # finally compute FWHM of the central peak
+    FWHM = (halfMaxs[1]['X2'] - halfMaxs[1]['X1']).iloc[0]
+    
+    # we also want to return the position of central peak max
+    maxPosition = int(maxs[1]['X'].iloc[0])
+
+    
+    # the following plots are test plots to see whether things are working or not
+
+    # fig, ax = plt.subplots(ncols=1)
+    # fig.tight_layout()
+    # ax.hist(df['X'], bins = len(df['X']), weights =df['Y'], histtype = 'step', color = '#0451FF')
+
+    # fig, ax = plt.subplots(ncols=3)
+    # fig.tight_layout()
+    # for i in range(3):
+    #     ax[i].hist(peaks[i]['X'], bins = len(peaks[i]['X']), weights = peaks[i]['Y'], histtype = 'step', color = '#0451FF')
+    
+
+    return maxPosition, deltaXru, FWHM
 
 
 def computeDeltaLru():
@@ -225,9 +180,9 @@ def computeDeltaLru():
     return dLru
 
 
-def computeDeltaLambda(dXru, dLru, x):
+def computeDeltaLambda(dXru, dLru, FWHM):
 
-    dL = (np.array(x) * dLru) / np.array(dXru) # nanometers
+    dL = (np.array(FWHM) * dLru) / np.array(dXru) # nanometers
 
     return dL
 
@@ -239,8 +194,16 @@ def computeResolvingPower(dL):
     return R
 
 
-# ABERRATION ANALYSIS (more datapoints needed ---> we have to consider more than three sets [10 will do fine!])
-def spacingTrend(dXru, x, indexMax):
+def computeRMS(R, avgR):
+
+    MSE = np.sum( (np.array(R) - avgR)**2 ) / (len(R) - 1)
+    RMSE = np.sqrt(MSE)
+
+    return RMSE
+
+
+# ABERRATION ANALYSIS 
+def spacingTrend(peakPositions, peakSpacing, peakFWHM):
 
     # create figure
     fig = plt.figure(figsize=(12,6))
@@ -250,18 +213,18 @@ def spacingTrend(dXru, x, indexMax):
     ax2 = fig.add_subplot(1, 2, 2)
 
     # show plots
-    ax1.plot(indexMax, dXru, marker = '.', markersize = 15, linewidth = 1, color = '#0451FF')
-    ax2.plot(x, dXru, marker = '.', markersize = 15, linewidth = 1, color = '#0451FF')
+    ax1.plot(peakPositions, peakSpacing, marker = '.', markersize = 15, linewidth = 1, color = '#0451FF')
+    ax2.plot(peakPositions, peakFWHM, marker = '.', markersize = 15, linewidth = 1, color = '#0451FF')
 
     # titles
     ax1.set_title('Peak spacing over Position')
-    ax2.set_title('Peak spacing over FWHM')
+    ax2.set_title('FWHM over Position')
 
     # labels
     ax1.set_xlabel('Peak position [# pixel]')
-    ax2.set_xlabel('FWHM [# pixel]')
+    ax2.set_xlabel('Peak position [# pixel]')
     ax1.set_ylabel('Peak spacing [# pixel]')
-    ax2.set_ylabel('Peak spacing [# pixel]')
+    ax2.set_ylabel('FWHM [# pixel]')
 
     fig.tight_layout()
 
@@ -273,34 +236,71 @@ def main():
     # read data from txt file
     data = readData()
 
-    # isolate three set of three peaks each
-    slice1, slice2, slice3 = display3peaks(data)
+    # from peak-set-delimiters get X and Y data
+    # we basically isolate the 3 peaks sets 
+    # slices constains portions of dataframe that concern the corresponding set of peaks
+    slices = []
+    for i in range(len(p)):
+        s = data[(data['X'] >= p[i][0]) & (data['X'] <= p[i][-1])]
+        slices.append(s)
 
-    # compute deltaX(r.u.) and FWHM of the central Peak for each set 
-    dXru, x, indexMax = computeDeltaXru(slice1, slice2, slice3)
+    # lists to hold positions, spacings and FWHMs
+    peakPositions = []
+    peakSpacing = []
+    peakFWHM = []
 
+    # iteration over each slice 
+    for i in range(len(p)):
+
+        # call the computeSpacingFWHM function
+        # here we pass every slice we have
+        # if needed, it is possibile to use less slices (one or three) for approximate analysis
+        maxPosition, dXru, FWHM = computeSpacingFWHM(slices[i], p[i])
+
+        # append stuff
+        peakPositions.append(maxPosition)
+        peakSpacing.append(dXru)
+        peakFWHM.append(FWHM)
+
+
+    # ------ PLOTS
+    # plot all sets of peaks
+    plot3peaks(slices)
+
+    # plot trends
+    spacingTrend(peakPositions, peakSpacing, peakFWHM)
+
+    plt.show()
+    # ------ 
+
+    # ------ RESOLVING POWER
     # compute deltaLambda(r.u.)
     dLru = computeDeltaLru()
 
     # compute deltaLambda for each set of peaks
-    dL = computeDeltaLambda(dXru, dLru, x)
+    dL = computeDeltaLambda(peakSpacing, dLru, peakFWHM)
 
     # compute the resolving power for each set of peaks and the average of the three
     R = computeResolvingPower(dL)
     avgR = np.average(R)
+    R_e = computeRMS(R, avgR)
+    avgR_e = R_e / np.sqrt(len(R))
+    # ------
 
+    # ------ PRINTING
     # print relevant results
     print('\n')
     print('- \u03BB: ' + format(LAMBDA, '1.1f') + ' nanometers')
     print('- \u0394\u03BB (r.u.): ' + format(dLru, '1.3f') + ' nanometers')
-    print('- Average Peak spacing: ' + format(np.average(dXru), '1.0f') + ' pixels')
-    print('- Average FWHF central Peak: ' + format(np.average(x), '1.0f') + ' pixels')
+    print('- Average Peak spacing: ' + format(np.average(peakSpacing), '1.0f') + ' pixels')
+    print('- Average FWHF central Peak: ' + format(np.average(FWHM), '1.0f') + ' pixels')
     print('- Average \u0394\u03BB: ' + format(np.average(dL), '1.3f') + ' nanometers')
-    print('- Average Resolving Power R: ' + format(avgR, '1.0f'))
+    print('- Average Resolving Power R: ' + format(avgR, '1.0f') + ' +/- ' + format(avgR_e, '1.0f'))
     print('\n')
 
-    spacingTrend(dXru, x, indexMax)
-    plt.show()
+    
+ 
+
 
 
 if __name__ == "__main__":
