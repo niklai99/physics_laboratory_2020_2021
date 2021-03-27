@@ -269,8 +269,6 @@ def main():
 
     # plot trends
     spacingTrend(peakPositions, peakSpacing, peakFWHM)
-
-    plt.show()
     # ------ 
 
     # ------ RESOLVING POWER
@@ -298,6 +296,11 @@ def main():
     print('- Average Resolving Power R: ' + format(avgR, '1.0f') + ' +/- ' + format(avgR_e, '1.0f'))
     print('\n')
 
+    
+
+    plt.show()
+
+    return
     
  
 
