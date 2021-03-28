@@ -26,7 +26,7 @@ dataPath = '../Data/'
 data = pd.read_csv(dataPath + 'testData.txt', sep = '\t', header = None, names = ['X', 'Y'])
 X=data.X
 Y=data.Y
-peaks,p=find_peaks(Y, width=5,prominence=100,rel_height=0.5) # TODO: tweak parameters for better precision
+peaks, p=find_peaks(Y, width=5,prominence=100,rel_height=0.5) # TODO: tweak parameters for better precision
 
 # plot data
 plt.plot(X,Y)

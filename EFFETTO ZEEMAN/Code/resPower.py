@@ -4,6 +4,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from scipy.optimize import curve_fit
 
 
 # constants
@@ -45,33 +46,6 @@ def readData():
     return data
 
 
-# simple function that returns the middle element of a list
-# probably useless
-def middle_element(lst):
-
-    if len(lst)%2 == 0:
-        element = int(len(lst)/2) - 1
-        return lst[element]
-
-    elif len(lst)%2 != 0:
-        element = int(len(lst)/2)
-        return lst[element]
-
-
-# simple function that returns the first, the central and the last elements of a list
-# probably useless
-def start_middle_end(lst):
-
-    if len(lst)%2 == 0:
-        element = int(len(lst)/2) - 1
-        return [lst[0], lst[element], lst[-1]]
-
-    elif len(lst)%2 != 0:
-        element = int(len(lst)/2)
-        return [lst[0], lst[element], lst[-1]]
-
-
-
 # (almost) automated plotting 
 def plot3peaks(slices):
 
@@ -79,7 +53,7 @@ def plot3peaks(slices):
 
     # if the list has less than 3 elemnts we plot a single row of plots
     if n <= 3:
-        
+
         # create figure and axes array
         fig, ax = plt.subplots(ncols=n, figsize=(12,6), squeeze=False)
 
@@ -90,6 +64,7 @@ def plot3peaks(slices):
             ax[0][i].set_ylim(0, np.amax(slices[i]['Y']) * (1 + 5/100))
             # plot the histogram in each axe
             ax[0][i].hist(slices[i]['X'], bins = len(slices[i]['Y']), weights = slices[i]['Y'], histtype = 'step', color = '#0451FF')
+
 
 
     # if the list has 4 or more elements we need two rows of plots (even case) (please no odd lengths haha lol)
@@ -294,6 +269,7 @@ def main():
     print('- Average FWHF central Peak: ' + format(np.average(FWHM), '1.0f') + ' pixels')
     print('- Average \u0394\u03BB: ' + format(np.average(dL), '1.3f') + ' nanometers')
     print('- Average Resolving Power R: ' + format(avgR, '1.0f') + ' +/- ' + format(avgR_e, '1.0f'))
+    print('- Resolving Power precision: ' + format(100 * avgR_e/avgR, '1.2f') + '%') 
     print('\n')
 
     
