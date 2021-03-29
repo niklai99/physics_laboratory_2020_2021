@@ -19,29 +19,19 @@ dataPath = '../Data/'
 # example: 
 # [1st peak starts, 1st peak ends/2nd peak start, 2nd peak ends/3rd peak starts, 3rd peak ends]
 p = [
-        [1950, 2050, 2160, 2260],
-        [2260, 2360, 2460, 2560],
-        [2560, 2660, 2750, 2850],
-        [2850, 2930, 3020, 3110],
-        [3110, 3190, 3270, 3360],
-        [3360, 3440, 3520, 3600],
-        [3600, 3675, 3750, 3825],
-        [3825, 3900, 3975, 4050],
-        [4050, 4120, 4190, 4260],
-        [4260, 4330, 4400, 4465],
-        [4465, 4530, 4600, 4665],
-        [4665, 4730, 4795, 4860],
-        [4860, 4925, 4990, 5050],
-        [5050, 5110, 5170, 5230],
-        [5230, 5290, 5350, 5410],
-        [5410, 5470, 5530, 5590]
+        [3500, 3900, 4250, 4560],
+        [4560, 4850, 5100, 5360],
+        [5360, 5600, 5820, 6030],
+        [6030, 6240, 6440, 6630],
+        [6630, 6800, 6980, 7150],
+        [7150, 7320, 7490, 7640]
     ]
 
 
 # read data from txt file
 def readData():
 
-    data = pd.read_csv(dataPath + 'testData.txt', sep = '\t', header = None, names = ['X', 'Y'])
+    data = pd.read_csv(dataPath + 'spettro2d_Boff.txt', sep = '\t', header = None, names = ['X', 'Y'])
 
     return data
 
@@ -66,24 +56,42 @@ def plot3peaks(slices):
             ax[0][i].hist(slices[i]['X'], bins = len(slices[i]['Y']), weights = slices[i]['Y'], histtype = 'step', color = '#0451FF')
 
 
-
-    # if the list has 4 or more elements we need two rows of plots (even case) (please no odd lengths haha lol)
-    elif (n > 3) & (n%2 == 0):
+    # if the list has 6 elements
+    elif n == 6:
 
         # create figure and axes array
-        fig, ax = plt.subplots(nrows=int(np.sqrt(n)), ncols=int(np.sqrt(n)), figsize=(12,6), squeeze=False)
+        fig, ax = plt.subplots(nrows=2, ncols=3, figsize=(12,6), squeeze=False)
 
         h = 0
         # iteration over rows
-        for j in range(int(np.sqrt(n))):
+        for j in range(2):
             # iteration over columns
-            for i in range(int(np.sqrt(n))):
+            for i in range(3):
                 # set plot range for axes
                 ax[j][i].set_xlim(slices[i+h]['X'].iloc[0], slices[i+h]['X'].iloc[-1])
                 ax[j][i].set_ylim(0, np.amax(slices[i+h]['Y']) * (1 + 5/100))
                 # plot the histogram in each axe
                 ax[j][i].hist(slices[i+h]['X'], bins = len(slices[i+h]['Y']), weights = slices[i+h]['Y'], histtype = 'step', color = '#0451FF')
-            h += int(np.sqrt(n))
+            h += 3
+
+
+    # # if the list has 4 or more elements we need two rows of plots (even case) (please no odd lengths haha lol)
+    # elif (n > 3) & (n%2 == 0):
+
+    #     # create figure and axes array
+    #     fig, ax = plt.subplots(nrows=int(np.sqrt(n)), ncols=int(np.sqrt(n)), figsize=(12,6), squeeze=False)
+
+    #     h = 0
+    #     # iteration over rows
+    #     for j in range(int(np.sqrt(n))):
+    #         # iteration over columns
+    #         for i in range(int(np.sqrt(n))):
+    #             # set plot range for axes
+    #             ax[j][i].set_xlim(slices[i+h]['X'].iloc[0], slices[i+h]['X'].iloc[-1])
+    #             ax[j][i].set_ylim(0, np.amax(slices[i+h]['Y']) * (1 + 5/100))
+    #             # plot the histogram in each axe
+    #             ax[j][i].hist(slices[i+h]['X'], bins = len(slices[i+h]['Y']), weights = slices[i+h]['Y'], histtype = 'step', color = '#0451FF')
+    #         h += int(np.sqrt(n))
 
 
     fig.tight_layout()
