@@ -104,6 +104,9 @@ def main(argv):
             name='off.txt'
             #print("saving file", name)
             #np.savetxt(fname = dataPath + name, X = np.c_[xhist1D, proj], delimiter = '\t')
+=======
+            # np.savetxt(fname = dataPath + 'spettro2d_Boff.txt', X = np.c_[xhist1D, proj], delimiter = '\t')
+>>>>>>> 307e0894db1acc8f6fba4cabc169fb83a0f4ea5b
 
 
     # make 2D hist data arrays
