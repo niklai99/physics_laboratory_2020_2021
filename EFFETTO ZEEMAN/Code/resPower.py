@@ -1,11 +1,18 @@
-#!/usr/bin/python
-#%config InlineBackend.figure_format = 'png'
+# Script to identify and fit interference peaks stored in a txt file.
+# In addition, some data analysis is automatically computed
+#
+# USAGE: python resPower.py plotdata.txt
+#  where "plotdata.txt" contains the y-projection of the 2d-histogram
+#  that is obtained from a ".zee" binary file using the script zeemanPlot.py
+#
 
+import sys
 import numpy as np
 import matplotlib.pyplot as plt
+from math import pi
 import pandas as pd
+from scipy.signal import find_peaks
 from scipy.optimize import curve_fit
-
 
 # constants
 npixels=7926
@@ -14,137 +21,183 @@ LAMBDA = 585.3 # nanometers
 d = 4.04 * 1e6 #nanometers (4.04 millimiters)
 dataPath = '../Data/'
 
-# starting/ending points of each peak:
-# each sub-list represents a 3-peaks set
-# example: 
-# [1st peak starts, 1st peak ends/2nd peak start, 2nd peak ends/3rd peak starts, 3rd peak ends]
-p = [
-        [1950, 2050, 2160, 2260],
-        [2260, 2360, 2460, 2560],
-        [2560, 2660, 2750, 2850],
-        [2850, 2930, 3020, 3110],
-        [3110, 3190, 3270, 3360],
-        [3360, 3440, 3520, 3600],
-        [3600, 3675, 3750, 3825],
-        [3825, 3900, 3975, 4050],
-        [4050, 4120, 4190, 4260],
-        [4260, 4330, 4400, 4465],
-        [4465, 4530, 4600, 4665],
-        [4665, 4730, 4795, 4860],
-        [4860, 4925, 4990, 5050],
-        [5050, 5110, 5170, 5230],
-        [5230, 5290, 5350, 5410],
-        [5410, 5470, 5530, 5590]
-    ]
+start = 1400
+end = 8000
 
+binFrac=3 # nBins_new = nBins_old / binFrac
 
 # read data from txt file
-def readData():
+def readData(fname):
 
-    data = pd.read_csv(dataPath + 'off.txt', sep = '\t', header = None, names = ['X', 'Y'])
+    # read raw data
+    data = pd.read_csv(dataPath + fname, sep = '\t', header = None, names = ['X', 'Y'])
+
+    # change bins and get new y
+    newY, edge= np.histogram(data.X, weights=data.Y, bins=int(len(data.X)/binFrac))
+
+    # get new x
+    newX = []
+    for i in range(len(edge)-1):
+        newX.append((edge[i]+edge[i+1])/2)
+
+    # save new data in a Pandassssss dataframe
+    data = pd.DataFrame(list(zip(newX,newY)), columns=['X','Y'])
+    #plt.hist(newData['X'], bins = int(len(newData['X'])), weights = newData['Y'], histtype = 'step', color = '#0451FF')
+    print("Number of bins: ", len(newX))
+    count =0
+    for i in range(len(newY)):
+        count+=newY[i]
+    print("Counts", count) # note: this is different than root
 
     return data
 
 
-# (almost) automated plotting 
-def plot3peaks(slices):
+# fitting function
+def Gauss(x, N, x0, sigma):
+    return N/(2*pi)**0.5 / sigma * np.exp(-(x - x0)**2 / (2 * sigma**2))
 
-    n = len(slices)
 
-    # if the list has less than 3 elemnts we plot a single row of plots
-    if n <= 3:
+def findPeaks(newData):
 
-        # create figure and axes array
-        fig, ax = plt.subplots(ncols=n, figsize=(12,6), squeeze=False)
+    # use scipy signal to identify peaks
+    peaks, p = find_peaks(newData['Y'], width=5, prominence=100, rel_height=0.5)
+    print("Found", len(peaks), "peaks")
 
+    fig, ax = plt.subplots(figsize=(12,6))
+    fig.tight_layout()
+
+    ax.set_xlim(start, end)
+    ax.set_ylim(0, np.amax(newData['Y']) * ( 1 + 5/100 ))
+
+
+    # plot data
+    ax.hist(newData['X'], bins = int(len(newData['X'])), weights = newData['Y'], histtype = 'step', color = '#0451FF')
+    # plot peaks
+    ax.plot(newData['X'].iloc[peaks], newData['Y'].iloc[peaks], '.', color='red')
+
+
+    xHalfLeft = []
+    xHalfRight = []
+    xPlotLeft = []
+    xPlotRight = []
+    FWHM = []
+    Peaks = []
+    parFit=[]
+
+    # loop over peaks
+    for i in range(len(peaks)):
+
+        # get peak start
+        xl = newData['X'].iloc[round(p['left_ips'][i])]
+        xHalfLeft.append(xl)
+        # get peak end
+        xr = newData['X'].iloc[round(p['right_ips'][i])]
+        xHalfRight.append(xr)
+
+        y = p['width_heights'][i]
+        
+        FWHM.append(xr-xl)
+
+        xm = newData['X'].iloc[peaks[i]]
+        Peaks.append(xm)
+
+        d1 = xm - xl
+        d2 = xr - xm
+
+        xPlotLeft.append(xm - 5*d1)
+        xPlotRight.append(xm + 5*d2)
+
+        # plot limits for current peak
+        ax.vlines(x=xl, ymin=0, ymax = np.amax(newData['Y']) * ( 1 + 5/100 ), color = "blue", alpha = 0.3)
+        ax.vlines(x=xr, ymin=0, ymax = np.amax(newData['Y']) * ( 1 + 5/100 ), color = "blue", alpha = 0.3)
+        ax.hlines(y=y, xmin=xl, xmax=xr, color = "C1", alpha = 0.3)
+
+        # fit current peak
+        tr=int((p['right_ips'][i] - p['left_ips'][i])/5)
+        xfit=newData['X'].iloc[round(p['left_ips'][i]-tr):round(p['right_ips'][i])+tr]
+        yfit=newData['Y'].iloc[round(p['left_ips'][i]-tr):round(p['right_ips'][i])+tr]
+        mean0=np.average(xfit)
+        std0=np.std(xfit)
+        ngau=np.sum(yfit* binFrac)
+        par, std = curve_fit(lambda x,mean,stddev: Gauss(x,ngau,mean,stddev),
+                             xfit, yfit,
+                             p0=[mean0, std0])
+
+        # plot fit
+        xth = np.linspace(np.amin(xfit), np.amax(xfit))
+        yth = Gauss(xth,ngau,*par)
+        diff = yfit-Gauss(xfit,ngau,*par)
+        chisq = np.sum(diff**2)/(len(xfit)-2)
+
+        #print("chisq",i, round(abs(chisq-(len(xfit-2)))/ (len(xfit)-2)**0.5 / 2**0.5,2)) # TODO: ricontrollami
+        ax.plot(xth, yth,color='black')
+
+        parFit.append([ngau, par[0], par[1]])
+
+    return Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit
+
+
+def computeSpacing(Peaks):
+
+    C = []
+    Spacing = []
+
+    for i in range(1, len(Peaks)):
+        C.append(Peaks[i] - Peaks[i-1])
+
+    for i in range(1, len(C)):
+        Spacing.append((C[i] + C[i-1]) / 2)
+
+    return Spacing
+
+
+# plot 16 triplets of peeks
+# probably useless
+def plot3peaks(newData, xPlotLeft, xPlotRight, parFit):
+
+    slices = []
+    for i in range(0, len(xPlotLeft) - 2, 3):
+        s = newData[(newData['X'] >= xPlotLeft[i]) & (newData['X'] <= xPlotRight[i+2])]
+        slices.append(s)
+
+    # create figure and axes array
+    fig, ax = plt.subplots(nrows=2, ncols=3, figsize=(12,6), squeeze=False)
+    fig.tight_layout()
+
+    h = 0
+    count =0
+    # iteration over rows
+    for j in range(2):
         # iteration over columns
-        for i in range(n):
-            # set plot range for axes
-            ax[0][i].set_xlim(slices[i]['X'].iloc[0], slices[i]['X'].iloc[-1])
-            ax[0][i].set_ylim(0, np.amax(slices[i]['Y']) * (1 + 5/100))
-            # plot the histogram in each axe
-            ax[0][i].hist(slices[i]['X'], bins = len(slices[i]['Y']), weights = slices[i]['Y'], histtype = 'step', color = '#0451FF')
+        for i in range(4):
 
+            # check if there are enough peaks
+            if(i+h < len(slices)):
 
-
-    # if the list has 4 or more elements we need two rows of plots (even case) (please no odd lengths haha lol)
-    elif (n > 3) & (n%2 == 0):
-
-        # create figure and axes array
-        fig, ax = plt.subplots(nrows=int(np.sqrt(n)), ncols=int(np.sqrt(n)), figsize=(12,6), squeeze=False)
-
-        h = 0
-        # iteration over rows
-        for j in range(int(np.sqrt(n))):
-            # iteration over columns
-            for i in range(int(np.sqrt(n))):
-                # set plot range for axes
+                # plot peaks
                 ax[j][i].set_xlim(slices[i+h]['X'].iloc[0], slices[i+h]['X'].iloc[-1])
                 ax[j][i].set_ylim(0, np.amax(slices[i+h]['Y']) * (1 + 5/100))
-                # plot the histogram in each axe
-                ax[j][i].hist(slices[i+h]['X'], bins = len(slices[i+h]['Y']), weights = slices[i+h]['Y'], histtype = 'step', color = '#0451FF')
-            h += int(np.sqrt(n))
+                ax[j][i].hist(slices[i+h]['X'], bins = int(len(slices[i+h]['Y'])), weights = slices[i+h]['Y'], histtype = 'step', color = '#0451FF')
 
+                # plot fits
+                for k in range(3):
+                    xfit=np.linspace(slices[i+h]['X'].iloc[0],slices[i+h]['X'].iloc[-1])
+                    yfit=Gauss(xfit, *parFit[count])
+                    ax[j][i].plot(xfit,yfit,'--', color='black')
+                    count+=1
 
-    fig.tight_layout()
-    
+            else: break
+
+        h += 4
+        for i in range(3):
+            # set plot range for axes
+            ax[j][i].set_xlim(slices[i+h]['X'].iloc[0], slices[i+h]['X'].iloc[-1])
+            ax[j][i].set_ylim(0, np.amax(slices[i+h]['Y']) * (1 + 5/100))
+            # plot the histogram in each axe
+            ax[j][i].hist(slices[i+h]['X'], bins = len(slices[i+h]['Y']), weights = slices[i+h]['Y'], histtype = 'step', color = '#0451FF')
+        h += 3
+
     return
-
-
-
-def computeSpacingFWHM(df, p):
-
-    peaks = []
-    maxs = []
-    halfMaxs = []
-
-    # iteration over each peak
-    for i in range(3):
-
-        # isolate each peak
-        # now peaks is a list of (three) dataframes, each dataframe containing data about a single peak
-        peaks.append(df.loc[p[i]:p[i+1]])
-
-        # we want now to find the maximum value, in other words, the height of the peak
-        # now maxs is a list of (three) dataframes, each dataframe containing X and Y of the single peak
-        maxs.append(peaks[i][ peaks[i]['Y'] == np.amax(peaks[i]['Y']) ])
-
-        # we want to compute the half-maximum
-        halfMaxs.append(maxs[i].copy())
-        halfMaxs[i]['Y'] = halfMaxs[i]['Y']/2
-
-        # now we want to compute the X values corresponding to half-max values
-        halfValue = halfMaxs[i]['Y'].iloc[0]
-        maxIndex = int(maxs[i]['X'].iloc[0])
-        halfMaxs[i]['X1'] = (   np.abs(   peaks[i]['Y'].loc[:maxIndex] - halfValue   )   ).argmin() + p[i]
-        halfMaxs[i]['X2'] = (   np.abs(   peaks[i]['Y'].loc[maxIndex:] - halfValue   )   ).argmin() + maxIndex
-
-
-    # now we want to compute the average distance between peaks
-    C1 = maxs[1]['X'].iloc[0] - maxs[0]['X'].iloc[0]
-    C2 = maxs[2]['X'].iloc[0] - maxs[1]['X'].iloc[0]
-    deltaXru = (C1 + C2) / 2
-
-    # finally compute FWHM of the central peak
-    FWHM = (halfMaxs[1]['X2'] - halfMaxs[1]['X1']).iloc[0]
-    
-    # we also want to return the position of central peak max
-    maxPosition = int(maxs[1]['X'].iloc[0])
-
-    
-    # the following plots are test plots to see whether things are working or not
-
-    # fig, ax = plt.subplots(ncols=1)
-    # fig.tight_layout()
-    # ax.hist(df['X'], bins = len(df['X']), weights =df['Y'], histtype = 'step', color = '#0451FF')
-
-    # fig, ax = plt.subplots(ncols=3)
-    # fig.tight_layout()
-    # for i in range(3):
-    #     ax[i].hist(peaks[i]['X'], bins = len(peaks[i]['X']), weights = peaks[i]['Y'], histtype = 'step', color = '#0451FF')
-    
-
-    return maxPosition, deltaXru, FWHM
 
 
 def computeDeltaLru():
@@ -177,6 +230,7 @@ def computeRMS(R, avgR):
     return RMSE
 
 
+
 # ABERRATION ANALYSIS 
 def spacingTrend(peakPositions, peakSpacing, peakFWHM):
 
@@ -206,52 +260,32 @@ def spacingTrend(peakPositions, peakSpacing, peakFWHM):
     return
 
 
-def main():
 
-    # read data from txt file
-    data = readData()
+def main(fname):
 
-    # from peak-set-delimiters get X and Y data
-    # we basically isolate the 3 peaks sets 
-    # slices constains portions of dataframe that concern the corresponding set of peaks
-    slices = []
-    for i in range(len(p)):
-        s = data[(data['X'] >= p[i][0]) & (data['X'] <= p[i][-1])]
-        slices.append(s)
+    # read data from file
+    data = readData(fname)
 
-    # lists to hold positions, spacings and FWHMs
-    peakPositions = []
-    peakSpacing = []
-    peakFWHM = []
+    # select data based on requested X range
+    newData = data[data['X']>start][data['X']<end]
+    newData.reset_index(inplace = True, drop = True)
 
-    # iteration over each slice 
-    for i in range(len(p)):
-
-        # call the computeSpacingFWHM function
-        # here we pass every slice we have
-        # if needed, it is possibile to use less slices (one or three) for approximate analysis
-        maxPosition, dXru, FWHM = computeSpacingFWHM(slices[i], p[i])
-
-        # append stuff
-        peakPositions.append(maxPosition)
-        peakSpacing.append(dXru)
-        peakFWHM.append(FWHM)
+    # find peaks
+    Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit = findPeaks(newData)
+    Spacing = computeSpacing(Peaks)
 
 
-    # ------ PLOTS
-    # plot all sets of peaks
-    plot3peaks(slices)
+    # plot peaks
+    plot3peaks(newData, xPlotLeft, xPlotRight, parFit)
+    spacingTrend(Peaks[1:-1], Spacing, FWHM[1:-1])
 
-    # plot trends
-    spacingTrend(peakPositions, peakSpacing, peakFWHM)
-    # ------ 
 
     # ------ RESOLVING POWER
     # compute deltaLambda(r.u.)
     dLru = computeDeltaLru()
 
     # compute deltaLambda for each set of peaks
-    dL = computeDeltaLambda(peakSpacing, dLru, peakFWHM)
+    dL = computeDeltaLambda(Spacing, dLru, FWHM[1:-1])
 
     # compute the resolving power for each set of peaks and the average of the three
     R = computeResolvingPower(dL)
@@ -260,27 +294,26 @@ def main():
     avgR_e = R_e / np.sqrt(len(R))
     # ------
 
+
     # ------ PRINTING
     # print relevant results
     print('\n')
     print('- \u03BB: ' + format(LAMBDA, '1.1f') + ' nanometers')
     print('- \u0394\u03BB (r.u.): ' + format(dLru, '1.3f') + ' nanometers')
-    print('- Average Peak spacing: ' + format(np.average(peakSpacing), '1.0f') + ' pixels')
+    print('- Average Peak spacing: ' + format(np.average(Spacing), '1.0f') + ' pixels')
     print('- Average FWHF central Peak: ' + format(np.average(FWHM), '1.0f') + ' pixels')
     print('- Average \u0394\u03BB: ' + format(np.average(dL), '1.3f') + ' nanometers')
     print('- Average Resolving Power R: ' + format(avgR, '1.0f') + ' +/- ' + format(avgR_e, '1.0f'))
     print('- Resolving Power precision: ' + format(100 * avgR_e/avgR, '1.2f') + '%') 
     print('\n')
 
-    
 
     plt.show()
 
     return
-    
- 
+
 
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1])
