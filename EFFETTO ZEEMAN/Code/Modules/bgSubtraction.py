@@ -6,16 +6,18 @@ npixels = 7926
 # compute and subtract background
 def doBackgroundOp(bkgfrom, bkgto, hist):
 
-    print("subtracting background")
+    print("subtracting background from ", bkgfrom , "to", bkgto)
+    if(bkgto >= len(hist[0])-1): bkgto=len(hist[0])-2
 
     ncolumns=np.shape(hist)[1]
     for i in range(npixels):
 
         bkg=0
         # compute mean background for row i
-        for j in range(bkgfrom, bkgto):
-            bkg += hist[i][j]
+        for j in range(bkgfrom-1, bkgto):
+            bkg += hist[i][j+1]
         bkg /= (bkgto-bkgfrom)
+        #print(bkg)
 
         # subtract background from row i
         for j in range(ncolumns):

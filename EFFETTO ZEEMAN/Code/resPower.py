@@ -41,7 +41,7 @@ p = [
 # read data from txt file
 def readData():
 
-    data = pd.read_csv(dataPath + 'testData.txt', sep = '\t', header = None, names = ['X', 'Y'])
+    data = pd.read_csv(dataPath + 'off.txt', sep = '\t', header = None, names = ['X', 'Y'])
 
     return data
 
