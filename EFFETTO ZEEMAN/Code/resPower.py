@@ -169,7 +169,7 @@ def plot3peaks(newData, xPlotLeft, xPlotRight, parFit):
     # iteration over rows
     for j in range(2):
         # iteration over columns
-        for i in range(4):
+        for i in range(3):
 
             # check if there are enough peaks
             if(i+h < len(slices)):
@@ -189,13 +189,6 @@ def plot3peaks(newData, xPlotLeft, xPlotRight, parFit):
             else: break
 
         h += 4
-        for i in range(3):
-            # set plot range for axes
-            ax[j][i].set_xlim(slices[i+h]['X'].iloc[0], slices[i+h]['X'].iloc[-1])
-            ax[j][i].set_ylim(0, np.amax(slices[i+h]['Y']) * (1 + 5/100))
-            # plot the histogram in each axe
-            ax[j][i].hist(slices[i+h]['X'], bins = len(slices[i+h]['Y']), weights = slices[i+h]['Y'], histtype = 'step', color = '#0451FF')
-        h += 3
 
     return
 
