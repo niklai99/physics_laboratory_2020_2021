@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#%config InlineBackend.figure_format = 'png'
+#
 # usage:
 # read and plot data:
 #   python zeemanPlot.py zeeman_image.zee
@@ -56,8 +56,12 @@ def main(argv):
 
     # get file name from command line
     fname = argv[0]
+    outfname = argv[1]
+
     # read data from file and store 2D matrix and X-projection
     zhist, ncolumns, proj = getData(fname, dataPath)
+    for i in range(len(proj)):
+        print(i,proj[i])
 
     # general data for plot
     xhist1D = np.arange(0, ncolumns)
@@ -87,6 +91,7 @@ def main(argv):
 
             # get projection
             proj = projectToY(zhist, projYfrom, projYto, ncolumns)
+            print("Entries", np.sum(proj))
 
             # override plot data
             xhist1D = range(0, npixels)
@@ -96,7 +101,9 @@ def main(argv):
             YMAX = np.amax(proj)
 
             # save data for analysis
-            np.savetxt(fname = dataPath + 'off.txt', X = np.c_[xhist1D, proj], delimiter = '\t')
+            name='off.txt'
+            #print("saving file", name)
+            #np.savetxt(fname = dataPath + name, X = np.c_[xhist1D, proj], delimiter = '\t')
 
 
     # make 2D hist data arrays
