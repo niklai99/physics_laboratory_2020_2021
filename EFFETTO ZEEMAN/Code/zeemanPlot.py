@@ -9,6 +9,9 @@
 #
 # + plot Y-projection in given range (es: 80-100)
 #   python zeemanPlot.py zeeman_image.zee 120 140 80 100
+#
+# + save Y-projection in fname.txt
+#   python zeemanPlot.py zeeman_image.zee 120 140 80 100 fname.txt
 
 
 import sys, getopt
@@ -56,7 +59,6 @@ def main(argv):
 
     # get file name from command line
     fname = argv[0]
-    outfname = argv[1]
 
     # read data from file and store 2D matrix and X-projection
     zhist, ncolumns, proj = getData(fname, dataPath)
@@ -101,12 +103,11 @@ def main(argv):
             YMAX = np.amax(proj)
 
             # save data for analysis
-            name='off.txt'
             #print("saving file", name)
-            #np.savetxt(fname = dataPath + name, X = np.c_[xhist1D, proj], delimiter = '\t')
-=======
+            if len(argv)==6:
+                name = argv[5]
+                np.savetxt(fname = dataPath + name, X = np.c_[xhist1D, proj], delimiter = '\t')
             # np.savetxt(fname = dataPath + 'spettro2d_Boff.txt', X = np.c_[xhist1D, proj], delimiter = '\t')
->>>>>>> 307e0894db1acc8f6fba4cabc169fb83a0f4ea5b
 
 
     # make 2D hist data arrays
