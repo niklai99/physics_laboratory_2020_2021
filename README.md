@@ -17,6 +17,5 @@
   * [Vanessa Cerrone](https://github.com/vanessacerrone)
   * [Simone Cigagna](https://github.com/simonecig)
 * Esperienze:
-  - [ ] [CAMERA DI BRAGG](/CAMERA%20DI%20BRAGG)
   - [ ] [EFFETTO ZEEMAN](/EFFETTO%20ZEEMAN)
-  - [ ] [RAGGI X (FOTODIODO)](/FOTODIODO/)
+  - [ ] [FOTODIODO](/FOTODIODO/)
