@@ -13,6 +13,7 @@ from math import pi
 import pandas as pd
 from scipy.signal import find_peaks
 from scipy.optimize import curve_fit
+from scipy.interpolate import UnivariateSpline
 
 # constants
 npixels=7926
@@ -21,8 +22,8 @@ LAMBDA = 585.3 # nanometers
 d = 4.04 * 1e6 #nanometers (4.04 millimiters)
 dataPath = '../Data/'
 
-start = 1400
-end = 8000
+start = 3000
+end = 7926
 
 binFrac=3 # nBins_new = nBins_old / binFrac
 
@@ -43,11 +44,11 @@ def readData(fname):
     # save new data in a Pandassssss dataframe
     data = pd.DataFrame(list(zip(newX,newY)), columns=['X','Y'])
     #plt.hist(newData['X'], bins = int(len(newData['X'])), weights = newData['Y'], histtype = 'step', color = '#0451FF')
-    print("Number of bins: ", len(newX))
-    count =0
-    for i in range(len(newY)):
-        count+=newY[i]
-    print("Counts", count) # note: this is different than root
+    # print("Number of bins: ", len(newX))
+    # count =0
+    # for i in range(len(newY)):
+    #     count+=newY[i]
+    # print("Counts", count) # note: this is different than root
 
     return data
 
@@ -73,7 +74,7 @@ def findPeaks(newData):
     # plot data
     ax.hist(newData['X'], bins = int(len(newData['X'])), weights = newData['Y'], histtype = 'step', color = '#0451FF')
     # plot peaks
-    ax.plot(newData['X'].iloc[peaks], newData['Y'].iloc[peaks], '.', color='red')
+    # ax.plot(newData['X'].iloc[peaks], newData['Y'].iloc[peaks], '.', color='red')
 
 
     xHalfLeft = []
@@ -87,52 +88,58 @@ def findPeaks(newData):
     # loop over peaks
     for i in range(len(peaks)):
 
-        # get peak start
-        xl = newData['X'].iloc[round(p['left_ips'][i])]
-        xHalfLeft.append(xl)
-        # get peak end
-        xr = newData['X'].iloc[round(p['right_ips'][i])]
-        xHalfRight.append(xr)
-
-        y = p['width_heights'][i]
-        
-        FWHM.append(xr-xl)
-
-        xm = newData['X'].iloc[peaks[i]]
-        Peaks.append(xm)
-
-        d1 = xm - xl
-        d2 = xr - xm
-
-        xPlotLeft.append(xm - 5*d1)
-        xPlotRight.append(xm + 5*d2)
-
-        # plot limits for current peak
-        ax.vlines(x=xl, ymin=0, ymax = np.amax(newData['Y']) * ( 1 + 5/100 ), color = "blue", alpha = 0.3)
-        ax.vlines(x=xr, ymin=0, ymax = np.amax(newData['Y']) * ( 1 + 5/100 ), color = "blue", alpha = 0.3)
-        ax.hlines(y=y, xmin=xl, xmax=xr, color = "C1", alpha = 0.3)
-
-        # fit current peak
+        # get fit data
         tr=int((p['right_ips'][i] - p['left_ips'][i])/5)
         xfit=newData['X'].iloc[round(p['left_ips'][i]-tr):round(p['right_ips'][i])+tr]
         yfit=newData['Y'].iloc[round(p['left_ips'][i]-tr):round(p['right_ips'][i])+tr]
+
+        # initial parameters
         mean0=np.average(xfit)
         std0=np.std(xfit)
+
+        # normalization parameter
         ngau=np.sum(yfit* binFrac)
+
+        # fit current peak
         par, std = curve_fit(lambda x,mean,stddev: Gauss(x,ngau,mean,stddev),
                              xfit, yfit,
                              p0=[mean0, std0])
 
-        # plot fit
-        xth = np.linspace(np.amin(xfit), np.amax(xfit))
-        yth = Gauss(xth,ngau,*par)
+
+        halfMax = Gauss(par[0],ngau,*par) /2
+
+        # compute halfMax pixels
+        spline = UnivariateSpline(xfit, Gauss(xfit,ngau,*par) - halfMax , s = 0)
+        r1, r2 = spline.roots() # find the roots
+
+        # ax.vlines(x=r1, ymin=0, ymax = np.amax(newData['Y']) * ( 1 + 5/100 ), color = "blue", alpha = 0.3)
+        # ax.vlines(x=r2, ymin=0, ymax = np.amax(newData['Y']) * ( 1 + 5/100 ), color = "blue", alpha = 0.3)
+
+        FWHM.append(r2-r1)
+        Peaks.append(par[0])
+        xHalfLeft.append(r1)
+        xHalfRight.append(r2)
+        xPlotLeft.append(par[0] - 5*(r2-r1))
+        xPlotRight.append(par[0] + 5*(r2-r1))
+
+        # chi2
         diff = yfit-Gauss(xfit,ngau,*par)
         chisq = np.sum(diff**2)/(len(xfit)-2)
-
         #print("chisq",i, round(abs(chisq-(len(xfit-2)))/ (len(xfit)-2)**0.5 / 2**0.5,2)) # TODO: ricontrollami
-        ax.plot(xth, yth,color='black')
 
+
+        
+        # plot fit
+        xth = np.linspace(xPlotLeft, xPlotRight, 100)
+        yth = Gauss(xth,ngau,*par)
+
+        # plot gaussian fit
+        ax.plot(xth, yth, color='black')
+
+        # save parameters
         parFit.append([ngau, par[0], par[1]])
+
+
 
     return Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit
 
@@ -161,7 +168,7 @@ def plot3peaks(newData, xPlotLeft, xPlotRight, parFit):
         slices.append(s)
 
     # create figure and axes array
-    fig, ax = plt.subplots(nrows=2, ncols=3, figsize=(12,6), squeeze=False)
+    fig, ax = plt.subplots(nrows=2, ncols=4, figsize=(12,6), squeeze=False)
     fig.tight_layout()
 
     h = 0
@@ -169,7 +176,7 @@ def plot3peaks(newData, xPlotLeft, xPlotRight, parFit):
     # iteration over rows
     for j in range(2):
         # iteration over columns
-        for i in range(3):
+        for i in range(4):
 
             # check if there are enough peaks
             if(i+h < len(slices)):
@@ -201,8 +208,12 @@ def computeDeltaLru():
     return dLru
 
 
-def computeDeltaLambda(dXru, dLru, FWHM):
+def select_skip(iterable, select, skip):
+    return [x for i, x in enumerate(iterable) if i % (select+skip) < select]
 
+
+def computeDeltaLambda(dXru, dLru, FWHM):
+    
     dL = (np.array(FWHM) * dLru) / np.array(dXru) # nanometers
 
     return dL
@@ -260,17 +271,27 @@ def main(fname):
     data = readData(fname)
 
     # select data based on requested X range
-    newData = data[data['X']>start][data['X']<end]
+    newData = data[(data['X']>start) & (data['X']<end)]
     newData.reset_index(inplace = True, drop = True)
 
     # find peaks
     Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit = findPeaks(newData)
+
+    # select only relevant FWHMs (select one, skip two, ignoring the first and the last peak)
+    fullW = select_skip(FWHM[1:-1], 1, 2)
+    
+    # compute spacing between peaks
     Spacing = computeSpacing(Peaks)
+
+    # compute only relevant spacing means
+    dXru = select_skip(Spacing, 1, 2)
 
 
     # plot peaks
     plot3peaks(newData, xPlotLeft, xPlotRight, parFit)
-    spacingTrend(Peaks[1:-1], Spacing, FWHM[1:-1])
+
+    # plot trends
+    spacingTrend(select_skip(Peaks[1:-1], 1, 2), dXru, fullW)
 
 
     # ------ RESOLVING POWER
@@ -278,7 +299,7 @@ def main(fname):
     dLru = computeDeltaLru()
 
     # compute deltaLambda for each set of peaks
-    dL = computeDeltaLambda(Spacing, dLru, FWHM[1:-1])
+    dL = computeDeltaLambda(dXru, dLru, fullW)
 
     # compute the resolving power for each set of peaks and the average of the three
     R = computeResolvingPower(dL)
@@ -294,7 +315,7 @@ def main(fname):
     print('- \u03BB: ' + format(LAMBDA, '1.1f') + ' nanometers')
     print('- \u0394\u03BB (r.u.): ' + format(dLru, '1.3f') + ' nanometers')
     print('- Average Peak spacing: ' + format(np.average(Spacing), '1.0f') + ' pixels')
-    print('- Average FWHF central Peak: ' + format(np.average(FWHM), '1.0f') + ' pixels')
+    print('- Average FWHM central Peak: ' + format(np.average(FWHM), '1.0f') + ' pixels')
     print('- Average \u0394\u03BB: ' + format(np.average(dL), '1.3f') + ' nanometers')
     print('- Average Resolving Power R: ' + format(avgR, '1.0f') + ' +/- ' + format(avgR_e, '1.0f'))
     print('- Resolving Power precision: ' + format(100 * avgR_e/avgR, '1.2f') + '%') 
