@@ -22,10 +22,10 @@ LAMBDA = 585.3 # nanometers
 d = 4.04 * 1e6 #nanometers (4.04 millimiters)
 dataPath = '../Data/'
 
-start = 3000
-end = 7926
+start = 4000
+end = 7000
 
-binFrac=3 # nBins_new = nBins_old / binFrac
+binFrac=4 # nBins_new = nBins_old / binFrac
 
 # read data from txt file
 def readData(fname):
@@ -61,7 +61,8 @@ def Gauss(x, N, x0, sigma):
 def findPeaks(newData):
 
     # use scipy signal to identify peaks
-    peaks, p = find_peaks(newData['Y'], width=5, prominence=100, rel_height=0.5)
+    #peaks, p = find_peaks(newData['Y'], width=20, prominence=200, rel_height=0.5)
+    peaks, p = find_peaks(newData['Y'], width=10, prominence=900, rel_height=0.5)
     print("Found", len(peaks), "peaks")
 
     fig, ax = plt.subplots(figsize=(12,6))
@@ -85,11 +86,26 @@ def findPeaks(newData):
     Peaks = []
     parFit=[]
 
+    # ATTENTION ===============
+    # While technically all peaks are caused by Zeeman splitting, we need to distinguish the 
+    # distance between the Zeeman splitting and the interfererence splitting. 
+    # Therefore, we adopt the convention of naming the left Zeeman peak "interference splitting"
+    # while the right peak will be referred to as "Zeeman peak". 
+    # All peaks will be stored inside the list ~Peaks~ and ~parFit~, as Boff. 
+    # We then implement two new lists to keep track of the interference peaks indexes' (~intP~)
+    # and the Zeeman peaks indexes' (~zeeP~).
+    # The actual position of the interference peak can be computed as average of the zeeman peaks, 
+    # if needed.
+    intP=[]
+    zeeP=[]
+
     # loop over peaks
+    isLastZeeman=True # true if last peak is a Zeeman peak => next peak will be a interference peak
     for i in range(len(peaks)):
 
         # get fit data
         tr=int((p['right_ips'][i] - p['left_ips'][i])/5)
+        tr=0
         xfit=newData['X'].iloc[round(p['left_ips'][i]-tr):round(p['right_ips'][i])+tr]
         yfit=newData['Y'].iloc[round(p['left_ips'][i]-tr):round(p['right_ips'][i])+tr]
 
@@ -127,21 +143,34 @@ def findPeaks(newData):
         chisq = np.sum(diff**2)/(len(xfit)-2)
         #print("chisq",i, round(abs(chisq-(len(xfit-2)))/ (len(xfit)-2)**0.5 / 2**0.5,2)) # TODO: ricontrollami
 
-
-        
-        # plot fit
-        xth = np.linspace(xPlotLeft, xPlotRight, 100)
+       # plot fit
+        xth = np.linspace(xPlotLeft,xPlotRight, 100)
         yth = Gauss(xth,ngau,*par)
 
+
         # plot gaussian fit
-        ax.plot(xth, yth, color='black')
+        if isLastZeeman:
+            ax.plot(xth, yth, color='green')
+        else:
+            ax.plot(xth, yth, color='red')
 
         # save parameters
         parFit.append([ngau, par[0], par[1]])
 
+        if isLastZeeman:
+            # this is an interference peak
+            intP.append(i)
+            isLastZeeman=False
+        else:
+            # this is a Zeeman peak
+            zeeP.append(i)
+            isLastZeeman=True
+
+        
+ 
 
 
-    return Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit
+    return Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit, intP, zeeP
 
 
 def computeSpacing(Peaks):
@@ -275,7 +304,7 @@ def main(fname):
     newData.reset_index(inplace = True, drop = True)
 
     # find peaks
-    Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit = findPeaks(newData)
+    Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit, intP, zeeP= findPeaks(newData)
 
     # select only relevant FWHMs (select one, skip two, ignoring the first and the last peak)
     fullW = select_skip(FWHM[1:-1], 1, 2)
