@@ -16,16 +16,15 @@ from scipy.optimize import curve_fit
 from scipy.interpolate import UnivariateSpline
 
 # constants
-npixels=7926
-maxcolumns=1024
 LAMBDA = 585.3 # nanometers
 d = 4.04 * 1e6 #nanometers (4.04 millimiters)
 dataPath = '../Data/'
 
 start = 3000
-end = 7926
+end = 7480
 
 binFrac=3 # nBins_new = nBins_old / binFrac
+
 
 # read data from txt file
 def readData(fname):
@@ -64,8 +63,8 @@ def findPeaks(newData):
     peaks, p = find_peaks(newData['Y'], width=5, prominence=100, rel_height=0.5)
     print("Found", len(peaks), "peaks")
 
-    fig, ax = plt.subplots(figsize=(12,6))
-    fig.tight_layout()
+    fig, ax = plt.subplots(figsize=(18,9))
+    # fig.tight_layout()
 
     ax.set_xlim(start, end)
     ax.set_ylim(0, np.amax(newData['Y']) * ( 1 + 5/100 ))
@@ -73,8 +72,6 @@ def findPeaks(newData):
 
     # plot data
     ax.hist(newData['X'], bins = int(len(newData['X'])), weights = newData['Y'], histtype = 'step', color = '#0451FF')
-    # plot peaks
-    # ax.plot(newData['X'].iloc[peaks], newData['Y'].iloc[peaks], '.', color='red')
 
 
     xHalfLeft = []
@@ -98,15 +95,15 @@ def findPeaks(newData):
         std0=np.std(xfit)
 
         # normalization parameter
-        ngau=np.sum(yfit* binFrac)
+        ngau=np.sum(yfit*binFrac)
 
         # fit current peak
-        par, std = curve_fit(lambda x,mean,stddev: Gauss(x,ngau,mean,stddev),
+        par, cov = curve_fit(lambda x,mean,stddev: Gauss(x,ngau,mean,stddev),
                              xfit, yfit,
                              p0=[mean0, std0])
 
 
-        halfMax = Gauss(par[0],ngau,*par) /2
+        halfMax = Gauss(par[0],ngau,*par) / 2
 
         # compute halfMax pixels
         spline = UnivariateSpline(xfit, Gauss(xfit,ngau,*par) - halfMax , s = 0)
@@ -119,8 +116,8 @@ def findPeaks(newData):
         Peaks.append(par[0])
         xHalfLeft.append(r1)
         xHalfRight.append(r2)
-        xPlotLeft.append(par[0] - 5*(r2-r1))
-        xPlotRight.append(par[0] + 5*(r2-r1))
+        xPlotLeft.append(par[0] - 2*(r2-r1))
+        xPlotRight.append(par[0] + 2*(r2-r1))
 
         # chi2
         diff = yfit-Gauss(xfit,ngau,*par)
@@ -129,19 +126,20 @@ def findPeaks(newData):
 
 
         
-        # plot fit
+        # plotting data
         xth = np.linspace(xPlotLeft, xPlotRight, 100)
         yth = Gauss(xth,ngau,*par)
 
         # plot gaussian fit
-        ax.plot(xth, yth, color='black')
+        ax.plot(xth, yth, color='#FF4B00', alpha = 0.8, linestyle = 'dashed')
+
+        
 
         # save parameters
         parFit.append([ngau, par[0], par[1]])
 
 
-
-    return Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit
+    return Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit, ax, fig
 
 
 def computeSpacing(Peaks):
@@ -208,6 +206,7 @@ def computeDeltaLru():
     return dLru
 
 
+# function to select n elements and skip m elements
 def select_skip(iterable, select, skip):
     return [x for i, x in enumerate(iterable) if i % (select+skip) < select]
 
@@ -275,23 +274,31 @@ def main(fname):
     newData.reset_index(inplace = True, drop = True)
 
     # find peaks
-    Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit = findPeaks(newData)
+    Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit, ax, fig = findPeaks(newData)
+
+    FWHM_avg = np.average(FWHM)
 
     # select only relevant FWHMs (select one, skip two, ignoring the first and the last peak)
     fullW = select_skip(FWHM[1:-1], 1, 2)
-    
+    fullW_avg = np.average(fullW)
+    fullW_e = computeRMS(fullW, fullW_avg)
+    fullW_avg_e = fullW_e / np.sqrt(len(fullW))
+
     # compute spacing between peaks
     Spacing = computeSpacing(Peaks)
+    Spacing_avg = np.average(Spacing)
 
     # compute only relevant spacing means
     dXru = select_skip(Spacing, 1, 2)
-
+    dXru_avg = np.average(dXru)
+    dXru_e = computeRMS(dXru, dXru_avg)
+    dXru_avg_e = dXru_e / np.sqrt(len(dXru))
 
     # plot peaks
-    plot3peaks(newData, xPlotLeft, xPlotRight, parFit)
+    # plot3peaks(newData, xPlotLeft, xPlotRight, parFit)
 
     # plot trends
-    spacingTrend(select_skip(Peaks[1:-1], 1, 2), dXru, fullW)
+    # spacingTrend(select_skip(Peaks[1:-1], 1, 2), dXru, fullW)
 
 
     # ------ RESOLVING POWER
@@ -300,6 +307,9 @@ def main(fname):
 
     # compute deltaLambda for each set of peaks
     dL = computeDeltaLambda(dXru, dLru, fullW)
+    dL_avg = np.average(dL)
+    dL_e = computeRMS(dL, dL_avg)
+    dL_avg_e = dL_e / np.sqrt(len(dL))
 
     # compute the resolving power for each set of peaks and the average of the three
     R = computeResolvingPower(dL)
@@ -309,14 +319,28 @@ def main(fname):
     # ------
 
 
+    ax.text(0.05, 0.75, 
+            'Average $\Delta x_{r.u.}$ = ' + format(dXru_avg, '1.0f') + ' $\pm$ ' + format(dXru_avg_e, '1.0f') + ' pixels' + '\n'
+            'Average FWHM = ' + format(fullW_avg, '1.0f') + ' $\pm$ ' + format(fullW_avg_e, '1.0f') + ' pixels' + '\n'
+            'Average $\Delta\lambda$ = ' + format(dL_avg, '1.4f')  + ' $\pm$ ' + format(dL_avg_e, '1.4f') + ' nanometers' + '\n'
+            'Average Resolving Power R = ' + format(avgR, '1.0f') + ' $\pm$ ' + format(avgR_e, '1.0f'), 
+            fontsize = 18, color = '#000000', transform = ax.transAxes)
+
+    ax.set_title('Interference Peaks', fontsize = 24)
+    ax.set_xlabel('# pixel', fontsize = 18)
+    ax.set_ylabel('Intensity (a.u.)', fontsize = 18, loc = 'top')
+    ax.tick_params(axis = 'both', which = 'major', labelsize = 18, direction = 'out', length = 10)
+
+    # fig.savefig('../Plots/test.png', dpi = 300, facecolor = 'white')
+
     # ------ PRINTING
     # print relevant results
     print('\n')
     print('- \u03BB: ' + format(LAMBDA, '1.1f') + ' nanometers')
     print('- \u0394\u03BB (r.u.): ' + format(dLru, '1.3f') + ' nanometers')
-    print('- Average Peak spacing: ' + format(np.average(Spacing), '1.0f') + ' pixels')
-    print('- Average FWHM central Peak: ' + format(np.average(FWHM), '1.0f') + ' pixels')
-    print('- Average \u0394\u03BB: ' + format(np.average(dL), '1.3f') + ' nanometers')
+    print('- Average Peak spacing: ' + format(Spacing_avg, '1.0f') + ' pixels')
+    print('- Average FWHM central Peak: ' + format(FWHM_avg, '1.0f') + ' pixels')
+    print('- Average \u0394\u03BB: ' + format(dL_avg, '1.3f') + ' nanometers')
     print('- Average Resolving Power R: ' + format(avgR, '1.0f') + ' +/- ' + format(avgR_e, '1.0f'))
     print('- Resolving Power precision: ' + format(100 * avgR_e/avgR, '1.2f') + '%') 
     print('\n')
