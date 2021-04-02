@@ -62,7 +62,7 @@ def findPeaks(newData):
 
     # use scipy signal to identify peaks
     #peaks, p = find_peaks(newData['Y'], width=20, prominence=200, rel_height=0.5)
-    peaks, p = find_peaks(newData['Y'], width=10, prominence=900, rel_height=0.5)
+    peaks, p = find_peaks(newData['Y'], width = 6,prominence=50, rel_height=0.5)
     print("Found", len(peaks), "peaks")
 
     fig, ax = plt.subplots(figsize=(12,6))
@@ -104,10 +104,11 @@ def findPeaks(newData):
     for i in range(len(peaks)):
 
         # get fit data
-        tr=int((p['right_ips'][i] - p['left_ips'][i])/5)
-        tr=0
-        xfit=newData['X'].iloc[round(p['left_ips'][i]-tr):round(p['right_ips'][i])+tr]
-        yfit=newData['Y'].iloc[round(p['left_ips'][i]-tr):round(p['right_ips'][i])+tr]
+        trL=+int((p['right_ips'][i] - p['left_ips'][i])/2)
+        trR=-int((p['right_ips'][i] - p['left_ips'][i])/2)
+        # TODO: fix iloc
+        xfit=newData['X'].iloc[round(p['left_ips'][i]-trL):round(p['right_ips'][i])+trL]
+        yfit=newData['Y'].iloc[round(p['left_ips'][i]-trL):round(p['right_ips'][i])+trL]
 
         # initial parameters
         mean0=np.average(xfit)
@@ -126,10 +127,12 @@ def findPeaks(newData):
 
         # compute halfMax pixels
         spline = UnivariateSpline(xfit, Gauss(xfit,ngau,*par) - halfMax , s = 0)
-        r1, r2 = spline.roots() # find the roots
+        #r1, r2 = spline.roots() # find the roots
+        r1=np.amin(xfit)
+        r2=np.amax(xfit)
 
-        # ax.vlines(x=r1, ymin=0, ymax = np.amax(newData['Y']) * ( 1 + 5/100 ), color = "blue", alpha = 0.3)
-        # ax.vlines(x=r2, ymin=0, ymax = np.amax(newData['Y']) * ( 1 + 5/100 ), color = "blue", alpha = 0.3)
+        #ax.vlines(x=r1, ymin=0, ymax = np.amax(newData['Y']) * ( 1 + 5/100 ), color = "blue", alpha = 0.3)
+        #ax.vlines(x=r2, ymin=0, ymax = np.amax(newData['Y']) * ( 1 + 5/100 ), color = "blue", alpha = 0.3)
 
         FWHM.append(r2-r1)
         Peaks.append(par[0])
