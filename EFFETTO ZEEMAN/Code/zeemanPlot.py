@@ -62,8 +62,6 @@ def main(argv):
 
     # read data from file and store 2D matrix and X-projection
     zhist, ncolumns, proj = getData(fname, dataPath)
-    for i in range(len(proj)):
-        print(i,proj[i])
 
     # general data for plot
     xhist1D = np.arange(0, ncolumns)
@@ -86,7 +84,7 @@ def main(argv):
         YMAX = np.amax(proj)
 
         # check if user requested Y-projection
-        if len(argv)==5:
+        if len(argv)>=5:
             # read given data
             projYfrom = int(argv[3]) # starting projection point
             projYto = int(argv[4]) # ending projection point
@@ -106,6 +104,7 @@ def main(argv):
             #print("saving file", name)
             if len(argv)==6:
                 name = argv[5]
+                print("saving file", name)
                 np.savetxt(fname = dataPath + name, X = np.c_[xhist1D, proj], delimiter = '\t')
             # np.savetxt(fname = dataPath + 'spettro2d_Boff.txt', X = np.c_[xhist1D, proj], delimiter = '\t')
 
