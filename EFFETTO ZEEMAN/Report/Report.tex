@@ -1,0 +1,96 @@
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\documentclass[a4paper,11pt]{article} % Font and paper size
+\linespread{0.9}
+\input{structure.tex} % Include the file specifying document layout and packages
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\usepackage{titlesec}
+\titlespacing{\section}{0em}{1em}{0.5em}
+\titlespacing{\subsection}{0em}{1em}{0.5em}
+\setlength{\parindent}{0pt}
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	GENERAL INFORMATION 
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\newcommand{\labcourse}{Laboratorio di Fisica}
+\newcommand{\teacher}{Docenti: Prof. A. Garfagnini - Prof. M. Lunardon}
+\newcommand{\laurea}{Corso di Laurea in Fisica}
+\newcommand{\channel}{Canale 1 A-L}
+\newcommand{\academicyear}{Anno Accademico 2020/2021}
+\newcommand{\labexp}{Esperienza di Laboratorio}
+\newcommand{\exptitle}{Catena Elettronica}
+\newcommand{\turno}{Turno T2}
+\newcommand{\name}{Nicolò Lai}
+\newcommand{\matricola}{1193976}
+\newcommand{\mail}{nicolo.lai@studenti.unipd.it}
+\newcommand{\consegna}{Data Esperienza}
+\newcommand{\data}{23/11/2020 \\ 25/11/2020 \\ 26/11/2020}
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	DOCUMENT 
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\begin{document}
+%\sloppy
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	REFERNCE CUSTOMIZATION
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\def\sectionautorefname{Sezione} 
+\def\subsectionautorefname{Sezione} 
+\def\subsubsectionautorefname{Sezione}
+
+\abovedisplayshortskip=0pt
+\belowdisplayshortskip=0pt
+\abovedisplayskip=-5pt
+\belowdisplayskip=5pt
+
+%-------------------------------------------------------------------------------------------------------------------------------------------
+%	TITLE PAGE
+%-------------------------------------------------------------------------------------------------------------------------------------------
+
+\begin{titlepage}
+	\begin{center}
+		\Huge{\bfseries \labcourse}\\
+			
+		\LARGE \teacher \\
+		\Large \laurea\\
+		\Large \channel\\
+		\Large \academicyear\\
+		[1cm] 
+		\line(1,0){400}\\
+		[3.5cm]
+			
+		\textsc{\huge{\bfseries \labexp}}\\
+		\huge{\exptitle}\\
+		[2mm] \line(1,0){300}\\
+		[9cm]
+	\end{center}
+	
+	
+	\begin{flushleft}
+		\textsc{\Large \turno}\\
+		[0.5cm] \textsc{\large {\bfseries \name}} \\ 
+		\indent\large \matricola \\ 
+		\indent\large \mail \\
+	\end{flushleft}
+		
+					
+	\begin{flushright}
+			\textsc{\Large\consegna}\\
+			\textsc{\large \data}					
+	\end{flushright}
+			
+\end{titlepage}
+\cleardoublepage
+
+
+%----------------------------------------------------END OF FILE----------------------------------------------------------------------------
+\end{document}
