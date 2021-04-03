@@ -89,11 +89,11 @@ def findPeaks(newData):
     # ATTENTION ===============
     # While technically all peaks are caused by Zeeman splitting, we need to distinguish the 
     # distance between the Zeeman splitting and the interfererence splitting. 
-    # Therefore, we adopt the convention of naming the left Zeeman peak "interference splitting"
+    # Therefore, we adopt the convention of naming the left Zeeman peak "interference peak"
     # while the right peak will be referred to as "Zeeman peak". 
-    # All peaks will be stored inside the list ~Peaks~ and ~parFit~, as Boff. 
-    # We then implement two new lists to keep track of the interference peaks indexes' (~intP~)
-    # and the Zeeman peaks indexes' (~zeeP~).
+    # All peaks will be stored inside the lists ~Peaks~ and ~parFit~, as we did in Boff.
+    # We then implement two new lists to keep track of the interference peaks' indexes (~intP~)
+    # and the Zeeman peaks' indexes (~zeeP~).
     # The actual position of the interference peak can be computed as average of the zeeman peaks, 
     # if needed.
     intP=[]
@@ -105,10 +105,11 @@ def findPeaks(newData):
 
         # get fit data
         trL=+int((p['right_ips'][i] - p['left_ips'][i])/2)
-        trR=-int((p['right_ips'][i] - p['left_ips'][i])/2)
-        # TODO: fix iloc
-        xfit=newData['X'].iloc[round(p['left_ips'][i]-trL):round(p['right_ips'][i])+trL]
-        yfit=newData['Y'].iloc[round(p['left_ips'][i]-trL):round(p['right_ips'][i])+trL]
+        trR=-int((p['right_ips'][i] - p['left_ips'][i])/5)
+        trR=trL
+        xfit=newData['X'].iloc[round(p['left_ips'][i]-trL):round(p['right_ips'][i])+trR]
+        #yfit=newData['Y'].iloc[round(p['left_ips'][i]-trL):round(p['right_ips'][i])+trR]
+        yfit=newData['Y'].iloc[round(p['left_ips'][i]-trL):round(p['right_ips'][i])+trR]
 
         # initial parameters
         mean0=np.average(xfit)
@@ -127,9 +128,9 @@ def findPeaks(newData):
 
         # compute halfMax pixels
         spline = UnivariateSpline(xfit, Gauss(xfit,ngau,*par) - halfMax , s = 0)
-        #r1, r2 = spline.roots() # find the roots
-        r1=np.amin(xfit)
-        r2=np.amax(xfit)
+        r1, r2 = spline.roots() # find the roots
+        #r1=np.amin(xfit)
+        #r2=np.amax(xfit)
 
         #ax.vlines(x=r1, ymin=0, ymax = np.amax(newData['Y']) * ( 1 + 5/100 ), color = "blue", alpha = 0.3)
         #ax.vlines(x=r2, ymin=0, ymax = np.amax(newData['Y']) * ( 1 + 5/100 ), color = "blue", alpha = 0.3)
@@ -147,7 +148,8 @@ def findPeaks(newData):
         #print("chisq",i, round(abs(chisq-(len(xfit-2)))/ (len(xfit)-2)**0.5 / 2**0.5,2)) # TODO: ricontrollami
 
        # plot fit
-        xth = np.linspace(xPlotLeft,xPlotRight, 100)
+        #xth = np.linspace(np.amin(xfit),np.amax(xfit), 100)
+        xth = np.linspace(xPlotLeft[-1],xPlotRight[-1], 100)
         yth = Gauss(xth,ngau,*par)
 
 
@@ -169,132 +171,38 @@ def findPeaks(newData):
             zeeP.append(i)
             isLastZeeman=True
 
-        
- 
-
-
     return Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit, intP, zeeP
 
 
-def computeSpacing(Peaks):
+def computeSpacing(Peaks, intP, zeeP):
 
-    C = []
-    Spacing = []
+    C = [] # store distance between interference peaks
+    zee_dist = [] # store distance between zeeman peaks
+    Spacing = [] # average between previous and next (interference) peaks
 
     for i in range(1, len(Peaks)):
-        C.append(Peaks[i] - Peaks[i-1])
+        # compute distance only between interference peaks
+        if i in intP[:]:
+            # compute average between 2 zeeman peaks
+            avgCurrent=(Peaks[i]+Peaks[i+1])/2
+            avgPrevious=(Peaks[i-2]+Peaks[i-1])/2
+            # store distance
+            C.append(avgCurrent -avgPrevious)
 
+        # compute distance only between zeeman peaks
+        if i in zeeP[:]:
+            # compute distance between 2 zeeman peaks
+            d=Peaks[i]-Peaks[i-1]
+            # store distance
+            zee_dist.append(d)
+
+
+    # FIXME: are we counting the same distance multiple times?
+    # can't we just take the average of C? Let me now ASAP
     for i in range(1, len(C)):
         Spacing.append((C[i] + C[i-1]) / 2)
 
     return Spacing
-
-
-# plot 16 triplets of peeks
-# probably useless
-def plot3peaks(newData, xPlotLeft, xPlotRight, parFit):
-
-    slices = []
-    for i in range(0, len(xPlotLeft) - 2, 3):
-        s = newData[(newData['X'] >= xPlotLeft[i]) & (newData['X'] <= xPlotRight[i+2])]
-        slices.append(s)
-
-    # create figure and axes array
-    fig, ax = plt.subplots(nrows=2, ncols=4, figsize=(12,6), squeeze=False)
-    fig.tight_layout()
-
-    h = 0
-    count =0
-    # iteration over rows
-    for j in range(2):
-        # iteration over columns
-        for i in range(4):
-
-            # check if there are enough peaks
-            if(i+h < len(slices)):
-
-                # plot peaks
-                ax[j][i].set_xlim(slices[i+h]['X'].iloc[0], slices[i+h]['X'].iloc[-1])
-                ax[j][i].set_ylim(0, np.amax(slices[i+h]['Y']) * (1 + 5/100))
-                ax[j][i].hist(slices[i+h]['X'], bins = int(len(slices[i+h]['Y'])), weights = slices[i+h]['Y'], histtype = 'step', color = '#0451FF')
-
-                # plot fits
-                for k in range(3):
-                    xfit=np.linspace(slices[i+h]['X'].iloc[0],slices[i+h]['X'].iloc[-1])
-                    yfit=Gauss(xfit, *parFit[count])
-                    ax[j][i].plot(xfit,yfit,'--', color='black')
-                    count+=1
-
-            else: break
-
-        h += 4
-
-    return
-
-
-def computeDeltaLru():
-
-    # approximate formula
-    dLru = LAMBDA**2 / (2*d) # nanometers
-
-    return dLru
-
-
-def select_skip(iterable, select, skip):
-    return [x for i, x in enumerate(iterable) if i % (select+skip) < select]
-
-
-def computeDeltaLambda(dXru, dLru, FWHM):
-    
-    dL = (np.array(FWHM) * dLru) / np.array(dXru) # nanometers
-
-    return dL
-
-
-def computeResolvingPower(dL):
-
-    R = LAMBDA / np.array(dL)
-
-    return R
-
-
-def computeRMS(R, avgR):
-
-    MSE = np.sum( (np.array(R) - avgR)**2 ) / (len(R) - 1)
-    RMSE = np.sqrt(MSE)
-
-    return RMSE
-
-
-
-# ABERRATION ANALYSIS 
-def spacingTrend(peakPositions, peakSpacing, peakFWHM):
-
-    # create figure
-    fig = plt.figure(figsize=(12,6))
-
-    # create axes
-    ax1 = fig.add_subplot(1, 2, 1)
-    ax2 = fig.add_subplot(1, 2, 2)
-
-    # show plots
-    ax1.plot(peakPositions, peakSpacing, marker = '.', markersize = 15, linewidth = 1, color = '#0451FF')
-    ax2.plot(peakPositions, peakFWHM, marker = '.', markersize = 15, linewidth = 1, color = '#0451FF')
-
-    # titles
-    ax1.set_title('Peak spacing over Position')
-    ax2.set_title('FWHM over Position')
-
-    # labels
-    ax1.set_xlabel('Peak position [# pixel]')
-    ax2.set_xlabel('Peak position [# pixel]')
-    ax1.set_ylabel('Peak spacing [# pixel]')
-    ax2.set_ylabel('FWHM [# pixel]')
-
-    fig.tight_layout()
-
-    return
-
 
 
 def main(fname):
@@ -309,50 +217,8 @@ def main(fname):
     # find peaks
     Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit, intP, zeeP= findPeaks(newData)
 
-    # select only relevant FWHMs (select one, skip two, ignoring the first and the last peak)
-    fullW = select_skip(FWHM[1:-1], 1, 2)
-    
     # compute spacing between peaks
-    Spacing = computeSpacing(Peaks)
-
-    # compute only relevant spacing means
-    dXru = select_skip(Spacing, 1, 2)
-
-
-    # plot peaks
-    plot3peaks(newData, xPlotLeft, xPlotRight, parFit)
-
-    # plot trends
-    spacingTrend(select_skip(Peaks[1:-1], 1, 2), dXru, fullW)
-
-
-    # ------ RESOLVING POWER
-    # compute deltaLambda(r.u.)
-    dLru = computeDeltaLru()
-
-    # compute deltaLambda for each set of peaks
-    dL = computeDeltaLambda(dXru, dLru, fullW)
-
-    # compute the resolving power for each set of peaks and the average of the three
-    R = computeResolvingPower(dL)
-    avgR = np.average(R)
-    R_e = computeRMS(R, avgR)
-    avgR_e = R_e / np.sqrt(len(R))
-    # ------
-
-
-    # ------ PRINTING
-    # print relevant results
-    print('\n')
-    print('- \u03BB: ' + format(LAMBDA, '1.1f') + ' nanometers')
-    print('- \u0394\u03BB (r.u.): ' + format(dLru, '1.3f') + ' nanometers')
-    print('- Average Peak spacing: ' + format(np.average(Spacing), '1.0f') + ' pixels')
-    print('- Average FWHM central Peak: ' + format(np.average(FWHM), '1.0f') + ' pixels')
-    print('- Average \u0394\u03BB: ' + format(np.average(dL), '1.3f') + ' nanometers')
-    print('- Average Resolving Power R: ' + format(avgR, '1.0f') + ' +/- ' + format(avgR_e, '1.0f'))
-    print('- Resolving Power precision: ' + format(100 * avgR_e/avgR, '1.2f') + '%') 
-    print('\n')
-
+    Spacing = computeSpacing(Peaks, intP, zeeP)
 
     plt.show()
 
