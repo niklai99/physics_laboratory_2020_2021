@@ -4,8 +4,8 @@
 
 ## B off
 
-- [ ] peek finding (simone)
-- [ ] peek fitting (simone)
+- [x] peek finding (simone)
+- [x] peek fitting (simone)
 - [ ] resolving power calculation (nik)
 - [ ] spacing trend (nik)
 - [x] plot spectrum (vanessa)
@@ -13,9 +13,9 @@
 
 ## B on 
 
-- [ ] peek finding (simone)
-- [ ] peek fitting (simone)
-- [ ] differentiate distances (simone)
+- [x] peek finding (simone)
+- [x] peek fitting (simone)
+- [x] differentiate distances (simone)
 - [ ] calculation of delta labmda (nik)
 - [ ] calculation of delta energy (nik)
 - [ ] lande factor calculation (nik)
