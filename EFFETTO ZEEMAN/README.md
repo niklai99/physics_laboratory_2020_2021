@@ -29,7 +29,7 @@
 - [ ] rebinning (vanessa)
 - [ ] qualitative considerations (vanessa)
 - [ ] qualitative fitting (opzionale)
-- [ ] compare with polarimeter (merge histograms) and without (simone+nik)
+- [x] compare with polarimeter (merge histograms) and without (simone+nik)
 - [x] plot spectrum (vanessa)
 
 ## Report
