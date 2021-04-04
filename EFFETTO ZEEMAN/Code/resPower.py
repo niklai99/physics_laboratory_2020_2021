@@ -198,11 +198,15 @@ def computeSpacing(Peaks, intP, zeeP):
 
 
     # FIXME: are we counting the same distance multiple times?
-    # can't we just take the average of C? Let me now ASAP
+    # can't we just take the average of C? 
     for i in range(1, len(C)):
         Spacing.append((C[i] + C[i-1]) / 2)
 
-    return Spacing
+    # Possible fix: 
+    avgSpacing = np.average(C) # average interference distance
+    avgSpacingZee = np.average(zee_dist) # average zeeman distance
+
+    return avgSpacing, avgSpacingZee
 
 
 def main(fname):
@@ -218,7 +222,7 @@ def main(fname):
     Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit, intP, zeeP= findPeaks(newData)
 
     # compute spacing between peaks
-    Spacing = computeSpacing(Peaks, intP, zeeP)
+    Spacing, Spacing_zee = computeSpacing(Peaks, intP, zeeP)
 
     plt.show()
 
