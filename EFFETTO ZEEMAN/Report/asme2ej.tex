@@ -1,0 +1,121 @@
+%%% use twocolumn and 10pt options with the asme2ej format
+\documentclass[twocolumn,10pt]{asme2ej}
+
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{lipsum}
+\usepackage{titling}
+
+\pretitle{\begin{center}\linespread{1.2}\huge}
+\posttitle{\par\end{center}\vspace{0.5em}}
+
+%% The class has several options
+%  onecolumn/twocolumn - format for one or two columns per page
+%  10pt/11pt/12pt - use 10, 11, or 12 point font
+%  oneside/twoside - format for oneside/twosided printing
+%  final/draft - format for final/draft copy
+%  cleanfoot - take out copyright info in footer leave page number
+%  cleanhead - take out the conference banner on the title page
+%  titlepage/notitlepage - put in titlepage or leave out titlepage
+%  
+%% The default is oneside, onecolumn, 10pt, final
+
+\date{}
+\title{{\huge\bfseries Laboratorio di Fisica} - {\LARGE A.A. 2020/2021} \\ 
+    {\LARGE Docenti: A. Garfagnini - M. Lunardon} \\ {\Huge\bfseries Effetto Zeeman}}
+
+
+%%% first author
+\author{Cerrone Vanessa
+    \affiliation{
+    1200361\\
+    vanessa.cerrone@studenti.unipd.it
+    }	
+}
+
+%%% second author
+%%% remove the following entry for single author papers
+%%% add more entries for additional authors
+\author{Cigagna Simone
+    \affiliation{
+	1193992\\
+    simone.cigagna@studenti.unipd.it
+    }	
+}
+
+%%% third author
+%%% remove the following entry for single author papers
+%%% add more entries for additional authors
+\author{Lai Nicolò
+    \affiliation{
+	1193976\\
+    nicolo.lai@studenti.unipd.it
+    }	
+}
+
+
+\begin{document}
+
+\maketitle    
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduzione}
+
+\begin{itemize}
+    \item Cos'è l'effetto Zeeman
+    \item Lampada transizioni righe cose di fisica
+    \item Come facciamo e cosa facciamo (riga proiezioni grafici background fit cose) 
+    \item Cosa vogliamo trovare/stimare (R, Landè e cose polarizzazione)(specificare con che B)
+\end{itemize}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Spettro di emissione del Neon}
+
+\begin{itemize}
+    \item Calibrazione
+    \item Plot dello spettro con Boff
+    \item Dire che non cambia niente se Bon (solo intensità o rumore)
+    \item Identificare la riga che poi analizziamo
+\end{itemize}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Potere risolvente dell'apparato}
+
+\begin{itemize}
+    \item Lo calcoliamo con Boff
+    \item Formule (range utile ecc ecc) (approx luce radente) 
+    \item Procedura di analisi (indipendenza statistica, picchi a triplette ecc ecc)
+    \item Plot con tutti i picchi fittati + finestrella con lo zoom su una tripletta
+    \item Stima di R (come quando perchè)
+    \item Plot del trend per aberrazione 
+\end{itemize}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fattore di Landè}
+
+\begin{itemize}
+    \item Lo calcoliamo con Bon lungo la direzione della radiazione (parlare dello splitting di Zeeman)
+    \item Formule (range utile + conversione energia + fattore di Landè)
+    \item Procedura di analisi (niente fit perchè non vengono)
+    \item Plot con tutti i picchi + finestrella con lo zoom su una tripletta 
+    \item Controllare che lo splitting Zeeman non subisca aberrazione pesante
+\end{itemize}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Campo magnetico ortogonale alla radiazione}
+
+\begin{itemize}
+    \item Un po' di fisica più in dettaglio rispetto all'introduzione (polarizzazione ecc) + aspettative "teoriche"
+    (intensità picchi ecc)
+    \item Plot istogrammi sovrapposti 
+    \item Deduzione configurazioni polarimetro dal plot 
+\end{itemize}
+
+
+
+\end{document}
