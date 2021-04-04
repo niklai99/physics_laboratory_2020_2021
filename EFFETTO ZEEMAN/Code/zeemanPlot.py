@@ -92,11 +92,11 @@ def main(argv):
             xhist1D = range(0, npixels)
             projMin = 0
             projMax = npixels
-            YMIN = 0
+            YMIN = np.amin(proj)
             YMAX = np.amax(proj)
 
             # save data for analysis
-            # np.savetxt(fname = dataPath + 'testData.txt', X = np.c_[xhist1D, proj], delimiter = '\t')
+            #np.savetxt(fname = dataPath + 'spettro2d_Bon_5k_gp2.txt', X = np.c_[xhist1D, proj], delimiter = '\t')
 
 
     # make 2D hist data arrays
