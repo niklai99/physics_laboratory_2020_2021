@@ -4,6 +4,8 @@
 # USAGE: python resPower.py plotdata.txt
 #  where "plotdata.txt" contains the y-projection of the 2d-histogram
 #  that is obtained from a ".zee" binary file using the script zeemanPlot.py
+#  If the program crashes, change the number of bins or the parameters used
+#  when calling ~find_peaks~
 #
 
 import sys
