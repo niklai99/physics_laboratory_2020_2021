@@ -16,7 +16,7 @@ def doBackgroundOp(bkgfrom, bkgto, hist):
         # compute mean background for row i
         for j in range(bkgfrom-1, bkgto):
             bkg += hist[i][j+1]
-        bkg /= (bkgto-bkgfrom)
+        bkg /= (bkgto-bkgfrom+1)
         #print(bkg)
 
         # subtract background from row i
