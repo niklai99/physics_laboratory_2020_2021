@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.22)  5 APR 2021 17:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.22)  5 APR 2021 20:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -336,19 +336,19 @@ Package: translator 2018/01/04 v1.12 Easy translation of strings in LaTeX
 )) (/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.aux)
 \openout1 = `asme2ej.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 58.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -483,67 +483,80 @@ Dictionary: translator-basic-dictionary, Language: English
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
 File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 )
-LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 56.
+LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 58.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ptmcm.fd
 File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
 )
-LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 56.
+LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 58.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omlptmcm.fd
 File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
 )
-LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 56.
+LaTeX Font Info:    Try loading font information for OMS+pzccm on input line 58.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omspzccm.fd
 File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
 )
-LaTeX Font Info:    Try loading font information for OMX+psycm on input line 56.
+LaTeX Font Info:    Try loading font information for OMX+psycm on input line 58.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omxpsycm.fd
 File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 56.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 58.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 56.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 58.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 56.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 58.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 58.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 61.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 58.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 61.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 58.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 61.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 58.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 61.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 58.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 61.
 
-Overfull \hbox (43.29276pt too wide) in paragraph at lines 58--58
+Overfull \hbox (43.29276pt too wide) in paragraph at lines 61--61
  [] 
  []
 
 
-Underfull \hbox (badness 1189) in paragraph at lines 71--75
+Underfull \hbox (badness 1189) in paragraph at lines 74--78
 \OT1/ptm/m/n/10 L'effetto Zee-man nor-male []e un fenomeno che con-siste
  []
 
+<../Spectrum/SpectrumPlots/spettro1d_Boff.jpg, id=1, 1156.32pt x 578.16pt>
+File: ../Spectrum/SpectrumPlots/spettro1d_Boff.jpg Graphic file (type jpg)
+<use ../Spectrum/SpectrumPlots/spettro1d_Boff.jpg>
+Package pdftex.def Info: ../Spectrum/SpectrumPlots/spettro1d_Boff.jpg  used on input line 99.
+(pdftex.def)             Requested size: 495.04993pt x 247.51884pt.
+<../Plots/Boff_2d_spectrum.png, id=2, 1387.584pt x 694.5147pt>
+File: ../Plots/Boff_2d_spectrum.png Graphic file (type png)
+<use ../Plots/Boff_2d_spectrum.png>
+Package pdftex.def Info: ../Plots/Boff_2d_spectrum.png  used on input line 130.
+(pdftex.def)             Requested size: 495.04993pt x 247.77844pt.
 [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
-] [2
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2 <../Spectrum/SpectrumPlots/spettro1d_Boff.jpg> <../Plots/Boff_2d_spectrum.png>] [3
 
 ] (/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.aux) ) 
 Here is how much of TeX's memory you used:
- 13942 strings out of 492616
- 285006 string characters out of 6128982
- 415589 words of memory out of 5000000
- 17756 multiletter control sequences out of 15000+600000
- 573267 words of font info for 102 fonts, out of 8000000 for 9000
+ 13960 strings out of 492616
+ 285466 string characters out of 6128982
+ 416589 words of memory out of 5000000
+ 17767 multiletter control sequences out of 15000+600000
+ 574421 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,15n,63p,407b,755s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.pdf" (2 pages, 76966 bytes).
+Output written on "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.pdf" (3 pages, 2677999 bytes).
 PDF statistics:
- 48 PDF objects out of 1000 (max. 8388607)
- 34 compressed objects within 1 object stream
+ 55 PDF objects out of 1000 (max. 8388607)
+ 37 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

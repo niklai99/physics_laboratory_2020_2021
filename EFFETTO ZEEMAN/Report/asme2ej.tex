@@ -5,6 +5,8 @@
 \usepackage{lipsum}
 \usepackage{titling}
 \usepackage{siunitx}
+
+
 \pretitle{\begin{center}\linespread{1.2}\huge}
 \posttitle{\par\end{center}\vspace{0.5em}}
 
@@ -55,6 +57,7 @@
 
 \begin{document}
 
+
 \maketitle    
 
 
@@ -91,14 +94,20 @@ In questa sezione si analizza lo spettro acquisito con il CCD orizzontale e a ca
 Si effettua una calibrazione dell'asse x per convertire il numero di pixel in lunghezze d'onda: per fare ciò si effettua un fit lineare 
 delle lunghezze d'onda note delle principali transizioni del neon in funzione del numero di pixel corrispondenti ai picchi. 
  
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{../Spectrum/SpectrumPlots/spettro1d_Boff.jpg}
+    \caption{Spettro del Neon}
+    \label{i:spettro1d}
+\end{figure*}
 
 
-
-Nella (figura) si osservano le transizioni nella regione 580-700 \si{\nano \metre}, in particolare la riga più intensa 
+In figura \ref{i:spettro1d} si osservano le transizioni nella regione 580-700 \si{\nano \metre}, in particolare la riga più intensa 
 a 640.2 \si{\nano \metre} e quella di interesse a 585.3 \si{\nano \metre}.\\
 In presenza del campo magnetico, lo spettro rimane invariato, a meno dell'intensità della radiazione che aumenta significativamente. 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Potere risolvente dell'apparato}
 
 \begin{itemize}
@@ -113,7 +122,16 @@ In presenza del campo magnetico, lo spettro rimane invariato, a meno dell'intens
 In approssimazione di luce radente vale:
 \begin{equation}
     \Delta \lambda_{\text{r.u.}} \simeq \frac{\lambda^2}{2\text{d}}
+    \label{e:lambdaru}
 \end{equation}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{../Plots/Boff_2d_spectrum.png}
+    \caption{Spettro bidimensionale}
+    \label{i:spettro2d_Boff}
+\end{figure*}
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fattore di Landè}
