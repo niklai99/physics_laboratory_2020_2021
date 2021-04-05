@@ -42,12 +42,6 @@ def readData(fname):
 
     # save new data in a Pandassssss dataframe
     data = pd.DataFrame(list(zip(newX,newY)), columns=['X','Y'])
-    #plt.hist(newData['X'], bins = int(len(newData['X'])), weights = newData['Y'], histtype = 'step', color = '#0451FF')
-    # print("Number of bins: ", len(newX))
-    # count =0
-    # for i in range(len(newY)):
-    #     count+=newY[i]
-    # print("Counts", count) # note: this is different than root
 
     return data
 
@@ -64,6 +58,7 @@ def findPeaks(newData):
     print("Found", len(peaks), "peaks")
 
     fig, ax = plt.subplots(figsize=(18,9))
+    axin1 = ax.inset_axes([3250, 900, (end-start)/2, 600], transform=ax.transData)
     # fig.tight_layout()
 
     ax.set_xlim(start, end)
@@ -81,6 +76,8 @@ def findPeaks(newData):
     FWHM = []
     Peaks = []
     parFit=[]
+
+    
 
     # loop over peaks
     for i in range(len(peaks)):
@@ -131,13 +128,27 @@ def findPeaks(newData):
         yth = Gauss(xth,ngau,*par)
 
         # plot gaussian fit
-        ax.plot(xth, yth, color='#FF4B00', alpha = 0.8, linestyle = 'dashed')
+        # ax.plot(xth, yth, color='#FF4B00', alpha = 0.8, linestyle = 'dashed')
 
         
 
         # save parameters
         parFit.append([ngau, par[0], par[1]])
 
+
+    slices = []
+    for i in range(0, len(xPlotLeft) - 2, 3):
+        s = newData[(newData['X'] >= xPlotLeft[i]) & (newData['X'] <= xPlotRight[i+2])]
+        slices.append(s)
+
+    
+    axin1.plot(np.linspace(xPlotLeft[9], xPlotRight[9], 100), Gauss(np.linspace(xPlotLeft[9], xPlotRight[9], 100),*parFit[9]), color='#FF4B00', alpha = 0.8, linestyle = 'dashed')
+    axin1.plot(np.linspace(xPlotLeft[10], xPlotRight[10], 100), Gauss(np.linspace(xPlotLeft[10], xPlotRight[10], 100),*parFit[10]), color='#FF4B00', alpha = 0.8, linestyle = 'dashed')
+    axin1.plot(np.linspace(xPlotLeft[11], xPlotRight[11], 100), Gauss(np.linspace(xPlotLeft[11], xPlotRight[11], 100),*parFit[11]), color='#FF4B00', alpha = 0.8, linestyle = 'dashed')
+    # axin1.hlines(Gauss(xHalfLeft[10],*parFit[10]), xHalfLeft[10], xHalfRight[10], color = 'red', linestyle = 'solid')
+    axin1.hist(slices[3]['X'], bins = int(len(slices[3]['Y'])), weights = slices[3]['Y'], histtype = 'step', color = '#0451FF')
+    axin1.set_xlim(slices[3]['X'].iloc[0], slices[3]['X'].iloc[-1])
+    axin1.set_ylim(0, np.amax(slices[3]['Y']) * (1 + 5/100))
 
     return Peaks, FWHM, xHalfLeft, xHalfRight, xPlotLeft, xPlotRight, parFit, ax, fig
 
@@ -244,19 +255,28 @@ def spacingTrend(peakPositions, peakSpacing, peakFWHM):
     ax1 = fig.add_subplot(1, 2, 1)
     ax2 = fig.add_subplot(1, 2, 2)
 
+    spline1 = UnivariateSpline(peakPositions, peakSpacing, k = 2)
+    spline2 = UnivariateSpline(peakPositions, peakFWHM, k = 2)
+    xs = np.linspace(peakPositions[0], peakPositions[-1], 500)
+
     # show plots
-    ax1.plot(peakPositions, peakSpacing, marker = '.', markersize = 15, linewidth = 1, color = '#0451FF')
-    ax2.plot(peakPositions, peakFWHM, marker = '.', markersize = 15, linewidth = 1, color = '#0451FF')
+    ax1.plot(peakPositions, peakSpacing, marker = '.', markersize = 18, linewidth = 0, color = '#0451FF')
+    ax1.plot(xs, spline1(xs), marker = '.', markersize = 0, linewidth = 2, linestyle = 'dashed', color = '#0451FF')
+    ax2.plot(peakPositions, peakFWHM, marker = '.', markersize = 18, linewidth = 0, color = '#0451FF')
+    ax2.plot(xs, spline2(xs), marker = '.', markersize = 0, linewidth = 2, linestyle = 'dashed', color = '#0451FF')
 
     # titles
-    ax1.set_title('Peak spacing over Position')
-    ax2.set_title('FWHM over Position')
+    ax1.set_title('Peak spacing over Position', fontsize = 24)
+    ax2.set_title('FWHM over Position', fontsize = 24)
 
     # labels
-    ax1.set_xlabel('Peak position [# pixel]')
-    ax2.set_xlabel('Peak position [# pixel]')
-    ax1.set_ylabel('Peak spacing [# pixel]')
-    ax2.set_ylabel('FWHM [# pixel]')
+    ax1.set_xlabel('Peak position [# pixel]', fontsize = 18)
+    ax2.set_xlabel('Peak position [# pixel]', fontsize = 18)
+    ax1.set_ylabel('Peak spacing [# pixel]', fontsize = 18)
+    ax2.set_ylabel('FWHM [# pixel]', fontsize = 18)
+
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 10)
+    ax2.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 10)
 
     fig.tight_layout()
 
@@ -299,6 +319,7 @@ def main(fname):
 
     # plot trends
     # spacingTrend(select_skip(Peaks[1:-1], 1, 2), dXru, fullW)
+    spacingTrend(Peaks[1:-1], Spacing, FWHM[1:-1])
 
 
     # ------ RESOLVING POWER
@@ -319,17 +340,20 @@ def main(fname):
     # ------
 
 
-    ax.text(0.05, 0.75, 
-            'Average $\Delta x_{r.u.}$ = ' + format(dXru_avg, '1.0f') + ' $\pm$ ' + format(dXru_avg_e, '1.0f') + ' pixels' + '\n'
-            'Average FWHM = ' + format(fullW_avg, '1.0f') + ' $\pm$ ' + format(fullW_avg_e, '1.0f') + ' pixels' + '\n'
-            'Average $\Delta\lambda$ = ' + format(dL_avg, '1.4f')  + ' $\pm$ ' + format(dL_avg_e, '1.4f') + ' nanometers' + '\n'
-            'Average Resolving Power R = ' + format(avgR, '1.0f') + ' $\pm$ ' + format(avgR_e, '1.0f'), 
-            fontsize = 18, color = '#000000', transform = ax.transAxes)
+    # ax.text(0.05, 0.75, 
+    #         'Average $\Delta x_{r.u.}$ = ' + format(dXru_avg, '1.0f') + ' $\pm$ ' + format(dXru_avg_e, '1.0f') + ' pixels' + '\n'
+    #         'Average FWHM = ' + format(fullW_avg, '1.0f') + ' $\pm$ ' + format(fullW_avg_e, '1.0f') + ' pixels' + '\n'
+    #         'Average $\Delta\lambda$ = ' + format(dL_avg, '1.4f')  + ' $\pm$ ' + format(dL_avg_e, '1.4f') + ' nanometers' + '\n'
+    #         'Average Resolving Power R = ' + format(avgR, '1.0f') + ' $\pm$ ' + format(avgR_e, '1.0f'), 
+    #         fontsize = 18, color = '#000000', transform = ax.transAxes)
 
     ax.set_title('Interference Peaks', fontsize = 24)
     ax.set_xlabel('# pixel', fontsize = 18)
-    ax.set_ylabel('Intensity (a.u.)', fontsize = 18, loc = 'top')
-    ax.tick_params(axis = 'both', which = 'major', labelsize = 18, direction = 'out', length = 10)
+    ax.set_ylabel('ADC counts', fontsize = 18, loc = 'top')
+    ax.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 10)
+    ax.set_ylim(top = 1600)
+
+    
 
     # fig.savefig('../Plots/test.png', dpi = 300, facecolor = 'white')
 

@@ -66,7 +66,7 @@ def main(argv):
     # general data for plot
     xhist1D = np.arange(0, ncolumns)
     projMin = 0
-    projMax = ncolumns
+    projMax = ncolumns-1
     YMIN = np.amin(proj)
     YMAX = np.amax(proj)
 
@@ -121,9 +121,18 @@ def main(argv):
 
     # 2D histogram
     ax1.pcolormesh(y, x, zhist, cmap = cmap, shading='flat')
+    ax1.set_title('2D Spectrum', fontsize = 24)
+    ax1.set_xlabel('# misura', fontsize = 18)
+    ax1.set_ylabel('# pixel', fontsize = 18)
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
 
     # 1D histogram: x projection
     ax2.hist(xhist1D, bins = len(proj), weights=proj, histtype='step', color = '#0451FF')
+    ax2.set_title('1D Spectrum - X Projection', fontsize = 24)
+    ax2.set_xlabel('# misura', fontsize = 18)
+    ax2.set_ylabel('ADC counts - <background>', fontsize = 18)
+    ax2.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
+    # ax2.set_ylim(bottom = 0)
 
     fig.tight_layout()
     plt.show()
