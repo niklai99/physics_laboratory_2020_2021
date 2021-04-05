@@ -55,11 +55,6 @@ def readData(fname):
     return data
 
 
-# fitting function
-def Gauss(x, N, x0, sigma):
-    return N/(2*pi)**0.5 / sigma * np.exp(-(x - x0)**2 / (2 * sigma**2))
-
-
 def findPeaks(newData):
 
     # use scipy signal to identify peaks
