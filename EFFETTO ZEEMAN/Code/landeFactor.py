@@ -221,7 +221,7 @@ def main(fname):
     Lande = computeLande(dE)
     Lande_e = computeLandeError(Lande, dE, dE_e) # a list
     Lande_avg = np.average(Lande, weights=Lande_e**-2)
-    Lande_avg_e = 1 / np.sum(Lande_e**-2)
+    Lande_avg_e = np.sqrt(1 / np.sum(Lande_e**-2))
 
     print('\n' + ' - \u0394\u03BB_zee = ' + format(dLzee_avg, '1.3f') + ' +/- ' + format(dLzee_avg_e, '1.3f') + ' nanometers')
     print('\n' + ' - \u0394E_zee = ' + format(dE_avg, '1.3f') + ' +/- ' + format(dE_avg_e, '1.3f') + ' joules')
