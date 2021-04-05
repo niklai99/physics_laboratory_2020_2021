@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.22)  5 APR 2021 11:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.22)  5 APR 2021 16:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -521,7 +521,7 @@ Overfull \hbox (43.29276pt too wide) in paragraph at lines 58--58
  []
 
 
-Underfull \hbox (badness 1189) in paragraph at lines 70--74
+Underfull \hbox (badness 1189) in paragraph at lines 70--73
 \OT1/ptm/m/n/10 L'effetto Zee-man nor-male []e un fenomeno che con-siste
  []
 
@@ -541,9 +541,9 @@ Here is how much of TeX's memory you used:
  17756 multiletter control sequences out of 15000+600000
  573267 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,15n,63p,325b,755s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,15n,63p,407b,755s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.pdf" (2 pages, 70446 bytes).
+Output written on "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.pdf" (2 pages, 70457 bytes).
 PDF statistics:
  44 PDF objects out of 1000 (max. 8388607)
  31 compressed objects within 1 object stream
