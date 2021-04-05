@@ -18,8 +18,12 @@ from scipy.optimize import curve_fit
 from scipy.interpolate import UnivariateSpline
 
 # constants
-npixels=7926
-maxcolumns=1024
+h = 6.626 *1e-34
+c = 299792458
+muB = 9.274 * 1e-24
+mj = 1
+B = 0.522 #tesla
+errB = B * 1/100
 LAMBDA = 585.3 # nanometers
 d = 4.04 * 1e6 #nanometers (4.04 millimiters)
 dataPath = '../Data/'
@@ -126,17 +130,61 @@ def computeSpacing(Peaks, intP, zeeP):
             # store distance
             zee_dist.append(d)
 
-
-    # FIXME: are we counting the same distance multiple times?
-    # can't we just take the average of C? 
     for i in range(1, len(C)):
         Spacing.append((C[i] + C[i-1]) / 2)
 
-    # Possible fix: 
-    avgSpacing = np.average(C) # average interference distance
-    avgSpacingZee = np.average(zee_dist) # average zeeman distance
 
-    return avgSpacing, avgSpacingZee
+    return Spacing, zee_dist
+
+
+
+def computeDeltaLru():
+
+    # approximate formula
+    dLru = LAMBDA**2 / (2*d) # nanometers
+
+    return dLru
+
+
+def computeDeltaLambda(dXru, dLru, dXzee):
+    
+    dLzee = 0.5*(np.array(dXzee) * dLru) / np.array(dXru) # nanometers
+
+    return dLzee
+
+
+def computeDeltaE(dLzee):
+
+    dE = 1e9*h*c * np.array(dLzee)/LAMBDA**2
+
+    return dE
+
+
+def computeLande(dE):
+
+    Lande = np.array(dE) / (muB*mj*B)
+
+    return Lande
+
+
+def computeRMS(X, avgX):
+
+    MSE = np.sum( (np.array(X) - avgX)**2 ) / (len(X) - 1)
+    RMSE = np.sqrt(MSE)
+
+    return RMSE
+
+
+def computeLandeError(Lande, dE, dE_err):
+
+    Lande_e = np.array(Lande)*np.sqrt( (dE_err/np.array(dE))**2 + (1/100)**2 )
+
+    return np.array(Lande_e)
+
+
+# function to select n elements and skip m elements
+def select_skip(iterable, select, skip):
+    return [x for i, x in enumerate(iterable) if i % (select+skip) < select]
 
 
 def main(fname):
@@ -154,11 +202,39 @@ def main(fname):
     # compute spacing between peaks
     Spacing, Spacing_zee = computeSpacing(Peaks, intP, zeeP)
 
-    plt.show()
+    # avoid statistical dependence in data 
+    newSpacing = select_skip(Spacing, 1, 2)
+    newSpacing_zee = select_skip(Spacing_zee[1:-1], 1, 2)
+
+    dLru = computeDeltaLru()
+
+    dLzee = computeDeltaLambda(newSpacing, dLru, newSpacing_zee)
+    dLzee_avg = np.average(dLzee)
+    dLzee_e = computeRMS(dLzee, dLzee_avg)
+    dLzee_avg_e = dLzee_e / np.sqrt(len(dLzee)-1)
+
+    dE = computeDeltaE(dLzee)
+    dE_avg = np.average(dE)
+    dE_e = computeRMS(dE, dE_avg)
+    dE_avg_e = dE_e / np.sqrt(len(dE)-1)
+
+    Lande = computeLande(dE)
+    Lande_e = computeLandeError(Lande, dE, dE_e) # a list
+    Lande_avg = np.average(Lande, weights=Lande_e**-2)
+    Lande_avg_e = 1 / np.sum(Lande_e**-2)
+
+    print('\n' + ' - \u0394\u03BB_zee = ' + format(dLzee_avg, '1.3f') + ' +/- ' + format(dLzee_avg_e, '1.3f') + ' nanometers')
+    print('\n' + ' - \u0394E_zee = ' + format(dE_avg, '1.3f') + ' +/- ' + format(dE_avg_e, '1.3f') + ' joules')
+    print('\n' + ' - Lande factor gL = ' + format(Lande_avg, '1.4f') + ' +/- ' + format(Lande_avg_e, '1.4f'))
+    print('\n' + ' - Precision = ' + format(Lande_avg_e/Lande_avg * 100, '1.2f') + '%')
+    print('\n' + ' - Compatibility with 1 = ' + format((Lande_avg - 1)/Lande_avg_e, '1.2f'))
+
+
+    # plt.show()
 
     return
 
-
+ 
 
 
 if __name__ == "__main__":
