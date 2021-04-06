@@ -48,10 +48,22 @@ def main():
         "bon_gp2.txt",
     ]
 
+    labels=[
+        "No polarimeter",
+        "Polarimeter config. 1",
+        "Polarimeter config. 2"
+    ]
+
+    colors = [
+        "#0451FF",
+        "#ff3504",
+        "#00C415"
+    ]
+
 
     # create figure
-    fig, ax = plt.subplots(figsize=(12,6))
-    fig.tight_layout()
+    fig, ax = plt.subplots(figsize=(20,9.5))
+    
 
     data=[] # store all datasets
 
@@ -66,9 +78,23 @@ def main():
                 bins = len(data[i]['X']),
                 weights = savgol_filter(data[i]['Y'],11,3),
                 histtype = 'step',
-                label=names[i])
+                linewidth = 1.5,
+                color = colors[i],
+                label=labels[i])
 
-    plt.legend()
+
+    ax.set_title('Zeeman Peak Splitting', fontsize = 24)
+    ax.set_xlabel('# pixel', fontsize = 20)
+    ax.set_ylabel('ADC counts', fontsize = 20, loc = 'top')
+    ax.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 10)
+
+    ax.set_ylim(bottom = 0, top = 1400)
+    ax.set_xlim(left = 3915, right = 7145)
+
+    ax.legend(loc = 'upper left', prop = {'size': 18})
+
+    fig.tight_layout()
+    fig.savefig('../Plots/Bon_overlap2.png', dpi = 300, facecolor = 'white')
     plt.show()
  
 

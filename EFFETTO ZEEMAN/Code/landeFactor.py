@@ -75,7 +75,7 @@ def findPeaks(newData):
 
 
     # plot data
-    ax.hist(newData['X'], bins = int(len(newData['X'])), weights = newData['Y'], histtype = 'step', color = '#0451FF')
+    ax.hist(newData['X'], bins = int(len(newData['X'])), weights = newData['Y'], histtype = 'step', linewidth = 1.5, color = '#0451FF')
     # plot peaks
     # ax.plot(newData['X'].iloc[peaks], newData['Y'].iloc[peaks], '.', color='red')
 
@@ -242,7 +242,7 @@ def main(fname):
     ax.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 10)
 
     fig.tight_layout()
-    # fig.savefig('../Plots/Bon_Y_proj.png', dpi = 300, facecolor = 'white')
+    fig.savefig('../Plots/Bon_Y_proj2.png', dpi = 300, facecolor = 'white')
     plt.show()
 
     return

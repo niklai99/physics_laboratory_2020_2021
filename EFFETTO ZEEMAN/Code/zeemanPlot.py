@@ -127,7 +127,7 @@ def main(argv):
     ax1.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
 
     # 1D histogram: x projection
-    ax2.hist(xhist1D, bins = len(proj), weights=proj, histtype='step', color = '#0451FF')
+    ax2.hist(xhist1D, bins = len(proj), weights=proj, histtype='step', linewidth = 1.5, color = '#0451FF')
     ax2.set_title('1D Spectrum - X Projection', fontsize = 24)
     ax2.set_xlabel('# misura', fontsize = 18)
     ax2.set_ylabel('ADC counts - <background>', fontsize = 18)
