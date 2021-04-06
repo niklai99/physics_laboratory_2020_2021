@@ -66,7 +66,7 @@ def findPeaks(newData):
 
 
     # plot data
-    ax.hist(newData['X'], bins = int(len(newData['X'])), weights = newData['Y'], histtype = 'step', color = '#0451FF')
+    ax.hist(newData['X'], bins = int(len(newData['X'])), weights = newData['Y'], histtype = 'step', color = '#0451FF', linewidth = 1.5)
 
 
     xHalfLeft = []
@@ -142,11 +142,11 @@ def findPeaks(newData):
         slices.append(s)
 
     
-    axin1.plot(np.linspace(xPlotLeft[9], xPlotRight[9], 100), Gauss(np.linspace(xPlotLeft[9], xPlotRight[9], 100),*parFit[9]), color='#FF4B00', alpha = 0.8, linestyle = 'dashed')
-    axin1.plot(np.linspace(xPlotLeft[10], xPlotRight[10], 100), Gauss(np.linspace(xPlotLeft[10], xPlotRight[10], 100),*parFit[10]), color='#FF4B00', alpha = 0.8, linestyle = 'dashed')
-    axin1.plot(np.linspace(xPlotLeft[11], xPlotRight[11], 100), Gauss(np.linspace(xPlotLeft[11], xPlotRight[11], 100),*parFit[11]), color='#FF4B00', alpha = 0.8, linestyle = 'dashed')
+    axin1.plot(np.linspace(xPlotLeft[9], xPlotRight[9], 100), Gauss(np.linspace(xPlotLeft[9], xPlotRight[9], 100),*parFit[9]), color='#FF4B00', alpha = 1, linestyle = 'dashed', linewidth = 1.5)
+    axin1.plot(np.linspace(xPlotLeft[10], xPlotRight[10], 100), Gauss(np.linspace(xPlotLeft[10], xPlotRight[10], 100),*parFit[10]), color='#FF4B00', alpha = 1, linestyle = 'dashed', linewidth = 1.5)
+    axin1.plot(np.linspace(xPlotLeft[11], xPlotRight[11], 100), Gauss(np.linspace(xPlotLeft[11], xPlotRight[11], 100),*parFit[11]), color='#FF4B00', alpha = 1, linestyle = 'dashed', linewidth = 1.5)
     # axin1.hlines(Gauss(xHalfLeft[10],*parFit[10]), xHalfLeft[10], xHalfRight[10], color = 'red', linestyle = 'solid')
-    axin1.hist(slices[3]['X'], bins = int(len(slices[3]['Y'])), weights = slices[3]['Y'], histtype = 'step', color = '#0451FF')
+    axin1.hist(slices[3]['X'], bins = int(len(slices[3]['Y'])), weights = slices[3]['Y'], histtype = 'step', color = '#0451FF', linewidth = 1.5)
     axin1.set_xlim(slices[3]['X'].iloc[0], slices[3]['X'].iloc[-1])
     axin1.set_ylim(0, np.amax(slices[3]['Y']) * (1 + 5/100))
 
@@ -193,7 +193,7 @@ def plot3peaks(newData, xPlotLeft, xPlotRight, parFit):
                 # plot peaks
                 ax[j][i].set_xlim(slices[i+h]['X'].iloc[0], slices[i+h]['X'].iloc[-1])
                 ax[j][i].set_ylim(0, np.amax(slices[i+h]['Y']) * (1 + 5/100))
-                ax[j][i].hist(slices[i+h]['X'], bins = int(len(slices[i+h]['Y'])), weights = slices[i+h]['Y'], histtype = 'step', color = '#0451FF')
+                ax[j][i].hist(slices[i+h]['X'], bins = int(len(slices[i+h]['Y'])), weights = slices[i+h]['Y'], histtype = 'step', color = '#0451FF', linewidth = 1.5)
 
                 # plot fits
                 for k in range(3):
@@ -279,7 +279,7 @@ def spacingTrend(peakPositions, peakSpacing, peakFWHM):
     ax2.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
 
     fig.tight_layout()
-    # fig.savefig('../Plots/test2.png', dpi = 300, facecolor = 'white')
+    fig.savefig('../Plots/Boff_spacing_trend.png', dpi = 300, facecolor = 'white')
 
     return
 
@@ -371,7 +371,7 @@ def main(fname):
     print('\n')
 
     fig.tight_layout()
-    # fig.savefig('../Plots/test3.png', dpi = 300, facecolor = 'white')
+    fig.savefig('../Plots/Boff_Y_proj.png', dpi = 300, facecolor = 'white')
     plt.show()
 
     return
