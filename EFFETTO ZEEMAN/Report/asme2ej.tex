@@ -169,14 +169,8 @@ In questa sezione si analizzano i dati con il campo magnetico acceso e osservand
 Poiché un dipolo non emette lungo la direzione che individua, i termini polarizzati circolarmente corrispondenti a $\Delta \text{m} = \pm 1$
 hanno intensità maggiore dei termini corrispondenti a $\Delta \text{m} = 0$. Perciò la transizione centrale è soppressa e si osservano solo le due laterali,
 separate da $\delta\lambda = 2 \Delta\lambda_{\text{zee}}$
+ 
 
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\linewidth]{../Plots/Bon_2d_spectrum.png}
-    \caption{Spettro bidimensionale $\text{B}_{on}$}
-    \label{i:spettro2d_Bon}
-\end{figure}
 
 \begin{figure*}
     \centering
@@ -185,10 +179,25 @@ separate da $\delta\lambda = 2 \Delta\lambda_{\text{zee}}$
     \label{i:spettro2d_Bon_ProjY}
 \end{figure*}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{../Plots/Bon_2d_spectrum.png}
+    \caption{Spettro bidimensionale $\text{B}_{on}$}
+    \label{i:spettro2d_Bon}
+\end{figure}
+
+
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Campo magnetico ortogonale alla radiazione}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{../Plots/Bon_overlap_big.png}
+    \caption{Proiezione sull'asse y dello spettro bidimensionale nelle configurazioni con e senza polarizzatore}
+    \label{i:spettro2d_overlap}
+\end{figure*}
 
 \begin{itemize}
     \item Un po' di fisica più in dettaglio rispetto all'introduzione (polarizzazione ecc) + aspettative "teoriche"
@@ -204,7 +213,9 @@ di propagazione trasversa al campo. Successivamente, si inserisce un filtro pola
 Se il polarizzatore fa passare prevalentemente la componente della luce polarizzata parallelamente alla direzione del campo, allora si osserva una sola riga; se invece, ruotando il filtro, questo 
 fa passare la componente della luce con polarizzazione ortogonale al campo, allora la transizione centrale viene soppressa e si osservano solamente i due picchi laterali.
 Conseguentemente ci si aspetta che l'intensità della radiazione sia significativamente ridotta con l'inserimento del filtro polarizzatore.  
-\\ (plot)
-
+In \figurename\ref{i:spettro2d_overlap} è riportata la proiezione sull'asse y dello spettro bidimensionale, nelle tre configurazioni precedentamente descritte. 
+Si nota che, in generale, l'apparato non permette di risolvere sufficientemente bene le transizioni: questo è particolarmente evidente in assenza del filtro, in quanto
+non è possibile distinguere i tre picchi di interferenza distinti che ci si aspetterebbe. Inoltre, si osserva che nella prima configurazione lo spettro è caratterizzato dalla presenza di un unico
+picco, mentre nella seconda da un doppietto: da ciò si deduce che nel primo caso il polarizzatore è posto lungo la direzione del campo, mentre nella seconda è ruotato di 90 gradi. 
 
 \end{document}
