@@ -244,9 +244,25 @@ def computeRMS(R, avgR):
     return RMSE
 
 
+def lin(x, a, b):
+    return a*x + b
+
+def parab(x, a, b, c):
+    return a*x**2 + b*x + c
+
+def cub(x, a, b, c, d):
+    return a*x**3 + b*x**2 + c*x + d
+
 
 # ABERRATION ANALYSIS 
 def spacingTrend(peakPositions, peakSpacing, peakFWHM):
+
+
+    XMIN = peakPositions[0] * ( 1 - 5 / 100)
+    XMAX = peakPositions[-1] * ( 1 + 5 / 100)
+
+    par1, _ = curve_fit(cub, peakPositions, peakSpacing)
+    par2, _ = curve_fit(lin, peakPositions, peakFWHM)
 
     # create figure
     fig = plt.figure(figsize=(12,6))
@@ -256,14 +272,14 @@ def spacingTrend(peakPositions, peakSpacing, peakFWHM):
     ax2 = fig.add_subplot(1, 2, 2)
 
     spline1 = UnivariateSpline(peakPositions, peakSpacing, k = 2)
-    spline2 = UnivariateSpline(peakPositions, peakFWHM, k = 2)
-    xs = np.linspace(peakPositions[0], peakPositions[-1], 500)
+    spline2 = UnivariateSpline(peakPositions, peakFWHM, s = 1e-8)
+    xs = np.linspace(XMIN, XMAX, 1000)
 
     # show plots
     ax1.plot(peakPositions, peakSpacing, marker = '.', markersize = 18, linewidth = 0, color = '#0451FF')
-    ax1.plot(xs, spline1(xs), marker = '.', markersize = 0, linewidth = 2, linestyle = 'dashed', color = '#0451FF')
+    ax1.plot(xs, cub(xs, *par1), marker = '.', markersize = 0, linewidth = 2, linestyle = 'dashed', color = '#FF4B00')
     ax2.plot(peakPositions, peakFWHM, marker = '.', markersize = 18, linewidth = 0, color = '#0451FF')
-    ax2.plot(xs, spline2(xs), marker = '.', markersize = 0, linewidth = 2, linestyle = 'dashed', color = '#0451FF')
+    ax2.plot(xs, lin(xs, *par2), marker = '.', markersize = 0, linewidth = 2, linestyle = 'dashed', color = '#FF4B00')
 
     # titles
     ax1.set_title('Peak spacing over Position', fontsize = 24)
@@ -277,6 +293,9 @@ def spacingTrend(peakPositions, peakSpacing, peakFWHM):
 
     ax1.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
     ax2.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
+
+    ax1.set_xlim(XMIN, XMAX)
+    ax2.set_xlim(XMIN, XMAX)
 
     fig.tight_layout()
     fig.savefig('../Plots/Boff_spacing_trend.png', dpi = 300, facecolor = 'white')
@@ -371,7 +390,7 @@ def main(fname):
     print('\n')
 
     fig.tight_layout()
-    fig.savefig('../Plots/Boff_Y_proj.png', dpi = 300, facecolor = 'white')
+    # fig.savefig('../Plots/Boff_Y_proj.png', dpi = 300, facecolor = 'white')
     plt.show()
 
     return
