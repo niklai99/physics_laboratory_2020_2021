@@ -194,34 +194,60 @@ def select_skip(iterable, select, skip):
 
 
 
-def zeemanTrend(newData, Peaks, zeemanSpacing):
+def lin(x, a, b):
+    return a*x + b
+
+def zeemanTrend(newData, Peaks, zeemanSpacing, peakSpacing):
+
 
     Y = np.array(zeemanSpacing) * 4
+    X = newData['X'].iloc[Peaks]
+
+    Y2 = np.array(peakSpacing) * 4
+    YY = Y2/Y[1:-1]
+
+    XMIN = newData['X'].iloc[Peaks[0]] * (1-5/100)
+    XMAX = newData['X'].iloc[Peaks[-1]] * (1+5/100)
+
+    par1, cov = curve_fit(lin, X, Y)
+    par2, cov = curve_fit(lin, X[1:-1], YY)
 
     # create figure
     fig = plt.figure(figsize=(12,6))
 
     # create axes
-    ax1 = fig.add_subplot(1, 1, 1)
+    ax1 = fig.add_subplot(1, 2, 1)
+    ax2 = fig.add_subplot(1, 2, 2)
 
-    spline1 = UnivariateSpline(newData['X'].iloc[Peaks], Y, k = 2)
-    xs = np.linspace(newData['X'].iloc[Peaks[0]], newData['X'].iloc[Peaks[-1]], 500)
+    spline1 = UnivariateSpline(X, Y, k = 2)
+    xs = np.linspace(XMIN, XMAX, 1000)
 
     # show plots
-    ax1.plot(newData['X'].iloc[Peaks], Y, marker = '.', markersize = 18, linewidth = 0, color = '#0451FF')
-    ax1.plot(xs, spline1(xs), marker = '.', markersize = 0, linewidth = 2, linestyle = 'dashed', color = '#0451FF')
+    ax1.plot(X, Y, marker = '.', markersize = 18, linewidth = 0, color = '#0451FF')
+    ax1.plot(xs, lin(xs, *par1), marker = '.', markersize = 0, linewidth = 2, linestyle = 'dashed', color = '#FF4B00')
+
+    ax2.plot(X[1:-1], YY, marker = '.', markersize = 18, linewidth = 0, color = '#0451FF')
+    ax2.plot(xs, lin(xs, *par2), marker = '.', markersize = 0, linewidth = 2, linestyle = 'dashed', color = '#FF4B00')
 
 
     # titles
     ax1.set_title('Zeeman Splitting over Position', fontsize = 24)
+    ax2.set_title('Spacing Ratio over Position', fontsize = 24)
 
 
     # labels
     ax1.set_xlabel('Peak position [# pixel]', fontsize = 18)
     ax1.set_ylabel('Zeeman splitting [# pixel]', fontsize = 18)
 
+    ax2.set_xlabel('Peak position [# pixel]', fontsize = 18)
+    ax2.set_ylabel('Spacing Ratio', fontsize = 18)
+
 
     ax1.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
+    ax2.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
+
+    ax1.set_xlim(XMIN, XMAX)
+    ax2.set_xlim(XMIN, XMAX)
 
     fig.tight_layout()
     # fig.savefig('../Plots/Bon_zeeman_trend.png', dpi = 300, facecolor = 'white')
@@ -251,7 +277,7 @@ def main(fname):
     newSpacing_zee = select_skip(Spacing_zee[1:-1], 1, 2)
 
     # plot trend
-    zeemanTrend(newData, select_skip(Peaks, 1, 1), Spacing_zee)
+    zeemanTrend(newData, select_skip(Peaks, 1, 1), Spacing_zee, Spacing)
 
     dLru = computeDeltaLru()
 
