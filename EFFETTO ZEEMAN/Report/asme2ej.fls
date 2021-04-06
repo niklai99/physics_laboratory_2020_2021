@@ -178,10 +178,10 @@ INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmr7t.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmr7t.tfm
-INPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/../Spectrum/SpectrumPlots/spettro1d_Boff.jpg
-INPUT ../Spectrum/SpectrumPlots/spettro1d_Boff.jpg
+INPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/../Spectrum/SpectrumPlots/spettro1d_Boff.png
+INPUT ../Spectrum/SpectrumPlots/spettro1d_Boff.png
 OUTPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.pdf
-INPUT ../Spectrum/SpectrumPlots/spettro1d_Boff.jpg
+INPUT ../Spectrum/SpectrumPlots/spettro1d_Boff.png
 INPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/../Plots/Boff_2d_spectrum.png
 INPUT ../Plots/Boff_2d_spectrum.png
 INPUT ../Plots/Boff_2d_spectrum.png
