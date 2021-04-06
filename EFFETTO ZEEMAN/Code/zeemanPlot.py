@@ -121,11 +121,21 @@ def main(argv):
 
     # 2D histogram
     ax1.pcolormesh(y, x, zhist, cmap = cmap, shading='flat')
+    ax1.set_title('2D Spectrum', fontsize = 24)
+    ax1.set_xlabel('# misura', fontsize = 18)
+    ax1.set_ylabel('# pixel', fontsize = 18)
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
 
     # 1D histogram: x projection
     ax2.hist(xhist1D, bins = len(proj), weights=proj, histtype='step', color = '#0451FF')
+    ax2.set_title('1D Spectrum - X Projection', fontsize = 24)
+    ax2.set_xlabel('# misura', fontsize = 18)
+    ax2.set_ylabel('ADC counts - <background>', fontsize = 18)
+    ax2.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
+    ax2.set_ylim(bottom = 0)
 
     fig.tight_layout()
+    # fig.savefig('../Plots/Bon_2d_spectrum.png', dpi = 300, facecolor = 'white')
     plt.show()
 
 

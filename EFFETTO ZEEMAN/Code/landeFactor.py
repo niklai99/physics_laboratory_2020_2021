@@ -66,11 +66,12 @@ def findPeaks(newData):
     Peaks, p = find_peaks(newData['Y'], width = 6,prominence=50, rel_height=0.5)
     print("Found", len(Peaks), "peaks")
 
-    fig, ax = plt.subplots(figsize=(12,6))
-    fig.tight_layout()
+    fig, ax = plt.subplots(figsize=(20,9.5))
+    # axin1 = ax.inset_axes([4375, 1850, (end-start)/2, 800], transform=ax.transData)
+    
 
     ax.set_xlim(start, end)
-    ax.set_ylim(0, np.amax(newData['Y']) * ( 1 + 5/100 ))
+    # ax.set_ylim(bottom = 0)
 
 
     # plot data
@@ -105,7 +106,12 @@ def findPeaks(newData):
             zeeP.append(i)
             isLastZeeman=True
 
-    return Peaks, intP, zeeP
+    # axin1.hist(newData['X'].iloc[Peaks[intP[7]]-20:Peaks[zeeP[9]]+20], bins = int(len(newData['Y'].iloc[Peaks[intP[7]]-20:Peaks[zeeP[9]]+20])), 
+    #             weights = newData['Y'].iloc[Peaks[intP[7]]-20:Peaks[zeeP[9]]+20], histtype = 'step', color = '#0451FF')
+    # axin1.set_xlim(newData['X'].iloc[Peaks[intP[7]]-20], newData['X'].iloc[Peaks[zeeP[9]]+20]-10)
+    # axin1.set_ylim(0, np.amax(newData['Y'].iloc[Peaks[intP[7]]:Peaks[zeeP[9]]]) * (1 + 5/100))
+
+    return Peaks, intP, zeeP, ax, fig
 
 
 def computeSpacing(Peaks, intP, zeeP):
@@ -197,7 +203,7 @@ def main(fname):
     newData.reset_index(inplace = True, drop = True)
 
     # find peaks
-    Peaks, intP, zeeP= findPeaks(newData)
+    Peaks, intP, zeeP, ax, fig = findPeaks(newData)
 
     # compute spacing between peaks
     Spacing, Spacing_zee = computeSpacing(Peaks, intP, zeeP)
@@ -230,7 +236,14 @@ def main(fname):
     print('\n' + ' - Compatibility with 1 = ' + format((Lande_avg - 1)/Lande_avg_e, '1.2f'))
 
 
-    # plt.show()
+    ax.set_title('Zeeman Peak Splitting', fontsize = 24)
+    ax.set_xlabel('# pixel', fontsize = 20)
+    ax.set_ylabel('ADC counts', fontsize = 20, loc = 'top')
+    ax.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 10)
+
+    fig.tight_layout()
+    # fig.savefig('../Plots/Bon_Y_proj.png', dpi = 300, facecolor = 'white')
+    plt.show()
 
     return
 
