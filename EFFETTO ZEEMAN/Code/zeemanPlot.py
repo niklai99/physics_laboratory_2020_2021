@@ -132,10 +132,10 @@ def main(argv):
     ax2.set_xlabel('# misura', fontsize = 18)
     ax2.set_ylabel('ADC counts - <background>', fontsize = 18)
     ax2.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
-    # ax2.set_ylim(bottom = 0)
+    ax2.set_ylim(bottom = 0)
 
     fig.tight_layout()
-    # fig.savefig('../Plots/test.png', dpi = 300, facecolor = 'white')
+    # fig.savefig('../Plots/Boff_2d_spectrum.png', dpi = 300, facecolor = 'white')
     plt.show()
 
 
