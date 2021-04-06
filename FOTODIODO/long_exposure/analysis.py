@@ -48,10 +48,10 @@ def multi_gauss(X,N1,N2,N3,N4,N5,N6,sigmaNoise, sigmaEn):
     sigma5=np.sqrt(sigmaNoise**2+(sigmaEn*np.sqrt(mean5))**2)
     sigma6=np.sqrt(sigmaNoise**2+(sigmaEn*np.sqrt(mean6))**2)
 
-    v1 = N1/((2*pi)**0.5 * sigma1) * np.exp( -(X-mean1)**2/(2*sigma1**2) )
-    v2 = N2/((2*pi)**0.5 * sigma2) * np.exp( -(X-mean2)**2/(2*sigma2**2) )
-    v3 = N3/((2*pi)**0.5 * sigma3) * np.exp( -(X-mean3)**2/(2*sigma3**2) )
-    v4 = N4/((2*pi)**0.5 * sigma4) * np.exp( -(X-mean4)**2/(2*sigma4**2) )
+    # v1 = N1/((2*pi)**0.5 * sigma1) * np.exp( -(X-mean1)**2/(2*sigma1**2) )
+    # v2 = N2/((2*pi)**0.5 * sigma2) * np.exp( -(X-mean2)**2/(2*sigma2**2) )
+    # v3 = N3/((2*pi)**0.5 * sigma3) * np.exp( -(X-mean3)**2/(2*sigma3**2) )
+    # v4 = N4/((2*pi)**0.5 * sigma4) * np.exp( -(X-mean4)**2/(2*sigma4**2) )
 
     v1 = N1* np.exp( -(X-mean1)**2/(2*sigma1**2) )
     v2 = N2* np.exp( -(X-mean2)**2/(2*sigma2**2) )
@@ -69,6 +69,7 @@ def multi_gauss(X,N1,N2,N3,N4,N5,N6,sigmaNoise, sigmaEn):
     #return v4
     #return v1
 
+# second apprach (incomplete)
 def multi_gauss1(Xt,sigmaNoise, sigmaEn):
     X=Xt[0]
     t=Xt[1]
@@ -155,10 +156,7 @@ def main():
     # start from x>9
     Xn=np.array(data.X[data.X>10])
     Yn=np.array(data.Y[data.X>10])
-#    Xn=np.empty(len(Xt))
-#    for i in range(len(Xt)):
-#        if Xt[i] > 10 and Xt[i] < 10:
-#            Xn[i]=0
+
     par,cov=curve_fit(multi_gauss,Xn,Yn)
     xgr= np.linspace(np.amin(data.X),np.amax(data.X),1000)
     plt.plot(xgr,multi_gauss(xgr,*par),color='tomato')
