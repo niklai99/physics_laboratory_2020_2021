@@ -193,6 +193,42 @@ def select_skip(iterable, select, skip):
     return [x for i, x in enumerate(iterable) if i % (select+skip) < select]
 
 
+
+def zeemanTrend(newData, Peaks, zeemanSpacing):
+
+    Y = np.array(zeemanSpacing) * 4
+
+    # create figure
+    fig = plt.figure(figsize=(12,6))
+
+    # create axes
+    ax1 = fig.add_subplot(1, 1, 1)
+
+    spline1 = UnivariateSpline(newData['X'].iloc[Peaks], Y, k = 2)
+    xs = np.linspace(newData['X'].iloc[Peaks[0]], newData['X'].iloc[Peaks[-1]], 500)
+
+    # show plots
+    ax1.plot(newData['X'].iloc[Peaks], Y, marker = '.', markersize = 18, linewidth = 0, color = '#0451FF')
+    ax1.plot(xs, spline1(xs), marker = '.', markersize = 0, linewidth = 2, linestyle = 'dashed', color = '#0451FF')
+
+
+    # titles
+    ax1.set_title('Zeeman Splitting over Position', fontsize = 24)
+
+
+    # labels
+    ax1.set_xlabel('Peak position [# pixel]', fontsize = 18)
+    ax1.set_ylabel('Zeeman splitting [# pixel]', fontsize = 18)
+
+
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
+
+    fig.tight_layout()
+    # fig.savefig('../Plots/Bon_zeeman_trend.png', dpi = 300, facecolor = 'white')
+
+    return
+
+
 def main(fname):
 
     # read data from file
@@ -208,9 +244,14 @@ def main(fname):
     # compute spacing between peaks
     Spacing, Spacing_zee = computeSpacing(Peaks, intP, zeeP)
 
+    print(Spacing)
+
     # avoid statistical dependence in data 
     newSpacing = select_skip(Spacing, 1, 2)
     newSpacing_zee = select_skip(Spacing_zee[1:-1], 1, 2)
+
+    # plot trend
+    zeemanTrend(newData, select_skip(Peaks, 1, 1), Spacing_zee)
 
     dLru = computeDeltaLru()
 
@@ -242,7 +283,7 @@ def main(fname):
     ax.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 10)
 
     fig.tight_layout()
-    fig.savefig('../Plots/Bon_Y_proj2.png', dpi = 300, facecolor = 'white')
+    # fig.savefig('../Plots/Bon_Y_proj2.png', dpi = 300, facecolor = 'white')
     plt.show()
 
     return
