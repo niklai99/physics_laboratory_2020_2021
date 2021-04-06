@@ -1,10 +1,10 @@
 # Fdb version 3
-["pdflatex"] 1617709399 "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.tex" "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.pdf" "asme2ej" 1617709400
+["pdflatex"] 1617710306 "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.tex" "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.pdf" "asme2ej" 1617710307
   "../Plots/Boff_2d_spectrum.png" 1617637673 172335 4edb806113542853280b8419273ba7ea ""
   "../Spectrum/SpectrumPlots/spettro1d_Boff.jpg" 1617625362 2479316 4e96d43e988589971e06d8a8ba887f2f ""
-  "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.aux" 1617709400 903 2dd1cc9c7449da0521b9d42a6eef8cc5 ""
-  "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.tex" 1617709399 7892 80da00ccfb69aeae790a11ecb07adfa5 ""
-  "/dev/null" 1617709385 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.aux" 1617710307 903 2dd1cc9c7449da0521b9d42a6eef8cc5 ""
+  "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.tex" 1617710305 7892 80da00ccfb69aeae790a11ecb07adfa5 ""
+  "/dev/null" 1617710306 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/helvetic/phvb7t.tfm" 1480098688 2240 eb56c13537f4d8a0bd3fafc25572b1bd ""
@@ -99,12 +99,12 @@
   "/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1553261062 3236106 bef0cf154a3167603a4917a99a2c80c5 ""
   "/usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1553261113 4227023 39fb7419279bd1e4de375e09014a3ecb ""
   "/usr/local/texlive/2018/texmf.cnf" 1523934483 577 0b39adfd7c93507ff20c9c14c2f1a33f ""
-  "asme2ej.aux" 1617709400 903 2dd1cc9c7449da0521b9d42a6eef8cc5 ""
+  "asme2ej.aux" 1617710307 903 2dd1cc9c7449da0521b9d42a6eef8cc5 ""
   "asme2ej.cls" 1617550345 47788 0516a182f765053771c16148b822c116 ""
-  "asme2ej.tex" 1617709399 7892 80da00ccfb69aeae790a11ecb07adfa5 ""
+  "asme2ej.tex" 1617710305 7892 80da00ccfb69aeae790a11ecb07adfa5 ""
   (generated)
-  "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.pdf"
-  "asme2ej.aux"
   "asme2ej.log"
+  "asme2ej.aux"
   "asme2ej.pdf"
+  "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.pdf"
   "/Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.log"
