@@ -135,6 +135,7 @@ def main(argv):
     # ax2.set_ylim(bottom = 0)
 
     fig.tight_layout()
+    # fig.savefig('../Plots/test.png', dpi = 300, facecolor = 'white')
     plt.show()
 
 

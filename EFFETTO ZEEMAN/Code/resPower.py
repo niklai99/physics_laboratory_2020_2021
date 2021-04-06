@@ -57,9 +57,9 @@ def findPeaks(newData):
     peaks, p = find_peaks(newData['Y'], width=5, prominence=100, rel_height=0.5)
     print("Found", len(peaks), "peaks")
 
-    fig, ax = plt.subplots(figsize=(18,9))
+    fig, ax = plt.subplots(figsize=(20,9.5))
     axin1 = ax.inset_axes([3250, 900, (end-start)/2, 600], transform=ax.transData)
-    # fig.tight_layout()
+    # 
 
     ax.set_xlim(start, end)
     ax.set_ylim(0, np.amax(newData['Y']) * ( 1 + 5/100 ))
@@ -275,10 +275,11 @@ def spacingTrend(peakPositions, peakSpacing, peakFWHM):
     ax1.set_ylabel('Peak spacing [# pixel]', fontsize = 18)
     ax2.set_ylabel('FWHM [# pixel]', fontsize = 18)
 
-    ax1.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 10)
-    ax2.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 10)
+    ax1.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
+    ax2.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
 
     fig.tight_layout()
+    # fig.savefig('../Plots/test2.png', dpi = 300, facecolor = 'white')
 
     return
 
@@ -348,14 +349,14 @@ def main(fname):
     #         fontsize = 18, color = '#000000', transform = ax.transAxes)
 
     ax.set_title('Interference Peaks', fontsize = 24)
-    ax.set_xlabel('# pixel', fontsize = 18)
-    ax.set_ylabel('ADC counts', fontsize = 18, loc = 'top')
+    ax.set_xlabel('# pixel', fontsize = 20)
+    ax.set_ylabel('ADC counts', fontsize = 20, loc = 'top')
     ax.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 10)
     ax.set_ylim(top = 1600)
 
     
 
-    # fig.savefig('../Plots/test.png', dpi = 300, facecolor = 'white')
+    
 
     # ------ PRINTING
     # print relevant results
@@ -369,7 +370,8 @@ def main(fname):
     print('- Resolving Power precision: ' + format(100 * avgR_e/avgR, '1.2f') + '%') 
     print('\n')
 
-
+    fig.tight_layout()
+    # fig.savefig('../Plots/test3.png', dpi = 300, facecolor = 'white')
     plt.show()
 
     return
