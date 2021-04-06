@@ -182,6 +182,9 @@ INPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/../Spectrum/SpectrumPlots
 INPUT ../Spectrum/SpectrumPlots/spettro1d_Boff.jpg
 OUTPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.pdf
 INPUT ../Spectrum/SpectrumPlots/spettro1d_Boff.jpg
+INPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/../Plots/Boff_2d_spectrum.png
+INPUT ../Plots/Boff_2d_spectrum.png
+INPUT ../Plots/Boff_2d_spectrum.png
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map
