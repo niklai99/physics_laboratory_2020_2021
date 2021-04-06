@@ -185,6 +185,12 @@ INPUT ../Spectrum/SpectrumPlots/spettro1d_Boff.jpg
 INPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/../Plots/Boff_2d_spectrum.png
 INPUT ../Plots/Boff_2d_spectrum.png
 INPUT ../Plots/Boff_2d_spectrum.png
+INPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/../Plots/Boff_spacing_trend.png
+INPUT ../Plots/Boff_spacing_trend.png
+INPUT ../Plots/Boff_spacing_trend.png
+INPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/../Plots/Boff_Y_proj.png
+INPUT ../Plots/Boff_Y_proj.png
+INPUT ../Plots/Boff_Y_proj.png
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map
@@ -214,6 +220,12 @@ INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
+INPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/../Plots/Bon_2d_spectrum.png
+INPUT ../Plots/Bon_2d_spectrum.png
+INPUT ../Plots/Bon_2d_spectrum.png
+INPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/../Plots/Bon_Y_proj.png
+INPUT ../Plots/Bon_Y_proj.png
+INPUT ../Plots/Bon_Y_proj.png
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/vf/adobe/helvetic/phvr7t.vf
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/helvetic/phvr8r.tfm
 INPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.aux
