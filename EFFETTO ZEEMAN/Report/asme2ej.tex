@@ -62,7 +62,7 @@
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduzione}
+\section{Introduzione}\label{s:introduzione}
 
 L'effetto Zeeman normale è un fenomeno fisico che consiste nella separazione delle righe di emissione di un atomo
 eccitato in presenza di un campo magnetico esterno $\vec{\text{B}}$. L'interazione con il campo è riconducibile a onde
@@ -79,29 +79,29 @@ mentre l'incertezza relativa sul valore del campo magnetico $\vec{\text{B}}$ ris
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Spettro di emissione del Neon}
+\section{Spettro di emissione del Neon}\label{s:neon}
 
-\begin{itemize}
-    \item Calibrazione
-    \item Plot dello spettro con Boff
-    \item Dire che non cambia niente se Bon (solo intensità o rumore)
-    \item Identificare la riga che poi analizziamo
-\end{itemize}
-In questa sezione si analizza lo spettro acquisito con il CCD orizzontale e a campo magnetico spento, per individuare la riga di interesse. 
-Si effettua una calibrazione dell'asse x per convertire il numero di pixel in lunghezze d'onda: per fare ciò si effettua un fit lineare 
-delle lunghezze d'onda note delle principali transizioni del neon in funzione del numero di pixel corrispondenti ai picchi. 
+In questa sezione si analizza lo spettro acquisito con il CCD orizzontale e in assenza di campo magnetico con il fine di
+individuare la riga di emissione di interesse.  \\
+Inizialmente si effettua una calibrazione dell'asse orizzontale, convertendo così il numero di pixel relativi al CCD in
+lunghezze d'onda. A tale scopo, si predispone una regressione lineare delle lunghezze d'onda delle principali righe
+spettrali del Neon in funzione del numero di pixel corrispondenti ai picchi rivelati dal detector. 
  
 \begin{figure*}
     \centering
     \includegraphics[width=\textwidth]{../Spectrum/SpectrumPlots/spettro1d_Boff.png}
-    \caption{Spettro del Neon}
+    \caption{Spettro emissivo del Neon. Asse orizzontale calibrato.}
     \label{i:spettro1d}
 \end{figure*}
 
+In \figurename\ref{i:spettro1d} si osservano evidenti transizioni nella regione 580-680 \si{\nano \metre}, in
+particolare la riga più intensa a 640.2 \si{\nano \metre} e la riga di interesse per l'esperienza a 585.3 \si{\nano
+\metre}.\\
+In presenza di un campo magnetico esterno lo spettro rimane invariato, a meno dell'intensità della radiazione che
+aumenta significativamente. 
 
-In \figurename\ref{i:spettro1d} si osservano le transizioni nella regione 580-700 \si{\nano \metre}, in particolare la riga più intensa 
-a 640.2 \si{\nano \metre} e quella di interesse a 585.3 \si{\nano \metre}.\\
-In presenza del campo magnetico, lo spettro rimane invariato, a meno dell'intensità della radiazione che aumenta significativamente. 
+
+
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Potere risolvente dell'apparato}
