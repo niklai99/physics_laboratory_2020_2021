@@ -113,7 +113,7 @@ Neon in funzione del numero di pixel corrispondenti ai picchi rivelati dal detec
 \begin{figure*}
     \centering
     \includegraphics[width=\textwidth]{../Spectrum/SpectrumPlots/spettro1d_Boff.png}
-    \caption{Spettro emissivo del Neon. Asse orizzontale calibrato.}
+    \caption{Spettro emissivo del Neon con asse orizzontale calibrato}
     \label{i:spettro1d}
 \end{figure*}
 
@@ -176,10 +176,14 @@ dei picchi di interferenza secondo
 dove $\Delta x_{\text{r.u.}}$ corrisponde alla distanza tra due picchi espressa in pixel e $\Delta x$ rappresenta la
 larghezza a metà altezza dei picchi espressa in pixel.  \\
 
-Si procede quindi restringendo l'intervallo di acquisizione ad un intorno della riga evidenziata in \autoref{i:spettro1d}:
-viene quindi ruotato il CCD in posizione verticale e viene inserita la lamina di Lummer. Il tempo di integrazione scelto
-per l'acquisizione è di $800\,\si{\milli\second}$. Si ricorda inoltre che, per stimare il potere risolvente
-dell'apparato, il campo magnetico rimane spento. Viene acquisito lo spettro bidimensionale raffigurato in \autoref{i:spettro2d_Boff}
+Si procede quindi restringendo l'intervallo di acquisizione ad un intorno della riga evidenziata in
+\autoref{i:spettro1d}: viene quindi ruotato il CCD in posizione verticale e viene inserita la lamina di Lummer. Il tempo
+di integrazione scelto per l'acquisizione è di $800\,\si{\milli\second}$. Si sottolinea inoltre che il campo magnetico
+rimane spento. \\
+Il risultato dell'acquisizione corrisponde allo spettro bidimensionale raffigurato in \autoref{i:spettro2d_Boff} (a
+sinistra). A destra invece viene presentata la proiezione sull'asse orizzontale di tale istogramma. In particolare, gli
+istogrammi rappresentati in \autoref{i:spettro2d_Boff} sono ottenuti sottraendo il rumore di fondo: nella figura a
+sinistra, infatti, si nota chiaramente la presenza della riga di emissione.
 
 
 
@@ -187,7 +191,7 @@ dell'apparato, il campo magnetico rimane spento. Viene acquisito lo spettro bidi
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{../Plots/Boff_2d_spectrum.png}
-    \caption{Spettro bidimensionale $\text{B}_{\text{off}}$}
+    \caption{Spettro bidimensionale $\text{B}_{\text{off}}$ (a sinistra) e proiezione sull'asse orizzontale (a destra)}
     \label{i:spettro2d_Boff}
 \end{figure}
 
