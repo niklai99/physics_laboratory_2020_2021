@@ -76,6 +76,31 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/translator/translator.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/translator/translator.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/translator/translator.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/oberdiek/auxhook.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/oberdiek/auxhook.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/hyperref/pd1enc.def
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/hyperref/pd1enc.def
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/url/url.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/url/url.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/hyperref/hpdftex.def
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/hyperref/hpdftex.def
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.aux
 INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.aux
 OUTPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.aux
@@ -86,24 +111,8 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/ts1enc.dfu
@@ -112,6 +121,18 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/translator/translator-basic
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.out
+INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.out
+INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.out
+INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.out
+OUTPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.pdf
+INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.out
+INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.out
+OUTPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.out
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ptmcm.fd
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ptmcm.fd
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/times/zptmcmr.tfm
@@ -176,17 +197,7 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmr7t.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmr7t.tfm
 INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/../Spectrum/SpectrumPlots/spettro1d_Boff.png
 INPUT ../Spectrum/SpectrumPlots/spettro1d_Boff.png
-OUTPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.pdf
 INPUT ../Spectrum/SpectrumPlots/spettro1d_Boff.png
-INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/../Plots/Boff_2d_spectrum.png
-INPUT ../Plots/Boff_2d_spectrum.png
-INPUT ../Plots/Boff_2d_spectrum.png
-INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/../Plots/Boff_spacing_trend.png
-INPUT ../Plots/Boff_spacing_trend.png
-INPUT ../Plots/Boff_spacing_trend.png
-INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/../Plots/Boff_Y_proj.png
-INPUT ../Plots/Boff_Y_proj.png
-INPUT ../Plots/Boff_Y_proj.png
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT d:/Programmi/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map
@@ -216,21 +227,11 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
-INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/../Plots/Bon_Y_proj.png
-INPUT ../Plots/Bon_Y_proj.png
-INPUT ../Plots/Bon_Y_proj.png
-INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/../Plots/Bon_2d_spectrum.png
-INPUT ../Plots/Bon_2d_spectrum.png
-INPUT ../Plots/Bon_2d_spectrum.png
-INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/../Plots/Bon_overlap_big.png
-INPUT ../Plots/Bon_overlap_big.png
-INPUT ../Plots/Bon_overlap_big.png
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/vf/adobe/helvetic/phvr7t.vf
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/helvetic/phvr8r.tfm
-INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/vf/adobe/times/zptmcmrm.vf
-INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
-INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
 INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.aux
+INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.out
+INPUT d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.out
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
