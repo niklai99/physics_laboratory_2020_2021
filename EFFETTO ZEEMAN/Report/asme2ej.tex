@@ -45,8 +45,6 @@
 }
 
 %%% second author
-%%% remove the following entry for single author papers
-%%% add more entries for additional authors
 \author{Cigagna Simone
     \affiliation{
 	1193992\\
@@ -55,8 +53,6 @@
 }
 
 %%% third author
-%%% remove the following entry for single author papers
-%%% add more entries for additional authors
 \author{Lai Nicolò
     \affiliation{
 	1193976\\
@@ -79,16 +75,16 @@ eccitato in presenza di un campo magnetico esterno $\vec{\text{B}}$. L'interazio
 elettromagnetiche emesse da dipoli oscillanti, per cui il moto orbitale dell'elettrone può essere scomposto in un moto
 oscillatorio lungo la direzione di $\vec{\text{B}}$ ($\Delta \text{m} = 0$) e un moto rotatorio destrogiro o levogiro
 attorno a $\vec{\text{B}}$ ($\Delta \text{m} = \pm1$). Nell'esperienza si analizza tale effetto nell'atomo di Neon,
-studiando la riga spettrale a 585.3 \si{\nano \metre} data dalla transizione $ ^1\text{S}_0 \rightarrow ^1\text{P}_1$,
+studiando la riga spettrale a $585.3 \,\si{\nano\metre}$ data dalla transizione $ ^1\text{S}_0 \rightarrow ^1\text{P}_1$,
 cioè tra stati con spin $\text{S} = 0$ e $\Delta \text{L}= \Delta \text{J} = 1$. \\
 Si utilizza lo spettrometro \textit{Zeeman 2} e come sorgente di luce una lampada al Neon a scarica a bagliore
-alimentata in corrente continua: le incertezze sulle dimensioni dei componenti e degli altri dati di costruzione sono
-trascurabili rispetto alle incertezze statistiche, mentre l'incertezza relativa sul valore del campo magnetico
-$\vec{\text{B}}$ risulta essere dell' $1\%$.   \\
+alimentata in corrente continua: le incertezze sulle dimensioni dei componenti, in particolare della lamina di Lummer, e
+degli altri dati di costruzione sono trascurabili rispetto alle incertezze statistiche, mentre l'incertezza relativa sul
+valore del campo magnetico $\vec{\text{B}}$ risulta essere dell' $1\%$.   \\
 
 Ai fini dello studio dell'effetto Zeeman, in \autoref{s:neon} verrà effettuata una breve analisi dello spettro emissivo
-del Neon volta a ricercare la riga di interesse a 585.3 \si{\nano \metre}. Successivamente, in \autoref{s:risolvente} si
-verificherà che il potere risolvente dell'apparato sia sufficientemente alto da poter rivelare la separazione dei
+del Neon volta a ricercare la riga di interesse a $585.3 \,\si{\nano\metre}$. Successivamente, in \autoref{s:risolvente}
+si verificherà che il potere risolvente dell'apparato sia sufficientemente alto da poter rivelare la separazione dei
 livelli energetici. Tale separazione verrà poi studiata in dettaglio in \autoref{s:lande} tramite la stima del fattore
 di Landè. Infine, in \autoref{s:ortogonale} verranno analizzati qualitativamente gli effetti dovuti all'orientazione del
 campo magnetico esterno, sia in assenza di un filtro polarizzatore, sia in due diverse configurazioni di quest'ultimo.
@@ -99,11 +95,13 @@ campo magnetico esterno, sia in assenza di un filtro polarizzatore, sia in due d
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Spettro di emissione del Neon}\label{s:neon}
 
-In questa sezione si analizza lo spettro acquisito con il CCD orizzontale e in assenza di campo magnetico con il fine di
-individuare la riga di emissione di interesse.  \\
-Inizialmente si effettua una calibrazione dell'asse orizzontale, convertendo così il numero di pixel relativi al CCD in
-lunghezze d'onda. A tale scopo, si predispone una regressione lineare delle lunghezze d'onda delle principali righe
-spettrali del Neon in funzione del numero di pixel corrispondenti ai picchi rivelati dal detector. 
+Si vuole inizialmente studiare lo spettro emissivo del Neon per individuare correttamente la riga a $585.3
+\,\si{\nano\metre}$, corrispondente alla transizione di interesse.\\
+Lo spettro viene acquisito con il CCD posizionato orizzontalmente, a campo magnetico spento, e in assenza della lamina
+di Lummer. Per l'acquisizione dello spettro, si utilizza un tempo di integrazione pari a $100 \,\si{\nano\metre}$. \\
+Si effettua poi una calibrazione dell'asse orizzontale, convertendo così il numero di pixel relativi al CCD in lunghezze
+d'onda. A tale scopo, si predispone una regressione lineare delle lunghezze d'onda delle principali righe spettrali del
+Neon in funzione del numero di pixel corrispondenti ai picchi rivelati dal detector. 
  
 \begin{figure*}
     \centering
@@ -112,11 +110,12 @@ spettrali del Neon in funzione del numero di pixel corrispondenti ai picchi rive
     \label{i:spettro1d}
 \end{figure*}
 
-In \figurename\ref{i:spettro1d} si osservano evidenti transizioni nella regione 580-680 \si{\nano \metre}, in
-particolare la riga più intensa a 640.2 \si{\nano \metre} e la riga di interesse per l'esperienza a 585.3 \si{\nano
-\metre}.\\
-In presenza di un campo magnetico esterno lo spettro rimane invariato, a meno dell'intensità della radiazione che
-aumenta significativamente. 
+
+In \figurename\ref{i:spettro1d} viene rappresentato lo spettro di emissione con l'asse orizzontale calibrato: si
+osservano evidenti transizioni nella regione $580-680 \,\si{\nano\metre}$, in particolare la riga più intensa a $640.2
+\,\si{\nano\metre}$ e la riga di interesse per l'esperienza a $585.3 \,\si{\nano\metre}$.\\
+Si vuole far notare, infine, che in presenza di un campo magnetico esterno lo spettro rimane invariato a meno
+dell'intensità della radiazione rivelata, che aumenta significativamente. 
 
 
 
@@ -237,7 +236,7 @@ componente della luce polarizzata parallelamente alla direzione del campo, allor
 ruotando il filtro, questo fa passare la componente della luce con polarizzazione ortogonale al campo, allora la
 transizione centrale viene soppressa e si osservano solamente i due picchi laterali. Conseguentemente ci si aspetta che
 l'intensità della radiazione sia significativamente ridotta con l'inserimento del filtro polarizzatore.  
-In \figurename\ref{i:spettro2d_overlap} è riportata la proiezione sull'asse y dello spettro bidimensionale, nelle tre
+In \autoref{i:spettro2d_overlap} è riportata la proiezione sull'asse y dello spettro bidimensionale, nelle tre
 configurazioni precedentamente descritte. Si nota che, in generale, l'apparato non permette di risolvere
 sufficientemente bene le transizioni: questo è particolarmente evidente in assenza del filtro, in quanto non è possibile
 distinguere i tre picchi di interferenza distinti che ci si aspetterebbe. Inoltre, si osserva che nella prima
