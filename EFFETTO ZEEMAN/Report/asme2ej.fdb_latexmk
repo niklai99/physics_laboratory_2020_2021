@@ -1,12 +1,12 @@
 # Fdb version 3
-["pdflatex"] 1617797271 "d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.tex" "d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.pdf" "asme2ej" 1617808245
-  "../Spectrum/SpectrumPlots/spettro1d_Boff.png" 1617736440 339520 cf0b3d2ac6ec59e446e70ded05782752 ""
-  "asme2ej.aux" 1617797274 1841 57e1753bd31810193f63124cf78906d9 ""
+["pdflatex"] 1617808772 "d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.tex" "d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.pdf" "asme2ej" 1617808775
+  "../Spectrum/SpectrumPlots/spettro1d_Boff.png" 1617808320 377119 486c91f66e779886a6f3cf10a3ee8750 ""
+  "asme2ej.aux" 1617808775 1841 31cb5d097035cc6d5417e61e10e0f479 ""
   "asme2ej.cls" 1617789635 49157 7045f3ef71da9b5b9922328548340029 ""
-  "asme2ej.out" 1617797274 308 03d894b9a4497eae6798dfe57d959580 ""
-  "asme2ej.tex" 1617797266 11074 94cc119c6d0d91848597b75b63f56104 ""
-  "d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.aux" 1617797274 1841 57e1753bd31810193f63124cf78906d9 ""
-  "d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.tex" 1617797266 11074 94cc119c6d0d91848597b75b63f56104 ""
+  "asme2ej.out" 1617808775 308 03d894b9a4497eae6798dfe57d959580 ""
+  "asme2ej.tex" 1617808771 11484 e9c9bbd910d7b90eaf951637be278353 ""
+  "d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.aux" 1617808775 1841 31cb5d097035cc6d5417e61e10e0f479 ""
+  "d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.tex" 1617808771 11484 e9c9bbd910d7b90eaf951637be278353 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1543007404 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1543007623 3332 103109f5612ad95229751940c61aada0 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/helvetic/phvb7t.tfm" 1543007745 2240 eb56c13537f4d8a0bd3fafc25572b1bd ""
@@ -109,9 +109,9 @@
   "d:/Programmi/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1543009703 4221249 5a7acd7c4f43ef9d3542dd9f41e78574 ""
   "d:/Programmi/texlive/2018/texmf.cnf" 1543009560 673 4ae7b2f49cee444c5343a45b5d0f169c ""
   (generated)
-  "asme2ej.log"
   "asme2ej.out"
-  "asme2ej.pdf"
-  "d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.log"
-  "d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.pdf"
   "asme2ej.aux"
+  "d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.pdf"
+  "asme2ej.log"
+  "d:/GitHub/physics_laboratory_2020_2021/EFFETTO ZEEMAN/Report/asme2ej.log"
+  "asme2ej.pdf"
