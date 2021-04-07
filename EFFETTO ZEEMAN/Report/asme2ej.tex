@@ -2,7 +2,7 @@
 \documentclass[twocolumn,10pt]{asme2ej}
 
 \usepackage{epsfig} %% for loading postscript figures
-\usepackage{lipsum}
+\usepackage{subfigure}
 \usepackage{titling}
 \usepackage{siunitx}
 \usepackage[hidelinks]{hyperref}
@@ -12,13 +12,20 @@
 \fancyfoot{}
 \fancyfoot[R]{\thepage}
 
-\def\sectionautorefname{Sezione} 
-\def\subsectionautorefname{Sezione} 
-\def\subsubsectionautorefname{Sezione}
+\def\figureautorefname{Fig.} 
+\def\sectionautorefname{Sez.} 
+\def\subsectionautorefname{Sez.} 
+\def\subsubsectionautorefname{Sez.}
 
 
 \pretitle{\begin{center}\linespread{1.2}\huge}
 \posttitle{\par\end{center}\vspace{0.5em}}
+
+\abovedisplayshortskip=0pt
+\belowdisplayshortskip=0pt
+\abovedisplayskip=-5pt
+\belowdisplayskip=5pt
+
 
 %% The class has several options
 %  onecolumn/twocolumn - format for one or two columns per page
@@ -132,33 +139,57 @@ dell'intensità della radiazione rivelata, che aumenta significativamente.
 %     \item Plot del trend per aberrazione 
 % \end{itemize}
 
-Si procede ora restringendo l'intervallo di acquisizione ad un intorno della riga evidenziata in \autoref{i:spettro1d}:
+
+Il potere risolvente R dell'apparato sperimentale si definisce come
+
+\vspace{-15pt}
+\begin{equation}
+    R = \frac{\lambda}{\Delta\lambda}
+    \label{e:r}
+\vspace{-5pt}
+\end{equation}
+
+dove, nel caso di interesse, $\lambda = 585.3 \,\si{\nano\metre}$ e $\Delta\lambda$ corrisponde alla larghezza a metà
+altezza (in nanometri) dei picchi di interferenza causati dalla lamina di Lummer. Per prima cosa, quindi, sarà
+necessario convertire la larghezza dei picchi da pixel del CCD a nanometri: ponendosi nell'approssimazione di luce
+radente vale:
+
+\vspace{-10pt}
+\begin{equation}
+    \Delta\lambda_{\text{r.u.}} \simeq \frac{\lambda^2}{2\text{d}}
+    \label{e:dlambdaru}
+\vspace{-5pt}
+\end{equation}
+
+Tale quantità corrisponde alla distanza approssimata tra due picchi di interferenza, espressa in nanometri, e dipende
+quindi sia dalla lunghezza d'onda della riga $\lambda$ sia dallo spessore della lamina di Lummer d.\\
+Conoscendo quindi $\Delta\lambda_{\text{r.u.}}$ è possibile ricavare la larghezza a metà altezza, espressa in nanometri,
+dei picchi di interferenza secondo
+
+\vspace{-15pt}
+\begin{equation}
+    \Delta\lambda = \frac{\Delta\lambda_{\text{r.u.}}}{\Delta x_{\text{r.u.}}} \cdot \Delta x
+    \label{e:dlambda}
+\vspace{-5pt}
+\end{equation}
+
+dove $\Delta x_{\text{r.u.}}$ corrisponde alla distanza tra due picchi espressa in pixel e $\Delta x$ rappresenta la
+larghezza a metà altezza dei picchi espressa in pixel.  \\
+
+Si procede quindi restringendo l'intervallo di acquisizione ad un intorno della riga evidenziata in \autoref{i:spettro1d}:
 viene quindi ruotato il CCD in posizione verticale e viene inserita la lamina di Lummer. Il tempo di integrazione scelto
 per l'acquisizione è di $800\,\si{\milli\second}$. Si ricorda inoltre che, per stimare il potere risolvente
-dell'apparato, il campo magnetico rimane spento. 
+dell'apparato, il campo magnetico rimane spento. Viene acquisito lo spettro bidimensionale raffigurato in \autoref{i:spettro2d_Boff}
 
 
-A campo magnetico spento si vuole determinare il potere risolvente dell'apparato, pari a:
-
-\begin{equation}
-    R = \frac{\lambda}{\Delta \lambda}
-\end{equation}
-
-In approssimazione di luce radente vale:
-
-\begin{equation}
-    \Delta \lambda_{\text{r.u.}} \simeq \frac{\lambda^2}{2\text{d}}
-    \label{e:lambdaru}
-\end{equation}
 
 
-% \begin{figure}
-%     \centering
-%     \includegraphics[width=\linewidth]{../Plots/Boff_2d_spectrum.png}
-%     \caption{Spettro bidimensionale $\text{B}_{off}$}
-%     \label{i:spettro2d_Boff}
-% \end{figure}
-
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{../Plots/Boff_2d_spectrum.png}
+    \caption{Spettro bidimensionale $\text{B}_{\text{off}}$}
+    \label{i:spettro2d_Boff}
+\end{figure}
 
 % \begin{figure}
 %     \centering
@@ -167,6 +198,12 @@ In approssimazione di luce radente vale:
 %     \label{i:spacing_trend_Boff}
 % \end{figure}
 
+% QUESTO SERVE PER METTERE DUE FIGURE PICCOLE UNA AFFIANCO ALL'ALTRA
+% \begin{figure*}[htp]
+%     \centering
+%     \subfigure[Spettro bidimensionale $\text{B}_{\text{off}}$]{\includegraphics[width=0.5\textwidth]{../Plots/Boff_2d_spectrum.png}}\label{i:spettro2d_Boff}\hfill
+%     \subfigure[Spacing trend]{\includegraphics[width=0.5\textwidth]{../Plots/Boff_spacing_trend.png}}\label{i:spacing_trend_Boff}
+%   \end{figure*}
 
 % \begin{figure*}
 %     \centering
