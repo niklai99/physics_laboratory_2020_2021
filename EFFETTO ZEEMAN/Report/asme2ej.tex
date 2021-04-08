@@ -5,6 +5,7 @@
 \usepackage{subfigure}
 \usepackage{titling}
 \usepackage{siunitx}
+\usepackage{amsmath}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -158,7 +159,7 @@ radente vale:
 
 \vspace{-10pt}
 \begin{equation}
-    \Delta\lambda_{\text{r.u.}} \simeq \frac{\lambda^2}{2\text{d}}
+    \Delta\lambda_{\text{r.u.}} \simeq \frac{\lambda^2}{2\text{d}} \approx 0.049\,\si{\nano\metre}
     \label{e:dlambdaru}
 \vspace{-5pt}
 \end{equation}
@@ -185,30 +186,53 @@ rimane spento. \\
 Il risultato dell'acquisizione corrisponde allo spettro bidimensionale raffigurato in \autoref{i:spettro2d_Boff} (a
 sinistra). A destra invece viene presentata la proiezione sull'asse orizzontale di tale istogramma. In particolare, gli
 istogrammi rappresentati in \autoref{i:spettro2d_Boff} sono ottenuti sottraendo il rumore di fondo: nella figura a
-sinistra, infatti, si nota chiaramente la presenza della riga di emissione. \\
-Per calcolare ora le grandezze di interesse, quali la spaziatura tra picchi e la loro larghezza a metà altezza, si
-considera la proiezione dello spettro sull'asse verticale, evidenziando in questo modo le frange di interferenza causate
-dal prisma dell'apparato. Per evitare di ottenere un campione di misure statisticamente dipendenti di $\Delta
-x_{\text{r.u.}}$ e $\Delta x$ (e di conseguenza di $\Delta\lambda$ ed R, calcolate a partire dalle prime) si sceglie di
-suddividere i picchi di interferenza in triplette contigue. In questo modo, la spaziatura tra i picchi viene calcolata
-come media aritmetica della distanza tra i due picchi esterni della tripletta rispetto a quello centrale. Infine, la
-larghezza a metà altezza viene misurata unicamente per il picco centrale. Come si può notare in
-\autoref{i:spettro2d_Boff_ProjY}, in particolare nel riquadro in alto a sinistra, tutti i picchi vengono fittati da una
-funzione gaussiana: la spaziatura tra i picchi viene calcolata utilizzando il centroide delle gaussiane esterne mentre
-la FWHM del picco centrale si misura a partire dal valore massimo del fit. \\
-Si ottiene, così facendo, un campione di 6 misure di $\Delta x_{\text{r.u.}}$ e $\Delta x$ tra loro statisticamente
-indipendenti. Si procede dunque al calcolo di $\Delta\lambda$ secondo \autoref{e:dlambda}, ottenendo infine un campione
-di poteri risolventi R calcolati seguendo \autoref{e:r}. 
-
-
-
+sinistra, infatti, si nota chiaramente la presenza della riga di emissione. 
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{../Plots/Boff_2d_spectrum.png}
     \caption{Spettro bidimensionale $\text{B}_{\text{off}}$ (a sinistra) e proiezione sull'asse orizzontale (a destra)}
     \label{i:spettro2d_Boff}
+    \vspace{-10pt}
 \end{figure}
+
+\noindent Per calcolare ora le grandezze di interesse, quali la spaziatura tra picchi e la loro larghezza a metà
+altezza, si considera la proiezione dello spettro sull'asse verticale, evidenziando in questo modo le frange di
+interferenza causate dal prisma dell'apparato. Per evitare di ottenere un campione di misure statisticamente dipendenti
+di $\Delta x_{\text{r.u.}}$ e $\Delta x$ (e di conseguenza di $\Delta\lambda$ ed R, calcolate a partire dalle prime) si
+sceglie di suddividere i picchi di interferenza in triplette contigue. In questo modo, la spaziatura tra i picchi viene
+calcolata come media aritmetica della distanza tra i due picchi esterni della tripletta rispetto a quello centrale.
+Infine, la larghezza a metà altezza viene misurata unicamente per il picco centrale. Come si può notare in
+\autoref{i:spettro2d_Boff_ProjY}, in particolare nel riquadro in alto a sinistra, tutti i picchi vengono fittati da una
+funzione gaussiana: la spaziatura tra i picchi viene calcolata utilizzando il centroide delle gaussiane esterne mentre
+la FWHM del picco centrale si misura a partire dal valore massimo del fit. Si ottiene, così facendo, un campione di 6
+misure di $\Delta x_{\text{r.u.}}$ e $\Delta x$ tra loro statisticamente indipendenti. Si procede dunque al calcolo di
+$\Delta\lambda$ secondo \autoref{e:dlambda}, ottenendo infine un campione di poteri risolventi R calcolati seguendo
+\autoref{e:r}. Per fornire una stima unica che sia rappresentativa dell'intero apparato si decide di effettuare la
+media delle misure di R, ottenendo così un potere risolvente pari a 
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{../Plots/Boff_Y_proj.png}
+   \caption{Proiezione sull'asse y dello spettro bidimensionale $\text{B}_{\text{off}}$}
+    \label{i:spettro2d_Boff_ProjY}
+\end{figure*}
+
+\vspace{-15pt}
+\begin{align*}
+    \text{R} &= (4.71 \pm 0.10)\cdot 10^4  & \frac{\sigma_{\text{R}}}{\text{R}} &\approx 2\%
+    \label{e:R_result}
+\vspace{-10pt}
+\end{align*}
+
+
+Risulta quindi che il potere risolvente dell'apparato sia sufficiente da poter rivelare la separazione delle
+righe dovuta all'effetto Zeeman. \\
+
+Ora inizio a parlare dell'aberrazione
+
+
+
 
 % \begin{figure}
 %     \centering
@@ -224,12 +248,7 @@ di poteri risolventi R calcolati seguendo \autoref{e:r}.
 %     \subfigure[Spacing trend]{\includegraphics[width=0.5\textwidth]{../Plots/Boff_spacing_trend.png}}\label{i:spacing_trend_Boff}
 %   \end{figure*}
 
- \begin{figure*}
-     \centering
-     \includegraphics[width=\textwidth]{../Plots/Boff_Y_proj.png}
-    \caption{Proiezione sull'asse y dello spettro bidimensionale $\text{B}_{\text{off}}$}
-     \label{i:spettro2d_Boff_ProjY}
- \end{figure*}
+
 
 
 
