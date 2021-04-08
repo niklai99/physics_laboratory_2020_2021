@@ -4,25 +4,33 @@ import numpy as np
 from math import pi
 from scipy.optimize import curve_fit, fmin
 
-# constants TODO: double-check all energies
+# constants 
 p60_xmin= 440 # 60kEv peak starts here
 p60_xmax= 540 # 60kEv peak ends here
 p60_en = 59.5409 # 60kEv peak precise energy 
-
 p26_en = 26.3446 # 26kEv peak precise energy
+p14_en=13.95
+p18_en=17.75
+p17_en = 16.84
+p21_en=20.78
+p60esc_en=p60_en-1.8 # escape peak
 
-p14_en = (13.76 + 13.944)/2 
-p14_en=14
-p17_en = (16.13 +17.79)/2
-p17_en=18
-
-p15_en=15.876
-p21_en=21
+p14_pr=11.60
+p17_pr=2.451
+p18_pr=11.83
+p21_pr=2.94
+p26_pr=2.40
+p60_pr=35.78
+p60esc_pr=0
+peaks=     [p14_en,p17_en,p18_en,p21_en,p26_en,p60_en]
+peaks_prob=[p14_pr,p17_pr,p18_pr,p21_pr,p26_pr,p60_pr]
 
 
 def gauss(X,N,mean,sigma):
     return N/((2*pi)**0.5 * sigma) * np.exp( -(X-mean)**2/(2*sigma**2) )
 
+def gauss1(X,N,mean,sigma):
+    return N * np.exp( -(X-mean)**2/(2*sigma**2) )
 
 # There are many ways to do a multi-peak fit that I can think of.
 # Here, I compute 4 different gaussian USING ALWAYS EVERY x value and
@@ -31,70 +39,40 @@ def gauss(X,N,mean,sigma):
 # Alterantive: compute only ONE FIT at a time based on the x value and return 
 # only that gaussian value. However, given the proximity of the two peaks at 
 # 14 and 17 keV, I prefer the first approach.
-def multi_gauss(X,N1,N2,N3,N4,N5,N6,sigmaNoise, sigmaEn):
-    mean1=p60_en
-    mean2=p26_en
-    mean3=p14_en
-    mean4=p17_en
+def multi_gauss(X,N0,N1,N2,N3,N4,N5,sigmaNoise, sigmaEn):
 
-    mean5=p15_en
-    mean6=p21_en
+    N=[N0,N1,N2,N3,N4,N5]
+    v=0
+    for i in range(len(peaks)):
+        mean = peaks[i]
+        sigma = np.sqrt(sigmaNoise**2+(sigmaEn*np.sqrt(mean))**2) 
+        v += N[i]/ ((2*pi)**0.5 * sigma) * np.exp( -(X-mean)**2/(2*sigma**2) )
+        #v += N[i]* np.exp( -(X-mean)**2/(2*sigma**2) )
 
-    sigma1=np.sqrt(sigmaNoise**2+(sigmaEn*np.sqrt(mean1))**2) # TODO: double-check
-    sigma2=np.sqrt(sigmaNoise**2+(sigmaEn*np.sqrt(mean2))**2)
-    sigma3=np.sqrt(sigmaNoise**2+(sigmaEn*np.sqrt(mean3))**2)
-    sigma4=np.sqrt(sigmaNoise**2+(sigmaEn*np.sqrt(mean4))**2)
 
-    sigma5=np.sqrt(sigmaNoise**2+(sigmaEn*np.sqrt(mean5))**2)
-    sigma6=np.sqrt(sigmaNoise**2+(sigmaEn*np.sqrt(mean6))**2)
+    mean=p60esc_en
+    #v += Nesc / (2*pi)**0.5 / sigmaEsc * np.exp( -(X-mean)**2/(2*sigmaEsc**2) )
+    # v1 = N1/((2*pi)**0.5 * sigma1) * np.exp( -(X-mean1)**2/(2*sigma1**2) )
+    return v
+
+def multi_gauss1(X,N0,N1,N2,N3,N4,N5,sn,se0,se1,se2,se3,se4,se5):
+
+    N=[N0,N1,N2,N3,N4,N5]
+    se=[se0,se1,se2,se3,se4,se5]
+    v=0
+    for i in range(len(peaks)):
+        mean = peaks[i]
+        sigma = np.sqrt(sn**2+(se[i]*np.sqrt(mean))**2) 
+        v += N[i]* np.exp( -(X-mean)**2/(2*sigma**2) )
 
     # v1 = N1/((2*pi)**0.5 * sigma1) * np.exp( -(X-mean1)**2/(2*sigma1**2) )
-    # v2 = N2/((2*pi)**0.5 * sigma2) * np.exp( -(X-mean2)**2/(2*sigma2**2) )
-    # v3 = N3/((2*pi)**0.5 * sigma3) * np.exp( -(X-mean3)**2/(2*sigma3**2) )
-    # v4 = N4/((2*pi)**0.5 * sigma4) * np.exp( -(X-mean4)**2/(2*sigma4**2) )
-
-    v1 = N1* np.exp( -(X-mean1)**2/(2*sigma1**2) )
-    v2 = N2* np.exp( -(X-mean2)**2/(2*sigma2**2) )
-    v3 = N3* np.exp( -(X-mean3)**2/(2*sigma3**2) )
-    v4 = N4* np.exp( -(X-mean4)**2/(2*sigma4**2) )
-
-    v5 = N5* np.exp( -(X-mean5)**2/(2*sigma5**2) )
-    v6 = N6* np.exp( -(X-mean6)**2/(2*sigma6**2) )
+    return v
 
 
-    #return np.sqrt(v1**2+v2**2+v3**2+v4**2)
-    #return np.sqrt(v1**2+v2**2+v3**2+v4**2+v5**2+v6**2)
-    return v1+v2+v3+v4+v5+v6
-    #return v1+v3+v4
-    #return v4
-    #return v1
 
-# second apprach (incomplete)
-def multi_gauss1(Xt,sigmaNoise, sigmaEn):
-    X=Xt[0]
-    t=Xt[1]
-    N=Xt[2]
-    mean1=p60_en
-    mean2=p26_en
-    mean3=p14_en
-    mean4=p17_en
-    sigma1=np.sqrt(sigmaNoise**2+(sigmaEn*np.sqrt(mean1))**2) # TODO: double-check
-    sigma2=np.sqrt(sigmaNoise**2+(sigmaEn*np.sqrt(mean2))**2)
-    sigma3=np.sqrt(sigmaNoise**2+(sigmaEn*np.sqrt(mean3))**2)
-    sigma4=np.sqrt(sigmaNoise**2+(sigmaEn*np.sqrt(mean4))**2)
 
-    if t==0:
-        v1 = N/((2*pi)**0.5 * sigma1) * np.exp( -(X-mean1)**2/(2*sigma1**2) )
-        return v1
-    elif t==1:
-        v2 = N/((2*pi)**0.5 * sigma2) * np.exp( -(X-mean2)**2/(2*sigma2**2) )
-        return v2
-    elif t==2:
-        v3 = N/((2*pi)**0.5 * sigma3) * np.exp( -(X-mean3)**2/(2*sigma3**2) )
-        return v3
-    elif t==3:
-        v4 = N/((2*pi)**0.5 * sigma4) * np.exp( -(X-mean4)**2/(2*sigma4**2) )
-        return v4
+def compute_sigma(sigma_noise,sigma_alfa,energy):
+    return np.sqrt(sigma_noise**2 + sigma_alfa**2*energy)
 
 
 def peak_fitting(data,p_xmin,p_xmax):
@@ -106,6 +84,7 @@ def peak_fitting(data,p_xmin,p_xmax):
     # fit peak
     par,cov=curve_fit(lambda X, mean, sigma: gauss(X,np.sum(p_Y),mean,sigma), 
                       p_X, p_Y,
+                      sigma=np.sqrt(p_Y), absolute_sigma=True,
                       p0=[np.average(p_X), np.std(p_X)])
 
     # plot fit
@@ -147,7 +126,11 @@ def main():
     #data.Y=data.Y/np.sum(data.Y)
 
     # plot calibrated histogram
-    plt.hist(data.X,weights=data.Y, bins=len(data.X), histtype = 'step', color='royalblue')
+    fig, ax = plt.subplots(ncols=1, nrows=2, figsize=(12,6),
+                           gridspec_kw={'height_ratios': [3, 1]},
+                           sharex=True)
+
+    ax[0].hist(data.X,weights=data.Y, bins=len(data.X), histtype = 'step', color='royalblue')
     #plt.hist(p_X,weights=p_Y, bins=len(p_X), histtype = 'step', color='royalblue')
 
 
@@ -159,10 +142,27 @@ def main():
 
     par,cov=curve_fit(multi_gauss,Xn,Yn)
     xgr= np.linspace(np.amin(data.X),np.amax(data.X),1000)
-    plt.plot(xgr,multi_gauss(xgr,*par),color='tomato')
+    ygr= multi_gauss(xgr,*par)
+    ax[0].plot(xgr,ygr,color='tomato')
+    ax[1].plot(Xn, multi_gauss(Xn,*par)-Yn, color='tomato')
 
     #print(np.average(data.Y[0:100]))
- 
+
+
+    # ==== plot all gaussians ====
+    eff=np.empty(len(peaks))
+    for i in range(len(peaks)):
+        sigma=compute_sigma(par[len(peaks)],par[len(peaks)+1],peaks[i])
+        y=gauss(xgr,par[i],peaks[i], sigma)
+        ax[0].plot(xgr,y,":", color='gray')
+        #prob = par[i] * np.sqrt(2*pi)*sigma /reference
+        eff[i]=par[i]
+        print("peak: ", peaks[i], " keV\t", "N: ",  round(par[i],2))
+
+
+    eff = eff / par[len(peaks)-1]
+    fig = plt.figure()
+    plt.plot(peaks, eff,color='tomato')
 
     plt.show()
 
