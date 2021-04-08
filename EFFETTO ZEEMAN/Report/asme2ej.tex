@@ -85,7 +85,7 @@ eccitato in presenza di un campo magnetico esterno $\vec{\text{B}}$. L'interazio
 elettromagnetiche emesse da dipoli oscillanti, per cui il moto orbitale dell'elettrone può essere scomposto in un moto
 oscillatorio lungo la direzione di $\vec{\text{B}}$ ($\Delta \text{m} = 0$) e un moto rotatorio destrogiro o levogiro
 attorno a $\vec{\text{B}}$ ($\Delta \text{m} = \pm1$). Nell'esperienza si analizza tale effetto nell'atomo di Neon,
-studiando la riga spettrale a $585.3 \,\si{\nano\metre}$ data dalla transizione $ ^1\text{S}_0 \rightarrow ^1\text{P}_1$,
+studiando la riga spettrale a $585.3 \,\si{\nano\metre}$ data dalla transizione $^1\text{S}_0 \rightarrow ^1\text{P}_1$,
 cioè tra stati con spin $\text{S} = 0$ e $\Delta \text{L}= \Delta \text{J} = 1$. \\
 Si utilizza lo spettrometro \textit{Zeeman 2} e come sorgente di luce una lampada al Neon a scarica a bagliore
 alimentata in corrente continua: le incertezze sulle dimensioni dei componenti, in particolare della lamina di Lummer, e
@@ -133,16 +133,6 @@ dell'intensità della radiazione rivelata, che aumenta significativamente.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Potere risolvente dell'apparato}\label{s:risolvente}
 
-% \begin{itemize}
-%     \item Lo calcoliamo con Boff
-%     \item Formule (range utile ecc ecc) (approx luce radente) 
-%     \item Procedura di analisi (indipendenza statistica, picchi a triplette ecc ecc)
-%     \item Plot con tutti i picchi fittati + finestrella con lo zoom su una tripletta
-%     \item Stima di R (come quando perchè)
-%     \item Plot del trend per aberrazione 
-% \end{itemize}
-
-
 Il potere risolvente R dell'apparato sperimentale si definisce come
 
 \vspace{-15pt}
@@ -153,8 +143,8 @@ Il potere risolvente R dell'apparato sperimentale si definisce come
 \end{equation}
 
 dove, nel caso di interesse, $\lambda = 585.3 \,\si{\nano\metre}$ e $\Delta\lambda$ corrisponde alla larghezza a metà
-altezza (in nanometri) dei picchi di interferenza causati dal prisma presente nell'apparato. Per prima cosa, quindi,
-sarà necessario convertire la larghezza dei picchi da pixel del CCD a nanometri: ponendosi nell'approssimazione di luce
+altezza (in nanometri) dei picchi di interferenza causati dalla lamina di Lummer. Per prima cosa, quindi, sarà
+necessario convertire la larghezza dei picchi da pixel del CCD a nanometri: ponendosi nell'approssimazione di luce
 radente vale:
 
 \vspace{-10pt}
@@ -198,14 +188,14 @@ sinistra, infatti, si nota chiaramente la presenza della riga di emissione.
 
 \noindent Per calcolare ora le grandezze di interesse, quali la spaziatura tra picchi e la loro larghezza a metà
 altezza, si considera la proiezione dello spettro sull'asse verticale, evidenziando in questo modo le frange di
-interferenza causate dal prisma dell'apparato. Per evitare di ottenere un campione di misure statisticamente dipendenti
-di $\Delta x_{\text{r.u.}}$ e $\Delta x$ (e di conseguenza di $\Delta\lambda$ ed R, calcolate a partire dalle prime) si
-sceglie di suddividere i picchi di interferenza in triplette contigue. In questo modo, la spaziatura tra i picchi viene
-calcolata come media aritmetica della distanza tra i due picchi esterni della tripletta rispetto a quello centrale.
-Infine, la larghezza a metà altezza viene misurata unicamente per il picco centrale. Come si può notare in
+interferenza causate dalla lamina. Per evitare di ottenere un campione di misure statisticamente dipendenti di $\Delta
+x_{\text{r.u.}}$ e $\Delta x$ (e di conseguenza di $\Delta\lambda$ ed R, calcolate a partire dalle prime) si sceglie di
+suddividere i picchi di interferenza in triplette contigue. In questo modo, la spaziatura tra i picchi viene calcolata
+come media aritmetica della distanza tra i due picchi esterni della tripletta rispetto a quello centrale. Infine, la
+larghezza a metà altezza viene misurata unicamente per il picco centrale. Come si può notare in
 \autoref{i:spettro2d_Boff_ProjY}, in particolare nel riquadro in alto a sinistra, tutti i picchi vengono fittati da una
 funzione gaussiana: la spaziatura tra i picchi viene calcolata utilizzando il centroide delle gaussiane esterne mentre
-la FWHM del picco centrale si misura a partire dal valore massimo del fit. Si ottiene, così facendo, un campione di 6
+la FWHM del picco centrale si misura a partire dal valore massimo del fit. Si ottiene, così facendo, un campione di sei
 misure di $\Delta x_{\text{r.u.}}$ e $\Delta x$ tra loro statisticamente indipendenti. Si procede dunque al calcolo di
 $\Delta\lambda$ secondo \autoref{e:dlambda}, ottenendo infine un campione di poteri risolventi R calcolati seguendo
 \autoref{e:r}. Per fornire una stima unica che sia rappresentativa dell'intero apparato si decide di effettuare la media
@@ -227,8 +217,8 @@ aritmetica delle misure di R, ottenendo così un potere risolvente pari a
 \end{align*}
 
 
-Risulta quindi che il potere risolvente dell'apparato sia sufficiente da poter rivelare la separazione delle
-righe dovuta all'effetto Zeeman. \\
+Risulta quindi che il potere risolvente dell'apparato sia sufficiente da poter rivelare la separazione delle righe
+dovuta all'effetto Zeeman. \\
 \indent Prima di studiare nel dettaglio l'effetto Zeeman e la sua manifestazione, si preferisce soffermare l'attenzione
 ancora brevemente sul grafico in \autoref{i:spettro2d_Boff_ProjY} relativo alle frange di interferenza. Inizialmente, si
 vuole far notare che la forma dei picchi è notevolmente variabile in relazione alla posizione di rivelazione sul CCD. Si
@@ -252,7 +242,7 @@ per R sia robusta e, a meno di approssimazioni, rappresentativa dell'effettivo p
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{../Plots/Boff_spacing_trend.png}
-    \caption{Spacing trend}
+    \caption{Andamento della distanza tra i picchi (a sinistra) e della larghezza dei picchi (a destra) in funzione della posizione}
     \label{i:spacing_trend_Boff}
     \vspace{-10pt}
 \end{figure}
@@ -276,21 +266,28 @@ per R sia robusta e, a meno di approssimazioni, rappresentativa dell'effettivo p
 %     \item Plot con tutti i picchi + finestrella con lo zoom su una tripletta 
 %     \item Controllare che lo splitting Zeeman non subisca aberrazione pesante
 % \end{itemize}
-Il fattore di Landè si ricava dalla relazione: 
+
+Disponendo di un apparato strumentale con sufficiente potere risolutivo, ci si propone ora di studiare la manifestazione
+dell'effetto Zeeman, ovvero la separazione dei livelli energetici e, di conseguenza, delle righe spettrali. Come
+verifica della corretta osservazione del fenomeno, si vuole misurare il fattore di Landè $\text{g}_{\text{J}}$ che, 
+data la transizione $^1\text{S}_0 \rightarrow ^1\text{P}_1$ in studio, deve risultare pari ad uno.
+
+Il fattore di Landè si ricava dalla relazione
 
 \vspace{-15pt}
 \begin{equation}
-    \text{g}_{\text{L}} = - \frac{\Delta \text{E}_{\text{zee}}}{\mu_{\text{B}} \text{m}_{\text{j}} \text{B} }
+    \Delta \text{E}_{\text{zee}} = - \text{g}_{\text{J}} \mu_{\text{B}} \text{m}_{\text{j}} \text{B} 
     \label{e:gL}
 \vspace{-5pt}
 \end{equation}
-dove $\mu_{\text{B}}$ è il magnetone di Bohr. \\
-Si analizzano i dati con il campo magnetico acceso e osservando la radiazione parallelamente a
-$\vec{\text{B}}$. Poiché un dipolo non emette lungo la direzione che individua, i termini polarizzati circolarmente
-corrispondenti a $\Delta \text{m} = \pm 1$ hanno intensità maggiore dei termini corrispondenti a $\Delta \text{m} = 0$.
-Perciò la transizione centrale è soppressa e si osservano solo le due laterali, separate da $\delta\lambda = 2
-\Delta\lambda_{\text{zee}}$, dove $\Delta\lambda_{\text{zee}}$ rappresenta lo splitting Zeeman. La presenza del 
-campo magnetico induce una separazione energetica pari a 
+
+dove $\mu_{\text{B}}$ è il magnetone di Bohr e $\Delta \text{E}_{\text{zee}}$ corrisponde alla separazione dei livelli
+energetici dovuta al campo magnetico esterno B. Configurando il campo magnetico parallelamente alla direzione di
+propagazione i termini polarizzati circolarmente corrispondenti a $\Delta \text{m} = \pm 1$ hanno intensità maggiore dei
+termini corrispondenti a $\Delta \text{m} = 0$. Ne consegue quindi che la transizione centrale risulta soppressa e si
+riescono ad osservare solo le due laterali, separate da $\delta\lambda = 2 \Delta\lambda_{\text{zee}}$, dove
+$\Delta\lambda_{\text{zee}}$ rappresenta lo splitting Zeeman. Tale separazione in lunghezza d'onda, che è la quantità
+misurabile con lo spettrometro a disposizione, è legata alla separazione energetica dalla relazione
 
 \vspace{-15pt}
 \begin{equation}
@@ -299,24 +296,35 @@ campo magnetico induce una separazione energetica pari a
 \vspace{-5pt}
 \end{equation}
 
-
-% \begin{figure*}
-%     \centering
-%     \includegraphics[width=\textwidth]{../Plots/Bon_Y_proj.png}
-%     \caption{Proiezione sull'asse y $\text{B}_{on}$}
-%     \label{i:spettro2d_Bon_ProjY}
-% \end{figure*}
-
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=\linewidth]{../Plots/Bon_2d_spectrum.png}
-%     \caption{Spettro bidimensionale $\text{B}_{on}$}
-%     \label{i:spettro2d_Bon}
-% \end{figure}
+Si procede dunque impostando il campo magnetico ad un'intensità di $\text{B} = 0.522 \pm 0.005 \,\si{\tesla}$ in
+direzione parallela al fascio. Successivamente, in analogia con quanto riportato in \autoref{s:risolvente}, viene
+identificata la riga a $\lambda = 585.3 \,\si{\nano\metre}$ e viene acquisito uno spettro bidimensionale in uno stretto
+intorno del picco di interesse usando come tempo di integrazione $800\,\si{\milli\second}$. Tale spettro, assieme alla
+proiezione sull'asse orizzontale, è raffigurato in \autoref{i:spettro2d_Bon}. \\
+Per osservare lo splitting causato dalla presenza del campo magnetico si considera dunque la proiezione dello spettro
+sull'asse verticale, evidenziando così le frange di interferenza.
 
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{../Plots/Bon_2d_spectrum.png}
+    \caption{Spettro bidimensionale $\text{B}_{on}$ (a sinistra) e proiezione sull'asse orizzontale (a destra)}
+    \label{i:spettro2d_Bon}
+\end{figure}
 
 
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{../Plots/Bon_Y_proj.png}
+    \caption{Proiezione sull'asse verticale $\text{B}_{on}$}
+    \label{i:spettro2d_Bon_ProjY}
+\end{figure*}
+
+
+
+
+
+\cleardoublepage
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Campo magnetico ortogonale alla radiazione}\label{s:ortogonale}
 
