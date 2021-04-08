@@ -8,11 +8,13 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
 \fancyhead{}
 \fancyfoot{}
 \fancyfoot[R]{\thepage}
 
 \def\figureautorefname{Fig.} 
+\def\equationautorefname{Eq.} 
 \def\sectionautorefname{Sez.} 
 \def\subsectionautorefname{Sez.} 
 \def\subsubsectionautorefname{Sez.}
@@ -150,8 +152,8 @@ Il potere risolvente R dell'apparato sperimentale si definisce come
 \end{equation}
 
 dove, nel caso di interesse, $\lambda = 585.3 \,\si{\nano\metre}$ e $\Delta\lambda$ corrisponde alla larghezza a metà
-altezza (in nanometri) dei picchi di interferenza causati dalla lamina di Lummer. Per prima cosa, quindi, sarà
-necessario convertire la larghezza dei picchi da pixel del CCD a nanometri: ponendosi nell'approssimazione di luce
+altezza (in nanometri) dei picchi di interferenza causati dal prisma presente nell'apparato. Per prima cosa, quindi,
+sarà necessario convertire la larghezza dei picchi da pixel del CCD a nanometri: ponendosi nell'approssimazione di luce
 radente vale:
 
 \vspace{-10pt}
@@ -184,8 +186,19 @@ Il risultato dell'acquisizione corrisponde allo spettro bidimensionale raffigura
 sinistra). A destra invece viene presentata la proiezione sull'asse orizzontale di tale istogramma. In particolare, gli
 istogrammi rappresentati in \autoref{i:spettro2d_Boff} sono ottenuti sottraendo il rumore di fondo: nella figura a
 sinistra, infatti, si nota chiaramente la presenza della riga di emissione. \\
-Al fine di calcolare le grandezze di interesse si considera la proiezione dello spettro sull'asse verticale, riportata 
-in \autoref{i:spettro2d_Boff_ProjY}. 
+Per calcolare ora le grandezze di interesse, quali la spaziatura tra picchi e la loro larghezza a metà altezza, si
+considera la proiezione dello spettro sull'asse verticale, evidenziando in questo modo le frange di interferenza causate
+dal prisma dell'apparato. Per evitare di ottenere un campione di misure statisticamente dipendenti di $\Delta
+x_{\text{r.u.}}$ e $\Delta x$ (e di conseguenza di $\Delta\lambda$ ed R, calcolate a partire dalle prime) si sceglie di
+suddividere i picchi di interferenza in triplette contigue. In questo modo, la spaziatura tra i picchi viene calcolata
+come media aritmetica della distanza tra i due picchi esterni della tripletta rispetto a quello centrale. Infine, la
+larghezza a metà altezza viene misurata unicamente per il picco centrale. Come si può notare in
+\autoref{i:spettro2d_Boff_ProjY}, in particolare nel riquadro in alto a sinistra, tutti i picchi vengono fittati da una
+funzione gaussiana: la spaziatura tra i picchi viene calcolata utilizzando il centroide delle gaussiane esterne mentre
+la FWHM del picco centrale si misura a partire dal valore massimo del fit. \\
+Si ottiene, così facendo, un campione di 6 misure di $\Delta x_{\text{r.u.}}$ e $\Delta x$ tra loro statisticamente
+indipendenti. Si procede dunque al calcolo di $\Delta\lambda$ secondo \autoref{e:dlambda}, ottenendo infine un campione
+di poteri risolventi R calcolati seguendo \autoref{e:r}. 
 
 
 
@@ -221,7 +234,7 @@ in \autoref{i:spettro2d_Boff_ProjY}.
 
 
 
-
+\cleardoublepage
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fattore di Landè}\label{s:lande}
 
