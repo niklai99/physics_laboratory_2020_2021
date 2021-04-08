@@ -286,8 +286,17 @@ energetici dovuta al campo magnetico esterno B. Configurando il campo magnetico 
 propagazione i termini polarizzati circolarmente corrispondenti a $\Delta \text{m} = \pm 1$ hanno intensità maggiore dei
 termini corrispondenti a $\Delta \text{m} = 0$. Ne consegue quindi che la transizione centrale risulta soppressa e si
 riescono ad osservare solo le due laterali, separate da $\delta\lambda = 2 \Delta\lambda_{\text{zee}}$, dove
-$\Delta\lambda_{\text{zee}}$ rappresenta lo splitting Zeeman. Tale separazione in lunghezza d'onda, che è la quantità
-misurabile con lo spettrometro a disposizione, è legata alla separazione energetica dalla relazione
+$\Delta\lambda_{\text{zee}}$ rappresenta lo splitting Zeeman. 
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{../Plots/Bon_Y_proj.png}
+    \caption{Proiezione sull'asse verticale $\text{B}_{on}$}
+    \label{i:spettro2d_Bon_ProjY}
+\end{figure*}
+
+\noindent Tale separazione in lunghezza d'onda, che è la quantità misurabile con lo spettrometro a disposizione, è legata alla
+separazione energetica dalla relazione
 
 \vspace{-15pt}
 \begin{equation}
@@ -302,23 +311,51 @@ identificata la riga a $\lambda = 585.3 \,\si{\nano\metre}$ e viene acquisito un
 intorno del picco di interesse usando come tempo di integrazione $800\,\si{\milli\second}$. Tale spettro, assieme alla
 proiezione sull'asse orizzontale, è raffigurato in \autoref{i:spettro2d_Bon}. \\
 Per osservare lo splitting causato dalla presenza del campo magnetico si considera dunque la proiezione dello spettro
-sull'asse verticale, evidenziando così le frange di interferenza.
-
+sull'asse verticale, evidenziando così le frange di interferenza. Come si può notare immediatamente osservando il
+grafico in \autoref{i:spettro2d_Bon_ProjY}, a differenza di quanto riportato in \autoref{i:spettro2d_Boff_ProjY} i
+picchi ora presentano una evidente separazione, pressochè simmetrica, a partire da circa metà altezza. 
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{../Plots/Bon_2d_spectrum.png}
-    \caption{Spettro bidimensionale $\text{B}_{on}$ (a sinistra) e proiezione sull'asse orizzontale (a destra)}
+    \caption{Spettro bidimensionale $\text{B}_{\text{on}}$ (a sinistra) e proiezione sull'asse orizzontale (a destra)}
     \label{i:spettro2d_Bon}
 \end{figure}
 
+\noindent Volendo essere più precisi nello studio, risulta necessario misurare la separazione dei picchi causata dal
+campo magnetico. Successivamente, tale distanza (misurata in pixel) viene convertita in nanometri sfruttando la
+relazione in \autoref{e:dlambda}: $\Delta\lambda_{\text{r.u.}}$ rimane invariata rispetto alla sezione precedente,
+$\Delta x_{\text{r.u.}}$ rappresenta nuovamente la distanza tra due frange di interferenza ma necessita di essere
+ricalcolata con maggior accortezza, mentre $\Delta x$ ora rappresenza invece la separazione dei picchi espressa in
+pixel. In questo modo, sfruttando \autoref{e:dlambda}, si ricava una stima per $\delta\lambda = 2
+\Delta\lambda_{\text{zee}}$. In analogia con quanto riportato in \autoref{s:risolvente}, si suddividono le frange di
+interferenza in triplette contigue. Contrariamente a quanto effettuato in precedenza, invece, non si è in grado di
+fittare i picchi separati in quanto non presentano una sufficiente forma gaussiana. Per il calcolo delle quantità
+necessarie si è dunque costretti ad utilizzare i dati stessi, con la consapevolezza che questo tipo di approccio avrà un
+impatto non indifferente sulla precisione delle stime successive.
 
-\begin{figure*}
-    \centering
-    \includegraphics[width=\textwidth]{../Plots/Bon_Y_proj.png}
-    \caption{Proiezione sull'asse verticale $\text{B}_{on}$}
-    \label{i:spettro2d_Bon_ProjY}
-\end{figure*}
+Per calcolare $\Delta x_{\text{r.u.}}$, la strategia adottata è la seguente. Inizialmente, viene identificata
+(approssimativamente) la posizione centrale dei picchi separati dall'effetto del campo effettuando una media delle
+posizioni dei due massimi splittati. Successivamente, si calcolano la distanza tra il primo picco e quello centrale e
+tra quest'ultimo ed il terzo picco della tripletta. Quindi, $\Delta x_{\text{r.u.}}$ viene stimata come media di queste
+due distanze. Per quanto riguarda $\Delta x$, invece, si considera la distanza di separazione dei picchi della frangia
+centrale. 
+
+
+
+
+
+
+
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=\linewidth]{../Plots/Bon_Y_proj2_small.png}
+%     \caption{Proiezione sull'asse verticale $\text{B}_{on}$}
+%     \label{i:spettro2d_Bon_ProjY}
+% \end{figure}
+
+
 
 
 
@@ -328,12 +365,12 @@ sull'asse verticale, evidenziando così le frange di interferenza.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Campo magnetico ortogonale alla radiazione}\label{s:ortogonale}
 
-% \begin{figure*}
-%     \centering
-%     \includegraphics[width=\textwidth]{../Plots/Bon_overlap_big.png}
-%     \caption{Proiezione sull'asse y dello spettro bidimensionale nelle configurazioni con e senza polarizzatore}
-%     \label{i:spettro2d_overlap}
-% \end{figure*}
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{../Plots/Bon_overlap_big.png}
+    \caption{Proiezione sull'asse y dello spettro bidimensionale nelle configurazioni con e senza polarizzatore}
+    \label{i:spettro2d_overlap}
+\end{figure*}
 
 % \begin{itemize}
 %     \item Un po' di fisica più in dettaglio rispetto all'introduzione (polarizzazione ecc) + aspettative "teoriche"
