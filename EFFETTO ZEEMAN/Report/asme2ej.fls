@@ -254,6 +254,9 @@ INPUT /usr/local/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/../Plots/Boff_2d_spectrum.png
 INPUT ../Plots/Boff_2d_spectrum.png
 INPUT ../Plots/Boff_2d_spectrum.png
+INPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/../Plots/Boff_Y_proj.png
+INPUT ../Plots/Boff_Y_proj.png
+INPUT ../Plots/Boff_Y_proj.png
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/vf/adobe/helvetic/phvr7t.vf
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/helvetic/phvr8r.tfm
 INPUT /Users/vanessa/Desktop/Lab/EFFETTO ZEEMAN/Report/asme2ej.aux
