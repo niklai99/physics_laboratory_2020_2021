@@ -208,14 +208,15 @@ funzione gaussiana: la spaziatura tra i picchi viene calcolata utilizzando il ce
 la FWHM del picco centrale si misura a partire dal valore massimo del fit. Si ottiene, così facendo, un campione di 6
 misure di $\Delta x_{\text{r.u.}}$ e $\Delta x$ tra loro statisticamente indipendenti. Si procede dunque al calcolo di
 $\Delta\lambda$ secondo \autoref{e:dlambda}, ottenendo infine un campione di poteri risolventi R calcolati seguendo
-\autoref{e:r}. Per fornire una stima unica che sia rappresentativa dell'intero apparato si decide di effettuare la
-media delle misure di R, ottenendo così un potere risolvente pari a 
+\autoref{e:r}. Per fornire una stima unica che sia rappresentativa dell'intero apparato si decide di effettuare la media
+aritmetica delle misure di R, ottenendo così un potere risolvente pari a 
 
 \begin{figure*}
     \centering
     \includegraphics[width=\textwidth]{../Plots/Boff_Y_proj.png}
-   \caption{Proiezione sull'asse y dello spettro bidimensionale $\text{B}_{\text{off}}$}
+   \caption{Proiezione sull'asse verticale dello spettro bidimensionale $\text{B}_{\text{off}}$}
     \label{i:spettro2d_Boff_ProjY}
+    % \vspace{-10pt}
 \end{figure*}
 
 \vspace{-15pt}
@@ -228,18 +229,33 @@ media delle misure di R, ottenendo così un potere risolvente pari a
 
 Risulta quindi che il potere risolvente dell'apparato sia sufficiente da poter rivelare la separazione delle
 righe dovuta all'effetto Zeeman. \\
+\indent Prima di studiare nel dettaglio l'effetto Zeeman e la sua manifestazione, si preferisce soffermare l'attenzione
+ancora brevemente sul grafico in \autoref{i:spettro2d_Boff_ProjY} relativo alle frange di interferenza. Inizialmente, si
+vuole far notare che la forma dei picchi è notevolmente variabile in relazione alla posizione di rivelazione sul CCD. Si
+è dunque scelto di effettuare fit gaussiani per estrapolare la posizione del centroide e la larghezza per ottenere delle
+misure di tali quantità più uniformi tra loro al variare della posizione. Così facendo, infatti, la stima del potere
+risolvente risulta essere più precisa di qualche unità percentuale rispetto ad una stima ricavata considerando il
+massimo e la larghezza dei picchi stessi (che risultano essere quantità molto variabili e spesso il massimo del picco
+non è rappresentativo del centroide della distribuzione). Inoltre, dal grafico si può notare un accentuato effetto di
+aberrazione, dovuto alle lenti presenti nell'apparato. Come meglio evidenziato nel grafico in
+\autoref{i:spacing_trend_Boff}, questo effetto consiste nella diminuzione progressiva della distanza tra picchi
+consecutivi e della loro larghezza. In particolare, la spaziatura tra frange di interferenza (a sinistra) segue
+perfettamente un andamento polinomiale di terzo grado (fit in arancione), mentre la loro larghezza (a destra) segue
+piuttosto fedelmente un trend lineare. A causa di questo effetto molto influente sulle misure necessarie per il calcolo
+del potere risolvente, si è deciso di ricavare un campione di R e successivamente di calcolarne la media, piuttosto che
+mediare direttamente i set di dati relativi alle prime. Siccome l'effetto di aberrazione influenza sia la distanza sia
+la larghezza in modo sufficientemente simile, la struttura di \autoref{e:dlambda} porta ad una compensazione
+soddisfacente di questo fenomeno: il campione di poteri risolventi, infatti, risulta essere composto da misure
+casualmente oscillanti e non è stato identificato nessun trend rilevante. Si può quindi concludere che la stima fornita
+per R sia robusta e, a meno di approssimazioni, rappresentativa dell'effettivo potere risolvente dell'apparato.
 
-Ora inizio a parlare dell'aberrazione
-
-
-
-
-% \begin{figure}
-%     \centering
-%     \includegraphics[width=\linewidth]{../Plots/Boff_spacing_trend.png}
-%     \caption{Spacing trend}
-%     \label{i:spacing_trend_Boff}
-% \end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{../Plots/Boff_spacing_trend.png}
+    \caption{Spacing trend}
+    \label{i:spacing_trend_Boff}
+    \vspace{-10pt}
+\end{figure}
 
 % QUESTO SERVE PER METTERE DUE FIGURE PICCOLE UNA AFFIANCO ALL'ALTRA
 % \begin{figure*}[htp]
@@ -250,10 +266,6 @@ Ora inizio a parlare dell'aberrazione
 
 
 
-
-
-
-\cleardoublepage
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fattore di Landè}\label{s:lande}
 
