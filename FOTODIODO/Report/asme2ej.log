@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.22)  8 APR 2021 12:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.22)  8 APR 2021 12:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -649,19 +649,19 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 111.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 111.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 111.
 Package rerunfilecheck Info: File `asme2ej.out' has not changed.
-(rerunfilecheck)             Checksum: DD894D5F83003EADD0AA2A92F829E531;304.
+(rerunfilecheck)             Checksum: 99D4053E7A4263CF491BD71D308F6F09;292.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 111.
  ) 
 Here is how much of TeX's memory you used:
  17583 strings out of 492616
  337862 string characters out of 6128982
- 379452 words of memory out of 5000000
+ 379440 words of memory out of 5000000
  21373 multiletter control sequences out of 15000+600000
  568223 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,15n,63p,277b,720s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on /Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.pdf (1 page, 36477 bytes).
+Output written on /Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.pdf (1 page, 36562 bytes).
 PDF statistics:
  53 PDF objects out of 1000 (max. 8388607)
  45 compressed objects within 1 object stream
