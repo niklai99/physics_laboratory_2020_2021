@@ -17,7 +17,7 @@ from scipy.interpolate import UnivariateSpline
 
 # constants
 LAMBDA = 585.3 # nanometers
-d = 4.04 * 1e6 #nanometers (4.04 millimiters)
+d = 3.47 * 1e6 #nanometers (3.47 millimiters)
 dataPath = '../Data/'
 
 start = 3000
@@ -298,7 +298,7 @@ def spacingTrend(peakPositions, peakSpacing, peakFWHM):
     ax2.set_xlim(XMIN, XMAX)
 
     fig.tight_layout()
-    fig.savefig('../Plots/Boff_spacing_trend.png', dpi = 300, facecolor = 'white')
+    # fig.savefig('../Plots/Boff_spacing_trend.png', dpi = 300, facecolor = 'white')
 
     return
 
@@ -382,16 +382,16 @@ def main(fname):
     print('\n')
     print('- \u03BB: ' + format(LAMBDA, '1.1f') + ' nanometers')
     print('- \u0394\u03BB (r.u.): ' + format(dLru, '1.3f') + ' nanometers')
-    print('- Average Peak spacing: ' + format(Spacing_avg, '1.0f') + ' pixels')
-    print('- Average FWHM central Peak: ' + format(FWHM_avg, '1.0f') + ' pixels')
-    print('- Average \u0394\u03BB: ' + format(dL_avg, '1.3f') + ' nanometers')
+    print('- Average Peak spacing: ' + format(dXru_avg, '1.0f')  + ' +/- ' + format(dXru_avg_e, '1.0f') + ' pixels')
+    print('- Average FWHM central Peak: ' + format(fullW_avg, '1.0f')  + ' +/- ' + format(fullW_avg_e, '1.0f') + ' pixels')
+    print('- Average \u0394\u03BB: ' + format(dL_avg, '1.4f')  + ' +/- ' + format(dL_avg_e, '1.4f') + ' nanometers')
     print('- Average Resolving Power R: ' + format(avgR, '1.0f') + ' +/- ' + format(avgR_e, '1.0f'))
     print('- Resolving Power precision: ' + format(100 * avgR_e/avgR, '1.2f') + '%') 
     print('\n')
 
     fig.tight_layout()
     # fig.savefig('../Plots/Boff_Y_proj.png', dpi = 300, facecolor = 'white')
-    plt.show()
+    # plt.show()
 
     return
 
