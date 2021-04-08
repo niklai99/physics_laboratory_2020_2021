@@ -1,0 +1,111 @@
+%%% use twocolumn and 10pt options with the asme2ej format
+\documentclass[twocolumn,10pt]{asme2ej}
+
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{subfigure}
+\usepackage{titling}
+\usepackage{siunitx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+
+\def\figureautorefname{Fig.} 
+\def\sectionautorefname{Sez.} 
+\def\subsectionautorefname{Sez.} 
+\def\subsubsectionautorefname{Sez.}
+
+
+\pretitle{\begin{center}\linespread{1.2}\huge}
+\posttitle{\par\end{center}\vspace{0.5em}}
+
+\abovedisplayshortskip=0pt
+\belowdisplayshortskip=0pt
+\abovedisplayskip=-5pt
+\belowdisplayskip=5pt
+
+
+%% The class has several options
+%  onecolumn/twocolumn - format for one or two columns per page
+%  10pt/11pt/12pt - use 10, 11, or 12 point font
+%  oneside/twoside - format for oneside/twosided printing
+%  final/draft - format for final/draft copy
+%  cleanfoot - take out copyright info in footer leave page number
+%  cleanhead - take out the conference banner on the title page
+%  titlepage/notitlepage - put in titlepage or leave out titlepage
+%  
+%% The default is oneside, onecolumn, 10pt, final
+
+\date{}
+\title{{\huge\bfseries Laboratorio di Fisica} - {\LARGE A.A. 2020/2021} \\ 
+    {\LARGE Docenti: A. Garfagnini - M. Lunardon} \\ {\Huge\bfseries Fotodiodo}}
+
+
+%%% first author
+\author{Cerrone Vanessa
+    \affiliation{
+    1200361\\
+    vanessa.cerrone@studenti.unipd.it
+    }	
+}
+
+%%% second author
+\author{Cigagna Simone
+    \affiliation{
+	1193992\\
+    simone.cigagna@studenti.unipd.it
+    }	
+}
+
+%%% third author
+\author{Lai Nicolò
+    \affiliation{
+	1193976\\
+    nicolo.lai@studenti.unipd.it
+    }	
+}
+
+
+\begin{document}
+
+
+\maketitle    
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduzione}\label{s:introduzione}
+
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Coefficiente di attenuazione}\label{s:attenuazione}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Misure in funzione della distanza}\label{s:distanza}
+
+
+
+
+
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fit multipicco}\label{s:multipicco}
+
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Campo magnetico ortogonale alla radiazione}\label{s:ortogonale}
+
+
+\end{document}
