@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.22)  8 APR 2021 12:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.3.22)  8 APR 2021 14:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -643,16 +643,16 @@ Underfull \hbox (badness 4156) in paragraph at lines 79--88
 []\OT1/ptm/m/n/10 Si vuole anal-iz-zare lo spet-tro dei fo-toni emessi
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 119.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 120.
 [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 119.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 120.
  (/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 119.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 119.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 120.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 120.
 Package rerunfilecheck Info: File `asme2ej.out' has not changed.
 (rerunfilecheck)             Checksum: 99D4053E7A4263CF491BD71D308F6F09;292.
 
@@ -660,7 +660,7 @@ Package rerunfilecheck Info: File `asme2ej.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.3pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 119.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 120.
  ) 
 Here is how much of TeX's memory you used:
  17617 strings out of 492616
@@ -671,7 +671,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  40i,15n,63p,277b,781s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.pdf (1 page, 48793 bytes).
+Output written on /Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.pdf (1 page, 48817 bytes).
 PDF statistics:
  60 PDF objects out of 1000 (max. 8388607)
  51 compressed objects within 1 object stream
