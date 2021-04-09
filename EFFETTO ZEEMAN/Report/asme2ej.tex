@@ -259,14 +259,6 @@ per R sia robusta e, a meno di approssimazioni, rappresentativa dell'effettivo p
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fattore di Landè}\label{s:lande}
 
-% \begin{itemize}
-%     \item Lo calcoliamo con Bon lungo la direzione della radiazione (parlare dello splitting di Zeeman)
-%     \item Formule (range utile + conversione energia + fattore di Landè)
-%     \item Procedura di analisi (niente fit perchè non vengono)
-%     \item Plot con tutti i picchi + finestrella con lo zoom su una tripletta 
-%     \item Controllare che lo splitting Zeeman non subisca aberrazione pesante
-% \end{itemize}
-
 Disponendo di un apparato strumentale con sufficiente potere risolutivo, ci si propone ora di studiare la manifestazione
 dell'effetto Zeeman, ovvero la separazione dei livelli energetici e, di conseguenza, delle righe spettrali. Come
 verifica della corretta osservazione del fenomeno, si vuole misurare il fattore di Landè $\text{g}_{\text{J}}$ che, 
@@ -320,6 +312,7 @@ picchi ora presentano una evidente separazione, pressochè simmetrica, a partire
     \includegraphics[width=\linewidth]{../Plots/Bon_2d_spectrum.png}
     \caption{Spettro bidimensionale $\text{B}_{\text{on}}$ (a sinistra) e proiezione sull'asse orizzontale (a destra)}
     \label{i:spettro2d_Bon}
+    \vspace{-10pt}
 \end{figure}
 
 \noindent Volendo essere più precisi nello studio, risulta necessario misurare la separazione dei picchi causata dal
@@ -345,6 +338,7 @@ $\langle\Delta\lambda_{\text{zee}}\rangle = 0.00863 \pm 0.00012 \,\si{\nano\metr
 fenomeno): utilizzando la relazione in \autoref{e:dEzee} viene quindi calcolato un campione relativo alla separazione
 energetica $\Delta \text{E}_{\text{zee}}$. Successivamente, esplicitando il fattore di Landè da \autoref{e:gL}, si
 ottiene un campione di $\text{g}_{\text{J}}$: a queste misure viene associata un'incertezza data dalla propagazione
+degli errori
 
 \vspace{-15pt}
 \begin{equation}
@@ -368,6 +362,14 @@ così
     \vspace{-5pt}
 \end{align*}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{../Plots/Bon_zeeman_trend.png}
+    \caption{Andamento della separazione Zeeman tra picchi (a sinistra) e del rapporto tra distanza tra picchi e separazione Zeeman (a destra) in funzione della posizione}
+    \label{i:spacing_trend_Bon}
+    \vspace{-20pt}
+\end{figure}
+
 Il fattore così misurato risulta essere in soddisfacente accordo con le previsioni teoriche, presentando una
 compatibilità pari a $2.4$ con tale valore di aspettazione. Ovviamente, a causa dell'approccio, piuttosto
 approssimativo, utilizzato per analizzare i dati, la non ottima compatibilità con le aspettative teoriche è stata
@@ -376,14 +378,23 @@ funzione della posizione. Come si può notare in \autoref{i:spacing_trend_Bon}, 
 sinistra, l'effetto di aberrazione, oltre ad influire sulla distanza tra picchi e sulla loro larghezza come evidenziato
 in \autoref{s:risolvente}, modifica la speparazione delle frange al variare della posizione. L'andamento di tale
 separazione, infatti, segue un trend piuttosto lineare che ricorda in particolar modo l'andamento della larghezza dei
-picchi riportato in \autoref{i:spacing_trend_Boff}.
+picchi riportato in \autoref{i:spacing_trend_Boff}. Si vuole ora verificare che la struttura di \autoref{e:dlambda}, che
+presenta il rapporto tra la separazione dei picchi dovuta al campo magnetico e la distanza tra le frange, sia in grado
+di compensare in modo sufficiente l'effetto di aberrazione. Nel grafico a destra in \autoref{i:spacing_trend_Bon} si può
+osservare tale rapporto in funzione della posizione delle frange: come da aspettative, l'andamento è pressochè casuale
+con delle leggere oscillazioni attorno ad un valore centrale. Tuttavia, si riesce ad individuare un leggero trend
+decrescente, che potrebbe aver influito sulla stima fornita per il fattore di Landè. Si ipotizza, infine, che una
+procedura di analisi dati più sofisticata rispetto al solo utilizzo dei dati sperimentali per la stima di quantità
+necessarie porterebbe ad una distribuzione più coerente di misure e, di conseguenza, una stima di $ \text{g}_{\text{J}}$
+più accurata e precisa.
 
 
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{../Plots/Bon_zeeman_trend.png}
-    \caption{Andamento della separazione Zeeman tra picchi (a sinistra) e del rapporto tra distanza tra picchi e separazione Zeeman (a destra) in funzione della posizione}
-    \label{i:spacing_trend_Bon}
+    \includegraphics[width=\linewidth]{../Plots/Bon_overlap_small.png}
+    \caption{Proiezione sull'asse verticale dello spettro bidimensionale utilizzando un campo magnetico ortogonale alla
+    radiazione. Viene considerata una configurazione senza polarimetro e due diverse configurazioni con quest'ultimo.}
+    \label{i:spettro2d_overlap}
     \vspace{-10pt}
 \end{figure}
 
@@ -397,27 +408,8 @@ picchi riportato in \autoref{i:spacing_trend_Boff}.
 
 
 
-
-
-
-
-\cleardoublepage
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Campo magnetico ortogonale alla radiazione}\label{s:ortogonale}
-
-\begin{figure*}
-    \centering
-    \includegraphics[width=\textwidth]{../Plots/Bon_overlap_big.png}
-    \caption{Proiezione sull'asse y dello spettro bidimensionale nelle configurazioni con e senza polarizzatore}
-    \label{i:spettro2d_overlap}
-\end{figure*}
-
-% \begin{itemize}
-%     \item Un po' di fisica più in dettaglio rispetto all'introduzione (polarizzazione ecc) + aspettative "teoriche"
-%     (intensità picchi ecc)
-%     \item Plot istogrammi sovrapposti 
-%     \item Deduzione configurazioni polarimetro dal plot 
-% \end{itemize}
 
 Si analizzano i dati acquisiti ruotando il campo magnetico, cioè osservando la radiazione emessa in direzione ortogonale
 a $\vec{\text{B}}$. In questo caso, i termini associati a $\Delta \text{m} = 0$ presentano polarizzazione lineare,
