@@ -81,17 +81,44 @@ dotato di preamplificatore di carica. L’hardware, cioè i moduli di elettronic
 in condizioni standard, con shaping time pari a $3\mu\si{\second}$, in modo da ottimizzare il rapporto
 segnale rumore. Preliminarmente, tramite il software di acquisizione, si registra uno spettro per 
 identificare i picchi principali, a 60keV e 14-18keV. \\
-Nella \autoref{s:attenuazione} si analizzerà il picco a 60keV in presenza di materiali di diverso spessore,
+Nella \autoref{s:attenuazione} si analizzerà il picco a 59.5keV in presenza di materiali di diverso spessore,
 al fine di calcolare i relativi coefficienti di assorbimento. Nella  \autoref{s:distanza}, si effettueranno 
 misure al variare della distanza della sorgente, per verificare che i dati seguano l'andamento atteso. 
 Un'analisi dettagliata dello spettro verrà presentata nella sezione \autoref{s:multipicco}. 
 
+% scriviamo 60 59 59.5 keV ???
 
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Calibrazione e risoluzione energetica}\label{s:calibrazione}
+% Scrivere della misura preliminare per verificare la precisione del picco a 60 keV??
+% Calibrazione e calcolo della risoluazione ? 
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Coefficiente di assorbimento}\label{s:attenuazione}
-Il coefficiente di assorbimento di un dato materiale
+Ci si propone di effettuare delle misure in presenza di materiali di diverso spessore, nello specifico
+rame e argento, con lo scopo di calcolarne il coefficiente di assorbimento $\mu$, che si ricava dalla relazione:
+
+\vspace{-15pt}
+\begin{equation}
+   \text{I}(\text{x)} = \text{I}_0 \text{e}^{-\mu \text{x}}
+    \vspace{-5pt}
+    \label{e:mu}
+\end{equation}
+
+dove I è l'intensità della radiazione incidente e x lo spessore attraversato. 
+\\ Si inseriscono gli assorbitori di spessore variabile e si acquisiscono gli spettri per
+un intervallo di tempo sufficiente a garantire una precisione migliore del 3\% sul picco a 59.5keV.
+La precisione in percentuale si ottiene ricavando il numero di eventi N, cioè l'area, al di sotto del
+picco di interesse...
+Si calcola il rate degli eventi nel picco a 60 keV per tutte le misure effettuate come rapporto tra numero di 
+eventi rilevati e tempo di acquisizione, che come prima è stato adattato in modo da avere precisioni di almeno il 3\%
+Considerando la relazione \autoref{e:mu} si effettua un fit esponenziale del rate in funzione dello spessore del materiale, 
+separatamente per rame e argento. Si sottolinea che il rapporto N/t rappresenta l'intensità della radiazione incidente
+per unità di superficie: il rivelatore a disposizione ha un'area di 1 $\si{\centi\metre}^2$, dunque ok (???).
+
 
 
 
