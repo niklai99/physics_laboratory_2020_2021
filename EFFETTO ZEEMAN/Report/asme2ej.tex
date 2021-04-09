@@ -339,13 +339,53 @@ Per calcolare $\Delta x_{\text{r.u.}}$, la strategia adottata è la seguente. In
 posizioni dei due massimi splittati. Successivamente, si calcolano la distanza tra il primo picco e quello centrale e
 tra quest'ultimo ed il terzo picco della tripletta. Quindi, $\Delta x_{\text{r.u.}}$ viene stimata come media di queste
 due distanze. Per quanto riguarda $\Delta x$, invece, si considera la distanza di separazione dei picchi della frangia
-centrale. 
+centrale. \\
+Si ottiene quindi un campione di misure di $\Delta\lambda_{\text{zee}}$ (la cui media risulta essere
+$\langle\Delta\lambda_{\text{zee}}\rangle = 0.00863 \pm 0.00012 \,\si{\nano\metre}$, in accordo con le previsioni del
+fenomeno): utilizzando la relazione in \autoref{e:dEzee} viene quindi calcolato un campione relativo alla separazione
+energetica $\Delta \text{E}_{\text{zee}}$. Successivamente, esplicitando il fattore di Landè da \autoref{e:gL}, si
+ottiene un campione di $\text{g}_{\text{J}}$: a queste misure viene associata un'incertezza data dalla propagazione
+
+\vspace{-15pt}
+\begin{equation}
+    \sigma_{\text{g}_{\text{J}}} = \text{g}_{\text{J}} \, 
+    \sqrt{ 
+        \left(\frac{\sigma_{\Delta \text{E}_{\text{zee}}}}{\Delta \text{E}_{\text{zee}}}\right)^2 + 
+        \left(\frac{\sigma_{\text{B}}}{\text{B}}\right)^2
+        }
+    \vspace{-5pt}
+\end{equation}
+
+\noindent dove $\sigma_{\Delta \text{E}_{\text{zee}}}$ è lo scarto quadratico medio del campione di misure relative alla
+separazione energetia, mentre $\sigma_{\text{B}}$ è l'$1\%$ del valore del campo magnetico esterno. 
+
+Infine, la stima del fattore di Landè viene trovata effettuando una media pesata tra le misure del campione, ottenendo
+così 
+
+\vspace{-15pt}
+\begin{align*}
+    \text{g}_{\text{J}} &= 1.033 \pm 0.014 & \frac{\sigma_{\text{g}_{\text{J}}}}{\text{g}_{\text{J}}} &\approx 1.4\%
+    \vspace{-5pt}
+\end{align*}
+
+Il fattore così misurato risulta essere in soddisfacente accordo con le previsioni teoriche, presentando una
+compatibilità pari a $2.4$ con tale valore di aspettazione. Ovviamente, a causa dell'approccio, piuttosto
+approssimativo, utilizzato per analizzare i dati, la non ottima compatibilità con le aspettative teoriche è stata
+prevista: volendo indagare più a fondo si propone un breve studio sull'andamento dello splitting Zeeman delle frange in
+funzione della posizione. Come si può notare in \autoref{i:spacing_trend_Bon}, in particolare osservando il grafico a
+sinistra, l'effetto di aberrazione, oltre ad influire sulla distanza tra picchi e sulla loro larghezza come evidenziato
+in \autoref{s:risolvente}, modifica la speparazione delle frange al variare della posizione. L'andamento di tale
+separazione, infatti, segue un trend piuttosto lineare che ricorda in particolar modo l'andamento della larghezza dei
+picchi riportato in \autoref{i:spacing_trend_Boff}.
 
 
-
-
-
-
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{../Plots/Bon_zeeman_trend.png}
+    \caption{Andamento della separazione Zeeman tra picchi (a sinistra) e del rapporto tra distanza tra picchi e separazione Zeeman (a destra) in funzione della posizione}
+    \label{i:spacing_trend_Bon}
+    \vspace{-10pt}
+\end{figure}
 
 
 % \begin{figure}
