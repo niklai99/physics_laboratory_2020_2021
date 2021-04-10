@@ -1,0 +1,164 @@
+%%% use twocolumn and 10pt options with the asme2ej format
+\documentclass[twocolumn,10pt]{asme2ej}
+
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{subfigure}
+\usepackage{titling}
+\usepackage{siunitx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+
+\def\figureautorefname{Fig.} 
+\def\equationautorefname{Eq.} 
+\def\sectionautorefname{Sez.} 
+\def\subsectionautorefname{Sez.} 
+\def\subsubsectionautorefname{Sez.}
+\def\tableautorefname{Tab.}
+
+\pretitle{\begin{center}\linespread{1.2}\huge}
+\posttitle{\par\end{center}\vspace{0.5em}}
+
+\abovedisplayshortskip=0pt
+\belowdisplayshortskip=0pt
+\abovedisplayskip=-5pt
+\belowdisplayskip=5pt
+
+
+%% The class has several options
+%  onecolumn/twocolumn - format for one or two columns per page
+%  10pt/11pt/12pt - use 10, 11, or 12 point font
+%  oneside/twoside - format for oneside/twosided printing
+%  final/draft - format for final/draft copy
+%  cleanfoot - take out copyright info in footer leave page number
+%  cleanhead - take out the conference banner on the title page
+%  titlepage/notitlepage - put in titlepage or leave out titlepage
+%  
+%% The default is oneside, onecolumn, 10pt, final
+
+\date{}
+\title{{\huge\bfseries Laboratorio di Fisica} - {\LARGE A.A. 2020/2021} \\ 
+    {\LARGE Docenti: A. Garfagnini - M. Lunardon} \\ {\Huge\bfseries Fotodiodo}}
+
+
+%%% first author
+\author{Cerrone Vanessa
+    \affiliation{
+    1200361\\
+    vanessa.cerrone@studenti.unipd.it
+    }	
+}
+
+%%% second author
+\author{Cigagna Simone
+    \affiliation{
+	1193992\\
+    simone.cigagna@studenti.unipd.it
+    }	
+}
+
+%%% third author
+\author{Lai Nicolò
+    \affiliation{
+	1193976\\
+    nicolo.lai@studenti.unipd.it
+    }	
+}
+
+
+\begin{document}
+
+
+\maketitle    
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduzione}\label{s:introduzione}
+Si vuole analizzare lo spettro dei fotoni emessi dall'Americio-241 con un rivelatore al Silicio tipo PIN,
+dotato di preamplificatore di carica. L’hardware, cioè i moduli di elettronica, sono stati pre-impostati
+in condizioni standard, con shaping time pari a $3\mu\si{\second}$, in modo da ottimizzare il rapporto
+segnale rumore. Preliminarmente, tramite il software di acquisizione, si registra uno spettro per 
+identificare i picchi principali, a 60keV e 14-18keV. \\
+Nella \autoref{s:attenuazione} si analizzerà il picco a 59.5keV in presenza di materiali di diverso spessore,
+al fine di calcolare i relativi coefficienti di assorbimento. Nella  \autoref{s:distanza}, si effettueranno 
+misure al variare della distanza della sorgente, per verificare che i dati seguano l'andamento atteso. 
+Un'analisi dettagliata dello spettro verrà presentata nella sezione \autoref{s:multipicco}. 
+
+% scriviamo 60 59 59.5 keV ???
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Calibrazione e risoluzione energetica}\label{s:calibrazione}
+% Scrivere della misura preliminare per verificare la precisione del picco a 60 keV??
+% Calibrazione e calcolo della risoluazione ? 
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Coefficiente di assorbimento}\label{s:attenuazione}
+Ci si propone di effettuare delle misure in presenza di materiali di diverso spessore, nello specifico
+rame e argento, con lo scopo di calcolarne il coefficiente di assorbimento $\mu$, che si ricava dalla relazione:
+
+\vspace{-15pt}
+\begin{equation}
+   \text{I}(x) = \text{I}_0 \text{e}^{-\mu x}
+    \vspace{-5pt}
+    \label{e:mu}
+\end{equation}
+
+dove I è l'intensità della radiazione incidente e x lo spessore attraversato. 
+\\ Si inseriscono gli assorbitori di spessore variabile e si acquisiscono gli spettri per
+un intervallo di tempo sufficiente a garantire una precisione migliore del 3\% sul picco a 59.5keV.
+La precisione in percentuale si ottiene ricavando il numero di eventi N, cioè l'area, al di sotto del
+picco di interesse...
+Si calcola il rate degli eventi nel picco a 60 keV per tutte le misure effettuate come rapporto tra numero di 
+eventi rilevati e tempo di acquisizione, che come prima è stato adattato in modo da avere precisioni di almeno il 3\%
+Considerando la relazione \autoref{e:mu} si effettua un fit esponenziale del rate in funzione dello spessore del materiale, 
+separatamente per rame e argento. Si sottolinea che il rapporto N/t rappresenta l'intensità della radiazione incidente
+per unità di superficie: il rivelatore a disposizione ha un'area di 1 $\si{\centi\metre}^2$, dunque ok (???).
+
+\begin{table}[t]
+%%\renewcommand{\arraystretch}{1.3}
+    \centering
+    \resizebox{\linewidth}{!}{%
+    \begin{tabular}{@{}cc|cc@{}}
+    \toprule
+    \multicolumn{2}{c}{\textbf{Ag}}                          & \multicolumn{2}{c}{\textbf{Cu}}                        \\ \midrule
+    \multicolumn{1}{c}{Spessore [$\si{\micro\metre}$]} & \multicolumn{1}{c|}{Rate [Hz]} & \multicolumn{1}{c}{Spessore [$\si{\micro\metre}$]} & \multicolumn{1}{c}{Rate [Hz]} \\
+    60                           & $5.4 \pm 0.1 $                    & 92                           & $6.97 \pm 0.13$                    \\
+    120                          & $3.80 \pm 0.08 $                     & 184                          & $6.1  \pm 0.1$                    \\
+    180                          & $2.42  \pm  0.07$                    & 276                          & $5.5 \pm 0.1$                      \\
+    240                          & $1.93  \pm  0.06$                    & 368                          & $4.7 \pm 0.1$                      \\ \bottomrule
+    \end{tabular}%
+    }
+    \caption{Dati fit esponenziale per il calcolo del coefficiente di assorbimento}
+    \label{t:assorbimento}
+    \end{table}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Misure in funzione della distanza}\label{s:distanza}
+
+
+
+
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fit multipicco}\label{s:multipicco}
+
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Stima dell'efficienza relativa}\label{s:efficienza}
+
+
+\end{document}

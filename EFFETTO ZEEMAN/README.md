@@ -26,8 +26,8 @@
   
 ## B on reversed
 
-- [ ] rebinning (vanessa)
-- [ ] qualitative considerations (vanessa)
+- [x] rebinning (vanessa)
+- [x] qualitative considerations (vanessa)
 - [ ] qualitative fitting (opzionale)
 - [x] compare with polarimeter (merge histograms) and without (simone+nik)
 - [x] plot spectrum (vanessa)
