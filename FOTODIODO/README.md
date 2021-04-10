@@ -11,12 +11,12 @@
 ## Distance
 
 - [x] double check N in big peak (using always the same range) (Vanessa) 
-- [ ] inverse square law ?????? (Optional)
+- [x] ~~inverse square law ?????? (Optional)~~
   
 ## Multi-peaks Fit 
 
 - [ ] find energy resolution for 60keV peak (Nik)
-- [ ] find old forbidden magical tables of probabilities (Vanessa)
-- [ ] update multi-peak fit if knowledge comes (Simone)
-- [ ] fit & plot single gaussian curves (Simone)
+- [x] find old forbidden magical tables of probabilities (Vanessa)
+- [x] update multi-peak fit if knowledge comes (Simone)
+- [x] fit & plot single gaussian curves (Simone)
 - [ ] efficiency curve (hero)
