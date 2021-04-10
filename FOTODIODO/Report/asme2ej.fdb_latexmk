@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1618003066 "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.tex" "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.pdf" "asme2ej" 1618003067
-  "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.aux" 1618003067 2202 f149a553392e1e3076abbcbec7136ced ""
-  "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.tex" 1618003065 6189 cc384b84d5a3e43fbc073e1287e0ec64 ""
-  "/dev/null" 1618003038 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1618044785 "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.tex" "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.pdf" "asme2ej" 1618044786
+  "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.aux" 1618044785 2502 cf1562120016b523a3b4313d1be53991 ""
+  "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.tex" 1618044784 6715 acbeedd81e66cb0cb1d678c3247ec9ee ""
+  "/dev/null" 1618044784 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/helvetic/phvb7t.tfm" 1480098688 2240 eb56c13537f4d8a0bd3fafc25572b1bd ""
@@ -107,14 +107,14 @@
   "/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1553261062 3236106 bef0cf154a3167603a4917a99a2c80c5 ""
   "/usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1553261113 4227023 39fb7419279bd1e4de375e09014a3ecb ""
   "/usr/local/texlive/2018/texmf.cnf" 1523934483 577 0b39adfd7c93507ff20c9c14c2f1a33f ""
-  "asme2ej.aux" 1618003067 2202 f149a553392e1e3076abbcbec7136ced ""
+  "asme2ej.aux" 1618044785 2502 cf1562120016b523a3b4313d1be53991 ""
   "asme2ej.cls" 1617799109 47788 7045f3ef71da9b5b9922328548340029 ""
-  "asme2ej.out" 1618003067 364 bcd27017720879b20e5fec826691777e ""
-  "asme2ej.tex" 1618003065 6189 cc384b84d5a3e43fbc073e1287e0ec64 ""
+  "asme2ej.out" 1618044785 364 bcd27017720879b20e5fec826691777e ""
+  "asme2ej.tex" 1618044784 6715 acbeedd81e66cb0cb1d678c3247ec9ee ""
   (generated)
-  "asme2ej.out"
   "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.pdf"
-  "asme2ej.pdf"
+  "asme2ej.out"
   "asme2ej.aux"
   "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.log"
   "asme2ej.log"
+  "asme2ej.pdf"
