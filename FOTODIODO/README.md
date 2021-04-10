@@ -11,7 +11,7 @@
 ## Distance
 
 - [x] double check N in big peak (using always the same range) (Vanessa)
-- [ ] make plots (Nik) 
+- [x] make plots (Nik) 
   
 ## Multi-peaks Fit 
 
