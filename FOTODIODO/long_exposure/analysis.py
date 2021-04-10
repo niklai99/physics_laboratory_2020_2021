@@ -92,14 +92,6 @@ def peak_fitting(data,p_xmin,p_xmax):
                       #sigma=np.sqrt(p_Y), absolute_sigma=True,
                       p0=[np.average(p_X), np.std(p_X)])
 
-    # plot fit
-    fig,_=plt.subplots()
-    xplt=np.linspace(np.amin(p_X), np.amax(p_X))
-    plt.plot(xplt, gauss(xplt,sum(p_Y),*par), color='tomato')
-    plt.hist(p_X,weights=p_Y,histtype='step',bins=len(p_X))
-    plt.title("Calibration - 60keV Histogram")
-    fig.tight_layout()
-    
     return par,cov,sum(p_Y)
 
 
@@ -110,8 +102,7 @@ def main():
     Y = np.loadtxt("data")
     X = np.arange(-1,1023) # TODO: change 1023 --> len(data)-1?
     # store data with Pandas
-    data=pd.DataFrame(data=X,columns=['X'])
-    data['Y']=Y
+    data=pd.DataFrame({'X': X, 'Y': Y})
 
     # fit 60 keV peak
     par60, cov60, N = peak_fitting(data,p60_xmin,p60_xmax)
@@ -122,24 +113,25 @@ def main():
 
     # get gaussian fit maximum 
     # NB: max = - min
-    print("============ Axis calibration")
+    # print("============ Axis calibration"
     max_list= fmin(lambda X: -gauss(X,N,*par60), x0=[500]) 
-    print("xmax:", max_list[0])
+    # print("xmax:", max_list[0])
 
     # get calibration scale factor
     calib=p60_en/max_list[0]
 
     # calibrate x values
     data.X = data.X*calib 
-    #data.Y=data.Y/np.sum(data.Y)
+    
 
     # plot calibrated histogram
-    fig, ax = plt.subplots(ncols=1, nrows=2, figsize=(12,6),
+    fig, ax = plt.subplots(ncols=1, nrows=2, figsize=(20,9.5),
                            gridspec_kw={'height_ratios': [3, 1]},
                            sharex=True)
 
     ax[0].hist(data.X,weights=data.Y, bins=len(data.X),
-               histtype = 'step', color='royalblue')
+               histtype = 'step', color = '#0451FF', linewidth = 1.5)
+
 
 
     # ==== multi-peak fit ====
@@ -156,14 +148,15 @@ def main():
 
 
     # plot sum of fits
-    xgr= np.linspace(np.amin(data.X),np.amax(data.X),1000)
-    ygr= multi_gauss(xgr,*par)
-    ax[0].plot(xgr,ygr,color='tomato')
+    xgr = np.linspace(np.amin(data.X),np.amax(data.X),1000)
+    ygr = multi_gauss(xgr,*par)
+    ax[0].plot(xgr,ygr,color='#FF0000', linewidth = 2, zorder = 10, label = 'Multi-peak fit')
 
     # plot residuals
-    diff=Yn -multi_gauss(Xn,*par)
-    ax[1].plot(Xn, diff,'.', color='royalblue')
-    ax[1].plot(np.linspace(0,np.amax(Xn)),np.linspace(0,0),':',color='gray')
+    diff = Yn - multi_gauss(Xn,*par)
+    ax[1].plot(Xn, diff,'.', color='#0451FF')
+    ax[1].hlines(0, 0, np.amax(Xn), color = '#000000', linestyle = 'dashed', linewidth = 1)
+
 
     # print fit results
     chisq=0
@@ -181,17 +174,25 @@ def main():
 
     # ==== plot all gaussians ====
 
+    colors = [
+        '#00C415',
+        '#8E00C4',
+        '#FF8900',
+        '#FF00D9'
+    ]
     # loop over all peaks except for 60 keV which 
     # will be plotted later
+
+    xgr1 = np.linspace(9,35,1000)
     for i in range(len(peaks)-1):
         
         # compute sigma_i from fit results
         sigma=compute_sigma(par[len(peaks)],par[len(peaks)+1],peaks[i])
         # compute y_i using fit results
-        y=gauss(xgr,par[i],peaks[i], sigma)
+        y=gauss(xgr1,par[i],peaks[i], sigma)
 
         # plot current peak
-        ax[0].plot(xgr,y, '--')
+        ax[0].plot(xgr1,y, '--', color = colors[i], label = format(peaks[i], '1.1f')+' keV peak fit')
 
         # print peak normalization coefficient
         print("peak:",peaks[i],"keV\t","N:",round(par[i],2))
@@ -200,12 +201,26 @@ def main():
     # plot 60 keV peak
     sigma=np.sqrt(compute_sigma(par[len(peaks)],par[len(peaks)+1],p60_en)**2+par[-1])
     y=gauss(xgr,par[len(peaks)-1],peaks[-1], sigma)
-    ax[0].plot(xgr,y,'--')
+    ax[0].plot(xgr,y,'--', color = '#006FFF', label = format(peaks[-1], '1.1f')+' keV peak fit')
 
-    ax[0].set_xlim(0,80)
-    ax[0].set_title("Multi Peak Fit")
+
+    # plot config
+    ax[0].set_title('Multi-Peak Fit', fontsize = 24)
+
+    # ax[0].set_xlabel('Energy [keV]', fontsize = 20)
+    ax[0].set_ylabel('ADC counts', fontsize = 20, loc = 'top')
+    ax[1].set_xlabel('Energy [keV]', fontsize = 20)
+    ax[1].set_ylabel('Residuals', fontsize = 20, loc = 'center')
+
+    ax[0].tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
+    ax[1].tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
+
+    ax[0].set_xlim(left = 9, right = 70)
+
+    ax[0].legend(prop = {'size': 18}, loc = 'best', ncol = 1, frameon = True, fancybox = False, framealpha = 0.5)
+
     fig.tight_layout()
-    
+    # fig.savefig('../Plots/multifit.png', dpi = 300, facecolor = 'white')
     plt.show()
 
 
