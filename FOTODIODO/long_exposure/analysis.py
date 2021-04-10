@@ -100,7 +100,7 @@ def peak_fitting(data,p_xmin,p_xmax):
 def main():
 
     # get histogram data
-    Y = np.loadtxt("data")
+    Y = np.loadtxt("data.txt")
     X = np.arange(-1,1023) # TODO: change 1023 --> len(data)-1?
     # store data with Pandas
     data=pd.DataFrame({'X': X, 'Y': Y})
