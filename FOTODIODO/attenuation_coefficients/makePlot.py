@@ -25,7 +25,8 @@ def fitFunc(X,Y,errY,choice):
     if choice==0: # exponential fit
 
         par, cov = curve_fit(f=expFunc, xdata=X, ydata=Y,
-                             sigma=errY, absolute_sigma=True)
+                             sigma=errY, absolute_sigma=True
+                             )
         
         residuals = np.array(Y) - expFunc(np.array(X), *par)
 
@@ -33,7 +34,8 @@ def fitFunc(X,Y,errY,choice):
     elif choice==1: # lienar fit
 
         par, cov = curve_fit(f=linFunc, xdata=X, ydata=Y,
-                             sigma=errY, absolute_sigma=True)
+                             sigma=errY, absolute_sigma=True
+                             )
 
         residuals = np.array(Y) - linFunc(np.array(X), *par)
 
@@ -171,7 +173,7 @@ def makePlot(
     ax[1][0].set_xlabel('Thickness [cm]', fontsize = 20)
     ax[1][0].set_ylabel('Residuals [Hz]', fontsize = 20, loc = 'center')
     ax[1][1].set_xlabel('Thickness [cm]', fontsize = 20)
-    ax[1][0].set_ylabel('Residuals', fontsize = 20, loc = 'center')
+    ax[1][1].set_ylabel('Residuals', fontsize = 20, loc = 'center')
 
     # plot ticks
     ax[0][0].tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
@@ -210,6 +212,8 @@ def printResults(
     print('\u03C7^2 / ndf Ag = ' + format(chi2_lin_Ag, '1.2f') + ' / ' + format(4 - len(par_lin_Ag), '1.0f'))
 
     return
+
+
 
 def main():
 
