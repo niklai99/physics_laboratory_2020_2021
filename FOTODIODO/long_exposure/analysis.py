@@ -106,8 +106,6 @@ def main():
 
     # fit 60 keV peak
     par60, cov60, N = peak_fitting(data,p60_xmin,p60_xmax)
-    # TODO: prima stima risoluzione energetica
-
 
     # ==== x calibration ====
 
@@ -218,6 +216,26 @@ def main():
     ax[0].set_xlim(left = 9, right = 70)
 
     ax[0].legend(prop = {'size': 18}, loc = 'best', ncol = 1, frameon = True, fancybox = False, framealpha = 0.5)
+
+
+    # text 
+    N1 = format(peaks[0], '1.1f') + ' keV peak:    N = ' + format(par[0], '1.0f') 
+    N2 = format(peaks[1], '1.1f') + ' keV peak:    N = ' + format(par[1], '1.0f') 
+    N3 = format(peaks[2], '1.1f') + ' keV peak:    N = ' + format(par[2], '1.0f') 
+    N4 = format(peaks[3], '1.1f') + ' keV peak:    N = ' + format(par[3], '1.0f') 
+    N5 = format(peaks[4], '1.1f') + ' keV peak:    N = ' + format(par[4], '1.0f') 
+    noise = '\u03B7 = ' + format(par[len(peaks)], '1.6')
+    res = '\u03B1 = ' + format(par[len(peaks)+1], '1.2f')
+
+    ax[0].text(40, 2800, 'Normalization Parameters: ', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
+    ax[0].text(41, 2000, N1 + '\n' + N2 + '\n' + N3 + '\n' + N4 + '\n' + N5, fontsize = 18, color = '#000000', transform = ax[0].transData)
+    
+    ax[0].text(40, 1750, 'Noise Parameter: ', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
+    ax[0].text(41, 1550, noise, fontsize = 18, color = '#000000', transform = ax[0].transData)
+    
+    ax[0].text(40, 1300, 'Intrinsic Resolution Parameter: ', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
+    ax[0].text(41, 1100, res, fontsize = 18, color = '#000000', transform = ax[0].transData)
+
 
     fig.tight_layout()
     # fig.savefig('../Plots/multifit.png', dpi = 300, facecolor = 'white')
