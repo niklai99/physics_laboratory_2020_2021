@@ -52,8 +52,7 @@ def multi_gauss(X,N0,N1,N2,N3,N4,sigmaNoise, sigmaEn,k):
 
         if(i!=len(peaks)-1):
             sigma=compute_sigma(sigmaNoise,sigmaEn,mean)
-        else: sigma=np.sqrt(sigmaNoise**2 + (sigmaEn*np.sqrt(mean))**2+k )
-
+        else: sigma=k
         v+=gauss(X,N[i],mean,sigma)
         #v += N[i]* np.exp( -(X-mean)**2/(2*sigma**2) )
 
@@ -143,7 +142,14 @@ def main():
     Yn=np.array(data.Y[data.X>12])
 
     # multi-peak fit 
-    par,cov=curve_fit(multi_gauss,Xn,Yn,)
+    par,cov=curve_fit(multi_gauss,Xn,Yn,
+                      bounds=((-np.inf,-np.inf,
+                               -np.inf,-np.inf,
+                               -np.inf,0.,0.,0.),
+                              (np.inf,np.inf,
+                               np.inf,np.inf,
+                               np.inf,np.inf,np.inf,np.inf
+                              )))
                       #sigma=np.sqrt(Yn),absolute_sigma=True,
                       #p0=[p14_pr,p18_pr,p21_pr,p26_pr,p60_pr,1,1,0])
 
@@ -200,8 +206,7 @@ def main():
 
 
     # plot 60 keV peak
-    sigma=np.sqrt(compute_sigma(par[len(peaks)],par[len(peaks)+1],p60_en)**2+par[-1])
-    y=gauss(xgr,par[len(peaks)-1],peaks[-1], sigma)
+    y=gauss(xgr,par[len(peaks)-1],peaks[-1], par[-1])
     ax[0].plot(xgr,y,'--', color = '#006FFF', label = format(peaks[-1], '1.1f')+' keV peak fit')
 
 
