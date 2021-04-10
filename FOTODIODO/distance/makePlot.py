@@ -40,12 +40,12 @@ def drawPlot(X, Y, errY, par, residuals):
     DELTA = (XMAX - XMIN)/10
     XPLOT = np.linspace(XMIN-DELTA, XMAX+DELTA)
 
-    fig, ax = plt.subplots(ncols=1, nrows=2, figsize=(20,9.5),
+    fig, ax = plt.subplots(ncols=1, nrows=2, figsize=(12,6),
                            gridspec_kw={'height_ratios': [3, 1]},
                            sharex=True)
 
     ax[0].errorbar(x=X, y=Y, yerr=errY, marker = '.',
-                markersize = 15, linewidth = 0, 
+                markersize = 18, linewidth = 0, 
                 elinewidth = 1.5, capsize = 1.5, capthick = 1.5,
                 color = '#0451FF', label = 'Data')
 
@@ -53,7 +53,7 @@ def drawPlot(X, Y, errY, par, residuals):
 
 
     ax[1].errorbar(x=X, y=residuals, yerr=errY, marker = '.',
-                markersize = 15, linewidth = 0, 
+                markersize = 18, linewidth = 0, 
                 elinewidth = 1.5, capsize = 1.5, capthick = 1.5,
                 color = '#0451FF', label = 'Data')
 
@@ -89,10 +89,10 @@ def drawText(ax, par, par_error, chi2, N):
     textOffset = 'scale = ' + format(par[2], '1.0f') + ' +/- ' + format(par_error[2], '1.0f') + ' Hz cm$^2$'
     chisqAg = '$\chi^{2}$ / ndf = ' + format(chi2, '1.1f') + ' / ' + format(N - len(par), '1.0f')
 
-    ax[0].text(4, 450, 'Fit Function', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
-    ax[0].text(4, 410, 'y = offset + scale (x + x$_0$)$^{-2}$', fontsize = 18, color = '#000000', transform = ax[0].transData)
-    ax[0].text(4, 340, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
-    ax[0].text(4, 220, textX0 + '\n' + textScale + '\n' + textOffset + '\n' + chisqAg, fontsize = 18, color = '#000000', transform = ax[0].transData)
+    ax[0].text(4.2, 440, 'Fit Function', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
+    ax[0].text(4.3, 400, 'y = offset + scale (x + x$_0$)$^{-2}$', fontsize = 18, color = '#000000', transform = ax[0].transData)
+    ax[0].text(4.2, 330, 'Fit Parameters', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
+    ax[0].text(4.3, 140, textX0 + '\n' + textScale + '\n' + textOffset + '\n' + chisqAg, fontsize = 18, color = '#000000', transform = ax[0].transData)
 
     return
 
@@ -115,7 +115,7 @@ def main():
     drawText(ax, par, par_error, chi2, len(data.Dist))
 
     fig.tight_layout()
-    # fig.savefig('../Plots/distance.png', dpi = 300, facecolor = 'white')
+    # fig.savefig('../Plots/distance_small.png', dpi = 300, facecolor = 'white')
     plt.show()
 
     return
