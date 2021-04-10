@@ -26,7 +26,7 @@ p21_pr=2.94
 p26_pr=2.40
 p60_pr=35.78
 #p60esc_pr=0
-peaks=     [p14_en,p18_en,p21_en,p26_en,p60_en]
+peaks=     [p14_en,p18_en,p26_en,p60_en]
 #peaks_prob=[p14_pr,p17_en,p18_pr,p26_pr,p60_pr]
 
 
@@ -43,9 +43,9 @@ def gauss1(X,N,mean,sigma):
 # Alterantive: compute only ONE FIT at a time based on the x value and return 
 # only that gaussian value. However, given the proximity of the two peaks at 
 # 14 and 17 keV, I prefer the first approach.
-def multi_gauss(X,N0,N1,N2,N3,N4,sigmaNoise, sigmaEn,k):
+def multi_gauss(X,N0,N1,N2,N3,sigmaNoise, sigmaEn,k):
 
-    N=[N0,N1,N2,N3,N4]
+    N=[N0,N1,N2,N3]
     v=0
     for i in range(len(peaks)):
         mean = peaks[i]
@@ -53,6 +53,8 @@ def multi_gauss(X,N0,N1,N2,N3,N4,sigmaNoise, sigmaEn,k):
         if(i!=len(peaks)-1):
             sigma=compute_sigma(sigmaNoise,sigmaEn,mean)
         else: sigma=k
+
+        sigma=compute_sigma(sigmaNoise,sigmaEn,mean)
         v+=gauss(X,N[i],mean,sigma)
         #v += N[i]* np.exp( -(X-mean)**2/(2*sigma**2) )
 
@@ -144,11 +146,11 @@ def main():
     # multi-peak fit 
     par,cov=curve_fit(multi_gauss,Xn,Yn,
                       bounds=((-np.inf,-np.inf,
-                               -np.inf,-np.inf,
-                               -np.inf,0.,0.,0.),
+                               -np.inf,-np.inf
+                               ,0.,0.,0.),
                               (np.inf,np.inf,
                                np.inf,np.inf,
-                               np.inf,np.inf,np.inf,np.inf
+                               np.inf,np.inf,np.inf
                               )))
                       #sigma=np.sqrt(Yn),absolute_sigma=True,
                       #p0=[p14_pr,p18_pr,p21_pr,p26_pr,p60_pr,1,1,0])
@@ -231,8 +233,9 @@ def main():
     N2 = format(peaks[1], '1.1f') + ' keV peak:    N = ' + format(par[1], '1.0f') 
     N3 = format(peaks[2], '1.1f') + ' keV peak:    N = ' + format(par[2], '1.0f') 
     N4 = format(peaks[3], '1.1f') + ' keV peak:    N = ' + format(par[3], '1.0f') 
-    N5 = format(peaks[4], '1.1f') + ' keV peak:    N = ' + format(par[4], '1.0f') 
-    noise = '\u03B7 = ' + format(par[len(peaks)], '1.6f')
+#    N5 = format(peaks[4], '1.1f') + ' keV peak:    N = ' + format(par[4], '1.0f') 
+    N5='gay'
+    noise = '\u03B7 = ' + format(par[len(peaks)], '1.6')
     res = '\u03B1 = ' + format(par[len(peaks)+1], '1.2f')
 
     ax[0].text(40, 2800, 'Normalization Parameters: ', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
