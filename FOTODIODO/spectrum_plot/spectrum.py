@@ -34,6 +34,15 @@ def gauss(X,N,mean,sigma):
     return N/((2*pi)**0.5 * sigma) * np.exp( -(X-mean)**2/(2*sigma**2) )
 
 
+def energyRes(mean, sigma):
+    
+    R = 2.355*sigma / mean
+
+    print("============ Energy Resolution")
+    print('R = ', R)
+    return
+
+
 # fit 60keV peak for X calibration
 def peak_fitting(data,p_xmin,p_xmax):
 
@@ -46,6 +55,8 @@ def peak_fitting(data,p_xmin,p_xmax):
                       p_X, p_Y,
                       #sigma=np.sqrt(p_Y), absolute_sigma=True,
                       p0=[np.average(p_X), np.std(p_X)])
+
+    energyRes(par[0], par[1])
 
     # plot fit
     # fig,_=plt.subplots()
