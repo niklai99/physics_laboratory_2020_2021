@@ -44,11 +44,14 @@ def energyRes(mean, sigma):
 
 
 # fit 60keV peak for X calibration
-def peak_fitting(data,p_xmin,p_xmax):
+def peak_fitting(data,p_xmin,p_xmax, ax):
 
     # find peak
     p_Y=data.Y[data.X>p_xmin] [data.X<p_xmax]
     p_X=data.X[data.X>p_xmin] [data.X<p_xmax]
+
+    plotY=data.Y[data.X>p_xmin-10] [data.X<p_xmax+10]
+    plotX=data.X[data.X>p_xmin-10] [data.X<p_xmax+10]
 
     # fit peak
     par,cov=curve_fit(lambda X, mean, sigma: gauss(X,np.sum(p_Y),mean,sigma), 
@@ -59,14 +62,14 @@ def peak_fitting(data,p_xmin,p_xmax):
     energyRes(par[0], par[1])
 
     # plot fit
-    # fig,_=plt.subplots()
-    # xplt=np.linspace(np.amin(p_X), np.amax(p_X))
-    # plt.plot(xplt, gauss(xplt,sum(p_Y),*par), color='tomato')
-    # plt.hist(p_X,weights=p_Y,histtype='step',bins=len(p_X))
-    # plt.title("Calibration - 60keV Histogram")
-    # fig.tight_layout()
+    xplt=np.linspace(np.amin(p_X), np.amax(p_X))
+    ax.plot(xplt, gauss(xplt,sum(p_Y),*par), color='#FF4B00', linewidth = 2)
+    ax.hist(plotX, weights=plotY, histtype='step', bins=len(plotX), color ='#0451FF', linewidth = 1.5)
+
+    ax.set_xlim(np.amin(plotX), np.amax(plotX))
     
     return par,cov,sum(p_Y)
+
 
 
 def main():
@@ -76,13 +79,18 @@ def main():
     X = np.arange(-1,1023) # TODO: change 1023 --> len(data)-1?
     # store data with Pandas
     data=pd.DataFrame({'X': X, 'Y': Y})
-    # data['Y']=Y
-
+    
+    
+    fig, ax = plt.subplots(figsize = (12,6))
+    axin1 = ax.inset_axes([40, 1000, 40, 1800], transform=ax.transData)
+    axin1.set_xlabel('Energy [a.u.]')
+    axin1.set_ylabel('ADC counts', loc = 'top')
+    axin1.set_title('Calibration Fit - 60 keV peak')
 
     # ==== x calibration ====
 
     # fit 60 keV peak
-    par60, cov60, N = peak_fitting(data, p60_xmin, p60_xmax)
+    par60, cov60, N = peak_fitting(data, p60_xmin, p60_xmax, axin1)
 
     # get gaussian fit maximum 
     # NB: max = - min
@@ -97,9 +105,8 @@ def main():
     data.X = data.X * calib 
     #data.Y=data.Y/np.sum(data.Y)
 
-    # plot calibrated histogram
-    fig, ax = plt.subplots(figsize = (20, 9.5))
 
+    # plot calibrated histogram
     ax.hist(data.X, weights=data.Y, bins=len(data.X),
                histtype = 'step', color = '#0451FF', linewidth = 1.5)
 
@@ -113,7 +120,7 @@ def main():
 
 
     fig.tight_layout()
-    # fig.savefig('../Plots/am_spectrum.png', dpi = 300, facecolor = 'white')
+    # fig.savefig('../Plots/am_spectrum_small.png', dpi = 300, facecolor = 'white')
     plt.show()
 
     return
