@@ -6,32 +6,34 @@ from scipy.optimize import curve_fit
 
 def main():
 
+    # create figure and axes 
+    fig, ax1 = plt.subplots(ncols=1, figsize=(12,6))
 
-    fig = plt.figure(figsize=(18,6))
-
-
-    ax1 = fig.add_subplot(1, 2, 1)
-    ax2 = fig.add_subplot(1, 2, 2)
-
-
+    # read data
     dataAg = pd.read_csv('Ag2.txt', sep = '\t', header = None, names = ['X', 'Y','errY'])
-
-    
-    ax1.errorbar(dataAg.X, dataAg.Y, dataAg.errY, marker = '.', linewidth = 1, linestyle = ':', elinewidth = 1, capsize = 1, color = '#0451FF', label = 'Ag Data')
     dataCu = pd.read_csv('Cu2.txt', sep = '\t', header = None, names = ['X', 'Y','errY'])
-    leg1 = ax1.legend()
-    ax1.add_artist(leg1)
-    ax2.errorbar(dataCu.X, dataCu.Y, dataCu.errY, marker = '.', linewidth = 1, linestyle = ':', elinewidth = 1, capsize = 1, color = 'Red', label = 'Cu Data')
     
-    ax1.set_xlabel('Spessore [$\mu$m]', fontsize = 18, loc = 'center')
-    ax1.set_ylabel('Efficienza relativa', fontsize = 18, loc = 'top')
+    # plot data
+    ax1.errorbar(dataAg.X, dataAg.Y, dataAg.errY, marker = '.', linewidth = 1, linestyle = 'dashed', elinewidth = 1, capsize = 1, color = '#0451FF', label = 'Ag data')
+    ax1.set_xlabel('Spessore [$\mu$m]', fontsize = 16, loc = 'center')
+    ax1.set_ylabel('Efficienza relativa', fontsize = 16, loc = 'top',color = '#0451FF')
+    ax1.tick_params(axis='y', labelcolor='#0451FF')
     
+    ax2 = ax1.twinx()
+    ax2.errorbar(dataCu.X, dataCu.Y, dataCu.errY, marker = '.', linewidth = 1, linestyle = 'dashed', elinewidth = 1, capsize = 1, color = '#FF0451', label = 'Cu data')
+    ax2.set_ylabel('Efficienza relativa', fontsize = 16, loc = 'bottom',color = '#FF0451')
+    ax2.tick_params(axis='y', labelcolor='#FF0451')
 
-    ax2.set_xlabel('Spessore [$\mu$m]', fontsize = 18, loc = 'center')
-    ax2.set_ylabel('Efficienza relativa', fontsize = 18, loc = 'top')
-
-    plt.legend()
+    # set legend 
+    h1, l1 = ax1.get_legend_handles_labels()
+    h2, l2 = ax2.get_legend_handles_labels()
+    ax1.legend(h1+h2, l1+l2, loc='best', prop={'size':16})
+    
+    #fig.tight_layout()
     plt.show()
+
+    # save figure
+    #fig.savefig('efficiency.jpg', dpi = 300)
 
     return
 
