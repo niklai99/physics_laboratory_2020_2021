@@ -6,7 +6,7 @@
 
 - [x] double check N in 60 keV peak (using always the same range) (Vanessa)
 - [x] spectrum plots (Nik)
-- [ ] plots & fits (exponential fit: check offset & normalization parameters) (Nik)
+- [x] plots & fits (Nik)
 
 ## Distance
 
