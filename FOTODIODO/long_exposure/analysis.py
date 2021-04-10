@@ -106,6 +106,9 @@ def main():
 
     # fit 60 keV peak
     par60, cov60, N = peak_fitting(data,p60_xmin,p60_xmax)
+    print(par60)
+    print(cov60)
+    print(N)
 
     # ==== x calibration ====
 
@@ -224,7 +227,7 @@ def main():
     N3 = format(peaks[2], '1.1f') + ' keV peak:    N = ' + format(par[2], '1.0f') 
     N4 = format(peaks[3], '1.1f') + ' keV peak:    N = ' + format(par[3], '1.0f') 
     N5 = format(peaks[4], '1.1f') + ' keV peak:    N = ' + format(par[4], '1.0f') 
-    noise = '\u03B7 = ' + format(par[len(peaks)], '1.6')
+    noise = '\u03B7 = ' + format(par[len(peaks)], '1.6f')
     res = '\u03B1 = ' + format(par[len(peaks)+1], '1.2f')
 
     ax[0].text(40, 2800, 'Normalization Parameters: ', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
@@ -239,7 +242,7 @@ def main():
 
     fig.tight_layout()
     # fig.savefig('../Plots/multifit.png', dpi = 300, facecolor = 'white')
-    plt.show()
+    # plt.show()
 
 
 
