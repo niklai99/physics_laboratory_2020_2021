@@ -52,7 +52,7 @@ def multi_gauss(X,N0,N1,N2,N3,N4,sigmaNoise, sigmaEn,k):
 
         if(i!=len(peaks)-1):
             sigma=compute_sigma(sigmaNoise,sigmaEn,mean)
-        else: sigma=np.sqrt(sigmaNoise**2 + (sigmaEn*np.sqrt(mean))**2+k )
+        else: sigma=k 
 
         v+=gauss(X,N[i],mean,sigma)
         #v += N[i]* np.exp( -(X-mean)**2/(2*sigma**2) )
@@ -197,7 +197,7 @@ def main():
 
 
     # plot 60 keV peak
-    sigma=np.sqrt(compute_sigma(par[len(peaks)],par[len(peaks)+1],p60_en)**2+par[-1])
+    sigma=par[-1]
     y=gauss(xgr,par[len(peaks)-1],peaks[-1], sigma)
     ax[0].plot(xgr,y,'--', color = '#006FFF', label = format(peaks[-1], '1.1f')+' keV peak fit')
 
@@ -238,7 +238,7 @@ def main():
 
 
     fig.tight_layout()
-    # fig.savefig('../Plots/multifit.png', dpi = 300, facecolor = 'white')
+    fig.savefig('../Plots/multifit.png', dpi = 300, facecolor = 'white')
     plt.show()
 
 
