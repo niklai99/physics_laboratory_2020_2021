@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  11 APR 2021 15:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  11 APR 2021 15:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1150,29 +1150,15 @@ Overfull \hbox (14.17145pt too wide) in paragraph at lines 239--249
 [2 <../Plots/multifit.png>] [3
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 259--281
-[]\OT1/ptm/m/n/10 <<<<<<< HEAD ======= >>>>>>>
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 259--281
-\OT1/ptm/m/n/10 aed3d920d29574060d73793d6471274d7adabe7c <<<<<<<
- []
-
-
-Overfull \hbox (47.68394pt too wide) in paragraph at lines 282--284
-[]\OT1/ptm/m/n/10 ======= >>>>>>> aed3d920d29574060d73793d6471274d7adabe7c 
- []
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 294.
-[4
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 286.
+ [4
 
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 294.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 286.
  (d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 294.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 294.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 286.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 286.
 Package rerunfilecheck Info: File `asme2ej.out' has not changed.
 (rerunfilecheck)             Checksum: FFF5EA6496581B94A41D5F5967C6A30E;447.
 
@@ -1180,7 +1166,7 @@ Package rerunfilecheck Info: File `asme2ej.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.15001pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 294.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 286.
  ) 
 Here is how much of TeX's memory you used:
  28674 strings out of 492649
@@ -1191,7 +1177,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  55i,17n,54p,10434b,1085s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.pdf (4 pages, 801728 bytes).
+Output written on d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.pdf (4 pages, 801234 bytes).
 PDF statistics:
  118 PDF objects out of 1000 (max. 8388607)
  98 compressed objects within 1 object stream
