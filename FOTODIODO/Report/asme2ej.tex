@@ -7,6 +7,7 @@
 \usepackage{multicol}
 \usepackage{siunitx}
 \usepackage{amsmath}
+\usepackage{tikz,mathtools}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -81,30 +82,78 @@
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduzione}\label{s:introduzione}
-Si vuole analizzare lo spettro dei fotoni emessi dall'Americio-241 con un rivelatore al Silicio tipo PIN,
-dotato di preamplificatore di carica. L’hardware, cioè i moduli di elettronica, sono stati pre-impostati
-in condizioni standard, con shaping time pari a $3\mu\si{\second}$, in modo da ottimizzare il rapporto
-segnale rumore. Preliminarmente, tramite il software di acquisizione, si registra uno spettro per 
-identificare i picchi principali, a 60keV e 14-18keV. \\
-Nella \autoref{s:attenuazione} si analizzerà il picco a 59.5keV in presenza di materiali di diverso spessore,
-al fine di calcolare i relativi coefficienti di assorbimento. Nella  \autoref{s:distanza}, si effettueranno 
-misure al variare della distanza della sorgente, per verificare che i dati seguano l'andamento atteso. 
-Un'analisi dettagliata dello spettro verrà presentata nella sezione \autoref{s:multipicco}. 
+
+Si vuole analizzare lo spettro dei fotoni emessi dall'Americio-241 con un rivelatore al Silicio tipo PIN, dotato di
+preamplificatore di carica. L’hardware, cioè i moduli di elettronica, sono stati pre-impostati in condizioni standard,
+con shaping time pari a $3\mu\si{\second}$, in modo da ottimizzare il rapporto segnale rumore. Preliminarmente, tramite
+il software di acquisizione, si registra uno spettro per identificare i picchi principali, a 60keV e 14-18keV. \\
+
+Nella \autoref{s:attenuazione} si analizzerà il picco a 59.5keV in presenza di materiali di diverso spessore, al fine di
+calcolare i relativi coefficienti di assorbimento. Nella  \autoref{s:distanza}, si effettueranno misure al variare della
+distanza della sorgente, per verificare che i dati seguano l'andamento atteso. Un'analisi dettagliata dello spettro
+verrà presentata nella sezione \autoref{s:multipicco}. 
 
 % scriviamo 60 59 59.5 keV ???
 
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Calibrazione e risoluzione energetica}\label{s:calibrazione}
-% Scrivere della misura preliminare per verificare la precisione del picco a 60 keV??
-% Calibrazione e calcolo della risoluazione ? 
+\section{Spettro dell'Am-241}\label{s:spettro}
+
+Prima di studiare in dettaglio gli effetti di diversi assorbitori posti tra la sorgente ed il detector ed il ruolo che
+svolge la distanza di quest'ultimo dalla prima, ci si vuole concentrare in un'analisi dello spettro dell'Americio-241.
+Sperimentalmente, il rivelatore viene posto alla minima distanza dalla sorgente e non viene inserito alcun assorbitore
+tra i due. Il tempo di acquisizione viene impostato a $600\,\si{\second}$, rivelando così approssimativamente $2 \cdot
+10^5$ eventi con un rate istantaneo di circa $340\,\si{\hertz}$. In questo modo, il picco a
+$60\,\si{\kilo\electronvolt}$ presenta una precisione $\sqrt{\text{N}}/\text{N} \approx 1.5\%$.
+
+\subsection{Calibrazione e Risoluzione Energetica}\label{s:calibrazione}
+
+Inizialmente, si vuole calibrare l'asse orizzontale riconoscendo nello spettro in \autoref{i:spettro} il picco a
+$60\,\si{\kilo\electronvolt}$. Nel grafico è presentato lo spettro di emissione con l'asse calibrato in energia: per
+ottenere tale risultato è stato eseguito un fit gaussiano del picco, come mostrato nel riquadro all'interno del grafico.
+Ovviamente, la calibrazione ottenuta sfruttando unicamente il picco a $60\,\si{\kilo\electronvolt}$ e assumendo
+l'assenza di un possibile offset è approssimata, tuttavia risulta essere sufficiente per gli scopi dell'esperienza. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{../Plots/am_spectrum_small.png}
+    \caption{Spettro dell'Americio-241 con fit del picco a 60 keV per la calibrazione
+               dell'asse orizzontale}
+    \label{i:spettro}
+    \vspace{-10pt}
+\end{figure}
+
+Dal fit del picco a $60\,\si{\kilo\electronvolt}$ è possibile infine estrapolare una stima approssimata della
+risoluzione energetica R: 
+
+\vspace{-15pt}
+\begin{equation}
+    \text{R} = \frac{\Delta\text{E}}{\text{E}}
+    \underset{\mathllap{
+      \begin{tikzpicture}
+        \draw[->] (-0.3, 0) to[bend right=20] ++(0.3,2ex);
+        \node[below left] at (0,0) {in assenza di offset};
+      \end{tikzpicture}
+    }}{\simeq}
+    \frac{\text{FWHM}}{\text{mean}} = 6.75\%
+\vspace{-5pt}
+\end{equation}
 
 
+\subsection{Fit Multi-Picco}\label{s:multipicco}
+
+
+
+
+
+
+\cleardoublepage
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Coefficiente di assorbimento}\label{s:attenuazione}
-Ci si propone di effettuare delle misure in presenza di materiali di diverso spessore, nello specifico
-rame e argento, con lo scopo di calcolarne il coefficiente di assorbimento $\mu$, che si ricava dalla relazione:
+\section{Coefficiente di assorbimento}\label{s:attenuazione} 
+
+Ci si propone di effettuare delle misure in presenza di materiali di diverso spessore, nello specifico rame e argento,
+con lo scopo di calcolarne il coefficiente di assorbimento $\mu$, che si ricava dalla relazione:
 
 \vspace{-15pt}
 \begin{equation}
@@ -113,16 +162,15 @@ rame e argento, con lo scopo di calcolarne il coefficiente di assorbimento $\mu$
     \label{e:mu}
 \end{equation}
 
-dove I è l'intensità della radiazione incidente e x lo spessore attraversato. 
-\\ Si inseriscono gli assorbitori di spessore variabile e si acquisiscono gli spettri per
-un intervallo di tempo sufficiente a garantire una precisione migliore del 3\% sul picco a 59.5keV.
-La precisione in percentuale si ottiene ricavando il numero di eventi N, cioè l'area, al di sotto del
-picco di interesse...
-Si calcola il rate degli eventi nel picco a 60 keV per tutte le misure effettuate come rapporto tra numero di 
-eventi rilevati e tempo di acquisizione, che come prima è stato adattato in modo da avere precisioni di almeno il 3\%
-Considerando la relazione \autoref{e:mu} si effettua un fit esponenziale del rate in funzione dello spessore del materiale, 
-separatamente per rame e argento. Si sottolinea che il rapporto N/t rappresenta l'intensità della radiazione incidente
-per unità di superficie: il rivelatore a disposizione ha un'area di 1 $\si{\centi\metre}^2$, dunque ok (???).
+dove I è l'intensità della radiazione incidente e x lo spessore attraversato. \\ Si inseriscono gli assorbitori di
+spessore variabile e si acquisiscono gli spettri per un intervallo di tempo sufficiente a garantire una precisione
+migliore del 3\% sul picco a 59.5keV. La precisione in percentuale si ottiene ricavando il numero di eventi N, cioè
+l'area, al di sotto del picco di interesse... Si calcola il rate degli eventi nel picco a 60 keV per tutte le misure
+effettuate come rapporto tra numero di eventi rilevati e tempo di acquisizione, che come prima è stato adattato in modo
+da avere precisioni di almeno il 3\% Considerando la relazione \autoref{e:mu} si effettua un fit esponenziale del rate
+in funzione dello spessore del materiale, separatamente per rame e argento. Si sottolinea che il rapporto N/t
+rappresenta l'intensità della radiazione incidente per unità di superficie: il rivelatore a disposizione ha un'area di 1
+$\si{\centi\metre}^2$, dunque ok (???).
 
 % esce dai margini uffa
 \begin{table}[t]
@@ -165,9 +213,6 @@ per unità di superficie: il rivelatore a disposizione ha un'area di 1 $\si{\cen
 %     \label{t:distanza}
 %     \end{table}
 
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Fit multipicco}\label{s:multipicco}
 
 
 
