@@ -1,24 +1,27 @@
 %%% use twocolumn and 10pt options with the asme2ej format
 \documentclass[twocolumn,10pt]{asme2ej}
-
+\usepackage[italian]{babel}
 \usepackage{epsfig} %% for loading postscript figures
 \usepackage{subfigure}
 \usepackage{titling}
+\usepackage{multicol}
 \usepackage{siunitx}
+\usepackage{amsmath}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
-\usepackage{booktabs}
 \pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
 \fancyhead{}
 \fancyfoot{}
 \fancyfoot[R]{\thepage}
 
+\def\tableautorefname{Tab.} 
 \def\figureautorefname{Fig.} 
 \def\equationautorefname{Eq.} 
 \def\sectionautorefname{Sez.} 
 \def\subsectionautorefname{Sez.} 
 \def\subsubsectionautorefname{Sez.}
-\def\tableautorefname{Tab.}
+
 
 \pretitle{\begin{center}\linespread{1.2}\huge}
 \posttitle{\par\end{center}\vspace{0.5em}}
@@ -121,46 +124,46 @@ Considerando la relazione \autoref{e:mu} si effettua un fit esponenziale del rat
 separatamente per rame e argento. Si sottolinea che il rapporto N/t rappresenta l'intensità della radiazione incidente
 per unità di superficie: il rivelatore a disposizione ha un'area di 1 $\si{\centi\metre}^2$, dunque ok (???).
 
+% esce dai margini uffa
 \begin{table}[t]
-%%\renewcommand{\arraystretch}{1.3}
-    \centering
-    \resizebox{\linewidth}{!}{%
-    \begin{tabular}{@{}cc|cc@{}}
-    \toprule
-    \multicolumn{2}{c}{\textbf{Ag}}                          & \multicolumn{2}{c}{\textbf{Cu}}                        \\ \midrule
-    \multicolumn{1}{c}{Spessore [$\si{\micro\metre}$]} & \multicolumn{1}{c|}{Rate [Hz]} & \multicolumn{1}{c}{Spessore [$\si{\micro\metre}$]} & \multicolumn{1}{c}{Rate [Hz]} \\
-    60                           & $5.4 \pm 0.1 $                    & 92                           & $6.97 \pm 0.13$                    \\
-    120                          & $3.80 \pm 0.08 $                     & 184                          & $6.1  \pm 0.1$                    \\
-    180                          & $2.42  \pm  0.07$                    & 276                          & $5.5 \pm 0.1$                      \\
-    240                          & $1.93  \pm  0.06$                    & 368                          & $4.7 \pm 0.1$                      \\ \bottomrule
-    \end{tabular}%
-    }
+    \begin{center}
+        \begin{tabular}{c c | c c}
+            \multicolumn{2}{c}{\textbf{Ag}} & \multicolumn{2}{c}{\textbf{Cu}} \\ 
+            \hline
+            \multicolumn{1}{c}{Spessore [$\si{\micro\metre}$]} & \multicolumn{1}{c|}{Rate [Hz]} & \multicolumn{1}{c}{Spessore [$\si{\micro\metre}$]} & \multicolumn{1}{c}{Rate [Hz]} \\
+            60                           & $5.45  \pm 0.11 $                    & 92                           & $6.97 \pm 0.13$                    \\
+            120                          & $3.80  \pm 0.08 $                    & 184                          & $6.12 \pm 0.12$                    \\
+            180                          & $2.42  \pm  0.07$                    & 276                          & $5.54 \pm 0.11$                      \\
+            240                          & $1.93  \pm  0.06$                    & 368                          & $4.71 \pm 0.11$                      \\  
+            \hline
+        \end{tabular} 
+    \end{center}
     \caption{Dati fit esponenziale per il calcolo del coefficiente di assorbimento}
     \label{t:assorbimento}
-    \end{table}
+\end{table}
 
 \clearpage
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Misure in funzione della distanza}\label{s:distanza}
 
 
-\begin{table}[h ]
-    \centering
-    \resizebox{\linewidth}{!}{%
-    \begin{tabular}{@{}cc@{}}
-    \toprule
-    Distanza [cm] & Rate [Hz]   \\ \midrule
-    1.2      & $ 316.4\pm0.9 $ \\
-    2.0      & $ 185.2 \pm  0.7$ \\
-    3.0      & $ 107.8\pm 0.5$ \\
-    4.0      & $ 70.1\pm $ 0.4\\
-    5.0      & $ 49.1\pm0.3 $ \\
-    6.0      & $ 36.2\pm 0.2$ \\ \bottomrule
-    \end{tabular}%
-    }
-    \caption{Dati fit per verifica della legge dell'inverso del quadrato della distanza}
-    \label{t:distanza}
-    \end{table}
+% \begin{table}[h ]
+%     \centering
+%     \resizebox{\linewidth}{!}{%
+%     \begin{tabular}{@{}cc@{}}
+%     \toprule
+%     Distanza [cm] & Rate [Hz]   \\ \midrule
+%     1.2      & $ 316.4\pm0.9 $ \\
+%     2.0      & $ 185.2 \pm  0.7$ \\
+%     3.0      & $ 107.8\pm 0.5$ \\
+%     4.0      & $ 70.1\pm $ 0.4\\
+%     5.0      & $ 49.1\pm0.3 $ \\
+%     6.0      & $ 36.2\pm 0.2$ \\ \bottomrule
+%     \end{tabular}%
+%     }
+%     \caption{Dati fit per verifica della legge dell'inverso del quadrato della distanza}
+%     \label{t:distanza}
+%     \end{table}
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

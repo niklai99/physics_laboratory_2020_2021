@@ -54,7 +54,7 @@ def multi_gauss(X,N0,N1,N2,N3,sigmaNoise, sigmaEn,k):
             sigma=compute_sigma(sigmaNoise,sigmaEn,mean)
         else: sigma=k
 
-        sigma=compute_sigma(sigmaNoise,sigmaEn,mean)
+        # sigma=compute_sigma(sigmaNoise,sigmaEn,mean)
         v+=gauss(X,N[i],mean,sigma)
         #v += N[i]* np.exp( -(X-mean)**2/(2*sigma**2) )
 
@@ -250,7 +250,7 @@ def main():
 
     fig.tight_layout()
     # fig.savefig('../Plots/multifit.png', dpi = 300, facecolor = 'white')
-    # plt.show()
+    plt.show()
 
 
 
