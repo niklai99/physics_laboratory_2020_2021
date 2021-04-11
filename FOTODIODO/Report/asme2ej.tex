@@ -156,7 +156,7 @@ risoluzione energetica R:
     \centering
     \includegraphics[width=\textwidth]{../Plots/multifit.png}
    \caption{Fit multi-picco dello spettro dell'Americio-241}
-    \label{i:spettro2d_Boff_ProjY}
+    \label{i:multifit}
     % \vspace{-10pt}
 \end{figure*}
 
@@ -167,7 +167,17 @@ ciascuno di questi, si costruisce una funzione gaussiana con media fissata in qu
 (\autoref{t:probabilities}) e l'asse orizzontale è stato preliminarmente calibrato. La larghezza della gaussiana
 (sigma), invece, si compone di due contributi in somma quadratica: il primo è una componente fissa, di rumore, che verrà
 denotata come $\eta$, mentre il secondo è la componente di risoluzione intrinseca $\alpha$ proporzionale alla radice
-quadrata dell'energia del fotone preso in considerazione.
+quadrata dell'energia del fotone preso in considerazione. \\
+Il fit viene effettuato minimizzando un $\chi^2$ composto dalla somma quadratica dei singoli $\chi^2$ dati da ciascun
+contributo gaussiano, ottendendo in questo modo quanto raffigurato in \autoref{i:multifit}. In particolare, sono stati
+scelti come parametri liberi il contributo di rumore $\eta$ e di risoluzione intrinsceca $\alpha$, assieme ai fattori di
+normalizzazione $\{\text{N}_i\}$ relativi ad ogni singolo picco considerato. Osservando quindi il grafico in
+\autoref{i:multifit}, la curva in rosso rappresenta il fit complessivo dello spettro: questa segue in modo più che
+soddisfacente il profilo delle emissioni dell'Am-241. Le curve tratteggiate, invece, corrispondono ai singoli contributi
+gaussiani considerati per effettuare il fit: risulta quindi evidente che il potere risolvente dell'apparato non è
+sufficiente per identificare tali contributi singolarmente. Dal grafico dei residui, relativi al fit complessivo, si può
+notare una certa difficoltà nel seguire in modo fedele il profilo del primo picco, in quanto composto da numerosi
+contributi. Il picco a $60\,\si{\kilo\electronvolt}$, invece, risulta in maggiore accordo con la funzione di regressione.
 
 
 
@@ -198,7 +208,8 @@ quadrata dell'energia del fotone preso in considerazione.
 	\label{t:probabilities}
 \end{table}	
 
-\cleardoublepage
+
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Coefficiente di assorbimento}\label{s:attenuazione} 
 
