@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1608889991 "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.pdf" "Report" 1617398859
+["pdflatex"] 1608889991 "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.tex" "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.pdf" "Report" 1618142725
   "../Plots/Catena/bode_plot2.png" 1608676324 380760 199dc527eecbd0e48ae6ed64b41a202b ""
   "../Plots/Catena/catena_linearity2.png" 1608676837 293607 a87e9dd22c2ab71fa08e0b2d08b9ca44 ""
   "../Plots/Catena/trend4.png" 1608675630 289131 acee532ece152b8701a4fc05dc994b4a ""
@@ -14,9 +14,9 @@
   "../Simulations/catena_circuito.png" 1607007233 28939 e5e07212f8464aabeeb1d3df25b95427 ""
   "Report.aux" 1608893604 20523 c310a65afc69a45f84a1ec86a9a0a400 ""
   "Report.out" 1608893604 1504 eb12711a005efac197caa2c1395a964a ""
-  "Report.tex" 1608893580 74582 2483e30a68f42edd48b2f729a9005c96 ""
+  "Report.tex" 1618142724 74582 2483e30a68f42edd48b2f729a9005c96 ""
   "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.aux" 1608893604 20523 c310a65afc69a45f84a1ec86a9a0a400 ""
-  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.tex" 1608893580 74582 2483e30a68f42edd48b2f729a9005c96 ""
+  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.tex" 1618142724 74582 2483e30a68f42edd48b2f729a9005c96 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1543007131 2971 def0b6c1f0b107b3b936def894055589 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1543007131 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1543007623 3332 103109f5612ad95229751940c61aada0 ""
@@ -290,9 +290,9 @@
   "d:/Programmi/texlive/2018/texmf.cnf" 1543009560 673 4ae7b2f49cee444c5343a45b5d0f169c ""
   "structure.tex" 1617398855 1884 c481f65cfd06eb26e0ba8d49c9d4cd8d ""
   (generated)
+  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.log"
+  "Report.out"
+  "Report.aux"
   "Report.log"
   "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.pdf"
-  "Report.aux"
   "Report.pdf"
-  "Report.out"
-  "d:/GitHub/physics_laboratory_2020_2021/CATENA ELETTRONICA/Report/Report.log"

@@ -1,10 +1,12 @@
 %%% use twocolumn and 10pt options with the asme2ej format
 \documentclass[twocolumn,10pt]{asme2ej}
-\usepackage[italian]{babel}
+% \usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
 \usepackage{epsfig} %% for loading postscript figures
 \usepackage{subfigure}
 \usepackage{titling}
 \usepackage{multicol}
+\usepackage{booktabs}
 \usepackage{siunitx}
 \usepackage{amsmath}
 \usepackage{tikz,mathtools}
@@ -15,8 +17,10 @@
 \fancyhead{}
 \fancyfoot{}
 \fancyfoot[R]{\thepage}
+\usepackage{caption}
+\captionsetup[table]{name=Tab.}
 
-\def\tableautorefname{Tab.} 
+\renewcommand{\tableautorefname}{Tab.}
 \def\figureautorefname{Fig.} 
 \def\equationautorefname{Eq.} 
 \def\sectionautorefname{Sez.} 
@@ -31,6 +35,11 @@
 \belowdisplayshortskip=0pt
 \abovedisplayskip=-5pt
 \belowdisplayskip=5pt
+
+\newcommand{\tnhl}{\tabularnewline\hline}
+\newcommand{\tn}{\tabularnewline}
+\newcolumntype{x}[1]{%
+	>{\centering\hspace{0pt}}p{#1}}%
 
 
 %% The class has several options
@@ -143,10 +152,51 @@ risoluzione energetica R:
 
 \subsection{Fit Multi-Picco}\label{s:multipicco}
 
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{../Plots/multifit.png}
+   \caption{Fit multi-picco dello spettro dell'Americio-241}
+    \label{i:spettro2d_Boff_ProjY}
+    % \vspace{-10pt}
+\end{figure*}
+
+Ci si propone ora di costruire un fit complessivo di tutto lo spettro raffigurato in \autoref{i:spettro}. Ci si
+concentra unicamente sulle emissioni di raggi X e gamma con un'intensità di almeno 2 fotoni ogni 100 disintegrazioni: in
+\autoref{t:probabilities} sono riportati quindi i contributi considerati con le relative probabilità di emissione. Per
+ciascuno di questi, si costruisce una funzione gaussiana con media fissata in quanto l'energia è nota
+(\autoref{t:probabilities}) e l'asse orizzontale è stato preliminarmente calibrato. La larghezza della gaussiana
+(sigma), invece, si compone di due contributi in somma quadratica: il primo è una componente fissa, di rumore, che verrà
+denotata come $\eta$, mentre il secondo è la componente di risoluzione intrinseca $\alpha$ proporzionale alla radice
+quadrata dell'energia del fotone preso in considerazione.
 
 
 
+\begin{table}[t]
+	\centering
+	\begin{tabular}{x{3cm} x{3cm}} 
 
+        \toprule[0.5px]
+        \toprule[0.1px]
+
+		\multicolumn{2}{c}{Probabilità di Emissione} \tn
+
+		\midrule[0.1px]
+
+		Energia [keV] & Prob. (\%) \tn
+
+		\addlinespace
+
+		13.9    & 11.60 (12)    \tn
+        17.8    & 11.83 (12)    \tn
+        20.8    & 2.94 (3)      \tn
+        26.3    & 2.31 (8)      \tn
+        59.5    & 35.92 (17)    \tn
+
+		\bottomrule[0.5px]		
+	\end{tabular}
+	\caption{Energie dei fotoni considerati nel fit multi-picco e relative probabilità di emissione}
+	\label{t:probabilities}
+\end{table}	
 
 \cleardoublepage
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
