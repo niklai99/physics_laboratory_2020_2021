@@ -1,13 +1,13 @@
 # Fdb version 3
-["pdflatex"] 1618148141 "d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.tex" "d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.pdf" "asme2ej" 1618148146
+["pdflatex"] 1618148223 "d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.tex" "d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.pdf" "asme2ej" 1618148227
   "../Plots/am_spectrum_small.png" 1618077712 222015 9a5089b27613ab0c32b5a93ea8a281bf ""
   "../Plots/multifit.png" 1618085551 665901 78314ed22a9373d08b18acf08672d8cc ""
-  "asme2ej.aux" 1618148145 3267 dfc10a05d69d42ab521ab66873254abc ""
+  "asme2ej.aux" 1618148227 3267 dfc10a05d69d42ab521ab66873254abc ""
   "asme2ej.cls" 1617964091 49157 7045f3ef71da9b5b9922328548340029 ""
-  "asme2ej.out" 1618148145 447 fff5ea6496581b94a41d5f5967c6a30e ""
-  "asme2ej.tex" 1618148136 12118 c1f94b39dabdf124797fb0b339358e7b ""
-  "d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.aux" 1618148145 3267 dfc10a05d69d42ab521ab66873254abc ""
-  "d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.tex" 1618148136 12118 c1f94b39dabdf124797fb0b339358e7b ""
+  "asme2ej.out" 1618148227 447 fff5ea6496581b94a41d5f5967c6a30e ""
+  "asme2ej.tex" 1618148215 12287 f23fd1d5416af3085d590eee5489a3be ""
+  "d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.aux" 1618148227 3267 dfc10a05d69d42ab521ab66873254abc ""
+  "d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.tex" 1618148215 12287 f23fd1d5416af3085d590eee5489a3be ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1543007404 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1543007623 3332 103109f5612ad95229751940c61aada0 ""
   "d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/helvetic/phvb7t.tfm" 1543007745 2240 eb56c13537f4d8a0bd3fafc25572b1bd ""
@@ -189,9 +189,9 @@
   "d:/Programmi/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1543009703 4221249 5a7acd7c4f43ef9d3542dd9f41e78574 ""
   "d:/Programmi/texlive/2018/texmf.cnf" 1543009560 673 4ae7b2f49cee444c5343a45b5d0f169c ""
   (generated)
-  "asme2ej.pdf"
   "asme2ej.log"
   "asme2ej.out"
-  "d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.pdf"
   "d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.log"
+  "asme2ej.pdf"
+  "d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.pdf"
   "asme2ej.aux"
