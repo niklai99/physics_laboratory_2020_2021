@@ -223,19 +223,53 @@ con lo scopo di calcolarne il coefficiente di assorbimento $\mu$, che si ricava 
     \label{e:mu}
 \end{equation}
 
-dove I è l'intensità della radiazione incidente e x lo spessore attraversato. \\ Si inseriscono gli assorbitori di
-spessore variabile e si acquisiscono gli spettri per un intervallo di tempo sufficiente a garantire una precisione
-migliore del 3\% sul picco a 59.5keV. La precisione in percentuale si ottiene ricavando il numero di eventi N, cioè
-l'area, al di sotto del picco di interesse... Si calcola il rate degli eventi nel picco a 60 keV per tutte le misure
-effettuate come rapporto tra numero di eventi rilevati e tempo di acquisizione, che come prima è stato adattato in modo
-da avere precisioni di almeno il 3\% Considerando la relazione \autoref{e:mu} si effettua un fit esponenziale del rate
-in funzione dello spessore del materiale, separatamente per rame e argento. Si sottolinea che il rapporto N/t
-rappresenta l'intensità della radiazione incidente per unità di superficie: il rivelatore a disposizione ha un'area di 1
-$\si{\centi\metre}^2$, dunque ok (???).
+dove I è l'intensità della radiazione incidente e x lo spessore attraversato. In particolare, si vuole fornire una stima
+del coefficiente di assorbimento massivo, definito come:
+
+\vspace{-15pt}
+\begin{equation}
+   \mu_{\rho} = \frac{\mu}{\rho}
+    \vspace{-5pt}
+    \label{e:mu_mass}
+\end{equation}
+
+con $\rho$ densità del materiale, che è pari a 10.49$\si{\gram \cdot \centi\metre ^{-3}}$ per l'argento
+e 8.96$\si{\gram \cdot \centi\metre ^{-3}}$ per il rame. 
+\\ Si inseriscono gli assorbitori di spessore variabile e si acquisiscono gli spettri per
+un intervallo di tempo sufficiente a garantire una precisione migliore del 3\% sul picco a 59.5keV.
+La precisione in percentuale si ottiene ricavando il numero di eventi N, cioè l'area, al di sotto del
+picco di interesse, come $\frac{\sqrt{\text{N}}}{\text{N}}$. 
+% questa formula è da giustificare, viene da distribuzione di Poisson? 
+Si calcola il rate degli eventi nel picco a 60 keV per tutte le misure effettuate come rapporto tra numero di 
+eventi rilevati e tempo di acquisizione, che come prima è stato adattato in modo da avere precisioni di almeno il 3\%.
+Considerando la relazione \autoref{e:mu} si effettua un fit del rate in funzione dello spessore del materiale, 
+separatamente per rame e argento. Si sottolinea che il rapporto N/t rappresenta l'intensità della radiazione incidente
+per unità di superficie: il rivelatore a disposizione ha un'area di 1$\si{\centi\metre}^2$, dunque il fit restituisce 
+parametri dimensionalmente corretti. (?) \\
+
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{../Plots/attenuation_coeff.png}
+   \caption{A sinistra fit esponenziale, a destra fit linearizzato per il calcolo dei coefficienti di assorbimento}
+    \label{i:attenuation}
+    % \vspace{-10pt}
+\end{figure*}
+
+Si riportano in \autoref{t:assorbimento} i dati utilizzati per l'interpolazione, con errore sulle ordinate calcolato per 
+propagazione, trascurando le incertezze sui tempi di acquisizione. Infatti, alla luce del fatto che i valori dei tempi di
+acquisizione mostrati sull'interfaccia del software si discostavano senibilmente da quelli impostati manualmente, si è 
+assunto un errore massimo di 0.1\si{\second}, ed è stato preliminarmente verificato che tale contributo avesse un peso 
+relativo trascurabile. SI Vuole inizialmente effettuare un fit esponenziale del tipo $y = \text{I}_0 \text{e}^{-\mu x }$. 
+Successivamente, sfruttando il parametro $\text{I}_0 $ per normalizzare i dati, si vuole considerare il logaritmo delle 
+intensità normalizzate ed effettuare una regressione lineare con la retta  di equazione y = m$x$  In questo modo, quindi, 
+i dati si distribuiscono secondo $\log(\text{I}/\text{I}_0)=-\mu x$, con errore sul logaritmo ottenuto per propagazione. 
+
 
 % esce dai margini uffa
 \begin{table}[t]
     \begin{center}
+        \resizebox{\linewidth}{!}{%
         \begin{tabular}{c c | c c}
             \multicolumn{2}{c}{\textbf{Ag}} & \multicolumn{2}{c}{\textbf{Cu}} \\ 
             \hline
@@ -245,7 +279,8 @@ $\si{\centi\metre}^2$, dunque ok (???).
             180                          & $2.42  \pm  0.07$                    & 276                          & $5.54 \pm 0.11$                      \\
             240                          & $1.93  \pm  0.06$                    & 368                          & $4.71 \pm 0.11$                      \\  
             \hline
-        \end{tabular} 
+        \end{tabular}%
+            }
     \end{center}
     \caption{Dati fit esponenziale per il calcolo del coefficiente di assorbimento}
     \label{t:assorbimento}
