@@ -10,8 +10,8 @@ def main():
     fig, ax1 = plt.subplots(ncols=1, figsize=(12,6))
 
     # read data
-    dataAg = pd.read_csv('Ag2.txt', sep = '\t', header = None, names = ['X', 'Y','errY'])
-    dataCu = pd.read_csv('Cu2.txt', sep = '\t', header = None, names = ['X', 'Y','errY'])
+    dataAg = pd.read_csv('Ag.txt', sep = '\t', header = None, names = ['X', 'Y','errY'])
+    dataCu = pd.read_csv('Cu.txt', sep = '\t', header = None, names = ['X', 'Y','errY'])
     
     # plot data
     ax1.errorbar(dataAg.X, dataAg.Y, dataAg.errY, marker = '.', linewidth = 1, linestyle = 'dashed', elinewidth = 1, capsize = 1, color = '#0451FF', label = 'Ag data')

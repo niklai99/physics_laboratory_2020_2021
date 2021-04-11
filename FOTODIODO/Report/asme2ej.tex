@@ -353,7 +353,30 @@ all'inverso della distanza al quadrato.
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Curva di Efficienza}\label{s:efficienza}
+\section{Efficienza del Rivelatore}\label{s:efficienza}
+
+In questa sezione finale ci si propone dapprima di calcolare l'efficienza del rivelatore legata al range di energie
+degli X (il picco è costituito in realtà da più contributi distinti ma viene qui considerato come unico) relativamente
+al picco situato a $60\,\si{\kilo\electronvolt}$. Non conoscendo l'attività della sorgente, infatti, non si è in grado
+di stimare l'efficienza in modo indipendente da un picco di riferimento, e si è quindi costretti al calcolo di
+un'efficienza relativa che si riduce ad un rapporto tra le aree dei due picchi. Siccome il metodo più preciso per il
+calcolo dell'area è quello di sommare direttamente i bin nel range di energie del picco, non viene effettuato qui alcun
+tipo di fit. Sfruttando allora l'acquisizione riportata in \autoref{s:spettro} si stima l'efficienza relativa
+
+\vspace{-15pt}
+\begin{equation}
+    \epsilon_{\text{rel}} = \frac{\text{N}_{\text{X}}}{\text{N}_{\gamma}} \approx 42
+    \vspace{-5pt}
+\end{equation}
+
+\subsection{Curve di Efficienza}
+
+Sfruttando ora i risultati ottenuti mediante il fit multi-picco in \autoref{i:multifit}, si vuole costruire una curva di
+efficienza in funzione dell'energia del fotone. A causa dello scarso potere risolvente del rivelatore, tuttavia, non è
+possibile isolare dall'istogramma i singoli contributi che compongono il picco degli X, e ci si trova quindi costretti
+ad utilizzare le informazioni restituite dal fit. In questo caso, si continua a scegliere il picco a
+$60\,\si{\kilo\electronvolt}$ come riferimento in quanto risulta essere l'unico picco ben risolto, dal quale possiamo
+trarre informazioni più precise rispetto ai contributi non risolti. 
 
 
 
