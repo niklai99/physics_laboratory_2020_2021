@@ -92,17 +92,21 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduzione}\label{s:introduzione}
 
-Si vuole analizzare lo spettro dei fotoni emessi dall'Americio-241 con un rivelatore al Silicio tipo PIN, dotato di
-preamplificatore di carica. L’hardware, cioè i moduli di elettronica, sono stati pre-impostati in condizioni standard,
-con shaping time pari a $3\mu\si{\second}$, in modo da ottimizzare il rapporto segnale rumore. Preliminarmente, tramite
-il software di acquisizione, si registra uno spettro per identificare i picchi principali, a 60keV e 14-18keV. \\
+L'esperienza consiste nell'analisi dello spettro dei fotoni emessi dall'Americio-241 con un rivelatore al Silicio tipo
+PIN, dotato di preamplificatore di carica. L'hardware, cioè i moduli di elettronica, sono stati pre-impostati in
+condizioni standard, con shaping time pari a $3\,\si{\micro\second}$, in modo da ottimizzare il rapporto segnale rumore.
+\\
 
-Nella \autoref{s:attenuazione} si analizzerà il picco a 59.5keV in presenza di materiali di diverso spessore, al fine di
-calcolare i relativi coefficienti di assorbimento. Nella  \autoref{s:distanza}, si effettueranno misure al variare della
-distanza della sorgente, per verificare che i dati seguano l'andamento atteso. Un'analisi dettagliata dello spettro
-verrà presentata nella sezione \autoref{s:multipicco}. 
-
-% scriviamo 60 59 59.5 keV ???
+Inizialmente, in \autoref{s:spettro}, si propone un'analisi dettagliata dello spettro di emissione dell'Am-241: in
+particolare, dopo una calibrazione approssimativa in energia, si fornisce una stima per la risoluzione energetica per la
+rivelazione di raggi $\gamma$ e un tentativo di fit dell'intero profilo dello spettro. Successivamente, in
+\autoref{s:attenuazione}, si interpongono tra la sorgente ed il rivelatore degli assorbitori di materiale e spessore
+differente al fine di verificare gli effetti dell'interazione radiazione-materia confrontando i coefficienti di
+assorbimento stimabili dall'analisi degli spettri con i valori teorici. In \autoref{s:distanza}, invece, si è
+intenzionati a verificare la legge dell'inverso del quadrato della distanza, acquisendo lo spettro di emissione al
+variare della posizione del detector. Infine, in \autoref{s:efficienza}, si studia l'efficienza relativa del detector al
+variare della distanza tra quest'ultimo e la sorgente, dello spessore degli assorbitori e dell'energia dei fotoni
+rivelati.
 
 
 
@@ -160,11 +164,14 @@ risoluzione energetica R:
     % \vspace{-10pt}
 \end{figure*}
 
+
+
+
 Ci si propone ora di costruire un fit complessivo di tutto lo spettro raffigurato in \autoref{i:spettro}. Ci si
 concentra unicamente sulle emissioni di raggi X e gamma con un'intensità di almeno 2 fotoni ogni 100 disintegrazioni: in
 \autoref{t:probabilities} sono riportati quindi i contributi considerati con le relative probabilità di emissione. Per
 ciascuno di questi, si costruisce una funzione gaussiana con media fissata in quanto l'energia è nota
-(\autoref{t:probabilities}) e l'asse orizzontale è stato preliminarmente calibrato. La larghezza della gaussiana
+(\autoref{t:probabilities}) con l'asse orizzontale preliminarmente calibrato. La larghezza della gaussiana
 (sigma), invece, si compone di due contributi in somma quadratica: il primo è una componente fissa, di rumore, che verrà
 denotata come $\eta$, mentre il secondo è la componente di risoluzione intrinseca $\alpha$ proporzionale alla radice
 quadrata dell'energia del fotone preso in considerazione. \\
@@ -174,11 +181,11 @@ scelti come parametri liberi il contributo di rumore $\eta$ e di risoluzione int
 normalizzazione $\{\text{N}_i\}$ relativi ad ogni singolo picco considerato. Osservando quindi il grafico in
 \autoref{i:multifit}, la curva in rosso rappresenta il fit complessivo dello spettro: questa segue in modo più che
 soddisfacente il profilo delle emissioni dell'Am-241. Le curve tratteggiate, invece, corrispondono ai singoli contributi
-gaussiani considerati per effettuare il fit: risulta quindi evidente che il potere risolvente dell'apparato non è
+gaussiani considerati per effettuare il fit: risulta quindi evidente che il potere risolutivo dell'apparato non è
 sufficiente per identificare tali contributi singolarmente. Dal grafico dei residui, relativi al fit complessivo, si può
 notare una certa difficoltà nel seguire in modo fedele il profilo del primo picco, in quanto composto da numerosi
-contributi. Il picco a $60\,\si{\kilo\electronvolt}$, invece, risulta in maggiore accordo con la funzione di regressione.
-
+contributi. Il picco a $60\,\si{\kilo\electronvolt}$, invece, risulta in maggiore accordo con la funzione di
+regressione.
 
 
 \begin{table}[t]
@@ -211,41 +218,10 @@ contributi. Il picco a $60\,\si{\kilo\electronvolt}$, invece, risulta in maggior
 
 
 
+
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Coefficiente di assorbimento}\label{s:attenuazione} 
-
-Ci si propone di effettuare delle misure in presenza di materiali di diverso spessore, nello specifico rame e argento,
-con lo scopo di calcolarne il coefficiente di assorbimento $\mu$, che si ricava dalla relazione:
-
-\vspace{-15pt}
-\begin{equation}
-   \text{I}(x) = \text{I}_0 \text{e}^{-\mu x}
-    \vspace{-5pt}
-    \label{e:mu}
-\end{equation}
-dove I è l'intensità della radiazione incidente e x lo spessore attraversato. In particolare, si vuole fornire una stima
-del coefficiente di assorbimento massivo, definito come:
-
-\vspace{-15pt}
-\begin{equation}
-   \mu_{\rho} = \frac{\mu}{\rho}
-    \vspace{-5pt}
-    \label{e:mu_mass}
-\end{equation}
-con $\rho$ densità del materiale, che è pari a 10.49$\si{\gram \centi\metre ^{-3}}$ per l'argento
-e 8.96$\si{\gram \centi\metre ^{-3}}$ per il rame. 
-\\ Si inseriscono gli assorbitori di spessore variabile e si acquisiscono gli spettri per
-un intervallo di tempo sufficiente a garantire una precisione migliore del 3\% sul picco a $60\,\si{\kilo\electronvolt}$.
-La precisione in percentuale si ottiene ricavando il numero di eventi N, cioè l'area, al di sotto del
-picco di interesse, come $\frac{\sqrt{\text{N}}}{\text{N}}$. 
-% questa formula è da giustificare, viene da distribuzione di Poisson? 
-
-Si calcola il rate degli eventi nel picco a 60 keV per tutte le misure effettuate come rapporto tra numero di 
-eventi rilevati e tempo di acquisizione. Considerando la relazione \autoref{e:mu} si effettua un fit del 
-rate in funzione dello spessore del materiale, separatamente per rame e argento. 
-%Si sottolinea che il rapporto N/t rappresenta l'intensità della radiazione incidente
-%per unità di superficie: il rivelatore a disposizione ha un'area di 1$\si{\centi\metre}^2$, dunque il fit restituisce 
-%parametri dimensionalmente corretti. (?) \\
 
 \begin{figure*}[t]
     \centering
@@ -269,38 +245,57 @@ rate in funzione dello spessore del materiale, separatamente per rame e argento.
     }
     \caption{Parametri fit esponenziale e lineare per il calcolo del coefficiente di assorbimento}
     \label{t:parametri_mu}
-    \end{table*}
+    \vspace{-10pt}
+\end{table*}
 
+Interessati all'interazione radiazione-materia, si acquisiscono gli spettri di emissione dell'Am-241 in presenza di
+assorbitori di rame o argento interposti tra sorgente e detector, avendo cura di utilizzare un tempo di raccolta
+sufficiente da garantire una precisione migliore del $3\%$ sul picco a $60\,\si{\kilo\electronvolt}$. Dall'analisi di
+tali acquisizioni si vogliono calcolare i coefficienti di assorbimento $\mu$ propri dei due materiali: sussiste infatti
+la relazione
 
-Si riportano in \autoref{t:assorbimento} i dati utilizzati per l'interpolazione, con errore sulle ordinate calcolato per 
-propagazione, trascurando le incertezze sui tempi di acquisizione. Infatti, alla luce del fatto che i valori dei tempi di
-acquisizione mostrati sull'interfaccia del software si discostavano senibilmente da quelli impostati manualmente, si è 
-assunto un errore massimo di 0.1\si{\second}, ed è stato preliminarmente verificato che tale contributo avesse un peso 
-relativo trascurabile. Si vuole inizialmente effettuare un fit esponenziale del tipo $y = \text{I}_0 \text{e}^{-\mu x }$. 
-Successivamente, sfruttando il parametro $\text{I}_0 $ per normalizzare i dati, si vuole considerare il logaritmo delle 
-intensità normalizzate ed effettuare una regressione lineare con la retta  di equazione y = m$x$.  In questo modo, quindi, 
-i dati si distribuiscono secondo $\log(\text{I}/\text{I}_0)=-\mu x$, con errore sul logaritmo ottenuto per propagazione. \\
-Si riportano i parametri ottenuti in \autoref{t:parametri_mu}. Si vuole ora quantificare la bontà dei fit: nel caso dell'argento si nota che 
-il $\chi^2$ risulta significativamente maggiore rispetto ai gradi di libertà, sia nel fit esponenziale che in quello lineare
-(compatibilità rispettivamente $Z=5$ e $Z=3.7$). Tale discrepanza può essere dovuta principalmente ad una leggera 
-sottostima delle incertezze sul rate e al basso numero di dati. Tuttavia, i residui si distribuiscono sufficientemente bene
-attorno allo zero, perciò la stima dei parametri è da considerarsi valida. Per il rame, invece, si trova un ottimo accordo tra
-$\chi^2$ e numero di gradi di libertà (compatibilità rispettivamente $Z=0.3$ e $Z=0.6$): infatti i dati seguono chiaramente
-l'andamento atteso e gli errori sulle ordinate coprono bene la dispersione. 
-\indent In riferimento ai risultati in \autoref{t:parametri_mu}, si computano i coefficienti di assorbimento massivi, da confrontare con i valori 
-teorici, assunti privi di errore : $\mu_{\rho}^{\text{th}}$(Ag) = 5.7660 $\si{\centi\metre^2\gram^{-1}}$ e
- $\mu_{\rho}^{\text{th}}$(Cu) = 1.593 $\si{\centi\metre^2\gram^{-1}}$. Si ottengono:
-
- \vspace{-15pt}
-\begin{align*}
-    \mu_{\rho}(\text{Ag}) &= 5.3\pm 0.2 \si{\centi\metre^2\gram^{-1}} & \lambda &= 0.3 \\
-    \mu_{\rho}(\text{Cu}) &= 1.5\pm 0.1 \si{\centi\metre^2\gram^{-1}} & \lambda &= 0.5 
+\vspace{-15pt}
+\begin{equation}
+   \text{I}(x) = \text{I}_0 \text{e}^{-\mu x}
+    \label{e:mu}
     \vspace{-5pt}
-\end{align*}
+\end{equation}
 
-% sono senza errore quelli teorici??
+\noindent dove I è l'intensità della radiazione rivelata dal detector, $\text{I}_0$ corrisponde all'intensità della
+radiazione incidente sull'assorbitore mentre $x$ è lo spessore attraversato. In particolare, si vuole fornire una stima
+del coefficiente di assorbimento massivo, definito come:
 
-\begin{table}[h]
+\vspace{-15pt}
+\begin{equation}
+   \mu_{\rho} = \frac{\mu}{\rho}
+    \vspace{-5pt}
+    \label{e:mu_mass}
+\end{equation}
+
+con $\rho$ densità del materiale, che è pari a $10.49\,\si{\gram \centi\metre^{-3}}$ per l'argento e $8.96\,\si{\gram
+\centi\metre^{-3}}$ per il rame. \\ 
+
+
+
+Sapendo che il numero di fotoni per unità di tempo (rate) e superficie è pari al rapporto tra l'intensità della
+radiazione e l'energia del fotone, sussiste una relazione analoga ad \autoref{e:mu} per il rate, facilmente calcolabile
+dall'acquisizione degli spettri di emissione. Di conseguenza, il rate di rivelazione dei raggi $\gamma$ a
+$60\,\si{\kilo\electronvolt}$ viene computato come rapporto tra numero di eventi rivelati in un range fissato per tutti
+gli spettri e tempo di acquisizione. Per la stima del coefficiente di assorbimento $\mu$, si decide di predisporre un
+fit delle misure di rate al variare dello spessore dell'assorbitore. È opportuno sottolineare che, a seconda del
+materiale, vengono considerati due dataset distinti. 
+
+
+Si riportano in \autoref{t:assorbimento} le coppie di dati utilizzati per la regressione, con errore sulle ordinate
+calcolato per propagazione, trascurando le incertezze sui tempi di acquisizione. Infatti, siccome i valori dei tempi di
+acquisizione mostrati sull'interfaccia del software si discostavano senibilmente da quelli impostati manualmente, si è
+assunto un errore massimo di $0.1\si{\second}$, ed è stato preliminarmente verificato che tale contributo avesse un peso
+relativo trascurabile. Si vuole inizialmente effettuare un fit esponenziale del tipo $y = \text{I}_0\,\text{e}^{-\mu
+x}$. Successivamente, sfruttando il parametro $\text{I}_0$ per normalizzare i dati, si vuole considerare il logaritmo
+del rate normalizzato ed effettuare una regressione lineare con la retta di equazione $y = mx$.  In questo modo, quindi,
+i dati si distribuiscono secondo $\log(\text{I}/\text{I}_0)=-\mu x$, con errore sul logaritmo ottenuto per propagazione.
+
+\begin{table}[t]
     \begin{center}
         \resizebox{\linewidth}{!}{%
         \begin{tabular}{c c | c c}
@@ -317,7 +312,28 @@ teorici, assunti privi di errore : $\mu_{\rho}^{\text{th}}$(Ag) = 5.7660 $\si{\c
     \end{center}
     \caption{Dati fit esponenziale per il calcolo del coefficiente di assorbimento}
     \label{t:assorbimento}
+    \vspace{-10pt}
 \end{table}
+
+In \autoref{t:parametri_mu} sono quindi riportati i risultati ottenuti attraverso i due fit. Si vuole ora quantificare
+la bontà dei fit: nel caso dell'argento si nota che il $\chi^2$ risulta significativamente maggiore rispetto ai gradi di
+libertà, sia nel fit esponenziale che in quello lineare (compatibilità rispettivamente $Z=5$ e $Z=3.7$). Tale
+discrepanza può essere dovuta principalmente ad una leggera sottostima delle incertezze sul rate e al basso numero di
+dati. Tuttavia, i residui si distribuiscono sufficientemente bene attorno allo zero, perciò la stima dei parametri è da
+considerarsi valida. Per il rame, invece, si trova un ottimo accordo tra $\chi^2$ e numero di gradi di libertà
+(compatibilità rispettivamente $Z=0.3$ e $Z=0.6$): infatti i dati seguono chiaramente l'andamento atteso e gli errori
+sulle ordinate coprono bene la dispersione. \\
+In riferimento ai risultati in \autoref{t:parametri_mu}, si computano i coefficienti di assorbimento massivi, da
+confrontare con i valori teorici, assunti privi di errore : $\mu_{\rho}^{\text{th}}$(Ag) = 5.7660
+$\si{\centi\metre^2\gram^{-1}}$ e $\mu_{\rho}^{\text{th}}$(Cu) = 1.593 $\si{\centi\metre^2\gram^{-1}}$. Si ottengono:
+
+ \vspace{-15pt}
+\begin{align*}
+    \mu_{\rho}(\text{Ag}) &= 5.3\pm 0.2 \si{\centi\metre^2\gram^{-1}} & \lambda &= 0.3 \\
+    \mu_{\rho}(\text{Cu}) &= 1.5\pm 0.1 \si{\centi\metre^2\gram^{-1}} & \lambda &= 0.5 
+    \vspace{-5pt}
+\end{align*}
+
 
 
 
