@@ -223,7 +223,6 @@ con lo scopo di calcolarne il coefficiente di assorbimento $\mu$, che si ricava 
     \vspace{-5pt}
     \label{e:mu}
 \end{equation}
-
 dove I è l'intensità della radiazione incidente e x lo spessore attraversato. In particolare, si vuole fornire una stima
 del coefficiente di assorbimento massivo, definito come:
 
@@ -233,21 +232,21 @@ del coefficiente di assorbimento massivo, definito come:
     \vspace{-5pt}
     \label{e:mu_mass}
 \end{equation}
-
-con $\rho$ densità del materiale, che è pari a 10.49$\si{\gram \cdot \centi\metre ^{-3}}$ per l'argento
-e 8.96$\si{\gram \cdot \centi\metre ^{-3}}$ per il rame. 
+con $\rho$ densità del materiale, che è pari a 10.49$\si{\gram\centi\metre ^{-3}}$ per l'argento
+e 8.96$\si{\gram\centi\metre ^{-3}}$ per il rame. 
 \\ Si inseriscono gli assorbitori di spessore variabile e si acquisiscono gli spettri per
-un intervallo di tempo sufficiente a garantire una precisione migliore del 3\% sul picco a 59.5keV.
+un intervallo di tempo sufficiente a garantire una precisione migliore del 3\% sul picco a $60\,\si{\kilo\electronvolt}$.
 La precisione in percentuale si ottiene ricavando il numero di eventi N, cioè l'area, al di sotto del
 picco di interesse, come $\frac{\sqrt{\text{N}}}{\text{N}}$. 
 % questa formula è da giustificare, viene da distribuzione di Poisson? 
+
 Si calcola il rate degli eventi nel picco a 60 keV per tutte le misure effettuate come rapporto tra numero di 
 eventi rilevati e tempo di acquisizione, che come prima è stato adattato in modo da avere precisioni di almeno il 3\%.
 Considerando la relazione \autoref{e:mu} si effettua un fit del rate in funzione dello spessore del materiale, 
-separatamente per rame e argento. Si sottolinea che il rapporto N/t rappresenta l'intensità della radiazione incidente
-per unità di superficie: il rivelatore a disposizione ha un'area di 1$\si{\centi\metre}^2$, dunque il fit restituisce 
-parametri dimensionalmente corretti. (?) \\
-
+separatamente per rame e argento. 
+%Si sottolinea che il rapporto N/t rappresenta l'intensità della radiazione incidente
+%per unità di superficie: il rivelatore a disposizione ha un'area di 1$\si{\centi\metre}^2$, dunque il fit restituisce 
+%parametri dimensionalmente corretti. (?) \\
 
 \begin{figure*}[t]
     \centering
@@ -257,23 +256,40 @@ parametri dimensionalmente corretti. (?) \\
     % \vspace{-10pt}
 \end{figure*}
 
+\begin{table*}[t]
+    \renewcommand{\arraystretch}{1.8}
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{cccccc|cccc}
+    \toprule[0.5px] \toprule[0.1px]
+    \multicolumn{6}{c}{Fit esponenziale}                                                                            & \multicolumn{4}{c}{Fit lineare}                                                      \tn
+    \multicolumn{3}{c}{\textbf{Ag}}                                   & \multicolumn{3}{c}{\textbf{Cu}}             & \multicolumn{2}{c}{\textbf{Ag}}                    & \multicolumn{2}{c}{\textbf{Cu}} \tn \hline
+    $\text{I}_0$ [\si{\hertz}] & $\mu$ $[\si{\centi\metre^{-1}}]$& \multicolumn{1}{c|}{$\chi^2 / \text{ndf}$} & $\text{I}_0$ [\si{\hertz}]& $\mu$ $[\si{\centi\metre^{-1}}]$ & $\chi^2 / \text{ndf}$ & $\mu$ $[\si{\centi\metre^{-1}}]$ & \multicolumn{1}{c|}{$\chi^2 / \text{ndf}$} & $\mu$ $[\si{\centi\metre^{-1}}]$  & $\chi^2 / \text{ndf}$  \tn
+    $7.8 \pm 0.2$ &  $61 \pm 2$     & \multicolumn{1}{c|}{12 / 2}                      &   $7.9 \pm 0.2$          &   $13.8 \pm 0.4$   &        1.5 / 2               & $60.8 \pm 0.8$      & \multicolumn{1}{c|}{12/ 3}                      &  $13.8 \pm 0.4$      &            1.5 / 3            \tn \hline
+    \end{tabular}%
+    }
+    \caption{Parametri fit esponenziale e lineare per il calcolo del coefficiente di assorbimento}
+    \label{t:parametri_mu}
+    \end{table*}
+
+
 Si riportano in \autoref{t:assorbimento} i dati utilizzati per l'interpolazione, con errore sulle ordinate calcolato per 
 propagazione, trascurando le incertezze sui tempi di acquisizione. Infatti, alla luce del fatto che i valori dei tempi di
 acquisizione mostrati sull'interfaccia del software si discostavano senibilmente da quelli impostati manualmente, si è 
 assunto un errore massimo di 0.1\si{\second}, ed è stato preliminarmente verificato che tale contributo avesse un peso 
-relativo trascurabile. SI Vuole inizialmente effettuare un fit esponenziale del tipo $y = \text{I}_0 \text{e}^{-\mu x }$. 
+relativo trascurabile. Si vuole inizialmente effettuare un fit esponenziale del tipo $y = \text{I}_0 \text{e}^{-\mu x }$. 
 Successivamente, sfruttando il parametro $\text{I}_0 $ per normalizzare i dati, si vuole considerare il logaritmo delle 
-intensità normalizzate ed effettuare una regressione lineare con la retta  di equazione y = m$x$  In questo modo, quindi, 
+intensità normalizzate ed effettuare una regressione lineare con la retta  di equazione y = m$x$.  In questo modo, quindi, 
 i dati si distribuiscono secondo $\log(\text{I}/\text{I}_0)=-\mu x$, con errore sul logaritmo ottenuto per propagazione. \\
-Si riportano i parametri ottenuti in ... Si vuole ora quantificare la bontà dei fit: nel caso dell'argento si nota che 
+Si riportano i parametri ottenuti in \autoref{t:parametri_mu}. Si vuole ora quantificare la bontà dei fit: nel caso dell'argento si nota che 
 il $\chi^2$ risulta significativamente maggiore rispetto ai gradi di libertà, sia nel fit esponenziale che in quello lineare
 (compatibilità rispettivamente $Z=5$ e $Z=3.7$). Tale discrepanza può essere dovuta principalmente ad una leggera 
 sottostima delle incertezze sul rate e al basso numero di dati. Tuttavia, i residui si distribuiscono sufficientemente bene
 attorno allo zero, perciò la stima dei parametri è da considerarsi valida. Per il rame, invece, si trova un ottimo accordo tra
 $\chi^2$ e numero di gradi di libertà (compatibilità rispettivamente $Z=0.3$ e $Z=0.6$): infatti i dati seguono chiaramente
 l'andamento atteso e gli errori sulle ordinate coprono bene la dispersione. 
-\indent In riferimento ai risultati in tab., si computano i coefficienti di assorbimento massivi, da confrontare con i valori 
-teorici: $\mu_{\rho}^{\text{th}}$(Ag) = 5.7660 $\si{\centi\metre^2\gram^{-1}}$ e
+\indent In riferimento ai risultati in \autoref{t:parametri_mu}, si computano i coefficienti di assorbimento massivi, da confrontare con i valori 
+teorici, assunti privi di errore : $\mu_{\rho}^{\text{th}}$(Ag) = 5.7660 $\si{\centi\metre^2\gram^{-1}}$ e
  $\mu_{\rho}^{\text{th}}$(Cu) = 1.593 $\si{\centi\metre^2\gram^{-1}}$. Si ottengono:
 
  \vspace{-15pt}
@@ -283,9 +299,9 @@ teorici: $\mu_{\rho}^{\text{th}}$(Ag) = 5.7660 $\si{\centi\metre^2\gram^{-1}}$ e
     \vspace{-5pt}
 \end{align*}
 
+% sono senza errore quelli teorici??
 
-
-\begin{table}[t]
+\begin{table}[h]
     \begin{center}
         \resizebox{\linewidth}{!}{%
         \begin{tabular}{c c | c c}
@@ -407,8 +423,13 @@ $60\,\si{\kilo\electronvolt}$ come riferimento in quanto risulta essere l'unico 
 trarre informazioni più precise rispetto ai contributi non risolti. Per costruire la curva di efficienza, quindi, viene
 calcolato il rapporto di efficienza relativa riportato in \autoref{e:efficienza} per ciascun contributo di raggi X che
 compone il picco, sfruttando però i parametri del fit multi-picco, riportati in \autoref{i:multifit}. 
+\clearpage
 
 
 
+    
 
 \end{document}
+
+
+					
