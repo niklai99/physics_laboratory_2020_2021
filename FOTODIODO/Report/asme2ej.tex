@@ -265,10 +265,25 @@ relativo trascurabile. SI Vuole inizialmente effettuare un fit esponenziale del 
 Successivamente, sfruttando il parametro $\text{I}_0 $ per normalizzare i dati, si vuole considerare il logaritmo delle 
 intensità normalizzate ed effettuare una regressione lineare con la retta  di equazione y = m$x$  In questo modo, quindi, 
 i dati si distribuiscono secondo $\log(\text{I}/\text{I}_0)=-\mu x$, con errore sul logaritmo ottenuto per propagazione. \\
+Si riportano i parametri ottenuti in ... Si vuole ora quantificare la bontà dei fit: nel caso dell'argento si nota che 
+il $\chi^2$ risulta significativamente maggiore rispetto ai gradi di libertà, sia nel fit esponenziale che in quello lineare
+(compatibilità rispettivamente $Z=5$ e $Z=3.7$). Tale discrepanza può essere dovuta principalmente ad una leggera 
+sottostima delle incertezze sul rate e al basso numero di dati. Tuttavia, i residui si distribuiscono sufficientemente bene
+attorno allo zero, perciò la stima dei parametri è da considerarsi valida. Per il rame, invece, si trova un ottimo accordo tra
+$\chi^2$ e numero di gradi di libertà (compatibilità rispettivamente $Z=0.3$ e $Z=0.6$): infatti i dati seguono chiaramente
+l'andamento atteso e gli errori sulle ordinate coprono bene la dispersione. 
 \indent In riferimento ai risultati in tab., si computano i coefficienti di assorbimento massivi, da confrontare con i valori 
-teorici: $\mu_{\rho}^{\text{th}}$(Ag) = 5.7660 $\si{\centi\metre^2\gram^{-1}}$ e $\mu_{\rho}^{\text{th}}$(Cu) = 1.593 $\si{\centi\metre^2\gram^{-1}}$. 
-Si ottengono $\mu_{\rho}$(Ag) = $5.3\pm 0.2 \si{\centi\metre^2\gram^{-1}}$, con compatibilità $\lambda = 0.3$ e
- $\mu_{\rho}$(Cu) = $1.5\pm 0.1 \si{\centi\metre^2\gram^{-1}}$, con compatibilità $\lambda = 0.5$. 
+teorici: $\mu_{\rho}^{\text{th}}$(Ag) = 5.7660 $\si{\centi\metre^2\gram^{-1}}$ e
+ $\mu_{\rho}^{\text{th}}$(Cu) = 1.593 $\si{\centi\metre^2\gram^{-1}}$. Si ottengono:
+
+ \vspace{-15pt}
+\begin{align*}
+    \mu_{\rho}(\text{Ag}) &= 5.3\pm 0.2 \si{\centi\metre^2\gram^{-1}} & \lambda &= 0.3 \\
+    \mu_{\rho}(\text{Cu}) &= 1.5\pm 0.1 \si{\centi\metre^2\gram^{-1}} & \lambda &= 0.5 
+    \vspace{-5pt}
+\end{align*}
+
+
 
 \begin{table}[t]
     \begin{center}
