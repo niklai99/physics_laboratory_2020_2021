@@ -393,6 +393,15 @@ di diverse quantità. In particolare, le curve che vengono qui trattate sono tre
 sorgente e detector, la seconda è relativa allo spessore di un assorbitore interposto tra sorgente e detector, mentre la
 terza e più delicata è relativa all'energia del fotone rivelato. \\
 
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{../Plots/efficiency.png}
+   \caption{Curve di efficienza in funzione della distanza tra sorgente e detector (a sinistra), dello spessore di un
+            assorbitore (in centro) e in funzione dell'energia dei fotoni (a destra)}
+    \label{i:efficiency}
+    % \vspace{-10pt}
+\end{figure*}
+
 Per costruire la curva di efficienza al variare della distanza tra sorgente e rivelatore, vengono sfruttate le
 acquisizioni riportate in \autoref{s:distanza}. In particolare, per ogni spettro raccolto viene calcolata l'efficienza
 del picco degli X relativa al picco a $60\,\si{\kilo\electronvolt}$ come in \autoref{e:efficienza}. \\
@@ -406,9 +415,42 @@ quindi costretti ad utilizzare le informazioni restituite dal fit. In questo cas
 $60\,\si{\kilo\electronvolt}$ come riferimento in quanto risulta essere l'unico picco ben risolto, dal quale possiamo
 trarre informazioni più precise rispetto ai contributi non risolti. Per costruire la curva di efficienza, quindi, viene
 calcolato il rapporto di efficienza relativa riportato in \autoref{e:efficienza} per ciascun contributo di raggi X che
-compone il picco, sfruttando però i parametri del fit multi-picco, riportati in \autoref{i:multifit}. 
+compone il picco, sfruttando però i parametri del fit multi-picco, riportati in \autoref{i:multifit}. \\
+Le tre curve di efficienza sono riportate in \autoref{i:efficiency}: a sinistra si può osservare l'efficienza relativa
+al variare della posizione del detector, in centro si trovano le due curve in funzione dello spessore dell'assorbitore
+mentre a destra è raffigurata l'Efficienza relativa in funzione dell'energia dei fotoni emessi. Osservando inizialmente
+il primo grafico a sinistra, si può notare come l'efficienza segua un andamento piuttosto costante. Il valore medio è
+piuttosto in accordo con il risultato in \autoref{e:efficienza} (la lieve discrepanza può essere legata ad una
+statistica meno elevata nell'acquisizione degli spettri al variare della distanza) e, inoltre, la fluttuazione
+statistica è in ottimo accordo con le incertezze dell'efficienza. Dalla costanza del rapporto di efficienza relativa
+$\text{N}_{\text{X}}/\text{N}_{\gamma}$, si può quindi dedurre che la distanza tra sorgente e detector influenza in
+ugual modo la rivelazione degli X e dei $\gamma$. Osservando invece il grafico centrale, è evidente come l'efficienza
+relativa segue un forte andamento decrescente: in particolare, la differenza di andamento tra i due materiali è
+influenzata dal diverso coefficiente di assorbimento. Il grafico prova chiaramente, quindi, che i raggi $\gamma$ sono
+molto più penetranti rispetto agli X: dallo spettro in \autoref{i:spettro_abs}, infatti, si nota che in presenza di un
+assorbitore di rame spesso $368\,\si{\micro\metre}$ il rapporto di rivelazione tra raggi X e raggi $\gamma$ è molto
+diverso rispetto a quanto ritrovato in \autoref{i:spettro} senza assorbitore. Il picco corrispondente agli X, infatti,
+risulta ora essere addirittura più basso del picco a $60\,\si{\kilo\electronvolt}$, evidenziando come i fotoni meno
+energetici vengano bloccati più facilmente rispetto a quelli più energetici. Osservando infine il grafico a destra in
+\autoref{i:efficiency}, ovvero la curva di efficienza in funzione dell'energia, è complicato trarre conclusioni data la
+scarsa quantità di informazione a disposizione: i contributi gaussiani presi in considerazione non sono in numero
+sufficiente da far emergere un trend evidente. Inoltre, il range di energie in gioco è piuttosto ristretto, ed il basso
+potere risolvente dell'apparato costringe la curva ad essere fortemente dipendente dai parametri del fit multi-picco
+(\autoref{i:multifit}), che descrive però in modo solo approssimativo il profilo dello spettro. Infine, è opportuno
+evidenziare che per poter ricavare delle informazioni soddisfacenti sull'efficienza del detector in funzione
+dell'energia, sarebbe necessario conoscere almeno l'attività della sorgente. 
 
+\pagebreak 
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{../Plots/am_spectrum_absorber.png}
+    \caption{Spettro dell'Am-241 con assorbitore di rame di spessore $368\,\si{\micro\metre}$}
+    \label{i:spettro_abs}
+    \vspace{-10pt}
+\end{figure}
 
+\null
+\vfill
 
 \end{document}

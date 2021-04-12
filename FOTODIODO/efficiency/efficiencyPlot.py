@@ -84,14 +84,14 @@ def makePlot(dataDistance, dataEnergy, dataCu, dataAg):
                     dataAg.X, dataAg.Y, dataAg.errY, 
                     marker = '.', markersize = 18, linewidth = 0, 
                     elinewidth = 1.5, capsize = 1.5, capthick = 1.5,
-                    color = '#0451FF', label = 'Ag Data'
+                    color = '#0451FF', label = 'Ag Absorber'
                 )
 
     newAx.errorbar(
                     dataCu.X, dataCu.Y, dataCu.errY, 
                     marker = '.', markersize = 18, linewidth = 0, 
                     elinewidth = 1.5, capsize = 1.5, capthick = 1.5,
-                    color = '#FF4B00', label = 'Cu Data')
+                    color = '#FF4B00', label = 'Cu Absorber')
 
 
     ax[2].errorbar(

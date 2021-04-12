@@ -44,7 +44,7 @@ def energyRes(mean, sigma):
 
 
 # fit 60keV peak for X calibration
-def peak_fitting(data,p_xmin,p_xmax, ax):
+def peak_fitting(data,p_xmin,p_xmax):
 
     # find peak
     p_Y=data.Y[data.X>p_xmin] [data.X<p_xmax]
@@ -60,14 +60,7 @@ def peak_fitting(data,p_xmin,p_xmax, ax):
                       p0=[np.average(p_X), np.std(p_X)])
 
     energyRes(par[0], par[1])
-
-    # plot fit
-    xplt=np.linspace(np.amin(p_X), np.amax(p_X))
-    ax.plot(xplt, gauss(xplt,sum(p_Y),*par), color='#FF4B00', linewidth = 2)
-    ax.hist(plotX, weights=plotY, histtype='step', bins=len(plotX), color ='#0451FF', linewidth = 1.5)
-
-    ax.set_xlim(np.amin(plotX), np.amax(plotX))
-    
+ 
     return par,cov,sum(p_Y)
 
 
@@ -75,22 +68,18 @@ def peak_fitting(data,p_xmin,p_xmax, ax):
 def main():
 
     # get histogram data
-    Y = np.loadtxt("data")
+    Y = np.loadtxt("data1.txt")
     X = np.arange(-1,1023) # TODO: change 1023 --> len(data)-1?
     # store data with Pandas
     data=pd.DataFrame({'X': X, 'Y': Y})
     
     
     fig, ax = plt.subplots(figsize = (12,6))
-    axin1 = ax.inset_axes([40, 1000, 40, 1800], transform=ax.transData)
-    axin1.set_xlabel('Energy [a.u.]')
-    axin1.set_ylabel('ADC counts', loc = 'top')
-    axin1.set_title('Calibration Fit - 60 keV peak')
 
     # ==== x calibration ====
 
     # fit 60 keV peak
-    par60, cov60, N = peak_fitting(data, p60_xmin, p60_xmax, axin1)
+    par60, cov60, N = peak_fitting(data, p60_xmin, p60_xmax)
 
     # get gaussian fit maximum 
     # NB: max = - min
@@ -116,12 +105,12 @@ def main():
     ax.set_xlabel('Energy [keV]', fontsize = 20)
     ax.set_ylabel('ADC counts', fontsize = 20, loc = 'top')
     ax.tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
-    ax.set_xlim(left = 9, right = 80)
+    ax.set_xlim(left = 9, right = 70)
 
 
     fig.tight_layout()
-    # fig.savefig('../Plots/am_spectrum_small.png', dpi = 300, facecolor = 'white')
-    plt.show()
+    # fig.savefig('../Plots/am_spectrum_absorber.png', dpi = 300, facecolor = 'white')
+    # plt.show()
 
     return
 
