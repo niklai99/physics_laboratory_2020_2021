@@ -1,12 +1,12 @@
 # Fdb version 3
-["pdflatex"] 1618209015 "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.tex" "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.pdf" "asme2ej" 1618209038
+["pdflatex"] 1618209907 "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.tex" "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.pdf" "asme2ej" 1618209911
   "../Plots/am_spectrum_small.png" 1618085977 222015 17e4c3872be025623364561e68b01d51 ""
   "../Plots/attenuation_coeff.png" 1618085977 473851 0d3c45701d4ee5a9096ad89083408862 ""
   "../Plots/distance_small.png" 1618085977 262326 7073f0189d78d7bc8a6f98a741e5901c ""
   "../Plots/multifit.png" 1618206083 664823 04fa6a0b8bf721955a7d80f020aedbd1 ""
-  "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.aux" 1618209019 4882 93d31b73779067810fb291bfef6c4b57 ""
-  "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.tex" 1618209009 20314 e55da9ad4797310356a54a5a0a458e4c ""
-  "/dev/null" 1618209033 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.aux" 1618209911 4882 93d31b73779067810fb291bfef6c4b57 ""
+  "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.tex" 1618209907 20322 e32cf49c5ebb19f95a148e2bb5db055c ""
+  "/dev/null" 1618209909 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/helvetic/phvb7t.tfm" 1480098688 2240 eb56c13537f4d8a0bd3fafc25572b1bd ""
@@ -187,10 +187,10 @@
   "/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1553261062 3236106 bef0cf154a3167603a4917a99a2c80c5 ""
   "/usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1553261113 4227023 39fb7419279bd1e4de375e09014a3ecb ""
   "/usr/local/texlive/2018/texmf.cnf" 1523934483 577 0b39adfd7c93507ff20c9c14c2f1a33f ""
-  "asme2ej.aux" 1618209019 4882 93d31b73779067810fb291bfef6c4b57 ""
+  "asme2ej.aux" 1618209911 4882 93d31b73779067810fb291bfef6c4b57 ""
   "asme2ej.cls" 1617799109 47788 7045f3ef71da9b5b9922328548340029 ""
-  "asme2ej.out" 1618209019 523 6e24acb5a26259e12029de0684e3b9eb ""
-  "asme2ej.tex" 1618209009 20314 e55da9ad4797310356a54a5a0a458e4c ""
+  "asme2ej.out" 1618209911 523 6e24acb5a26259e12029de0684e3b9eb ""
+  "asme2ej.tex" 1618209907 20322 e32cf49c5ebb19f95a148e2bb5db055c ""
   (generated)
   "/Users/vanessa/Desktop/Lab/FOTODIODO/Report/asme2ej.pdf"
   "asme2ej.pdf"
