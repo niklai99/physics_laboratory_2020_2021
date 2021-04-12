@@ -232,17 +232,33 @@ regressione.
 \end{figure*}
 
 \begin{table*}[t]
-    \renewcommand{\arraystretch}{1.8}
+
     \centering
-    \resizebox{\textwidth}{!}{%
-    \begin{tabular}{cccccc|cccc}
-    \toprule[0.5px] \toprule[0.1px]
-    \multicolumn{6}{c}{Fit esponenziale}                                                                            & \multicolumn{4}{c}{Fit lineare}                                                      \tn
-    \multicolumn{3}{c}{\textbf{Ag}}                                   & \multicolumn{3}{c}{\textbf{Cu}}             & \multicolumn{2}{c}{\textbf{Ag}}                    & \multicolumn{2}{c}{\textbf{Cu}} \tn \hline
-    $\text{I}_0$ [\si{\hertz}] & $\mu$ $[\si{\centi\metre^{-1}}]$& \multicolumn{1}{c|}{$\chi^2 / \text{ndf}$} & $\text{I}_0$ [\si{\hertz}]& $\mu$ $[\si{\centi\metre^{-1}}]$ & $\chi^2 / \text{ndf}$ & $\mu$ $[\si{\centi\metre^{-1}}]$ & \multicolumn{1}{c|}{$\chi^2 / \text{ndf}$} & $\mu$ $[\si{\centi\metre^{-1}}]$  & $\chi^2 / \text{ndf}$  \tn
-    $7.8 \pm 0.2$ &  $61 \pm 2$     & \multicolumn{1}{c|}{12 / 2}                      &   $7.9 \pm 0.2$          &   $13.8 \pm 0.4$   &        1.5 / 2               & $60.8 \pm 0.8$      & \multicolumn{1}{c|}{12/ 3}                      &  $13.8 \pm 0.4$      &            1.5 / 3            \tn \hline
-    \end{tabular}%
-    }
+    \begin{tabular}{x{1.3cm}x{1.5cm}x{1.1cm}x{1.3cm}x{1.5cm}x{1.1cm}|x{1.5cm}x{1.1cm}x{1.5cm}x{1.1cm}}
+
+    \toprule[0.5px] 
+    \toprule[0.1px]
+
+    \multicolumn{6}{c}{Fit esponenziale} & \multicolumn{4}{c}{Fit lineare}       \tn
+
+    \multicolumn{3}{c}{\textbf{Ag}} & \multicolumn{3}{c}{\textbf{Cu}} & 
+    \multicolumn{2}{c}{\textbf{Ag}} & \multicolumn{2}{c}{\textbf{Cu}} \tn 
+
+    \midrule[0.1px]
+
+    $\text{I}_0$ [$\si{\hertz}$] & $\mu$ [$\si{\centi\metre^{-1}}$] & $\chi^2 / \text{ndf}$ & 
+    $\text{I}_0$ [$\si{\hertz}$]& $\mu$ [$\si{\centi\metre^{-1}}$] & $\chi^2 / \text{ndf}$ & 
+    $\mu$ [$\si{\centi\metre^{-1}}$] & $\chi^2 / \text{ndf}$ & 
+    $\mu$ [$\si{\centi\metre^{-1}}$]  & $\chi^2 / \text{ndf}$ \tn
+    
+    \addlinespace
+
+    $7.8 \pm 0.2$ & $61 \pm 2$ & $12 / 2$ & $7.9 \pm 0.2$ & $13.8 \pm 0.4$ & $1.5 / 2$ & $60.8 \pm 0.8$ & $12 /3 $ &
+    $13.8 \pm 0.4$ & $1.5 / 3 $\tn 
+    
+    \bottomrule[0.5px]
+
+    \end{tabular}
     \caption{Parametri fit esponenziale e lineare per il calcolo del coefficiente di assorbimento}
     \label{t:parametri_mu}
     \vspace{-10pt}
@@ -262,8 +278,8 @@ la relazione
 \end{equation}
 
 \noindent dove I è l'intensità della radiazione rivelata dal detector, $\text{I}_0$ corrisponde all'intensità della
-radiazione incidente sull'assorbitore mentre $x$ è lo spessore attraversato. In particolare, si vuole fornire una stima
-del coefficiente di assorbimento massivo, definito come:
+radiazione incidente sull'assorbitore mentre $x$ è lo spessore attraversato (in seguito denotato come $d$). In
+particolare, si vuole fornire una stima del coefficiente di assorbimento massivo, definito come:
 
 \vspace{-15pt}
 \begin{equation}
@@ -282,7 +298,7 @@ radiazione e l'energia del fotone, sussiste una relazione analoga ad \autoref{e:
 dall'acquisizione degli spettri di emissione. Di conseguenza, il rate di rivelazione dei raggi $\gamma$ a
 $60\,\si{\kilo\electronvolt}$ viene computato come rapporto tra numero di eventi rivelati in un range fissato per tutti
 gli spettri e tempo di acquisizione. Per la stima del coefficiente di assorbimento $\mu$, si decide di predisporre un
-fit delle misure di rate al variare dello spessore dell'assorbitore. È opportuno sottolineare che, a seconda del
+fit delle misure di rate al variare dello spessore $d$ dell'assorbitore. È opportuno sottolineare che, a seconda del
 materiale, vengono considerati due dataset distinti. 
 
 
@@ -297,20 +313,21 @@ i dati si distribuiscono secondo $\log(\text{I}/\text{I}_0)=-\mu x$, con errore 
 
 \begin{table}[t]
     \begin{center}
-        \resizebox{\linewidth}{!}{%
-        \begin{tabular}{c c | c c}
-            \multicolumn{2}{c}{\textbf{Ag}} & \multicolumn{2}{c}{\textbf{Cu}} \\ 
-            \hline
-            \multicolumn{1}{c}{Spessore [$\si{\micro\metre}$]} & \multicolumn{1}{c|}{Rate [Hz]} & \multicolumn{1}{c}{Spessore [$\si{\micro\metre}$]} & \multicolumn{1}{c}{Rate [Hz]} \\
-            60                           & $5.45  \pm 0.11 $                    & 92                           & $6.97 \pm 0.13$                    \\
-            120                          & $3.80  \pm 0.08 $                    & 184                          & $6.12 \pm 0.12$                    \\
-            180                          & $2.42  \pm  0.07$                    & 276                          & $5.54 \pm 0.11$                      \\
-            240                          & $1.93  \pm  0.06$                    & 368                          & $4.71 \pm 0.11$                      \\  
-            \hline
-        \end{tabular}%
-            }
+        \begin{tabular}{x{1.5cm} x{1.8cm} | x{1.5cm} x{1.8cm}}
+            \toprule[0.5px]
+            \toprule[0.1px]
+            \multicolumn{2}{c}{\textbf{Ag}} & \multicolumn{2}{c}{\textbf{Cu}} \tn
+            \midrule[0.1px]
+            d [$\si{\micro\metre}$] & Rate [Hz] & d [$\si{\micro\metre}$] & Rate [Hz] \tn
+            \addlinespace
+            60      & $5.45  \pm  0.11$    & 92       & $6.97 \pm 0.13$   \tn
+            120     & $3.80  \pm  0.08$    & 184      & $6.12 \pm 0.12$   \tn
+            180     & $2.42  \pm  0.07$    & 276      & $5.54 \pm 0.11$   \tn
+            240     & $1.93  \pm  0.06$    & 368      & $4.71 \pm 0.11$   \tn  
+            \bottomrule[0.5px]	
+        \end{tabular}
     \end{center}
-    \caption{Dati fit esponenziale per il calcolo del coefficiente di assorbimento}
+    \caption{Spessore dell'assorbitore e relativo rate di rivelazione divisi per materiale}
     \label{t:assorbimento}
     \vspace{-10pt}
 \end{table}

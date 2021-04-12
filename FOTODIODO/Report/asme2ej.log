@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  12 APR 2021 20:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.23)  12 APR 2021 22:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1148,38 +1148,41 @@ File: ../Plots/attenuation_coeff.png Graphic file (type png)
 Package pdftex.def Info: ../Plots/attenuation_coeff.png  used on input line 228.
 (pdftex.def)             Requested size: 495.04993pt x 235.1471pt.
 
-Underfull \hbox (badness 1152) in paragraph at lines 264--267
+Underfull \hbox (badness 1152) in paragraph at lines 280--283
 \OT1/ptm/m/n/10 dove I []e l'intensit[]a della ra-di-azione riv-e-lata dal de-tec-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 275--277
+Underfull \hbox (badness 10000) in paragraph at lines 291--293
 
  []
 
 [2 <../Plots/multifit.png>]
-Underfull \hbox (badness 1668) in paragraph at lines 289--297
+Underfull \hbox (badness 1668) in paragraph at lines 305--313
 []\OT1/ptm/m/n/10 Si ri-por-tano in []Tab. 3[][] le cop-pie di dati uti-liz-zati
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+
+Underfull \vbox (badness 1158) has occurred while \output is active []
+
  [3 <../Plots/attenuation_coeff.png>]
 <../Plots/distance_small.png, id=94, 867.24pt x 433.62pt>
 File: ../Plots/distance_small.png Graphic file (type png)
 <use ../Plots/distance_small.png>
-Package pdftex.def Info: ../Plots/distance_small.png  used on input line 365.
+Package pdftex.def Info: ../Plots/distance_small.png  used on input line 382.
 (pdftex.def)             Requested size: 241.38208pt x 120.68495pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 422--426
+Underfull \hbox (badness 10000) in paragraph at lines 439--443
 
  []
 
 <../Plots/efficiency.png, id=96, 1734.48pt x 686.565pt>
 File: ../Plots/efficiency.png Graphic file (type png)
 <use ../Plots/efficiency.png>
-Package pdftex.def Info: ../Plots/efficiency.png  used on input line 429.
+Package pdftex.def Info: ../Plots/efficiency.png  used on input line 446.
 (pdftex.def)             Requested size: 495.04993pt x 195.9559pt.
 [4 <../Plots/distance_small.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1187,14 +1190,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <../Plots/am_spectrum_absorber.png, id=117, 867.24pt x 433.62pt>
 File: ../Plots/am_spectrum_absorber.png Graphic file (type png)
 <use ../Plots/am_spectrum_absorber.png>
-Package pdftex.def Info: ../Plots/am_spectrum_absorber.png  used on input line 477.
+Package pdftex.def Info: ../Plots/am_spectrum_absorber.png  used on input line 494.
 (pdftex.def)             Requested size: 241.38208pt x 120.68495pt.
  [5 <../Plots/efficiency.png> <../Plots/am_spectrum_absorber.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 486.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 486.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 503.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 503.
  (d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 486.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 486.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 503.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 503.
 Package rerunfilecheck Info: File `asme2ej.out' has not changed.
 (rerunfilecheck)             Checksum: 6E24ACB5A26259E12029DE0684E3B9EB;523.
 
@@ -1202,18 +1205,18 @@ Package rerunfilecheck Info: File `asme2ej.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 4.35251pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 486.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 503.
  ) 
 Here is how much of TeX's memory you used:
  28763 strings out of 492649
  578149 string characters out of 6128653
- 622292 words of memory out of 5000000
+ 622300 words of memory out of 5000000
  32238 multiletter control sequences out of 15000+600000
  603583 words of font info for 173 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,22n,54p,10434b,1104s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,23n,54p,10434b,1120s stack positions out of 5000i,500n,10000p,200000b,80000s
 {d:/Programmi/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/symbol/usyr.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><d:/Programmi/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.pdf (5 pages, 1925217 bytes).
+Output written on d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.pdf (5 pages, 1925207 bytes).
 PDF statistics:
  165 PDF objects out of 1000 (max. 8388607)
  135 compressed objects within 2 object streams
