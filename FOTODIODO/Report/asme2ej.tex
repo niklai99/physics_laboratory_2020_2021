@@ -298,8 +298,7 @@ particolare, si vuole fornire una stima del coefficiente di assorbimento massivo
     \label{e:mu_mass}
 \end{equation}
 
-con $\rho$ densità del materiale, che è pari a $10.49\,\si{\gram \centi\metre^{-3}}$ per l'argento e $8.96\,\si{\gram
-\centi\metre^{-3}}$ per il rame. \\ 
+con $\rho$ densità del materiale. \\ 
 
 
 
@@ -377,7 +376,7 @@ i dati si distribuiscono secondo $\log(\text{I}/\text{I}_0)=-\mu x$, con errore 
 
 		\bottomrule[0.5px]		
 	\end{tabular}
-	\caption{write me pls}
+	\caption{Coefficienti di assorbimento: valori teorici e stime sperimentali}
 	\label{t:results}
     \vspace{-10pt}
 \end{table*}
@@ -390,19 +389,12 @@ dati. Tuttavia, i residui si distribuiscono sufficientemente bene attorno allo z
 considerarsi valida. Per il rame, invece, si trova un ottimo accordo tra $\chi^2$ e numero di gradi di libertà
 (compatibilità rispettivamente $Z=0.3$ e $Z=0.6$): infatti i dati seguono chiaramente l'andamento atteso e gli errori
 sulle ordinate coprono bene la dispersione. \\
-In riferimento ai risultati in \autoref{t:parametri_mu}, si computano i coefficienti di assorbimento massivi, da
-confrontare con i valori teorici, assunti privi di errore : $\mu_{\rho}^{\text{th}}$(Ag) =
-$5.7660\si{\centi\metre^2\gram^{-1}}$ e $\mu_{\rho}^{\text{th}}$(Cu) = 1.593 $\si{\centi\metre^2\gram^{-1}}$. Si
-ottengono:
+In \autoref{t:results} si riportano i valori delle denistà dei due materiali e delle grandezze stimate a partire dai fit:
+si sottolinea l'ottima compatibilità tra le stime sperimentali dei coefficienti di assorbimento massivi e i valori teorici,
+assunti privi di errore. Tale accordo conferma ulteriormente la validità dei fit predisposti. 
 
- \vspace{-15pt}
-\begin{align*}
-    \mu_{\rho}(\text{Ag}) &= 5.3\pm 0.2 \,\si{\centi\metre^2\gram^{-1}} & \lambda &= 0.3 \\
-    \mu_{\rho}(\text{Cu}) &= 1.5\pm 0.1 \,\si{\centi\metre^2\gram^{-1}} & \lambda &= 0.5 
-    \vspace{-5pt}
-\end{align*}
 
-	
+
 
 
 
@@ -471,6 +463,15 @@ all'inverso della distanza al quadrato.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Efficienza del Rivelatore}\label{s:efficienza}
 
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{../Plots/efficiency.png}
+   \caption{Curve di efficienza in funzione della distanza tra sorgente e detector (a sinistra), dello spessore di un
+            assorbitore (in centro) e in funzione dell'energia dei fotoni (a destra)}
+    \label{i:efficiency}
+    % \vspace{-10pt}
+\end{figure*}
+
 In questa sezione finale ci si propone dapprima di calcolare l'efficienza del rivelatore legata al range di energie
 degli X (il picco è costituito in realtà da più contributi distinti ma viene qui considerato come unico) relativamente
 al picco situato a $60\,\si{\kilo\electronvolt}$. Non conoscendo l'attività della sorgente, infatti, non si è in grado
@@ -492,15 +493,6 @@ di diverse quantità. In particolare, le curve che vengono qui trattate sono tre
 sorgente e detector, la seconda è relativa allo spessore di un assorbitore interposto tra sorgente e detector, mentre la
 terza e più delicata è relativa all'energia del fotone rivelato. \\
 
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=\textwidth]{../Plots/efficiency.png}
-   \caption{Curve di efficienza in funzione della distanza tra sorgente e detector (a sinistra), dello spessore di un
-            assorbitore (in centro) e in funzione dell'energia dei fotoni (a destra)}
-    \label{i:efficiency}
-    % \vspace{-10pt}
-\end{figure*}
-
 Per costruire la curva di efficienza al variare della distanza tra sorgente e rivelatore, vengono sfruttate le
 acquisizioni riportate in \autoref{s:distanza}. In particolare, per ogni spettro raccolto viene calcolata l'efficienza
 del picco degli X relativa al picco a $60\,\si{\kilo\electronvolt}$ come in \autoref{e:efficienza}. \\
@@ -515,6 +507,15 @@ $60\,\si{\kilo\electronvolt}$ come riferimento in quanto risulta essere l'unico 
 trarre informazioni più precise rispetto ai contributi non risolti. Per costruire la curva di efficienza, quindi, viene
 calcolato il rapporto di efficienza relativa riportato in \autoref{e:efficienza} per ciascun contributo di raggi X che
 compone il picco, sfruttando però i parametri del fit multi-picco, riportati in \autoref{i:multifit}. \\
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{../Plots/am_spectrum_absorber.png}
+    \caption{Spettro dell'Am-241 con assorbitore di rame di spessore $368\,\si{\micro\metre}$}
+    \label{i:spettro_abs}
+    \vspace{-10pt}
+\end{figure}
+
 Le tre curve di efficienza sono riportate in \autoref{i:efficiency}: a sinistra si può osservare l'efficienza relativa
 al variare della posizione del detector, in centro si trovano le due curve in funzione dello spessore dell'assorbitore
 mentre a destra è raffigurata l'efficienza relativa in funzione dell'energia dei fotoni emessi. Osservando inizialmente
@@ -540,13 +541,7 @@ evidenziare che per poter ricavare delle informazioni soddisfacenti sull'efficie
 dell'energia, sarebbe necessario conoscere almeno l'attività della sorgente. 
 
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{../Plots/am_spectrum_absorber.png}
-    \caption{Spettro dell'Am-241 con assorbitore di rame di spessore $368\,\si{\micro\metre}$}
-    \label{i:spettro_abs}
-    \vspace{-10pt}
-\end{figure}
+
 
 \null
 \vfill
