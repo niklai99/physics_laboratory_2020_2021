@@ -111,7 +111,7 @@ Inizialmente, in \autoref{s:spettro}, si propone un'analisi dettagliata dello sp
 particolare, dopo una calibrazione approssimativa in energia, si fornisce una stima per la risoluzione energetica per la
 rivelazione di raggi $\gamma$ e un tentativo di fit dell'intero profilo dello spettro. Successivamente, in
 \autoref{s:attenuazione}, si interpongono tra la sorgente ed il rivelatore degli assorbitori di materiale e spessore
-differente al fine di verificare gli effetti dell'interazione radiazione-materia confrontando i coefficienti di
+differenti al fine di verificare gli effetti dell'interazione radiazione-materia, confrontando i coefficienti di
 assorbimento stimabili dall'analisi degli spettri con i valori teorici. In \autoref{s:distanza}, invece, si è
 intenzionati a verificare la legge dell'inverso del quadrato della distanza, acquisendo lo spettro di emissione al
 variare della posizione del detector. Infine, in \autoref{s:efficienza}, si studia l'efficienza relativa del detector al
@@ -124,7 +124,7 @@ rivelati.
 \section{Spettro dell'Am-241}\label{s:spettro}
 
 Prima di studiare in dettaglio gli effetti di diversi assorbitori posti tra la sorgente ed il detector ed il ruolo che
-svolge la distanza di quest'ultimo dalla prima, ci si vuole concentrare in un'analisi dello spettro dell'Americio-241.
+svolge la distanza di quest'ultimo dalla prima, ci si vuole concentrare sull'analisi dello spettro dell'Americio-241.
 Sperimentalmente, il rivelatore viene posto alla minima distanza dalla sorgente e non viene inserito alcun assorbitore
 tra i due. Il tempo di acquisizione viene impostato a $600\,\si{\second}$, rivelando così approssimativamente $2 \cdot
 10^5$ eventi con un rate istantaneo di circa $340\,\si{\hertz}$. In questo modo, il picco a
@@ -177,8 +177,8 @@ risoluzione energetica R:
 Ci si propone ora di costruire un fit complessivo di tutto lo spettro raffigurato in \autoref{i:spettro}. Ci si
 concentra unicamente sulle emissioni di raggi X e gamma con un'intensità di almeno 2 fotoni ogni 100 disintegrazioni: in
 \autoref{t:probabilities} sono riportati quindi i contributi considerati con le relative probabilità di emissione. Per
-ciascuno di questi, si costruisce una funzione gaussiana con media fissata in quanto l'energia è nota
-(\autoref{t:probabilities}) con l'asse orizzontale preliminarmente calibrato. La larghezza della gaussiana (sigma),
+ciascuno di questi, si costruisce una funzione gaussiana con media fissata, in quanto l'energia è nota
+(\autoref{t:probabilities}), con l'asse orizzontale preliminarmente calibrato. La larghezza della gaussiana (sigma),
 invece, si compone di due contributi in somma quadratica: il primo è una componente fissa, di rumore, che verrà denotata
 come $\eta$, mentre il secondo è la componente di risoluzione intrinseca, proporzionale alla radice quadrata
 dell'energia del fotone preso in considerazione. La funzione fittante è quindi data dalla somma delle sei gaussiane,
@@ -191,7 +191,7 @@ gaussiani considerati per effettuare il fit: risulta quindi evidente che il pote
 sufficiente per identificare tali contributi singolarmente. Dal grafico dei residui, relativi al fit complessivo, si può
 notare una certa difficoltà nel seguire in modo fedele il profilo del primo picco, in quanto composto da numerosi
 contributi. Il picco a $60\,\si{\kilo\electronvolt}$, invece, risulta in maggiore accordo con la funzione di
-regressione. I coeffficienti di normalizzazione dei singoli contributi gaussiani restituiti dal fit seguono piuttosto
+regressione. I coefficienti di normalizzazione dei singoli contributi gaussiani restituiti dal fit seguono piuttosto
 fedelmente l'andamento della probabilità di emissione di un fotone con tale energia, ad eccezione dei due picchi a
 $16.8\,\si{\kilo\electronvolt}$ e $20.8\,\si{\kilo\electronvolt}$ che risultano essere leggermente più alti delle
 aspettative: conseguentemente il contributo a $17.8\,\si{\kilo\electronvolt}$ viene sottostimato. Questa anomalia non
@@ -453,7 +453,7 @@ Per la verifica della legge dell'inverso del quadrato della distanza si vuole qu
 risulta sensibilmente maggiore rispetto ai gradi di libertà (compatibilità $Z=3$). Tuttavia, siccome nel caso in
 questione non sono stati considerati numerosi effetti ulteriori e, possibilmente anche a causa dello scarso potere
 risolvente dell'apparato, l'incertezza sul rate di rivelazione può essere stata (leggermente) sottostimata. In questo
-caso, dunqe, una compatibilità $Z=3$ con i gradi di libertà non è da considerarsi pessima: osservando il grafico dei
+caso, dunque, una compatibilità $Z=3$ con i gradi di libertà non è da considerarsi pessima: osservando il grafico dei
 residui, infatti, si osserva un soddisfacente andamento attorno allo zero. Si può quindi concludere che le misure
 acquisite al variare della distanza tra sorgente e detector seguono piuttosto fedelmente un andamento proporzionale
 all'inverso della distanza al quadrato. 
@@ -515,7 +515,7 @@ al variare della posizione del detector, in centro si trovano le due curve in fu
 mentre a destra è raffigurata l'efficienza relativa in funzione dell'energia dei fotoni emessi. Osservando inizialmente
 il primo grafico a sinistra, si può notare come l'efficienza segua un andamento piuttosto costante. Il valore medio è in
 accordo con il risultato in \autoref{e:efficienza} (la lieve discrepanza può essere legata ad una statistica meno
-elevata nell'acquisizione degli spettri al variare della distanza) e, inoltre, la fluttuazione statistica è in ottimo
+elevata nell'acquisizione degli spettri al variare della distanza) e, inoltre, la fluttuazione statistica è
 confrontabile con le incertezze dell'efficienza. Dalla costanza del rapporto di efficienza relativa
 $\text{N}_{\text{X}}/\text{N}_{\gamma}$, si può quindi dedurre che la distanza tra sorgente e detector influenza in
 ugual modo la rivelazione degli X e dei $\gamma$. Osservando invece il grafico centrale, è evidente come l'efficienza
