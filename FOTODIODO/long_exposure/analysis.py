@@ -26,7 +26,7 @@ p21_pr=2.94
 p26_pr=2.40
 p60_pr=35.78
 #p60esc_pr=0
-peaks=     [p14_en,p18_en,p21_en,p26_en,p60_en]
+peaks=     [p14_en,p17_en,p18_en,p21_en,p26_en,p60_en]
 #peaks_prob=[p14_pr,p17_en,p18_pr,p26_pr,p60_pr]
 
 
@@ -43,9 +43,9 @@ def gauss1(X,N,mean,sigma):
 # Alterantive: compute only ONE FIT at a time based on the x value and return 
 # only that gaussian value. However, given the proximity of the two peaks at 
 # 14 and 17 keV, I prefer the first approach.
-def multi_gauss(X,N0,N1,N2,N3,N4,sigmaNoise, sigmaEn,k):
+def multi_gauss(X,N0,N1,N2,N3,N4,N5,sigmaNoise, sigmaEn,k):
 
-    N=[N0,N1,N2,N3,N4]
+    N=[N0,N1,N2,N3,N4,N5]
     v=0
     for i in range(len(peaks)):
         mean = peaks[i]
@@ -176,7 +176,8 @@ def main():
         '#00C415',
         '#8E00C4',
         '#FF8900',
-        '#FF00D9'
+        '#FF00D9',
+        '#00B1FF',
     ]
     # loop over all peaks except for 60 keV which 
     # will be plotted later
@@ -213,6 +214,12 @@ def main():
     ax[0].tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
     ax[1].tick_params(axis = 'both', which = 'major', labelsize = 16, direction = 'out', length = 5)
 
+    ax[0].minorticks_on()
+    ax[1].minorticks_on()
+    ax[0].tick_params(axis = 'x', which = 'minor', labelsize = 16, direction = 'out')
+
+    ax[0].set_xticks(range(0,70,5))
+
     ax[0].set_xlim(left = 9, right = 70)
 
     ax[0].legend(prop = {'size': 18}, loc = 'best', ncol = 1, frameon = True, fancybox = False, framealpha = 0.5)
@@ -224,17 +231,18 @@ def main():
     N3 = format(peaks[2], '1.1f') + ' keV peak:    N = ' + format(par[2], '1.0f') 
     N4 = format(peaks[3], '1.1f') + ' keV peak:    N = ' + format(par[3], '1.0f') 
     N5 = format(peaks[4], '1.1f') + ' keV peak:    N = ' + format(par[4], '1.0f') 
-    noise = '\u03B7 = ' + format(par[len(peaks)], '1.6')
-    res = '\u03B1 = ' + format(par[len(peaks)+1], '1.2f')
+    N6 = format(peaks[5], '1.1f') + ' keV peak:    N = ' + format(par[5], '1.0f') 
+    noise = '\u03B7 = ' + format(abs(par[len(peaks)]), '1.2e') + ' keV'
+    res = '\u03B1 = ' + format(par[len(peaks)+1], '1.2f')+' keV$^{1/2}$'
 
     ax[0].text(40, 2800, 'Normalization Parameters: ', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
-    ax[0].text(41, 2000, N1 + '\n' + N2 + '\n' + N3 + '\n' + N4 + '\n' + N5, fontsize = 18, color = '#000000', transform = ax[0].transData)
+    ax[0].text(41, 1850, N1 + '\n' + N2 + '\n' + N3 + '\n' + N4 + '\n' + N5 + '\n' + N6, fontsize = 18, color = '#000000', transform = ax[0].transData)
     
-    ax[0].text(40, 1750, 'Noise Parameter: ', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
-    ax[0].text(41, 1550, noise, fontsize = 18, color = '#000000', transform = ax[0].transData)
+    ax[0].text(40, 1600, 'Noise Parameter: ', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
+    ax[0].text(41, 1400, noise, fontsize = 18, color = '#000000', transform = ax[0].transData)
     
-    ax[0].text(40, 1300, 'Intrinsic Resolution Parameter: ', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
-    ax[0].text(41, 1100, res, fontsize = 18, color = '#000000', transform = ax[0].transData)
+    ax[0].text(40, 1150, 'Intrinsic Resolution Parameter: ', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
+    ax[0].text(41, 950, res, fontsize = 18, color = '#000000', transform = ax[0].transData)
 
 
     fig.tight_layout()
