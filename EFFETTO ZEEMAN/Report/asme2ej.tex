@@ -153,14 +153,14 @@ Il potere risolvente R dell'apparato sperimentale si definisce come
 \begin{equation}
     R = \frac{\lambda}{\Delta\lambda}
     \label{e:r}
-\vspace{-5pt}
+\vspace{-8pt}
 \end{equation}
 
 dove, nel caso di interesse, $\lambda = 585.3 \,\si{\nano\metre}$ e $\Delta\lambda$ corrisponde alla larghezza a metà
 altezza (in nanometri) dei picchi di interferenza causati dalla lamina di Lummer. Innanzitutto, è necessario convertire
 la larghezza dei picchi da pixel del CCD a nanometri: ponendosi nell'approssimazione di luce radente vale:
 
-\vspace{-10pt}
+\vspace{-15pt}
 \begin{equation}
     \Delta\lambda_{\text{r.u.}} \simeq \frac{\lambda^2}{2\text{d}} \approx 0.049\,\si{\nano\metre}
     \label{e:dlambdaru}
@@ -190,13 +190,7 @@ sinistra) ed a destra invece viene presentata la proiezione sull'asse orizzontal
 gli istogrammi rappresentati in \autoref{i:spettro2d_Boff} sono ottenuti sottraendo il rumore di fondo: nella figura a
 sinistra, infatti, riga di emissione è ben evidenziata. 
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{../Plots/Boff_2d_spectrum.png}
-    \caption{Spettro bidimensionale $\text{B}_{\text{off}}$ (a sinistra) e proiezione sull'asse orizzontale (a destra)}
-    \label{i:spettro2d_Boff}
-    \vspace{-10pt}
-\end{figure}
+
 
 Per calcolare ora le grandezze di interesse, ovvero la spaziatura tra picchi e la loro larghezza a metà altezza, si
 considera la proiezione dello spettro sull'asse verticale, evidenziando in questo modo le frange di interferenza causate
@@ -213,6 +207,14 @@ $\Delta x$ tra loro statisticamente indipendenti. Si procede dunque al calcolo d
 una stima unica che sia rappresentativa dell'intero apparato si decide di effettuare la media aritmetica delle misure di
 R, ottenendo così un potere risolvente pari a 
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{../Plots/Boff_2d_spectrum.png}
+    \caption{Spettro bidimensionale $\text{B}_{\text{off}}$ (a sinistra) e proiezione sull'asse orizzontale (a destra)}
+    \label{i:spettro2d_Boff}
+    \vspace{-10pt}
+\end{figure}
+
 \begin{figure*}
     \centering
     \includegraphics[width=\textwidth]{../Plots/Boff_Y_proj.png}
@@ -225,8 +227,9 @@ R, ottenendo così un potere risolvente pari a
 \begin{align*}
     \text{R} &= (4.71 \pm 0.10)\cdot 10^4  & \frac{\sigma_{\text{R}}}{\text{R}} &\approx 2\%
     \label{e:R_result}
+    \vspace{-10pt}
 \end{align*}
-\vspace{-10pt}
+
 
 Secondo questa stima, il potere risolvente dell'apparato risulta sufficiente per rivelare la separazione delle righe
 dovuta all'effetto Zeeman, in quanto superiore alla minima richiesta teorica ($\sim 3.7 \cdot 10^4$). 
@@ -270,7 +273,7 @@ dell'effettivo potere risolvente dell'apparato.
 \begin{figure*}
     \centering
     \includegraphics[width=\textwidth]{../Plots/Bon_Y_proj.png}
-    \caption{Proiezione sull'asse verticale $\text{B}_{on}$}
+    \caption{Proiezione sull'asse verticale $\text{B}_{\text{on}}$}
     \label{i:spettro2d_Bon_ProjY}
 \end{figure*}
 
@@ -289,13 +292,13 @@ Il fattore di Landè si ricava dalla relazione
 \vspace{-5pt}
 \end{equation}
 
-dove $\mu_{\text{B}}$ è il magnetone di Bohr e $\Delta \text{E}_{\text{zee}}$ corrisponde alla separazione dei livelli
-energetici dovuta al campo magnetico esterno B. Configurando il campo magnetico parallelamente alla direzione di
+\noindent dove $\mu_{\text{B}}$ è il magnetone di Bohr e $\Delta \text{E}_{\text{zee}}$ corrisponde alla separazione dei
+livelli energetici dovuta al campo magnetico esterno B. Configurando il campo magnetico parallelamente alla direzione di
 propagazione i termini polarizzati circolarmente corrispondenti a $\Delta \text{m} = \pm 1$ hanno intensità maggiore dei
-termini corrispondenti a $\Delta \text{m} = 0$, in quanto non c'è emissione di radiazione lungo la direzione di $\vec{\text{B}}$.
-Ne consegue quindi che la transizione centrale risulta soppressa e si
-riescono ad osservare solo le due laterali, separate da $\delta\lambda = 2 \Delta\lambda_{\text{zee}}$, dove
-$\Delta\lambda_{\text{zee}}$ rappresenta lo splitting Zeeman. 
+termini corrispondenti a $\Delta \text{m} = 0$, in quanto non c'è emissione di radiazione lungo la direzione di
+$\vec{\text{B}}$. Ne consegue quindi che la transizione centrale risulta soppressa e si riescono ad osservare solo le
+due laterali, separate da $\delta\lambda = 2 \Delta\lambda_{\text{zee}}$, dove $\Delta\lambda_{\text{zee}}$ rappresenta
+lo splitting Zeeman. 
 
 
 \noindent Tale separazione in lunghezza d'onda, che è la quantità misurabile con lo spettrometro a disposizione, è legata alla
@@ -312,7 +315,6 @@ Si procede dunque impostando il campo magnetico ad un'intensità di $\text{B} = 
 direzione parallela al fascio. Successivamente, in analogia con quanto riportato in \autoref{s:risolvente}, viene
 identificata la riga a $\lambda = 585.3 \,\si{\nano\metre}$ e viene acquisito uno spettro bidimensionale in uno stretto
 intorno del picco di interesse usando come tempo di integrazione $800\,\si{\milli\second}$ (\autoref{i:spettro2d_Bon}).
-\\
 Per osservare lo splitting causato dalla presenza del campo magnetico si considera dunque la proiezione dello spettro
 sull'asse verticale, evidenziando così le frange di interferenza. Come si può notare immediatamente osservando il
 grafico in \autoref{i:spettro2d_Bon_ProjY}, a differenza di quanto riportato in \autoref{i:spettro2d_Boff_ProjY} i
@@ -364,12 +366,12 @@ degli errori secondo
 \noindent dove $\sigma_{\Delta \text{E}_{\text{zee}}}$ è lo scarto quadratico medio del campione di misure relative alla
 separazione energetia, mentre $\sigma_{\text{B}}$ è l'$1\%$ del valore del campo magnetico esterno. 
 
-La stima del fattore di Landè viene quindi trovata effettuando una media pesata tra le misure del campione, ottenendo
-così 
+La stima del fattore di Landè viene quindi trovata effettuando una media pesata tra le misure del campione:
 
-\vspace{-18pt}
+\vspace{-15pt}
 \begin{align*}
     \text{g}_{\text{J}} &= 1.033 \pm 0.014 & \frac{\sigma_{\text{g}_{\text{J}}}}{\text{g}_{\text{J}}} &\approx 1.4\%
+    \vspace{-5pt}
 \end{align*}
 
 \begin{figure}
@@ -377,7 +379,7 @@ così
     \includegraphics[width=\linewidth]{../Plots/Bon_zeeman_trend.png}
     \caption{Andamento della separazione Zeeman tra picchi (a sinistra) e del rapporto tra distanza tra picchi e separazione Zeeman (a destra) in funzione della posizione}
     \label{i:spacing_trend_Bon}
-    \vspace{-20pt}
+    \vspace{-10pt}
 \end{figure}
 
 \vspace{-5pt}
@@ -418,7 +420,7 @@ più accurata e precisa.
 % \end{figure}
 
 
-
+\vspace{-10pt}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Campo magnetico ortogonale alla radiazione}\label{s:ortogonale}
 
