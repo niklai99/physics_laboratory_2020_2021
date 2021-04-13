@@ -1,8 +1,8 @@
 %%% use twocolumn and 10pt options with the asme2ej format
 \documentclass[twocolumn,10pt]{asme2ej}
-% \usepackage[italian]{babel}
+\usepackage[italian]{babel}
 
-\usepackage[none]{hyphenat}% don't break words
+% \usepackage[none]{hyphenat}% don't break words
 
 \usepackage[utf8]{inputenc}
 \usepackage{epsfig} %% for loading postscript figures
@@ -22,16 +22,16 @@
 \fancyfoot[R]{\thepage}
 \usepackage{caption}
 \captionsetup[table]{name=Tab.}
+\captionsetup[figure]{name=Fig.}
 
-\usepackage{makecell}%To keep spacing of text in tables
-\setcellgapes{4pt}%parameter for the spacing
 
-\renewcommand{\tableautorefname}{Tab.}
-\def\figureautorefname{Fig.} 
-\def\equationautorefname{Eq.} 
-\def\sectionautorefname{Sez.} 
-\def\subsectionautorefname{Sez.} 
-\def\subsubsectionautorefname{Sez.}
+
+\addto\extrasitalian{\renewcommand{\figureautorefname}{Fig.}}
+\addto\extrasitalian{\renewcommand{\tableautorefname}{Tab.}}
+\addto\extrasitalian{\renewcommand{\equationautorefname}{Eq.}} 
+\addto\extrasitalian{\renewcommand{\sectionautorefname}{Sez.}} 
+\addto\extrasitalian{\renewcommand{\subsectionautorefname}{Sez.}}
+\addto\extrasitalian{\renewcommand{\subsubsectionautorefname}{Sez.}}
 
 
 \pretitle{\begin{center}\linespread{1.2}\huge}
@@ -106,7 +106,6 @@
 L'esperienza consiste nell'analisi dello spettro dei fotoni emessi dall'Americio-241 con un rivelatore al Silicio tipo
 PIN, dotato di preamplificatore di carica. L'hardware, cioè i moduli di elettronica, sono stati pre-impostati in
 condizioni standard, con shaping time pari a $3\,\si{\micro\second}$, in modo da ottimizzare il rapporto segnale rumore.
-\\
 
 Inizialmente, in \autoref{s:spettro}, si propone un'analisi dettagliata dello spettro di emissione dell'Am-241: in
 particolare, dopo una calibrazione approssimativa in energia, si fornisce una stima per la risoluzione energetica per la
@@ -120,7 +119,7 @@ variare della distanza tra quest'ultimo e la sorgente, dello spessore degli asso
 rivelati.
 
 
-
+\vspace{-20pt}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Spettro dell'Am-241}\label{s:spettro}
 
@@ -175,21 +174,18 @@ risoluzione energetica R:
     % \vspace{-10pt}
 \end{figure*}
 
-
-
-
 Ci si propone ora di costruire un fit complessivo di tutto lo spettro raffigurato in \autoref{i:spettro}. Ci si
 concentra unicamente sulle emissioni di raggi X e gamma con un'intensità di almeno 2 fotoni ogni 100 disintegrazioni: in
 \autoref{t:probabilities} sono riportati quindi i contributi considerati con le relative probabilità di emissione. Per
 ciascuno di questi, si costruisce una funzione gaussiana con media fissata in quanto l'energia è nota
-(\autoref{t:probabilities}) con l'asse orizzontale preliminarmente calibrato. La larghezza della gaussiana
-(sigma), invece, si compone di due contributi in somma quadratica: il primo è una componente fissa, di rumore, che verrà
-denotata come $\eta$, mentre il secondo è la componente di risoluzione intrinseca, proporzionale alla radice
-quadrata dell'energia del fotone preso in considerazione. \\
-La funzione fittante è quindi data dalla somma delle cinque gaussiane, ottendendo in questo modo quanto raffigurato in \autoref{i:multifit}. In particolare, sono stati
-scelti come parametri liberi il contributo di rumore $\eta$ e la costante di proporzionalità $\alpha$ della risoluzione intrinsceca, assieme ai fattori di
-normalizzazione $\{\text{N}_i\}$ relativi ad ogni singolo picco considerato. Osservando quindi il grafico in
-\autoref{i:multifit}, la curva in rosso rappresenta il fit complessivo dello spettro: questa segue in modo più che
+(\autoref{t:probabilities}) con l'asse orizzontale preliminarmente calibrato. La larghezza della gaussiana (sigma),
+invece, si compone di due contributi in somma quadratica: il primo è una componente fissa, di rumore, che verrà denotata
+come $\eta$, mentre il secondo è la componente di risoluzione intrinseca, proporzionale alla radice quadrata
+dell'energia del fotone preso in considerazione. La funzione fittante è quindi data dalla somma delle cinque gaussiane,
+ottendendo in questo modo quanto raffigurato in \autoref{i:multifit}. In particolare, sono stati scelti come parametri
+liberi il contributo di rumore $\eta$ e la costante di proporzionalità $\alpha$ della risoluzione intrinsceca, assieme
+ai fattori di normalizzazione $\{\text{N}_i\}$ relativi ad ogni singolo picco considerato. Osservando quindi il grafico
+in \autoref{i:multifit}, la curva in rosso rappresenta il fit complessivo dello spettro: questa segue in modo più che
 soddisfacente il profilo delle emissioni dell'Am-241. Le curve tratteggiate, invece, corrispondono ai singoli contributi
 gaussiani considerati per effettuare il fit: risulta quindi evidente che il potere risolutivo dell'apparato non è
 sufficiente per identificare tali contributi singolarmente. Dal grafico dei residui, relativi al fit complessivo, si può
@@ -229,7 +225,7 @@ regressione.
 
 
 
-
+\vspace{-10pt}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Coefficiente di assorbimento}\label{s:attenuazione} 
 
@@ -298,9 +294,7 @@ particolare, si vuole fornire una stima del coefficiente di assorbimento massivo
     \label{e:mu_mass}
 \end{equation}
 
-con $\rho$ densità del materiale. \\ 
-
-
+\noindent dove $\rho$ rappresenta la densità del materiale. 
 
 Sapendo che il numero di fotoni per unità di tempo (rate) e superficie è pari al rapporto tra l'intensità della
 radiazione e l'energia del fotone, sussiste una relazione analoga ad \autoref{e:mu} per il rate, facilmente calcolabile
@@ -310,15 +304,14 @@ gli spettri e tempo di acquisizione. Per la stima del coefficiente di assorbimen
 fit delle misure di rate al variare dello spessore $d$ dell'assorbitore. È opportuno sottolineare che, a seconda del
 materiale, vengono considerati due dataset distinti. 
 
-
 Si riportano in \autoref{t:assorbimento} le coppie di dati utilizzati per la regressione, con errore sulle ordinate
-calcolato per propagazione, trascurando le incertezze sui tempi di acquisizione. Infatti, siccome i valori dei tempi di
-acquisizione mostrati sull'interfaccia del software si discostavano senibilmente da quelli impostati manualmente, si è
-assunto un errore massimo di $0.1\si{\second}$, ed è stato preliminarmente verificato che tale contributo avesse un peso
-relativo trascurabile. Si vuole inizialmente effettuare un fit esponenziale del tipo $y = \text{I}_0\,\text{e}^{-\mu
-x}$. Successivamente, sfruttando il parametro $\text{I}_0$ per normalizzare i dati, si vuole considerare il logaritmo
-del rate normalizzato ed effettuare una regressione lineare con la retta di equazione $y = mx$.  In questo modo, quindi,
-i dati si distribuiscono secondo $\log(\text{I}/\text{I}_0)=-\mu x$, con errore sul logaritmo ottenuto per propagazione.
+calcolato per propagazione, trascurando le incertezze sui tempi di acquisizione. Infatti, siccome i valori dei tempi
+restituiti dall'interfaccia del software si discostano senibilmente da quelli impostati manualmente, si è assunto un
+errore massimo di $0.1\si{\second}$, ed è stato preliminarmente verificato che tale contributo avesse un peso relativo
+trascurabile. Si vuole inizialmente effettuare un fit esponenziale del tipo $y = \text{I}_0\,\text{e}^{-\mu x}$.
+Successivamente, sfruttando il parametro $\text{I}_0$ per normalizzare i dati, si vuole considerare il logaritmo del
+rate normalizzato ed effettuare una regressione lineare con la retta di equazione $y = mx$.  In questo modo, quindi, i
+dati si distribuiscono secondo $\log(\text{I}/\text{I}_0)=-\mu x$, con errore sul logaritmo ottenuto per propagazione.
 
 \begin{table}[t]
     \begin{center}
@@ -389,17 +382,25 @@ dati. Tuttavia, i residui si distribuiscono sufficientemente bene attorno allo z
 considerarsi valida. Per il rame, invece, si trova un ottimo accordo tra $\chi^2$ e numero di gradi di libertà
 (compatibilità rispettivamente $Z=0.3$ e $Z=0.6$): infatti i dati seguono chiaramente l'andamento atteso e gli errori
 sulle ordinate coprono bene la dispersione. \\
-In \autoref{t:results} si riportano i valori delle denistà dei due materiali e delle grandezze stimate a partire dai fit:
-si sottolinea l'ottima compatibilità tra le stime sperimentali dei coefficienti di assorbimento massivi e i valori teorici,
-assunti privi di errore. Tale accordo conferma ulteriormente la validità dei fit predisposti. 
+In \autoref{t:results} si riportano le denistà dei due materiali e le grandezze stimate a partire dai fit, assieme alla
+compatibilità tra le stime sperimentali dei coefficienti di assorbimento massivi ed i valori teorici, assunti privi di
+errore. 
 
 
 
 
 
-
+\vspace{-10pt}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Legge dell'Inverso del Quadrato della Distanza}\label{s:distanza}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{../Plots/distance_small.png}
+    \caption{Rate di rivelazione dei raggi X in funzione della distanza tra sorgente e detector}
+    \label{i:distance}
+    \vspace{-10pt}
+\end{figure}
 
 Ci si propone ora di verificare la cosiddetta "legge dell'inverso del quadrato della distanza". In particolare, si vuole
 controllare che il rate dei raggi X (ovvero il primo picco a sinistra in \autoref{i:spettro}) segua un andamento
@@ -419,15 +420,6 @@ caso, dunqe, una compatibilità $Z=3$ con i gradi di libertà non è da consider
 residui, infatti, si osserva un soddisfacente andamento attorno allo zero. Si può quindi concludere che le misure
 acquisite al variare della distanza tra sorgente e detector seguono piuttosto fedelmente un andamento proporzionale
 all'inverso della distanza al quadrato. 
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{../Plots/distance_small.png}
-    \caption{Rate di rivelazione dei raggi X in funzione della distanza tra sorgente e detector}
-    \label{i:distance}
-    \vspace{-10pt}
-\end{figure}
-
 
 \begin{table}[t]
 	\centering
@@ -459,7 +451,7 @@ all'inverso della distanza al quadrato.
 \end{table}	
 
 
-
+\vspace{-10pt}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Efficienza del Rivelatore}\label{s:efficienza}
 
@@ -491,7 +483,7 @@ tipo di fit. Sfruttando allora l'acquisizione riportata in \autoref{s:spettro} s
 Si vogliono ora costruire delle curve di efficienza, con l'obiettivo di studiare l'andamento di quest'ultima al variare
 di diverse quantità. In particolare, le curve che vengono qui trattate sono tre: la prima è relativa alla distanza tra
 sorgente e detector, la seconda è relativa allo spessore di un assorbitore interposto tra sorgente e detector, mentre la
-terza e più delicata è relativa all'energia del fotone rivelato. \\
+terza e più delicata è relativa all'energia del fotone rivelato. 
 
 Per costruire la curva di efficienza al variare della distanza tra sorgente e rivelatore, vengono sfruttate le
 acquisizioni riportate in \autoref{s:distanza}. In particolare, per ogni spettro raccolto viene calcolata l'efficienza
@@ -506,7 +498,7 @@ quindi costretti ad utilizzare le informazioni restituite dal fit. In questo cas
 $60\,\si{\kilo\electronvolt}$ come riferimento in quanto risulta essere l'unico picco ben risolto, dal quale possiamo
 trarre informazioni più precise rispetto ai contributi non risolti. Per costruire la curva di efficienza, quindi, viene
 calcolato il rapporto di efficienza relativa riportato in \autoref{e:efficienza} per ciascun contributo di raggi X che
-compone il picco, sfruttando però i parametri del fit multi-picco, riportati in \autoref{i:multifit}. \\
+compone il picco, sfruttando però i parametri del fit multi-picco, riportati in \autoref{i:multifit}. 
 
 \begin{figure}[t]
     \centering
