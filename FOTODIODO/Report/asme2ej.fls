@@ -26,6 +26,15 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/helvetic/phvb7t.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/helvetic/phvb7t.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/helvetic/phvb7t.tfm
 INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/helvetic/phvr7t.tfm
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/babel/babel.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/babel/babel.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/babel/switch.def
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/babel-italian/italian.ldf
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/babel-italian/italian.ldf
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/babel/babel.def
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/generic/babel/txtbabel.def
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/graphics/epsfig.sty
@@ -216,8 +225,6 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
 INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/makecell/makecell.sty
-INPUT d:/Programmi/texlive/2018/texmf-dist/tex/latex/makecell/makecell.sty
 INPUT d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.aux
 INPUT d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.aux
 OUTPUT d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/asme2ej.aux
@@ -429,10 +436,10 @@ INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/tfm/adobe/zapfchan/pzcmi8r.tfm
 INPUT d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/../Plots/distance_small.png
 INPUT ../Plots/distance_small.png
 INPUT ../Plots/distance_small.png
-INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/../Plots/efficiency.png
 INPUT ../Plots/efficiency.png
 INPUT ../Plots/efficiency.png
+INPUT d:/Programmi/texlive/2018/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT d:/GitHub/physics_laboratory_2020_2021/FOTODIODO/Report/../Plots/am_spectrum_absorber.png
 INPUT ../Plots/am_spectrum_absorber.png
 INPUT ../Plots/am_spectrum_absorber.png
