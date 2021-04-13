@@ -181,7 +181,7 @@ ciascuno di questi, si costruisce una funzione gaussiana con media fissata in qu
 (\autoref{t:probabilities}) con l'asse orizzontale preliminarmente calibrato. La larghezza della gaussiana (sigma),
 invece, si compone di due contributi in somma quadratica: il primo è una componente fissa, di rumore, che verrà denotata
 come $\eta$, mentre il secondo è la componente di risoluzione intrinseca, proporzionale alla radice quadrata
-dell'energia del fotone preso in considerazione. La funzione fittante è quindi data dalla somma delle cinque gaussiane,
+dell'energia del fotone preso in considerazione. La funzione fittante è quindi data dalla somma delle sei gaussiane,
 ottendendo in questo modo quanto raffigurato in \autoref{i:multifit}. In particolare, sono stati scelti come parametri
 liberi il contributo di rumore $\eta$ e la costante di proporzionalità $\alpha$ della risoluzione intrinsceca, assieme
 ai fattori di normalizzazione $\{\text{N}_i\}$ relativi ad ogni singolo picco considerato. Osservando quindi il grafico
@@ -192,10 +192,12 @@ sufficiente per identificare tali contributi singolarmente. Dal grafico dei resi
 notare una certa difficoltà nel seguire in modo fedele il profilo del primo picco, in quanto composto da numerosi
 contributi. Il picco a $60\,\si{\kilo\electronvolt}$, invece, risulta in maggiore accordo con la funzione di
 regressione. I coeffficienti di normalizzazione dei singoli contributi gaussiani restituiti dal fit seguono piuttosto
-fedelmente l'andamento della probabilità di emissione di un fotone con tale energia, ad eccezione del picco a
-$17.8\,\si{\kilo\electronvolt}$ che risulta essere leggermente più alto: la causa di questa lieve discrepanza è dovuta
-ai numerosi contributi trascurati in quel range di energia. Il parametro di rumore $\eta$, invece, risulta essere
-decisamente trascurabile rispetto al contributo di risoluzione intrinseca 
+fedelmente l'andamento della probabilità di emissione di un fotone con tale energia, ad eccezione dei due picchi a
+$16.8\,\si{\kilo\electronvolt}$ e $20.8\,\si{\kilo\electronvolt}$ che risultano essere leggermente più alti delle
+aspettative: conseguentemente il contributo a $17.8\,\si{\kilo\electronvolt}$ viene sottostimato. Questa anomalia non
+sorprende in quanto, a causa del basso potere risolvente dell'apparato, il fit di sei contributi gaussiani sotto un
+unico picco risulta essere decisamente complicato. Il parametro di rumore $\eta$, infine, risulta essere trascurabile
+rispetto al fattore di risoluzione intrinseca che si può considerare quindi il contributo predominante della sigma. 
 
 
 \begin{table}[t]
@@ -309,15 +311,6 @@ gli spettri e tempo di acquisizione. Per la stima del coefficiente di assorbimen
 fit delle misure di rate al variare dello spessore $d$ dell'assorbitore. È opportuno sottolineare che, a seconda del
 materiale, vengono considerati due dataset distinti. 
 
-Si riportano in \autoref{t:assorbimento} le coppie di dati utilizzati per la regressione, con errore sulle ordinate
-calcolato per propagazione, trascurando le incertezze sui tempi di acquisizione. Infatti, siccome i valori dei tempi
-restituiti dall'interfaccia del software si discostano senibilmente da quelli impostati manualmente, si è assunto un
-errore massimo di $0.1\si{\second}$, ed è stato preliminarmente verificato che tale contributo avesse un peso relativo
-trascurabile. Si vuole inizialmente effettuare un fit esponenziale del tipo $y = \text{I}_0\,\text{e}^{-\mu x}$.
-Successivamente, sfruttando il parametro $\text{I}_0$ per normalizzare i dati, si vuole considerare il logaritmo del
-rate normalizzato ed effettuare una regressione lineare con la retta di equazione $y = mx$.  In questo modo, quindi, i
-dati si distribuiscono secondo $\log(\text{I}/\text{I}_0)=-\mu x$, con errore sul logaritmo ottenuto per propagazione.
-
 \begin{table}[t]
     \begin{center}
         \begin{tabular}{C{1.5cm} C{1.8cm} | C{1.5cm} C{1.8cm}}
@@ -338,7 +331,6 @@ dati si distribuiscono secondo $\log(\text{I}/\text{I}_0)=-\mu x$, con errore su
     \label{t:assorbimento}
     \vspace{-10pt}
 \end{table}
-
 
 \begin{table*}[t]
 	\centering
@@ -379,26 +371,6 @@ dati si distribuiscono secondo $\log(\text{I}/\text{I}_0)=-\mu x$, con errore su
     \vspace{-10pt}
 \end{table*}
 
-In \autoref{t:parametri_mu} sono quindi riportati i risultati ottenuti attraverso i due fit. Si vuole ora quantificare
-la bontà dei fit: nel caso dell'argento si nota che il $\chi^2$ risulta significativamente maggiore rispetto ai gradi di
-libertà, sia nel fit esponenziale che in quello lineare (compatibilità rispettivamente $Z=5$ e $Z=3.7$). Tale
-discrepanza può essere dovuta principalmente ad una leggera sottostima delle incertezze sul rate e al basso numero di
-dati. Tuttavia, i residui si distribuiscono sufficientemente bene attorno allo zero, perciò la stima dei parametri è da
-considerarsi valida. Per il rame, invece, si trova un ottimo accordo tra $\chi^2$ e numero di gradi di libertà
-(compatibilità rispettivamente $Z=0.3$ e $Z=0.6$): infatti i dati seguono chiaramente l'andamento atteso e gli errori
-sulle ordinate coprono bene la dispersione. \\
-In \autoref{t:results} si riportano le denistà dei due materiali e le grandezze stimate a partire dai fit, assieme alla
-compatibilità tra le stime sperimentali dei coefficienti di assorbimento massivi ed i valori teorici, assunti privi di
-errore. 
-
-
-
-
-
-\vspace{-10pt}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Legge dell'Inverso del Quadrato della Distanza}\label{s:distanza}
-
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{../Plots/distance_small.png}
@@ -407,24 +379,36 @@ errore.
     \vspace{-10pt}
 \end{figure}
 
-Ci si propone ora di verificare la cosiddetta "legge dell'inverso del quadrato della distanza". In particolare, si vuole
-controllare che il rate dei raggi X (ovvero il primo picco a sinistra in \autoref{i:spettro}) segua un andamento
-proporzionale all'inverso della distanza al quadrato tra sorgente e detector. In assenza di assorbitori tra i due,
-quindi, vengono acquisiti una serie di spettri facendo variare la posizione del rivelatore. Dagli spettri acquisiti
-viene calcolato il rate degli X: tali valori, assieme alla posizione del detector, sono riportati in
-\autoref{t:distance}. Questi vengono quindi raffigurati in \autoref{i:distance}: si vuole far notare in particolar modo
-la presenza di un parametro $x_0$ di zero. Infatti, tramite il software per la movimentazione del detector è possibile
-unicamente impostarne la posizione lungo una rotaia: l'effettiva distanza con la sorgente è invece ignota a priori in
-quanto la posizione della sorgente non corrisponde allo zero del sistema di riferimento utilizzato dal software per
-posizionare il detector sulla guida. \\
-Per la verifica della legge dell'inverso del quadrato della distanza si vuole quantificare la bontà del fit: il $\chi^2$
-risulta sensibilmente maggiore rispetto ai gradi di libertà (compatibilità $Z=3$). Tuttavia, siccome nel caso in
-questione non sono stati considerati numerosi effetti ulteriori e, possibilmente anche a causa dello scarso potere
-risolvente dell'apparato, l'incertezza sul rate di rivelazione può essere stata (leggermente) sottostimata. In questo
-caso, dunqe, una compatibilità $Z=3$ con i gradi di libertà non è da considerarsi pessima: osservando il grafico dei
-residui, infatti, si osserva un soddisfacente andamento attorno allo zero. Si può quindi concludere che le misure
-acquisite al variare della distanza tra sorgente e detector seguono piuttosto fedelmente un andamento proporzionale
-all'inverso della distanza al quadrato. 
+Si riportano in \autoref{t:assorbimento} le coppie di dati utilizzati per la regressione, con errore sulle ordinate
+calcolato per propagazione, trascurando le incertezze sui tempi di acquisizione. Infatti, siccome i valori dei tempi
+restituiti dall'interfaccia del software si discostano senibilmente da quelli impostati manualmente, si è assunto un
+errore massimo di $\Delta t = 0.1\,\si{\second}$, ed è stato preliminarmente verificato che tale contributo avesse un
+peso relativo trascurabile. Si vuole inizialmente effettuare un fit esponenziale del tipo $y =
+\text{I}_0\,\text{e}^{-\mu x}$. Successivamente, sfruttando il parametro $\text{I}_0$ per normalizzare i dati, si vuole
+considerare il logaritmo del rate normalizzato ed effettuare una regressione lineare con la retta di equazione $y = mx$.
+In questo modo i dati si distribuiscono secondo $\log(\text{I}/\text{I}_0)=-\mu x$, con errore sul logaritmo ottenuto
+per propagazione.
+
+In \autoref{t:parametri_mu} sono quindi riportati i risultati ottenuti attraverso i due fit. Si vuole ora quantificare
+la bontà dei fit: nel caso dell'argento si nota che il $\chi^2$ risulta significativamente maggiore rispetto ai gradi di
+libertà, sia nel fit esponenziale che in quello lineare (compatibilità rispettivamente $Z=5$ e $Z=3.7$). Tale
+discrepanza può essere dovuta principalmente ad una leggera sottostima delle incertezze sul rate e al basso numero di
+dati. Tuttavia, i residui si distribuiscono sufficientemente bene attorno allo zero, perciò la stima dei parametri è da
+considerarsi valida. Per il rame, invece, si trova un ottimo accordo tra $\chi^2$ e numero di gradi di libertà
+(compatibilità rispettivamente $Z=0.3$ e $Z=0.6$): infatti i dati seguono chiaramente l'andamento atteso e gli errori
+sulle ordinate coprono bene la dispersione. 
+
+In \autoref{t:results} si riportano le denistà dei due materiali e le grandezze stimate a partire dai fit, assieme alla
+compatibilità tra le stime sperimentali dei coefficienti di assorbimento massivi ed i valori teorici, assunti privi di
+errore. 
+
+
+
+\vspace{-10pt}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Legge dell'Inverso del Quadrato della Distanza}\label{s:distanza}
+
+
 
 \begin{table}[t]
 	\centering
@@ -454,6 +438,27 @@ all'inverso della distanza al quadrato.
 	\label{t:distance}
     \vspace{-10pt}
 \end{table}	
+
+Ci si propone ora di verificare la cosiddetta "legge dell'inverso del quadrato della distanza". In particolare, si vuole
+controllare che il rate dei raggi X (ovvero il primo picco a sinistra in \autoref{i:spettro}) segua un andamento
+proporzionale all'inverso della distanza al quadrato tra sorgente e detector. In assenza di assorbitori tra i due,
+quindi, vengono acquisiti una serie di spettri facendo variare la posizione del rivelatore. Dagli spettri acquisiti
+viene calcolato il rate degli X: tali valori, assieme alla posizione del detector, sono riportati in
+\autoref{t:distance}. Questi vengono quindi raffigurati in \autoref{i:distance}: si vuole far notare in particolar modo
+la presenza di un parametro $x_0$ di zero. Infatti, tramite il software per la movimentazione del detector è possibile
+unicamente impostarne la posizione lungo una rotaia: l'effettiva distanza con la sorgente è invece ignota a priori in
+quanto la posizione della sorgente non corrisponde allo zero del sistema di riferimento utilizzato dal software per
+posizionare il detector sulla guida. \\
+Per la verifica della legge dell'inverso del quadrato della distanza si vuole quantificare la bontà del fit: il $\chi^2$
+risulta sensibilmente maggiore rispetto ai gradi di libertà (compatibilità $Z=3$). Tuttavia, siccome nel caso in
+questione non sono stati considerati numerosi effetti ulteriori e, possibilmente anche a causa dello scarso potere
+risolvente dell'apparato, l'incertezza sul rate di rivelazione può essere stata (leggermente) sottostimata. In questo
+caso, dunqe, una compatibilità $Z=3$ con i gradi di libertà non è da considerarsi pessima: osservando il grafico dei
+residui, infatti, si osserva un soddisfacente andamento attorno allo zero. Si può quindi concludere che le misure
+acquisite al variare della distanza tra sorgente e detector seguono piuttosto fedelmente un andamento proporzionale
+all'inverso della distanza al quadrato. 
+
+
 
 
 \vspace{-10pt}
@@ -504,24 +509,16 @@ possiamo trarre informazioni più precise rispetto ai contributi non risolti. Pe
 quindi, viene calcolato il rapporto in \autoref{e:efficienza} per ciascun contributo di raggi X che compone il picco,
 sfruttando però i parametri del fit multi-picco, riportati in \autoref{i:multifit}. 
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=\linewidth]{../Plots/am_spectrum_absorber.png}
-    \caption{Spettro dell'Am-241 con assorbitore di rame di spessore $368\,\si{\micro\metre}$}
-    \label{i:spettro_abs}
-    \vspace{-15pt}
-\end{figure}
-
 Le tre curve di efficienza sono riportate in \autoref{i:efficiency}: a sinistra si può osservare l'efficienza relativa
 al variare della posizione del detector, in centro si trovano le due curve in funzione dello spessore dell'assorbitore
 mentre a destra è raffigurata l'efficienza relativa in funzione dell'energia dei fotoni emessi. Osservando inizialmente
-il primo grafico a sinistra, si può notare come l'efficienza segua un andamento piuttosto costante. Il valore medio è
-piuttosto in accordo con il risultato in \autoref{e:efficienza} (la lieve discrepanza può essere legata ad una
-statistica meno elevata nell'acquisizione degli spettri al variare della distanza) e, inoltre, la fluttuazione
-statistica è in ottimo accordo con le incertezze dell'efficienza. Dalla costanza del rapporto di efficienza relativa
+il primo grafico a sinistra, si può notare come l'efficienza segua un andamento piuttosto costante. Il valore medio è in
+accordo con il risultato in \autoref{e:efficienza} (la lieve discrepanza può essere legata ad una statistica meno
+elevata nell'acquisizione degli spettri al variare della distanza) e, inoltre, la fluttuazione statistica è in ottimo
+confrontabile con le incertezze dell'efficienza. Dalla costanza del rapporto di efficienza relativa
 $\text{N}_{\text{X}}/\text{N}_{\gamma}$, si può quindi dedurre che la distanza tra sorgente e detector influenza in
 ugual modo la rivelazione degli X e dei $\gamma$. Osservando invece il grafico centrale, è evidente come l'efficienza
-relativa segue un forte andamento decrescente: in particolare, la differenza di andamento tra i due materiali è
+relativa segua un forte andamento decrescente: in particolare, la differenza di andamento tra i due materiali è
 influenzata dal diverso coefficiente di assorbimento. Il grafico prova chiaramente, quindi, che i raggi $\gamma$ sono
 molto più penetranti rispetto agli X: dallo spettro in \autoref{i:spettro_abs}, infatti, si nota che in presenza di un
 assorbitore di rame spesso $368\,\si{\micro\metre}$ il rapporto di rivelazione tra raggi X e raggi $\gamma$ è molto
@@ -536,6 +533,16 @@ potere risolvente dell'apparato costringe la curva ad essere fortemente dipenden
 evidenziare che per poter ricavare delle informazioni soddisfacenti sull'efficienza del detector in funzione
 dell'energia, sarebbe necessario conoscere almeno l'attività della sorgente. 
 
+
+\pagebreak
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{../Plots/am_spectrum_absorber.png}
+    \caption{Spettro dell'Am-241 con assorbitore di rame di spessore $368\,\si{\micro\metre}$}
+    \label{i:spettro_abs}
+    \vspace{-15pt}
+\end{figure}
 
 
 
