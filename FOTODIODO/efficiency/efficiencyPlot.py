@@ -11,6 +11,8 @@ fCu = 'Cu.txt'
 fAg = 'Ag.txt'
 
 
+
+
 def lin(x, a, b):
     return a*x + b
 
@@ -184,7 +186,7 @@ def makePlot(dataDistance, dataEnergy, dataCu, dataAg):
 
     # perform fit on energy data
     XFIT = np.linspace(rangeX[0], rangeX[-1], 500)
-    spline = UnivariateSpline(dataEnergy.X, dataEnergy.Y, w=1/dataEnergy.errY**2, k = 1, s = 0)
+    spline = UnivariateSpline(dataEnergy.X, dataEnergy.Y, k = 1, s = 0)
     ax[2].plot(XFIT, spline(XFIT), color = '#000000', linestyle = 'dashed')
 
 
@@ -206,13 +208,20 @@ def main():
     dataCu = readData(fCu)
     dataAg = readData(fAg)
 
+    # probabilities
+    prob = np.array([11.6, 2.45, 11.83, 2.94, 2.31, 35.92])
+   
+    for i in range(len(prob)-1):
+        dataEnergy.Y.iloc[i] = dataEnergy.Y.iloc[i] * prob[-1] / prob[i]
+        dataEnergy.errY.iloc[i] = dataEnergy.errY.iloc[i] * prob[-1] / prob[i]
+
 
     fig, ax = makePlot(dataDistance, dataEnergy, dataCu, dataAg)
     
     fig.tight_layout()
 
     # save figure
-    # fig.savefig('../Plots/efficiency.png', dpi = 300, facecolor = 'white')
+    fig.savefig('../Plots/efficiency.png', dpi = 300, facecolor = 'white')
     plt.show()
 
     return
