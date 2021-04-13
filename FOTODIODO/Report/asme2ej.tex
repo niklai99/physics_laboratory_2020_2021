@@ -181,11 +181,10 @@ concentra unicamente sulle emissioni di raggi X e gamma con un'intensità di alm
 ciascuno di questi, si costruisce una funzione gaussiana con media fissata in quanto l'energia è nota
 (\autoref{t:probabilities}) con l'asse orizzontale preliminarmente calibrato. La larghezza della gaussiana
 (sigma), invece, si compone di due contributi in somma quadratica: il primo è una componente fissa, di rumore, che verrà
-denotata come $\eta$, mentre il secondo è la componente di risoluzione intrinseca $\alpha$ proporzionale alla radice
+denotata come $\eta$, mentre il secondo è la componente di risoluzione intrinseca, proporzionale alla radice
 quadrata dell'energia del fotone preso in considerazione. \\
-Il fit viene effettuato minimizzando un $\chi^2$ composto dalla somma quadratica dei singoli $\chi^2$ dati da ciascun
-contributo gaussiano, ottendendo in questo modo quanto raffigurato in \autoref{i:multifit}. In particolare, sono stati
-scelti come parametri liberi il contributo di rumore $\eta$ e di risoluzione intrinsceca $\alpha$, assieme ai fattori di
+La funzione fittante è quindi data dalla somma delle cinque gaussiane, ottendendo in questo modo quanto raffigurato in \autoref{i:multifit}. In particolare, sono stati
+scelti come parametri liberi il contributo di rumore $\eta$ e la costante di proporzionalità $\alpha$ della risoluzione intrinsceca, assieme ai fattori di
 normalizzazione $\{\text{N}_i\}$ relativi ad ogni singolo picco considerato. Osservando quindi il grafico in
 \autoref{i:multifit}, la curva in rosso rappresenta il fit complessivo dello spettro: questa segue in modo più che
 soddisfacente il profilo delle emissioni dell'Am-241. Le curve tratteggiate, invece, corrispondono ai singoli contributi
@@ -395,8 +394,8 @@ ottengono:
 
  \vspace{-15pt}
 \begin{align*}
-    \mu_{\rho}(\text{Ag}) &= 5.3\pm 0.2 \si{\centi\metre^2\gram^{-1}} & \lambda &= 0.3 \\
-    \mu_{\rho}(\text{Cu}) &= 1.5\pm 0.1 \si{\centi\metre^2\gram^{-1}} & \lambda &= 0.5 
+    \mu_{\rho}(\text{Ag}) &= 5.3\pm 0.2 \,\si{\centi\metre^2\gram^{-1}} & \lambda &= 0.3 \\
+    \mu_{\rho}(\text{Cu}) &= 1.5\pm 0.1 \,\si{\centi\metre^2\gram^{-1}} & \lambda &= 0.5 
     \vspace{-5pt}
 \end{align*}
 
