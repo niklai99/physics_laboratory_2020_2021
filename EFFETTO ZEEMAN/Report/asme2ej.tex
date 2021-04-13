@@ -1,11 +1,18 @@
 %%% use twocolumn and 10pt options with the asme2ej format
 \documentclass[twocolumn,10pt]{asme2ej}
+\usepackage[italian]{babel}
 
+% \usepackage[none]{hyphenat}% don't break words
+
+\usepackage[utf8]{inputenc}
 \usepackage{epsfig} %% for loading postscript figures
 \usepackage{subfigure}
 \usepackage{titling}
+\usepackage{multicol}
+\usepackage{booktabs}
 \usepackage{siunitx}
 \usepackage{amsmath}
+\usepackage{tikz,mathtools}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -13,12 +20,18 @@
 \fancyhead{}
 \fancyfoot{}
 \fancyfoot[R]{\thepage}
+\usepackage{caption}
+\captionsetup[table]{name=Tab.}
+\captionsetup[figure]{name=Fig.}
 
-\def\figureautorefname{Fig.} 
-\def\equationautorefname{Eq.} 
-\def\sectionautorefname{Sez.} 
-\def\subsectionautorefname{Sez.} 
-\def\subsubsectionautorefname{Sez.}
+
+
+\addto\extrasitalian{\renewcommand{\figureautorefname}{Fig.}}
+\addto\extrasitalian{\renewcommand{\tableautorefname}{Tab.}}
+\addto\extrasitalian{\renewcommand{\equationautorefname}{Eq.}} 
+\addto\extrasitalian{\renewcommand{\sectionautorefname}{Sez.}} 
+\addto\extrasitalian{\renewcommand{\subsectionautorefname}{Sez.}}
+\addto\extrasitalian{\renewcommand{\subsubsectionautorefname}{Sez.}}
 
 
 \pretitle{\begin{center}\linespread{1.2}\huge}
@@ -81,16 +94,16 @@
 \section{Introduzione}\label{s:introduzione}
 
 L'effetto Zeeman normale è un fenomeno fisico che consiste nella separazione delle righe di emissione di un atomo
-eccitato in presenza di un campo magnetico esterno $\vec{\text{B}}$. L'interazione con il campo è riconducibile a onde
-elettromagnetiche emesse da dipoli oscillanti, per cui il moto orbitale dell'elettrone può essere scomposto in un moto
-oscillatorio lungo la direzione di $\vec{\text{B}}$ ($\Delta \text{m} = 0$) e un moto rotatorio destrogiro o levogiro
-attorno a $\vec{\text{B}}$ ($\Delta \text{m} = \pm1$). Nell'esperienza si analizza tale effetto nell'atomo di Neon,
-studiando la riga spettrale a $585.3 \,\si{\nano\metre}$ data dalla transizione $^1\text{S}_0 \rightarrow ^1\text{P}_1$,
-cioè tra stati con spin $\text{S} = 0$ e $\Delta \text{L}= \Delta \text{J} = 1$. \\
+eccitato in presenza di un campo magnetico esterno $\vec{\text{B}}$. L'interazione con il campo è rappresentabile da
+onde elettromagnetiche emesse da dipoli oscillanti, perciò il moto orbitale dell'elettrone può essere scomposto in un
+moto oscillatorio lungo la direzione di $\vec{\text{B}}$ ($\Delta \text{m} = 0$) e un moto rotatorio destrogiro o
+levogiro attorno a $\vec{\text{B}}$ ($\Delta \text{m} = \pm1$). Nell'esperienza si analizza tale effetto nell'atomo di
+Neon, studiando la riga spettrale a $585.3 \,\si{\nano\metre}$ data dalla transizione $^1\text{S}_0 \rightarrow
+^1\text{P}_1$, cioè tra stati con spin $\text{S} = 0$ e $\Delta \text{L}= \Delta \text{J} = 1$. \\
 Si utilizza lo spettrometro \textit{Zeeman 2} e come sorgente di luce una lampada al Neon a scarica a bagliore
 alimentata in corrente continua: le incertezze sulle dimensioni dei componenti, in particolare della lamina di Lummer, e
 degli altri dati di costruzione sono trascurabili rispetto alle incertezze statistiche, mentre l'incertezza relativa sul
-valore del campo magnetico $\vec{\text{B}}$ risulta essere dell' $1\%$.   \\
+valore del campo magnetico $\vec{\text{B}}$ risulta essere dell'$1\%$.
 
 Ai fini dello studio dell'effetto Zeeman, in \autoref{s:neon} verrà effettuata una breve analisi dello spettro emissivo
 del Neon volta a ricercare la riga di interesse a $585.3 \,\si{\nano\metre}$. Successivamente, in \autoref{s:risolvente}
@@ -101,14 +114,14 @@ campo magnetico esterno, sia in assenza di un filtro polarizzatore, sia in due d
 
 
 
-
+\vspace{-10pt}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Spettro di emissione del Neon}\label{s:neon}
 
 Si vuole inizialmente studiare lo spettro emissivo del Neon per individuare correttamente la riga a $585.3
 \,\si{\nano\metre}$, corrispondente alla transizione di interesse.\\
-Lo spettro viene acquisito con il CCD posizionato orizzontalmente, a campo magnetico spento, e in assenza della lamina
-di Lummer. Per l'acquisizione dello spettro, si utilizza un tempo di integrazione pari a $100 \,\si{\milli\second}$. \\
+Lo spettro viene acquisito con il CCD posizionato orizzontalmente, a campo magnetico spento e in assenza della lamina di
+Lummer. Per l'acquisizione si utilizza un tempo di integrazione pari a $100 \,\si{\milli\second}$. \\
 Si effettua poi una calibrazione dell'asse orizzontale, convertendo così il numero di pixel relativi al CCD in lunghezze
 d'onda. A tale scopo, si predispone una regressione lineare delle lunghezze d'onda delle principali righe spettrali del
 Neon in funzione del numero di pixel corrispondenti ai picchi rivelati dal detector. 
@@ -116,20 +129,21 @@ Neon in funzione del numero di pixel corrispondenti ai picchi rivelati dal detec
 \begin{figure*}
     \centering
     \includegraphics[width=\textwidth]{../Spectrum/SpectrumPlots/spettro1d_Boff.png}
-    \caption{Spettro emissivo del Neon con asse orizzontale calibrato}
+    \caption{Spettro di emissione del Neon con asse orizzontale calibrato}
     \label{i:spettro1d}
+    \vspace{-10pt}
 \end{figure*}
 
 
-In \figurename\ref{i:spettro1d} viene rappresentato lo spettro di emissione con l'asse orizzontale calibrato: si
+In \autoref{i:spettro1d} viene rappresentato lo spettro di emissione con l'asse orizzontale calibrato: si
 osservano evidenti transizioni nella regione $580-680 \,\si{\nano\metre}$, in particolare la riga più intensa a $640.2
-\,\si{\nano\metre}$ e la riga di interesse per l'esperienza a $585.3 \,\si{\nano\metre}$.\\
-Si vuole far notare, infine, che in presenza di un campo magnetico esterno lo spettro rimane invariato a meno
-dell'intensità della radiazione rivelata, che aumenta significativamente. 
+\,\si{\nano\metre}$ e la riga di interesse per l'esperienza a $585.3 \,\si{\nano\metre}$. Si sottolinea che, in presenza
+di un campo magnetico esterno, lo spettro rimane invariato a meno dell'intensità della radiazione rivelata, che aumenta
+significativamente. 
 
 
 
-
+\vspace{-10pt}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Potere risolvente dell'apparato}\label{s:risolvente}
 
@@ -143,9 +157,8 @@ Il potere risolvente R dell'apparato sperimentale si definisce come
 \end{equation}
 
 dove, nel caso di interesse, $\lambda = 585.3 \,\si{\nano\metre}$ e $\Delta\lambda$ corrisponde alla larghezza a metà
-altezza (in nanometri) dei picchi di interferenza causati dalla lamina di Lummer. Per prima cosa, quindi, sarà
-necessario convertire la larghezza dei picchi da pixel del CCD a nanometri: ponendosi nell'approssimazione di luce
-radente vale:
+altezza (in nanometri) dei picchi di interferenza causati dalla lamina di Lummer. Innanzitutto, è necessario convertire
+la larghezza dei picchi da pixel del CCD a nanometri: ponendosi nell'approssimazione di luce radente vale:
 
 \vspace{-10pt}
 \begin{equation}
@@ -155,7 +168,7 @@ radente vale:
 \end{equation}
 
 Tale quantità corrisponde alla distanza approssimata tra due picchi di interferenza, espressa in nanometri, e dipende
-quindi sia dalla lunghezza d'onda della riga $\lambda$ sia dallo spessore della lamina di Lummer d.\\
+quindi sia dalla lunghezza d'onda della riga $\lambda$ sia dallo spessore d della lamina di Lummer.\\
 Conoscendo quindi $\Delta\lambda_{\text{r.u.}}$ è possibile ricavare la larghezza a metà altezza, espressa in nanometri,
 dei picchi di interferenza secondo
 
@@ -167,16 +180,15 @@ dei picchi di interferenza secondo
 \end{equation}
 
 dove $\Delta x_{\text{r.u.}}$ corrisponde alla distanza tra due picchi espressa in pixel e $\Delta x$ rappresenta la
-larghezza a metà altezza dei picchi espressa in pixel.  \\
+larghezza a metà altezza dei picchi espressa in pixel.  
 
 Si procede quindi restringendo l'intervallo di acquisizione ad un intorno della riga evidenziata in
 \autoref{i:spettro1d}: viene quindi ruotato il CCD in posizione verticale e viene inserita la lamina di Lummer. Il tempo
-di integrazione scelto per l'acquisizione è di $800\,\si{\milli\second}$. Si sottolinea inoltre che il campo magnetico
-rimane spento. \\
+di integrazione scelto per l'acquisizione è di $800\,\si{\milli\second}$, in assenza di campo magnetico. \\
 Il risultato dell'acquisizione corrisponde allo spettro bidimensionale raffigurato in \autoref{i:spettro2d_Boff} (a
-sinistra). A destra invece viene presentata la proiezione sull'asse orizzontale di tale istogramma. In particolare, gli
-istogrammi rappresentati in \autoref{i:spettro2d_Boff} sono ottenuti sottraendo il rumore di fondo: nella figura a
-sinistra, infatti, si nota chiaramente la presenza della riga di emissione. 
+sinistra) ed a destra invece viene presentata la proiezione sull'asse orizzontale di tale istogramma. In particolare,
+gli istogrammi rappresentati in \autoref{i:spettro2d_Boff} sono ottenuti sottraendo il rumore di fondo: nella figura a
+sinistra, infatti, riga di emissione è ben evidenziata. 
 
 \begin{figure}
     \centering
@@ -186,20 +198,20 @@ sinistra, infatti, si nota chiaramente la presenza della riga di emissione.
     \vspace{-10pt}
 \end{figure}
 
-\noindent Per calcolare ora le grandezze di interesse, quali la spaziatura tra picchi e la loro larghezza a metà
-altezza, si considera la proiezione dello spettro sull'asse verticale, evidenziando in questo modo le frange di
-interferenza causate dalla lamina. Per evitare di ottenere un campione di misure statisticamente dipendenti di $\Delta
-x_{\text{r.u.}}$ e $\Delta x$ (e di conseguenza di $\Delta\lambda$ ed R, calcolate a partire dalle prime) si sceglie di
-suddividere i picchi di interferenza in triplette contigue. In questo modo, la spaziatura tra i picchi viene calcolata
-come media aritmetica della distanza tra i due picchi esterni della tripletta rispetto a quello centrale. Infine, la
-larghezza a metà altezza viene misurata unicamente per il picco centrale. Come si può notare in
-\autoref{i:spettro2d_Boff_ProjY}, in particolare nel riquadro in alto a sinistra, tutti i picchi vengono fittati da una
-funzione gaussiana: la spaziatura tra i picchi viene calcolata utilizzando il centroide delle gaussiane esterne mentre
-la FWHM del picco centrale si misura a partire dal valore massimo del fit. Si ottiene, così facendo, un campione di sei
-misure di $\Delta x_{\text{r.u.}}$ e $\Delta x$ tra loro statisticamente indipendenti. Si procede dunque al calcolo di
-$\Delta\lambda$ secondo \autoref{e:dlambda}, ottenendo infine un campione di poteri risolventi R calcolati seguendo
-\autoref{e:r}. Per fornire una stima unica che sia rappresentativa dell'intero apparato si decide di effettuare la media
-aritmetica delle misure di R, ottenendo così un potere risolvente pari a 
+Per calcolare ora le grandezze di interesse, ovvero la spaziatura tra picchi e la loro larghezza a metà altezza, si
+considera la proiezione dello spettro sull'asse verticale, evidenziando in questo modo le frange di interferenza causate
+dalla lamina. Per evitare di ottenere un campione di misure statisticamente dipendenti di $\Delta x_{\text{r.u.}}$ e
+$\Delta x$ (e di conseguenza di $\Delta\lambda$ ed R, calcolate a partire dalle prime) si sceglie di suddividere i
+picchi di interferenza in triplette contigue. In questo modo, la spaziatura tra i picchi viene calcolata come media
+aritmetica della distanza tra i due picchi esterni della tripletta rispetto a quello centrale. Infine, la larghezza a
+metà altezza viene misurata unicamente per il picco centrale. Come si può notare in \autoref{i:spettro2d_Boff_ProjY}, in
+particolare nel riquadro in alto a sinistra, tutti i picchi vengono fittati da una funzione gaussiana: la spaziatura tra
+i picchi viene calcolata utilizzando il centroide delle gaussiane esterne mentre la FWHM del picco centrale si misura a
+partire dal valore massimo del fit. Si ottiene, così facendo, un campione di sei misure di $\Delta x_{\text{r.u.}}$ e
+$\Delta x$ tra loro statisticamente indipendenti. Si procede dunque al calcolo di $\Delta\lambda$ secondo
+\autoref{e:dlambda}, ottenendo infine un campione di poteri risolventi R calcolati seguendo \autoref{e:r}. Per fornire
+una stima unica che sia rappresentativa dell'intero apparato si decide di effettuare la media aritmetica delle misure di
+R, ottenendo così un potere risolvente pari a 
 
 \begin{figure*}
     \centering
@@ -213,56 +225,53 @@ aritmetica delle misure di R, ottenendo così un potere risolvente pari a
 \begin{align*}
     \text{R} &= (4.71 \pm 0.10)\cdot 10^4  & \frac{\sigma_{\text{R}}}{\text{R}} &\approx 2\%
     \label{e:R_result}
-\vspace{-10pt}
 \end{align*}
+\vspace{-10pt}
 
+Secondo questa stima, il potere risolvente dell'apparato risulta sufficiente per rivelare la separazione delle righe
+dovuta all'effetto Zeeman, in quanto superiore alla minima richiesta teorica ($\sim 3.7 \cdot 10^4$). 
 
-Risulta quindi che il potere risolvente dell'apparato sia sufficiente da poter rivelare la separazione delle righe
-dovuta all'effetto Zeeman. \\
-\indent Prima di studiare nel dettaglio l'effetto Zeeman e la sua manifestazione, si preferisce soffermare l'attenzione
-ancora brevemente sul grafico in \autoref{i:spettro2d_Boff_ProjY} relativo alle frange di interferenza. Inizialmente, si
-vuole far notare che la forma dei picchi è notevolmente variabile in relazione alla posizione di rivelazione sul CCD. Si
-è dunque scelto di effettuare fit gaussiani per estrapolare la posizione del centroide e la larghezza per ottenere delle
-misure di tali quantità più uniformi tra loro al variare della posizione. Così facendo, infatti, la stima del potere
-risolvente risulta essere più precisa di qualche unità percentuale rispetto ad una stima ricavata considerando il
-massimo e la larghezza dei picchi stessi (che risultano essere quantità molto variabili e spesso il massimo del picco
-non è rappresentativo del centroide della distribuzione). Inoltre, dal grafico si può notare un accentuato effetto di
-aberrazione, dovuto alle lenti presenti nell'apparato. Come meglio evidenziato nel grafico in
-\autoref{i:spacing_trend_Boff}, questo effetto consiste nella diminuzione progressiva della distanza tra picchi
-consecutivi e della loro larghezza. In particolare, la spaziatura tra frange di interferenza (a sinistra) segue
-perfettamente un andamento polinomiale di terzo grado (fit in arancione), mentre la loro larghezza (a destra) segue
-piuttosto fedelmente un trend lineare. A causa di questo effetto molto influente sulle misure necessarie per il calcolo
-del potere risolvente, si è deciso di ricavare un campione di R e successivamente di calcolarne la media, piuttosto che
-mediare direttamente i set di dati relativi alle prime. Siccome l'effetto di aberrazione influenza sia la distanza sia
-la larghezza in modo sufficientemente simile, la struttura di \autoref{e:dlambda} porta ad una compensazione
-soddisfacente di questo fenomeno: il campione di poteri risolventi, infatti, risulta essere composto da misure
-casualmente oscillanti e non è stato identificato nessun trend rilevante. Si può quindi concludere che la stima fornita
-per R sia robusta e, a meno di approssimazioni, rappresentativa dell'effettivo potere risolvente dell'apparato.
+Prima di studiare nel dettaglio l'effetto Zeeman e la sua manifestazione, si esaminano più approfonditamente le frange
+di interferenza in \autoref{i:spettro2d_Boff_ProjY} relativo alle frange di interferenza. Inizialmente, si nota che la
+forma dei picchi è notevolmente variabile in relazione alla posizione di rivelazione sul CCD. Si è dunque scelto di
+effettuare fit gaussiani per estrapolare la posizione del centroide e la larghezza per ottenere delle misure di tali
+quantità più uniformi tra loro al variare della posizione. Così facendo, infatti, la stima del potere risolvente risulta
+essere più precisa di qualche unità percentuale rispetto ad una stima ricavata considerando il massimo e la larghezza
+dei picchi stessi (che risultano essere quantità molto variabili e spesso il massimo del picco non è rappresentativo del
+centroide della distribuzione). 
+Inoltre, dal grafico si può notare un accentuato effetto di aberrazione dovuto alle lenti presenti nell'apparato. Come
+meglio evidenziato nel grafico in \autoref{i:spacing_trend_Boff}, questo effetto consiste nella diminuzione progressiva
+della distanza tra picchi consecutivi e della loro larghezza. In particolare, la spaziatura tra frange di interferenza
+(a sinistra) segue perfettamente un andamento polinomiale di terzo grado (il corrispondente fit è rappresentato dalla
+linea tratteggiata), mentre la loro larghezza (a destra) segue piuttosto fedelmente un trend lineare. A causa di questo
+effetto molto influente sulle misure necessarie per il calcolo del potere risolvente, si è deciso di ricavare un
+campione di R e successivamente di calcolarne la media, piuttosto che mediare direttamente i set di dati relativi alle
+prime. Siccome l'effetto di aberrazione influenza sia la distanza sia la larghezza in modo sufficientemente simile, la
+struttura di \autoref{e:dlambda} porta ad una compensazione soddisfacente di questo fenomeno: il campione di poteri
+risolventi, infatti, risulta essere composto da misure casualmente oscillanti e non è stato identificato nessun trend
+rilevante. Si può quindi concludere che la stima fornita per R sia robusta e, a meno di approssimazioni, rappresentativa
+dell'effettivo potere risolvente dell'apparato.
 
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{../Plots/Boff_spacing_trend.png}
-    \caption{Andamento della distanza tra i picchi (a sinistra) e della larghezza dei picchi (a destra) in funzione della posizione}
+    \caption{Andamento della distanza tra i picchi (a sinistra) e della larghezza (a destra) in funzione della posizione}
     \label{i:spacing_trend_Boff}
     \vspace{-10pt}
 \end{figure}
 
-% QUESTO SERVE PER METTERE DUE FIGURE PICCOLE UNA AFFIANCO ALL'ALTRA
-% \begin{figure*}[htp]
-%     \centering
-%     \subfigure[Spettro bidimensionale $\text{B}_{\text{off}}$]{\includegraphics[width=0.5\textwidth]{../Plots/Boff_2d_spectrum.png}}\label{i:spettro2d_Boff}\hfill
-%     \subfigure[Spacing trend]{\includegraphics[width=0.5\textwidth]{../Plots/Boff_spacing_trend.png}}\label{i:spacing_trend_Boff}
-%   \end{figure*}
 
 
 
+\vspace{-10pt}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Fattore di Landè}\label{s:lande}
 
-Disponendo di un apparato strumentale con sufficiente potere risolutivo, ci si propone ora di studiare la manifestazione
-dell'effetto Zeeman, ovvero la separazione dei livelli energetici e, di conseguenza, delle righe spettrali. Come
-verifica della corretta osservazione del fenomeno, si vuole misurare il fattore di Landè $\text{g}_{\text{J}}$ che, 
-data la transizione $^1\text{S}_0 \rightarrow ^1\text{P}_1$ in studio, deve risultare pari ad uno.
+Appurato che si dispone di una strumentazione con sufficiente potere risolvente, ci si propone ora di studiare la
+manifestazione dell'effetto Zeeman, ovvero la separazione dei livelli energetici e, di conseguenza, delle righe
+spettrali. Come verifica della corretta osservazione del fenomeno, si vuole misurare il fattore di Landè
+$\text{g}_{\text{J}}$ che, data la transizione $^1\text{S}_0 \rightarrow ^1\text{P}_1$ in analisi, deve risultare pari
+ad uno.
 
 Il fattore di Landè si ricava dalla relazione
 
@@ -301,8 +310,8 @@ separazione energetica dalla relazione
 Si procede dunque impostando il campo magnetico ad un'intensità di $\text{B} = 0.522 \pm 0.005 \,\si{\tesla}$ in
 direzione parallela al fascio. Successivamente, in analogia con quanto riportato in \autoref{s:risolvente}, viene
 identificata la riga a $\lambda = 585.3 \,\si{\nano\metre}$ e viene acquisito uno spettro bidimensionale in uno stretto
-intorno del picco di interesse usando come tempo di integrazione $800\,\si{\milli\second}$. Tale spettro, assieme alla
-proiezione sull'asse orizzontale, è raffigurato in \autoref{i:spettro2d_Bon}. \\
+intorno del picco di interesse usando come tempo di integrazione $800\,\si{\milli\second}$ (\autoref{i:spettro2d_Bon}).
+\\
 Per osservare lo splitting causato dalla presenza del campo magnetico si considera dunque la proiezione dello spettro
 sull'asse verticale, evidenziando così le frange di interferenza. Come si può notare immediatamente osservando il
 grafico in \autoref{i:spettro2d_Bon_ProjY}, a differenza di quanto riportato in \autoref{i:spettro2d_Boff_ProjY} i
@@ -319,7 +328,7 @@ picchi ora presentano una evidente separazione, pressochè simmetrica, a partire
 \noindent Volendo essere più precisi nello studio, risulta necessario misurare la separazione dei picchi causata dal
 campo magnetico. Successivamente, tale distanza (misurata in pixel) viene convertita in nanometri sfruttando la
 relazione in \autoref{e:dlambda}: $\Delta\lambda_{\text{r.u.}}$ rimane invariata rispetto alla sezione precedente,
-$\Delta x_{\text{r.u.}}$ rappresenta nuovamente la distanza tra due frange di interferenza ma necessita di essere
+$\Delta x_{\text{r.u.}}$ rappresenta nuovamente la distanza tra due frange di interferenza, ma necessita di essere
 ricalcolata con maggior accortezza, mentre $\Delta x$ ora rappresenza invece la separazione dei picchi espressa in
 pixel. In questo modo, sfruttando \autoref{e:dlambda}, si ricava una stima per $\delta\lambda = 2
 \Delta\lambda_{\text{zee}}$. In analogia con quanto riportato in \autoref{s:risolvente}, si suddividono le frange di
@@ -328,18 +337,18 @@ fittare i picchi separati in quanto non presentano una sufficiente forma gaussia
 necessarie si è dunque costretti ad utilizzare i dati stessi, con la consapevolezza che questo tipo di approccio avrà un
 impatto non indifferente sulla precisione delle stime successive.
 
-Per calcolare $\Delta x_{\text{r.u.}}$, la strategia adottata è la seguente. Inizialmente, viene identificata
+Per calcolare $\Delta x_{\text{r.u.}}$, la strategia adottata è la seguente. Inizialmente viene identificata
 (approssimativamente) la posizione centrale dei picchi separati dall'effetto del campo effettuando una media delle
 posizioni dei due massimi splittati. Successivamente, si calcolano la distanza tra il primo picco e quello centrale e
-tra quest'ultimo ed il terzo picco della tripletta. Quindi, $\Delta x_{\text{r.u.}}$ viene stimata come media di queste
-due distanze. Per quanto riguarda $\Delta x$, invece, si considera la distanza di separazione dei picchi della frangia
-centrale. \\
+quella tra quest'ultimo ed il terzo picco della tripletta. Quindi, $\Delta x_{\text{r.u.}}$ viene stimata come media di
+queste due distanze. Per quanto riguarda $\Delta x$, invece, si considera la distanza di separazione dei picchi della
+frangia centrale. \\
 Si ottiene quindi un campione di misure di $\Delta\lambda_{\text{zee}}$ (la cui media risulta essere
 $\langle\Delta\lambda_{\text{zee}}\rangle = 0.00863 \pm 0.00012 \,\si{\nano\metre}$, in accordo con le previsioni del
 fenomeno): utilizzando la relazione in \autoref{e:dEzee} viene quindi calcolato un campione relativo alla separazione
 energetica $\Delta \text{E}_{\text{zee}}$. Successivamente, esplicitando il fattore di Landè da \autoref{e:gL}, si
 ottiene un campione di $\text{g}_{\text{J}}$: a queste misure viene associata un'incertezza data dalla propagazione
-degli errori
+degli errori secondo
 
 \vspace{-15pt}
 \begin{equation}
@@ -354,13 +363,12 @@ degli errori
 \noindent dove $\sigma_{\Delta \text{E}_{\text{zee}}}$ è lo scarto quadratico medio del campione di misure relative alla
 separazione energetia, mentre $\sigma_{\text{B}}$ è l'$1\%$ del valore del campo magnetico esterno. 
 
-Infine, la stima del fattore di Landè viene trovata effettuando una media pesata tra le misure del campione, ottenendo
+La stima del fattore di Landè viene quindi trovata effettuando una media pesata tra le misure del campione, ottenendo
 così 
 
-\vspace{-15pt}
+\vspace{-18pt}
 \begin{align*}
     \text{g}_{\text{J}} &= 1.033 \pm 0.014 & \frac{\sigma_{\text{g}_{\text{J}}}}{\text{g}_{\text{J}}} &\approx 1.4\%
-    \vspace{-5pt}
 \end{align*}
 
 \begin{figure}
@@ -371,21 +379,22 @@ così
     \vspace{-20pt}
 \end{figure}
 
+\vspace{-5pt}
 Il fattore così misurato risulta essere in soddisfacente accordo con le previsioni teoriche, presentando una
 compatibilità pari a $2.4$ con tale valore di aspettazione. Ovviamente, a causa dell'approccio, piuttosto
-approssimativo, utilizzato per analizzare i dati, la non ottima compatibilità con le aspettative teoriche è stata
-prevista: volendo indagare più a fondo si propone un breve studio sull'andamento dello splitting Zeeman delle frange in
-funzione della posizione. Come si può notare in \autoref{i:spacing_trend_Bon}, in particolare osservando il grafico a
-sinistra, l'effetto di aberrazione, oltre ad influire sulla distanza tra picchi e sulla loro larghezza come evidenziato
-in \autoref{s:risolvente}, modifica la speparazione delle frange al variare della posizione. L'andamento di tale
-separazione, infatti, segue un trend piuttosto lineare che ricorda in particolar modo l'andamento della larghezza dei
-picchi riportato in \autoref{i:spacing_trend_Boff}. Si vuole ora verificare che la struttura di \autoref{e:dlambda}, che
-presenta il rapporto tra la separazione dei picchi dovuta al campo magnetico e la distanza tra le frange, sia in grado
-di compensare in modo sufficiente l'effetto di aberrazione. Nel grafico a destra in \autoref{i:spacing_trend_Bon} si può
-osservare tale rapporto in funzione della posizione delle frange: come da aspettative, l'andamento è pressochè casuale
-con delle leggere oscillazioni attorno ad un valore centrale. Tuttavia, si riesce ad individuare un leggero trend
+approssimativo, utilizzato per analizzare i dati, la non ottima compatibilità con le aspettative teoriche è una
+conseguenza prevista: volendo indagare più a fondo si propone un breve studio sull'andamento dello splitting Zeeman
+delle frange in funzione della posizione. Come si può notare in \autoref{i:spacing_trend_Bon}, in particolare osservando
+il grafico a sinistra, l'effetto di aberrazione, oltre ad influire sulla distanza tra picchi e sulla loro larghezza come
+evidenziato in \autoref{s:risolvente}, modifica la speparazione delle frange al variare della posizione. L'andamento di
+tale separazione, infatti, segue un trend piuttosto lineare che ricorda in particolar modo l'andamento della larghezza
+dei picchi riportato in \autoref{i:spacing_trend_Boff}. Si vuole ora verificare che la struttura di \autoref{e:dlambda},
+che presenta il rapporto tra la separazione dei picchi dovuta al campo magnetico e la distanza tra le frange, sia in
+grado di compensare in modo sufficiente l'effetto di aberrazione. Nel grafico a destra in \autoref{i:spacing_trend_Bon}
+si può osservare tale rapporto in funzione della posizione delle frange: come da aspettative, l'andamento è pressochè
+casuale con leggere oscillazioni attorno ad un valore centrale. Tuttavia, si riesce ad individuare un leggero trend
 decrescente, che potrebbe aver influito sulla stima fornita per il fattore di Landè. Si ipotizza, infine, che una
-procedura di analisi dati più sofisticata rispetto al solo utilizzo dei dati sperimentali per la stima di quantità
+procedura di analisi dati più sofisticata rispetto al solo utilizzo dei dati sperimentali per la stima delle quantità
 necessarie porterebbe ad una distribuzione più coerente di misure e, di conseguenza, una stima di $ \text{g}_{\text{J}}$
 più accurata e precisa.
 
@@ -417,9 +426,9 @@ magnetico esterno orientato ortogonalmente rispetto alla direzione di propagazio
 contributi associati a $\Delta \text{m} = 0$ presentano polarizzazione lineare lungo la direzione del campo, mentre
 quelli relativi a $\Delta \text{m} = \pm 1$ sono, in questo caso, polarizzati linearmente nel piano ortogonale alla
 direzione del campo (nella configurazione in cui il campo magnetico è parallelo alla direzione di propagazione della
-radiazione invece la polarizzazione di questi contributi è circolare). In questo caso, quindi, non avendo la soppressione della transizione centrale caratterizzata da $\Delta
-\text{m} = 0$, ci si aspetta di osservare un tripletto, cioè la formazione di tre righe equispaziate visibili nella
-direzione trasversa al campo. \\
+radiazione invece la polarizzazione di questi contributi è circolare). In questo caso, quindi, non avendo la
+soppressione della transizione centrale caratterizzata da $\Delta \text{m} = 0$, ci si aspetta di osservare un
+tripletto, cioè la formazione di tre righe equispaziate visibili nella direzione trasversa al campo. \\
 Successivamente, si inserisce un filtro polarizzatore di fronte alla lente condensante, che viene impiegato in due
 configurazioni, non note a priori. Nel caso in cui il polarizzatore faccia passare prevalentemente la componente della
 luce polarizzata parallelamente alla direzione del campo, allora si osserva una sola riga; se invece, ruotando il
