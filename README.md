@@ -17,5 +17,5 @@
   * [Vanessa Cerrone](https://github.com/vanessacerrone)
   * [Simone Cigagna](https://github.com/simonecig)
 * Esperienze:
-  - [ ] [EFFETTO ZEEMAN](/EFFETTO%20ZEEMAN)
-  - [ ] [FOTODIODO](/FOTODIODO/)
+  - [x] [EFFETTO ZEEMAN](/EFFETTO%20ZEEMAN)
+  - [x] [FOTODIODO](/FOTODIODO/)
