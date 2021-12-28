@@ -50,12 +50,9 @@ def multi_gauss(X,N0,N1,N2,N3,N4,N5,sigmaNoise, sigmaEn,k):
     for i in range(len(peaks)):
         mean = peaks[i]
 
-        if(i!=len(peaks)-1):
-            sigma=compute_sigma(sigmaNoise,sigmaEn,mean)
-        else: sigma=k 
-
+        sigma = compute_sigma(sigmaNoise,sigmaEn,mean) if (i!=len(peaks)-1) else k
         v+=gauss(X,N[i],mean,sigma)
-        #v += N[i]* np.exp( -(X-mean)**2/(2*sigma**2) )
+            #v += N[i]* np.exp( -(X-mean)**2/(2*sigma**2) )
 
     return v
 
@@ -112,7 +109,7 @@ def main():
     # get gaussian fit maximum 
     # NB: max = - min
     # print("============ Axis calibration"
-    max_list= fmin(lambda X: -gauss(X,N,*par60), x0=[500]) 
+    max_list= fmin(lambda X: -gauss(X,N,*par60), x0=[500])
     # print("xmax:", max_list[0])
 
     # get calibration scale factor
@@ -120,7 +117,7 @@ def main():
 
     # calibrate x values
     data.X = data.X*calib 
-    
+
 
     # plot calibrated histogram
     fig, ax = plt.subplots(ncols=1, nrows=2, figsize=(20,9.5),
@@ -133,7 +130,7 @@ def main():
 
 
     # ==== multi-peak fit ====
-    
+
     # start from x>10
     xmin=12
     Xn=np.array(data.X[data.X>12])
@@ -141,10 +138,6 @@ def main():
 
     # multi-peak fit 
     par,cov=curve_fit(multi_gauss,Xn,Yn,)
-                      #sigma=np.sqrt(Yn),absolute_sigma=True,
-                      #p0=[p14_pr,p18_pr,p21_pr,p26_pr,p60_pr,1,1,0])
-
-
     # plot sum of fits
     xgr = np.linspace(np.amin(data.X),np.amax(data.X),1000)
     ygr = multi_gauss(xgr,*par)
@@ -157,10 +150,7 @@ def main():
 
 
     # print fit results
-    chisq=0
-    for i in range(len(diff)):
-        if Yn[i]!=0: chisq+=diff[i]**2/Yn[i]
-
+    chisq = sum(diff[i]**2/Yn[i] for i in range(len(diff)) if Yn[i]!=0)
     print("\n============ Fit results")
     print("chisq/ndf",round(chisq,2),"/",len(Xn)-len(par)) # FIXME: error!
 
@@ -184,7 +174,7 @@ def main():
 
     xgr1 = np.linspace(9,35,1000)
     for i in range(len(peaks)-1):
-        
+
         # compute sigma_i from fit results
         sigma=compute_sigma(par[len(peaks)],par[len(peaks)+1],peaks[i])
         # compute y_i using fit results
@@ -226,21 +216,21 @@ def main():
 
 
     # text 
-    N1 = format(peaks[0], '1.1f') + ' keV peak:    N = ' + format(par[0], '1.0f') 
-    N2 = format(peaks[1], '1.1f') + ' keV peak:    N = ' + format(par[1], '1.0f') 
-    N3 = format(peaks[2], '1.1f') + ' keV peak:    N = ' + format(par[2], '1.0f') 
-    N4 = format(peaks[3], '1.1f') + ' keV peak:    N = ' + format(par[3], '1.0f') 
-    N5 = format(peaks[4], '1.1f') + ' keV peak:    N = ' + format(par[4], '1.0f') 
-    N6 = format(peaks[5], '1.1f') + ' keV peak:    N = ' + format(par[5], '1.0f') 
+    N1 = format(peaks[0], '1.1f') + ' keV peak:    N = ' + format(par[0], '1.0f')
+    N2 = format(peaks[1], '1.1f') + ' keV peak:    N = ' + format(par[1], '1.0f')
+    N3 = format(peaks[2], '1.1f') + ' keV peak:    N = ' + format(par[2], '1.0f')
+    N4 = format(peaks[3], '1.1f') + ' keV peak:    N = ' + format(par[3], '1.0f')
+    N5 = format(peaks[4], '1.1f') + ' keV peak:    N = ' + format(par[4], '1.0f')
+    N6 = format(peaks[5], '1.1f') + ' keV peak:    N = ' + format(par[5], '1.0f')
     noise = '\u03B7 = ' + format(abs(par[len(peaks)]), '1.2e') + ' keV'
     res = '\u03B1 = ' + format(par[len(peaks)+1], '1.2f')+' keV$^{1/2}$'
 
     ax[0].text(40, 2800, 'Normalization Parameters: ', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
     ax[0].text(41, 1850, N1 + '\n' + N2 + '\n' + N3 + '\n' + N4 + '\n' + N5 + '\n' + N6, fontsize = 18, color = '#000000', transform = ax[0].transData)
-    
+
     ax[0].text(40, 1600, 'Noise Parameter: ', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
     ax[0].text(41, 1400, noise, fontsize = 18, color = '#000000', transform = ax[0].transData)
-    
+
     ax[0].text(40, 1150, 'Intrinsic Resolution Parameter: ', fontsize = 22, fontweight = 'bold', transform=ax[0].transData)
     ax[0].text(41, 950, res, fontsize = 18, color = '#000000', transform = ax[0].transData)
 

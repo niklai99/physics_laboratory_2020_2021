@@ -141,9 +141,7 @@ def arduino_calib_read_low():
 ####### PROPAGAZIONE SUI CURSORI
 def propagazione_cursori(Vdiv, measure):
 
-    sigma = np.sqrt( (0.04 * Vdiv)**2 + (0.015 * measure)**2)
-
-    return sigma
+    return np.sqrt( (0.04 * Vdiv)**2 + (0.015 * measure)**2)
 
 
 

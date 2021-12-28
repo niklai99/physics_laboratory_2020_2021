@@ -158,19 +158,15 @@ def misure_dirette():
     data = {'Valore' : [format(Rin * 1e-3, '1.3f') + ' k\u03A9', format(Rf * 1e-3, '1.2f') + ' k\u03A9', format(Cf * 1e12, '1.0f') + ' pF'], 
             'Errore' : [format(sigma_Rin * 1e-3, '1.3f') + ' k\u03A9', format(sigma_Rf * 1e-3, '1.2f') + ' k\u03A9', format(sigma_Cf * 1e12, '1.0f') + ' pF'],
              'FS' : [format(FS_Rin * 1e-3, '1.0f') + ' k\u03A9', format(FS_Rf * 1e-3, '1.0f') + ' k\u03A9', format(FS_Cf * 1e12, '1.0f') + ' pF']}
-    
-    df = pd.DataFrame(data = data, index = ['Rin', 'Rf', 'Cf'])
 
-    return df
+    return pd.DataFrame(data = data, index = ['Rin', 'Rf', 'Cf'])
 
 
 
 ####### PROPAGAZIONE SUI CURSORI
 def propagazione_cursori(Vdiv, measure):
 
-    sigma = np.sqrt( (0.04 * Vdiv)**2 + (0.015 * measure)**2)
-
-    return sigma
+    return np.sqrt( (0.04 * Vdiv)**2 + (0.015 * measure)**2)
 
 
 
@@ -378,9 +374,7 @@ def compute_Cf_fit():
 ##### CALCOLO COMPATIBILITA
 def compatib(x, y, errx, erry):
 
-    comp = np.abs( x - y ) / np.sqrt( errx**2 + erry**2 )
-
-    return comp
+    return np.abs( x - y ) / np.sqrt( errx**2 + erry**2 )
 
 
 
@@ -390,9 +384,11 @@ def propagazione_T(T, Vin, Vout, Vdivin, Vdivout):
     sigmaL = 0.040
     sigmaK = 0.015
 
-    sigma = T * np.sqrt( (sigmaL * Vdivin / Vin)**2 + (sigmaL * Vdivout / Vout)**2 + 2 * (sigmaK)**2)
-
-    return sigma
+    return T * np.sqrt(
+        (sigmaL * Vdivin / Vin) ** 2
+        + (sigmaL * Vdivout / Vout) ** 2
+        + 2 * (sigmaK) ** 2
+    )
 
 
 
@@ -401,9 +397,7 @@ def propagazione_Tr(T, Vin, Vout, Vdivin, Vdivout):
 
     sigmaL = 0.040
 
-    sigma = T * np.sqrt( (sigmaL * Vdivin / Vin)**2 + (sigmaL * Vdivout / Vout)**2)
-
-    return sigma
+    return T * np.sqrt( (sigmaL * Vdivin / Vin)**2 + (sigmaL * Vdivout / Vout)**2)
 
 
 
@@ -996,9 +990,10 @@ def arduino_calib_read():
 
     Vdiv = np.loadtxt(file_vdiv)
 
-    data = pd.DataFrame({'max_values': list(max_values), 'Vin': list(Vin), 'Vdiv': list(Vdiv)}, columns = ['max_values', 'Vin', 'Vdiv'])
-
-    return data
+    return pd.DataFrame(
+        {'max_values': list(max_values), 'Vin': list(Vin), 'Vdiv': list(Vdiv)},
+        columns=['max_values', 'Vin', 'Vdiv'],
+    )
 
 ####### ARDUINO CALIRATION READ DATA LOW TENSIONS
 def arduino_calib_read_low():
@@ -1221,12 +1216,10 @@ def get_calib_function():
 
 ####### ARDUINO CALIBRATON
 def arduino_calib(ADC):
-    V = arduino_calib_offset + arduino_calib_slope * ADC
-    return V
+    return arduino_calib_offset + arduino_calib_slope * ADC
 
 
 
 ####### ARDUINO CALIBRATON ERROR
 def arduino_calib_err():
-    errV = np.sqrt(arduino_calib_offset_err**2 + arduino_calib_slope_err**2)
-    return errV
+    return np.sqrt(arduino_calib_offset_err**2 + arduino_calib_slope_err**2)

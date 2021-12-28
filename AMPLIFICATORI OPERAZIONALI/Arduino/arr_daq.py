@@ -77,7 +77,7 @@ class ARDconn:
             buf_bytes = self.cnx.read(bytes_to_read)
             buf_read += buf_bytes.decode()
 
-            if  len(buf_read)>0 :
+            if buf_read != '':
 
                 self.bytes_read = len(buf_read)
 
@@ -99,7 +99,7 @@ class ARDconn:
                         msg = "[-] Command " + command_read +\
                               " received tag found, message completed"
                         print(msg)
-                    
+
                     buf_read = buf_read.replace('OK\r\n','OK')
                     break
                 else:
@@ -117,7 +117,7 @@ class ARDconn:
         self.res = buf_read.split('\r\n')
         if command_tag.search(self.res[0]):
           self.command = command_tag.group(1)
-        
+
         if debug:
             msg = "[-] Converted buffer list: " + str(self.res)
             print(msg)
@@ -163,12 +163,11 @@ class ARDconn:
                     f.write("{0} {1}\n".format(index, item))
 
     def __str__(self):
-        obj = "Cmd: " + self.command +\
+        return "Cmd: " + self.command +\
               " Status: " + self.status  +\
               " Reply:  " + self.reply_list +\
               " Bytes written: " + str(self.bytes_written) +\
               " Bytes read: " + str(self.bytes_read)
-        return obj
 
 
 if __name__=='__main__' :

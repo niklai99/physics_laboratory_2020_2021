@@ -158,9 +158,7 @@ def get_data(file_name):
 ####### PROPAGAZIONE SUI CURSORI
 def propagazione_cursori(Vdiv, measure):
 
-    sigma = np.sqrt( (0.04 * Vdiv)**2 + (0.015 * measure)**2)
-
-    return sigma
+    return np.sqrt( (0.04 * Vdiv)**2 + (0.015 * measure)**2)
 
 
 
@@ -173,9 +171,11 @@ def propagazione_T(T, Vin, Vout, Vdivin, Vdivout):
     sigmaL = 0.040
     sigmaK = 0.015
 
-    sigma = T * np.sqrt( (sigmaL * Vdivin / Vin)**2 + (sigmaL * Vdivout / Vout)**2 + 2 * (sigmaK)**2)
-
-    return sigma
+    return T * np.sqrt(
+        (sigmaL * Vdivin / Vin) ** 2
+        + (sigmaL * Vdivout / Vout) ** 2
+        + 2 * (sigmaK) ** 2
+    )
 
 
 
@@ -184,18 +184,14 @@ def propagazione_Tr(T, Vin, Vout, Vdivin, Vdivout):
 
     sigmaL = 0.040
 
-    sigma = T * np.sqrt( (sigmaL * Vdivin / Vin)**2 + (sigmaL * Vdivout / Vout)**2)
-
-    return sigma
+    return T * np.sqrt( (sigmaL * Vdivin / Vin)**2 + (sigmaL * Vdivout / Vout)**2)
 
 
 
 ##### CALCOLO COMPATIBILITA
 def compatib(x, y, errx, erry):
 
-    comp = np.abs( x - y ) / np.sqrt( errx**2 + erry**2 )
-
-    return comp
+    return np.abs( x - y ) / np.sqrt( errx**2 + erry**2 )
 
 
 
@@ -208,10 +204,8 @@ def misure_dirette():
                         format(sigma_C1 * 1e12, '1.0f') + ' pF', format(sigma_C2 * 1e12, '1.0f') + ' pF'],
              'FS' : [format(FS_R1 * 1e-3, '1.0f') + ' k\u03A9', format(FS_R2 * 1e-3, '1.0f') + ' k\u03A9', 
                     format(FS_C1 * 1e12, '1.0f') + ' pF', format(FS_C2 * 1e12, '1.0f') + ' pF']}
-    
-    df = pd.DataFrame(data = data, index = ['R1', 'R2', 'C1', 'C2'])
 
-    return df
+    return pd.DataFrame(data = data, index = ['R1', 'R2', 'C1', 'C2'])
 
 
 
@@ -290,9 +284,7 @@ def get_t_sper():
 ####### READ BODE SIMULATION
 def get_bode_sim(filename):
 
-    data = pd.read_csv(filename, sep = '\t', index_col = False)
-
-    return data
+    return pd.read_csv(filename, sep = '\t', index_col = False)
 
 
 ####### LINEAR FUCTION
@@ -701,9 +693,7 @@ def arduino_ideal_shaper_plot(data, sim):
 
 def get_sim(filename):
 
-    data = pd.read_csv(filename, sep = '\t', index_col = False)
-
-    return data
+    return pd.read_csv(filename, sep = '\t', index_col = False)
 
 
 def arduino_preamp_shaper_plot(data, sim):

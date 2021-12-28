@@ -12,10 +12,7 @@ def doBackgroundOp(bkgfrom, bkgto, hist):
     ncolumns=np.shape(hist)[1]
     for i in range(npixels):
 
-        bkg=0
-        # compute mean background for row i
-        for j in range(bkgfrom-1, bkgto):
-            bkg += hist[i][j+1]
+        bkg = sum(hist[i][j+1] for j in range(bkgfrom-1, bkgto))
         bkg /= (bkgto-bkgfrom)
         #print(bkg)
 
@@ -26,9 +23,7 @@ def doBackgroundOp(bkgfrom, bkgto, hist):
     # update X-projection
     projx = np.empty([ncolumns]) # array to store projection on the X axis
     for i in range(ncolumns):
-        sumpx = 0
-        for j in range(npixels):
-            sumpx += hist[j][i]
+        sumpx = sum(hist[j][i] for j in range(npixels))
         projx[i] = sumpx
 
     return hist, projx
@@ -41,9 +36,7 @@ def projectToY(zhist, projYfrom, projYto, ncolumns):
     print("projecting from", projYfrom, projYto)
 
     for i in range(npixels):
-        sumy = 0
-        for j in range(projYfrom, projYto):
-            sumy+=zhist[i][j]
+        sumy = sum(zhist[i][j] for j in range(projYfrom, projYto))
         projy[i]=sumy
 
     return projy

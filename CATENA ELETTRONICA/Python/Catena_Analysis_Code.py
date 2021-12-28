@@ -33,9 +33,7 @@ sigma_R2a = np.sqrt( (sigma_L* R2a)**2 + sigma_D**2 )
 ####### PROPAGAZIONE SUI CURSORI
 def propagazione_cursori(Vdiv, measure):
 
-    sigma = np.sqrt( (0.04 * Vdiv)**2 + (0.015 * measure)**2 )
-
-    return sigma
+    return np.sqrt( (0.04 * Vdiv)**2 + (0.015 * measure)**2 )
 
 #Generatore
 V_gen = 1.02 #volt
@@ -86,10 +84,8 @@ def misure_dirette():
     data = {'Valore' : [format(R1a * 1e-3, '1.3f') + ' k\u03A9', format(R2a * 1e-3, '1.2f') + ' k\u03A9'], 
             'Errore' : [format(sigma_R1a * 1e-3, '1.3f') + ' k\u03A9', format(sigma_R2a * 1e-3, '1.2f') + ' k\u03A9'],
              'FS' : [format(FS * 1e-3, '1.0f') + ' k\u03A9', format(FS * 1e-3, '1.0f') + ' k\u03A9']}
-    
-    df = pd.DataFrame(data = data, index = ['R1a', 'R2a'])
 
-    return df
+    return pd.DataFrame(data = data, index = ['R1a', 'R2a'])
 
 
 
@@ -102,9 +98,7 @@ def lin(x, a, b):
 ##### CALCOLO COMPATIBILITA
 def compatib(x, y, errx, erry):
 
-    comp = np.abs( x - y ) / np.sqrt( errx**2 + erry**2 )
-
-    return comp
+    return np.abs( x - y ) / np.sqrt( errx**2 + erry**2 )
 
 
 def get_G_th():
@@ -207,9 +201,7 @@ def get_max_values():
     max8 = data8['ADC'].max()
     max9 = data9['ADC'].max()
 
-    max_values = np.array([max1, max2, max3, max4, max5, max6, max7, max8, max9])
-
-    return max_values
+    return np.array([max1, max2, max3, max4, max5, max6, max7, max8, max9])
 
 def compute_charge():
 
@@ -268,9 +260,14 @@ def make_dataframe():
     max_values = get_max_values()
     charge, err_charge = compute_charge()
 
-    data = pd.DataFrame({'max_values': list(max_values), 'charge': list(charge), 'err_charge': list(err_charge)}, columns = ['max_values', 'charge', 'err_charge'])
-
-    return data
+    return pd.DataFrame(
+        {
+            'max_values': list(max_values),
+            'charge': list(charge),
+            'err_charge': list(err_charge),
+        },
+        columns=['max_values', 'charge', 'err_charge'],
+    )
 
 def arduino_calib():
     # READ DATA FROM FILE
@@ -435,9 +432,11 @@ def propagazione_T(T, Vin, Vout, Vdivin, Vdivout):
     sigmaL = 0.040
     sigmaK = 0.015
 
-    sigma = T * np.sqrt( (sigmaL * Vdivin / Vin)**2 + (sigmaL * Vdivout / Vout)**2 + 2 * (sigmaK)**2)
-
-    return sigma
+    return T * np.sqrt(
+        (sigmaL * Vdivin / Vin) ** 2
+        + (sigmaL * Vdivout / Vout) ** 2
+        + 2 * (sigmaK) ** 2
+    )
 
 
 
@@ -446,9 +445,7 @@ def propagazione_Tr(T, Vin, Vout, Vdivin, Vdivout):
 
     sigmaL = 0.040
 
-    sigma = T * np.sqrt( (sigmaL * Vdivin / Vin)**2 + (sigmaL * Vdivout / Vout)**2)
-
-    return sigma
+    return T * np.sqrt( (sigmaL * Vdivin / Vin)**2 + (sigmaL * Vdivout / Vout)**2)
 
 
 def bode_plot(df, sim):
@@ -700,6 +697,4 @@ def freq_taglio_bode():
 ####### READ BODE SIMULATION
 def get_bode_sim(filename):
 
-    data = pd.read_csv(filename, sep = '\t', index_col = False)
-
-    return data
+    return pd.read_csv(filename, sep = '\t', index_col = False)

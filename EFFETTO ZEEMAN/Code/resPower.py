@@ -18,9 +18,9 @@ end = 5640
 # read data from txt file
 def readData():
 
-    data = pd.read_csv(dataPath + 'off.txt', sep = '\t', header = None, names = ['X', 'Y'])
-
-    return data
+    return pd.read_csv(
+        dataPath + 'off.txt', sep='\t', header=None, names=['X', 'Y']
+    )
 
 
 def findPeaks(newData):
@@ -87,16 +87,8 @@ def findPeaks(newData):
 
 def computeSpacing(Peaks):
 
-    C = []
-    Spacing = []
-
-    for i in range(1, len(Peaks)):
-        C.append(Peaks[i] - Peaks[i-1])
-
-    for i in range(1, len(C)):
-        Spacing.append((C[i] + C[i-1]) / 2)
-
-    return Spacing
+    C = [Peaks[i] - Peaks[i-1] for i in range(1, len(Peaks))]
+    return [(C[i] + C[i-1]) / 2 for i in range(1, len(C))]
 
 
 # plot 16 triplets of peeks
@@ -129,32 +121,23 @@ def plot3peaks(newData, xPlotLeft, xPlotRight):
 
 def computeDeltaLru():
 
-    # approximate formula
-    dLru = LAMBDA**2 / (2*d) # nanometers
-
-    return dLru
+    return LAMBDA**2 / (2*d)
 
 
 def computeDeltaLambda(dXru, dLru, FWHM):
 
-    dL = (np.array(FWHM) * dLru) / np.array(dXru) # nanometers
-
-    return dL
+    return (np.array(FWHM) * dLru) / np.array(dXru)
 
 
 def computeResolvingPower(dL):
 
-    R = LAMBDA / np.array(dL)
-
-    return R
+    return LAMBDA / np.array(dL)
 
 
 def computeRMS(R, avgR):
 
     MSE = np.sum( (np.array(R) - avgR)**2 ) / (len(R) - 1)
-    RMSE = np.sqrt(MSE)
-
-    return RMSE
+    return np.sqrt(MSE)
 
 
 

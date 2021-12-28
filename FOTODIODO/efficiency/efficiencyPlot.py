@@ -32,12 +32,10 @@ def invCub(x, a, b):
 # read data from file
 def readData(filename):
 
-    data = pd.read_csv(
+    return pd.read_csv(
                         filename, sep = '\t', header = None,
                         names = ['X', 'Y','errY']
                     )
-
-    return data
 
 
 # compute plot ranges
